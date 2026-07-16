@@ -1,0 +1,531 @@
+{
+  "series": {
+    "CTRL_spy": {
+      "domain": "equity",
+      "ticker": "SPY US Equity",
+      "ok": true,
+      "rows": 1505,
+      "ann_vol": 0.168,
+      "kurtosis": 7.2,
+      "skew": 0.04,
+      "jump5sig_pct": 0.133,
+      "worst_day_pct": -6.0
+    },
+    "POWER_pjm": {
+      "domain": "power",
+      "ticker": "PJM WEST DA PEAK Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: PJM WEST DA PEAK Ind"
+    },
+    "POWER_ercot": {
+      "domain": "power",
+      "ticker": "ERCOTND Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: ERCOTND Index"
+    },
+    "POWER_nordpool": {
+      "domain": "power",
+      "ticker": "ENOSYSPR Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: ENOSYSPR Index"
+    },
+    "POWER_epex": {
+      "domain": "power",
+      "ticker": "ELECDEB Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: ELECDEB Index"
+    },
+    "COMM_natgas": {
+      "domain": "commodity",
+      "ticker": "NG1 Comdty",
+      "ok": true,
+      "rows": 1509,
+      "ann_vol": 0.811,
+      "kurtosis": 21.1,
+      "skew": -1.09,
+      "jump5sig_pct": 0.265,
+      "worst_day_pct": -64.4
+    },
+    "COMM_crude": {
+      "domain": "commodity",
+      "ticker": "CL1 Comdty",
+      "ok": true,
+      "rows": 1509,
+      "ann_vol": 0.4,
+      "kurtosis": 4.5,
+      "skew": -0.69,
+      "jump5sig_pct": 0.265,
+      "worst_day_pct": -17.9
+    },
+    "COMM_gasoline": {
+      "domain": "commodity",
+      "ticker": "XB1 Comdty",
+      "ok": true,
+      "rows": 1509,
+      "ann_vol": 0.388,
+      "kurtosis": 3.9,
+      "skew": -0.42,
+      "jump5sig_pct": 0.265,
+      "worst_day_pct": -15.1
+    },
+    "COMM_copper": {
+      "domain": "commodity",
+      "ticker": "HG1 Comdty",
+      "ok": true,
+      "rows": 1509,
+      "ann_vol": 0.275,
+      "kurtosis": 30.5,
+      "skew": -1.89,
+      "jump5sig_pct": 0.199,
+      "worst_day_pct": -24.9
+    },
+    "AG_corn": {
+      "domain": "agri",
+      "ticker": "C 1 Comdty",
+      "ok": true,
+      "rows": 1508,
+      "ann_vol": 0.278,
+      "kurtosis": 20.8,
+      "skew": -1.89,
+      "jump5sig_pct": 0.199,
+      "worst_day_pct": -19.1
+    },
+    "AG_wheat": {
+      "domain": "agri",
+      "ticker": "W 1 Comdty",
+      "ok": true,
+      "rows": 1508,
+      "ann_vol": 0.338,
+      "kurtosis": 6.6,
+      "skew": 0.64,
+      "jump5sig_pct": 0.199,
+      "worst_day_pct": -11.3
+    },
+    "AG_coffee": {
+      "domain": "agri",
+      "ticker": "KC1 Comdty",
+      "ok": true,
+      "rows": 1506,
+      "ann_vol": 0.369,
+      "kurtosis": 1.7,
+      "skew": 0.23,
+      "jump5sig_pct": 0.066,
+      "worst_day_pct": -9.3
+    },
+    "AG_sugar": {
+      "domain": "agri",
+      "ticker": "SB1 Comdty",
+      "ok": true,
+      "rows": 1505,
+      "ann_vol": 0.268,
+      "kurtosis": 1.2,
+      "skew": -0.11,
+      "jump5sig_pct": 0.0,
+      "worst_day_pct": -8.2
+    },
+    "EMFX_try": {
+      "domain": "emfx",
+      "ticker": "USDTRY Curncy",
+      "ok": true,
+      "rows": 1563,
+      "ann_vol": 0.165,
+      "kurtosis": 127.4,
+      "skew": -3.75,
+      "jump5sig_pct": 0.896,
+      "worst_day_pct": -20.8
+    },
+    "EMFX_ars": {
+      "domain": "emfx",
+      "ticker": "USDARS Curncy",
+      "ok": true,
+      "rows": 1462,
+      "ann_vol": 0.348,
+      "kurtosis": 1093.6,
+      "skew": 31.25,
+      "jump5sig_pct": 0.137,
+      "worst_day_pct": -5.2
+    },
+    "EMFX_brl": {
+      "domain": "emfx",
+      "ticker": "USDBRL Curncy",
+      "ok": true,
+      "rows": 1499,
+      "ann_vol": 0.147,
+      "kurtosis": 1.3,
+      "skew": 0.02,
+      "jump5sig_pct": 0.067,
+      "worst_day_pct": -4.7
+    },
+    "EMFX_zar": {
+      "domain": "emfx",
+      "ticker": "USDZAR Curncy",
+      "ok": true,
+      "rows": 1562,
+      "ann_vol": 0.134,
+      "kurtosis": 0.5,
+      "skew": 0.27,
+      "jump5sig_pct": 0.0,
+      "worst_day_pct": -2.8
+    },
+    "EMFX_rub": {
+      "domain": "emfx",
+      "ticker": "USDRUB Curncy",
+      "ok": true,
+      "rows": 1559,
+      "ann_vol": 0.259,
+      "kurtosis": 37.4,
+      "skew": 1.8,
+      "jump5sig_pct": 0.641,
+      "worst_day_pct": -13.2
+    },
+    "EMFX_mxn": {
+      "domain": "emfx",
+      "ticker": "USDMXN Curncy",
+      "ok": true,
+      "rows": 1563,
+      "ann_vol": 0.109,
+      "kurtosis": 1.9,
+      "skew": 0.46,
+      "jump5sig_pct": 0.064,
+      "worst_day_pct": -2.9
+    },
+    "VOL_vix": {
+      "domain": "vol",
+      "ticker": "VIX Index",
+      "ok": true,
+      "rows": 1537,
+      "ann_vol": 1.196,
+      "kurtosis": 7.0,
+      "skew": 1.01,
+      "jump5sig_pct": 0.39,
+      "worst_day_pct": -44.2
+    },
+    "VOL_ovx": {
+      "domain": "vol",
+      "ticker": "OVX Index",
+      "ok": true,
+      "rows": 1507,
+      "ann_vol": 0.994,
+      "kurtosis": 9.6,
+      "skew": 1.03,
+      "jump5sig_pct": 0.066,
+      "worst_day_pct": -31.1
+    },
+    "VOL_move": {
+      "domain": "vol",
+      "ticker": "MOVE Index",
+      "ok": true,
+      "rows": 1498,
+      "ann_vol": 0.777,
+      "kurtosis": 4.6,
+      "skew": 0.59,
+      "jump5sig_pct": 0.2,
+      "worst_day_pct": -29.9
+    },
+    "VOL_gvz": {
+      "domain": "vol",
+      "ticker": "GVZ Index",
+      "ok": true,
+      "rows": 1507,
+      "ann_vol": 0.779,
+      "kurtosis": 4.1,
+      "skew": 1.06,
+      "jump5sig_pct": 0.199,
+      "worst_day_pct": -17.8
+    },
+    "VOL_vvix": {
+      "domain": "vol",
+      "ticker": "VVIX Index",
+      "ok": true,
+      "rows": 1505,
+      "ann_vol": 0.846,
+      "kurtosis": 3.8,
+      "skew": 0.76,
+      "jump5sig_pct": 0.199,
+      "worst_day_pct": -18.6
+    },
+    "CREDIT_hyoas": {
+      "domain": "credit",
+      "ticker": "LF98OAS Index",
+      "ok": true,
+      "rows": 1524,
+      "ann_vol": 0.35,
+      "kurtosis": 4.0,
+      "skew": 0.38,
+      "jump5sig_pct": 0.131,
+      "worst_day_pct": -11.7
+    },
+    "CREDIT_igoas": {
+      "domain": "credit",
+      "ticker": "LUACOAS Index",
+      "ok": true,
+      "rows": 1524,
+      "ann_vol": 0.258,
+      "kurtosis": 4.2,
+      "skew": 0.57,
+      "jump5sig_pct": 0.197,
+      "worst_day_pct": -8.0
+    },
+    "FREIGHT_baltic": {
+      "domain": "freight",
+      "ticker": "BDIY Index",
+      "ok": true,
+      "rows": 1495,
+      "ann_vol": 0.543,
+      "kurtosis": 2.8,
+      "skew": 0.35,
+      "jump5sig_pct": 0.134,
+      "worst_day_pct": -19.2
+    },
+    "RATES_ust10": {
+      "domain": "rates",
+      "ticker": "USGG10YR Index",
+      "ok": true,
+      "rows": 1561,
+      "ann_vol": 0.372,
+      "kurtosis": 4.5,
+      "skew": 0.13,
+      "jump5sig_pct": 0.192,
+      "worst_day_pct": -16.4
+    }
+  },
+  "n_available": 24,
+  "wildness_ranking": [
+    {
+      "name": "EMFX_ars",
+      "domain": "emfx",
+      "ticker": "USDARS Curncy",
+      "kurtosis": 1093.6,
+      "jump5sig_pct": 0.137,
+      "skew": 31.25,
+      "ann_vol": 0.348,
+      "worst_day_pct": -5.2
+    },
+    {
+      "name": "EMFX_try",
+      "domain": "emfx",
+      "ticker": "USDTRY Curncy",
+      "kurtosis": 127.4,
+      "jump5sig_pct": 0.896,
+      "skew": -3.75,
+      "ann_vol": 0.165,
+      "worst_day_pct": -20.8
+    },
+    {
+      "name": "EMFX_rub",
+      "domain": "emfx",
+      "ticker": "USDRUB Curncy",
+      "kurtosis": 37.4,
+      "jump5sig_pct": 0.641,
+      "skew": 1.8,
+      "ann_vol": 0.259,
+      "worst_day_pct": -13.2
+    },
+    {
+      "name": "COMM_copper",
+      "domain": "commodity",
+      "ticker": "HG1 Comdty",
+      "kurtosis": 30.5,
+      "jump5sig_pct": 0.199,
+      "skew": -1.89,
+      "ann_vol": 0.275,
+      "worst_day_pct": -24.9
+    },
+    {
+      "name": "COMM_natgas",
+      "domain": "commodity",
+      "ticker": "NG1 Comdty",
+      "kurtosis": 21.1,
+      "jump5sig_pct": 0.265,
+      "skew": -1.09,
+      "ann_vol": 0.811,
+      "worst_day_pct": -64.4
+    },
+    {
+      "name": "AG_corn",
+      "domain": "agri",
+      "ticker": "C 1 Comdty",
+      "kurtosis": 20.8,
+      "jump5sig_pct": 0.199,
+      "skew": -1.89,
+      "ann_vol": 0.278,
+      "worst_day_pct": -19.1
+    },
+    {
+      "name": "VOL_ovx",
+      "domain": "vol",
+      "ticker": "OVX Index",
+      "kurtosis": 9.6,
+      "jump5sig_pct": 0.066,
+      "skew": 1.03,
+      "ann_vol": 0.994,
+      "worst_day_pct": -31.1
+    },
+    {
+      "name": "CTRL_spy",
+      "domain": "equity",
+      "ticker": "SPY US Equity",
+      "kurtosis": 7.2,
+      "jump5sig_pct": 0.133,
+      "skew": 0.04,
+      "ann_vol": 0.168,
+      "worst_day_pct": -6.0
+    },
+    {
+      "name": "VOL_vix",
+      "domain": "vol",
+      "ticker": "VIX Index",
+      "kurtosis": 7.0,
+      "jump5sig_pct": 0.39,
+      "skew": 1.01,
+      "ann_vol": 1.196,
+      "worst_day_pct": -44.2
+    },
+    {
+      "name": "AG_wheat",
+      "domain": "agri",
+      "ticker": "W 1 Comdty",
+      "kurtosis": 6.6,
+      "jump5sig_pct": 0.199,
+      "skew": 0.64,
+      "ann_vol": 0.338,
+      "worst_day_pct": -11.3
+    },
+    {
+      "name": "VOL_move",
+      "domain": "vol",
+      "ticker": "MOVE Index",
+      "kurtosis": 4.6,
+      "jump5sig_pct": 0.2,
+      "skew": 0.59,
+      "ann_vol": 0.777,
+      "worst_day_pct": -29.9
+    },
+    {
+      "name": "COMM_crude",
+      "domain": "commodity",
+      "ticker": "CL1 Comdty",
+      "kurtosis": 4.5,
+      "jump5sig_pct": 0.265,
+      "skew": -0.69,
+      "ann_vol": 0.4,
+      "worst_day_pct": -17.9
+    },
+    {
+      "name": "RATES_ust10",
+      "domain": "rates",
+      "ticker": "USGG10YR Index",
+      "kurtosis": 4.5,
+      "jump5sig_pct": 0.192,
+      "skew": 0.13,
+      "ann_vol": 0.372,
+      "worst_day_pct": -16.4
+    },
+    {
+      "name": "CREDIT_igoas",
+      "domain": "credit",
+      "ticker": "LUACOAS Index",
+      "kurtosis": 4.2,
+      "jump5sig_pct": 0.197,
+      "skew": 0.57,
+      "ann_vol": 0.258,
+      "worst_day_pct": -8.0
+    },
+    {
+      "name": "VOL_gvz",
+      "domain": "vol",
+      "ticker": "GVZ Index",
+      "kurtosis": 4.1,
+      "jump5sig_pct": 0.199,
+      "skew": 1.06,
+      "ann_vol": 0.779,
+      "worst_day_pct": -17.8
+    },
+    {
+      "name": "CREDIT_hyoas",
+      "domain": "credit",
+      "ticker": "LF98OAS Index",
+      "kurtosis": 4.0,
+      "jump5sig_pct": 0.131,
+      "skew": 0.38,
+      "ann_vol": 0.35,
+      "worst_day_pct": -11.7
+    },
+    {
+      "name": "COMM_gasoline",
+      "domain": "commodity",
+      "ticker": "XB1 Comdty",
+      "kurtosis": 3.9,
+      "jump5sig_pct": 0.265,
+      "skew": -0.42,
+      "ann_vol": 0.388,
+      "worst_day_pct": -15.1
+    },
+    {
+      "name": "VOL_vvix",
+      "domain": "vol",
+      "ticker": "VVIX Index",
+      "kurtosis": 3.8,
+      "jump5sig_pct": 0.199,
+      "skew": 0.76,
+      "ann_vol": 0.846,
+      "worst_day_pct": -18.6
+    },
+    {
+      "name": "FREIGHT_baltic",
+      "domain": "freight",
+      "ticker": "BDIY Index",
+      "kurtosis": 2.8,
+      "jump5sig_pct": 0.134,
+      "skew": 0.35,
+      "ann_vol": 0.543,
+      "worst_day_pct": -19.2
+    },
+    {
+      "name": "EMFX_mxn",
+      "domain": "emfx",
+      "ticker": "USDMXN Curncy",
+      "kurtosis": 1.9,
+      "jump5sig_pct": 0.064,
+      "skew": 0.46,
+      "ann_vol": 0.109,
+      "worst_day_pct": -2.9
+    },
+    {
+      "name": "AG_coffee",
+      "domain": "agri",
+      "ticker": "KC1 Comdty",
+      "kurtosis": 1.7,
+      "jump5sig_pct": 0.066,
+      "skew": 0.23,
+      "ann_vol": 0.369,
+      "worst_day_pct": -9.3
+    },
+    {
+      "name": "EMFX_brl",
+      "domain": "emfx",
+      "ticker": "USDBRL Curncy",
+      "kurtosis": 1.3,
+      "jump5sig_pct": 0.067,
+      "skew": 0.02,
+      "ann_vol": 0.147,
+      "worst_day_pct": -4.7
+    },
+    {
+      "name": "AG_sugar",
+      "domain": "agri",
+      "ticker": "SB1 Comdty",
+      "kurtosis": 1.2,
+      "jump5sig_pct": 0.0,
+      "skew": -0.11,
+      "ann_vol": 0.268,
+      "worst_day_pct": -8.2
+    },
+    {
+      "name": "EMFX_zar",
+      "domain": "emfx",
+      "ticker": "USDZAR Curncy",
+      "kurtosis": 0.5,
+      "jump5sig_pct": 0.0,
+      "skew": 0.27,
+      "ann_vol": 0.134,
+      "worst_day_pct": -2.8
+    }
+  ]
+}

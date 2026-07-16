@@ -1,0 +1,2 @@
+
+- **K=5/70ep IQN retrain (2026-07-16, DONE):** same-rows pinball on 102,391 matched rows — K5/GARCH-t ratio 1.036–1.050 per h (pooled 1.043, DM t +26). Bigger ensemble+epochs closed only ~15–20% of the gap; GARCH-t stays 3.6–5.0% ahead at every horizon. Residual is **STRUCTURAL, not training budget** (EVT/ACI in §8d also only halved it). Parametric leverage-GARCH-t genuinely better on single-name daily equity quantiles. Matched-rows question now closed on both arms.

@@ -1,0 +1,28 @@
+{
+  "naked": {
+    "net_bp": 13.6,
+    "SR": 0.33,
+    "ann_ret_pctK": 1.6,
+    "hit": 0.914,
+    "worst_pctK": -57.8,
+    "avg_loss_bp": -664.3,
+    "skew": -7.24,
+    "n": 4164
+  },
+  "covered": {
+    "net_bp": -56.1,
+    "SR": -2.09,
+    "ann_ret_pctK": -6.55,
+    "hit": 0.646,
+    "worst_pctK": -48.3,
+    "avg_loss_bp": -225.3,
+    "skew": -5.97,
+    "n": 4088
+  },
+  "covered_extra": {
+    "avg_spread_width_pctK": 1.0,
+    "mean_buyleg_strike_ratio": 0.898,
+    "premium_kept_vs_naked_pct": 29695.1
+  },
+  "runtime_sec": 106.9
+}

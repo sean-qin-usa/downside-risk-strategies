@@ -1,0 +1,96 @@
+{
+  "note": "REAL carry from 1M forwards. Long-EM carry (short USDXXX). A-priori gate: stand aside when 20d depreciation>thr OR 60d vol>expanding-median. Robustness across currencies, thresholds, and time-OOS.",
+  "currencies": [
+    "TRY",
+    "ZAR",
+    "MXN",
+    "RUB",
+    "HUF"
+  ],
+  "per_currency": {
+    "TRY": {
+      "ungated_SR": -0.15,
+      "gated_SR": 0.88,
+      "ungated_worst": -14.7,
+      "gated_worst": -3.0,
+      "inmkt_pct": 37.0,
+      "gated_SR_IS": 0.09,
+      "gated_SR_OOS": 1.41,
+      "ungated_SR_OOS": -0.06
+    },
+    "ZAR": {
+      "ungated_SR": 0.0,
+      "gated_SR": -0.47,
+      "ungated_worst": -4.9,
+      "gated_worst": -3.4,
+      "inmkt_pct": 38.0,
+      "gated_SR_IS": -0.81,
+      "gated_SR_OOS": -0.31,
+      "ungated_SR_OOS": 0.06
+    },
+    "MXN": {
+      "ungated_SR": 0.25,
+      "gated_SR": 0.07,
+      "ungated_worst": -8.0,
+      "gated_worst": -3.9,
+      "inmkt_pct": 38.0,
+      "gated_SR_IS": -0.03,
+      "gated_SR_OOS": 0.11,
+      "ungated_SR_OOS": 0.58
+    },
+    "RUB": {
+      "ungated_SR": 0.25,
+      "gated_SR": 0.33,
+      "ungated_worst": -22.8,
+      "gated_worst": -2.2,
+      "inmkt_pct": 29.0,
+      "gated_SR_IS": 0.04,
+      "gated_SR_OOS": 0.51,
+      "ungated_SR_OOS": 0.42
+    },
+    "HUF": {
+      "ungated_SR": -0.19,
+      "gated_SR": -0.4,
+      "ungated_worst": -3.5,
+      "gated_worst": -3.5,
+      "inmkt_pct": 42.0,
+      "gated_SR_IS": -0.46,
+      "gated_SR_OOS": -0.35,
+      "ungated_SR_OOS": -0.19
+    }
+  },
+  "basket_by_threshold": {
+    "thr_1pct": {
+      "ungated_SR": 0.08,
+      "gated_SR": -0.23,
+      "gated_SR_OOS": -0.1,
+      "ungated_SR_OOS": 0.3,
+      "ungated_worst_day": -5.3,
+      "gated_worst_day": -1.6
+    },
+    "thr_2pct": {
+      "ungated_SR": 0.08,
+      "gated_SR": -0.05,
+      "gated_SR_OOS": 0.23,
+      "ungated_SR_OOS": 0.3,
+      "ungated_worst_day": -5.3,
+      "gated_worst_day": -1.6
+    },
+    "thr_3pct": {
+      "ungated_SR": 0.08,
+      "gated_SR": -0.08,
+      "gated_SR_OOS": 0.17,
+      "ungated_SR_OOS": 0.3,
+      "ungated_worst_day": -5.3,
+      "gated_worst_day": -1.6
+    },
+    "thr_4pct": {
+      "ungated_SR": 0.08,
+      "gated_SR": -0.07,
+      "gated_SR_OOS": 0.22,
+      "ungated_SR_OOS": 0.3,
+      "ungated_worst_day": -5.3,
+      "gated_worst_day": -1.6
+    }
+  }
+}

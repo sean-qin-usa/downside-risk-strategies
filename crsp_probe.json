@@ -1,0 +1,339 @@
+{
+  "universe_2024": [
+    {
+      "n_permno": 10503
+    }
+  ],
+  "size_buckets": [
+    {
+      "bucket": "large>10B",
+      "n": 925
+    },
+    {
+      "bucket": "micro<0.5B",
+      "n": 5701
+    },
+    {
+      "bucket": "mid2-10B",
+      "n": 1384
+    },
+    {
+      "bucket": "small0.5-2B",
+      "n": 1725
+    }
+  ],
+  "recent_ipos": [
+    {
+      "permno": 25978,
+      "ticker": "NEUP",
+      "comnam": "NEUPHORIA THERAPEUTICS INC",
+      "st_date": "2024-12-24",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 26003,
+      "ticker": "HIT",
+      "comnam": "HEALTH IN TECH INC",
+      "st_date": "2024-12-23",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25916,
+      "ticker": "EXOD",
+      "comnam": "EXODUS MOVEMENT INC",
+      "st_date": "2024-12-18",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25980,
+      "ticker": "AVR",
+      "comnam": "ANTERIS TECHNOLOGIES GLOBAL CORP",
+      "st_date": "2024-12-13",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25886,
+      "ticker": "TTAN",
+      "comnam": "SERVICETITAN INC",
+      "st_date": "2024-12-12",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 26010,
+      "ticker": "NEHC",
+      "comnam": "NEW ERA HELIUM INC",
+      "st_date": "2024-12-09",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 26037,
+      "ticker": "ZSPC",
+      "comnam": "ZSPACE INC",
+      "st_date": "2024-12-05",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25977,
+      "ticker": "JUNS",
+      "comnam": "JUPITER NEUROSCIENCES INC",
+      "st_date": "2024-12-03",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25799,
+      "ticker": "GEAR",
+      "comnam": "REVELYST INC",
+      "st_date": "2024-11-27",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25829,
+      "ticker": "VENU",
+      "comnam": "VENU HOLDING CORP",
+      "st_date": "2024-11-27",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25870,
+      "ticker": "CASK",
+      "comnam": "HERITAGE DISTILLING HLDG CO INC",
+      "st_date": "2024-11-22",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25819,
+      "ticker": "BALY",
+      "comnam": "BALLYS CORP",
+      "st_date": "2024-11-20",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25861,
+      "ticker": "DMN",
+      "comnam": "DAMON INC",
+      "st_date": "2024-11-18",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25820,
+      "ticker": "MDCX",
+      "comnam": "MEDICUS PHARMA LTD",
+      "st_date": "2024-11-14",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25816,
+      "ticker": "IZTC",
+      "comnam": "INVIZYNE TECHNOLOGIES INC",
+      "st_date": "2024-11-13",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25773,
+      "ticker": "PRMB",
+      "comnam": "PRIMO BRANDS CORP",
+      "st_date": "2024-11-11",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25661,
+      "ticker": "ECG",
+      "comnam": "EVERUS CONSTRUCTION GROUP INC",
+      "st_date": "2024-11-01",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25765,
+      "ticker": "TZUP",
+      "comnam": "THUMZUP MEDIA CORP",
+      "st_date": "2024-10-29",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25755,
+      "ticker": "SEPN",
+      "comnam": "SEPTERNA INC",
+      "st_date": "2024-10-25",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25687,
+      "ticker": "INGM",
+      "comnam": "INGRAM MICRO HOLDING CORP",
+      "st_date": "2024-10-24",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25721,
+      "ticker": "FBLA",
+      "comnam": "FB BANCORP INC",
+      "st_date": "2024-10-23",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25759,
+      "ticker": "SNYR",
+      "comnam": "SYNERGY CHC CORP",
+      "st_date": "2024-10-23",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25684,
+      "ticker": "ROLR",
+      "comnam": "HIGH ROLLER TECHNOLOGIES INC",
+      "st_date": "2024-10-23",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25766,
+      "ticker": "UPB",
+      "comnam": "UPSTREAM BIO INC",
+      "st_date": "2024-10-11",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25716,
+      "ticker": "CBLL",
+      "comnam": "CERIBELL INC",
+      "st_date": "2024-10-11",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25714,
+      "ticker": "CAMP",
+      "comnam": "CAMP4 THERAPEUTICS CORP",
+      "st_date": "2024-10-11",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25758,
+      "ticker": "SKYQ",
+      "comnam": "SKY QUARRY INC",
+      "st_date": "2024-10-10",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25640,
+      "ticker": "KLC",
+      "comnam": "KINDERCARE LEARNING COS INC",
+      "st_date": "2024-10-09",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25757,
+      "ticker": "SKK",
+      "comnam": "SKK HOLDINGS LTD",
+      "st_date": "2024-10-08",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25673,
+      "ticker": "CBNA",
+      "comnam": "CHAIN BRIDGE BANCORP INC",
+      "st_date": "2024-10-04",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25730,
+      "ticker": "INV",
+      "comnam": "INNVENTURE INC",
+      "st_date": "2024-10-03",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25637,
+      "ticker": "SARO",
+      "comnam": "STANDARDAERO INC",
+      "st_date": "2024-10-02",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25660,
+      "ticker": "ZENA",
+      "comnam": "ZENATECH INC",
+      "st_date": "2024-10-01",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25434,
+      "ticker": "AMTM",
+      "comnam": "AMENTUM HOLDINGS INC",
+      "st_date": "2024-09-30",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25557,
+      "ticker": "FOXX",
+      "comnam": "FOXX DEVELOPMENT HOLDINGS INC",
+      "st_date": "2024-09-27",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25441,
+      "ticker": "BKV",
+      "comnam": "B K V CORP",
+      "st_date": "2024-09-26",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25482,
+      "ticker": "LGCY",
+      "comnam": "LEGACY EDUCATION INC",
+      "st_date": "2024-09-26",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25466,
+      "ticker": "GRDN",
+      "comnam": "GUARDIAN PHARMACY SERVICES INC",
+      "st_date": "2024-09-26",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25550,
+      "ticker": "BIOA",
+      "comnam": "BIOAGE LABS INC",
+      "st_date": "2024-09-26",
+      "end_date": "2024-12-31"
+    },
+    {
+      "permno": 25481,
+      "ticker": "KAPA",
+      "comnam": "KAIROS PHARMA LTD",
+      "st_date": "2024-09-16",
+      "end_date": "2024-12-31"
+    }
+  ],
+  "sample_returns": [
+    {
+      "date": "2024-12-24",
+      "ret": null,
+      "prc": 6.63,
+      "shrout": 15390.0
+    },
+    {
+      "date": "2024-12-26",
+      "ret": -0.328808,
+      "prc": 4.45,
+      "shrout": 15390.0
+    },
+    {
+      "date": "2024-12-27",
+      "ret": -0.094382,
+      "prc": 4.03,
+      "shrout": 15390.0
+    },
+    {
+      "date": "2024-12-30",
+      "ret": -0.096774,
+      "prc": 3.64,
+      "shrout": 15390.0
+    },
+    {
+      "date": "2024-12-31",
+      "ret": -0.057692,
+      "prc": 3.43,
+      "shrout": 15390.0
+    }
+  ]
+}

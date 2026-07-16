@@ -1,0 +1,76 @@
+{
+  "WEEKLY": {
+    "n": 178787,
+    "MID": {
+      "all": {
+        "SR": 1.34,
+        "avg_bp": 17.6,
+        "worst_mo": -2.64
+      },
+      "top25pct": {
+        "SR": 3.18,
+        "avg_bp": 46.3,
+        "worst_mo": -1.99
+      },
+      "top10pct": {
+        "SR": 3.46,
+        "avg_bp": 73.8,
+        "worst_mo": -1.21
+      }
+    },
+    "BID": {
+      "all": {
+        "SR": 0.56,
+        "avg_bp": 7.2,
+        "worst_mo": -2.69
+      },
+      "top25pct": {
+        "SR": 1.77,
+        "avg_bp": 22.2,
+        "worst_mo": -2.08
+      },
+      "top10pct": {
+        "SR": 2.08,
+        "avg_bp": 31.9,
+        "worst_mo": -1.44
+      }
+    }
+  },
+  "MONTHLY": {
+    "n": 58541,
+    "MID": {
+      "all": {
+        "SR": 1.05,
+        "avg_bp": 42.2,
+        "worst_mo": -8.71
+      },
+      "top25pct": {
+        "SR": 1.75,
+        "avg_bp": 85.3,
+        "worst_mo": -8.09
+      },
+      "top10pct": {
+        "SR": 2.38,
+        "avg_bp": 150.2,
+        "worst_mo": -8.44
+      }
+    },
+    "BID": {
+      "all": {
+        "SR": 0.29,
+        "avg_bp": 11.7,
+        "worst_mo": -8.82
+      },
+      "top25pct": {
+        "SR": 0.31,
+        "avg_bp": 13.8,
+        "worst_mo": -8.34
+      },
+      "top10pct": {
+        "SR": 0.51,
+        "avg_bp": 26.4,
+        "worst_mo": -9.62
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "5": {
+    "n": 20685,
+    "IQN_raw_avgpin": 0.01302,
+    "IQN_cal_avgpin": 0.01294,
+    "GARCH_avgpin": 0.01245,
+    "ratio_raw": 1.046,
+    "ratio_cal": 1.04,
+    "p05_breach_raw": 0.071,
+    "p05_breach_cal": 0.051
+  },
+  "10": {
+    "n": 20638,
+    "IQN_raw_avgpin": 0.01871,
+    "IQN_cal_avgpin": 0.01853,
+    "GARCH_avgpin": 0.01769,
+    "ratio_raw": 1.058,
+    "ratio_cal": 1.047,
+    "p05_breach_raw": 0.079,
+    "p05_breach_cal": 0.054
+  },
+  "21": {
+    "n": 20544,
+    "IQN_raw_avgpin": 0.02762,
+    "IQN_cal_avgpin": 0.02727,
+    "GARCH_avgpin": 0.02602,
+    "ratio_raw": 1.062,
+    "ratio_cal": 1.048,
+    "p05_breach_raw": 0.087,
+    "p05_breach_cal": 0.059
+  },
+  "42": {
+    "n": 20356,
+    "IQN_raw_avgpin": 0.03895,
+    "IQN_cal_avgpin": 0.03841,
+    "GARCH_avgpin": 0.0371,
+    "ratio_raw": 1.05,
+    "ratio_cal": 1.035,
+    "p05_breach_raw": 0.089,
+    "p05_breach_cal": 0.062
+  },
+  "63": {
+    "n": 20168,
+    "IQN_raw_avgpin": 0.04757,
+    "IQN_cal_avgpin": 0.04686,
+    "GARCH_avgpin": 0.04552,
+    "ratio_raw": 1.045,
+    "ratio_cal": 1.029,
+    "p05_breach_raw": 0.087,
+    "p05_breach_cal": 0.064
+  }
+}

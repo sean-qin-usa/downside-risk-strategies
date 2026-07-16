@@ -1,0 +1,30 @@
+{
+  "top50 liquid": {
+    "n_names": 50,
+    "all": 1.04,
+    "top50%VRP": 1.12,
+    "top25%VRP": 1.57,
+    "top10%VRP": 1.93
+  },
+  "top100 liquid": {
+    "n_names": 100,
+    "all": 1.05,
+    "top50%VRP": 1.04,
+    "top25%VRP": 1.75,
+    "top10%VRP": 2.38
+  },
+  "top200 liquid": {
+    "n_names": 200,
+    "all": 0.99,
+    "top50%VRP": 1.24,
+    "top25%VRP": 2.16,
+    "top10%VRP": 3.16
+  },
+  "all 542": {
+    "n_names": 542,
+    "all": 0.83,
+    "top50%VRP": 1.2,
+    "top25%VRP": 1.99,
+    "top10%VRP": 2.9
+  }
+}

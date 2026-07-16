@@ -1,0 +1,38 @@
+{
+  "full sample": {
+    "bid": {
+      "baseline_SR": 0.67,
+      "gated_SR": 2.12,
+      "uplift": 1.45
+    },
+    "mid": {
+      "baseline_SR": 1.13,
+      "gated_SR": 2.5,
+      "uplift": 1.37
+    }
+  },
+  "ex-COVID (Feb/Mar2020)": {
+    "bid": {
+      "baseline_SR": 1.24,
+      "gated_SR": 2.15,
+      "uplift": 0.91
+    },
+    "mid": {
+      "baseline_SR": 1.77,
+      "gated_SR": 2.54,
+      "uplift": 0.77
+    }
+  },
+  "ex-all-crash-months": {
+    "bid": {
+      "baseline_SR": 2.1,
+      "gated_SR": 2.22,
+      "uplift": 0.12
+    },
+    "mid": {
+      "baseline_SR": 2.68,
+      "gated_SR": 2.63,
+      "uplift": -0.05
+    }
+  }
+}

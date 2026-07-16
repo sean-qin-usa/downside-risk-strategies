@@ -1,0 +1,10 @@
+{
+  "pct_trades_spanning_earnings": 33.0,
+  "top10VRP_ALL": 2.9,
+  "top10VRP_earnings_only": 2.5,
+  "top10VRP_NO_earnings": 2.06,
+  "avg_vrp_earn": 0.141,
+  "avg_vrp_noearn": 0.064,
+  "pct_of_selected_that_are_earnings": null,
+  "pct_of_selected_spanning_earnings": 51.0
+}

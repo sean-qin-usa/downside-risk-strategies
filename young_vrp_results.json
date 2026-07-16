@@ -1,0 +1,126 @@
+{
+  "n_trades": 58662,
+  "note": "age=trading days since first PX_LAST. VRP-select = top-25% by VRP within cohort (needs valid trailing RV).",
+  "cohorts": {
+    "young1_<=252": {
+      "n": 689,
+      "n_names": 62,
+      "avg_spread_pct": 41.5,
+      "NAIVE_mid": {
+        "SR": 1.33,
+        "avg_bp": 85.9,
+        "worst_mo": -13.91,
+        "n": 689
+      },
+      "NAIVE_bid": {
+        "SR": 0.49,
+        "avg_bp": 20.8,
+        "worst_mo": -14.22,
+        "n": 689
+      },
+      "VRPsel_mid": {
+        "SR": 1.4,
+        "avg_bp": 95.7,
+        "worst_mo": -15.16,
+        "n": 212
+      },
+      "VRPsel_bid": {
+        "SR": 0.45,
+        "avg_bp": -0.8,
+        "worst_mo": -15.73,
+        "n": 212
+      },
+      "avg_vrp": 0.06
+    },
+    "young2_253-504": {
+      "n": 843,
+      "n_names": 76,
+      "avg_spread_pct": 40.0,
+      "NAIVE_mid": {
+        "SR": 1.79,
+        "avg_bp": 96.8,
+        "worst_mo": -11.77,
+        "n": 843
+      },
+      "NAIVE_bid": {
+        "SR": 0.73,
+        "avg_bp": 26.9,
+        "worst_mo": -12.27,
+        "n": 843
+      },
+      "VRPsel_mid": {
+        "SR": 1.63,
+        "avg_bp": 154.8,
+        "worst_mo": -11.74,
+        "n": 258
+      },
+      "VRPsel_bid": {
+        "SR": 0.63,
+        "avg_bp": 44.6,
+        "worst_mo": -11.85,
+        "n": 258
+      },
+      "avg_vrp": 0.121
+    },
+    "mid_505-1512": {
+      "n": 3896,
+      "n_names": 108,
+      "avg_spread_pct": 40.0,
+      "NAIVE_mid": {
+        "SR": 1.57,
+        "avg_bp": 86.8,
+        "worst_mo": -14.96,
+        "n": 3896
+      },
+      "NAIVE_bid": {
+        "SR": 0.36,
+        "avg_bp": 21.5,
+        "worst_mo": -16.11,
+        "n": 3896
+      },
+      "VRPsel_mid": {
+        "SR": 3.55,
+        "avg_bp": 192.8,
+        "worst_mo": -4.89,
+        "n": 1012
+      },
+      "VRPsel_bid": {
+        "SR": 1.17,
+        "avg_bp": 53.6,
+        "worst_mo": -6.24,
+        "n": 1012
+      },
+      "avg_vrp": 0.112
+    },
+    "mature_>1512": {
+      "n": 53234,
+      "n_names": 515,
+      "avg_spread_pct": 44.4,
+      "NAIVE_mid": {
+        "SR": 0.73,
+        "avg_bp": 38.8,
+        "worst_mo": -17.59,
+        "n": 53234
+      },
+      "NAIVE_bid": {
+        "SR": 0.05,
+        "avg_bp": 3.0,
+        "worst_mo": -17.75,
+        "n": 53234
+      },
+      "VRPsel_mid": {
+        "SR": 1.44,
+        "avg_bp": 76.4,
+        "worst_mo": -16.82,
+        "n": 13354
+      },
+      "VRPsel_bid": {
+        "SR": 0.19,
+        "avg_bp": 9.2,
+        "worst_mo": -17.12,
+        "n": 13354
+      },
+      "avg_vrp": 0.087
+    }
+  }
+}

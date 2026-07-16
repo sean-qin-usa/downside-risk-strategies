@@ -1,0 +1,124 @@
+{
+  "note": "weekly-tenor VRP book: Sharpe under (selection) x (aggregation freq). Explains 3.46 (top10% monthly-agg) vs 1.35 (all weekly-agg).",
+  "sharpe_grid": {
+    "all_monthly": 1.09,
+    "top10_monthly": 4.85,
+    "all_weekly": 1.35,
+    "top10_weekly": 3.78
+  },
+  "avg_bp": {
+    "all_monthly": 18.0,
+    "top10_monthly": 68.6
+  },
+  "selected_monthly": {
+    "name": "Weekly_tenor_TOP10VRP_monthly",
+    "ppy": 12,
+    "n_periods": 116,
+    "full_SR": 4.845248962686067,
+    "full_ann_ret": 0.08229998676402897,
+    "pct_periods_pos": 92.24137931034483,
+    "n_losing_years": 0,
+    "worst_period": -0.0021480745912851418,
+    "max_drawdown": -0.0018584852947731711,
+    "yearly": [
+      {
+        "year": 2016,
+        "n": 12,
+        "mean": 0.0071,
+        "ann_ret": 0.0849,
+        "ann_SR": 10.2721,
+        "pct_pos": 100.0,
+        "worst": 0.0021
+      },
+      {
+        "year": 2017,
+        "n": 12,
+        "mean": 0.0033,
+        "ann_ret": 0.0395,
+        "ann_SR": 5.6281,
+        "pct_pos": 91.6667,
+        "worst": -0.0006
+      },
+      {
+        "year": 2018,
+        "n": 12,
+        "mean": 0.0036,
+        "ann_ret": 0.043,
+        "ann_SR": 4.2433,
+        "pct_pos": 91.6667,
+        "worst": -0.0021
+      },
+      {
+        "year": 2019,
+        "n": 12,
+        "mean": 0.004,
+        "ann_ret": 0.0479,
+        "ann_SR": 4.083,
+        "pct_pos": 75.0,
+        "worst": -0.0009
+      },
+      {
+        "year": 2020,
+        "n": 12,
+        "mean": 0.0119,
+        "ann_ret": 0.1432,
+        "ann_SR": 5.9281,
+        "pct_pos": 91.6667,
+        "worst": -0.0018
+      },
+      {
+        "year": 2021,
+        "n": 12,
+        "mean": 0.0081,
+        "ann_ret": 0.0973,
+        "ann_SR": 7.526,
+        "pct_pos": 91.6667,
+        "worst": -0.0009
+      },
+      {
+        "year": 2022,
+        "n": 12,
+        "mean": 0.0079,
+        "ann_ret": 0.0944,
+        "ann_SR": 6.7883,
+        "pct_pos": 100.0,
+        "worst": 0.0016
+      },
+      {
+        "year": 2023,
+        "n": 12,
+        "mean": 0.0053,
+        "ann_ret": 0.0641,
+        "ann_SR": 5.452,
+        "pct_pos": 91.6667,
+        "worst": -0.001
+      },
+      {
+        "year": 2024,
+        "n": 12,
+        "mean": 0.009,
+        "ann_ret": 0.1085,
+        "ann_SR": 7.0567,
+        "pct_pos": 100.0,
+        "worst": 0.0013
+      },
+      {
+        "year": 2025,
+        "n": 8,
+        "mean": 0.0091,
+        "ann_ret": 0.1093,
+        "ann_SR": 4.2689,
+        "pct_pos": 87.5,
+        "worst": -0.0016
+      }
+    ],
+    "charts": [
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\Weekly_tenor_TOP10VRP_monthly_overview.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\Weekly_tenor_TOP10VRP_monthly_heatmap.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\Weekly_tenor_TOP10VRP_monthly_tradevol.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\Weekly_tenor_TOP10VRP_monthly_pnl_and_trades.png"
+    ],
+    "total_trades": 17932,
+    "avg_trades_per_period": 154.6
+  }
+}

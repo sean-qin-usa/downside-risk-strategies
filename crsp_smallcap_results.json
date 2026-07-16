@@ -1,0 +1,10 @@
+{
+  "n_names": 439,
+  "note": "CRSP cohorts. Two IQN-favoring conditions rise together as names get smaller/newer: fatter tails + data-starvation (GARCH can't fit short histories). Confirms transfer edge should grow on small/new names. Panel: crsp_smallcap_panel.csv.",
+  "by_cohort": {
+    "largecap_ctrl": {"n_names": 80, "median_hist_days": 2516, "pct_under250d": 0.0, "pct_under500d": 0.0, "median_kurtosis": 11.2, "median_skew": 0.02, "median_jump5sig_pct": 0.318, "median_annvol": 0.28, "median_worst_day_pct": -15.2},
+    "smallcap": {"n_names": 180, "median_hist_days": 2516, "pct_under250d": 0.0, "pct_under500d": 0.0, "median_kurtosis": 13.7, "median_skew": 0.42, "median_jump5sig_pct": 0.364, "median_annvol": 0.46, "median_worst_day_pct": -24.1},
+    "recent_ipo": {"n_names": 179, "median_hist_days": 786, "pct_under250d": 12.3, "pct_under500d": 30.2, "median_kurtosis": 17.2, "median_skew": 0.79, "median_jump5sig_pct": 0.350, "median_annvol": 0.77, "median_worst_day_pct": -24.8}
+  },
+  "universe_available_crsp_2024": {"total_permnos": 10503, "micro_under_0.5B": 5701, "small_0.5_2B": 1725, "mid_2_10B": 1384, "large_over_10B": 925}
+}

@@ -1,0 +1,330 @@
+{
+  "note": "Broad FX universe since 1996. Long-EM carry gated by causal 20d-depreciation-momentum(>3%). gate_helps = gated Sharpe > ungated + 0.2.",
+  "n_currencies": 31,
+  "n_gate_profitable": 6,
+  "gate_profitable": [
+    "IDR",
+    "INR",
+    "KZT",
+    "RON",
+    "RUB",
+    "TRY"
+  ],
+  "per_currency": {
+    "AED": {
+      "start": "1996-01-02",
+      "n_days": 8146,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.01,
+      "gated_SR": -0.01,
+      "gate_helps": false,
+      "worst_ung": -0.6,
+      "worst_gat": -0.6
+    },
+    "ARS": {
+      "start": "1996-01-02",
+      "n_days": 7674,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -1.13,
+      "gated_SR": -0.96,
+      "gate_helps": false,
+      "worst_ung": -78.1,
+      "worst_gat": -33.6
+    },
+    "BRL": {
+      "start": "1996-01-02",
+      "n_days": 7780,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.34,
+      "gated_SR": -0.18,
+      "gate_helps": false,
+      "worst_ung": -10.0,
+      "worst_gat": -8.6
+    },
+    "CAD": {
+      "start": "1996-01-02",
+      "n_days": 7968,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.01,
+      "gated_SR": -0.14,
+      "gate_helps": false,
+      "worst_ung": -3.3,
+      "worst_gat": -3.3
+    },
+    "CHF": {
+      "start": "1996-01-02",
+      "n_days": 7968,
+      "median_carry_pct": 0.0,
+      "ungated_SR": 0.11,
+      "gated_SR": -0.01,
+      "gate_helps": false,
+      "worst_ung": -9.1,
+      "worst_gat": -4.7
+    },
+    "CLP": {
+      "start": "1996-01-02",
+      "n_days": 7671,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.25,
+      "gated_SR": -0.26,
+      "gate_helps": false,
+      "worst_ung": -4.7,
+      "worst_gat": -4.7
+    },
+    "CZK": {
+      "start": "1996-01-02",
+      "n_days": 7967,
+      "median_carry_pct": 0.0,
+      "ungated_SR": 0.06,
+      "gated_SR": 0.04,
+      "gate_helps": false,
+      "worst_ung": -8.0,
+      "worst_gat": -8.0
+    },
+    "EGP": {
+      "start": "1996-01-03",
+      "n_days": 6886,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.62,
+      "gated_SR": -0.49,
+      "gate_helps": false,
+      "worst_ung": -48.5,
+      "worst_gat": -48.5
+    },
+    "HUF": {
+      "start": "1996-01-02",
+      "n_days": 7964,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.2,
+      "gated_SR": -0.22,
+      "gate_helps": false,
+      "worst_ung": -6.9,
+      "worst_gat": -5.7
+    },
+    "IDR": {
+      "start": "1996-01-02",
+      "n_days": 7687,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.34,
+      "gated_SR": 0.04,
+      "gate_helps": true,
+      "worst_ung": -20.0,
+      "worst_gat": -18.0
+    },
+    "ILS": {
+      "start": "1996-01-02",
+      "n_days": 7967,
+      "median_carry_pct": 0.0,
+      "ungated_SR": 0.01,
+      "gated_SR": -0.05,
+      "gate_helps": false,
+      "worst_ung": -3.0,
+      "worst_gat": -3.0
+    },
+    "INR": {
+      "start": "1996-01-02",
+      "n_days": 7608,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.57,
+      "gated_SR": -0.35,
+      "gate_helps": true,
+      "worst_ung": -3.9,
+      "worst_gat": -2.4
+    },
+    "JPY": {
+      "start": "1996-01-02",
+      "n_days": 7968,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.14,
+      "gated_SR": -0.15,
+      "gate_helps": false,
+      "worst_ung": -5.5,
+      "worst_gat": -5.5
+    },
+    "KRW": {
+      "start": "1996-01-02",
+      "n_days": 7765,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.16,
+      "gated_SR": -0.05,
+      "gate_helps": false,
+      "worst_ung": -15.2,
+      "worst_gat": -6.6
+    },
+    "KZT": {
+      "start": "1996-01-04",
+      "n_days": 7508,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.63,
+      "gated_SR": -0.39,
+      "gate_helps": true,
+      "worst_ung": -24.6,
+      "worst_gat": -19.2
+    },
+    "MXN": {
+      "start": "1996-01-02",
+      "n_days": 7965,
+      "median_carry_pct": 0.5,
+      "ungated_SR": -0.18,
+      "gated_SR": -0.15,
+      "gate_helps": false,
+      "worst_ung": -8.0,
+      "worst_gat": -8.0
+    },
+    "MYR": {
+      "start": "1996-01-02",
+      "n_days": 7752,
+      "median_carry_pct": 0.1,
+      "ungated_SR": -0.19,
+      "gated_SR": -0.02,
+      "gate_helps": false,
+      "worst_ung": -9.9,
+      "worst_gat": -9.1
+    },
+    "NGN": {
+      "start": "1997-02-28",
+      "n_days": 7072,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.44,
+      "gated_SR": -0.6,
+      "gate_helps": false,
+      "worst_ung": -141.4,
+      "worst_gat": -141.4
+    },
+    "NOK": {
+      "start": "1996-01-02",
+      "n_days": 7967,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.12,
+      "gated_SR": -0.18,
+      "gate_helps": false,
+      "worst_ung": -7.3,
+      "worst_gat": -4.7
+    },
+    "PHP": {
+      "start": "1996-01-02",
+      "n_days": 7702,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.36,
+      "gated_SR": -0.34,
+      "gate_helps": false,
+      "worst_ung": -10.9,
+      "worst_gat": -10.9
+    },
+    "PLN": {
+      "start": "1996-01-02",
+      "n_days": 7955,
+      "median_carry_pct": 0.2,
+      "ungated_SR": -0.09,
+      "gated_SR": -0.05,
+      "gate_helps": false,
+      "worst_ung": -5.2,
+      "worst_gat": -4.9
+    },
+    "RON": {
+      "start": "1996-01-10",
+      "n_days": 7485,
+      "median_carry_pct": 0.1,
+      "ungated_SR": -0.75,
+      "gated_SR": -0.53,
+      "gate_helps": true,
+      "worst_ung": -23.9,
+      "worst_gat": -7.6
+    },
+    "RUB": {
+      "start": "1996-01-02",
+      "n_days": 7959,
+      "median_carry_pct": 0.5,
+      "ungated_SR": -0.41,
+      "gated_SR": -0.03,
+      "gate_helps": true,
+      "worst_ung": -23.6,
+      "worst_gat": -13.4
+    },
+    "SAR": {
+      "start": "1996-01-03",
+      "n_days": 8184,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.01,
+      "gated_SR": -0.01,
+      "gate_helps": false,
+      "worst_ung": -0.8,
+      "worst_gat": -0.8
+    },
+    "SEK": {
+      "start": "1996-01-02",
+      "n_days": 7968,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.11,
+      "gated_SR": -0.22,
+      "gate_helps": false,
+      "worst_ung": -4.2,
+      "worst_gat": -3.8
+    },
+    "SGD": {
+      "start": "1996-01-02",
+      "n_days": 7966,
+      "median_carry_pct": 0.0,
+      "ungated_SR": 0.05,
+      "gated_SR": 0.01,
+      "gate_helps": false,
+      "worst_ung": -3.0,
+      "worst_gat": -2.8
+    },
+    "THB": {
+      "start": "1996-01-02",
+      "n_days": 7770,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.11,
+      "gated_SR": 0.01,
+      "gate_helps": false,
+      "worst_ung": -17.8,
+      "worst_gat": -17.8
+    },
+    "TRY": {
+      "start": "1996-01-02",
+      "n_days": 7963,
+      "median_carry_pct": 1.5,
+      "ungated_SR": -1.12,
+      "gated_SR": -0.58,
+      "gate_helps": true,
+      "worst_ung": -35.7,
+      "worst_gat": -35.7
+    },
+    "TWD": {
+      "start": "1996-01-02",
+      "n_days": 7733,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.12,
+      "gated_SR": -0.03,
+      "gate_helps": false,
+      "worst_ung": -3.3,
+      "worst_gat": -3.2
+    },
+    "UAH": {
+      "start": "1996-01-04",
+      "n_days": 7520,
+      "median_carry_pct": 0.0,
+      "ungated_SR": -0.58,
+      "gated_SR": -0.67,
+      "gate_helps": false,
+      "worst_ung": -37.2,
+      "worst_gat": -22.2
+    },
+    "ZAR": {
+      "start": "1996-01-02",
+      "n_days": 7965,
+      "median_carry_pct": 0.6,
+      "ungated_SR": -0.26,
+      "gated_SR": -0.3,
+      "gate_helps": false,
+      "worst_ung": -15.5,
+      "worst_gat": -5.5
+    }
+  },
+  "gate_profitable_basket_SR": -0.57,
+  "all_ccy_basket": {
+    "ungated_SR": -0.87,
+    "gated_SR": -0.59
+  }
+}

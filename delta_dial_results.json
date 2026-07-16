@@ -1,0 +1,18 @@
+{
+  "n": 1851,
+  "baseline": {
+    "avg_bp": 46.4,
+    "SR": 1.13,
+    "worst_mo_pct": -6.86
+  },
+  "standdown": {
+    "avg_bp": 14.6,
+    "SR": 0.51,
+    "worst_mo_pct": -6.86
+  },
+  "dial_in_stress": {
+    "avg_bp": 34.0,
+    "SR": 1.13,
+    "worst_mo_pct": -6.86
+  }
+}

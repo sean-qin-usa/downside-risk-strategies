@@ -1,0 +1,22 @@
+{
+  "n": 4043,
+  "resid_mean": -0.0491,
+  "resid_std": 0.1661,
+  "corr_resid_net": -0.019,
+  "sell_ALL": {
+    "SR": 0.36,
+    "net_bp": 14.4,
+    "n": 4043
+  },
+  "sell_RICH_vs_surface": {
+    "SR": 0.15,
+    "net_bp": 3.5,
+    "n": 1348
+  },
+  "sell_cheap_vs_surface": {
+    "SR": 0.65,
+    "net_bp": 33.6,
+    "n": 1348
+  },
+  "runtime_sec": 106.9
+}

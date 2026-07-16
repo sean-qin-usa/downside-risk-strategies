@@ -1,0 +1,22 @@
+{
+  "n": 2580,
+  "mean_Qb_market": 0.12,
+  "mean_Pb_model": 0.085,
+  "corr_gap_net": -0.038,
+  "sell_ALL": {
+    "SR": 0.6,
+    "net_bp": 21.5,
+    "n": 2580
+  },
+  "sell_OVERPRICED_topgap": {
+    "SR": 0.68,
+    "net_bp": 9.2,
+    "n": 860
+  },
+  "sell_cheap_bottomgap": {
+    "SR": 0.27,
+    "net_bp": 35.1,
+    "n": 860
+  },
+  "runtime_sec": 97.2
+}

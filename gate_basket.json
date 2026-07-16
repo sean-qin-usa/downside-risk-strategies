@@ -1,0 +1,33 @@
+{
+  "note": "Combined gate (misfit OR momentum) on TRY/RUB/IDR/INR, NET of NDF half-spread on gate toggles. Equal-weight basket.",
+  "per_ccy": {
+    "TRY": {
+      "ungated_SR": -0.15,
+      "gated_net_SR": 0.26,
+      "halfspread_bp": 8.0
+    },
+    "RUB": {
+      "ungated_SR": 0.25,
+      "gated_net_SR": 0.64,
+      "halfspread_bp": 12.0
+    },
+    "IDR": {
+      "ungated_SR": 0.91,
+      "gated_net_SR": 0.84,
+      "halfspread_bp": 15.0
+    },
+    "INR": {
+      "ungated_SR": 0.85,
+      "gated_net_SR": 1.03,
+      "halfspread_bp": 6.0
+    }
+  },
+  "basket": {
+    "ungated_SR": 0.43,
+    "gated_net_SR": 1.0,
+    "ungated_SR_OOS": 0.56,
+    "gated_net_SR_OOS": 1.18,
+    "ungated_worst": -7.6,
+    "gated_net_worst": -3.2
+  }
+}

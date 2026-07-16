@@ -1,0 +1,124 @@
+{
+  "sector_cov": 0,
+  "note": "peer_vol=sector(or market) median trailing-RV of MATURE names, NO own-history. vrp_peer=IV-peer_vol.",
+  "young1_<=252": {
+    "n": 689,
+    "NAIVE_mid": {
+      "SR": 1.33,
+      "avg_bp": 85.9,
+      "worst_mo": -13.91,
+      "n": 689
+    },
+    "NAIVE_bid": {
+      "SR": 0.49,
+      "avg_bp": 20.8,
+      "worst_mo": -14.22,
+      "n": 689
+    },
+    "VRPtrail_mid": {
+      "SR": 1.4,
+      "avg_bp": 95.7,
+      "worst_mo": -15.16,
+      "n": 212
+    },
+    "VRPtrail_bid": {
+      "SR": 0.45,
+      "avg_bp": -0.8,
+      "worst_mo": -15.73,
+      "n": 212
+    },
+    "VRPpeer_mid": {
+      "SR": 0.83,
+      "avg_bp": 111.3,
+      "worst_mo": -27.14,
+      "n": 218
+    },
+    "VRPpeer_bid": {
+      "SR": 0.13,
+      "avg_bp": 3.9,
+      "worst_mo": -27.54,
+      "n": 218
+    },
+    "corr_peer_vs_trail_vrp": 0.11
+  },
+  "young2_253-504": {
+    "n": 843,
+    "NAIVE_mid": {
+      "SR": 1.79,
+      "avg_bp": 96.8,
+      "worst_mo": -11.77,
+      "n": 843
+    },
+    "NAIVE_bid": {
+      "SR": 0.73,
+      "avg_bp": 26.9,
+      "worst_mo": -12.27,
+      "n": 843
+    },
+    "VRPtrail_mid": {
+      "SR": 1.63,
+      "avg_bp": 154.8,
+      "worst_mo": -11.74,
+      "n": 258
+    },
+    "VRPtrail_bid": {
+      "SR": 0.63,
+      "avg_bp": 44.6,
+      "worst_mo": -11.85,
+      "n": 258
+    },
+    "VRPpeer_mid": {
+      "SR": 1.99,
+      "avg_bp": 198.8,
+      "worst_mo": -11.74,
+      "n": 258
+    },
+    "VRPpeer_bid": {
+      "SR": 0.94,
+      "avg_bp": 82.3,
+      "worst_mo": -11.85,
+      "n": 258
+    },
+    "corr_peer_vs_trail_vrp": 0.37
+  },
+  "mid_505-1512": {
+    "n": 3896,
+    "NAIVE_mid": {
+      "SR": 1.57,
+      "avg_bp": 86.8,
+      "worst_mo": -14.96,
+      "n": 3896
+    },
+    "NAIVE_bid": {
+      "SR": 0.36,
+      "avg_bp": 21.5,
+      "worst_mo": -16.11,
+      "n": 3896
+    },
+    "VRPtrail_mid": {
+      "SR": 3.55,
+      "avg_bp": 192.8,
+      "worst_mo": -4.89,
+      "n": 1012
+    },
+    "VRPtrail_bid": {
+      "SR": 1.17,
+      "avg_bp": 53.6,
+      "worst_mo": -6.24,
+      "n": 1012
+    },
+    "VRPpeer_mid": {
+      "SR": 3.01,
+      "avg_bp": 201.7,
+      "worst_mo": -6.64,
+      "n": 1012
+    },
+    "VRPpeer_bid": {
+      "SR": 0.87,
+      "avg_bp": 49.4,
+      "worst_mo": -9.85,
+      "n": 1012
+    },
+    "corr_peer_vs_trail_vrp": 0.49
+  }
+}

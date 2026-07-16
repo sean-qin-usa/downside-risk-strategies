@@ -1,0 +1,93 @@
+{
+  "USDTRY": {
+    "carry_assumed_pct": 25.0,
+    "n_days": 2867,
+    "UNGATED": {
+      "SR": -0.01,
+      "ann_pct": -0.1,
+      "vol_pct": 16.6,
+      "worst_day": -14.6,
+      "pct_in_mkt": 100.0
+    },
+    "GATED_mom+vol": {
+      "SR": 0.69,
+      "ann_pct": 4.8,
+      "vol_pct": 7.0,
+      "worst_day": -5.1,
+      "pct_in_mkt": 63.0
+    }
+  },
+  "USDMXN": {
+    "carry_assumed_pct": 8.0,
+    "n_days": 2866,
+    "UNGATED": {
+      "SR": 0.58,
+      "ann_pct": 7.2,
+      "vol_pct": 12.4,
+      "worst_day": -7.9,
+      "pct_in_mkt": 100.0
+    },
+    "GATED_mom+vol": {
+      "SR": 0.5,
+      "ann_pct": 4.4,
+      "vol_pct": 8.6,
+      "worst_day": -3.9,
+      "pct_in_mkt": 72.0
+    }
+  },
+  "USDZAR": {
+    "carry_assumed_pct": 7.0,
+    "n_days": 2865,
+    "UNGATED": {
+      "SR": 0.3,
+      "ann_pct": 4.6,
+      "vol_pct": 15.1,
+      "worst_day": -4.9,
+      "pct_in_mkt": 100.0
+    },
+    "GATED_mom+vol": {
+      "SR": 0.08,
+      "ann_pct": 0.9,
+      "vol_pct": 10.9,
+      "worst_day": -3.8,
+      "pct_in_mkt": 64.0
+    }
+  },
+  "USDBRL": {
+    "carry_assumed_pct": 10.0,
+    "n_days": 2752,
+    "UNGATED": {
+      "SR": 0.36,
+      "ann_pct": 5.7,
+      "vol_pct": 15.8,
+      "worst_day": -7.1,
+      "pct_in_mkt": 100.0
+    },
+    "GATED_mom+vol": {
+      "SR": 0.16,
+      "ann_pct": 1.7,
+      "vol_pct": 11.0,
+      "worst_day": -7.1,
+      "pct_in_mkt": 65.0
+    }
+  },
+  "USDARS": {
+    "carry_assumed_pct": 45.0,
+    "n_days": 2686,
+    "UNGATED": {
+      "SR": -0.09,
+      "ann_pct": -2.7,
+      "vol_pct": 29.9,
+      "worst_day": -77.9,
+      "pct_in_mkt": 100.0
+    },
+    "GATED_mom+vol": {
+      "SR": 0.87,
+      "ann_pct": 9.6,
+      "vol_pct": 11.0,
+      "worst_day": -30.6,
+      "pct_in_mkt": 56.0
+    }
+  },
+  "_note": "Long-EM carry (short USDXXX) with assumed carry. Gate=stand aside when trailing 20d depreciation>3% OR vol in top 20% (lagged). If gated SR>ungated and worst-day less negative, the learnable-regime edge is TRADEABLE. Illustrative carry levels; ARS untradeable in practice (capital controls)."
+}

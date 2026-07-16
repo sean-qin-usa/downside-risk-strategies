@@ -1,0 +1,61 @@
+{
+  "WEEKLY": {
+    "n_trades": 178787,
+    "n_names": 542,
+    "vrp_select": {
+      "all": {
+        "SR": 1.34,
+        "avg_bp": 17.6,
+        "n": 44287,
+        "worst_mo": -2.64
+      },
+      "top50pct": {
+        "SR": 2.55,
+        "avg_bp": 30.2,
+        "n": 22171,
+        "worst_mo": -2.05
+      },
+      "top25pct": {
+        "SR": 3.18,
+        "avg_bp": 46.3,
+        "n": 11115,
+        "worst_mo": -1.99
+      },
+      "top10pct": {
+        "SR": 3.46,
+        "avg_bp": 73.8,
+        "n": 4481,
+        "worst_mo": -1.21
+      }
+    }
+  },
+  "MONTHLY_ref": {
+    "n_trades": 58600,
+    "vrp_select": {
+      "all": {
+        "SR": 1.05,
+        "avg_bp": 42.2,
+        "n": 10418,
+        "worst_mo": -8.71
+      },
+      "top50pct": {
+        "SR": 1.04,
+        "avg_bp": 52.6,
+        "n": 5230,
+        "worst_mo": -11.64
+      },
+      "top25pct": {
+        "SR": 1.75,
+        "avg_bp": 85.3,
+        "n": 2642,
+        "worst_mo": -8.09
+      },
+      "top10pct": {
+        "SR": 2.38,
+        "avg_bp": 150.2,
+        "n": 1070,
+        "worst_mo": -8.44
+      }
+    }
+  }
+}

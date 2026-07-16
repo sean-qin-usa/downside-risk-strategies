@@ -1,0 +1,29 @@
+{
+  "pct_all_trades_earn": 15.2,
+  "pct_selected_earn": 19.4,
+  "avg_vrp_earn": 0.137,
+  "avg_vrp_noearn": 0.078,
+  "avg_iv_earn": 0.493,
+  "avg_iv_noearn": 0.466,
+  "top10_ALL": {
+    "SR": 2.38,
+    "avg_bp": 150.2,
+    "n": 1070
+  },
+  "top10_earn_only": {
+    "SR": 1.94,
+    "avg_bp": 185.9,
+    "n": 208
+  },
+  "top10_NO_earn": {
+    "SR": 1.99,
+    "avg_bp": 141.6,
+    "n": 862
+  },
+  "book_equalwt_SR": 2.38,
+  "book_earnHALF_SR": 2.24,
+  "book_equal_ann_bp": 146.2,
+  "book_earnHALF_ann_bp": 140.6,
+  "worst_mo_earn_bp": -1788.7,
+  "worst_mo_noearn_bp": -3733.0
+}

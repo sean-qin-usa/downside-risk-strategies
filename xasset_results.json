@@ -1,0 +1,17 @@
+{
+  "per_sleeve_SR": {
+    "QQQ": 2.97,
+    "TLT": 0.19,
+    "GLD": 1.19,
+    "USO": 0.05,
+    "UNG": 0.19,
+    "FXE": 1.03,
+    "HYG": 1.35
+  },
+  "mean_single_sleeve_SR": 1.0,
+  "avg_pairwise_corr": 0.05,
+  "combined_all_sleeves_SR": 2.33,
+  "combined_by_assetclass_SR": 2.33,
+  "n_asset_classes": 7,
+  "n_months": 116
+}

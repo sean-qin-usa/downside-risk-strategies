@@ -1,0 +1,138 @@
+{
+  "FX_TRY": {
+    "ticker": "USDTRY Curncy",
+    "ok": true,
+    "GARCH": 0.1018,
+    "GBM": 0.1099,
+    "ratio": 1.08,
+    "winner": "GARCH",
+    "n_test": 1243
+  },
+  "FX_EGP": {
+    "ticker": "USDEGP Curncy",
+    "ok": true,
+    "GARCH": 0.1211,
+    "GBM": 0.1246,
+    "ratio": 1.028,
+    "winner": "GARCH",
+    "n_test": 866
+  },
+  "FX_NGN": {
+    "ticker": "USDNGN Curncy",
+    "ok": true,
+    "GARCH": 0.1842,
+    "GBM": 0.1966,
+    "ratio": 1.067,
+    "winner": "GARCH",
+    "n_test": 1226
+  },
+  "FX_PKR": {
+    "ticker": "USDPKR Curncy",
+    "ok": true,
+    "GARCH": 0.0944,
+    "GBM": 0.0984,
+    "ratio": 1.043,
+    "winner": "GARCH",
+    "n_test": 833
+  },
+  "AG_corn": {
+    "ticker": "C 1 Comdty",
+    "ok": true,
+    "GARCH": 0.2733,
+    "GBM": 0.2763,
+    "ratio": 1.011,
+    "winner": "GARCH",
+    "n_test": 1199
+  },
+  "AG_wheat": {
+    "ticker": "W 1 Comdty",
+    "ok": true,
+    "GARCH": 0.3791,
+    "GBM": 0.3956,
+    "ratio": 1.043,
+    "winner": "GARCH",
+    "n_test": 1199
+  },
+  "AG_soy": {
+    "ticker": "S 1 Comdty",
+    "ok": true,
+    "GARCH": 0.2316,
+    "GBM": 0.2343,
+    "ratio": 1.012,
+    "winner": "GARCH",
+    "n_test": 1199
+  },
+  "AG_coffee": {
+    "ticker": "KC1 Comdty",
+    "ok": true,
+    "GARCH": 0.427,
+    "GBM": 0.4378,
+    "ratio": 1.025,
+    "winner": "GARCH",
+    "n_test": 1198
+  },
+  "AG_sugar": {
+    "ticker": "SB1 Comdty",
+    "ok": true,
+    "GARCH": 0.3006,
+    "GBM": 0.3047,
+    "ratio": 1.014,
+    "winner": "GARCH",
+    "n_test": 1198
+  },
+  "POWER_pjm": {
+    "ticker": "PW1 Comdty",
+    "ok": true,
+    "GARCH": 0.0445,
+    "GBM": 0.041,
+    "ratio": 0.922,
+    "winner": "GBM(nonparam)",
+    "n_test": 811
+  },
+  "CREDIT_hyoas": {
+    "ticker": "LF98OAS Index",
+    "ok": true,
+    "GARCH": 0.4101,
+    "GBM": 0.4175,
+    "ratio": 1.018,
+    "winner": "GARCH",
+    "n_test": 1202
+  },
+  "CREDIT_igoas": {
+    "ticker": "LUACOAS Index",
+    "ok": true,
+    "GARCH": 0.3004,
+    "GBM": 0.3127,
+    "ratio": 1.041,
+    "winner": "GARCH",
+    "n_test": 1202
+  },
+  "SOV_emb": {
+    "ticker": "EMB US Equity",
+    "ok": true,
+    "GARCH": 0.1078,
+    "GBM": 0.1152,
+    "ratio": 1.069,
+    "winner": "GARCH",
+    "n_test": 1198
+  },
+  "VOL_vix": {
+    "ticker": "VIX Index",
+    "ok": true,
+    "GARCH": 1.2633,
+    "GBM": 1.2621,
+    "ratio": 0.999,
+    "winner": "GBM(nonparam)",
+    "n_test": 1210
+  },
+  "CTRL_spy": {
+    "ticker": "SPY US Equity",
+    "ok": true,
+    "GARCH": 0.1857,
+    "GBM": 0.1895,
+    "ratio": 1.02,
+    "winner": "GARCH",
+    "n_test": 1198
+  },
+  "_note": "ratio<1 => nonparam beats GARCH. Features include month-seasonality. Tests first-principles: nonparam wins where SHAPE changes with LEARNABLE state (regime/seasonality), not just fat tails."
+}

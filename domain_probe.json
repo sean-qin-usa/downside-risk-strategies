@@ -1,0 +1,187 @@
+{
+  "xbbg_ok": true,
+  "series": {
+    "CTRL_spy": {
+      "domain": "equity",
+      "ticker": "SPY US Equity",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "POWER_pjm": {
+      "domain": "power",
+      "ticker": "PJM WEST DA PEAK Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: PJM WEST DA PEAK Ind"
+    },
+    "POWER_pjm2": {
+      "domain": "power",
+      "ticker": "PJMPADAP Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: PJMPADAP Index"
+    },
+    "POWER_ercot": {
+      "domain": "power",
+      "ticker": "ERCOTND Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: ERCOTND Index"
+    },
+    "POWER_caiso": {
+      "domain": "power",
+      "ticker": "CAISO SP15 Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: CAISO SP15 Index"
+    },
+    "POWER_nordpool": {
+      "domain": "power",
+      "ticker": "ENOSYSPR Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: ENOSYSPR Index"
+    },
+    "POWER_epexde": {
+      "domain": "power",
+      "ticker": "ELECDEB Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: ELECDEB Index"
+    },
+    "COMM_natgas": {
+      "domain": "commodity",
+      "ticker": "NG1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "COMM_crude": {
+      "domain": "commodity",
+      "ticker": "CL1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "COMM_brent": {
+      "domain": "commodity",
+      "ticker": "CO1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "COMM_gasoline": {
+      "domain": "commodity",
+      "ticker": "XB1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "COMM_heatoil": {
+      "domain": "commodity",
+      "ticker": "HO1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "COMM_copper": {
+      "domain": "commodity",
+      "ticker": "HG1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_corn": {
+      "domain": "agri",
+      "ticker": "C 1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_wheat": {
+      "domain": "agri",
+      "ticker": "W 1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_soy": {
+      "domain": "agri",
+      "ticker": "S 1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_coffee": {
+      "domain": "agri",
+      "ticker": "KC1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_sugar": {
+      "domain": "agri",
+      "ticker": "SB1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_try": {
+      "domain": "emfx",
+      "ticker": "USDTRY Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_ars": {
+      "domain": "emfx",
+      "ticker": "USDARS Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_brl": {
+      "domain": "emfx",
+      "ticker": "USDBRL Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_zar": {
+      "domain": "emfx",
+      "ticker": "USDZAR Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_rub": {
+      "domain": "emfx",
+      "ticker": "USDRUB Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_mxn": {
+      "domain": "emfx",
+      "ticker": "USDMXN Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_vix": {
+      "domain": "vol",
+      "ticker": "VIX Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_vvix": {
+      "domain": "vol",
+      "ticker": "VVIX Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_ovx": {
+      "domain": "vol",
+      "ticker": "OVX Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_gvz": {
+      "domain": "vol",
+      "ticker": "GVZ Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_move": {
+      "domain": "vol",
+      "ticker": "MOVE Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_skew": {
+      "domain": "vol",
+      "ticker": "SKEW Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "CREDIT_hyoas": {
+      "domain": "credit",
+      "ticker": "LF98OAS Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "CREDIT_igoas": {
+      "domain": "credit",
+      "ticker": "LUACOAS Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "RATES_ust10": {
+      "domain": "rates",
+      "ticker": "USGG10YR Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "FREIGHT_baltic": {
+      "domain": "freight",
+      "ticker": "BDIY Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "CRYPTO_btc": {
+      "domain": "crypto",
+      "ticker": "XBTUSD Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "CRYPTO_btc2": {
+      "domain": "crypto",
+      "ticker": "XBT Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    }
+  },
+  "n_available": 0,
+  "wildness_ranking": []
+}

@@ -1,0 +1,42 @@
+{
+  "n_heldout": 287,
+  "note": "Amortized quantile model on UNSEEN names. Bucketed by history length. Cold-start = GARCH cannot fit (<250 usable days): amortized is the ONLY option there (capability, not accuracy).",
+  "cold_start": {
+    "n": 11,
+    "pct_of_heldout": 3.8,
+    "by_cohort": {
+      "recent_ipo": 11,
+      "smallcap": 0,
+      "largecap": 0
+    },
+    "amort_avg_pinball": 1.3942,
+    "amort_p05_breach": 0.066,
+    "garch_pinball": "N/A (cannot fit)"
+  },
+  "by_history_bucket": {
+    "250-500d": {
+      "n": 19,
+      "amort": 0.5919,
+      "garch": 0.592,
+      "ratio": 1.0
+    },
+    "500-1000d": {
+      "n": 71,
+      "amort": 0.9899,
+      "garch": 0.9944,
+      "ratio": 0.995
+    },
+    "1000-2000d": {
+      "n": 26,
+      "amort": 0.8818,
+      "garch": 0.8848,
+      "ratio": 0.997
+    },
+    ">2000d": {
+      "n": 160,
+      "amort": 0.5739,
+      "garch": 0.58,
+      "ratio": 0.99
+    }
+  }
+}

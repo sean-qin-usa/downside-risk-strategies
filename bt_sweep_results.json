@@ -1,0 +1,58 @@
+{
+  "universe_n": 40,
+  "commission_per_contract": 0.7,
+  "strike_sweep": {
+    "-0.05": {
+      "net_SR_with_comm": 0.57,
+      "ann_ret_pctK": 1.09,
+      "net_bp_trade": 9.6,
+      "n": 4164
+    },
+    "-0.1": {
+      "net_SR_with_comm": 0.44,
+      "ann_ret_pctK": 1.77,
+      "net_bp_trade": 15.1,
+      "n": 4164
+    },
+    "-0.15": {
+      "net_SR_with_comm": 0.3,
+      "ann_ret_pctK": 1.82,
+      "net_bp_trade": 15.3,
+      "n": 4164
+    },
+    "-0.2": {
+      "net_SR_with_comm": 0.32,
+      "ann_ret_pctK": 2.37,
+      "net_bp_trade": 19.5,
+      "n": 4164
+    },
+    "-0.3": {
+      "net_SR_with_comm": 0.31,
+      "ann_ret_pctK": 3.06,
+      "net_bp_trade": 24.1,
+      "n": 4164
+    }
+  },
+  "best_delta": -0.05,
+  "best": {
+    "delta": -0.05,
+    "net_SR": 0.57,
+    "ann_ret_pctK": 1.09
+  },
+  "era_splits": {
+    "2016-2019": 1.01,
+    "2020-2022": 0.01,
+    "2023-2025": 4.07
+  },
+  "seasonality_gate": {
+    "all": 0.57,
+    "ex_feb_mar": 1.68,
+    "feb_mar_only_mean_bp": -24.2
+  },
+  "bootstrap_SR_ci": {
+    "p5": -0.09,
+    "p50": 0.62,
+    "p95": 2.08
+  },
+  "runtime_sec": 94.6
+}

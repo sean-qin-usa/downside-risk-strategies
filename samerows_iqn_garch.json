@@ -1,0 +1,67 @@
+{
+  "n_samerows": 102391,
+  "n_names": 111,
+  "note": "IDENTICAL (tk,date,h) rows; unit-matched h-day fwd-return quantiles; IQN=production walk-forward v2 (raw9); GARCH=Zero-mean GJR-t, annual walk-forward refit, MC h-day paths. Ratio>1 => IQN worse. Fixes invalid -38%.",
+  "by_horizon": {
+    "5": {
+      "n": 20685,
+      "ratio_tau05": 1.061,
+      "ratio_tau25": 1.049,
+      "ratio_tau50": 1.047,
+      "ratio_tau75": 1.041,
+      "ratio_tau95": 1.03,
+      "IQN_avgpin": 0.01302,
+      "GARCH_avgpin": 0.01245,
+      "ratio_avg": 1.046,
+      "DM_t_IQNminusGARCH": 12.3
+    },
+    "10": {
+      "n": 20638,
+      "ratio_tau05": 1.07,
+      "ratio_tau25": 1.048,
+      "ratio_tau50": 1.055,
+      "ratio_tau75": 1.06,
+      "ratio_tau95": 1.074,
+      "IQN_avgpin": 0.01871,
+      "GARCH_avgpin": 0.01769,
+      "ratio_avg": 1.058,
+      "DM_t_IQNminusGARCH": 17.2
+    },
+    "21": {
+      "n": 20544,
+      "ratio_tau05": 1.077,
+      "ratio_tau25": 1.044,
+      "ratio_tau50": 1.051,
+      "ratio_tau75": 1.066,
+      "ratio_tau95": 1.122,
+      "IQN_avgpin": 0.02762,
+      "GARCH_avgpin": 0.02602,
+      "ratio_avg": 1.062,
+      "DM_t_IQNminusGARCH": 18.1
+    },
+    "42": {
+      "n": 20356,
+      "ratio_tau05": 1.075,
+      "ratio_tau25": 1.026,
+      "ratio_tau50": 1.029,
+      "ratio_tau75": 1.057,
+      "ratio_tau95": 1.151,
+      "IQN_avgpin": 0.03895,
+      "GARCH_avgpin": 0.0371,
+      "ratio_avg": 1.05,
+      "DM_t_IQNminusGARCH": 14.0
+    },
+    "63": {
+      "n": 20168,
+      "ratio_tau05": 1.073,
+      "ratio_tau25": 1.02,
+      "ratio_tau50": 1.016,
+      "ratio_tau75": 1.051,
+      "ratio_tau95": 1.184,
+      "IQN_avgpin": 0.04757,
+      "GARCH_avgpin": 0.04552,
+      "ratio_avg": 1.045,
+      "DM_t_IQNminusGARCH": 12.3
+    }
+  }
+}

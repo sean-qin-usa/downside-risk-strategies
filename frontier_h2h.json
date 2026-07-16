@@ -1,0 +1,80 @@
+{
+  "USDARS": {
+    "ticker": "USDARS Curncy",
+    "n_test": 1066,
+    "GARCH_pinball": 0.1533,
+    "GBM_pinball": 0.1319,
+    "ratio_GBM_over_GARCH": 0.86,
+    "winner": "GBM(nonparam)",
+    "tail_GARCH": 0.123,
+    "tail_GBM": 0.1058,
+    "tail_ratio": 0.86
+  },
+  "USDTRY": {
+    "ticker": "USDTRY Curncy",
+    "n_test": 1139,
+    "GARCH_pinball": 0.0681,
+    "GBM_pinball": 0.0665,
+    "ratio_GBM_over_GARCH": 0.976,
+    "winner": "GBM(nonparam)",
+    "tail_GARCH": 0.051,
+    "tail_GBM": 0.05,
+    "tail_ratio": 0.981
+  },
+  "USDRUB": {
+    "ticker": "USDRUB Curncy",
+    "n_test": 1136,
+    "GARCH_pinball": 0.2539,
+    "GBM_pinball": 0.2823,
+    "ratio_GBM_over_GARCH": 1.112,
+    "winner": "GARCH",
+    "tail_GARCH": 0.1559,
+    "tail_GBM": 0.1924,
+    "tail_ratio": 1.234
+  },
+  "COPPER": {
+    "ticker": "HG1 Comdty",
+    "n_test": 1099,
+    "GARCH_pinball": 0.3065,
+    "GBM_pinball": 0.3154,
+    "ratio_GBM_over_GARCH": 1.029,
+    "winner": "GARCH",
+    "tail_GARCH": 0.1871,
+    "tail_GBM": 0.1968,
+    "tail_ratio": 1.051
+  },
+  "CORN": {
+    "ticker": "C 1 Comdty",
+    "n_test": 1099,
+    "GARCH_pinball": 0.273,
+    "GBM_pinball": 0.2791,
+    "ratio_GBM_over_GARCH": 1.022,
+    "winner": "GARCH",
+    "tail_GARCH": 0.1643,
+    "tail_GBM": 0.1698,
+    "tail_ratio": 1.034
+  },
+  "SPY_ctrl": {
+    "ticker": "SPY US Equity",
+    "n_test": 1097,
+    "GARCH_pinball": 0.1851,
+    "GBM_pinball": 0.1904,
+    "ratio_GBM_over_GARCH": 1.029,
+    "winner": "GARCH",
+    "tail_GARCH": 0.1085,
+    "tail_GBM": 0.1129,
+    "tail_ratio": 1.041
+  },
+  "TLT_ctrl": {
+    "ticker": "TLT US Equity",
+    "n_test": 1097,
+    "GARCH_pinball": 0.1803,
+    "GBM_pinball": 0.1875,
+    "ratio_GBM_over_GARCH": 1.04,
+    "winner": "GARCH",
+    "tail_GARCH": 0.1026,
+    "tail_GBM": 0.11,
+    "tail_ratio": 1.072
+  },
+  "_note": "ratio<1 => nonparametric (GBM quantile, IQN stand-in) BEATS GARCH-t. Expect <1 on misspecified (EM-FX/copper), ~1 or >1 on well-specified (SPY/TLT)."
+}

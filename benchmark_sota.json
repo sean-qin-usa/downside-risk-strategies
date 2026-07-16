@@ -1,0 +1,55 @@
+{
+  "POWER_pjm": {
+    "GARCH_t": 0.0445,
+    "GARCH_EVT": 0.0445,
+    "QR_QRA": 0.0419,
+    "GBM_nonparam": 0.041,
+    "_ratios_vs_GARCH": {
+      "GARCH_t": 1.0,
+      "GARCH_EVT": 1.0,
+      "QR_QRA": 0.942,
+      "GBM_nonparam": 0.921
+    },
+    "_best": "GBM_nonparam"
+  },
+  "USDARS": {
+    "GARCH_t": 0.1411,
+    "GARCH_EVT": 0.1414,
+    "QR_QRA": 0.1332,
+    "GBM_nonparam": 0.1245,
+    "_ratios_vs_GARCH": {
+      "GARCH_t": 1.0,
+      "GARCH_EVT": 1.002,
+      "QR_QRA": 0.944,
+      "GBM_nonparam": 0.882
+    },
+    "_best": "GBM_nonparam"
+  },
+  "USDTRY": {
+    "GARCH_t": 0.1018,
+    "GARCH_EVT": 0.1009,
+    "QR_QRA": 0.0988,
+    "GBM_nonparam": 0.1099,
+    "_ratios_vs_GARCH": {
+      "GARCH_t": 1.0,
+      "GARCH_EVT": 0.991,
+      "QR_QRA": 0.971,
+      "GBM_nonparam": 1.08
+    },
+    "_best": "QR_QRA"
+  },
+  "SPY_ctrl": {
+    "GARCH_t": 0.1857,
+    "GARCH_EVT": 0.1863,
+    "QR_QRA": 0.1873,
+    "GBM_nonparam": 0.1895,
+    "_ratios_vs_GARCH": {
+      "GARCH_t": 1.0,
+      "GARCH_EVT": 1.003,
+      "QR_QRA": 1.009,
+      "GBM_nonparam": 1.02
+    },
+    "_best": "GARCH_t"
+  },
+  "_note": "pinball loss (lower=better). Compares distribution-free GBM-quantile (IQN-family) vs domain-SOTA: QRA(quant reg), Markov regime-switching, GARCH-EVT. Neural IQN expected comparable to GBM."
+}

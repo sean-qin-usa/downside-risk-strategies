@@ -1,0 +1,37 @@
+{
+  "per_sleeve_SR_full": {
+    "QQQ": 2.97,
+    "TLT": 0.19,
+    "GLD": 1.19,
+    "USO": 0.05,
+    "UNG": 0.19,
+    "FXE": 1.03,
+    "HYG": 1.35
+  },
+  "per_sleeve_SR_IS_16_20": {
+    "QQQ": 2.77,
+    "TLT": 0.81,
+    "GLD": 1.22,
+    "USO": -0.36,
+    "UNG": 0.67,
+    "FXE": 1.73,
+    "HYG": 0.86
+  },
+  "per_sleeve_SR_OOS_21_25": {
+    "QQQ": 3.17,
+    "TLT": -0.14,
+    "GLD": 1.15,
+    "USO": 4.66,
+    "UNG": -0.02,
+    "FXE": 0.72,
+    "HYG": 4.95
+  },
+  "avg_pairwise_corr": 0.05,
+  "combined_SR_full": 2.33,
+  "combined_SR_IS_16_20": 2.3,
+  "combined_SR_OOS_21_25": 4.46,
+  "n_sleeves": 7,
+  "n_months": 116,
+  "combined_CAGR_10voltgt_pct": 25.29,
+  "combined_maxDD_pct": -12.2
+}

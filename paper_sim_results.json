@@ -1,0 +1,15 @@
+{
+  "n_months": 116,
+  "SR_bid_full": 0.72,
+  "SR_mid_full": 2.22,
+  "SR_bid_IS_16_20": 0.49,
+  "SR_bid_OOS_21_25": 1.1,
+  "SR_mid_IS_16_20": 1.74,
+  "SR_mid_OOS_21_25": 2.96,
+  "ann_bid_pct": 6.09,
+  "ann_mid_pct": 21.34,
+  "worst_mo_bid_pct": -11.63,
+  "note": "reproduces validated spec top100/top10%VRP/derisk0.5x via paper_trade_v2.monthly_signal harness",
+  "sample_ticket_month": "2025-08",
+  "sample_n_tickets": 10
+}

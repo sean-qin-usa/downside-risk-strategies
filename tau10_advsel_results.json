@@ -1,0 +1,211 @@
+{
+  "overall": {
+    "net_bp_per_trade": 27.0,
+    "ann_SR": 0.67,
+    "ann_ret_pctK": 3.11,
+    "n_trades": 1851,
+    "n_months": 116
+  },
+  "by_year": {
+    "2016": {
+      "ann_SR": 1.14,
+      "net_ret_pctK": 3.17,
+      "mean_bp_trade": 26.4,
+      "n_trades": 168,
+      "n_months": 12
+    },
+    "2017": {
+      "ann_SR": 9.52,
+      "net_ret_pctK": 5.32,
+      "mean_bp_trade": 44.3,
+      "n_trades": 168,
+      "n_months": 12
+    },
+    "2018": {
+      "ann_SR": -0.81,
+      "net_ret_pctK": -3.63,
+      "mean_bp_trade": -30.3,
+      "n_trades": 168,
+      "n_months": 12
+    },
+    "2019": {
+      "ann_SR": 2.75,
+      "net_ret_pctK": 5.6,
+      "mean_bp_trade": 46.3,
+      "n_trades": 176,
+      "n_months": 12
+    },
+    "2020": {
+      "ann_SR": -0.14,
+      "net_ret_pctK": -1.4,
+      "mean_bp_trade": -9.6,
+      "n_trades": 183,
+      "n_months": 12
+    },
+    "2021": {
+      "ann_SR": 4.91,
+      "net_ret_pctK": 8.89,
+      "mean_bp_trade": 73.6,
+      "n_trades": 199,
+      "n_months": 12
+    },
+    "2022": {
+      "ann_SR": -0.5,
+      "net_ret_pctK": -3.8,
+      "mean_bp_trade": -30.5,
+      "n_trades": 213,
+      "n_months": 12
+    },
+    "2023": {
+      "ann_SR": 4.7,
+      "net_ret_pctK": 8.03,
+      "mean_bp_trade": 66.9,
+      "n_trades": 216,
+      "n_months": 12
+    },
+    "2024": {
+      "ann_SR": 5.31,
+      "net_ret_pctK": 5.91,
+      "mean_bp_trade": 49.2,
+      "n_trades": 216,
+      "n_months": 12
+    },
+    "2025": {
+      "ann_SR": 0.7,
+      "net_ret_pctK": 1.95,
+      "mean_bp_trade": 24.4,
+      "n_trades": 144,
+      "n_months": 8
+    }
+  },
+  "monthly_series_tail": {
+    "2024-03": {
+      "net_pctK": 0.313,
+      "n": 18
+    },
+    "2024-04": {
+      "net_pctK": 0.684,
+      "n": 18
+    },
+    "2024-05": {
+      "net_pctK": 0.586,
+      "n": 18
+    },
+    "2024-06": {
+      "net_pctK": 0.612,
+      "n": 18
+    },
+    "2024-07": {
+      "net_pctK": 0.005,
+      "n": 18
+    },
+    "2024-08": {
+      "net_pctK": 0.695,
+      "n": 18
+    },
+    "2024-09": {
+      "net_pctK": 0.707,
+      "n": 18
+    },
+    "2024-10": {
+      "net_pctK": 0.743,
+      "n": 18
+    },
+    "2024-11": {
+      "net_pctK": 0.761,
+      "n": 18
+    },
+    "2024-12": {
+      "net_pctK": 0.031,
+      "n": 18
+    },
+    "2025-01": {
+      "net_pctK": 0.806,
+      "n": 18
+    },
+    "2025-02": {
+      "net_pctK": -1.52,
+      "n": 18
+    },
+    "2025-03": {
+      "net_pctK": -1.895,
+      "n": 18
+    },
+    "2025-04": {
+      "net_pctK": 1.116,
+      "n": 18
+    },
+    "2025-05": {
+      "net_pctK": 0.963,
+      "n": 18
+    },
+    "2025-06": {
+      "net_pctK": 0.753,
+      "n": 18
+    },
+    "2025-07": {
+      "net_pctK": 0.919,
+      "n": 18
+    },
+    "2025-08": {
+      "net_pctK": 0.805,
+      "n": 18
+    }
+  },
+  "calendar_month_mean_bp": {
+    "1": -12.7,
+    "2": -46.5,
+    "3": -31.4,
+    "4": 22.4,
+    "5": 68.4,
+    "6": 44.7,
+    "7": 75.4,
+    "8": 53.4,
+    "9": 43.1,
+    "10": 46.9,
+    "11": 47.9,
+    "12": 13.7
+  },
+  "advsel_by_richness": {
+    "low": {
+      "mean_net_bp": -5.6,
+      "hit": 0.917,
+      "n": 617
+    },
+    "mid": {
+      "mean_net_bp": 17.3,
+      "hit": 0.922,
+      "n": 617
+    },
+    "high": {
+      "mean_net_bp": 69.2,
+      "hit": 0.919,
+      "n": 617
+    }
+  },
+  "advsel_by_iv": {
+    "low": {
+      "mean_net_bp": 8.6,
+      "hit": 0.924,
+      "n": 617
+    },
+    "mid": {
+      "mean_net_bp": 13.9,
+      "hit": 0.919,
+      "n": 617
+    },
+    "high": {
+      "mean_net_bp": 58.4,
+      "hit": 0.916,
+      "n": 617
+    }
+  },
+  "winners_curse": {
+    "sell_richest_name_mean_bp": 95.5,
+    "sell_median_name_mean_bp": 44.9,
+    "richest_hit": 0.914,
+    "median_hit": 0.931,
+    "n_months": 116
+  },
+  "runtime_sec": 84.8
+}

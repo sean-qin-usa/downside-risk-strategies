@@ -1,0 +1,49 @@
+{
+  "monthly": {
+    "n": 1851,
+    "avg_moneyness_KoverS": 0.865,
+    "net_bp_per_trade": 27.0,
+    "gross_bp_per_trade": 46.4,
+    "spread_cost_bp": 19.4,
+    "net_SR": 0.67,
+    "gross_SR": 1.13,
+    "net_hit": 0.92,
+    "worst_trade_pctK": -34.0,
+    "net_by_year": {
+      "2016": 26.4,
+      "2017": 44.3,
+      "2018": -30.3,
+      "2019": 46.3,
+      "2020": -9.6,
+      "2021": 73.6,
+      "2022": -30.5,
+      "2023": 66.9,
+      "2024": 49.2,
+      "2025": 24.4
+    }
+  },
+  "weekly": {
+    "n": 8051,
+    "avg_moneyness_KoverS": 0.914,
+    "net_bp_per_trade": 11.3,
+    "gross_bp_per_trade": 15.4,
+    "spread_cost_bp": 4.1,
+    "net_SR": 0.67,
+    "gross_SR": 0.91,
+    "net_hit": 0.913,
+    "worst_trade_pctK": -30.8,
+    "net_by_year": {
+      "2016": 12.2,
+      "2017": 12.6,
+      "2018": -12.8,
+      "2019": 25.9,
+      "2020": 20.2,
+      "2021": 26.3,
+      "2022": -8.2,
+      "2023": 22.5,
+      "2024": 13.9,
+      "2025": -5.0
+    }
+  },
+  "runtime_sec": 144.6
+}

@@ -1,0 +1,69 @@
+{
+  "CRUDE": {
+    "ticker": "CL1 Comdty",
+    "ok": true,
+    "GARCH": 0.4521,
+    "GBM": 0.4632,
+    "ratio": 1.024,
+    "winner": "GARCH"
+  },
+  "BRENT": {
+    "ticker": "CO1 Comdty",
+    "ok": true,
+    "GARCH": 0.4207,
+    "GBM": 0.4316,
+    "ratio": 1.026,
+    "winner": "GARCH"
+  },
+  "GASOLINE": {
+    "ticker": "XB1 Comdty",
+    "ok": true,
+    "GARCH": 0.4452,
+    "GBM": 0.45,
+    "ratio": 1.011,
+    "winner": "GARCH"
+  },
+  "HEATOIL": {
+    "ticker": "HO1 Comdty",
+    "ok": true,
+    "GARCH": 0.4961,
+    "GBM": 0.5071,
+    "ratio": 1.022,
+    "winner": "GARCH"
+  },
+  "NATGAS": {
+    "ticker": "NG1 Comdty",
+    "ok": true,
+    "GARCH": 0.8938,
+    "GBM": 0.9224,
+    "ratio": 1.032,
+    "winner": "GARCH"
+  },
+  "POWER_pjm_f": {
+    "ticker": "PJM Comdty",
+    "ok": false,
+    "note": "no/short data"
+  },
+  "POWER_pjmwh": {
+    "ticker": "PW1 Comdty",
+    "ok": true,
+    "GARCH": 0.0481,
+    "GBM": 0.0443,
+    "ratio": 0.922,
+    "winner": "GBM(nonparam)"
+  },
+  "POWER_ncal": {
+    "ticker": "NL1 Comdty",
+    "ok": false,
+    "note": "no/short data"
+  },
+  "POWER_erc": {
+    "ticker": "ERN1 Comdty",
+    "ok": true,
+    "GARCH": 0.0625,
+    "GBM": 0.0648,
+    "ratio": 1.038,
+    "winner": "GARCH"
+  },
+  "_note": "ratio<1 => nonparametric beats GARCH. Energy futures expected GARCH-territory (well-modeled); electricity is the misspecified one (if it resolves)."
+}

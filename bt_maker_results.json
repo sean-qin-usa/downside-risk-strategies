@@ -1,0 +1,40 @@
+{
+  "n_trades": 1851,
+  "avg_halfspread_bp": 19.4,
+  "CROSS_sell_at_bid": {
+    "net_bp": 27.0,
+    "SR": 0.67,
+    "hit": 0.92,
+    "worst_pctK": -34.0
+  },
+  "MID_fair_value": {
+    "net_bp": 46.4,
+    "SR": 1.13,
+    "hit": 0.921,
+    "worst_pctK": -33.6
+  },
+  "MAKE_sell_at_ask_alwaysfill": {
+    "net_bp": 65.8,
+    "SR": 1.53,
+    "hit": 0.922,
+    "worst_pctK": -33.2
+  },
+  "MAKE_adverse_fill_calmkeep100": {
+    "n": 1851,
+    "net_bp": 65.8,
+    "SR": 1.53,
+    "worst_pctK": -33.2
+  },
+  "MAKE_adverse_fill_calmkeep50": {
+    "n": 1338,
+    "net_bp": 44.7,
+    "SR": 1.29,
+    "worst_pctK": -33.2
+  },
+  "MAKE_adverse_fill_calmkeep0": {
+    "n": 810,
+    "net_bp": -7.1,
+    "SR": 0.96,
+    "worst_pctK": -33.2
+  }
+}

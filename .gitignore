@@ -1,0 +1,9 @@
+*.csv
+*.csv.gz
+*.parquet
+*.pkl
+*.gz
+autojobs/done/
+__pycache__/
+mh_quantiles*.csv
+samerows_merged.csv

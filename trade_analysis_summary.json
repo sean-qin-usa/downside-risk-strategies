@@ -1,0 +1,438 @@
+{
+  "CrossAsset_ETF": {
+    "name": "CrossAsset_ETF_monthly",
+    "ppy": 12,
+    "n_periods": 116,
+    "full_SR": 2.326619733811533,
+    "full_ann_ret": 3.4445816125587227,
+    "pct_periods_pos": 87.06896551724138,
+    "n_losing_years": 0,
+    "worst_period": -1.573741261303644,
+    "max_drawdown": -0.3173243655467759,
+    "yearly": [
+      {
+        "year": 2016,
+        "n": 12,
+        "mean": 0.2444,
+        "ann_ret": 2.9326,
+        "ann_SR": 1.4288,
+        "pct_pos": 83.3333,
+        "worst": -1.5737
+      },
+      {
+        "year": 2017,
+        "n": 12,
+        "mean": 0.3163,
+        "ann_ret": 3.7961,
+        "ann_SR": 9.7726,
+        "pct_pos": 100.0,
+        "worst": 0.1065
+      },
+      {
+        "year": 2018,
+        "n": 12,
+        "mean": 0.1072,
+        "ann_ret": 1.2869,
+        "ann_SR": 0.9099,
+        "pct_pos": 83.3333,
+        "worst": -0.8399
+      },
+      {
+        "year": 2019,
+        "n": 12,
+        "mean": 0.3676,
+        "ann_ret": 4.4109,
+        "ann_SR": 10.6752,
+        "pct_pos": 100.0,
+        "worst": 0.0996
+      },
+      {
+        "year": 2020,
+        "n": 12,
+        "mean": 0.3607,
+        "ann_ret": 4.3286,
+        "ann_SR": 1.9388,
+        "pct_pos": 83.3333,
+        "worst": -1.1432
+      },
+      {
+        "year": 2021,
+        "n": 12,
+        "mean": 0.3487,
+        "ann_ret": 4.1844,
+        "ann_SR": 3.6511,
+        "pct_pos": 83.3333,
+        "worst": -0.3059
+      },
+      {
+        "year": 2022,
+        "n": 12,
+        "mean": 0.234,
+        "ann_ret": 2.8081,
+        "ann_SR": 1.409,
+        "pct_pos": 75.0,
+        "worst": -1.0743
+      },
+      {
+        "year": 2023,
+        "n": 12,
+        "mean": 0.2098,
+        "ann_ret": 2.5175,
+        "ann_SR": 1.8374,
+        "pct_pos": 75.0,
+        "worst": -0.5432
+      },
+      {
+        "year": 2024,
+        "n": 12,
+        "mean": 0.2343,
+        "ann_ret": 2.8111,
+        "ann_SR": 1.6814,
+        "pct_pos": 91.6667,
+        "worst": -1.1644
+      },
+      {
+        "year": 2025,
+        "n": 8,
+        "mean": 0.5277,
+        "ann_ret": 6.3322,
+        "ann_SR": 14.7502,
+        "pct_pos": 100.0,
+        "worst": 0.3813
+      }
+    ],
+    "charts": [
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\CrossAsset_ETF_monthly_overview.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\CrossAsset_ETF_monthly_heatmap.png"
+    ]
+  },
+  "SingleName_refined": {
+    "name": "SingleName_VRP_monthly",
+    "ppy": 12,
+    "n_periods": 116,
+    "full_SR": 2.217933700521914,
+    "full_ann_ret": 0.21336533565478621,
+    "pct_periods_pos": 86.20689655172413,
+    "n_losing_years": 0,
+    "worst_period": -0.1108037306427575,
+    "max_drawdown": -0.12490019417741671,
+    "yearly": [
+      {
+        "year": 2016,
+        "n": 12,
+        "mean": 0.0177,
+        "ann_ret": 0.2126,
+        "ann_SR": 3.7981,
+        "pct_pos": 83.3333,
+        "worst": -0.01
+      },
+      {
+        "year": 2017,
+        "n": 12,
+        "mean": 0.0102,
+        "ann_ret": 0.1223,
+        "ann_SR": 2.1187,
+        "pct_pos": 91.6667,
+        "worst": -0.0377
+      },
+      {
+        "year": 2018,
+        "n": 12,
+        "mean": 0.0116,
+        "ann_ret": 0.1392,
+        "ann_SR": 2.1584,
+        "pct_pos": 83.3333,
+        "worst": -0.0394
+      },
+      {
+        "year": 2019,
+        "n": 12,
+        "mean": 0.0162,
+        "ann_ret": 0.1945,
+        "ann_SR": 3.0016,
+        "pct_pos": 83.3333,
+        "worst": -0.0207
+      },
+      {
+        "year": 2020,
+        "n": 12,
+        "mean": 0.0234,
+        "ann_ret": 0.2803,
+        "ann_SR": 1.288,
+        "pct_pos": 83.3333,
+        "worst": -0.1108
+      },
+      {
+        "year": 2021,
+        "n": 12,
+        "mean": 0.0101,
+        "ann_ret": 0.1213,
+        "ann_SR": 1.4698,
+        "pct_pos": 83.3333,
+        "worst": -0.0505
+      },
+      {
+        "year": 2022,
+        "n": 12,
+        "mean": 0.0108,
+        "ann_ret": 0.1294,
+        "ann_SR": 1.3212,
+        "pct_pos": 75.0,
+        "worst": -0.0434
+      },
+      {
+        "year": 2023,
+        "n": 12,
+        "mean": 0.0198,
+        "ann_ret": 0.2373,
+        "ann_SR": 3.5366,
+        "pct_pos": 83.3333,
+        "worst": -0.0019
+      },
+      {
+        "year": 2024,
+        "n": 12,
+        "mean": 0.0338,
+        "ann_ret": 0.4059,
+        "ann_SR": 5.3621,
+        "pct_pos": 100.0,
+        "worst": 0.0096
+      },
+      {
+        "year": 2025,
+        "n": 8,
+        "mean": 0.0275,
+        "ann_ret": 0.3296,
+        "ann_SR": 10.9652,
+        "pct_pos": 100.0,
+        "worst": 0.0139
+      }
+    ],
+    "charts": [
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_monthly_overview.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_monthly_heatmap.png"
+    ]
+  },
+  "SingleName_monthly_tau10": {
+    "name": "SingleName_VRP_monthly_tau10",
+    "ppy": 12,
+    "n_periods": 116,
+    "full_SR": 0.6699598257748375,
+    "full_ann_ret": 3.1063448275862076,
+    "pct_periods_pos": 81.03448275862068,
+    "n_losing_years": 3,
+    "worst_period": -6.903,
+    "max_drawdown": -1.0889025137952177,
+    "yearly": [
+      {
+        "year": 2016,
+        "n": 12,
+        "mean": 0.2639,
+        "ann_ret": 3.167,
+        "ann_SR": 1.1367,
+        "pct_pos": 83.3333,
+        "worst": -2.014
+      },
+      {
+        "year": 2017,
+        "n": 12,
+        "mean": 0.4432,
+        "ann_ret": 5.318,
+        "ann_SR": 9.5246,
+        "pct_pos": 100.0,
+        "worst": 0.059
+      },
+      {
+        "year": 2018,
+        "n": 12,
+        "mean": -0.3028,
+        "ann_ret": -3.633,
+        "ann_SR": -0.8136,
+        "pct_pos": 58.3333,
+        "worst": -3.265
+      },
+      {
+        "year": 2019,
+        "n": 12,
+        "mean": 0.4672,
+        "ann_ret": 5.606,
+        "ann_SR": 2.7485,
+        "pct_pos": 83.3333,
+        "worst": -1.216
+      },
+      {
+        "year": 2020,
+        "n": 12,
+        "mean": -0.1167,
+        "ann_ret": -1.4,
+        "ann_SR": -0.1401,
+        "pct_pos": 75.0,
+        "worst": -6.903
+      },
+      {
+        "year": 2021,
+        "n": 12,
+        "mean": 0.7405,
+        "ann_ret": 8.886,
+        "ann_SR": 4.9067,
+        "pct_pos": 91.6667,
+        "worst": -0.728
+      },
+      {
+        "year": 2022,
+        "n": 12,
+        "mean": -0.3166,
+        "ann_ret": -3.799,
+        "ann_SR": -0.5039,
+        "pct_pos": 58.3333,
+        "worst": -5.082
+      },
+      {
+        "year": 2023,
+        "n": 12,
+        "mean": 0.6692,
+        "ann_ret": 8.03,
+        "ann_SR": 4.6995,
+        "pct_pos": 91.6667,
+        "worst": -0.428
+      },
+      {
+        "year": 2024,
+        "n": 12,
+        "mean": 0.4922,
+        "ann_ret": 5.906,
+        "ann_SR": 5.3123,
+        "pct_pos": 91.6667,
+        "worst": -0.031
+      },
+      {
+        "year": 2025,
+        "n": 8,
+        "mean": 0.2434,
+        "ann_ret": 2.9205,
+        "ann_SR": 0.6947,
+        "pct_pos": 75.0,
+        "worst": -1.895
+      }
+    ],
+    "charts": [
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_monthly_tau10_overview.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_monthly_tau10_heatmap.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_monthly_tau10_tradevol.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_monthly_tau10_pnl_and_trades.png"
+    ],
+    "total_trades": 1851,
+    "avg_trades_per_period": 16.0
+  },
+  "Weekly_singlename": {
+    "name": "SingleName_VRP_WEEKLY",
+    "ppy": 52,
+    "n_periods": 504,
+    "full_SR": 1.3450349085331315,
+    "full_ann_ret": 0.09745719260055666,
+    "pct_periods_pos": 84.52380952380952,
+    "n_losing_years": 0,
+    "worst_period": -0.13046190943845057,
+    "max_drawdown": -0.21015155498861682,
+    "yearly": [
+      {
+        "year": 2016,
+        "n": 51,
+        "mean": 0.003,
+        "ann_ret": 0.1563,
+        "ann_SR": 5.1928,
+        "pct_pos": 90.1961,
+        "worst": -0.0209
+      },
+      {
+        "year": 2017,
+        "n": 53,
+        "mean": 0.0022,
+        "ann_ret": 0.1163,
+        "ann_SR": 12.835,
+        "pct_pos": 96.2264,
+        "worst": -0.0012
+      },
+      {
+        "year": 2018,
+        "n": 52,
+        "mean": 0.0003,
+        "ann_ret": 0.015,
+        "ann_SR": 0.3384,
+        "pct_pos": 76.9231,
+        "worst": -0.0216
+      },
+      {
+        "year": 2019,
+        "n": 52,
+        "mean": 0.0024,
+        "ann_ret": 0.1239,
+        "ann_SR": 6.744,
+        "pct_pos": 84.6154,
+        "worst": -0.0061
+      },
+      {
+        "year": 2020,
+        "n": 52,
+        "mean": 0.001,
+        "ann_ret": 0.0533,
+        "ann_SR": 0.2916,
+        "pct_pos": 84.6154,
+        "worst": -0.1305
+      },
+      {
+        "year": 2021,
+        "n": 52,
+        "mean": 0.003,
+        "ann_ret": 0.1545,
+        "ann_SR": 6.2281,
+        "pct_pos": 84.6154,
+        "worst": -0.0085
+      },
+      {
+        "year": 2022,
+        "n": 52,
+        "mean": 0.0013,
+        "ann_ret": 0.0666,
+        "ann_SR": 0.9373,
+        "pct_pos": 75.0,
+        "worst": -0.0386
+      },
+      {
+        "year": 2023,
+        "n": 53,
+        "mean": 0.0019,
+        "ann_ret": 0.0993,
+        "ann_SR": 2.5698,
+        "pct_pos": 84.9057,
+        "worst": -0.0265
+      },
+      {
+        "year": 2024,
+        "n": 52,
+        "mean": 0.0023,
+        "ann_ret": 0.1177,
+        "ann_SR": 4.3578,
+        "pct_pos": 84.6154,
+        "worst": -0.0117
+      },
+      {
+        "year": 2025,
+        "n": 35,
+        "mean": 0.0012,
+        "ann_ret": 0.0601,
+        "ann_SR": 0.5943,
+        "pct_pos": 82.8571,
+        "worst": -0.0748
+      }
+    ],
+    "charts": [
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_WEEKLY_overview.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_WEEKLY_heatmap.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_WEEKLY_tradevol.png",
+      "C:\\Users\\OWNER\\Claude\\Projects\\GBC Project\\SingleName_VRP_WEEKLY_pnl_and_trades.png"
+    ],
+    "total_trades": 178787,
+    "avg_trades_per_period": 354.7
+  }
+}

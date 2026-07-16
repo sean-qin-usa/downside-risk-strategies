@@ -1,0 +1,178 @@
+{
+  "full 1995-2026": {
+    "baseline": {
+      "SR": 1.07,
+      "ann": 2.67,
+      "maxDD": -7.9,
+      "worst": -5.54,
+      "inmkt": 100.0
+    },
+    "gate_top30pct": {
+      "SR": 1.32,
+      "ann": 1.97,
+      "maxDD": -6.3,
+      "worst": -5.54,
+      "inmkt": 47.0
+    },
+    "gate_top25pct": {
+      "SR": 1.33,
+      "ann": 2.0,
+      "maxDD": -5.8,
+      "worst": -5.54,
+      "inmkt": 51.0
+    },
+    "gate_top19pct": {
+      "SR": 1.26,
+      "ann": 2.05,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 55.0
+    },
+    "gate_top15pct": {
+      "SR": 1.22,
+      "ann": 2.04,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 58.0
+    },
+    "gate_top9pct": {
+      "SR": 1.25,
+      "ann": 2.11,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 60.0
+    }
+  },
+  "2005-2026": {
+    "baseline": {
+      "SR": 0.75,
+      "ann": 2.13,
+      "maxDD": -7.9,
+      "worst": -5.54,
+      "inmkt": 100.0
+    },
+    "gate_top30pct": {
+      "SR": 1.56,
+      "ann": 2.73,
+      "maxDD": -6.3,
+      "worst": -5.54,
+      "inmkt": 65.0
+    },
+    "gate_top25pct": {
+      "SR": 1.55,
+      "ann": 2.74,
+      "maxDD": -5.8,
+      "worst": -5.54,
+      "inmkt": 70.0
+    },
+    "gate_top19pct": {
+      "SR": 1.45,
+      "ann": 2.77,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 75.0
+    },
+    "gate_top15pct": {
+      "SR": 1.41,
+      "ann": 2.78,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 80.0
+    },
+    "gate_top9pct": {
+      "SR": 1.45,
+      "ann": 2.88,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 84.0
+    }
+  },
+  "2016-2026": {
+    "baseline": {
+      "SR": 0.7,
+      "ann": 2.04,
+      "maxDD": -7.9,
+      "worst": -4.49,
+      "inmkt": 100.0
+    },
+    "gate_top30pct": {
+      "SR": 2.54,
+      "ann": 3.16,
+      "maxDD": -1.7,
+      "worst": -1.72,
+      "inmkt": 64.0
+    },
+    "gate_top25pct": {
+      "SR": 2.45,
+      "ann": 3.11,
+      "maxDD": -1.7,
+      "worst": -1.72,
+      "inmkt": 66.0
+    },
+    "gate_top19pct": {
+      "SR": 2.67,
+      "ann": 3.4,
+      "maxDD": -1.7,
+      "worst": -1.72,
+      "inmkt": 74.0
+    },
+    "gate_top15pct": {
+      "SR": 2.25,
+      "ann": 3.27,
+      "maxDD": -1.8,
+      "worst": -1.85,
+      "inmkt": 79.0
+    },
+    "gate_top9pct": {
+      "SR": 2.31,
+      "ann": 3.4,
+      "maxDD": -1.8,
+      "worst": -1.85,
+      "inmkt": 84.0
+    }
+  },
+  "pre-2016 (OOS) 1995-2015": {
+    "baseline": {
+      "SR": 1.32,
+      "ann": 2.98,
+      "maxDD": -7.5,
+      "worst": -5.54,
+      "inmkt": 100.0
+    },
+    "gate_top30pct": {
+      "SR": 0.87,
+      "ann": 1.34,
+      "maxDD": -6.3,
+      "worst": -5.54,
+      "inmkt": 37.0
+    },
+    "gate_top25pct": {
+      "SR": 0.9,
+      "ann": 1.41,
+      "maxDD": -5.8,
+      "worst": -5.54,
+      "inmkt": 41.0
+    },
+    "gate_top19pct": {
+      "SR": 0.78,
+      "ann": 1.35,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 44.0
+    },
+    "gate_top15pct": {
+      "SR": 0.81,
+      "ann": 1.39,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 45.0
+    },
+    "gate_top9pct": {
+      "SR": 0.83,
+      "ann": 1.43,
+      "maxDD": -5.7,
+      "worst": -5.54,
+      "inmkt": 47.0
+    }
+  }
+}

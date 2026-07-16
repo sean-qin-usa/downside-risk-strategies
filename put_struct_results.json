@@ -1,0 +1,27 @@
+{
+  "n": 1851,
+  "naked_d12": {
+    "avg_bp": 36.7,
+    "SR": 1.09,
+    "worst_mo_pct": -5.94,
+    "mar2020_bp": -375.5
+  },
+  "spread_buy_d08": {
+    "avg_bp": 0.9,
+    "SR": 0.04,
+    "worst_mo_pct": -2.69,
+    "mar2020_bp": -268.7
+  },
+  "spread_buy_d05": {
+    "avg_bp": 15.6,
+    "SR": 0.83,
+    "worst_mo_pct": -2.59,
+    "mar2020_bp": -258.8
+  },
+  "spread_buy_d03": {
+    "avg_bp": 19.8,
+    "SR": 0.85,
+    "worst_mo_pct": -3.63,
+    "mar2020_bp": -249.3
+  }
+}

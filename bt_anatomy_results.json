@@ -1,0 +1,167 @@
+{
+  "winloss": {
+    "n": 4164,
+    "pct_win": 0.914,
+    "avg_win_bp": 80.5,
+    "avg_loss_bp": -661.5,
+    "win_loss_ratio": 0.12,
+    "worst_bp": -5775.0,
+    "best_bp": 971.0,
+    "skew": -7.22,
+    "share_of_all_losses_from_worst5pct": 0.91
+  },
+  "by_entry_IV": {
+    "low": {
+      "net_bp": 7.2,
+      "SR": 0.26,
+      "n": 1388
+    },
+    "mid": {
+      "net_bp": 9.2,
+      "SR": 0.22,
+      "n": 1388
+    },
+    "high": {
+      "net_bp": 32.7,
+      "SR": 0.7,
+      "n": 1388
+    }
+  },
+  "by_vix_level": {
+    "low": {
+      "net_bp": -9.0,
+      "SR": -0.23,
+      "n": 1425
+    },
+    "mid": {
+      "net_bp": 40.5,
+      "SR": 0.26,
+      "n": 1365
+    },
+    "high": {
+      "net_bp": 18.7,
+      "SR": 0.37,
+      "n": 1374
+    }
+  },
+  "by_term_structure": {
+    "contango_vix_lt_vix3m": {
+      "net_bp": 8.7,
+      "SR": -0.21,
+      "n": 1818
+    },
+    "inverted_vix_ge_vix3m": {
+      "net_bp": 22.3,
+      "SR": 0.56,
+      "n": 2346
+    }
+  },
+  "worst_trades": [
+    {
+      "name": "OXY",
+      "date": "2020-02-03",
+      "net_pctK": -57.7,
+      "uret_pct": -64.4,
+      "iv": 0.42,
+      "vix": 17.97
+    },
+    {
+      "name": "OXY",
+      "date": "2020-03-02",
+      "net_pctK": -38.4,
+      "uret_pct": -53.4,
+      "iv": 0.7,
+      "vix": 33.42
+    },
+    {
+      "name": "SNAP",
+      "date": "2022-05-02",
+      "net_pctK": -37.2,
+      "uret_pct": -55.0,
+      "iv": 0.88,
+      "vix": 124.48
+    },
+    {
+      "name": "CCL",
+      "date": "2020-03-02",
+      "net_pctK": -34.0,
+      "uret_pct": -56.4,
+      "iv": 1.4,
+      "vix": 33.42
+    },
+    {
+      "name": "GM",
+      "date": "2020-03-02",
+      "net_pctK": -31.6,
+      "uret_pct": -42.6,
+      "iv": 0.5,
+      "vix": 33.42
+    },
+    {
+      "name": "PYPL",
+      "date": "2022-02-01",
+      "net_pctK": -29.8,
+      "uret_pct": -43.2,
+      "iv": 0.62,
+      "vix": 117.99
+    },
+    {
+      "name": "AAL",
+      "date": "2020-02-03",
+      "net_pctK": -29.7,
+      "uret_pct": -41.2,
+      "iv": 0.49,
+      "vix": 17.97
+    },
+    {
+      "name": "RIVN",
+      "date": "2022-01-03",
+      "net_pctK": -29.7,
+      "uret_pct": -44.4,
+      "iv": 0.77,
+      "vix": 16.6
+    },
+    {
+      "name": "PYPL",
+      "date": "2022-01-03",
+      "net_pctK": -29.2,
+      "uret_pct": -40.9,
+      "iv": 0.45,
+      "vix": 16.6
+    },
+    {
+      "name": "F",
+      "date": "2020-03-02",
+      "net_pctK": -28.4,
+      "uret_pct": -41.1,
+      "iv": 0.59,
+      "vix": 33.42
+    },
+    {
+      "name": "DAL",
+      "date": "2020-03-02",
+      "net_pctK": -28.2,
+      "uret_pct": -48.3,
+      "iv": 0.86,
+      "vix": 33.42
+    },
+    {
+      "name": "AMD",
+      "date": "2018-10-01",
+      "net_pctK": -28.1,
+      "uret_pct": -43.9,
+      "iv": 0.82,
+      "vix": 12.0
+    }
+  ],
+  "monthly_autocorr_lag1": 0.27,
+  "after_loss_month_mean_bp": -4.8,
+  "gates": {
+    "baseline": 0.4,
+    "ex_feb_mar": 1.13,
+    "ex_inverted_TS": -0.21,
+    "ex_feb_mar_and_inverted": -0.1,
+    "ex_lowIV_entry": 0.45
+  },
+  "runtime_sec": 97.5
+}

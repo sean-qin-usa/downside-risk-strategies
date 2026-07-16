@@ -1,0 +1,5 @@
+{
+  "torch": false,
+  "note": "torch not in this env -> run neural IQN on ai2 (has torch+cuda). GBM stand-in result stands.",
+  "err": "No module named 'torch'"
+}

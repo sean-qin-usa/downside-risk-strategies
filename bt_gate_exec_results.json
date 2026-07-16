@@ -1,0 +1,63 @@
+{
+  "n_months": 116,
+  "ALL_no_gate": {
+    "bid_CROSS": {
+      "SR": 0.67,
+      "ann_bp": 311.0,
+      "worst_pct": -6.9,
+      "inmkt": 100.0
+    },
+    "mid_MID": {
+      "SR": 1.13,
+      "ann_bp": 543.0,
+      "worst_pct": -6.86,
+      "inmkt": 100.0
+    },
+    "ask_ASK": {
+      "SR": 1.53,
+      "ann_bp": 775.0,
+      "worst_pct": -6.81,
+      "inmkt": 100.0
+    }
+  },
+  "gate_top20pct": {
+    "bid_CROSS": {
+      "SR": 2.12,
+      "ann_bp": 475.0,
+      "worst_pct": -3.85,
+      "inmkt": 74.0
+    },
+    "mid_MID": {
+      "SR": 2.5,
+      "ann_bp": 629.0,
+      "worst_pct": -3.78,
+      "inmkt": 74.0
+    },
+    "ask_ASK": {
+      "SR": 2.67,
+      "ann_bp": 783.0,
+      "worst_pct": -3.71,
+      "inmkt": 74.0
+    }
+  },
+  "gate_top25pct": {
+    "bid_CROSS": {
+      "SR": 2.02,
+      "ann_bp": 435.0,
+      "worst_pct": -3.85,
+      "inmkt": 67.0
+    },
+    "mid_MID": {
+      "SR": 2.36,
+      "ann_bp": 554.0,
+      "worst_pct": -3.78,
+      "inmkt": 67.0
+    },
+    "ask_ASK": {
+      "SR": 2.56,
+      "ann_bp": 673.0,
+      "worst_pct": -3.71,
+      "inmkt": 67.0
+    }
+  }
+}

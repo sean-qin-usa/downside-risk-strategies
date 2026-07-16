@@ -1,0 +1,63 @@
+{
+  "USDARS": {
+    "ticker": "USDARS Curncy",
+    "n": 2441,
+    "garch_t_nu": 2.85,
+    "resid_kurtosis_after_GARCH": 1937.1,
+    "left_breach_1pct_nominal1": 0.82,
+    "left_breach_5pct_nominal5": 4.18,
+    "right_breach_1pct_nominal1": 2.21,
+    "raw_return_kurtosis": 1266.7
+  },
+  "USDTRY": {
+    "ticker": "USDTRY Curncy",
+    "n": 2606,
+    "garch_t_nu": 4.17,
+    "resid_kurtosis_after_GARCH": 281.6,
+    "left_breach_1pct_nominal1": 1.5,
+    "left_breach_5pct_nominal5": 5.68,
+    "right_breach_1pct_nominal1": 1.69,
+    "raw_return_kurtosis": 84.9
+  },
+  "USDRUB": {
+    "ticker": "USDRUB Curncy",
+    "n": 2600,
+    "garch_t_nu": 4.85,
+    "resid_kurtosis_after_GARCH": 7.7,
+    "left_breach_1pct_nominal1": 0.62,
+    "left_breach_5pct_nominal5": 4.69,
+    "right_breach_1pct_nominal1": 0.96,
+    "raw_return_kurtosis": 46.4
+  },
+  "NATGAS": {
+    "ticker": "NG1 Comdty",
+    "n": 2516,
+    "garch_t_nu": 5.85,
+    "resid_kurtosis_after_GARCH": 3.1,
+    "left_breach_1pct_nominal1": 0.83,
+    "left_breach_5pct_nominal5": 4.77,
+    "right_breach_1pct_nominal1": 1.31,
+    "raw_return_kurtosis": 24.4
+  },
+  "COPPER": {
+    "ticker": "HG1 Comdty",
+    "n": 2516,
+    "garch_t_nu": 5.35,
+    "resid_kurtosis_after_GARCH": 26.2,
+    "left_breach_1pct_nominal1": 1.07,
+    "left_breach_5pct_nominal5": 5.21,
+    "right_breach_1pct_nominal1": 0.68,
+    "raw_return_kurtosis": 29.2
+  },
+  "SPY_ctrl": {
+    "ticker": "SPY US Equity",
+    "n": 2511,
+    "garch_t_nu": 5.66,
+    "resid_kurtosis_after_GARCH": 3.8,
+    "left_breach_1pct_nominal1": 1.51,
+    "left_breach_5pct_nominal5": 5.97,
+    "right_breach_1pct_nominal1": 0.4,
+    "raw_return_kurtosis": 15.2
+  },
+  "_note": "resid kurtosis AFTER GARCH-t filtering >> 0 and breach rates >> nominal ==> GARCH-t misspecified (jumps/regime remain). SPY_ctrl is the well-specified baseline."
+}

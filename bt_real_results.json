@@ -1,0 +1,65 @@
+{
+  "monthly": {
+    "n_trades": 1852,
+    "net_per_trade_pctK": -18.458,
+    "gross_per_trade_pctK": -18.264,
+    "spread_cost_per_trade_pctK": 0.194,
+    "net_SR": -5.36,
+    "gross_SR": -5.3,
+    "net_hit": 0.72,
+    "net_by_year": {
+      "2016": -31.797,
+      "2017": -31.663,
+      "2018": -32.179,
+      "2019": -29.946,
+      "2020": -26.687,
+      "2021": -19.735,
+      "2022": -12.857,
+      "2023": -4.161,
+      "2024": -1.932,
+      "2025": 0.218
+    }
+  },
+  "weekly": {
+    "n_trades": 8052,
+    "net_per_trade_pctK": -18.808,
+    "gross_per_trade_pctK": -18.767,
+    "spread_cost_per_trade_pctK": 0.041,
+    "net_SR": -5.43,
+    "gross_SR": -5.41,
+    "net_hit": 0.72,
+    "net_by_year": {
+      "2016": -33.532,
+      "2017": -32.288,
+      "2018": -32.248,
+      "2019": -30.538,
+      "2020": -26.82,
+      "2021": -20.438,
+      "2022": -12.389,
+      "2023": -4.682,
+      "2024": -1.989,
+      "2025": -0.059
+    }
+  },
+  "runtime_sec": 140.4,
+  "universe": [
+    "AAPL",
+    "TSLA",
+    "BAC",
+    "AMZN",
+    "NVDA",
+    "MSFT",
+    "GOOGL",
+    "AMD",
+    "F",
+    "SOFI",
+    "PLTR",
+    "META",
+    "AAL",
+    "C",
+    "WBD",
+    "WFC",
+    "CCL",
+    "UBER"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "n_names": 720,
+  "n_return_rows": 1319625,
+  "by_cohort": {
+    "recent_ipo": 300,
+    "smallcap": 300,
+    "largecap": 120
+  },
+  "note": "crsp_panel_returns.csv + crsp_panel_chars.csv ready for amortized-IQN transfer test (hold out IPO/smallcap names, condition on cap/sector/beta)."
+}

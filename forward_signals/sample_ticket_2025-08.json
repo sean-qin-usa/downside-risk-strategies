@@ -1,0 +1,142 @@
+{
+  "asof": "2025-08-01",
+  "meta": {
+    "asof": "2025-08-01 00:00:00",
+    "n_candidates": 99,
+    "n_selected": 10,
+    "size_mult": 1.0,
+    "vrp_cutoff": 0.24
+  },
+  "tickets": [
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "ADBE",
+      "right": "PUT",
+      "expiry": "2025-09-19",
+      "strike": 305.0,
+      "order_type": "LIMIT",
+      "limit_price": 3.3,
+      "weight": 0.1,
+      "ref_bid": 3.25,
+      "ref_ask": 3.35,
+      "vrp": 0.301
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "CCL",
+      "right": "PUT",
+      "expiry": "2025-10-03",
+      "strike": 27.0,
+      "order_type": "LIMIT",
+      "limit_price": 0.34,
+      "weight": 0.1,
+      "ref_bid": 0.28,
+      "ref_ask": 0.41,
+      "vrp": 0.284
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "CSCO",
+      "right": "PUT",
+      "expiry": "2025-08-29",
+      "strike": 63.0,
+      "order_type": "LIMIT",
+      "limit_price": 0.41,
+      "weight": 0.1,
+      "ref_bid": 0.38,
+      "ref_ask": 0.43,
+      "vrp": 0.259
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "CMCSA",
+      "right": "PUT",
+      "expiry": "2025-09-26",
+      "strike": 29.0,
+      "order_type": "LIMIT",
+      "limit_price": 0.32,
+      "weight": 0.1,
+      "ref_bid": 0.02,
+      "ref_ask": 0.61,
+      "vrp": 0.254
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "ORCL",
+      "right": "PUT",
+      "expiry": "2025-09-19",
+      "strike": 195.0,
+      "order_type": "LIMIT",
+      "limit_price": 2.59,
+      "weight": 0.1,
+      "ref_bid": 2.56,
+      "ref_ask": 2.63,
+      "vrp": 0.3
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "TGT",
+      "right": "PUT",
+      "expiry": "2025-09-05",
+      "strike": 91.0,
+      "order_type": "LIMIT",
+      "limit_price": 0.89,
+      "weight": 0.1,
+      "ref_bid": 0.86,
+      "ref_ask": 0.92,
+      "vrp": 0.252
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "CRM",
+      "right": "PUT",
+      "expiry": "2025-09-26",
+      "strike": 220.0,
+      "order_type": "LIMIT",
+      "limit_price": 2.11,
+      "weight": 0.1,
+      "ref_bid": 1.91,
+      "ref_ask": 2.31,
+      "vrp": 0.257
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "PARA",
+      "right": "PUT",
+      "expiry": "2025-08-29",
+      "strike": 8.5,
+      "order_type": "LIMIT",
+      "limit_price": 0.39,
+      "weight": 0.1,
+      "ref_bid": 0.01,
+      "ref_ask": 0.77,
+      "vrp": 1.292
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "XPEV",
+      "right": "PUT",
+      "expiry": "2025-09-12",
+      "strike": 20.5,
+      "order_type": "LIMIT",
+      "limit_price": 0.2,
+      "weight": 0.1,
+      "ref_bid": 0.18,
+      "ref_ask": 0.22,
+      "vrp": 0.259
+    },
+    {
+      "action": "SELL_TO_OPEN",
+      "ticker": "PLTR",
+      "right": "PUT",
+      "expiry": "2025-09-12",
+      "strike": 130.0,
+      "order_type": "LIMIT",
+      "limit_price": 1.68,
+      "weight": 0.1,
+      "ref_bid": 1.66,
+      "ref_ask": 1.7,
+      "vrp": 0.369
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "diag": {
+    "bdp_type": "<class 'narwhals.stable.v1.DataFrame'>",
+    "bdp_repr": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n|    Narwhals DataFrame     |\n|---------------------------|\n|pyarrow.Table              |\n|ticker: string             |\n|field: string              |\n|value: double              |\n|----                       |\n|ticker: [[\"SPY US Equity\"]]|\n|field: [[\"px_last\"]]       |\n",
+    "bdp_err": "                                                         ~~~~~^^^^^^^^^^^^^^\n  File \"C:\\Users\\OWNER\\anaconda3\\Lib\\encodings\\cp1252.py\", line 19, in encode\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\n           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'charmap' codec can't encode characters in position 9-37: character maps to <undefined>\n",
+    "bdh_type": "<class 'narwhals.stable.v1.DataFrame'>",
+    "bdh_shape": "(42, 4)",
+    "bdh_cols": "['ticker', 'date', 'field', 'value']",
+    "bdh_head": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n|          Narwhals DataFrame           |\n| Use `.to_native` to see native output |\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518"
+  },
+  "bbg_live": true,
+  "series": {
+    "CTRL_spy": {
+      "domain": "equity",
+      "ticker": "SPY US Equity",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "POWER_pjm": {
+      "domain": "power",
+      "ticker": "PJM WEST DA PEAK Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: PJM WEST DA PEAK Ind"
+    },
+    "POWER_ercot": {
+      "domain": "power",
+      "ticker": "ERCOTND Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: ERCOTND Index"
+    },
+    "POWER_nordpool": {
+      "domain": "power",
+      "ticker": "ENOSYSPR Index",
+      "err": "Request failed on //blp/refdata::HistoricalDataRequest - All securities failed: ENOSYSPR Index"
+    },
+    "COMM_natgas": {
+      "domain": "commodity",
+      "ticker": "NG1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "COMM_crude": {
+      "domain": "commodity",
+      "ticker": "CL1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "COMM_gasoline": {
+      "domain": "commodity",
+      "ticker": "XB1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "COMM_copper": {
+      "domain": "commodity",
+      "ticker": "HG1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_corn": {
+      "domain": "agri",
+      "ticker": "C 1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_wheat": {
+      "domain": "agri",
+      "ticker": "W 1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_coffee": {
+      "domain": "agri",
+      "ticker": "KC1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "AG_sugar": {
+      "domain": "agri",
+      "ticker": "SB1 Comdty",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_try": {
+      "domain": "emfx",
+      "ticker": "USDTRY Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_ars": {
+      "domain": "emfx",
+      "ticker": "USDARS Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_brl": {
+      "domain": "emfx",
+      "ticker": "USDBRL Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_zar": {
+      "domain": "emfx",
+      "ticker": "USDZAR Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "EMFX_rub": {
+      "domain": "emfx",
+      "ticker": "USDRUB Curncy",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_vix": {
+      "domain": "vol",
+      "ticker": "VIX Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_ovx": {
+      "domain": "vol",
+      "ticker": "OVX Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_move": {
+      "domain": "vol",
+      "ticker": "MOVE Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "VOL_gvz": {
+      "domain": "vol",
+      "ticker": "GVZ Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "CREDIT_hyoas": {
+      "domain": "credit",
+      "ticker": "LF98OAS Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    },
+    "FREIGHT_baltic": {
+      "domain": "freight",
+      "ticker": "BDIY Index",
+      "err": "'DataFrame' object has no attribute 'iloc'"
+    }
+  },
+  "n_available": 0,
+  "wildness_ranking": []
+}
