@@ -1,0 +1,85 @@
+INSPECT Mon Jul 13 23:55:57 2026
+=== files (38) ===
+       215KB  delist_returns.csv.gz
+        14KB  secids.csv
+      2006KB  spreads_2005.csv.gz
+      2235KB  spreads_2006.csv.gz
+      2699KB  spreads_2007.csv.gz
+      3588KB  spreads_2008.csv.gz
+      4022KB  spreads_2009.csv.gz
+      4601KB  spreads_2010.csv.gz
+      6049KB  spreads_2011.csv.gz
+      6070KB  spreads_2012.csv.gz
+      8199KB  spreads_2013.csv.gz
+     21463KB  spreads_2014.csv.gz
+     30695KB  spreads_2015.csv.gz
+     33968KB  spreads_2016.csv.gz
+     33128KB  spreads_2017.csv.gz
+     38085KB  spreads_2018.csv.gz
+     42661KB  spreads_2019.csv.gz
+     54528KB  spreads_2020.csv.gz
+     54767KB  spreads_2021.csv.gz
+     46251KB  spreads_2022.csv.gz
+     42461KB  spreads_2023.csv.gz
+     49486KB  spreads_2024.csv.gz
+     36194KB  spreads_2025.csv.gz
+      1426KB  surf10d_2011.csv.gz
+      1464KB  surf10d_2012.csv.gz
+      1537KB  surf10d_2013.csv.gz
+      1658KB  surf10d_2014.csv.gz
+      1718KB  surf10d_2015.csv.gz
+      1775KB  surf10d_2016.csv.gz
+      1811KB  surf10d_2017.csv.gz
+      1916KB  surf10d_2018.csv.gz
+      1977KB  surf10d_2019.csv.gz
+      2095KB  surf10d_2020.csv.gz
+      2090KB  surf10d_2021.csv.gz
+      2125KB  surf10d_2022.csv.gz
+      2122KB  surf10d_2023.csv.gz
+      2152KB  surf10d_2024.csv.gz
+      1409KB  surf10d_2025.csv.gz
+
+=== secids.csv ===  cols: ['secid', 'ticker', 'cusip']
+  rows(sample<=200k): 633
+    secid ticker     cusip
+0  5022.0    AAL  01447610
+1  5048.0    AMP  03189710
+2  5053.0   ARCH  03939B10
+3  5061.0     AR  04341310
+
+=== spreads_2020.csv.gz ===  cols: ['secid', 'date', 'exdate', 'cp_flag', 'strike_price', 'best_bid', 'best_offer', 'impl_volatility', 'volume', 'open_interest', 'delta']
+  rows(sample<=200k): 200000
+  date range: 2020-01-02 .. 2020-12-31
+      secid        date      exdate cp_flag  strike_price  best_bid  best_offer  impl_volatility  volume  open_interest     delta
+0  100892.0  2020-01-09  2020-02-14       P       46000.0      0.07        0.11         0.263110     0.0            0.0 -0.048394
+1  100892.0  2020-01-09  2020-02-14       P       46500.0      0.08        0.12         0.251467     0.0            0.0 -0.055146
+2  100892.0  2020-01-09  2020-02-14       P       47000.0      0.09        0.13         0.238985     0.0            0.0 -0.062558
+3  100892.0  2020-01-09  2020-02-14       P       47500.0      0.11        0.15         0.230124     0.0            0.0 -0.074482
+
+=== surf10d_2020.csv.gz ===  cols: ['secid', 'date', 'days', 'delta', 'impl_volatility']
+  rows(sample<=200k): 200000
+  date range: 2020-01-02 .. 2020-12-31
+      secid        date  days     delta  impl_volatility
+0  100892.0  2020-01-02  10.0 -0.497056         0.142346
+1  100892.0  2020-01-02  30.0 -0.494437         0.156296
+2  100892.0  2020-01-03  10.0 -0.497061         0.142043
+3  100892.0  2020-01-03  30.0 -0.494294         0.157871
+
+=== delist_returns.csv.gz ===  cols: ['permno', 'dlstdt', 'dlstcd', 'dlret', 'dlretx']
+  rows(sample<=200k): 27235
+   permno      dlstdt  dlstcd     dlret    dlretx
+0   10001  2017-08-03     233  0.000000  0.000000
+1   10002  2013-02-15     231  0.010906  0.010906
+2   10009  2000-11-03     233  0.003774  0.003774
+3   10011  1998-02-06     233  0.026738  0.026738
+
+=== spreads_2020 effective half-spread (rel to mid) ===
+  n=3380849  median relhalf=0.200  mean=0.352  p25=0.080 p75=0.575
+  DTE range: None .. None (exdate-date)
+  by delta bucket median relhalf:
+db
+(-0.5, -0.3]     0.085106
+(-0.3, -0.2]     0.135135
+(-0.2, -0.1]     0.231527
+(-0.1, -0.05]    0.485714
+(-0.05, 0.0]     1.000000

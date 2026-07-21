@@ -1,0 +1,40 @@
+=== CHECK Tue 07/14/2026 14:06:05.70 === 
+--- pull_dtes_log copy --- 
+connecting...
+Loading library list...
+Done
+CONNECTED OK
+secids: 633
+dte05_15 2005 50062
+dte05_15 2006 49846
+dte05_15 2007 56339
+dte05_15 2008 71708
+dte05_15 2009 79882
+dte05_15 2010 93275
+dte05_15 2011 137982
+dte05_15 2012 148134
+dte05_15 2013 244141
+dte05_15 2014 599729
+dte05_15 2015 942861
+dte05_15 2016 1039225
+ 
+--- new dte output files --- 
+spreads_dte05_15_2005.csv.gz
+spreads_dte05_15_2006.csv.gz
+spreads_dte05_15_2007.csv.gz
+spreads_dte05_15_2008.csv.gz
+spreads_dte05_15_2009.csv.gz
+spreads_dte05_15_2010.csv.gz
+spreads_dte05_15_2011.csv.gz
+spreads_dte05_15_2012.csv.gz
+spreads_dte05_15_2013.csv.gz
+spreads_dte05_15_2014.csv.gz
+spreads_dte05_15_2015.csv.gz
+spreads_dte05_15_2016.csv.gz
+--- python processes running --- 
+
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+python.exe                   12012 Console                    1    104,352 K
+python.exe                   20544 Console                    1    973,052 K
+--- CHECK DONE --- 

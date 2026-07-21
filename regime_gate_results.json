@@ -1,74 +1,29 @@
-[
-  {
-    "gate": "BASELINE all",
-    "frac_traded": 1.0,
-    "SR": 0.4,
-    "ann_ret_pctK": 1.93,
-    "worst_mo_pctK": -7.6,
-    "n": 4164
-  },
-  {
-    "gate": "sell only IV-elevated (vs name's own median)",
-    "frac_traded": 0.46,
-    "SR": 0.51,
-    "ann_ret_pctK": 2.95,
-    "worst_mo_pctK": -9.0,
-    "n": 1920
-  },
-  {
-    "gate": "VIX contango (vix<vix3m)",
-    "frac_traded": 0.91,
-    "SR": 0.41,
-    "ann_ret_pctK": 1.83,
-    "worst_mo_pctK": -7.2,
-    "n": 3802
-  },
-  {
-    "gate": "VIX inverted (vix>=vix3m)",
-    "frac_traded": 0.09,
-    "SR": 0.47,
-    "ann_ret_pctK": 3.45,
-    "worst_mo_pctK": -7.6,
-    "n": 362
-  },
-  {
-    "gate": "VIX above median",
-    "frac_traded": 0.5,
-    "SR": -0.02,
-    "ann_ret_pctK": -0.2,
-    "worst_mo_pctK": -12.2,
-    "n": 2075
-  },
-  {
-    "gate": "VIX below median (complacent)",
-    "frac_traded": 0.5,
-    "SR": 0.36,
-    "ann_ret_pctK": 1.34,
-    "worst_mo_pctK": -5.3,
-    "n": 2089
-  },
-  {
-    "gate": "skip February",
-    "frac_traded": 0.91,
-    "SR": 0.69,
-    "ann_ret_pctK": 2.94,
-    "worst_mo_pctK": -7.6,
-    "n": 3808
-  },
-  {
-    "gate": "COMPOSITE: IV-elev & not-Feb",
-    "frac_traded": 0.42,
-    "SR": 0.86,
-    "ann_ret_pctK": 4.26,
-    "worst_mo_pctK": -7.7,
-    "n": 1748
-  },
-  {
-    "gate": "COMPOSITE: IV-elev & contango & not-Feb",
-    "frac_traded": 0.34,
-    "SR": 0.91,
-    "ann_ret_pctK": 4.17,
-    "worst_mo_pctK": -7.4,
-    "n": 1419
+{
+  "note": "Learned regime gate: HGB classifier predicts P(nonparam beats GARCH today) from causal misspecification signals (mk63,skew63,jump5,prv21,sigpct,absz21). Trained on TEST_A (OOS), evaluated on TEST_B. Compares GARCH-t vs always-nonparam vs gate_learned vs oracle(per-day min). gate_capture_of_oracle_pct = how much of the achievable gap the learned gate captures. Deployable \"GBC-as-standard\" object.",
+  "n_names": 200,
+  "n_testB": 110800,
+  "results": {
+    "garch_t": 0.4,
+    "always_nonparam": 0.3987,
+    "gate_learned": 0.3987,
+    "oracle_upperbound": 0.3824,
+    "gate_threshold": 0.38,
+    "pct_days_gated_to_nonparam": 0.905,
+    "gate_vs_garch_pct": 0.33,
+    "gate_vs_alwaysnonparam_pct": 0.0,
+    "oracle_vs_garch_pct": 4.4,
+    "gate_capture_of_oracle_pct": 7.4,
+    "gate_rate_by_mk63_decile": [
+      0.995,
+      0.994,
+      0.992,
+      0.987,
+      0.986,
+      0.984,
+      0.964,
+      0.871,
+      0.712,
+      0.565
+    ]
   }
-]
+}

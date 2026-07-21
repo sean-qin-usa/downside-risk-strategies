@@ -1,0 +1,24 @@
+{
+  "n_heldout_names": 276,
+  "note": "amortized HistGBM-quantile (trained on OTHER names, conditioned on features+cap/sector/beta/age) vs per-name GARCH-t (its OWN history). ratio<1 => amortized better. Edge should be biggest on data-starved cohorts.",
+  "by_cohort": {
+    "recent_ipo": {
+      "n": 108,
+      "amort_pinball": 0.9169,
+      "garch_pinball": 0.919,
+      "ratio_amort_over_garch": 0.998
+    },
+    "smallcap": {
+      "n": 120,
+      "amort_pinball": 0.6758,
+      "garch_pinball": 0.6791,
+      "ratio_amort_over_garch": 0.995
+    },
+    "largecap": {
+      "n": 48,
+      "amort_pinball": 0.3488,
+      "garch_pinball": 0.3523,
+      "ratio_amort_over_garch": 0.99
+    }
+  }
+}

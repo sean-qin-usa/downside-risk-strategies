@@ -1,0 +1,53 @@
+{
+  "note": "THREE-WAY side by side: GARCH-t (parametric) vs GBM (boosted-tree quantile) vs IQN (neural, GBC/Polson), amortized on full CRSP panel, per test-day pinball, overall + by realized-vol quintile. Lower=better.",
+  "device": "cuda",
+  "n_names": 244,
+  "n_testdays": 189185,
+  "overall": {
+    "garch": 0.6543,
+    "gbm": 0.6447,
+    "iqn": 0.6478
+  },
+  "by_vol_quintile": {
+    "Q1_calm": {
+      "n": 37837,
+      "garch": 0.3015,
+      "gbm": 0.2956,
+      "iqn": 0.2986,
+      "gbm_vs_garch": 0.9804,
+      "iqn_vs_garch": 0.9903
+    },
+    "Q2": {
+      "n": 37837,
+      "garch": 0.4325,
+      "gbm": 0.4274,
+      "iqn": 0.4301,
+      "gbm_vs_garch": 0.9882,
+      "iqn_vs_garch": 0.9945
+    },
+    "Q3": {
+      "n": 37837,
+      "garch": 0.5476,
+      "gbm": 0.5421,
+      "iqn": 0.5444,
+      "gbm_vs_garch": 0.9901,
+      "iqn_vs_garch": 0.9942
+    },
+    "Q4": {
+      "n": 37837,
+      "garch": 0.7314,
+      "gbm": 0.7245,
+      "iqn": 0.7271,
+      "gbm_vs_garch": 0.9906,
+      "iqn_vs_garch": 0.9941
+    },
+    "Q5_turbulent": {
+      "n": 37837,
+      "garch": 1.2584,
+      "gbm": 1.2337,
+      "iqn": 1.2391,
+      "gbm_vs_garch": 0.9804,
+      "iqn_vs_garch": 0.9846
+    }
+  }
+}

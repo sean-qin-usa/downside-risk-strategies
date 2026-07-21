@@ -1,6 +1,6 @@
 import os, glob, math, time
 import numpy as np, pandas as pd
-PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"
+PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"; RAW=r"C:\GBC_data\data\raw"
 t0=time.time(); lg=lambda s:print(s,flush=True)
 d=pd.read_csv(os.path.join(PROJ,"mh_panel_v2.csv.gz")); d['date']=pd.to_datetime(d.date)
 d=d.sort_values(['tk','date']).reset_index(drop=True)

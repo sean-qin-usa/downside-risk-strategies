@@ -1,0 +1,97 @@
+{
+  "note": "Tail-aware monotone neural IQN (v2) + split-conformal recal at BOTH 99% & 97.5%. Models: garch_t, fhs, hybrid_GBM(+recal), hybrid_IQN_v2(+recal). Q: does tail-aware neural close the gap to trees, and does conformal recal pass Kupiec/Christoffersen at both 99% and 97.5%? Eval on held-out TEST_B. DM vs best + MCS.",
+  "n_names": 140,
+  "n_testB": 77560,
+  "dev": "cuda",
+  "per_model": {
+    "garch_t": {
+      "avg_pinball": 0.3649,
+      "breach99": 0.0101,
+      "kupiec99_p": 0.8176,
+      "christ99_p": 0.9729,
+      "breach975": 0.0277,
+      "kupiec975_p": 0.0,
+      "christ975_p": 0.0
+    },
+    "fhs": {
+      "avg_pinball": 0.3651,
+      "breach99": 0.011,
+      "kupiec99_p": 0.0054,
+      "christ99_p": 0.0148,
+      "breach975": 0.0282,
+      "kupiec975_p": 0.0,
+      "christ975_p": 0.0
+    },
+    "hybrid_GBM": {
+      "avg_pinball": 0.3637,
+      "breach99": 0.011,
+      "kupiec99_p": 0.0043,
+      "christ99_p": 0.0081,
+      "breach975": 0.0285,
+      "kupiec975_p": 0.0,
+      "christ975_p": 0.0
+    },
+    "hybrid_IQN_v2": {
+      "avg_pinball": 0.3657,
+      "breach99": 0.0092,
+      "kupiec99_p": 0.0199,
+      "christ99_p": 0.0373,
+      "breach975": 0.0293,
+      "kupiec975_p": 0.0,
+      "christ975_p": 0.0
+    },
+    "hybrid_GBM_recal": {
+      "avg_pinball": 0.3632,
+      "breach99": 0.0089,
+      "kupiec99_p": 0.0024,
+      "christ99_p": 0.0064,
+      "breach975": 0.0243,
+      "kupiec975_p": 0.2388,
+      "christ975_p": 0.0023
+    },
+    "hybrid_IQN_v2_recal": {
+      "avg_pinball": 0.3638,
+      "breach99": 0.0092,
+      "kupiec99_p": 0.0199,
+      "christ99_p": 0.0373,
+      "breach975": 0.0242,
+      "kupiec975_p": 0.1452,
+      "christ975_p": 0.0675
+    }
+  },
+  "best_model": "hybrid_GBM_recal",
+  "DM_vs_best": {
+    "garch_t": {
+      "DM": 5.57,
+      "p": 0.0
+    },
+    "fhs": {
+      "DM": 5.36,
+      "p": 0.0
+    },
+    "hybrid_GBM": {
+      "DM": 2.37,
+      "p": 0.0088
+    },
+    "hybrid_IQN_v2": {
+      "DM": 5.94,
+      "p": 0.0
+    },
+    "hybrid_IQN_v2_recal": {
+      "DM": 3.03,
+      "p": 0.0012
+    }
+  },
+  "MCS": {
+    "in_MCS_90": [
+      "hybrid_GBM_recal"
+    ],
+    "elim_pvals": {
+      "hybrid_IQN_v2": 0.0,
+      "fhs": 0.0,
+      "garch_t": 0.0,
+      "hybrid_IQN_v2_recal": 0.002,
+      "hybrid_GBM": 0.013
+    }
+  }
+}

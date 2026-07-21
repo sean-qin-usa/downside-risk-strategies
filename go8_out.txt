@@ -1,0 +1,20 @@
+=== pip install arch === 
+Collecting arch
+  Downloading arch-8.0.0-cp313-cp313-win_amd64.whl.metadata (13 kB)
+Requirement already satisfied: numpy<3,>=1.22.3 in c:\users\owner\anaconda3\lib\site-packages (from arch) (2.1.3)
+Requirement already satisfied: pandas>=1.4.0 in c:\users\owner\anaconda3\lib\site-packages (from arch) (2.2.3)
+Requirement already satisfied: scipy>=1.8 in c:\users\owner\anaconda3\lib\site-packages (from arch) (1.15.3)
+Requirement already satisfied: statsmodels>=0.13.0 in c:\users\owner\anaconda3\lib\site-packages (from arch) (0.14.4)
+Requirement already satisfied: packaging in c:\users\owner\anaconda3\lib\site-packages (from arch) (24.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\owner\anaconda3\lib\site-packages (from pandas>=1.4.0->arch) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in c:\users\owner\anaconda3\lib\site-packages (from pandas>=1.4.0->arch) (2024.1)
+Requirement already satisfied: tzdata>=2022.7 in c:\users\owner\anaconda3\lib\site-packages (from pandas>=1.4.0->arch) (2025.2)
+Requirement already satisfied: six>=1.5 in c:\users\owner\anaconda3\lib\site-packages (from python-dateutil>=2.8.2->pandas>=1.4.0->arch) (1.17.0)
+Requirement already satisfied: patsy>=0.5.6 in c:\users\owner\anaconda3\lib\site-packages (from statsmodels>=0.13.0->arch) (1.0.1)
+Downloading arch-8.0.0-cp313-cp313-win_amd64.whl (929 kB)
+   ---------------------------------------- 929.7/929.7 kB 3.4 MB/s eta 0:00:00
+Installing collected packages: arch
+Successfully installed arch-8.0.0
+=== run timed7 === 
+DONE7
+FIN8 

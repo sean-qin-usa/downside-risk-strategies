@@ -1,0 +1,12 @@
+---PROC---
+---LOG---
+Traceback (most recent call last):
+  File "/home/steveqin/gbc_pq/gpu_iqn_amort.py", line 49, in <module>
+    gg=gg.sort_values('date'); y=gg['y'].values; coh=gg['cohort'].iloc[0]; hist=len(gg)
+  File "/home/steveqin/.local/lib/python3.10/site-packages/pandas/core/frame.py", line 7211, in sort_values
+    k = self._get_label_or_level_values(by[0], axis=axis)
+  File "/home/steveqin/.local/lib/python3.10/site-packages/pandas/core/generic.py", line 1914, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: 'date'
+---RESULT---
+scp: gbc_pq/neural_iqn_ai2.json: No such file or directory

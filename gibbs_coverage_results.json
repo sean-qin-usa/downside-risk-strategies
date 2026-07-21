@@ -1,0 +1,25 @@
+{
+  "note": "Gibbs-posterior overconfidence test. tau=0.05 VaR level q. Gibbs posterior SD of q vs sampling SD from iid bootstrap and moving-block bootstrap (block=20). R=SD_boot/SD_gibbs; R>>1 => Gibbs overconfident. PREDICTION: raw R_block>>1 (dependence), resid R_block~1 (GARCH-filtered ~iid). Turns Jiang caution into a number.",
+  "tau": 0.05,
+  "block": 20,
+  "n_names": 80,
+  "raw": {
+    "n": 80,
+    "sd_gibbs": 0.1076,
+    "sd_iid": 0.131,
+    "sd_block": 0.1794,
+    "R_iid_over_gibbs": 1.189,
+    "R_block_over_gibbs": 1.636,
+    "R_block_over_gibbs_median": 1.59
+  },
+  "resid": {
+    "n": 80,
+    "sd_gibbs": 0.0686,
+    "sd_iid": 0.0515,
+    "sd_block": 0.0549,
+    "R_iid_over_gibbs": 0.745,
+    "R_block_over_gibbs": 0.794,
+    "R_block_over_gibbs_median": 0.791
+  },
+  "interpretation": "If raw.R_block_over_gibbs > resid.R_block_over_gibbs and raw.R_block>1, the memo is confirmed: naive Gibbs on raw returns understates uncertainty; GARCH-residual (or block-w) calibration restores honesty."
+}

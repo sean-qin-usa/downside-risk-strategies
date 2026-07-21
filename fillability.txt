@@ -1,0 +1,40 @@
+  2016 180 8s
+  2017 360 12s
+  2018 540 17s
+  2019 728 22s
+  2020 923 29s
+  2021 1134 36s
+  2022 1350 42s
+  2023 1566 48s
+  2024 1782 54s
+  2025 1926 59s
+{
+  "n_trades": 1926,
+  "daily_volume_at_strike": {
+    "p10": 0.0,
+    "p25": 1.0,
+    "p50": 15.0,
+    "p75": 73.0,
+    "p90": 225.0
+  },
+  "open_interest_at_strike": {
+    "p10": 0.0,
+    "p25": 14.0,
+    "p50": 90.0,
+    "p75": 363.8,
+    "p90": 992.5
+  },
+  "bidask_spread_pct_of_mid": {
+    "p25": 0.1,
+    "p50": 0.1,
+    "p75": 0.3
+  },
+  "pct_days_volume_ge": {
+    "10": 57.0,
+    "50": 31.0,
+    "100": 21.0,
+    "500": 4.0
+  },
+  "note": "volume=contracts traded that DAY at the exact strike; 1 contract=100 sh. Capacity ~ small fraction of daily volume to avoid impact."
+}
+FILLDONE

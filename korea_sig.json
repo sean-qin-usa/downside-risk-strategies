@@ -1,0 +1,444 @@
+{
+  "note": "Korea deep + significance: GBM vs GARCH-t across Korean data types with per-date Diebold-Mariano (DM>0 & p<0.05 => nonparam significantly better). full = 60/40 split; crisis2026 = train<2026,test=2026. resid_kurt FIXED. Places Korea on the misspecification frontier (edge vs post-GARCH residual kurtosis).",
+  "per_asset": {
+    "KOSPI": {
+      "type": "index",
+      "ticker": "KOSPI Index",
+      "n_days": 4071,
+      "ann_vol": 20.1,
+      "resid_kurt": 4.5,
+      "full_ratio": 1.0606,
+      "full_DM": {
+        "DM": -4.96,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.1,
+      "crisis2026_DM": {
+        "DM": -3.0,
+        "p_one_sided": 0.9987
+      }
+    },
+    "KOSDAQ": {
+      "type": "index",
+      "ticker": "KOSDAQ Index",
+      "n_days": 4071,
+      "ann_vol": 23.9,
+      "resid_kurt": 5.1,
+      "full_ratio": 1.0263,
+      "full_DM": {
+        "DM": -2.54,
+        "p_one_sided": 0.9945
+      },
+      "ratio_2026": 1.0883,
+      "crisis2026_DM": {
+        "DM": -2.22,
+        "p_one_sided": 0.9867
+      }
+    },
+    "KOSPI200": {
+      "type": "index",
+      "ticker": "KOSPI2 Index",
+      "n_days": 4071,
+      "ann_vol": 21.3,
+      "resid_kurt": 4.4,
+      "full_ratio": 1.0626,
+      "full_DM": {
+        "DM": -4.72,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.1166,
+      "crisis2026_DM": {
+        "DM": -3.25,
+        "p_one_sided": 0.9994
+      }
+    },
+    "VKOSPI": {
+      "type": "volatility",
+      "ticker": "VKOSPI Index",
+      "n_days": 4071,
+      "ann_vol": 96.5,
+      "resid_kurt": 51.4,
+      "full_ratio": 1.0124,
+      "full_DM": {
+        "DM": -1.38,
+        "p_one_sided": 0.9166
+      },
+      "ratio_2026": 1.0195,
+      "crisis2026_DM": {
+        "DM": -1.24,
+        "p_one_sided": 0.893
+      }
+    },
+    "USDKRW": {
+      "type": "fx",
+      "ticker": "USDKRW Curncy",
+      "n_days": 4116,
+      "ann_vol": 8.9,
+      "resid_kurt": 4.9,
+      "full_ratio": 1.0179,
+      "full_DM": {
+        "DM": -3.77,
+        "p_one_sided": 0.9999
+      },
+      "ratio_2026": 1.0252,
+      "crisis2026_DM": {
+        "DM": -2.69,
+        "p_one_sided": 0.9965
+      }
+    },
+    "KTB3Y": {
+      "type": "rates",
+      "ticker": "GVSK3YR Index",
+      "n_days": 4087,
+      "ann_vol": 61.9,
+      "resid_kurt": 8.0,
+      "full_ratio": 1.0364,
+      "full_DM": {
+        "DM": -4.43,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 0.9957,
+      "crisis2026_DM": {
+        "DM": 0.36,
+        "p_one_sided": 0.3601
+      }
+    },
+    "KTB10Y": {
+      "type": "rates",
+      "ticker": "GVSK10YR Index",
+      "n_days": 4087,
+      "ann_vol": 66.4,
+      "resid_kurt": 6.1,
+      "full_ratio": 1.0411,
+      "full_DM": {
+        "DM": -4.92,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 0.9978,
+      "crisis2026_DM": {
+        "DM": 0.14,
+        "p_one_sided": 0.4431
+      }
+    },
+    "SamsungElec": {
+      "type": "ai_memory",
+      "ticker": "005930 KS Equity",
+      "n_days": 4068,
+      "ann_vol": 31.0,
+      "resid_kurt": 4.3,
+      "full_ratio": 1.0598,
+      "full_DM": {
+        "DM": -4.03,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.1258,
+      "crisis2026_DM": {
+        "DM": -2.87,
+        "p_one_sided": 0.998
+      }
+    },
+    "SKHynix": {
+      "type": "ai_memory",
+      "ticker": "000660 KS Equity",
+      "n_days": 4071,
+      "ann_vol": 42.9,
+      "resid_kurt": 4.0,
+      "full_ratio": 1.0303,
+      "full_DM": {
+        "DM": -4.28,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.088,
+      "crisis2026_DM": {
+        "DM": -2.85,
+        "p_one_sided": 0.9978
+      }
+    },
+    "Naver": {
+      "type": "retail_volatile",
+      "ticker": "035420 KS Equity",
+      "n_days": 4047,
+      "ann_vol": 37.1,
+      "resid_kurt": 6.6,
+      "full_ratio": 1.0194,
+      "full_DM": {
+        "DM": -3.4,
+        "p_one_sided": 0.9997
+      },
+      "ratio_2026": 1.0382,
+      "crisis2026_DM": {
+        "DM": -1.59,
+        "p_one_sided": 0.9435
+      }
+    },
+    "Kakao": {
+      "type": "retail_volatile",
+      "ticker": "035720 KS Equity",
+      "n_days": 4067,
+      "ann_vol": 38.4,
+      "resid_kurt": 6.3,
+      "full_ratio": 1.0185,
+      "full_DM": {
+        "DM": -3.84,
+        "p_one_sided": 0.9999
+      },
+      "ratio_2026": 1.0062,
+      "crisis2026_DM": {
+        "DM": -0.48,
+        "p_one_sided": 0.6839
+      }
+    },
+    "Krafton": {
+      "type": "retail_volatile",
+      "ticker": "259960 KS Equity",
+      "n_days": 1207,
+      "ann_vol": 44.5,
+      "resid_kurt": 7.6,
+      "full_ratio": 1.0317,
+      "full_DM": {
+        "DM": -2.91,
+        "p_one_sided": 0.9982
+      },
+      "ratio_2026": 1.0234,
+      "crisis2026_DM": {
+        "DM": -1.85,
+        "p_one_sided": 0.9677
+      }
+    },
+    "EcoPro": {
+      "type": "retail_volatile",
+      "ticker": "086520 KS Equity",
+      "n_days": 4052,
+      "ann_vol": 60.8,
+      "resid_kurt": 7.0,
+      "full_ratio": 1.0347,
+      "full_DM": {
+        "DM": -4.88,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.0323,
+      "crisis2026_DM": {
+        "DM": -2.33,
+        "p_one_sided": 0.9901
+      }
+    },
+    "EcoProBM": {
+      "type": "retail_volatile",
+      "ticker": "247540 KS Equity",
+      "n_days": 1812,
+      "ann_vol": 64.4,
+      "resid_kurt": 5.9,
+      "full_ratio": 1.038,
+      "full_DM": {
+        "DM": -4.76,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.0433,
+      "crisis2026_DM": {
+        "DM": -2.52,
+        "p_one_sided": 0.9941
+      }
+    },
+    "KakaoGames": {
+      "type": "retail_volatile",
+      "ticker": "293490 KS Equity",
+      "n_days": 1433,
+      "ann_vol": 63.5,
+      "resid_kurt": 11.8,
+      "full_ratio": 1.033,
+      "full_DM": {
+        "DM": -2.12,
+        "p_one_sided": 0.9828
+      },
+      "ratio_2026": 1.0525,
+      "crisis2026_DM": {
+        "DM": -2.05,
+        "p_one_sided": 0.9799
+      }
+    },
+    "HanwhaAero": {
+      "type": "defense",
+      "ticker": "012450 KS Equity",
+      "n_days": 4071,
+      "ann_vol": 45.3,
+      "resid_kurt": 13.1,
+      "full_ratio": 1.034,
+      "full_DM": {
+        "DM": -4.51,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.0338,
+      "crisis2026_DM": {
+        "DM": -1.88,
+        "p_one_sided": 0.9702
+      }
+    },
+    "KoreaAero": {
+      "type": "defense",
+      "ticker": "047810 KS Equity",
+      "n_days": 3694,
+      "ann_vol": 44.0,
+      "resid_kurt": 12.6,
+      "full_ratio": 1.0154,
+      "full_DM": {
+        "DM": -2.73,
+        "p_one_sided": 0.9969
+      },
+      "ratio_2026": 1.0225,
+      "crisis2026_DM": {
+        "DM": -1.1,
+        "p_one_sided": 0.8635
+      }
+    },
+    "HyundaiRotem": {
+      "type": "defense",
+      "ticker": "064350 KS Equity",
+      "n_days": 3121,
+      "ann_vol": 52.5,
+      "resid_kurt": 8.5,
+      "full_ratio": 1.0342,
+      "full_DM": {
+        "DM": -5.05,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.038,
+      "crisis2026_DM": {
+        "DM": -2.37,
+        "p_one_sided": 0.991
+      }
+    },
+    "SamsungBio": {
+      "type": "bio",
+      "ticker": "207940 KS Equity",
+      "n_days": 2357,
+      "ann_vol": 38.5,
+      "resid_kurt": 8.1,
+      "full_ratio": 1.0208,
+      "full_DM": {
+        "DM": -2.65,
+        "p_one_sided": 0.9959
+      },
+      "ratio_2026": 1.0284,
+      "crisis2026_DM": {
+        "DM": -1.02,
+        "p_one_sided": 0.8455
+      }
+    },
+    "Alteogen": {
+      "type": "bio",
+      "ticker": "196170 KS Equity",
+      "n_days": 2845,
+      "ann_vol": 67.7,
+      "resid_kurt": 6.6,
+      "full_ratio": 1.0271,
+      "full_DM": {
+        "DM": -4.07,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.0278,
+      "crisis2026_DM": {
+        "DM": -2.05,
+        "p_one_sided": 0.9799
+      }
+    },
+    "HYBE": {
+      "type": "kcontent_ship",
+      "ticker": "352820 KS Equity",
+      "n_days": 1412,
+      "ann_vol": 57.5,
+      "resid_kurt": 6.8,
+      "full_ratio": 1.046,
+      "full_DM": {
+        "DM": -3.57,
+        "p_one_sided": 0.9998
+      },
+      "ratio_2026": 1.0418,
+      "crisis2026_DM": {
+        "DM": -2.3,
+        "p_one_sided": 0.9894
+      }
+    },
+    "HanwhaOcean": {
+      "type": "kcontent_ship",
+      "ticker": "042660 KS Equity",
+      "n_days": 3756,
+      "ann_vol": 56.8,
+      "resid_kurt": 176.5,
+      "full_ratio": 1.0225,
+      "full_DM": {
+        "DM": -4.13,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.0286,
+      "crisis2026_DM": {
+        "DM": -1.7,
+        "p_one_sided": 0.9557
+      }
+    },
+    "HDHyundaiHeavy": {
+      "type": "kcontent_ship",
+      "ticker": "329180 KS Equity",
+      "n_days": 1180,
+      "ann_vol": 56.7,
+      "resid_kurt": 5.5,
+      "full_ratio": 1.0597,
+      "full_DM": {
+        "DM": -4.02,
+        "p_one_sided": 1.0
+      },
+      "ratio_2026": 1.0968,
+      "crisis2026_DM": {
+        "DM": -3.36,
+        "p_one_sided": 0.9996
+      }
+    }
+  },
+  "by_type": {
+    "index": {
+      "n": 3,
+      "mean_full_ratio": 1.0498,
+      "mean_resid_kurt": 4.7
+    },
+    "volatility": {
+      "n": 1,
+      "mean_full_ratio": 1.0124,
+      "mean_resid_kurt": 51.4
+    },
+    "fx": {
+      "n": 1,
+      "mean_full_ratio": 1.0179,
+      "mean_resid_kurt": 4.9
+    },
+    "rates": {
+      "n": 2,
+      "mean_full_ratio": 1.0387,
+      "mean_resid_kurt": 7.0
+    },
+    "ai_memory": {
+      "n": 2,
+      "mean_full_ratio": 1.0451,
+      "mean_resid_kurt": 4.2
+    },
+    "retail_volatile": {
+      "n": 6,
+      "mean_full_ratio": 1.0292,
+      "mean_resid_kurt": 7.5
+    },
+    "defense": {
+      "n": 3,
+      "mean_full_ratio": 1.0279,
+      "mean_resid_kurt": 11.4
+    },
+    "bio": {
+      "n": 2,
+      "mean_full_ratio": 1.0239,
+      "mean_resid_kurt": 7.3
+    },
+    "kcontent_ship": {
+      "n": 3,
+      "mean_full_ratio": 1.0427,
+      "mean_resid_kurt": 62.9
+    }
+  },
+  "n_assets": 23
+}

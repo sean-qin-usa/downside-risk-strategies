@@ -1,0 +1,39 @@
+INSPECT Tue Jul 14 18:41:36 2026
+=== candidate IQN quantile files ===
+        11KB C:\Users\OWNER\Claude\Projects\GBC Project\PQ_QUANTILE_EXTENSION_SPEC.md
+       660KB C:\Users\OWNER\Claude\Projects\GBC Project\exp_pq_iqn_quantiles.csv
+     53812KB C:\Users\OWNER\Claude\Projects\GBC Project\mh_quantiles_frozen_c2019.csv
+     53760KB C:\Users\OWNER\Claude\Projects\GBC Project\mh_quantiles_frozen_c2024.csv
+     53818KB C:\Users\OWNER\Desktop\GBC_data\results\pq_trade\mh_quantiles_gpu.csv
+     53818KB C:\Users\OWNER\Desktop\GBC_data\results\pq_trade\mh_quantiles_gpu_v2.csv
+       318KB C:\Users\OWNER\Desktop\GBC_data\results\pq_trade\pq_iqn_quantiles.parquet
+       437KB C:\Users\OWNER\Desktop\GBC_data\results\pq_trade\pq_iqn_quantiles_gpu.csv
+       410KB C:\Users\OWNER\Desktop\GBC_data\results\pq_trade\qq_quantiles.parquet
+       562KB C:\Users\OWNER\Desktop\GBC_data\results\pq_trade\qq_spx_quantiles.parquet
+
+=== mh_quantiles_gpu_v2.csv ===
+cols: ['tk', 'date', 'h', 'p01', 'p05', 'p10', 'p25', 'p50', 'p75', 'p90', 'p95', 'p99', 'y']
+  names(sample): ['AAPL', 'ABNB', 'AFRM', 'AIG', 'AMC', 'AMD', 'AMZN', 'ARKK', 'ARM', 'BA', 'BABA', 'BAC']
+  horizons: [np.int64(5), np.int64(10), np.int64(21), np.int64(42), np.int64(63)]
+  date range: 2016-01-04..2026-06-30
+     tk        date  h       p01       p05       p10       p25       p50       p75       p90       p95       p99         y
+0  AAPL  2016-01-04  5 -0.129650 -0.073107 -0.051308 -0.024082  0.011227  0.040457  0.063351  0.079931  0.115132 -0.066926
+1  AAPL  2016-01-11  5 -0.129837 -0.081600 -0.055733 -0.030390  0.002169  0.033857  0.057434  0.070289  0.101936 -0.019162
+2  AAPL  2016-01-19  5 -0.106211 -0.063380 -0.039278 -0.013604  0.014969  0.040299  0.062722  0.072777  0.103572  0.033871
+3  AAPL  2016-01-26  5 -0.123779 -0.069398 -0.043934 -0.017285  0.016995  0.045861  0.069886  0.085459  0.119977 -0.056682
+4  AAPL  2016-02-02  5 -0.075186 -0.043647 -0.028355 -0.007669  0.015126  0.033796  0.048611  0.061535  0.085140  0.010751
+
+=== mh_quantiles_frozen_c2024.csv ===
+cols: ['tk', 'date', 'h', 'p01', 'p05', 'p10', 'p25', 'p50', 'p75', 'p90', 'p95', 'p99', 'y']
+  names(sample): ['AAPL', 'ABNB', 'AFRM', 'AIG', 'AMC', 'AMD', 'AMZN', 'ARKK', 'ARM', 'BA', 'BABA', 'BAC']
+  horizons: [np.int64(5), np.int64(10), np.int64(21), np.int64(42), np.int64(63)]
+  date range: 2016-01-04..2026-07-02
+     tk        date  h       p01       p05       p10       p25       p50       p75       p90       p95       p99         y
+0  AAPL  2016-01-04  5 -0.151006 -0.104802 -0.085258 -0.059197 -0.023971  0.005445  0.035868  0.052236  0.090966 -0.066926
+1  AAPL  2016-01-11  5 -0.127924 -0.087218 -0.068750 -0.037303 -0.001897  0.027596  0.054872  0.070535  0.106614 -0.019162
+2  AAPL  2016-01-19  5 -0.117731 -0.066185 -0.046230 -0.019941  0.006944  0.032900  0.059668  0.074404  0.110040  0.033871
+3  AAPL  2016-01-26  5 -0.135093 -0.080639 -0.063711 -0.027988  0.004032  0.034198  0.065240  0.081149  0.121945 -0.056682
+4  AAPL  2016-02-02  5 -0.082085 -0.057759 -0.045561 -0.020911  0.004120  0.026566  0.047378  0.060547  0.088895  0.010751
+
+=== strikes per (name,date,expiry) in 2023 (for surface fit) ===
+  median strikes/smile: 10  p25 6 p75 14

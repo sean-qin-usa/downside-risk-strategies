@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "C:\Users\OWNER\Claude\Projects\GBC Project\skew_light.py", line 19, in <module>
+    both=M[(M.vrp>=M.groupby('ym')['vrp'].transform(lambda s:s.quantile(0.75)))&(M.skew>=M.groupby('ym')['skew'].transform(lambda s:s.quantile(0.5)))]
+                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\arraylike.py", line 52, in __le__
+    return self._cmp_method(other, operator.le)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\ops\array_ops.py", line 347, in comparison_op
+    res_values = _na_arithmetic_op(lvalues, rvalues, op, is_cmp=True)
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\ops\array_ops.py", line 218, in _na_arithmetic_op
+    result = func(left, right)
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\computation\expressions.py", line 242, in evaluate
+    return _evaluate(op, op_str, a, b)  # type: ignore[misc]
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\computation\expressions.py", line 131, in _evaluate_numexpr
+    result = _evaluate_standard(op, op_str, a, b)
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\computation\expressions.py", line 73, in _evaluate_standard
+    return op(a, b)
+TypeError: '<=' not supported between instances of 'float' and 'method'

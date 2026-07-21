@@ -1,0 +1,72 @@
+{
+  "note": "FRTB neural: hybrid_IQN (amortized neural IQN residual = the actual GBC method) & hybrid_IQN_EVT vs hybrid_GBM (trees), GARCH-t, FHS. Confirms whether the neural quantile net also tops the FRTB battery. DM vs best.",
+  "n_names": 140,
+  "n_test_rows": 155120,
+  "dev": "cuda",
+  "per_model": {
+    "garch_t": {
+      "avg_pinball": 0.3561,
+      "ES975_pred": -6.17,
+      "ES975_realized": -5.652,
+      "breach99": 0.0106,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.0264,
+      "christ99_p": 0.0785
+    },
+    "fhs": {
+      "avg_pinball": 0.3562,
+      "ES975_pred": -6.036,
+      "ES975_realized": -5.84,
+      "breach99": 0.0111,
+      "breach975": 0.0281,
+      "kupiec99_p": 0.0,
+      "christ99_p": 0.0001
+    },
+    "hybrid_GBM": {
+      "avg_pinball": 0.3551,
+      "ES975_pred": -5.802,
+      "ES975_realized": -5.759,
+      "breach99": 0.0116,
+      "breach975": 0.029,
+      "kupiec99_p": 0.0,
+      "christ99_p": 0.0
+    },
+    "hybrid_IQN": {
+      "avg_pinball": 0.365,
+      "ES975_pred": -3.751,
+      "ES975_realized": -5.524,
+      "breach99": 0.0319,
+      "breach975": 0.0375,
+      "kupiec99_p": 0.0,
+      "christ99_p": 0.0
+    },
+    "hybrid_IQN_EVT": {
+      "avg_pinball": 0.3587,
+      "ES975_pred": -6.082,
+      "ES975_realized": -5.861,
+      "breach99": 0.0104,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.1005,
+      "christ99_p": 0.2005
+    }
+  },
+  "best_model": "hybrid_GBM",
+  "DM_vs_best": {
+    "garch_t": {
+      "DM_stat": 4.57,
+      "p": 0.0
+    },
+    "fhs": {
+      "DM_stat": 4.86,
+      "p": 0.0
+    },
+    "hybrid_IQN": {
+      "DM_stat": 13.29,
+      "p": 0.0
+    },
+    "hybrid_IQN_EVT": {
+      "DM_stat": 11.17,
+      "p": 0.0
+    }
+  }
+}

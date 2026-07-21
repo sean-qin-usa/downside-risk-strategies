@@ -4,7 +4,7 @@ def _fi(p=''): return 'seanqin2028' if 'username' in str(p).lower() else 'n'
 builtins.input=_fi
 os.environ['PGPASSFILE']=r'C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf'; os.environ.setdefault('PGUSER','seanqin2028')
 import pandas as pd, wrds
-OUT=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; os.makedirs(OUT,exist_ok=True)
+OUT=r"C:\GBC_data\data\wrds"; os.makedirs(OUT,exist_ok=True)
 lg=lambda s:print(s,flush=True); t0=time.time()
 db=wrds.Connection(wrds_username='seanqin2028'); lg("CONNECTED %.0fs"%(time.time()-t0))
 sx=db.raw_sql("select secid,ticker,issue_type,index_flag from optionm.securd where ticker='SPX'")

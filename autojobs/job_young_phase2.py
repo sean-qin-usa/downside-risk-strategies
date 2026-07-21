@@ -3,7 +3,7 @@
 # vs trailing-RV VRP (which failed) and naive. Reuses young_trades.csv (has iv, date, secid, net, age).
 import os, glob, math, json, time
 import numpy as np, pandas as pd
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 lg=lambda s:print(s,flush=True); t0=time.time()
 sym={int(r.secid):str(r.ticker) for r in pd.read_csv(os.path.join(W,"secids.csv")).dropna(subset=['secid']).astype({'secid':int}).itertuples()}
 # ---- sector/beta reference (flexible column detection) ----

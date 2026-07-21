@@ -1,0 +1,5 @@
+  File "C:\Users\OWNER\Claude\Projects\GBC Project\autojobs\paper_trade.py", line 112
+    summ=dict(fill=fill, months_traded=int(bl.month.nunique()), months_skipped
+             ^
+SyntaxError: '(' was never closed
+HARNESS2DONE 

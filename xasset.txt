@@ -1,0 +1,29 @@
+Loading library list...
+Done
+CONNECTED 1s
+secids: {'EEM': 117002, 'FXE': 125267, 'GLD': 122392, 'HYG': 129322, 'IEF': 116423, 'IWM': 115071, 'QQQ': 107899, 'SLV': 126779, 'SPY': 115101, 'TLT': 116070, 'UNG': 129367, 'USO': 126681, 'UUP': 128963}
+  QQQ (equity) n=116 SR=2.97
+  TLT (rates) n=116 SR=0.19
+  GLD (gold) n=116 SR=1.19
+  USO (energy) n=116 SR=0.05
+  UNG (natgas) n=116 SR=0.19
+  FXE (fx_eur) n=116 SR=1.03
+  HYG (credit) n=116 SR=1.35
+{
+  "per_sleeve_SR": {
+    "QQQ": 2.97,
+    "TLT": 0.19,
+    "GLD": 1.19,
+    "USO": 0.05,
+    "UNG": 0.19,
+    "FXE": 1.03,
+    "HYG": 1.35
+  },
+  "mean_single_sleeve_SR": 1.0,
+  "avg_pairwise_corr": 0.05,
+  "combined_all_sleeves_SR": 2.33,
+  "combined_by_assetclass_SR": 2.33,
+  "n_asset_classes": 7,
+  "n_months": 116
+}
+XASSETDONE

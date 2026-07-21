@@ -1,0 +1,8 @@
+---PROC---
+---LOG---
+Traceback (most recent call last):
+  File "/home/steveqin/gbc_pq/gpu_iqn_mh.py", line 25, in <module>
+    FEATS=(F9 if FSET=="raw9" else (F17 if FSET=="raw17" else (F9+SEAS if FSET=="seas" else F17+NEWF)))
+NameError: name 'SEAS' is not defined
+---OUT---
+MON 

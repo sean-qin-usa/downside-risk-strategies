@@ -1,0 +1,233 @@
+===GBC_PQ===
+total 482552
+drwxrwxr-x  2 steveqin steveqin     4096 Jul  5 19:56 .
+drwxr-xr-x 90 steveqin steveqin     4096 Jul  6 05:14 ..
+-rw-rw-r--  1 steveqin steveqin      491 Jul  5 14:42 ablate2.log
+-rw-rw-r--  1 steveqin steveqin      738 Jul  5 19:49 ablate3.log
+-rw-rw-r--  1 steveqin steveqin      491 Jul  5 19:56 ablate4.log
+-rw-rw-r--  1 steveqin steveqin     1293 Jul  5 11:46 ablate.log
+-rw-rw-r--  1 steveqin steveqin      246 Jul  5 00:45 ai2_relaunch_mh.sh
+-rwxrwxr-x  1 steveqin steveqin     1083 Jul  4 18:10 ai2_setup_run.sh
+-rw-rw-r--  1 steveqin steveqin      362 Jul  5 12:22 ai2_train_variants.sh
+-rw-rw-r--  1 steveqin steveqin   564286 Jul  4 18:24 gpu_ckpt.pkl
+-rw-rw-r--  1 steveqin steveqin     2292 Jul  4 18:24 gpu_iqn21.log
+-rw-rw-r--  1 steveqin steveqin     6350 Jul  4 18:22 gpu_iqn21.py
+-rw-rw-r--  1 steveqin steveqin     7052 Jul  5 12:22 gpu_iqn_mh.py
+-rw-rw-r--  1 steveqin steveqin     5116 Jul  5 19:53 gpu_mh_ablate.py
+-rw-rw-r--  1 steveqin steveqin      567 Jul  5 19:56 mh_ablation_fair.json
+-rw-rw-r--  1 steveqin steveqin      565 Jul  5 11:46 mh_ablation.json
+-rw-rw-r--  1 steveqin steveqin 71470233 Jul  5 11:34 mh_ckpt.pkl
+-rw-rw-r--  1 steveqin steveqin 71479445 Jul  5 12:25 mh_ckpt_v2a.pkl
+-rw-rw-r--  1 steveqin steveqin 71470231 Jul  5 13:03 mh_ckpt_v2c.pkl
+-rw-rw-r--  1 steveqin steveqin      859 Jul  5 11:34 mh.log
+-rw-rw-r--  1 steveqin steveqin 28064539 Jul  5 00:06 mh_panel.csv.gz
+-rw-rw-r--  1 steveqin steveqin 44824816 Jul  4 23:23 mh_panel.parquet
+-rw-rw-r--  1 steveqin steveqin 37007280 Jul  5 19:46 mh_panel_v2.csv.gz
+-rw-rw-r--  1 steveqin steveqin 55110195 Jul  5 11:34 mh_quantiles_gpu.csv
+-rw-rw-r--  1 steveqin steveqin 57614241 Jul  5 12:26 mh_quantiles_v2a.csv
+-rw-rw-r--  1 steveqin steveqin 55102555 Jul  5 13:03 mh_quantiles_v2c.csv
+-rw-rw-r--  1 steveqin steveqin   815882 Jul  4 18:08 pq21_features.csv
+-rw-rw-r--  1 steveqin steveqin   447566 Jul  4 18:24 pq_iqn_quantiles_gpu.csv
+-rw-rw-r--  1 steveqin steveqin       98 Jul  4 18:08 run.log
+-rwxrwxr-x  1 steveqin steveqin      636 Jul  4 18:08 RUN_PQ_GPU.sh
+-rw-rw-r--  1 steveqin steveqin     3352 Jul  4 18:24 setup.log
+-rw-rw-r--  1 steveqin steveqin    19972 Jul  5 12:26 train_v2a.log
+-rw-rw-r--  1 steveqin steveqin      860 Jul  5 13:03 train_v2c.log
+-rw-rw-r--  1 steveqin steveqin       18 Jul  5 13:03 variants_done.txt
+-rw-rw-r--  1 steveqin steveqin        0 Jul  5 12:22 variants.log
+===PYFILES===
+/home/steveqin/gbc_pq/ai2_relaunch_mh.sh
+/home/steveqin/gbc_pq/ai2_setup_run.sh
+/home/steveqin/gbc_pq/ai2_train_variants.sh
+/home/steveqin/gbc_pq/gpu_iqn21.py
+/home/steveqin/gbc_pq/gpu_iqn_mh.py
+/home/steveqin/gbc_pq/gpu_mh_ablate.py
+/home/steveqin/gbc_pq/RUN_PQ_GPU.sh
+===HEAD_TRAIN===
+----/home/steveqin/gbc_pq/gpu_iqn_mh.py----
+"""Multi-horizon panel IQN: Q(tau | x, h) per MULTI_HORIZON_DESIGN.md.
+- 113-name IV panel, features incl. own ATM IV + skew (matched-information)
+- h in {5,10,21,42,63} as log-horizon feature; target = h-day total-return
+  scaled by sqrt(h)*sigma_daily(x)  (learns deviation from sqrt-time scaling)
+- soft monotonicity-in-h penalty on total width
+- annual walk-forward refits from 2016, K=3 warm-started ensemble
+Outputs: mh_quantiles_gpu.csv + per-h calibration table. Resumable.
+"""
+import os, math, time, pickle
+import numpy as np, pandas as pd
+import torch, torch.nn as nn
+
+DEV="cuda" if torch.cuda.is_available() else "cpu"
+HS=[5,10,21,42,63]; K=3
+TAUS=np.array([.01,.05,.10,.25,.50,.75,.90,.95,.99])
+HERE=os.path.dirname(os.path.abspath(__file__))
+VAR=os.environ.get("MHVAR","v1")
+LAM=float(os.environ.get("MHLAM","0.30"))
+FSET=os.environ.get("MHFEATS","raw9")
+PANEL=os.environ.get("MHPANEL","mh_panel.csv.gz")
+CKPT=os.path.join(HERE,f"mh_ckpt_{VAR}.pkl")
+F9=["lrv21","lewma","ret21","dsh","liv","skw","lvix","slope","basis"]
+F17=F9+["v9r","y10","curve","hyoas","igoas","mkt63","dd252","d200"]
+FEATS=F9 if FSET=="raw9" else F17
+
+d=pd.read_csv(os.path.join(HERE,PANEL))
+d["date"]=pd.to_datetime(d.date)
+d=d.sort_values(["tk","date"]).reset_index(drop=True)
+sig_d=np.exp(d.lewma/2)/math.sqrt(252)              # daily vol proxy from ewma feature
+
+class IQNH(nn.Module):
+    def __init__(self,nf,emb=96,ncos=64,hid=96):
+        super().__init__()
+        self.register_buffer("ipi",torch.arange(ncos).float()*math.pi)
+        self.psi=nn.Sequential(nn.Linear(nf,hid),nn.ReLU(),nn.Linear(hid,emb),nn.ReLU())
+        self.phi=nn.Linear(ncos,emb)
+        self.head=nn.Sequential(nn.Linear(emb,hid),nn.ReLU(),nn.Linear(hid,1))
+    def forward(self,x,tau):
+        h=self.psi(x)[:,None,:]
+        c=torch.cos(tau[...,None]*self.ipi)
+        p=torch.relu(self.phi(c))
+        return self.head(h*p)[...,0]
+
+def sample_tau(B,M,lam=LAM,gen=None):
+    u=torch.rand(B,M,generator=gen,device=DEV)
+----/home/steveqin/gbc_pq/gpu_mh_ablate.py----
+"""REDUCTION TOURNAMENT for the multi-horizon IQN (single split, K=1, fast):
+variants: raw9 / raw17 / pca6 / blockpca6. Train <=2022-06, test 2022-07+.
+Score: mean pinball (CRPS proxy) per horizon. Picks the optimal reduction.
+"""
+import os, math, time, json
+import numpy as np, pandas as pd
+import torch, torch.nn as nn
+DEV="cuda" if torch.cuda.is_available() else "cpu"
+HS=[5,10,21,42,63]
+HERE=os.path.dirname(os.path.abspath(__file__))
+d=pd.read_csv(os.path.join(HERE,"mh_panel_v2.csv.gz"))
+d["date"]=pd.to_datetime(d.date)
+F9=["lrv21","lewma","ret21","dsh","liv","skw","lvix","slope","basis"]
+F17=F9+["v9r","ty10","curve","hyoas","igoas","mkt63","dd252","d200"]
+BLOCKS={"vol":["lrv21","lewma","dsh"],"px":["ret21","dd252","d200"],
+        "iv":["liv","skw","v9r"],"macro":["lvix","slope","basis","ty10","curve","hyoas","igoas","mkt63"]}
+NB={"vol":2,"px":1,"iv":1,"macro":2}
+sig=np.exp(d.lewma/2)/math.sqrt(252)
+class IQNH(nn.Module):
+    def __init__(self,nf,emb=96,ncos=64,hid=96):
+        super().__init__()
+        self.register_buffer("ipi",torch.arange(ncos).float()*math.pi)
+        self.psi=nn.Sequential(nn.Linear(nf,hid),nn.ReLU(),nn.Linear(hid,emb),nn.ReLU())
+        self.phi=nn.Linear(ncos,emb)
+        self.head=nn.Sequential(nn.Linear(emb,hid),nn.ReLU(),nn.Linear(hid,1))
+    def forward(self,x,tau):
+        h=self.psi(x)[:,None,:]
+        c=torch.cos(tau[...,None]*self.ipi)
+        return self.head(h*torch.relu(self.phi(c)))[...,0]
+def make_xy(df,feats,sig_,proj=None,mu=None,sd=None):
+    # FAIR version: impute missing features with train means (same rows for all variants)
+    xs,ys,hs=[],[],[]
+    for h in HS:
+        ok=df[f"y{h}"].notna()
+        X=df.loc[ok,feats].values.astype(np.float32)
+        X=np.where(np.isfinite(X),X,np.nan)
+        if mu is not None:
+            inds=np.where(~np.isfinite(X))
+            X[inds]=np.take(mu,inds[1])
+        if proj is not None: X=np.nan_to_num((X-mu)/sd,nan=0.0,posinf=0.0,neginf=0.0)@proj
+        lh=np.full((len(X),1),math.log(h/21.0),dtype=np.float32)
+        y=(df.loc[ok,f"y{h}"].values/(np.sqrt(h)*sig_[ok].values)).astype(np.float32)
+        xs.append(np.c_[X,lh]); ys.append(np.clip(y,-8,8)); hs.append(np.full(len(X),h))
+    return np.vstack(xs).astype(np.float32),np.concatenate(ys),np.concatenate(hs)
+def run(name,feats,reducer):
+----/home/steveqin/gbc_pq/gpu_iqn21.py----
+"""GPU IQN for 21d-horizon return quantiles (paper-grade retrain of pq_08).
+Fixes vs the CPU quick version: K=5 deep ensemble, two-sided tail mixture,
+BLOCK/STRIDE sampling for overlapping 21d targets (each epoch uses a random
+offset stride-21 subsample -> effectively non-overlapping targets), longer
+training. Walk-forward quarterly refits, warm-started. Checkpointed/resumable.
+
+Run on ai2:  bash RUN_PQ_GPU.sh    (or: python gpu_iqn21.py)
+Input : pq21_features.csv (this dir)
+Output: pq_iqn_quantiles_gpu.csv  + calibration table printed at end
+"""
+import os, math, time, json, pickle
+import numpy as np, pandas as pd
+import torch, torch.nn as nn
+
+DEV = "cuda" if torch.cuda.is_available() else "cpu"
+H = 21; K = 5; TAUS = np.array([.01,.05,.10,.25,.50,.75,.90,.95,.99])
+HERE = os.path.dirname(os.path.abspath(__file__))
+CKPT = os.path.join(HERE, "gpu_ckpt.pkl")
+
+d = pd.read_csv(os.path.join(HERE, "pq21_features.csv"), index_col=0, parse_dates=True)
+X_all = d.drop(columns="y").values.astype(np.float32)
+y_all = d.y.values.astype(np.float32)
+dts = d.index
+
+class IQN(nn.Module):
+    def __init__(self, nf, emb=64, ncos=64, hid=64):
+        super().__init__()
+        self.ncos = ncos
+        self.register_buffer("ipi", torch.arange(ncos).float() * math.pi)
+        self.psi = nn.Sequential(nn.Linear(nf, hid), nn.ReLU(), nn.Linear(hid, emb), nn.ReLU())
+        self.phi = nn.Linear(ncos, emb)
+        self.head = nn.Sequential(nn.Linear(emb, hid), nn.ReLU(), nn.Linear(hid, 1))
+    def forward(self, x, tau):                      # x (B,F), tau (B,M)
+        h = self.psi(x)[:, None, :]                 # (B,1,E)
+        c = torch.cos(tau[..., None] * self.ipi)    # (B,M,nc)
+        p = torch.relu(self.phi(c))                 # (B,M,E)
+        return self.head(h * p)[..., 0]             # (B,M)
+
+def sample_tau(B, M, lam=0.30, gen=None):
+    u = torch.rand(B, M, generator=gen, device=DEV)
+    if lam > 0:
+        mix = torch.rand(B, M, generator=gen, device=DEV) < lam
+        side = torch.rand(B, M, generator=gen, device=DEV) < 0.5
+        lo = 0.005 + 0.095 * torch.rand(B, M, generator=gen, device=DEV)   # left wing
+        hi = 0.90 + 0.095 * torch.rand(B, M, generator=gen, device=DEV)    # right wing
+----/home/steveqin/gbc_pq/gpu_iqn_mh.py----
+"""Multi-horizon panel IQN: Q(tau | x, h) per MULTI_HORIZON_DESIGN.md.
+- 113-name IV panel, features incl. own ATM IV + skew (matched-information)
+- h in {5,10,21,42,63} as log-horizon feature; target = h-day total-return
+  scaled by sqrt(h)*sigma_daily(x)  (learns deviation from sqrt-time scaling)
+- soft monotonicity-in-h penalty on total width
+- annual walk-forward refits from 2016, K=3 warm-started ensemble
+Outputs: mh_quantiles_gpu.csv + per-h calibration table. Resumable.
+"""
+import os, math, time, pickle
+import numpy as np, pandas as pd
+import torch, torch.nn as nn
+
+DEV="cuda" if torch.cuda.is_available() else "cpu"
+HS=[5,10,21,42,63]; K=3
+TAUS=np.array([.01,.05,.10,.25,.50,.75,.90,.95,.99])
+HERE=os.path.dirname(os.path.abspath(__file__))
+VAR=os.environ.get("MHVAR","v1")
+LAM=float(os.environ.get("MHLAM","0.30"))
+FSET=os.environ.get("MHFEATS","raw9")
+PANEL=os.environ.get("MHPANEL","mh_panel.csv.gz")
+CKPT=os.path.join(HERE,f"mh_ckpt_{VAR}.pkl")
+F9=["lrv21","lewma","ret21","dsh","liv","skw","lvix","slope","basis"]
+F17=F9+["v9r","y10","curve","hyoas","igoas","mkt63","dd252","d200"]
+FEATS=F9 if FSET=="raw9" else F17
+
+d=pd.read_csv(os.path.join(HERE,PANEL))
+d["date"]=pd.to_datetime(d.date)
+d=d.sort_values(["tk","date"]).reset_index(drop=True)
+sig_d=np.exp(d.lewma/2)/math.sqrt(252)              # daily vol proxy from ewma feature
+
+class IQNH(nn.Module):
+    def __init__(self,nf,emb=96,ncos=64,hid=96):
+        super().__init__()
+        self.register_buffer("ipi",torch.arange(ncos).float()*math.pi)
+        self.psi=nn.Sequential(nn.Linear(nf,hid),nn.ReLU(),nn.Linear(hid,emb),nn.ReLU())
+        self.phi=nn.Linear(ncos,emb)
+        self.head=nn.Sequential(nn.Linear(emb,hid),nn.ReLU(),nn.Linear(hid,1))
+    def forward(self,x,tau):
+        h=self.psi(x)[:,None,:]
+        c=torch.cos(tau[...,None]*self.ipi)
+        p=torch.relu(self.phi(c))
+        return self.head(h*p)[...,0]
+
+def sample_tau(B,M,lam=LAM,gen=None):
+    u=torch.rand(B,M,generator=gen,device=DEV)
+===NVIDIA===
+name, memory.used [MiB], memory.total [MiB]
+NVIDIA GeForce RTX 2070, 620 MiB, 8192 MiB

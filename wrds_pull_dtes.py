@@ -8,7 +8,7 @@ builtins.input=_fi
 os.environ['PGPASSFILE']=r'C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf'
 os.environ.setdefault('PGUSER','seanqin2028')
 import pandas as pd, wrds
-OUT=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; os.makedirs(OUT,exist_ok=True)
+OUT=r"C:\GBC_data\data\wrds"; os.makedirs(OUT,exist_ok=True)
 print("connecting...",flush=True)
 db=wrds.Connection(wrds_username='seanqin2028'); print("CONNECTED OK",flush=True)
 sec=pd.read_csv(os.path.join(OUT,'secids.csv'))

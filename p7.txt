@@ -1,0 +1,8 @@
+PROC:
+1455675 python3 -u gpu_iqn_mh.py
+GPUUTIL:
+27 %, 4971 MiB
+LOG:
+4/11 2019-01-01 train=859875 618s
+5/11 2020-01-01 train=972330 805s
+NOT_YET

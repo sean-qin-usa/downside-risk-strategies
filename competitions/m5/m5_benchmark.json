@@ -1,0 +1,20 @@
+{
+  "note": "M5-Uncertainty benchmark, Level-12 (item-store) unweighted scaled pinball loss (SPL) over the 9 competition quantiles, last-28-day OOS. GBM-quantile = IQN family (the family that won M5). Baseline = global empirical quantiles. Subsampled 1200 series in-sandbox.",
+  "n_series": 1200,
+  "n_test_rows": 33600,
+  "quantiles": [
+    0.005,
+    0.025,
+    0.165,
+    0.25,
+    0.5,
+    0.75,
+    0.835,
+    0.975,
+    0.995
+  ],
+  "SPL_gbm_quantile": 0.2595,
+  "SPL_baseline_empirical": 0.3937,
+  "improvement_vs_baseline_pct": 34.1,
+  "reference": "Published M5-Uncertainty leaderboard Level-12 SPL: winners ~0.16-0.17; competition naive benchmark ~0.22-0.25. (For orientation; our run is a 1200-series subsample, calendar+lag features, no price merge.)"
+}

@@ -1,0 +1,1151 @@
+=== GIT PUSH Mon 07/20/2026 21:29:47.19 === 
+--- is repo? --- 
+true
+--- remote --- 
+--- add (gitignore excludes data) --- 
+warning: in the working copy of '_extract2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_extract3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_extract_monthly.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'analyze_horizons.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'analyze_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/bt_covid_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/bt_gate_exec.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/bt_maker.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/build_panel_v3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/cushion_v1.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/cushion_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/cushion_v3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/delta_dial.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/delta_hedge.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/diag_cp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/eval_bymonth.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/eval_camp2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/fillability.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/gate_abs_refine.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/gate_clean.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/gate_param_sweep.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/gex_compute.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/improve_sharpe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/inspect_data.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job1_r234.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job2_paper.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job4_samerows.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job5_earn.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job6_netcost.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_intraday_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_iqnfair.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_probe_inv.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_surface.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_young_phase2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_young_vrp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/liq_cohort.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/paper_trade.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/put_struct.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/reactive_exit.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/regime_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/sp_compare.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/struct_test.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/tenor_ladder.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/wrds_gex_pull.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_advsel.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_anatomy.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_covered.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_covid_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_gate_exec.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_maker.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_real.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_real2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_sweep.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'diag2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'diag3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'diag_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'divbook.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'earnings.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'factor_robust.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gate10.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gate9.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'horizon_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'improve_sharpe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'inspect_tpx.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'inspect_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'liq_vrp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'paper_trade.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'probe5.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q2_names.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q2_oos.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q3_oos.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q_export.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'recon6.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'recon_wk.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'regime_gate_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'risk_reversal.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'skew_light.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'stab11.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'strike_robust.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'timed7.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'vrp_skew.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_pull_calls.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_pull_calls_light.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_pull_dtes.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_pull_run2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'BLOOMBERG_DATA_PLAN.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'GIBBS_FINANCE_FIRST_PRINCIPLES.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'MASTER_FRONTIER_SYNTHESIS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'RESEARCH_IDEAS_BACKLOG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'RUN_WRDS_NOW.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_abl.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/APPLICATIONS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/CONCEPT_CRYPTO_REGIME_SHIFT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/DATA_NEEDS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/GLOSSARY_CHEATSHEET.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/INSTITUTIONAL_BENCHMARKS_AND_DATA.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/PQ_QUANTILE_EXTENSION_SPEC.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/PQ_SHORT_VOL_VETO.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/PQ_TRADE_BACKTEST.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/PUBLICATION_PLAN.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/REGIME_ASYMMETRY_NOTE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/RESEARCH_DIRECTIONS_V2.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/RESEARCH_FRONTIER_2026-07-15.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/RIGOR_CAMPAIGN_2026-07-15.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/TRADEABLE_STRATEGIES_CATALOGUE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/_extract2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/_extract3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/_extract_monthly.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/analyze_horizons.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/analyze_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/bt_covid_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/bt_gate_exec.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/bt_maker.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/build_panel_v3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/build_panel_v4.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/cushion_v1.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/cushion_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/cushion_v3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/delta_dial.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/delta_hedge.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/diag_cp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/eval_bymonth.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/eval_camp2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/fillability.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/gate_abs_refine.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/gate_clean.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/gate_param_sweep.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/gex_compute.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/improve_sharpe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/inspect_data.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/inverse_vol.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job1_r234.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job2_paper.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job3_xasset.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job4_samerows.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job5_earn.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job6_netcost.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_amort_agecurve.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_amort_transfer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_amort_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_amort_young.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_benchmark.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_crsp_panel.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_crsp_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_crsp_smallcap.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_domain2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_domain3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_domain_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_emfx_robust.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_emfx_trade.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_energy_h2h.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_frontier2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_frontier_h2h.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_fx_universe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_gate_basket.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_intraday_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_iqnfair.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_misspec_pilot.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_neural_iqn.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_power_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_probe_inv.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_regime.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_surface.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_universal_bench.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_weekly_selected.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_young_phase2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/job_young_vrp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/liq_cohort.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/panel_inspect.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/paper_trade.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/patch2_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/patch3_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/patch4_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/patch5_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/patch_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/put_struct.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/reactive_exit.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/regime_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/sp_compare.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/struct_test.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/tenor_ladder.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/autojobs/wrds_gex_pull.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_advsel.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_anatomy.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_covered.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_covid_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_gate_exec.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_maker.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_real.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_real2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/bt_sweep.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/crsp_smallcap_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/cushioning_deepdive_findings.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/diag2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/diag3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/diag_pkg.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/diag_pkg2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/diag_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/divbook.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/earnings.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/factor_robust.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/frozen_tail_stability.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/gate10.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/gate9.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/gpu_iqn_amort.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/gpu_iqn_frozen.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/improve_sharpe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/inspect_tpx.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/inspect_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/k5_comparison_result.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/liq_vrp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/paper_trade.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/paper_trade_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/pq-trade-backtest.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/probe5.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/pulled_gpu_iqn_mh.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/q2_names.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/q2_oos.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/q3_oos.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/q_export.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/q_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/recon6.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/recon_wk.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/risk_reversal.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/samerows_iqn_calibrated.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/samerows_iqn_garch.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/skew_light.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/stab11.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/strategy_by_year.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/strategy_research_state.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/strike_robust.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/timed7.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/trade_analysis.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/vrp_skew.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/wrds_pull_calls.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/wrds_pull_calls_light.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/wrds_pull_dtes.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/wrds_pull_run2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_private/xasset.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_public/README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_public/code/gpu_iqn_amort.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_public/code/gpu_iqn_frozen.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_public/code/job_amort_agecurve.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_public/code/job_amort_transfer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_public/code/job_amort_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_public/code/job_amort_young.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_github_public/code/pulled_gpu_iqn_mh.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'aa_killwinget.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'aa_run_ai2_edge.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_3way_done.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_amort_done.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_battery_done.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_check.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_edge_done.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_gpu_code.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_m5_done.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_m5v2_done.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_neural_done.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_probe.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_runner.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2_test.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2check.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j10_regime_gate_v2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j10_regime_gate_v2.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j11_frtb_bench.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j11_frtb_bench.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j11b_frtb_bench.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j11b_frtb_bench.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j12_frtb_evt.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j12_frtb_evt.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j13_frtb_caviar.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j13_frtb_caviar.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j14_frtb_neural.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j14_frtb_neural.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j15_neural_v2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j15_neural_v2.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j16_misspec_sig.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j16_misspec_sig.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j17_gibbs_aci.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j17_gibbs_aci.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j18_heston_sbc.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j18_heston_sbc.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j19_frtb_stress.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j19_frtb_stress.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j1_joint_tail.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j1_joint_tail.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j2_gibbs.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j2_gibbs.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j3_joint_tail_v2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j3_joint_tail_v2.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j4_hybrid.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j4_hybrid.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j5_hybrid_standalone.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j5_hybrid_standalone.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j6_misspec_frontier.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j6_misspec_frontier.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j7_detector_latency.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j7_detector_latency.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j8_regime_gate.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j8_regime_gate.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j8b_regime_gate.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j8b_regime_gate.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j9_neural_wiqn.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ai2jobs/done/j9_neural_wiqn.bat.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'amort_ablation.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'amort_full.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'amort_full_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'amort_gibbs.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'amort_gibbs.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'amort_gibbs_fast.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'auto_runner.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/cross_country.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/crypto_hourly.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/frtb_winners.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/fx_sig.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_amort_agecurve.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_crypto_study.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_fx_study.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_korea_deep.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_korea_study.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_markets_study.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_universal_bench.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/korea_sig.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/universal_sig.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/zz_git_push.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'c2chk.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'c2mon.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'camp2_deploy.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'camp_monitor.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'camp_status.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'check_dte.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ck2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'competitions/gefcom2014/PUT_FILES_HERE.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'competitions/m5/PUT_FILES_HERE.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'competitions/m5/m5_benchmark.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'competitions/m5_s1_feats.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'competitions/m5_s2_fit.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'detector_latency.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'detector_latency_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'edge_regime.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'edge_regime_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'eval_seas.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'fetch_k5.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frozen_fetch.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frozen_status.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_bench.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_bench_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_caviar.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_caviar_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_hybrid_evt.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_hybrid_evt_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_neural.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_neural_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_neural_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_neural_v2_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_stress.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frtb_stress_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'garch_gbm_hybrid.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'garch_gbm_hybrid_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'garch_hybrid_standalone.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'garch_hybrid_standalone_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gibbs_aci.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gibbs_aci_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gibbs_coverage.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gibbs_coverage_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gibbs_s1_feats.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gibbs_s2_fit.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'git_push_done.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'github_setup.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'go5.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'go6.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'go7.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'go8.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'go_frozen.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'godiv.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gogate.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gogate10.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gostab.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gowk.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gpu_k5_launch.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'heston_sbc.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'heston_sbc_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'horizon.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'industry_bench.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'industry_bench_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'joint_tail.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'joint_tail_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'joint_tail_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'joint_tail_v2_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'k5_check.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'k5_comparison_result.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'k5_status.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'launch1.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'm5_full.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'm5_full_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'm5_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'm5_v2_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'misspec_frontier.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'misspec_frontier_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'misspec_significance.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'misspec_significance_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'monT.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'monU.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'neural_ai2_launch.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'neural_fetch.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'neural_iqn.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'neural_iqn_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'neural_wiqn.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'neural_wiqn_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'p3.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'p4.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'p5.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'p6.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'p7.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'p8.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'p9.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pA.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pB.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pC.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pD.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pE.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'prog.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'prog2.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pulled_ai2_scripts.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'queue_ai2_inspect.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'regime_gate_eval.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'regime_gate_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'regime_gate_v2_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'restart_runner.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_advsel.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_analyze_horizons.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_analyze_wrds.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_anatomy.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_battery.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_bt_real.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_bt_real2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_covered.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_diag2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_diag3.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_diag_pkg.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_diag_pkg2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_diag_wrds.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_extract2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_extract3.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_extract_monthly.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_final.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_inspect_tpx.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_inspect_wrds.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_last.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_liqvrp.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_pull_dtes.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_queue2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_queue_all.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_research.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_setup_pgpass.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_skew.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_sweep.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_vrpskew.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_weekly_signal.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'run_wrds2.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'seasS_monitor.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'seas_monitor.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'setup_pgpass.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'three_way.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'three_way_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'trainS_deploy.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'train_camp_deploy.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'train_seas2_deploy.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'train_seas_deploy.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'unblock.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'unblock_runner.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'weekly_signal_gen.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_mon.bat', LF will be replaced by CRLF the next time Git touches it
+--- staged files --- 
+.gitignore
+BLOOMBERG_DATA_PLAN.md
+GIBBS_FINANCE_FIRST_PRINCIPLES.md
+MASTER_FRONTIER_SYNTHESIS.md
+RESEARCH_IDEAS_BACKLOG.md
+RUN_WRDS_NOW.bat
+_abl.py
+_disc2.txt
+_disc3.txt
+_extract2.py
+_extract3.py
+_extract_monthly.py
+_gibbs_cache.npz
+_github_private/APPLICATIONS.md
+_github_private/CONCEPT_CRYPTO_REGIME_SHIFT.md
+_github_private/DATA_NEEDS.md
+_github_private/GLOSSARY_CHEATSHEET.md
+_github_private/INSTITUTIONAL_BENCHMARKS_AND_DATA.md
+_github_private/PQ_QUANTILE_EXTENSION_SPEC.md
+_github_private/PQ_SHORT_VOL_VETO.md
+_github_private/PQ_TRADE_BACKTEST.md
+_github_private/PUBLICATION_PLAN.md
+_github_private/REGIME_ASYMMETRY_NOTE.md
+_github_private/RESEARCH_DIRECTIONS_V2.md
+_github_private/RESEARCH_FRONTIER_2026-07-15.md
+_github_private/RIGOR_CAMPAIGN_2026-07-15.md
+_github_private/TRADEABLE_STRATEGIES_CATALOGUE.md
+_github_private/_extract2.py
+_github_private/_extract3.py
+_github_private/_extract_monthly.py
+_github_private/amort_agecurve.json
+_github_private/amort_transfer.json
+_github_private/amort_v2.json
+_github_private/amort_young.json
+_github_private/analyze_horizons.py
+_github_private/analyze_wrds.py
+_github_private/autojobs/bt_covid_gate.py
+_github_private/autojobs/bt_gate_exec.py
+_github_private/autojobs/bt_maker.py
+_github_private/autojobs/build_panel_v3.py
+_github_private/autojobs/build_panel_v4.py
+_github_private/autojobs/cushion_v1.py
+_github_private/autojobs/cushion_v2.py
+_github_private/autojobs/cushion_v3.py
+_github_private/autojobs/delta_dial.py
+_github_private/autojobs/delta_hedge.py
+_github_private/autojobs/diag_cp.py
+_github_private/autojobs/eval_bymonth.py
+_github_private/autojobs/eval_camp2.py
+_github_private/autojobs/fillability.py
+_github_private/autojobs/gate_abs_refine.py
+_github_private/autojobs/gate_clean.py
+_github_private/autojobs/gate_param_sweep.py
+_github_private/autojobs/gex_compute.py
+_github_private/autojobs/improve_sharpe.py
+_github_private/autojobs/inspect_data.py
+_github_private/autojobs/inverse_vol.py
+_github_private/autojobs/job1_r234.py
+_github_private/autojobs/job2_paper.py
+_github_private/autojobs/job3_xasset.py
+_github_private/autojobs/job4_samerows.py
+_github_private/autojobs/job5_earn.py
+_github_private/autojobs/job6_netcost.py
+_github_private/autojobs/job_amort_agecurve.py
+_github_private/autojobs/job_amort_transfer.py
+_github_private/autojobs/job_amort_v2.py
+_github_private/autojobs/job_amort_young.py
+_github_private/autojobs/job_benchmark.py
+_github_private/autojobs/job_crsp_panel.py
+_github_private/autojobs/job_crsp_probe.py
+_github_private/autojobs/job_crsp_smallcap.py
+_github_private/autojobs/job_domain2.py
+_github_private/autojobs/job_domain3.py
+_github_private/autojobs/job_domain_probe.py
+_github_private/autojobs/job_emfx_robust.py
+_github_private/autojobs/job_emfx_trade.py
+_github_private/autojobs/job_energy_h2h.py
+_github_private/autojobs/job_frontier2.py
+_github_private/autojobs/job_frontier_h2h.py
+_github_private/autojobs/job_fx_universe.py
+_github_private/autojobs/job_gate_basket.py
+_github_private/autojobs/job_intraday_probe.py
+_github_private/autojobs/job_iqnfair.py
+_github_private/autojobs/job_misspec_pilot.py
+_github_private/autojobs/job_neural_iqn.py
+_github_private/autojobs/job_power_probe.py
+_github_private/autojobs/job_probe_inv.py
+_github_private/autojobs/job_regime.py
+_github_private/autojobs/job_surface.py
+_github_private/autojobs/job_universal_bench.py
+_github_private/autojobs/job_weekly_selected.py
+_github_private/autojobs/job_young_phase2.py
+_github_private/autojobs/job_young_vrp.py
+_github_private/autojobs/liq_cohort.py
+_github_private/autojobs/panel_inspect.py
+_github_private/autojobs/paper_trade.py
+_github_private/autojobs/patch2_trainer.py
+_github_private/autojobs/patch3_trainer.py
+_github_private/autojobs/patch4_trainer.py
+_github_private/autojobs/patch5_trainer.py
+_github_private/autojobs/patch_trainer.py
+_github_private/autojobs/put_struct.py
+_github_private/autojobs/reactive_exit.py
+_github_private/autojobs/regime_gate.py
+_github_private/autojobs/sp_compare.py
+_github_private/autojobs/struct_test.py
+_github_private/autojobs/tenor_ladder.py
+_github_private/autojobs/wrds_gex_pull.py
+_github_private/benchmark_sota.json
+_github_private/bt_advsel.py
+_github_private/bt_anatomy.py
+_github_private/bt_anatomy_results.json
+_github_private/bt_covered.py
+_github_private/bt_covered_results.json
+_github_private/bt_covid_gate.py
+_github_private/bt_covid_gate_results.json
+_github_private/bt_gate_exec.py
+_github_private/bt_gate_exec_results.json
+_github_private/bt_maker.py
+_github_private/bt_maker_results.json
+_github_private/bt_real.py
+_github_private/bt_real2.py
+_github_private/bt_real2_results.json
+_github_private/bt_real_results.json
+_github_private/bt_sweep.py
+_github_private/bt_sweep_results.json
+_github_private/camp2_bymonth.json
+_github_private/crsp_panel_results.json
+_github_private/crsp_probe.json
+_github_private/crsp_smallcap_results.json
+_github_private/cushion_v1_results.json
+_github_private/cushion_v2_results.json
+_github_private/cushion_v3_results.json
+_github_private/cushioning_deepdive_findings.md
+_github_private/delta_dial_results.json
+_github_private/delta_hedge_results.json
+_github_private/diag2.py
+_github_private/diag3.py
+_github_private/diag_pkg.py
+_github_private/diag_pkg2.py
+_github_private/diag_wrds.py
+_github_private/divbook.py
+_github_private/domain2.json
+_github_private/domain3.json
+_github_private/domain_probe.json
+_github_private/earnings.py
+_github_private/earnings_deep_results.json
+_github_private/earnings_results.json
+_github_private/emfx_robust.json
+_github_private/emfx_trade.json
+_github_private/energy_h2h.json
+_github_private/factor_robust.py
+_github_private/fillability_results.json
+_github_private/frontier2.json
+_github_private/frontier_h2h.json
+_github_private/frozen_tail_stability.json
+_github_private/fx_universe.json
+_github_private/gate10.py
+_github_private/gate9.py
+_github_private/gate_basket.json
+_github_private/gex_regime_results.json
+_github_private/gpu_iqn_amort.py
+_github_private/gpu_iqn_frozen.py
+_github_private/horizon_results.json
+_github_private/improve_sharpe.py
+_github_private/improve_sharpe_results.json
+_github_private/inspect_tpx.py
+_github_private/inspect_wrds.py
+_github_private/inverse_vol_results.json
+_github_private/iqn_fairvalue_results.json
+_github_private/k5_comparison_result.json
+_github_private/liq_cohort_results.json
+_github_private/liq_vrp.py
+_github_private/liq_vrp_results.json
+_github_private/misspec_pilot.json
+_github_private/netcost_weekly_vs_monthly.json
+_github_private/neural_iqn.json
+_github_private/paper_sim_results.json
+_github_private/paper_trade.py
+_github_private/paper_trade_summary.json
+_github_private/paper_trade_v2.py
+_github_private/pq-trade-backtest.md
+_github_private/probe5.py
+_github_private/pulled_gpu_iqn_mh.py
+_github_private/put_struct_results.json
+_github_private/q2_names.py
+_github_private/q2_oos.py
+_github_private/q3_oos.py
+_github_private/q_export.py
+_github_private/q_probe.py
+_github_private/reactive_exit_results.json
+_github_private/recon6.py
+_github_private/recon_wk.py
+_github_private/regime_detector.json
+_github_private/regime_gate_results.json
+_github_private/risk_reversal.py
+_github_private/risk_reversal_results.json
+_github_private/samerows_iqn_calibrated.json
+_github_private/samerows_iqn_garch.json
+_github_private/seas_bymonth_eval.json
+_github_private/skew_light.py
+_github_private/stab11.py
+_github_private/strategy_by_year.json
+_github_private/strategy_research_state.md
+_github_private/strike_robust.py
+_github_private/strike_robust_results.json
+_github_private/surface_rv_results.json
+_github_private/tau10_advsel_results.json
+_github_private/tenor_ladder_results.json
+_github_private/timed7.py
+_github_private/trade_analysis.py
+_github_private/trade_analysis_summary.json
+_github_private/vrp_skew.py
+_github_private/weekly_qside_results.json
+_github_private/weekly_selected.json
+_github_private/wrds_pull_calls.py
+_github_private/wrds_pull_calls_light.py
+_github_private/wrds_pull_dtes.py
+_github_private/wrds_pull_run2.py
+_github_private/xasset.py
+_github_private/xasset_oos_results.json
+_github_private/xasset_results.json
+_github_private/young_phase2_results.json
+_github_private/young_vrp_results.json
+_github_public/README.md
+_github_public/code/gpu_iqn_amort.py
+_github_public/code/gpu_iqn_frozen.py
+_github_public/code/job_amort_agecurve.py
+_github_public/code/job_amort_transfer.py
+_github_public/code/job_amort_v2.py
+_github_public/code/job_amort_young.py
+_github_public/code/pulled_gpu_iqn_mh.py
+_github_public/results/amort_agecurve.json
+_github_public/results/amort_transfer.json
+_github_public/results/amort_v2.json
+_github_public/results/amort_young.json
+_mrun2.txt
+_mrun3.txt
+_pyfind.txt
+aa_killwinget.bat
+aa_killwinget_out.txt
+aa_run_ai2_edge.bat
+ai2_3way_done.txt
+ai2_amort_done.txt
+ai2_battery_done.txt
+ai2_check.txt
+ai2_edge_done.txt
+ai2_gpu_code.txt
+ai2_m5_done.txt
+ai2_m5v2_done.txt
+ai2_neural_done.txt
+ai2_probe.txt
+ai2_runner.bat
+ai2_test.txt
+ai2check.txt
+ai2jobs/_hb.txt
+ai2jobs/done/j10_regime_gate_v2.bat
+ai2jobs/done/j10_regime_gate_v2.bat.log
+ai2jobs/done/j11_frtb_bench.bat
+ai2jobs/done/j11_frtb_bench.bat.log
+ai2jobs/done/j11b_frtb_bench.bat
+ai2jobs/done/j11b_frtb_bench.bat.log
+ai2jobs/done/j12_frtb_evt.bat
+ai2jobs/done/j12_frtb_evt.bat.log
+ai2jobs/done/j13_frtb_caviar.bat
+ai2jobs/done/j13_frtb_caviar.bat.log
+ai2jobs/done/j14_frtb_neural.bat
+ai2jobs/done/j14_frtb_neural.bat.log
+ai2jobs/done/j15_neural_v2.bat
+ai2jobs/done/j15_neural_v2.bat.log
+ai2jobs/done/j16_misspec_sig.bat
+ai2jobs/done/j16_misspec_sig.bat.log
+ai2jobs/done/j17_gibbs_aci.bat
+ai2jobs/done/j17_gibbs_aci.bat.log
+ai2jobs/done/j18_heston_sbc.bat
+ai2jobs/done/j18_heston_sbc.bat.log
+ai2jobs/done/j19_frtb_stress.bat
+ai2jobs/done/j19_frtb_stress.bat.log
+ai2jobs/done/j1_joint_tail.bat
+ai2jobs/done/j1_joint_tail.bat.log
+ai2jobs/done/j2_gibbs.bat
+ai2jobs/done/j2_gibbs.bat.log
+ai2jobs/done/j3_joint_tail_v2.bat
+ai2jobs/done/j3_joint_tail_v2.bat.log
+ai2jobs/done/j4_hybrid.bat
+ai2jobs/done/j4_hybrid.bat.log
+ai2jobs/done/j5_hybrid_standalone.bat
+ai2jobs/done/j5_hybrid_standalone.bat.log
+ai2jobs/done/j6_misspec_frontier.bat
+ai2jobs/done/j6_misspec_frontier.bat.log
+ai2jobs/done/j7_detector_latency.bat
+ai2jobs/done/j7_detector_latency.bat.log
+ai2jobs/done/j8_regime_gate.bat
+ai2jobs/done/j8_regime_gate.bat.log
+ai2jobs/done/j8b_regime_gate.bat
+ai2jobs/done/j8b_regime_gate.bat.log
+ai2jobs/done/j9_neural_wiqn.bat
+ai2jobs/done/j9_neural_wiqn.bat.log
+amort_ablation.json
+amort_agecurve.json
+amort_full.py
+amort_full_results.json
+amort_gibbs.json
+amort_gibbs.py
+amort_gibbs_fast.py
+analyze_horizons.py
+analyze_wrds.py
+auto_runner.bat
+autojobs/_heartbeat.txt
+autojobs/bt_covid_gate.py
+autojobs/bt_gate_exec.py
+autojobs/bt_maker.py
+autojobs/build_panel_v3.py
+autojobs/cross_country.py
+autojobs/crypto_hourly.py
+autojobs/cushion_v1.py
+autojobs/cushion_v2.py
+autojobs/cushion_v3.py
+autojobs/delta_dial.py
+autojobs/delta_hedge.py
+autojobs/diag_cp.py
+autojobs/eval_bymonth.py
+autojobs/eval_camp2.py
+autojobs/fillability.py
+autojobs/frtb_winners.py
+autojobs/fx_sig.py
+autojobs/gate_abs_refine.py
+autojobs/gate_clean.py
+autojobs/gate_param_sweep.py
+autojobs/gex_compute.py
+autojobs/improve_sharpe.py
+autojobs/inspect_data.py
+autojobs/job1_r234.py
+autojobs/job2_paper.py
+autojobs/job4_samerows.py
+autojobs/job5_earn.py
+autojobs/job6_netcost.py
+autojobs/job_amort_agecurve.py
+autojobs/job_crypto_study.py
+autojobs/job_fx_study.py
+autojobs/job_github_setup.bat
+autojobs/job_intraday_probe.py
+autojobs/job_iqnfair.py
+autojobs/job_korea_deep.py
+autojobs/job_korea_study.py
+autojobs/job_markets_study.py
+autojobs/job_probe_inv.py
+autojobs/job_surface.py
+autojobs/job_universal_bench.py
+autojobs/job_young_phase2.py
+autojobs/job_young_vrp.py
+autojobs/korea_sig.py
+autojobs/liq_cohort.py
+autojobs/paper_trade.py
+autojobs/put_struct.py
+autojobs/reactive_exit.py
+autojobs/regime_gate.py
+autojobs/sp_compare.py
+autojobs/struct_test.py
+autojobs/tenor_ladder.py
+autojobs/universal_sig.py
+autojobs/wrds_gex_pull.py
+autojobs/zz_git_push.bat
+battery_done.txt
+bt_advsel.py
+bt_anatomy.py
+bt_covered.py
+bt_covid_gate.py
+bt_covid_gate.txt
+bt_gate_exec.py
+bt_gate_exec.txt
+bt_maker.py
+bt_maker.txt
+bt_real.py
+bt_real2.py
+bt_sweep.py
+build_v4.txt
+c2chk.txt
+c2mon.txt
+calls_light.txt
+calls_pull.txt
+camp2_deploy.txt
+camp_monitor.txt
+camp_status.txt
+check_dte.bat
+ck2.bat
+cleanlaunch.txt
+competitions/gefcom2014/PUT_FILES_HERE.txt
+competitions/m5/PUT_FILES_HERE.txt
+competitions/m5/_m5_cache.npz
+competitions/m5/m5_benchmark.json
+competitions/m5_s1_feats.py
+competitions/m5_s2_fit.py
+cross_country.json
+crypto_hourly.json
+crypto_study.json
+cushion_v1.txt
+cushion_v2.txt
+cushion_v3.txt
+delta_dial.txt
+delta_hedge.txt
+deribit_status.txt
+detector_latency.py
+detector_latency_results.json
+diag2.py
+diag3.py
+diag_cp.txt
+diag_pkg_out.txt
+diag_wrds.py
+divbook.py
+drive_find.txt
+earnings.py
+earnings.txt
+edge_regime.py
+edge_regime_results.json
+eval_seas.txt
+evalc2.txt
+factor_robust.py
+factor_robust.txt
+factor_robust2.txt
+fetch_k5.bat
+fillability.txt
+final_done.txt
+forward_signals/weekly_signal_2026-07-20_meta.json
+frozen_fetch.bat
+frozen_status.txt
+frtb_bench.py
+frtb_bench_results.json
+frtb_caviar.py
+frtb_caviar_results.json
+frtb_hybrid_evt.py
+frtb_hybrid_evt_results.json
+frtb_neural.py
+frtb_neural_results.json
+frtb_neural_v2.py
+frtb_neural_v2_results.json
+frtb_stress.py
+frtb_stress_results.json
+frtb_winners.json
+fx_sig.json
+fx_study.json
+garch_gbm_hybrid.py
+garch_gbm_hybrid_results.json
+garch_hybrid_standalone.py
+garch_hybrid_standalone_results.json
+gate10.py
+gate9.py
+gate_abs_refine.txt
+gate_clean.txt
+gate_param_sweep.txt
+gex_pull.txt
+gex_regime.txt
+gh_install.txt
+gibbs_aci.py
+gibbs_aci_results.json
+gibbs_coverage.py
+gibbs_coverage_results.json
+gibbs_s1_feats.py
+gibbs_s2_fit.py
+git_push_done.txt
+github_setup.txt
+go5.bat
+go6.bat
+go6_out.txt
+go7.bat
+go7_out.txt
+go8.bat
+go8_out.txt
+go_frozen.bat
+godiv.bat
+godiv_out.txt
+gogate.bat
+gogate10.bat
+gogate10_out.txt
+gogate_out.txt
+gostab.bat
+gostab_out.txt
+gowk.bat
+gowk_out.txt
+gpu_k5_launch.txt
+graftq_main.pdf
+heston_sbc.py
+heston_sbc_results.json
+horizon.py
+horizon_results.json
+improve_sharpe.py
+improve_sharpe.txt
+industry_bench.py
+industry_bench_results.json
+inspect_tpx.py
+inspect_wrds.py
+inverse_vol.txt
+iqn_data_inspect.txt
+job8_skipped.txt
+joint_tail.py
+joint_tail_results.json
+joint_tail_v2.py
+joint_tail_v2_results.json
+k5_check.txt
+k5_comparison_result.json
+k5_status.txt
+korea_deep.json
+korea_sig.json
+last_done.txt
+launch1.txt
+liq_cohort.txt
+liq_vrp.py
+liq_vrp.txt
+m5_full.py
+m5_full_results.json
+m5_v2.py
+m5_v2_results.json
+misspec_frontier.py
+misspec_frontier_results.json
+misspec_significance.py
+misspec_significance_results.json
+monT.txt
+monU.txt
+neural_ai2_launch.txt
+neural_fetch.txt
+neural_iqn.py
+neural_iqn_results.json
+neural_wiqn.py
+neural_wiqn_results.json
+p3.txt
+p4.txt
+p5.txt
+p6.txt
+p7.txt
+p8.txt
+p9.txt
+pA.txt
+pB.txt
+pC.txt
+pD.txt
+pE.txt
+panel_fetch.txt
+paper_trade.py
+paper_trade_run.txt
+paper_trade_run2.txt
+paper_trade_run3.txt
+paper_trade_run4.txt
+paper_trade_run5.txt
+pgpass_setup_result.txt
+probe5.py
+probe5_disc.txt
+probe_inventory.txt
+prog.txt
+prog2.txt
+pull_check2.txt
+pull_check_out.txt
+pull_dtes_copy.txt
+pulled_ai2_scripts.txt
+put_struct.txt
+q2_names.py
+q2_oos.py
+q3_oos.py
+q_export.py
+q_probe.py
+queue_ai2_inspect.txt
+reactive_exit.txt
+recon6.py
+recon_wk.py
+regime_gate.txt
+regime_gate_eval.py
+regime_gate_results.json
+regime_gate_v2.py
+regime_gate_v2_results.json
+research_done.txt
+restart_runner.bat
+risk_reversal.py
+risk_reversal.txt
+run_advsel.bat
+run_analyze_horizons.bat
+run_analyze_wrds.bat
+run_anatomy.bat
+run_battery.bat
+run_bt_real.bat
+run_bt_real2.bat
+run_covered.bat
+run_diag2.bat
+run_diag3.bat
+run_diag_pkg.bat
+run_diag_pkg2.bat
+run_diag_wrds.bat
+run_extract2.bat
+run_extract3.bat
+run_extract_monthly.bat
+run_final.bat
+run_inspect_tpx.bat
+run_inspect_wrds.bat
+run_last.bat
+run_liqvrp.bat
+run_pull_dtes.bat
+run_queue2.bat
+run_queue_all.bat
+run_research.bat
+run_setup_pgpass.bat
+run_skew.bat
+run_sweep.bat
+run_vrpskew.bat
+run_weekly_signal.bat
+run_wrds2.bat
+runner_restart_marker.txt
+seasS_monitor.txt
+seas_monitor.txt
+setup_pgpass.bat
+skew_done.txt
+skew_light.py
+skew_light.txt
+sp_compare.txt
+stab11.py
+strike_robust.py
+strike_robust.txt
+struct_test.txt
+tenor_ladder.txt
+three_way.py
+three_way_results.json
+timed7.py
+tpx_inspect_out.txt
+trainS_deploy.txt
+train_camp_deploy.txt
+train_seas2_deploy.txt
+train_seas_deploy.txt
+unblock.bat
+unblock_marker.txt
+unblock_runner.bat
+universal_bench.json
+universal_sig.json
+vrp_skew.py
+vrp_skew.txt
+vrp_skew2.txt
+weekly_signal_done.txt
+weekly_signal_gen.py
+weekly_signal_run.log
+wrds_diag2_out.txt
+wrds_diag3_out.txt
+wrds_diag_out.txt
+wrds_inspect_out.txt
+wrds_launch_result.txt
+wrds_mon.bat
+wrds_mon_out.txt
+wrds_pull_calls.py
+wrds_pull_calls_light.py
+wrds_pull_dtes.py
+wrds_pull_run2.py
+xasset.txt
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'OWNER@DESKTOP-EQ5HVGJ.(none)')
+ed368c0 GBC research snapshot: VRP strategies, IQN/amortization, regime detector, reusable tooling
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+=== DONE Mon 07/20/2026 21:30:25.76 === 

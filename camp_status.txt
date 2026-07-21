@@ -1,0 +1,11 @@
+1435736 bash -c cd ~/gbc_pq && python3 patch3_trainer.py && python3 -c "import ast; ast.parse(open('gpu_iqn_mh.py').read()); print('SYNTAX OK')" && rm -f mh_ckpt_seas.pkl && setsid env MHFEATS=seas MHPANEL=mh_panel_v3.csv.gz MHVAR=seas python3 -u gpu_iqn_mh.py </dev/null >train_seas.log 2>&1 & echo LAUNCHED2
+1435740 python3 -u gpu_iqn_mh.py
+1446136 bash -c pgrep -af gpu_iqn_mh; echo ---LOG---; tail -6 ~/gbc_pq/train_camp.log 2>/dev/null
+---LOG---
+h=  5 n= 51820  0.05->0.367  0.25->0.406  0.50->0.444  0.75->0.521  0.95->0.584  
+h= 10 n= 51710  0.05->0.343  0.25->0.380  0.50->0.424  0.75->0.528  0.95->0.595  
+h= 21 n= 51490  0.05->0.349  0.25->0.392  0.50->0.439  0.75->0.521  0.95->0.575  
+h= 42 n= 51048  0.05->0.339  0.25->0.386  0.50->0.436  0.75->0.516  0.95->0.557  
+h= 63 n= 50606  0.05->0.332  0.25->0.383  0.50->0.436  0.75->0.512  0.95->0.546  
+DONE 259650
+UNBLOCKED 

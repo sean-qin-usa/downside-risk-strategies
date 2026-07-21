@@ -1,6 +1,6 @@
 import os, glob, json, time
 import numpy as np, pandas as pd
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 DB=[-0.5,-0.3,-0.2,-0.15,-0.10,-0.05,0.0]
 NROWS=400000   # cap per file: medians are stable, keeps runtime sane on slow disk
 bands={'short_5_15':('spreads_dte05_15_*.csv.gz',10,26),

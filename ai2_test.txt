@@ -1,0 +1,17 @@
+CONNECTED
+ai2
+bash: line 1: 1: command not found
+Python 3.10.12
+GPU 0: NVIDIA GeForce RTX 2070 (UUID: GPU-8f0aac91-834e-33b5-b9bf-3db84632dfdc)
+abl_fetch.txt
+adv_pull_done.txt
+adv_pull_log.txt
+broad_pull_done.txt
+broad_pull_log.txt
+code
+collector_reg.txt
+data
+delist2_done.txt
+delist2_log.txt
+torch 2.12.0+cu130 cuda True
+DONE_AI2_TEST 

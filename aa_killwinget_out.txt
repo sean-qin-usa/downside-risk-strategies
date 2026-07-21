@@ -1,0 +1,18 @@
+=== kill2 Fri 07/17/2026  0:02:41.09 === 
+--- msiexec before --- 
+
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+msiexec.exe                  22128 Services                   0     18,908 K
+ERROR: The process with PID 22128 (child process of PID 892) could not be terminated.
+Reason: Access is denied.
+--- cmd list --- 
+
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+cmd.exe                      13632 Console                    1      4,488 K
+cmd.exe                      10944 Console                    1      8,096 K
+cmd.exe                       5748 Console                    1      5,140 K
+--- winget again --- 
+ERROR: The process "winget.exe" not found.
+DONE2 

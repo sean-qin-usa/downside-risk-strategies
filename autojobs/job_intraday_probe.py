@@ -2,7 +2,7 @@
 import os, glob, json
 import pandas as pd
 OUT=r"C:\Users\OWNER\Claude\Projects\GBC Project\intraday_probe.txt"
-DESK=r"C:\Users\OWNER\Desktop\GBC_data"; RAW=os.path.join(DESK,"data","raw"); W=os.path.join(DESK,"data","wrds")
+DESK=r"C:\GBC_data"; RAW=os.path.join(DESK,"data","raw"); W=os.path.join(DESK,"data","wrds")
 L=[]
 def p(*a): L.append(" ".join(str(x) for x in a))
 def cols(f,n=3):

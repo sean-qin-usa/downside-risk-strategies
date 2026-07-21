@@ -1,0 +1,22 @@
+=== (1) FACTOR ATTRIBUTION: final strategy excess return regressed on factors ===
+  n_months=115, mean monthly ret=1.44%
+
+  Model: CAPM+size+value  (R2=0.18)
+    alpha     beta=+0.011  t=+6.67  ann alpha=13.4%/yr
+    mktrf     beta=+0.142  t=+3.76
+    smb       beta=+0.068  t=+1.09
+    hml       beta=+0.075  t=+1.82
+
+  Model: +short-vol factor  (R2=0.25)
+    alpha     beta=+0.011  t=+6.85  ann alpha=13.2%/yr
+    mktrf     beta=+0.064  t=+1.45
+    smb       beta=+0.073  t=+1.22
+    hml       beta=+0.062  t=+1.56
+    sv        beta=+0.697  t=+3.19
+
+=== (2) RV-WINDOW ROBUSTNESS (recompute VRP with different trailing RV) ===
+  RV window 10d: top-10% VRP SR = 2.58
+  RV window 21d: top-10% VRP SR = 2.57
+  RV window 42d: top-10% VRP SR = 2.85
+  RV window 63d: top-10% VRP SR = 2.22
+FACTORDONE

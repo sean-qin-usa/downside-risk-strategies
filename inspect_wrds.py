@@ -1,6 +1,6 @@
 import os, glob, gzip, time
 import pandas as pd
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"
+W=r"C:\GBC_data\data\wrds"
 out=r"C:\Users\OWNER\Claude\Projects\GBC Project\wrds_inspect_out.txt"
 L=[]; p=lambda s:L.append(str(s))
 p("INSPECT "+time.ctime())

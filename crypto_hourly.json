@@ -1,0 +1,4 @@
+{
+  "note": "Crypto HOURLY: GBM vs GARCH-t on hourly returns with per-hour Diebold-Mariano + resid_kurt. Bloomberg bdib intraday (limited history). High-frequency crypto is where IQN previously edged GARCH ~0.6%; test with significance.",
+  "per_coin": {}
+}

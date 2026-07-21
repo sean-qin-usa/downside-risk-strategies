@@ -1,0 +1,8 @@
+=== deploy Tue 07/14/2026 19:05:19.53 === 
+PATCHED ok
+---HEAD---
+head: cannot open 'train_camp.log' for reading---PROC---
+: No such file or directory
+1419959 bash -c cd ~/gbc_pq && python3 patch_trainer.py && rm -f mh_ckpt_camp.pkl && nohup env MHFEATS=camp MHPANEL=mh_panel_v3.csv.gz MHVAR=camp python3 -u gpu_iqn_mh.py > train_camp.log 2>&1 & sleep 3; echo ---HEAD---; head -5 train_camp.log; echo ---PROC---; pgrep -af gpu_iqn_mh
+1419963 python3 -u gpu_iqn_mh.py
+TRAINCAMPDEPLOYED 

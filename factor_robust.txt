@@ -1,0 +1,44 @@
+=== (1) FACTOR ATTRIBUTION: final strategy excess return regressed on factors ===
+  n_months=115, mean monthly ret=1.44%
+
+  Model: CAPM+size+value  (R2=0.18)
+    alpha     beta=+0.011  t=+6.67  ann alpha=13.4%/yr
+    mktrf     beta=+0.142  t=+3.76
+    smb       beta=+0.068  t=+1.09
+    hml       beta=+0.075  t=+1.82
+
+  Model: +short-vol factor  (R2=0.25)
+    alpha     beta=+0.011  t=+6.85  ann alpha=13.2%/yr
+    mktrf     beta=+0.064  t=+1.45
+    smb       beta=+0.073  t=+1.22
+    hml       beta=+0.062  t=+1.56
+    sv        beta=+0.697  t=+3.19
+
+=== (2) RV-WINDOW ROBUSTNESS (recompute VRP with different trailing RV) ===
+Traceback (most recent call last):
+  File "C:\Users\OWNER\Claude\Projects\GBC Project\factor_robust.py", line 49, in <module>
+    L['vrp_w']=L['iv']-L.apply(rvat,axis=1)
+                       ~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\frame.py", line 10374, in apply
+    return op.apply().__finalize__(self, method="apply")
+           ~~~~~~~~^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\apply.py", line 916, in apply
+    return self.apply_standard()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\apply.py", line 1063, in apply_standard
+    results, res_index = self.apply_series_generator()
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\apply.py", line 1081, in apply_series_generator
+    results[i] = self.func(v, *self.args, **self.kwargs)
+                 ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OWNER\Claude\Projects\GBC Project\factor_robust.py", line 48, in rvat
+    z=r[:row.dt]; return float(z.iloc[-1]) if len(z) else np.nan
+         ^^^^^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values. Did you mean: 'at'?

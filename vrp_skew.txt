@@ -1,0 +1,20 @@
+  2016 588 27s
+  2017 1185 42s
+  2018 1791 59s
+  2019 2428 79s
+  2020 3078 100s
+  2021 3764 124s
+  2022 4480 146s
+  2023 5200 164s
+  2024 5920 188s
+  2025 6398 204s
+Traceback (most recent call last):
+  File "C:\Users\OWNER\Claude\Projects\GBC Project\vrp_skew.py", line 53, in <module>
+    out=dict(n=len(df), corr_vrp_skew=round(float(df.vrp.corr(df.skew)),2),
+                                                  ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\series.py", line 2969, in corr
+    this, other = self.align(other, join="inner", copy=False)
+                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OWNER\anaconda3\Lib\site-packages\pandas\core\generic.py", line 10459, in align
+    raise TypeError(f"unsupported type: {type(other)}")
+TypeError: unsupported type: <class 'method'>

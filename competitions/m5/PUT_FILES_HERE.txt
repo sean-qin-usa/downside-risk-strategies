@@ -1,0 +1,20 @@
+M5 Forecasting — UNCERTAINTY track (Walmart retail demand, probabilistic)
+========================================================================
+WHERE TO GET IT (free, needs a Kaggle account):
+ - kaggle.com/competitions/m5-forecasting-uncertainty/data
+   (the UNCERTAINTY track — not the "accuracy" track). Same raw files as the
+   accuracy competition; the uncertainty track just scores quantiles.
+
+WHAT TO DOWNLOAD (place the CSVs directly in this folder):
+   sales_train_evaluation.csv   (daily unit sales per item-store)
+   calendar.csv                 (date -> events, SNAP flags)
+   sell_prices.csv              (weekly prices)
+   sample_submission.csv        (defines the 9 quantiles + aggregation levels)
+
+FLAGSHIP TO BEAT:
+ The winning M5-Uncertainty solutions were LightGBM QUANTILE models — i.e. exactly
+ our GBM-quantile family. So this is the cleanest "are we competition-grade?" test.
+
+SCORING METRIC: Weighted Scaled Pinball Loss (WSPL) over 9 quantiles
+ (0.005, 0.025, 0.165, 0.25, 0.5, 0.75, 0.835, 0.975, 0.995), across the 12
+ aggregation levels. I'll implement WSPL to match the leaderboard.

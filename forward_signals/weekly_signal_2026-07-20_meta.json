@@ -1,0 +1,18 @@
+{
+  "asof": "2026-07-20",
+  "strategy": "weekly-VRP-short-put",
+  "chain_source": "WRDS optionm.opprcd2025 @ 2025-08-29",
+  "snapshot_date": "2025-08-29",
+  "this_friday_ref": "2026-07-24",
+  "n_candidates": 94,
+  "n_selected": 10,
+  "vrp_cutoff": 0.1822,
+  "size_mult": 1.0,
+  "size_reason": "no prior weekly record -> full size 1.0x (first weekly run)",
+  "delta_target": -0.12,
+  "dte_window": [
+    5,
+    15
+  ],
+  "rv_window": 21
+}

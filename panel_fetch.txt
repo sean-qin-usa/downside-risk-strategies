@@ -1,0 +1,8 @@
+shape (450382, 24)
+cols ['date', 'lrv21', 'lewma', 'ret21', 'dsh', 'liv', 'skw', 'dd252', 'd200', 'lvix', 'slope', 'basis', 'v9r', 'ty10', 'curve', 'hyoas', 'igoas', 'mkt63', 'y5', 'y10', 'y21', 'y42', 'y63', 'tk']
+n_names 113
+names sample ['AAPL', 'ABNB', 'AFRM', 'AIG', 'AMC', 'AMD', 'AMZN', 'ARKK', 'ARM', 'BA', 'BABA', 'BAC', 'BB', 'BBBY', 'BBBYQ', 'BYND', 'C', 'CAT', 'CGC', 'CHWY']
+date range 2005-02-02 2026-07-02
+dates per name (median) 5043.0
+sample dates for AAPL: ['2005-02-02', '2005-02-03', '2005-02-04', '2005-02-07', '2005-02-08', '2005-02-09']
+FETCHDONE 

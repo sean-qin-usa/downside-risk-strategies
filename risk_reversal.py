@@ -4,7 +4,7 @@ import os, glob, time, math, json
 import numpy as np, pandas as pd
 from statistics import NormalDist
 ppf=NormalDist().inv_cdf
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 lg=lambda s:print(s,flush=True); t0=time.time()
 if not glob.glob(os.path.join(W,'calls_2016.csv.gz')):
     print("calls pull not complete yet (need calls_2016.csv.gz)"); raise SystemExit

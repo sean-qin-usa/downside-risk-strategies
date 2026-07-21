@@ -1,6 +1,6 @@
 import os, glob, json
 import numpy as np, pandas as pd
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 ch=sorted(glob.glob(os.path.join(W,"spx_chain_*.csv.gz")))
 if not ch or not os.path.exists(os.path.join(W,"spx_spot.csv")):
     print("GEX pull not complete yet"); raise SystemExit

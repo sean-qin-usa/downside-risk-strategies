@@ -1,5 +1,5 @@
 import os, numpy as np, pandas as pd
-PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"
+PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"; RAW=r"C:\GBC_data\data\raw"
 bt=pd.read_csv(os.path.join(PROJ,"exp_bt_series.csv"),parse_dates=['date'])[['date','s0']].dropna().sort_values('date')
 bt['ym']=bt.date.dt.to_period('M')
 ff=pd.read_csv(os.path.join(RAW,"ff_factors.csv"),header=None,names=['date','mktrf','smb','hml','rf'])

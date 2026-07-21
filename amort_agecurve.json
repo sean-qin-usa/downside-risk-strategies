@@ -1,0 +1,78 @@
+{
+  "note": "Amortized(from characteristics) vs own expanding-empirical vs own EWMA/param-t vs HIERARCHICAL BLEND (w_own=age/(age+60)). Pinball avg over 7 taus, by listing-age bucket. Lower=better.",
+  "n_heldout_names": 960,
+  "n_train_rows": 901028,
+  "shrinkage_K": 60.0,
+  "curve": {
+    "d15_30": {
+      "n": 9316,
+      "amortized": 0.836,
+      "empirical": 0.8929,
+      "param_t": 0.9122,
+      "blend": 0.8381,
+      "amort_vs_emp": 0.936,
+      "blend_vs_best_single": 1.003,
+      "winner": "amort"
+    },
+    "d30_60": {
+      "n": 18445,
+      "amortized": 0.8469,
+      "empirical": 0.8896,
+      "param_t": 0.9113,
+      "blend": 0.8527,
+      "amort_vs_emp": 0.952,
+      "blend_vs_best_single": 1.007,
+      "winner": "amort"
+    },
+    "d60_120": {
+      "n": 36284,
+      "amortized": 0.8015,
+      "empirical": 0.8305,
+      "param_t": 0.8556,
+      "blend": 0.8094,
+      "amort_vs_emp": 0.965,
+      "blend_vs_best_single": 1.01,
+      "winner": "amort"
+    },
+    "d120_250": {
+      "n": 76088,
+      "amortized": 0.7855,
+      "empirical": 0.8221,
+      "param_t": 0.8455,
+      "blend": 0.8043,
+      "amort_vs_emp": 0.955,
+      "blend_vs_best_single": 1.024,
+      "winner": "amort"
+    },
+    "d250_500": {
+      "n": 129831,
+      "amortized": 0.8919,
+      "empirical": 0.9396,
+      "param_t": 0.9538,
+      "blend": 0.925,
+      "amort_vs_emp": 0.949,
+      "blend_vs_best_single": 1.037,
+      "winner": "amort"
+    },
+    "d500_1000": {
+      "n": 171928,
+      "amortized": 1.0276,
+      "empirical": 1.0695,
+      "param_t": 1.0825,
+      "blend": 1.0614,
+      "amort_vs_emp": 0.961,
+      "blend_vs_best_single": 1.033,
+      "winner": "amort"
+    },
+    "d1000_2500": {
+      "n": 102185,
+      "amortized": 0.8204,
+      "empirical": 0.8424,
+      "param_t": 0.8585,
+      "blend": 0.84,
+      "amort_vs_emp": 0.974,
+      "blend_vs_best_single": 1.024,
+      "winner": "amort"
+    }
+  }
+}

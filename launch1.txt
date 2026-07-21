@@ -1,0 +1,6 @@
+=== Tue 07/14/2026 19:29:27.20 === 
+---PROC---
+1455672 bash -c cd ~/gbc_pq && rm -f mh_ckpt_seas.pkl train_seas.log && setsid --fork env MHFEATS=seas MHPANEL=mh_panel_v3.csv.gz MHVAR=seas python3 -u gpu_iqn_mh.py </dev/null >train_seas.log 2>&1; sleep 6; echo ---PROC---; pgrep -af 'python3 -u gpu_iqn_mh'; echo ---LOG---; tail -5 train_seas.log
+1455675 python3 -u gpu_iqn_mh.py
+---LOG---
+L1DONE 

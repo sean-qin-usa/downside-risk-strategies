@@ -1,0 +1,24 @@
+=== SIM fill@mid ===
+{
+  "fill": "mid",
+  "months_traded": 95,
+  "months_skipped": 21,
+  "n_tickets": 1506,
+  "avg_pnl_bp": 31.0,
+  "monthly_SR": 0.79,
+  "win_rate": 0.918,
+  "worst_month_pct": -6.86
+}
+=== SIM fill@bid ===
+{
+  "fill": "bid",
+  "months_traded": 95,
+  "months_skipped": 21,
+  "n_tickets": 1506,
+  "avg_pnl_bp": 14.9,
+  "monthly_SR": 0.38,
+  "win_rate": 0.916,
+  "worst_month_pct": -6.9
+}
+HARNESSDONE
+HARNESSJOBDONE 

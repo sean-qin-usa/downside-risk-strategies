@@ -1,0 +1,55 @@
+connecting...
+Loading library list...
+Done
+CONNECTED OK
+secids: 633
+calls 2005 133347
+calls 2006 145398
+calls 2007 172816
+calls 2008 247741
+calls 2009 241319
+calls 2010 262658
+calls 2011 352456
+calls 2012 366557
+calls 2013 490878
+calls 2014 1464329
+calls 2015 2149441
+calls 2016 2339386
+calls 2017 2146358
+calls 2018 2600412
+calls 2019 2627031
+calls 2020 3486627
+calls 2021 3578259
+calls 2022 3346300
+calls 2023 2953942
+calls 2024 3509567
+calls 2025 2544748
+calls 2026 ERR (psycopg2.errors.UndefinedTable) relation "optionm.opprcd2026" does not exist
+LINE 3:               from optionm.opprcd2026 o
+                        
+atmputs 2005 24871
+atmputs 2006 30553
+atmputs 2007 37272
+atmputs 2008 54808
+atmputs 2009 57375
+atmputs 2010 57829
+atmputs 2011 75134
+atmputs 2012 68784
+atmputs 2013 103424
+atmputs 2014 318646
+atmputs 2015 466417
+atmputs 2016 511975
+atmputs 2017 475729
+atmputs 2018 657721
+atmputs 2019 683919
+atmputs 2020 1013591
+atmputs 2021 866024
+atmputs 2022 734991
+atmputs 2023 580601
+atmputs 2024 624530
+atmputs 2025 472314
+atmputs 2026 ERR (psycopg2.errors.UndefinedTable) relation "optionm.opprcd2026" does not exist
+LINE 3:               from optionm.opprcd2026 o
+                        
+CALLS PULL DONE
+CALLSPULLDONE 

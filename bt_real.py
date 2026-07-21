@@ -3,7 +3,7 @@
 # premium survive its wider spread?  Universe = top-liquid names (fixed-strategy universe).
 import os, glob, json, time
 import numpy as np, pandas as pd
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 t0=time.time()
 def lg(s): print(s,flush=True)
 sec=pd.read_csv(os.path.join(W,"secids.csv")).dropna(subset=['secid']); sec['secid']=sec['secid'].astype(int)

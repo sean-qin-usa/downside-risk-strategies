@@ -1,0 +1,40 @@
+{
+  "note": "Neural weight-input IQN Q(tau|state,w) vs CCC-GARCH & DCC-lite on held-out portfolios. One net trained with w sampled from the simplex (incl. concentrated corners) prices every portfolio. Names ordered by pairwise corr so top-k are co-crash-prone. Lower pinball=better. Tests if amortizing across w beats per-basket multivariate GARCH, esp. concentrated. dev=cuda",
+  "n_days": 2658,
+  "n_names": 20,
+  "nu_p": 4.7,
+  "results": {
+    "equal": {
+      "wiqn": 0.3406,
+      "ccc": 0.1716,
+      "dcc": 0.1712
+    },
+    "top1": {
+      "wiqn": 0.3392,
+      "ccc": 0.1715,
+      "dcc": 0.1715
+    },
+    "top3": {
+      "wiqn": 0.3722,
+      "ccc": 0.1901,
+      "dcc": 0.1898
+    },
+    "top5": {
+      "wiqn": 0.3501,
+      "ccc": 0.1771,
+      "dcc": 0.1769
+    },
+    "random_mean": {
+      "wiqn": 0.3472,
+      "ccc": 0.1759,
+      "dcc": 0.1755
+    }
+  },
+  "winner_by_scheme": {
+    "equal": "dcc",
+    "top1": "dcc",
+    "top3": "dcc",
+    "top5": "dcc",
+    "random_mean": "dcc"
+  }
+}

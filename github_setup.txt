@@ -1,0 +1,424 @@
+=== git / gh availability === 
+git version 2.54.0.windows.1
+'gh' is not recognized as an internal or external command,
+operable program or batch file.
+=== gh auth status === 
+'gh' is not recognized as an internal or external command,
+operable program or batch file.
+=== init repo (code+docs+results only; big data ignored) === 
+Initialized empty Git repository in C:/Users/OWNER/Claude/Projects/GBC Project/.git/
+warning: in the working copy of 'APPLICATIONS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'CONCEPT_CRYPTO_REGIME_SHIFT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'DATA_NEEDS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'GLOSSARY_CHEATSHEET.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'INSTITUTIONAL_BENCHMARKS_AND_DATA.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'PQ_QUANTILE_EXTENSION_SPEC.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'PQ_SHORT_VOL_VETO.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'PQ_TRADE_BACKTEST.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'PUBLICATION_PLAN.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'REGIME_ASYMMETRY_NOTE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'RESEARCH_DIRECTIONS_V2.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'RESEARCH_FRONTIER_2026-07-15.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'RIGOR_CAMPAIGN_2026-07-15.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'TRADEABLE_STRATEGIES_CATALOGUE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_extract2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_extract3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '_extract_monthly.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'analyze_horizons.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'analyze_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/bt_covid_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/bt_gate_exec.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/bt_maker.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/build_panel_v3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/build_panel_v4.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/cushion_v1.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/cushion_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/cushion_v3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/delta_dial.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/delta_hedge.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/diag_cp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/eval_bymonth.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/eval_camp2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/fillability.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/gate_abs_refine.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/gate_clean.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/gate_param_sweep.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/gex_compute.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/improve_sharpe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/inspect_data.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/inverse_vol.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job1_r234.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job2_paper.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job3_xasset.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job4_samerows.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job5_earn.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job6_netcost.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_amort_transfer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_amort_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_amort_young.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_benchmark.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_crsp_panel.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_crsp_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_crsp_smallcap.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_domain2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_domain3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_domain_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_emfx_robust.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_emfx_trade.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_energy_h2h.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_frontier2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_frontier_h2h.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_fx_universe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_gate_basket.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_github_setup.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_intraday_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_iqnfair.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_misspec_pilot.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_neural_iqn.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_power_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_probe_inv.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_regime.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_surface.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_weekly_selected.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_young_phase2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/job_young_vrp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/liq_cohort.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/panel_inspect.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/paper_trade.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/patch2_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/patch3_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/patch4_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/patch5_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/patch_trainer.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/put_struct.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/reactive_exit.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/regime_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/sp_compare.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/struct_test.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/tenor_ladder.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'autojobs/wrds_gex_pull.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_advsel.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_anatomy.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_covered.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_covid_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_gate_exec.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_maker.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_real.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_real2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bt_sweep.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'crsp_smallcap_results.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cushioning_deepdive_findings.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'diag2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'diag3.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'diag_pkg.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'diag_pkg2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'diag_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'divbook.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'earnings.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'factor_robust.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frozen_tail_stability.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gate10.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gate9.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gpu_iqn_amort.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'gpu_iqn_frozen.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'improve_sharpe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'inspect_tpx.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'inspect_wrds.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'liq_vrp.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'paper_trade.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'paper_trade_v2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pq-trade-backtest.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'probe5.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pulled_gpu_iqn_mh.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q2_names.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q2_oos.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q3_oos.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q_export.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'q_probe.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'recon6.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'recon_wk.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'risk_reversal.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'samerows_iqn_calibrated.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'samerows_iqn_garch.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'skew_light.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'stab11.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'strategy_by_year.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'strategy_research_state.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'strike_robust.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'timed7.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'trade_analysis.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'vrp_skew.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_pull_calls.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_pull_calls_light.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_pull_dtes.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wrds_pull_run2.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'xasset.py', LF will be replaced by CRLF the next time Git touches it
+[master (root-commit) ed368c0] GBC research snapshot: VRP strategies, IQN/amortization, regime detector, reusable tooling
+ 264 files changed, 14465 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 APPLICATIONS.md
+ create mode 100644 CONCEPT_CRYPTO_REGIME_SHIFT.md
+ create mode 100644 CrossAsset_ETF_monthly_heatmap.png
+ create mode 100644 CrossAsset_ETF_monthly_overview.png
+ create mode 100644 DATA_NEEDS.md
+ create mode 100644 GLOSSARY_CHEATSHEET.md
+ create mode 100644 INSTITUTIONAL_BENCHMARKS_AND_DATA.md
+ create mode 100644 PQ_QUANTILE_EXTENSION_SPEC.md
+ create mode 100644 PQ_SHORT_VOL_VETO.md
+ create mode 100644 PQ_TRADE_BACKTEST.md
+ create mode 100644 PUBLICATION_PLAN.md
+ create mode 100644 REGIME_ASYMMETRY_NOTE.md
+ create mode 100644 RESEARCH_DIRECTIONS_V2.md
+ create mode 100644 RESEARCH_FRONTIER_2026-07-15.md
+ create mode 100644 RIGOR_CAMPAIGN_2026-07-15.md
+ create mode 100644 SingleName_VRP_WEEKLY_heatmap.png
+ create mode 100644 SingleName_VRP_WEEKLY_overview.png
+ create mode 100644 SingleName_VRP_WEEKLY_pnl_and_trades.png
+ create mode 100644 SingleName_VRP_WEEKLY_tradevol.png
+ create mode 100644 SingleName_VRP_monthly_heatmap.png
+ create mode 100644 SingleName_VRP_monthly_overview.png
+ create mode 100644 SingleName_VRP_monthly_tau10_heatmap.png
+ create mode 100644 SingleName_VRP_monthly_tau10_overview.png
+ create mode 100644 SingleName_VRP_monthly_tau10_pnl_and_trades.png
+ create mode 100644 SingleName_VRP_monthly_tau10_tradevol.png
+ create mode 100644 TRADEABLE_STRATEGIES_CATALOGUE.md
+ create mode 100644 Weekly_tenor_TOP10VRP_monthly_heatmap.png
+ create mode 100644 Weekly_tenor_TOP10VRP_monthly_overview.png
+ create mode 100644 Weekly_tenor_TOP10VRP_monthly_pnl_and_trades.png
+ create mode 100644 Weekly_tenor_TOP10VRP_monthly_tradevol.png
+ create mode 100644 _extract2.py
+ create mode 100644 _extract3.py
+ create mode 100644 _extract_monthly.py
+ create mode 100644 _qc_p1.png
+ create mode 100644 _qc_p12.png
+ create mode 100644 amort_transfer.json
+ create mode 100644 amort_v2.json
+ create mode 100644 amort_young.json
+ create mode 100644 analyze_horizons.py
+ create mode 100644 analyze_wrds.py
+ create mode 100644 autojobs/bt_covid_gate.py
+ create mode 100644 autojobs/bt_gate_exec.py
+ create mode 100644 autojobs/bt_maker.py
+ create mode 100644 autojobs/build_panel_v3.py
+ create mode 100644 autojobs/build_panel_v4.py
+ create mode 100644 autojobs/cushion_v1.py
+ create mode 100644 autojobs/cushion_v2.py
+ create mode 100644 autojobs/cushion_v3.py
+ create mode 100644 autojobs/delta_dial.py
+ create mode 100644 autojobs/delta_hedge.py
+ create mode 100644 autojobs/diag_cp.py
+ create mode 100644 autojobs/eval_bymonth.py
+ create mode 100644 autojobs/eval_camp2.py
+ create mode 100644 autojobs/fillability.py
+ create mode 100644 autojobs/gate_abs_refine.py
+ create mode 100644 autojobs/gate_clean.py
+ create mode 100644 autojobs/gate_param_sweep.py
+ create mode 100644 autojobs/gex_compute.py
+ create mode 100644 autojobs/improve_sharpe.py
+ create mode 100644 autojobs/inspect_data.py
+ create mode 100644 autojobs/inverse_vol.py
+ create mode 100644 autojobs/job1_r234.py
+ create mode 100644 autojobs/job2_paper.py
+ create mode 100644 autojobs/job3_xasset.py
+ create mode 100644 autojobs/job4_samerows.py
+ create mode 100644 autojobs/job5_earn.py
+ create mode 100644 autojobs/job6_netcost.py
+ create mode 100644 autojobs/job_amort_transfer.py
+ create mode 100644 autojobs/job_amort_v2.py
+ create mode 100644 autojobs/job_amort_young.py
+ create mode 100644 autojobs/job_benchmark.py
+ create mode 100644 autojobs/job_crsp_panel.py
+ create mode 100644 autojobs/job_crsp_probe.py
+ create mode 100644 autojobs/job_crsp_smallcap.py
+ create mode 100644 autojobs/job_domain2.py
+ create mode 100644 autojobs/job_domain3.py
+ create mode 100644 autojobs/job_domain_probe.py
+ create mode 100644 autojobs/job_emfx_robust.py
+ create mode 100644 autojobs/job_emfx_trade.py
+ create mode 100644 autojobs/job_energy_h2h.py
+ create mode 100644 autojobs/job_frontier2.py
+ create mode 100644 autojobs/job_frontier_h2h.py
+ create mode 100644 autojobs/job_fx_universe.py
+ create mode 100644 autojobs/job_gate_basket.py
+ create mode 100644 autojobs/job_github_setup.bat
+ create mode 100644 autojobs/job_intraday_probe.py
+ create mode 100644 autojobs/job_iqnfair.py
+ create mode 100644 autojobs/job_misspec_pilot.py
+ create mode 100644 autojobs/job_neural_iqn.py
+ create mode 100644 autojobs/job_power_probe.py
+ create mode 100644 autojobs/job_probe_inv.py
+ create mode 100644 autojobs/job_regime.py
+ create mode 100644 autojobs/job_surface.py
+ create mode 100644 autojobs/job_weekly_selected.py
+ create mode 100644 autojobs/job_young_phase2.py
+ create mode 100644 autojobs/job_young_vrp.py
+ create mode 100644 autojobs/liq_cohort.py
+ create mode 100644 autojobs/panel_inspect.py
+ create mode 100644 autojobs/paper_trade.py
+ create mode 100644 autojobs/patch2_trainer.py
+ create mode 100644 autojobs/patch3_trainer.py
+ create mode 100644 autojobs/patch4_trainer.py
+ create mode 100644 autojobs/patch5_trainer.py
+ create mode 100644 autojobs/patch_trainer.py
+ create mode 100644 autojobs/put_struct.py
+ create mode 100644 autojobs/reactive_exit.py
+ create mode 100644 autojobs/regime_gate.py
+ create mode 100644 autojobs/sp_compare.py
+ create mode 100644 autojobs/struct_test.py
+ create mode 100644 autojobs/tenor_ladder.py
+ create mode 100644 autojobs/wrds_gex_pull.py
+ create mode 100644 benchmark_sota.json
+ create mode 100644 bt_advsel.py
+ create mode 100644 bt_anatomy.py
+ create mode 100644 bt_anatomy_results.json
+ create mode 100644 bt_covered.py
+ create mode 100644 bt_covered_results.json
+ create mode 100644 bt_covid_gate.py
+ create mode 100644 bt_covid_gate_results.json
+ create mode 100644 bt_gate_exec.py
+ create mode 100644 bt_gate_exec_results.json
+ create mode 100644 bt_maker.py
+ create mode 100644 bt_maker_results.json
+ create mode 100644 bt_real.py
+ create mode 100644 bt_real2.py
+ create mode 100644 bt_real2_results.json
+ create mode 100644 bt_real_results.json
+ create mode 100644 bt_sweep.py
+ create mode 100644 bt_sweep_results.json
+ create mode 100644 bt_tau10_real.png
+ create mode 100644 camp2_bymonth.json
+ create mode 100644 crsp_panel_results.json
+ create mode 100644 crsp_probe.json
+ create mode 100644 crsp_smallcap_results.json
+ create mode 100644 cushion_v1_results.json
+ create mode 100644 cushion_v2_results.json
+ create mode 100644 cushion_v3_results.json
+ create mode 100644 cushioning_deepdive_findings.md
+ create mode 100644 delta_dial_results.json
+ create mode 100644 delta_hedge_results.json
+ create mode 100644 diag2.py
+ create mode 100644 diag3.py
+ create mode 100644 diag_pkg.py
+ create mode 100644 diag_pkg2.py
+ create mode 100644 diag_wrds.py
+ create mode 100644 divbook.py
+ create mode 100644 domain2.json
+ create mode 100644 domain3.json
+ create mode 100644 domain_probe.json
+ create mode 100644 earnings.py
+ create mode 100644 earnings_deep_results.json
+ create mode 100644 earnings_results.json
+ create mode 100644 emfx_robust.json
+ create mode 100644 emfx_trade.json
+ create mode 100644 energy_h2h.json
+ create mode 100644 factor_robust.py
+ create mode 100644 figA_strategies.png
+ create mode 100644 figB_divisions.png
+ create mode 100644 fig_book_vs_legs.png
+ create mode 100644 fig_cap_buckets.png
+ create mode 100644 fig_crypto.png
+ create mode 100644 fig_sizing.png
+ create mode 100644 fig_year_2025.png
+ create mode 100644 fig_yearly_regimes.png
+ create mode 100644 fillability_results.json
+ create mode 100644 final_results_pack.png
+ create mode 100644 forward_signals/sample_ticket_2025-08.json
+ create mode 100644 frontier2.json
+ create mode 100644 frontier_h2h.json
+ create mode 100644 frozen_tail_stability.json
+ create mode 100644 fx_universe.json
+ create mode 100644 gate10.py
+ create mode 100644 gate9.py
+ create mode 100644 gate_basket.json
+ create mode 100644 gate_basket.png
+ create mode 100644 gex_regime_results.json
+ create mode 100644 gpu_iqn_amort.py
+ create mode 100644 gpu_iqn_frozen.py
+ create mode 100644 horizon_results.json
+ create mode 100644 improve_sharpe.py
+ create mode 100644 improve_sharpe_results.json
+ create mode 100644 inspect_tpx.py
+ create mode 100644 inspect_wrds.py
+ create mode 100644 inverse_vol_results.json
+ create mode 100644 iqn_fairvalue_results.json
+ create mode 100644 liq_cohort_results.json
+ create mode 100644 liq_vrp.py
+ create mode 100644 liq_vrp_results.json
+ create mode 100644 master_book.png
+ create mode 100644 misspec_pilot.json
+ create mode 100644 netcost_weekly_vs_monthly.json
+ create mode 100644 neural_iqn.json
+ create mode 100644 paper_sim_results.json
+ create mode 100644 paper_trade.py
+ create mode 100644 paper_trade_summary.json
+ create mode 100644 paper_trade_v2.py
+ create mode 100644 pq-trade-backtest.md
+ create mode 100644 pq_diversification_reality.png
+ create mode 100644 pq_exact_timing.png
+ create mode 100644 pq_frozen_neural_stability.png
+ create mode 100644 pq_frozen_tail_stability.png
+ create mode 100644 pq_governor_pnl.png
+ create mode 100644 pq_live_equity.png
+ create mode 100644 pq_live_gate.png
+ create mode 100644 pq_model_stability.png
+ create mode 100644 pq_monthly_vs_spx.png
+ create mode 100644 pq_oos_forward_test.png
+ create mode 100644 pq_results_dashboard.png
+ create mode 100644 pq_strategy_scorecard.png
+ create mode 100644 pq_timing_overlay.png
+ create mode 100644 pq_weekly_vs_monthly.png
+ create mode 100644 probe5.py
+ create mode 100644 pulled_gpu_iqn_mh.py
+ create mode 100644 put_struct_results.json
+ create mode 100644 q2_names.py
+ create mode 100644 q2_oos.py
+ create mode 100644 q3_oos.py
+ create mode 100644 q_export.py
+ create mode 100644 q_probe.py
+ create mode 100644 reactive_exit_results.json
+ create mode 100644 recon6.py
+ create mode 100644 recon_wk.py
+ create mode 100644 regime_RUB.png
+ create mode 100644 regime_TRY.png
+ create mode 100644 regime_detector.json
+ create mode 100644 regime_gate_results.json
+ create mode 100644 risk_reversal.py
+ create mode 100644 risk_reversal_results.json
+ create mode 100644 rolling_metrics.png
+ create mode 100644 samerows_iqn_calibrated.json
+ create mode 100644 samerows_iqn_garch.json
+ create mode 100644 seas_bymonth_calibration.png
+ create mode 100644 seas_bymonth_eval.json
+ create mode 100644 skew_light.py
+ create mode 100644 stab11.py
+ create mode 100644 strategy_by_year.json
+ create mode 100644 strategy_by_year.png
+ create mode 100644 strategy_research_state.md
+ create mode 100644 strike_robust.py
+ create mode 100644 strike_robust_results.json
+ create mode 100644 surface_rv_results.json
+ create mode 100644 tau10_advsel.png
+ create mode 100644 tau10_advsel_results.json
+ create mode 100644 tau10_anatomy.png
+ create mode 100644 tenor_ladder_results.json
+ create mode 100644 timed7.py
+ create mode 100644 trade_analysis.py
+ create mode 100644 trade_analysis_summary.json
+ create mode 100644 trading_dashboard2.png
+ create mode 100644 vrp_skew.py
+ create mode 100644 weekly_qside_results.json
+ create mode 100644 weekly_selected.json
+ create mode 100644 wrds_execution_costs.png
+ create mode 100644 wrds_pull_calls.py
+ create mode 100644 wrds_pull_calls_light.py
+ create mode 100644 wrds_pull_dtes.py
+ create mode 100644 wrds_pull_run2.py
+ create mode 100644 xasset.py
+ create mode 100644 xasset_oos_results.json
+ create mode 100644 xasset_results.json
+ create mode 100644 yearly_by_strategy.png
+ create mode 100644 young_phase2_results.json
+ create mode 100644 young_vrp_results.json
+=== current remotes === 
+ed368c0 GBC research snapshot: VRP strategies, IQN/amortization, regime detector, reusable tooling
+DONE_GITHUB 

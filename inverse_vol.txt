@@ -1,0 +1,11 @@
+C:\Users\OWNER\Claude\Projects\GBC Project\autojobs\inverse_vol.py:13: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  iv=df.groupby('ym',group_keys=False).apply(ivw)
+{
+  "n": 58541,
+  "equal_weight_SR": 0.83,
+  "equal_avg_bp": 43.2,
+  "inverse_vol_SR": 0.69,
+  "inverse_vol_worst": -17.28,
+  "equal_worst": -17.25
+}
+INVVOLDONE

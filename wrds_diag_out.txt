@@ -1,0 +1,82 @@
+DIAG Mon Jul 13 18:50:55 2026
+base exists: True
+HEARTBEAT: Mon 07/13/2026 18:50:50.33
+heartbeat_mtime: Mon Jul 13 18:50:50 2026
+QUEUE pending: []
+QUEUE/DONE newest 18:
+  Mon Jul 13 08:10:43 2026  job_wrds_pulls3.bat.log  188b
+  Mon Jul 13 08:10:39 2026  job_ping2.bat.log  95b
+  Mon Jul 13 03:04:51 2026  job_ping2.bat  75b
+  Mon Jul 13 02:58:01 2026  job_wrds_pulls3.bat  246b
+  Mon Jul 13 02:56:41 2026  job_wrds_pulls2.bat.log  68b
+  Mon Jul 13 02:56:34 2026  job_wrds_pulls2.bat.skipped  319b
+  Mon Jul 13 02:56:11 2026  job_wrds_pulls.bat.log  105b
+  Sun Jul 12 02:06:26 2026  job_snapshot_now.bat.log  109b
+  Sun Jul 12 02:05:50 2026  job_snapshot_now.bat  138b
+  Sun Jul 12 02:03:27 2026  job_wrds_pulls.bat  240b
+  Sun Jul  5 20:35:11 2026  job_mcaps.bat.log  95b
+  Sun Jul  5 20:34:31 2026  job_mcaps.bat  242b
+  Sun Jul  5 20:32:43 2026  job_register_collector.bat.log  165b
+  Sun Jul  5 20:32:18 2026  job_register_collector.bat  912b
+  Sun Jul  5 20:22:09 2026  job_deribit_probe.bat.log  111b
+  Sun Jul  5 20:21:27 2026  job_deribit_probe.bat  193b
+  Sun Jul  5 20:00:26 2026  job_fair_ablate3.bat.log  109b
+  Sun Jul  5 19:53:21 2026  job_fair_ablate3.bat  759b
+
+----- NEWEST WRDS LOG: job_wrds_pulls3.bat.log -----
+=== running job_wrds_pulls3.bat at Mon 07/13/2026  8:10:39.74 === 
+The process cannot access the file because it is being used by another process.
+=== finished job_wrds_pulls3.bat === 
+
+PGPASS C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf: missing
+PGPASS C:\Users\OWNER\pgpass.conf: missing
+
+data/wrds (0 files) newest 14:
+
+data/raw (1578 files) newest 14:
+  Sun Jul  5 20:35:10 2026  panel_mcaps.csv  103315b
+  Sun Jul  5 20:22:09 2026  DERIBIT_PROBE.json  201b
+  Sun Jul  5 20:22:09 2026  deribit_chain_snapshot_BTC.json  439578b
+  Sun Jul  5 14:32:08 2026  dvol_ETH.csv  75853b
+  Sun Jul  5 14:32:07 2026  dvol_BTC.csv  74765b
+  Sun Jul  5 12:22:43 2026  EARN_PULL_SUMMARY.txt  2319b
+  Sun Jul  5 12:22:43 2026  earn_ZM.csv  2632b
+  Sun Jul  5 12:22:43 2026  earn_XOM.csv  11331b
+  Sun Jul  5 12:22:43 2026  earn_WMT.csv  11331b
+  Sun Jul  5 12:22:43 2026  earn_WAMUQ.csv  3755b
+  Sun Jul  5 12:22:42 2026  earn_W.csv  3661b
+  Sun Jul  5 12:22:42 2026  earn_VZ.csv  11133b
+  Sun Jul  5 12:22:42 2026  earn_UPST.csv  2556b
+  Sun Jul  5 12:22:41 2026  earn_UNH.csv  11331b
+
+results/pq_trade (123 files) newest 14:
+  Mon Jul 13 03:07:08 2026  accuracy.json  681b
+  Sun Jul 12 02:07:08 2026  ranker.json  381b
+  Sun Jul 12 02:05:18 2026  yearly_sr.json  2169b
+  Sun Jul  5 20:44:19 2026  pq_56_year.py  1534b
+  Sun Jul  5 20:44:19 2026  fig_year_2025.png  90057b
+  Sun Jul  5 20:37:45 2026  pq_54_capsflat.py  2624b
+  Sun Jul  5 20:37:45 2026  caps_flat.json  3329b
+  Sun Jul  5 20:37:45 2026  fig_cap_buckets.png  74928b
+  Sun Jul  5 20:37:45 2026  fig_yearly_regimes.png  119498b
+  Sun Jul  5 20:23:31 2026  pq_53_cleanfigs.py  3376b
+  Sun Jul  5 20:23:31 2026  pq_52_sizing.py  2668b
+  Sun Jul  5 20:23:31 2026  pq_51_crypto2.py  2583b
+  Sun Jul  5 20:23:31 2026  crypto_digital.json  1083b
+  Sun Jul  5 20:23:31 2026  sizing.json  585b
+
+code/pq_trade (26 files) newest 14:
+  Sun Jul  5 19:53:09 2026  gpu  4096b
+  Sun Jul  5 02:09:21 2026  pq_31_iqn_rerun.py  2632b
+  Sun Jul  5 00:12:06 2026  pq_26_strategies.py  5925b
+  Sat Jul  4 23:49:50 2026  pq_22_mh_trade.py  5818b
+  Sat Jul  4 23:16:52 2026  pq_20_termstruct.py  4333b
+  Sat Jul  4 23:16:52 2026  pq_19_mhprep.py  3769b
+  Sat Jul  4 22:06:16 2026  pq_18_grand.py  7496b
+  Sat Jul  4 22:06:16 2026  pq_17_gate.py  2563b
+  Sat Jul  4 21:43:05 2026  pq_16_adv.py  6756b
+  Sat Jul  4 21:43:05 2026  pq_15_eras.py  3033b
+  Sat Jul  4 20:54:41 2026  pq_12_regime_matrix.py  3063b
+  Sat Jul  4 20:54:41 2026  pq_14_panel.py  5770b
+  Sat Jul  4 20:54:41 2026  pq_13_legB2004.py  2643b
+  Sat Jul  4 18:20:02 2026  pq_10_holdout.py  3012b

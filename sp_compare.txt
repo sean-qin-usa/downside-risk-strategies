@@ -1,0 +1,15 @@
+C:\Users\OWNER\Claude\Projects\GBC Project\autojobs\sp_compare.py:8: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  mm=(1+ff.set_index('date')['mkt']).resample('M').prod()-1   # monthly S&P total return
+
+=== 1995-2026  (n=357 months) ===
+  S&P (total return):   CAGR  12.3%   Sharpe 0.83   maxDD -44.7%
+  Strategy vol-matched: CAGR  16.3%   Sharpe 1.07   maxDD -44.7%   (levered 6.2x to match S&P vol)
+  terminal wealth ratio strat/S&P: 3.60x
+  corr(strategy, S&P monthly): 0.37
+
+=== 2016-2026 (last 10y)  (n=119 months) ===
+  S&P (total return):   CAGR  17.3%   Sharpe 1.10   maxDD -24.9%
+  Strategy vol-matched: CAGR  10.0%   Sharpe 0.70   maxDD -39.0%   (levered 5.4x to match S&P vol)
+  terminal wealth ratio strat/S&P: 0.55x
+  corr(strategy, S&P monthly): 0.56
+SPDONE 

@@ -1,0 +1,63 @@
+{
+  "note": "Amortized-as-prior (Gibbs): q=amort_med+a+b*(amort_q-amort_med); a,b shrink to prior(0,1), weight w=age/(age+80). vs pure amortized and own-only parametric. In-sandbox CRSP, 160 names (70 held out).",
+  "K": 80.0,
+  "n_train": 110000,
+  "curve": {
+    "d15_30": {
+      "n": 1047,
+      "amortized": 0.7549,
+      "gibbs_prior": 0.7638,
+      "own_parametric": 0.8723,
+      "gibbs_vs_amort": 1.0117,
+      "gibbs_improves": false
+    },
+    "d30_60": {
+      "n": 2050,
+      "amortized": 0.6211,
+      "gibbs_prior": 0.6325,
+      "own_parametric": 0.6973,
+      "gibbs_vs_amort": 1.0184,
+      "gibbs_improves": false
+    },
+    "d60_120": {
+      "n": 4080,
+      "amortized": 0.6682,
+      "gibbs_prior": 0.6853,
+      "own_parametric": 0.7197,
+      "gibbs_vs_amort": 1.0256,
+      "gibbs_improves": false
+    },
+    "d120_250": {
+      "n": 8706,
+      "amortized": 0.6223,
+      "gibbs_prior": 0.6443,
+      "own_parametric": 0.6639,
+      "gibbs_vs_amort": 1.0355,
+      "gibbs_improves": false
+    },
+    "d250_500": {
+      "n": 16053,
+      "amortized": 0.7066,
+      "gibbs_prior": 0.7323,
+      "own_parametric": 0.7448,
+      "gibbs_vs_amort": 1.0363,
+      "gibbs_improves": false
+    },
+    "d500_1000": {
+      "n": 26974,
+      "amortized": 0.7709,
+      "gibbs_prior": 0.8019,
+      "own_parametric": 0.8106,
+      "gibbs_vs_amort": 1.0403,
+      "gibbs_improves": false
+    },
+    "d1000_2700": {
+      "n": 57681,
+      "amortized": 0.6258,
+      "gibbs_prior": 0.6529,
+      "own_parametric": 0.6563,
+      "gibbs_vs_amort": 1.0434,
+      "gibbs_improves": false
+    }
+  }
+}

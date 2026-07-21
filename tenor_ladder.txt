@@ -1,0 +1,30 @@
+  spreads_[12]*.cs 2016 13s
+  spreads_[12]*.cs 2017 20s
+  spreads_[12]*.cs 2018 28s
+  spreads_[12]*.cs 2019 37s
+  spreads_[12]*.cs 2020 47s
+  spreads_[12]*.cs 2021 57s
+  spreads_[12]*.cs 2022 65s
+  spreads_[12]*.cs 2023 73s
+  spreads_[12]*.cs 2024 82s
+  spreads_[12]*.cs 2025 89s
+  spreads_dte05_15 2016 95s
+  spreads_dte05_15 2017 101s
+  spreads_dte05_15 2018 106s
+  spreads_dte05_15 2019 112s
+  spreads_dte05_15 2020 119s
+  spreads_dte05_15 2021 127s
+  spreads_dte05_15 2022 134s
+  spreads_dte05_15 2023 142s
+  spreads_dte05_15 2024 150s
+  spreads_dte05_15 2025 156s
+{
+  "monthly_SR": 1.13,
+  "monthly_avg_bp": 45.2,
+  "weekly_SR": 0.91,
+  "weekly_avg_bp": 15.7,
+  "blend_50_50_SR": 1.14,
+  "blend_worst": -5.4,
+  "monthly_worst": -6.86
+}
+TENORDONE

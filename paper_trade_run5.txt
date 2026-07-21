@@ -1,0 +1,9 @@
+=== SIM fill@mid ===
+Traceback (most recent call last):
+  File "C:\Users\OWNER\Claude\Projects\GBC Project\paper_trade.py", line 124, in <module>
+    print("=== SIM fill@%s ==="%fl); sim(fl)
+                                     ~~~^^^^
+  File "C:\Users\OWNER\Claude\Projects\GBC Project\paper_trade.py", line 108, in sim
+    allmix=sorted(set(traded.index)|set(skip_periods))
+TypeError: '<' not supported between instances of 'Period' and 'str'
+HARNESS5DONE 

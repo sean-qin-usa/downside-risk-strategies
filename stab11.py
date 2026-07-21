@@ -2,7 +2,7 @@
 import os
 import numpy as np, pandas as pd
 from arch import arch_model
-RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"
+RAW=r"C:\GBC_data\data\raw"
 OUT=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 log=[]
 def L(*a): log.append(" ".join(str(x) for x in a))

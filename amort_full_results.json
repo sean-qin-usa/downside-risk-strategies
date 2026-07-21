@@ -1,0 +1,81 @@
+{
+  "note": "FULL-SCALE amortization validation on complete CRSP panel (run on ai2). Age-curve (amortized vs own-parametric by listing age) + feature ablation.",
+  "n_rows": 1318905,
+  "n_names": 720,
+  "n_holdout": 288,
+  "age_curve": {
+    "d15_30": {
+      "n": 4302,
+      "amortized": 0.6849,
+      "own_param": 0.7588,
+      "amort_vs_own": 0.9026
+    },
+    "d30_60": {
+      "n": 8542,
+      "amortized": 0.6471,
+      "own_param": 0.7016,
+      "amort_vs_own": 0.9222
+    },
+    "d60_120": {
+      "n": 16814,
+      "amortized": 0.6035,
+      "own_param": 0.6483,
+      "amort_vs_own": 0.9309
+    },
+    "d120_250": {
+      "n": 35478,
+      "amortized": 0.6174,
+      "own_param": 0.6604,
+      "amort_vs_own": 0.9348
+    },
+    "d250_500": {
+      "n": 64336,
+      "amortized": 0.6697,
+      "own_param": 0.7056,
+      "amort_vs_own": 0.9491
+    },
+    "d500_1000": {
+      "n": 105254,
+      "amortized": 0.6676,
+      "own_param": 0.7079,
+      "amort_vs_own": 0.9431
+    },
+    "d1000_2700": {
+      "n": 237603,
+      "amortized": 0.5789,
+      "own_param": 0.6138,
+      "amort_vs_own": 0.943
+    }
+  },
+  "ablation_ALL_pinball": 0.5508,
+  "ablation": {
+    "ALL": {
+      "pinball": 0.5508,
+      "pct_vs_ALL": 0.0
+    },
+    "no_lags": {
+      "pinball": 0.5523,
+      "pct_vs_ALL": 0.3
+    },
+    "no_age": {
+      "pinball": 0.5523,
+      "pct_vs_ALL": 0.3
+    },
+    "no_chars": {
+      "pinball": 0.5535,
+      "pct_vs_ALL": 0.5
+    },
+    "own_recent_only": {
+      "pinball": 0.5553,
+      "pct_vs_ALL": 0.8
+    },
+    "no_realized_vol": {
+      "pinball": 0.5562,
+      "pct_vs_ALL": 1.0
+    },
+    "chars_only": {
+      "pinball": 0.5672,
+      "pct_vs_ALL": 3.0
+    }
+  }
+}

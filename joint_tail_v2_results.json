@@ -1,0 +1,205 @@
+{
+  "note": "Co-crash v2: does the direct GBM portfolio-quantile edge over multivariate GARCH emerge as the basket gets CONCENTRATED (few high-comovement names) where co-crash is not diversified away? Names ordered by avg pairwise corr; basket = top-K. Per K: overall + crisis-decile pinball for CCC-GARCH / DCC-lite / GBM_direct. Win = GBM pinball < min(CCC,DCC), esp. in crisis.",
+  "baskets": [
+    {
+      "K": 2,
+      "avg_pairwise_corr": 0.506,
+      "n_test": 1060,
+      "nu_p": 5.0,
+      "all": {
+        "CCC": {
+          "pinball": 0.2047,
+          "breach_2p5": 0.0217,
+          "n": 1060
+        },
+        "DCC": {
+          "pinball": 0.2046,
+          "breach_2p5": 0.0217,
+          "n": 1060
+        },
+        "GBM": {
+          "pinball": 0.2109,
+          "breach_2p5": 0.0443,
+          "n": 1060
+        }
+      },
+      "crisis": {
+        "CCC": {
+          "pinball": 0.2814,
+          "breach_2p5": 0.0,
+          "n": 106
+        },
+        "DCC": {
+          "pinball": 0.2826,
+          "breach_2p5": 0.0,
+          "n": 106
+        },
+        "GBM": {
+          "pinball": 0.2929,
+          "breach_2p5": 0.066,
+          "n": 106
+        }
+      }
+    },
+    {
+      "K": 3,
+      "avg_pairwise_corr": 0.501,
+      "n_test": 1060,
+      "nu_p": 4.8,
+      "all": {
+        "CCC": {
+          "pinball": 0.1892,
+          "breach_2p5": 0.0274,
+          "n": 1060
+        },
+        "DCC": {
+          "pinball": 0.1889,
+          "breach_2p5": 0.0311,
+          "n": 1060
+        },
+        "GBM": {
+          "pinball": 0.1936,
+          "breach_2p5": 0.034,
+          "n": 1060
+        }
+      },
+      "crisis": {
+        "CCC": {
+          "pinball": 0.2624,
+          "breach_2p5": 0.0189,
+          "n": 106
+        },
+        "DCC": {
+          "pinball": 0.2634,
+          "breach_2p5": 0.0283,
+          "n": 106
+        },
+        "GBM": {
+          "pinball": 0.2761,
+          "breach_2p5": 0.0472,
+          "n": 106
+        }
+      }
+    },
+    {
+      "K": 5,
+      "avg_pairwise_corr": 0.494,
+      "n_test": 1060,
+      "nu_p": 4.7,
+      "all": {
+        "CCC": {
+          "pinball": 0.1767,
+          "breach_2p5": 0.0274,
+          "n": 1060
+        },
+        "DCC": {
+          "pinball": 0.1763,
+          "breach_2p5": 0.033,
+          "n": 1060
+        },
+        "GBM": {
+          "pinball": 0.1821,
+          "breach_2p5": 0.0415,
+          "n": 1060
+        }
+      },
+      "crisis": {
+        "CCC": {
+          "pinball": 0.2529,
+          "breach_2p5": 0.0094,
+          "n": 106
+        },
+        "DCC": {
+          "pinball": 0.2515,
+          "breach_2p5": 0.0094,
+          "n": 106
+        },
+        "GBM": {
+          "pinball": 0.2703,
+          "breach_2p5": 0.0283,
+          "n": 106
+        }
+      }
+    },
+    {
+      "K": 10,
+      "avg_pairwise_corr": 0.485,
+      "n_test": 1060,
+      "nu_p": 4.6,
+      "all": {
+        "CCC": {
+          "pinball": 0.1715,
+          "breach_2p5": 0.0236,
+          "n": 1060
+        },
+        "DCC": {
+          "pinball": 0.1707,
+          "breach_2p5": 0.0292,
+          "n": 1060
+        },
+        "GBM": {
+          "pinball": 0.1767,
+          "breach_2p5": 0.0472,
+          "n": 1060
+        }
+      },
+      "crisis": {
+        "CCC": {
+          "pinball": 0.2583,
+          "breach_2p5": 0.0283,
+          "n": 106
+        },
+        "DCC": {
+          "pinball": 0.2583,
+          "breach_2p5": 0.0189,
+          "n": 106
+        },
+        "GBM": {
+          "pinball": 0.2836,
+          "breach_2p5": 0.0472,
+          "n": 106
+        }
+      }
+    },
+    {
+      "K": 25,
+      "avg_pairwise_corr": 0.467,
+      "n_test": 1060,
+      "nu_p": 4.7,
+      "all": {
+        "CCC": {
+          "pinball": 0.1714,
+          "breach_2p5": 0.0236,
+          "n": 1060
+        },
+        "DCC": {
+          "pinball": 0.1707,
+          "breach_2p5": 0.0311,
+          "n": 1060
+        },
+        "GBM": {
+          "pinball": 0.1757,
+          "breach_2p5": 0.034,
+          "n": 1060
+        }
+      },
+      "crisis": {
+        "CCC": {
+          "pinball": 0.2701,
+          "breach_2p5": 0.0566,
+          "n": 106
+        },
+        "DCC": {
+          "pinball": 0.2715,
+          "breach_2p5": 0.0377,
+          "n": 106
+        },
+        "GBM": {
+          "pinball": 0.2838,
+          "breach_2p5": 0.066,
+          "n": 106
+        }
+      }
+    }
+  ]
+}

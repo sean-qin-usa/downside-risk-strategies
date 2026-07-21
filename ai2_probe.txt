@@ -1,0 +1,28 @@
+HOST=ai2
+---TRAINER---
+-rw-rw-r-- 1 steveqin steveqin  246 Jul  5 00:45 /home/steveqin/gbc_pq/ai2_relaunch_mh.sh
+-rwxrwxr-x 1 steveqin steveqin 1083 Jul  4 18:10 /home/steveqin/gbc_pq/ai2_setup_run.sh
+-rw-rw-r-- 1 steveqin steveqin  362 Jul  5 12:22 /home/steveqin/gbc_pq/ai2_train_variants.sh
+-rw-rw-r-- 1 steveqin steveqin 7375 Jul 14 20:16 /home/steveqin/gbc_pq/gpu_iqn_mh.py
+-rwxrwxr-x 1 steveqin steveqin  636 Jul  4 18:08 /home/steveqin/gbc_pq/RUN_PQ_GPU.sh
+---PANELS---
+-rw-rw-r-- 1 steveqin steveqin 28064539 Jul  5 00:06 /home/steveqin/gbc_pq/mh_panel.csv.gz
+-rw-rw-r-- 1 steveqin steveqin 37007280 Jul  5 19:46 /home/steveqin/gbc_pq/mh_panel_v2.csv.gz
+-rw-rw-r-- 1 steveqin steveqin 55004137 Jul 14 19:05 /home/steveqin/gbc_pq/mh_panel_v3.csv.gz
+-rw-rw-r-- 1 steveqin steveqin 58706552 Jul 14 20:16 /home/steveqin/gbc_pq/mh_panel_v4.csv.gz
+---CKPT---
+-rw-rw-r-- 1 steveqin steveqin   564286 Jul  4 18:24 /home/steveqin/gbc_pq/gpu_ckpt.pkl
+-rw-rw-r-- 1 steveqin steveqin 71480617 Jul 14 20:49 /home/steveqin/gbc_pq/mh_ckpt_camp2.pkl
+-rw-rw-r-- 1 steveqin steveqin 71493286 Jul 14 19:08 /home/steveqin/gbc_pq/mh_ckpt_camp.pkl
+-rw-rw-r-- 1 steveqin steveqin 71470233 Jul  5 11:34 /home/steveqin/gbc_pq/mh_ckpt.pkl
+-rw-rw-r-- 1 steveqin steveqin 71473700 Jul 14 20:07 /home/steveqin/gbc_pq/mh_ckpt_seas.pkl
+-rw-rw-r-- 1 steveqin steveqin 71479445 Jul  5 12:25 /home/steveqin/gbc_pq/mh_ckpt_v2a.pkl
+-rw-rw-r-- 1 steveqin steveqin 71470231 Jul  5 13:03 /home/steveqin/gbc_pq/mh_ckpt_v2c.pkl
+---GPU---
+memory.used [MiB], memory.total [MiB], utilization.gpu [%]
+735 MiB, 8192 MiB, 0 %
+---PROCS---
+steveqin 3604775  0.0  0.0  15680  3628 ?        Ss   20:11   0:00 bash -c echo HOST=$(hostname); echo ---TRAINER---; ls -la ~/gbc_pq/gpu_iqn_mh.py ~/gbc_pq/*.sh 2>/dev/null; echo ---PANELS---; ls -la ~/gbc_pq/mh_panel*.csv* 2>/dev/null; echo ---CKPT---; ls -la ~/gbc_pq/*ckpt* 2>/dev/null; echo ---GPU---; nvidia-smi --query-gpu=memory.used,memory.total,utilization.gpu --format=csv 2>/dev/null; echo ---PROCS---; ps aux | grep [g]pu_iqn | head; echo ---TORCH---; python3 -c 'import torch;print("cuda",torch.cuda.is_available())' 2>/dev/null; echo DONE_AI2PROBE
+---TORCH---
+cuda True
+DONE_AI2PROBE

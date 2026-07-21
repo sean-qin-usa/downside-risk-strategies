@@ -1,0 +1,10 @@
+{
+  "note": "M5-Uncertainty improved (ai2): +sell_prices features, 8000 series, calendar+lags. Level-12 unweighted scaled pinball loss (SPL) over 9 quantiles, last-28-day OOS.",
+  "n_series": 8000,
+  "n_test": 224000,
+  "SPL_gbm_quantile": 0.2443,
+  "SPL_baseline_empirical": 0.4006,
+  "prior_run_no_price_1200series": 0.2595,
+  "reference": "M5-Uncertainty Level-12: winners ~0.16-0.17, naive benchmark ~0.22-0.25",
+  "improvement_vs_baseline_pct": 39.0
+}

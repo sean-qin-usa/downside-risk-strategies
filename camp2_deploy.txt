@@ -1,0 +1,5 @@
+=== Tue 07/14/2026 20:16:09.78 === 
+CLEAN5 ins=True
+LAUNCHED_C2
+1524444 bash -c cd ~/gbc_pq && python3 patch5_trainer.py > p5.out 2>&1; cat p5.out; if grep -q CLEAN5 p5.out; then rm -f mh_ckpt_camp2.pkl train_camp2.log; setsid --fork env MHFEATS=camp2 MHPANEL=mh_panel_v4.csv.gz MHVAR=camp2 python3 -u gpu_iqn_mh.py </dev/null >train_camp2.log 2>&1; sleep 5; echo LAUNCHED_C2; pgrep -af 'python3 -u gpu_iqn_mh'|head -1; fi
+C2DEPLOYED 

@@ -1,0 +1,4 @@
+=== AI2 CHECK === 
+AI2_REACHABLE
+ai2
+cuda True

@@ -1,0 +1,28 @@
+{
+  "note": "Held-out IPOs first weeks (GARCH cannot fit <250d). Amortized (from characteristics, never saw these names) vs expanding-empirical (own returns to date). ratio<1 => amortized better on brand-new names.",
+  "n_heldout_ipos": 640,
+  "n_train_rows": 862732,
+  "young_windows": {
+    "d15_60": {
+      "n": 28552,
+      "amortized": 0.8185,
+      "expanding_empirical": 0.8672,
+      "ratio_amort_over_emp": 0.944,
+      "garch": "N/A cannot fit"
+    },
+    "d60_120": {
+      "n": 37398,
+      "amortized": 0.7821,
+      "expanding_empirical": 0.8095,
+      "ratio_amort_over_emp": 0.966,
+      "garch": "N/A cannot fit"
+    },
+    "d120_250": {
+      "n": 78511,
+      "amortized": 0.7983,
+      "expanding_empirical": 0.8423,
+      "ratio_amort_over_emp": 0.948,
+      "garch": "N/A cannot fit"
+    }
+  }
+}

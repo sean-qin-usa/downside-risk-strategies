@@ -1,6 +1,6 @@
 import os, json
 import numpy as np, pandas as pd
-PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"; RES=r"C:\Users\OWNER\Desktop\GBC_data\results\pq_trade"
+PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"; RES=r"C:\GBC_data\results\pq_trade"
 c2=os.path.join(PROJ,"mh_quantiles_camp2.csv"); base=os.path.join(RES,"mh_quantiles_gpu_v2.csv")
 if not os.path.exists(c2): print("camp2 output not local yet"); raise SystemExit
 def bymo(f):

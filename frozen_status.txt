@@ -1,0 +1,18 @@
+===DONEFLAG===
+DONE
+===PROC===
+3486412 bash -c echo ===DONEFLAG===; cat ~/gbc_pq/frozen_done.txt 2>/dev/null; echo ===PROC===; pgrep -af gpu_iqn_frozen; echo ===C2019LOG===; tail -6 ~/gbc_pq/frozen_c2019.log 2>/dev/null; echo ===C2024LOG===; tail -6 ~/gbc_pq/frozen_c2024.log 2>/dev/null; echo ===FILES===; ls -la ~/gbc_pq/mh_quantiles_frozen_*.csv 2>/dev/null
+===C2019LOG===
+[c2019] train rows=1002675 cutoff=2019-12-31
+[c2019] DONE rows=259635 339s
+[c2019] h=21 n=51464 0.05->0.078 0.50->0.483 0.95->0.915 
+[c2019] h=63 n=50541 0.05->0.086 0.50->0.487 0.95->0.918 
+===C2024LOG===
+[c2024] train rows=1660788 cutoff=2024-12-31
+[c2024] DONE rows=259635 545s
+[c2024] h=21 n=51464 0.05->0.043 0.50->0.485 0.95->0.939 
+[c2024] h=63 n=50541 0.05->0.043 0.50->0.482 0.95->0.939 
+===FILES===
+-rw-rw-r-- 1 steveqin steveqin 55103999 Jul  6 07:28 /home/steveqin/gbc_pq/mh_quantiles_frozen_c2019.csv
+-rw-rw-r-- 1 steveqin steveqin 55050503 Jul  6 07:37 /home/steveqin/gbc_pq/mh_quantiles_frozen_c2024.csv
+FETCH_ATTEMPT_DONE 

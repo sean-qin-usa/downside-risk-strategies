@@ -2,7 +2,7 @@ import os, math, json
 import numpy as np, pandas as pd
 from statistics import NormalDist
 cdf=NormalDist().cdf
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 def bs_put(S,K,T,sig):
     if T<=0 or sig<=0: return max(K-S,0.0)
     d1=(math.log(S/K)+0.5*sig*sig*T)/(sig*math.sqrt(T)); d2=d1-sig*math.sqrt(T)

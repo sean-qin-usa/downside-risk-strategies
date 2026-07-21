@@ -1,0 +1,129 @@
+{
+  "note": "Simulation-Based Calibration of Heston stochastic-vol via GBC (likelihood-free). Simulate (theta,path) from prior+model; learn amortized posterior quantiles Q(tau|summary(path)) with IQN (canonical GBC neural estimator) and GBM. Validate by SBC coverage: central 50/80/90 credible-interval coverage should hit nominal; rmse=posterior-median error; width90=sharpness; info_gain=1-rmse/prior_rmse (fraction of prior uncertainty removed by the data). GARCH/MLE CANNOT do this (intractable likelihood).",
+  "n_paths": 40000,
+  "n_days": 252,
+  "n_features": 10,
+  "dev": "cuda",
+  "params": {
+    "kappa": {
+      "IQN": {
+        "cov50": 0.456,
+        "cov80": 0.754,
+        "cov90": 0.853,
+        "rmse": 1.2718,
+        "width90": 3.6781
+      },
+      "GBM": {
+        "cov50": 0.5,
+        "cov80": 0.794,
+        "cov90": 0.89,
+        "rmse": 1.2442,
+        "width90": 3.8982
+      },
+      "prior_only": {
+        "rmse": 1.298,
+        "width90": 4.0456
+      },
+      "info_gain_rmse_vs_prior": {
+        "IQN": 0.02,
+        "GBM": 0.041
+      }
+    },
+    "theta": {
+      "IQN": {
+        "cov50": 0.472,
+        "cov80": 0.789,
+        "cov90": 0.887,
+        "rmse": 0.0201,
+        "width90": 0.0622
+      },
+      "GBM": {
+        "cov50": 0.497,
+        "cov80": 0.8,
+        "cov90": 0.896,
+        "rmse": 0.02,
+        "width90": 0.0644
+      },
+      "prior_only": {
+        "rmse": 0.0231,
+        "width90": 0.0719
+      },
+      "info_gain_rmse_vs_prior": {
+        "IQN": 0.128,
+        "GBM": 0.133
+      }
+    },
+    "xi": {
+      "IQN": {
+        "cov50": 0.524,
+        "cov80": 0.78,
+        "cov90": 0.863,
+        "rmse": 0.1659,
+        "width90": 0.4744
+      },
+      "GBM": {
+        "cov50": 0.498,
+        "cov80": 0.79,
+        "cov90": 0.887,
+        "rmse": 0.1661,
+        "width90": 0.5216
+      },
+      "prior_only": {
+        "rmse": 0.2615,
+        "width90": 0.812
+      },
+      "info_gain_rmse_vs_prior": {
+        "IQN": 0.365,
+        "GBM": 0.365
+      }
+    },
+    "rho": {
+      "IQN": {
+        "cov50": 0.446,
+        "cov80": 0.793,
+        "cov90": 0.898,
+        "rmse": 0.2417,
+        "width90": 0.7414
+      },
+      "GBM": {
+        "cov50": 0.497,
+        "cov80": 0.797,
+        "cov90": 0.898,
+        "rmse": 0.2377,
+        "width90": 0.7479
+      },
+      "prior_only": {
+        "rmse": 0.2434,
+        "width90": 0.762
+      },
+      "info_gain_rmse_vs_prior": {
+        "IQN": 0.007,
+        "GBM": 0.023
+      }
+    },
+    "v0": {
+      "IQN": {
+        "cov50": 0.421,
+        "cov80": 0.802,
+        "cov90": 0.894,
+        "rmse": 0.0214,
+        "width90": 0.0648
+      },
+      "GBM": {
+        "cov50": 0.495,
+        "cov80": 0.799,
+        "cov90": 0.902,
+        "rmse": 0.0212,
+        "width90": 0.0672
+      },
+      "prior_only": {
+        "rmse": 0.023,
+        "width90": 0.0719
+      },
+      "info_gain_rmse_vs_prior": {
+        "IQN": 0.069,
+        "GBM": 0.077
+      }
+    }
+  }
+}

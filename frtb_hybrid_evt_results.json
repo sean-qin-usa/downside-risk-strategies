@@ -1,0 +1,57 @@
+{
+  "note": "FRTB hybrid + EVT tail. hybrid_EVT = ML-conditioned residual body (tau>=0.05) + Peaks-Over-Threshold GPD left tail (tau<=0.025). vs garch_t, GARCH-FHS, hybrid_ML. Goal: keep ES97.5/pinball win AND pass Kupiec/Christoffersen@99%. DM = hybrid_EVT vs others (positive stat => other worse).",
+  "n_names": 140,
+  "n_test_rows": 155120,
+  "per_model": {
+    "garch_t": {
+      "avg_pinball": 0.3561,
+      "ES975_pred": -6.17,
+      "ES975_realized": -5.652,
+      "breach99": 0.0106,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.0264,
+      "christoffersen99_p": 0.0785
+    },
+    "fhs": {
+      "avg_pinball": 0.3562,
+      "ES975_pred": -6.036,
+      "ES975_realized": -5.84,
+      "breach99": 0.0111,
+      "breach975": 0.0281,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0001
+    },
+    "hybrid_ML": {
+      "avg_pinball": 0.3551,
+      "ES975_pred": -5.84,
+      "ES975_realized": -5.752,
+      "breach99": 0.0117,
+      "breach975": 0.0289,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0
+    },
+    "hybrid_EVT": {
+      "avg_pinball": 0.3554,
+      "ES975_pred": -6.082,
+      "ES975_realized": -5.861,
+      "breach99": 0.0104,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.1005,
+      "christoffersen99_p": 0.2005
+    }
+  },
+  "DM_vs_hybrid_EVT": {
+    "garch_t": {
+      "DM_stat": 3.9,
+      "p_one_sided": 0.0
+    },
+    "fhs": {
+      "DM_stat": 4.28,
+      "p_one_sided": 0.0
+    },
+    "hybrid_ML": {
+      "DM_stat": -5.06,
+      "p_one_sided": 1.0
+    }
+  }
+}

@@ -1,0 +1,194 @@
+[book_sim.json] sleeve_corr: dict keys=['switcher', 'wedge_LS', 'asc_long']
+[book_sim.json] book: dict keys=['ann_%', 'SR', 'worst_mo_%', 'win%']
+[book_sim.json] bankroll_f1.0: dict keys=['CAGR_%', 'maxDD_wealth_%', 'worst_mo_wealth_%']
+[book_sim.json] bankroll_f0.5: dict keys=['CAGR_%', 'maxDD_wealth_%', 'worst_mo_wealth_%']
+[book_sim.json] bankroll_f0.25: dict keys=['CAGR_%', 'maxDD_wealth_%', 'worst_mo_wealth_%']
+[book_sim.json] bankroll_f0.1: dict keys=['CAGR_%', 'maxDD_wealth_%', 'worst_mo_wealth_%']
+
+[netbook.json] book_sw+wedge_net: dict keys=['ann_%', 'SR', 'worst_mo_%', 'win%']
+[netbook.json] book_3sleeve_net: dict keys=['ann_%', 'SR', 'worst_mo_%', 'win%']
+[netbook.json] switcher_only_net: dict keys=['ann_%', 'SR', 'worst_mo_%', 'win%']
+[netbook.json] USD_10M_f0.25: dict keys=['CAGR_%', 'avg_monthly_pnl_$k', 'worst_month_$k', 'maxDD_%', 'end_wealth_$M', 'monthly_committed_$M']
+[netbook.json] USD_10M_f0.5: dict keys=['CAGR_%', 'avg_monthly_pnl_$k', 'worst_month_$k', 'maxDD_%', 'end_wealth_$M', 'monthly_committed_$M']
+
+[sizing.json] fixed_f25: dict keys=['CAGR_%', 'maxDD_%', 'worst_mo_%', 'end_multiple']
+[sizing.json] fixed_f50: dict keys=['CAGR_%', 'maxDD_%', 'worst_mo_%', 'end_multiple']
+[sizing.json] K_quarterKelly_trailing: dict keys=['CAGR_%', 'maxDD_%', 'worst_mo_%', 'end_multiple']
+[sizing.json] K_avg_f: float=0.13
+[sizing.json] G_ddgovernor_on_f50: dict keys=['CAGR_%', 'maxDD_%', 'worst_mo_%', 'end_multiple']
+[sizing.json] G_share_halved: float=0.35
+[sizing.json] KG_combined: dict keys=['CAGR_%', 'maxDD_%', 'worst_mo_%', 'end_multiple']
+
+[master_book.json] corr: dict keys=['names_tilted_gated', 'index_leg', 'futures_leg', 'crypto_leg']
+[master_book.json] names_tilted_gated: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew', 'neg_years', 'win%']
+[master_book.json] index_leg: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew', 'neg_years', 'win%']
+[master_book.json] futures_leg: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew', 'neg_years', 'win%']
+[master_book.json] crypto_leg: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew', 'neg_years', 'win%']
+[master_book.json] MASTER_BOOK: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew', 'neg_years', 'win%']
+[master_book.json] MASTER_wealth_25pct: dict keys=['CAGR_%', 'maxDD_%']
+
+[three_stream.json] corr: dict keys=['names', 'index', 'futures']
+[three_stream.json] names: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew']
+[three_stream.json] index: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew']
+[three_stream.json] futures: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew']
+[three_stream.json] book_inverse_vol: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew']
+[three_stream.json] book_equal: dict keys=['SR', 'ann_%', 'worst_mo_%', 'skew']
+
+[yearly_stats.json] sell_5: dict keys=['ann_%', 'SR', 'worst_year_%', 'best_year_%', 'neg_years', 'years']
+[yearly_stats.json] sell_10: dict keys=['ann_%', 'SR', 'worst_year_%', 'best_year_%', 'neg_years', 'years']
+[yearly_stats.json] sell_25: dict keys=['ann_%', 'SR', 'worst_year_%', 'best_year_%', 'neg_years', 'years']
+[yearly_stats.json] sell_50: dict keys=['ann_%', 'SR', 'worst_year_%', 'best_year_%', 'neg_years', 'years']
+[yearly_stats.json] timed_25: dict keys=['ann_%', 'SR', 'worst_year_%', 'best_year_%', 'neg_years', 'years']
+[yearly_stats.json] longshort_wedge: dict keys=['ann_%', 'SR', 'worst_year_%', 'best_year_%', 'neg_years', 'years']
+[yearly_stats.json] asc_call_long: dict keys=['ann_%', 'SR', 'worst_year_%', 'best_year_%', 'neg_years', 'years']
+
+[strategy_suite.json] carry_1Mx3_minus_3M: dict keys=['n_q', 'mean_per_q', 't']
+[strategy_suite.json] dispersion_shortSPY_longnames: dict keys=['n', 'mean_mo', 't']
+[strategy_suite.json] dispersion_reverse: dict keys=['mean_mo', 't']
+[strategy_suite.json] longshort_wedge_quintiles: dict keys=['n', 'mean_mo', 't']
+[strategy_suite.json] ASC_buy_call95: dict keys=['n_obs', 'mean_mo', 't']
+[strategy_suite.json] nonASC_buy_call95: dict keys=['mean_mo', 't']
+[strategy_suite.json] ASC_buy_call99: dict keys=['n_obs', 'mean_mo', 't']
+[strategy_suite.json] nonASC_buy_call99: dict keys=['mean_mo', 't']
+[strategy_suite.json] tailhedge_when_wedge_neg: dict keys=['n_on', 'mean_when_on', 't', 'uncond_mean']
+[strategy_suite.json] s0_plus_tailhedge: dict keys=['sharpe_s0', 'sharpe_overlay', 'worst_s0', 'worst_overlay']
+[strategy_suite.json] kelly_vs_fixed: dict keys=['fixed_SR', 'kelly_SR', 'kelly_mean_f']
+
+[battery.json] baseline: dict keys=['SR', 'ann_%', 'worst_mo_%', 'months']
+[battery.json] share_expiry_windows_with_earnings: float=0.03
+[battery.json] E_exclude_earnings: dict keys=['SR', 'ann_%', 'worst_mo_%', 'months']
+[battery.json] E_ONLY_earnings: dict keys=['SR', 'ann_%', 'worst_mo_%', 'months']
+[battery.json] F_richest_skew_tercile: dict keys=['SR', 'ann_%', 'worst_mo_%', 'months']
+[battery.json] G_megacap_only: dict keys=['SR', 'ann_%', 'worst_mo_%', 'months']
+[battery.json] H_risk_parity_names: dict keys=['SR', 'ann_%', 'worst_mo_%', 'months']
+[battery.json] I_stress_breadth_gate: dict keys=['SR', 'ann_%', 'worst_mo_%', 'months']
+[battery.json] I_share_gated_out: float=0.07
+[battery.json] J_postcrash_boost: dict keys=['SR', 'ann_%', 'worst_mo_%', 'months']
+
+[pctcap_corrected.json] note: str=CORRECTED %-on-capital SRs (calendar-month pooling; the pq_2
+[pctcap_corrected.json] tau0.05: dict keys=['mo_pct', 'ann_pct', 'SR']
+[pctcap_corrected.json] tau0.10: dict keys=['mo_pct', 'ann_pct', 'SR']
+[pctcap_corrected.json] tau0.25: dict keys=['mo_pct', 'ann_pct', 'SR']
+[pctcap_corrected.json] tau0.50: dict keys=['mo_pct', 'ann_pct', 'SR']
+
+=== ALL FILES in results/pq_trade ===
+ablate.log 2552
+aci.json 1676
+adaptive_suite.json 1298
+adv_panel.parquet 546270
+adv_tests.json 1219
+analysis.json 5414
+ascension_tests.json 658
+battery.json 854
+big_panel.parquet 23796813
+big_panel_tests.json 1792
+book_sim.json 741
+bt_daily.json 5084
+bt_daily_2004.json 887
+bt_iv.json 1125
+bt_monthly.json 20188
+bt_series.parquet 29454
+caps_flat.json 3329
+checks.json 301
+crypto_digital.json 1083
+dashboard_cohorts.csv 189
+dashboard_stats.csv 384
+dd_table.json 2448
+diag_final.json 997
+earnings_test.json 330
+era_map.json 5711
+evt_splice.json 665
+figA_strategies.png 275322
+figB_divisions.png 212386
+fig_book_vs_legs.png 152332
+fig_cap_buckets.png 74928
+fig_crypto.png 65023
+fig_sizing.png 160746
+fig_year_2025.png 90057
+fig_yearly_regimes.png 119498
+final_results_pack.png 197859
+gate_test.json 976
+gpu_iqn21.log 2292
+grand_panel.parquet 4093106
+grand_tests.json 2243
+gridsearch.json 396
+holdout_tests.json 1136
+iqn_rerun.json 1389
+master_book.json 1199
+master_book.png 140140
+mh_ablation.json 565
+mh_ablation_clean.json 567
+mh_ablation_fair.json 567
+mh_quantiles_gpu.csv 55110195
+mh_quantiles_gpu_v2.csv 55110195
+mh_trade_panel.parquet 3385325
+mh_trade_tests.json 1284
+momentum_strike.json 1300
+netbook.json 638
+panel_wedge.parquet 256342
+panel_wedge_tests.json 1250
+pctcap_corrected.json 442
+pfore_monthly.parquet 43703
+pq_21_charts.py 5514
+pq_23_tau_boot.py 2333
+pq_24_tau_boot2.py 1856
+pq_25_tau_regime.py 2934
+pq_26_strategies.py 5925
+pq_27_momentum_strike.py 3407
+pq_28_yearly.py 2967
+pq_29_rolling.py 2031
+pq_30_adaptive.py 3836
+pq_32_big_panel.py 3412
+pq_35_book.py 2714
+pq_36_dash.py 6454
+pq_37_netbook.py 2889
+pq_38_evt.py 1792
+pq_39_final_figs.py 5216
+pq_40_sharpe.py 3139
+pq_41_streams.py 3132
+pq_42_battery.py 3733
+pq_43_master.py 5671
+pq_44_earn2.py 1919
+pq_45_gridsearch.py 1924
+pq_47_settle34.py 3991
+pq_48_aci.py 1106
+pq_49_final.py 2262
+pq_50_diag.py 4643
+pq_51_crypto2.py 2583
+pq_52_sizing.py 2668
+pq_53_cleanfigs.py 3376
+pq_54_capsflat.py 2624
+pq_56_year.py 1534
+pq_iqn_quantiles.parquet 326270
+pq_iqn_quantiles_gpu.csv 447566
+pq_results_dashboard.png 353318
+pq_trade_cumret.png 215839
+qq_coverage.json 2044
+qq_quantiles.parquet 419876
+qq_spx_coverage.json 2116
+qq_spx_quantiles.parquet 576183
+regime_matrix.json 1220
+rolling_metrics.png 448478
+settle34.json 1959
+sharpe_improvements.json 708
+sizing.json 585
+splits_study.json 1333
+strategy_suite.json 898
+stream_combo.json 255
+tau_bootstrap.json 1104
+tau_bootstrap2.json 559
+tau_regime.json 2502
+tau_tournament.json 1148
+term_structure.json 1245
+three_stream.json 682
+tourney.json 1814
+trading_dashboard2.png 336383
+ts_wedge_h21.parquet 47125
+ts_wedge_h42.parquet 46341
+ts_wedge_h63.parquet 46213
+wedge_dataset.parquet 55458
+wedge_tests.json 4219
+wedge_tests_gpu.json 1775
+yearly_by_strategy.csv 2766
+yearly_by_strategy.png 120368
+yearly_stats.json 931

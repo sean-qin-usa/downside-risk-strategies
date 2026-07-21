@@ -1,0 +1,2 @@
+RC=1
+scp: ~/sean_dev/GBC_data/regime_gate_results.json: No such file or directory

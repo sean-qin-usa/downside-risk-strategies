@@ -1,0 +1,3 @@
+=== unstick auto-runner Thu 07/16/2026 23:37:20.55 === 
+killed ping/schtasks 
+If autojobs\_heartbeat.txt is still frozen after ~30s, CLOSE the auto-runner window and double-click auto_runner.bat again to restart it. 

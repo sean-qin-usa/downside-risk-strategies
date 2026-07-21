@@ -11,13 +11,13 @@ os.environ.setdefault('PGUSER','seanqin2028')
 
 import pandas as pd
 import wrds
-OUT=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"
+OUT=r"C:\GBC_data\data\wrds"
 os.makedirs(OUT, exist_ok=True)
 print("connecting...", flush=True)
 db = wrds.Connection(wrds_username='seanqin2028')
 print("CONNECTED OK", flush=True)
 
-TKFILE=r"C:\Users\OWNER\Desktop\GBC_data\code\wrds_tickers.txt"
+TKFILE=r"C:\GBC_data\code\wrds_tickers.txt"
 tks=[l.strip() for l in open(TKFILE)] if os.path.exists(TKFILE) else []
 print("tickers:",len(tks), flush=True)
 tkl=",".join(f"'{t}'" for t in tks)

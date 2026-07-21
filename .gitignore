@@ -1,9 +1,17 @@
+# DATA — never commit: CRSP/WRDS + Bloomberg licenses prohibit redistribution (and files are large).
+# Safe to commit: *.py scripts, *.md docs, aggregate *_results.json/*_sig.json (summary stats only, no raw data).
 *.csv
 *.csv.gz
 *.parquet
 *.pkl
 *.gz
+*.h5
 autojobs/done/
 __pycache__/
+*.pyc
 mh_quantiles*.csv
 samerows_merged.csv
+# large console/log dumps (raw, noisy)
+*_console.txt
+*_log.txt
+*.png

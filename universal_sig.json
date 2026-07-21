@@ -1,0 +1,767 @@
+{
+  "note": "Universal cross-asset + significance (LEAN). Per asset GARCH-t vs FHS vs residual-hybrid (GBM on GARCH std resids) with per-date Diebold-Mariano (best-nonparam vs GARCH; DM>0&p<.05 => nonparam sig better), ES97.5, resid_kurt. Grouped by asset class. Places each class on the misspecification frontier (edge vs resid_kurt).",
+  "per_asset": {
+    "SPX": {
+      "resid_kurt": 5.4,
+      "garch_pinball": 0.1568,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.1561,
+      "ratio": 0.9955,
+      "DM": {
+        "DM": 1.81,
+        "p": 0.0353
+      },
+      "ES975_garch": -2.643,
+      "ES975_hybrid": -2.602,
+      "n_oos": 2168,
+      "class": "equity_index"
+    },
+    "NDX": {
+      "resid_kurt": 4.6,
+      "garch_pinball": 0.2076,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2068,
+      "ratio": 0.9961,
+      "DM": {
+        "DM": 2.1,
+        "p": 0.0179
+      },
+      "ES975_garch": -3.391,
+      "ES975_hybrid": -3.34,
+      "n_oos": 2168,
+      "class": "equity_index"
+    },
+    "AAPL": {
+      "resid_kurt": 6.7,
+      "garch_pinball": 0.2712,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2711,
+      "ratio": 0.9996,
+      "DM": {
+        "DM": 0.92,
+        "p": 0.1788
+      },
+      "ES975_garch": -4.651,
+      "ES975_hybrid": -3.981,
+      "n_oos": 2168,
+      "class": "equity_single"
+    },
+    "XOM": {
+      "resid_kurt": 4.6,
+      "garch_pinball": 0.2632,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.263,
+      "ratio": 0.9992,
+      "DM": {
+        "DM": 0.45,
+        "p": 0.3265
+      },
+      "ES975_garch": -4.238,
+      "ES975_hybrid": -4.074,
+      "n_oos": 2168,
+      "class": "equity_single"
+    },
+    "EURUSD": {
+      "resid_kurt": 4.1,
+      "garch_pinball": 0.0647,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.0648,
+      "ratio": 1.0015,
+      "DM": {
+        "DM": -1.91,
+        "p": 0.9722
+      },
+      "ES975_garch": -1.09,
+      "ES975_hybrid": -1.009,
+      "n_oos": 2248,
+      "class": "fx_major"
+    },
+    "USDJPY": {
+      "resid_kurt": 6.4,
+      "garch_pinball": 0.0775,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.0775,
+      "ratio": 1.0,
+      "DM": {
+        "DM": 0.32,
+        "p": 0.3733
+      },
+      "ES975_garch": -1.373,
+      "ES975_hybrid": -1.25,
+      "n_oos": 2248,
+      "class": "fx_major"
+    },
+    "USDTRY": {
+      "resid_kurt": 5.1,
+      "garch_pinball": 0.1148,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.1145,
+      "ratio": 0.9974,
+      "DM": {
+        "DM": 0.83,
+        "p": 0.2023
+      },
+      "ES975_garch": -2.012,
+      "ES975_hybrid": -1.492,
+      "n_oos": 2246,
+      "class": "fx_em"
+    },
+    "USDBRL": {
+      "resid_kurt": 5.7,
+      "garch_pinball": 0.1392,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.1391,
+      "ratio": 0.9993,
+      "DM": {
+        "DM": 0.72,
+        "p": 0.2357
+      },
+      "ES975_garch": -2.352,
+      "ES975_hybrid": -1.944,
+      "n_oos": 2173,
+      "class": "fx_em"
+    },
+    "USDZAR": {
+      "resid_kurt": 5.2,
+      "garch_pinball": 0.1303,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.13,
+      "ratio": 0.9977,
+      "DM": {
+        "DM": 1.95,
+        "p": 0.0256
+      },
+      "ES975_garch": -2.226,
+      "ES975_hybrid": -1.85,
+      "n_oos": 2247,
+      "class": "fx_em"
+    },
+    "USDRUB": {
+      "resid_kurt": 4.9,
+      "garch_pinball": 0.1685,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.1685,
+      "ratio": 1.0,
+      "DM": {
+        "DM": -0.08,
+        "p": 0.5338
+      },
+      "ES975_garch": -2.772,
+      "ES975_hybrid": -2.145,
+      "n_oos": 2245,
+      "class": "fx_em"
+    },
+    "COPPER": {
+      "resid_kurt": 4.9,
+      "garch_pinball": 0.229,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.229,
+      "ratio": 1.0,
+      "DM": {
+        "DM": 0.1,
+        "p": 0.4615
+      },
+      "ES975_garch": -3.941,
+      "ES975_hybrid": -3.665,
+      "n_oos": 2170,
+      "class": "commodity"
+    },
+    "CORN": {
+      "resid_kurt": 20.2,
+      "garch_pinball": 0.2304,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2305,
+      "ratio": 1.0004,
+      "DM": {
+        "DM": -0.58,
+        "p": 0.7175
+      },
+      "ES975_garch": -4.091,
+      "ES975_hybrid": -3.719,
+      "n_oos": 2170,
+      "class": "commodity"
+    },
+    "CRUDE": {
+      "resid_kurt": 4.5,
+      "garch_pinball": 0.3879,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.3876,
+      "ratio": 0.9992,
+      "DM": {
+        "DM": 0.73,
+        "p": 0.2336
+      },
+      "ES975_garch": -6.095,
+      "ES975_hybrid": -5.227,
+      "n_oos": 2170,
+      "class": "commodity"
+    },
+    "NATGAS": {
+      "resid_kurt": 5.0,
+      "garch_pinball": 0.6302,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.6312,
+      "ratio": 1.0016,
+      "DM": {
+        "DM": -1.42,
+        "p": 0.9227
+      },
+      "ES975_garch": -9.918,
+      "ES975_hybrid": -7.953,
+      "n_oos": 2170,
+      "class": "commodity"
+    },
+    "GOLD": {
+      "resid_kurt": 6.5,
+      "garch_pinball": 0.1539,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.1538,
+      "ratio": 0.9994,
+      "DM": {
+        "DM": 0.89,
+        "p": 0.1872
+      },
+      "ES975_garch": -2.666,
+      "ES975_hybrid": -2.568,
+      "n_oos": 2170,
+      "class": "commodity"
+    },
+    "PJM_POWER": {
+      "resid_kurt": 76.8,
+      "garch_pinball": 5.0739,
+      "nonparam_best": "hybrid",
+      "nonparam_pinball": 0.152,
+      "ratio": 0.03,
+      "DM": {
+        "DM": 283.12,
+        "p": 0.0
+      },
+      "ES975_garch": -62.573,
+      "ES975_hybrid": -0.887,
+      "n_oos": 1516,
+      "class": "electricity"
+    },
+    "ERCOT_POWER": {
+      "resid_kurt": 6.8,
+      "garch_pinball": 0.0512,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.0512,
+      "ratio": 1.0,
+      "DM": {
+        "DM": 1.97,
+        "p": 0.0244
+      },
+      "ES975_garch": -1.004,
+      "ES975_hybrid": -0.893,
+      "n_oos": 1289,
+      "class": "electricity"
+    },
+    "BTC": {
+      "resid_kurt": 12.4,
+      "garch_pinball": 0.4363,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.4385,
+      "ratio": 1.005,
+      "DM": {
+        "DM": -2.21,
+        "p": 0.9865
+      },
+      "ES975_garch": -8.253,
+      "ES975_hybrid": -8.471,
+      "n_oos": 2059,
+      "class": "crypto"
+    },
+    "ETH": {
+      "resid_kurt": 7.0,
+      "garch_pinball": 0.4952,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.4968,
+      "ratio": 1.0032,
+      "DM": {
+        "DM": -3.31,
+        "p": 0.9995
+      },
+      "ES975_garch": -10.798,
+      "ES975_hybrid": -9.732,
+      "n_oos": 1190,
+      "class": "crypto"
+    },
+    "VIX": {
+      "resid_kurt": 8.2,
+      "garch_pinball": 1.1367,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 1.1196,
+      "ratio": 0.985,
+      "DM": {
+        "DM": 5.71,
+        "p": 0.0
+      },
+      "ES975_garch": -19.657,
+      "ES975_hybrid": -13.757,
+      "n_oos": 2180,
+      "class": "vol"
+    },
+    "US10Y": {
+      "resid_kurt": 4.1,
+      "garch_pinball": 0.7876,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.7878,
+      "ratio": 1.0003,
+      "DM": {
+        "DM": -0.48,
+        "p": 0.6829
+      },
+      "ES975_garch": -12.803,
+      "ES975_hybrid": -11.774,
+      "n_oos": 2247,
+      "class": "rates"
+    },
+    "US2Y": {
+      "resid_kurt": 6.0,
+      "garch_pinball": 0.7194,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.7195,
+      "ratio": 1.0001,
+      "DM": {
+        "DM": -0.19,
+        "p": 0.574
+      },
+      "ES975_garch": -11.844,
+      "ES975_hybrid": -11.042,
+      "n_oos": 2247,
+      "class": "rates"
+    },
+    "BUND10Y": {
+      "resid_kurt": 4.0,
+      "garch_pinball": 0.6339,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.634,
+      "ratio": 1.0002,
+      "DM": {
+        "DM": -0.09,
+        "p": 0.5344
+      },
+      "ES975_garch": -10.571,
+      "ES975_hybrid": -9.311,
+      "n_oos": 2245,
+      "class": "rates"
+    },
+    "IG_OAS": {
+      "resid_kurt": 14.2,
+      "garch_pinball": 0.285,
+      "nonparam_best": "hybrid",
+      "nonparam_pinball": 0.2737,
+      "ratio": 0.9604,
+      "DM": {
+        "DM": 2.27,
+        "p": 0.0116
+      },
+      "ES975_garch": -5.02,
+      "ES975_hybrid": -3.724,
+      "n_oos": 2168,
+      "class": "credit"
+    },
+    "HY_OAS": {
+      "resid_kurt": 5.3,
+      "garch_pinball": 1.3104,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 1.3055,
+      "ratio": 0.9963,
+      "DM": {
+        "DM": 1.13,
+        "p": 0.1285
+      },
+      "ES975_garch": -22.215,
+      "ES975_hybrid": -17.339,
+      "n_oos": 2168,
+      "class": "credit"
+    },
+    "MOVE": {
+      "resid_kurt": 6.9,
+      "garch_pinball": 0.7043,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.6992,
+      "ratio": 0.9928,
+      "DM": {
+        "DM": 3.22,
+        "p": 0.0006
+      },
+      "ES975_garch": -12.285,
+      "ES975_hybrid": -9.124,
+      "n_oos": 2212,
+      "class": "rates_vol"
+    },
+    "WHEAT": {
+      "resid_kurt": 4.0,
+      "garch_pinball": 0.2882,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2871,
+      "ratio": 0.9962,
+      "DM": {
+        "DM": 3.51,
+        "p": 0.0002
+      },
+      "ES975_garch": -4.792,
+      "ES975_hybrid": -4.16,
+      "n_oos": 2170,
+      "class": "agriculture"
+    },
+    "SOYBEAN": {
+      "resid_kurt": 5.8,
+      "garch_pinball": 0.1832,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.1833,
+      "ratio": 1.0005,
+      "DM": {
+        "DM": -0.47,
+        "p": 0.6816
+      },
+      "ES975_garch": -3.266,
+      "ES975_hybrid": -3.121,
+      "n_oos": 2170,
+      "class": "agriculture"
+    },
+    "COFFEE": {
+      "resid_kurt": 4.3,
+      "garch_pinball": 0.3301,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.33,
+      "ratio": 0.9997,
+      "DM": {
+        "DM": 0.29,
+        "p": 0.3865
+      },
+      "ES975_garch": -5.328,
+      "ES975_hybrid": -4.844,
+      "n_oos": 2167,
+      "class": "agriculture"
+    },
+    "SUGAR": {
+      "resid_kurt": 4.8,
+      "garch_pinball": 0.2564,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2564,
+      "ratio": 1.0,
+      "DM": {
+        "DM": 0.15,
+        "p": 0.4384
+      },
+      "ES975_garch": -4.595,
+      "ES975_hybrid": -3.933,
+      "n_oos": 2167,
+      "class": "agriculture"
+    },
+    "COCOA": {
+      "resid_kurt": 4.7,
+      "garch_pinball": 0.367,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.3669,
+      "ratio": 0.9997,
+      "DM": {
+        "DM": 0.32,
+        "p": 0.3762
+      },
+      "ES975_garch": -5.926,
+      "ES975_hybrid": -5.565,
+      "n_oos": 2168,
+      "class": "agriculture"
+    },
+    "COTTON": {
+      "resid_kurt": 6.4,
+      "garch_pinball": 0.244,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2439,
+      "ratio": 0.9996,
+      "DM": {
+        "DM": 1.29,
+        "p": 0.0981
+      },
+      "ES975_garch": -4.304,
+      "ES975_hybrid": -3.831,
+      "n_oos": 2170,
+      "class": "agriculture"
+    },
+    "SILVER": {
+      "resid_kurt": 6.6,
+      "garch_pinball": 0.3088,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.3091,
+      "ratio": 1.001,
+      "DM": {
+        "DM": -0.44,
+        "p": 0.6702
+      },
+      "ES975_garch": -5.443,
+      "ES975_hybrid": -5.597,
+      "n_oos": 2170,
+      "class": "metals"
+    },
+    "PLATINUM": {
+      "resid_kurt": 4.0,
+      "garch_pinball": 0.2965,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2965,
+      "ratio": 1.0,
+      "DM": {
+        "DM": -0.04,
+        "p": 0.5163
+      },
+      "ES975_garch": -4.631,
+      "ES975_hybrid": -4.276,
+      "n_oos": 2170,
+      "class": "metals"
+    },
+    "PALLADIUM": {
+      "resid_kurt": 5.1,
+      "garch_pinball": 0.3881,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.3878,
+      "ratio": 0.9992,
+      "DM": {
+        "DM": 0.5,
+        "p": 0.3093
+      },
+      "ES975_garch": -6.201,
+      "ES975_hybrid": -6.193,
+      "n_oos": 2170,
+      "class": "metals"
+    },
+    "ALUMINUM": {
+      "resid_kurt": 5.0,
+      "garch_pinball": 0.2028,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2029,
+      "ratio": 1.0005,
+      "DM": {
+        "DM": -0.38,
+        "p": 0.6468
+      },
+      "ES975_garch": -3.348,
+      "ES975_hybrid": -3.068,
+      "n_oos": 2171,
+      "class": "metals"
+    },
+    "NICKEL": {
+      "resid_kurt": 7.1,
+      "garch_pinball": 0.2907,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.2908,
+      "ratio": 1.0003,
+      "DM": {
+        "DM": -1.23,
+        "p": 0.8914
+      },
+      "ES975_garch": -5.227,
+      "ES975_hybrid": -4.774,
+      "n_oos": 2167,
+      "class": "metals"
+    },
+    "BALTIC_DRY": {
+      "resid_kurt": 5.1,
+      "garch_pinball": 0.4841,
+      "nonparam_best": "hybrid",
+      "nonparam_pinball": 0.4095,
+      "ratio": 0.8459,
+      "DM": {
+        "DM": 9.36,
+        "p": 0.0
+      },
+      "ES975_garch": -6.865,
+      "ES975_hybrid": -4.632,
+      "n_oos": 2152,
+      "class": "freight"
+    },
+    "VVIX": {
+      "resid_kurt": 83.6,
+      "garch_pinball": 0.7425,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.7331,
+      "ratio": 0.9873,
+      "DM": {
+        "DM": 4.66,
+        "p": 0.0
+      },
+      "ES975_garch": -13.932,
+      "ES975_hybrid": -9.202,
+      "n_oos": 2024,
+      "class": "vol"
+    },
+    "V2X": {
+      "resid_kurt": 6.6,
+      "garch_pinball": 1.0606,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 1.0476,
+      "ratio": 0.9877,
+      "DM": {
+        "DM": 5.03,
+        "p": 0.0
+      },
+      "ES975_garch": -17.604,
+      "ES975_hybrid": -12.741,
+      "n_oos": 2194,
+      "class": "vol"
+    },
+    "HEATING_OIL": {
+      "resid_kurt": 5.1,
+      "garch_pinball": 0.3575,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.3576,
+      "ratio": 1.0003,
+      "DM": {
+        "DM": -0.64,
+        "p": 0.7391
+      },
+      "ES975_garch": -5.756,
+      "ES975_hybrid": -4.756,
+      "n_oos": 2170,
+      "class": "energy"
+    },
+    "GASOLINE": {
+      "resid_kurt": 6.5,
+      "garch_pinball": 0.3864,
+      "nonparam_best": "fhs",
+      "nonparam_pinball": 0.3849,
+      "ratio": 0.9961,
+      "DM": {
+        "DM": 3.2,
+        "p": 0.0007
+      },
+      "ES975_garch": -6.357,
+      "ES975_hybrid": -5.833,
+      "n_oos": 2094,
+      "class": "energy"
+    },
+    "CARBON_EU": {
+      "resid_kurt": 288.2,
+      "garch_pinball": 0.3831,
+      "nonparam_best": "hybrid",
+      "nonparam_pinball": 0.3839,
+      "ratio": 1.0021,
+      "DM": {
+        "DM": -0.53,
+        "p": 0.7004
+      },
+      "ES975_garch": -7.903,
+      "ES975_hybrid": -7.219,
+      "n_oos": 2188,
+      "class": "carbon"
+    }
+  },
+  "by_class": {
+    "equity_index": {
+      "n": 2,
+      "mean_ratio": 0.9958,
+      "nonparam_wins": 2,
+      "sig_wins": 2,
+      "mean_resid_kurt": 5.0
+    },
+    "equity_single": {
+      "n": 2,
+      "mean_ratio": 0.9994,
+      "nonparam_wins": 2,
+      "sig_wins": 0,
+      "mean_resid_kurt": 5.7
+    },
+    "fx_major": {
+      "n": 2,
+      "mean_ratio": 1.0008,
+      "nonparam_wins": 0,
+      "sig_wins": 0,
+      "mean_resid_kurt": 5.2
+    },
+    "fx_em": {
+      "n": 4,
+      "mean_ratio": 0.9986,
+      "nonparam_wins": 3,
+      "sig_wins": 1,
+      "mean_resid_kurt": 5.2
+    },
+    "commodity": {
+      "n": 5,
+      "mean_ratio": 1.0001,
+      "nonparam_wins": 2,
+      "sig_wins": 0,
+      "mean_resid_kurt": 8.2
+    },
+    "electricity": {
+      "n": 2,
+      "mean_ratio": 0.515,
+      "nonparam_wins": 1,
+      "sig_wins": 2,
+      "mean_resid_kurt": 41.8
+    },
+    "crypto": {
+      "n": 2,
+      "mean_ratio": 1.0041,
+      "nonparam_wins": 0,
+      "sig_wins": 0,
+      "mean_resid_kurt": 9.7
+    },
+    "vol": {
+      "n": 3,
+      "mean_ratio": 0.9867,
+      "nonparam_wins": 3,
+      "sig_wins": 3,
+      "mean_resid_kurt": 32.8
+    },
+    "rates": {
+      "n": 3,
+      "mean_ratio": 1.0002,
+      "nonparam_wins": 0,
+      "sig_wins": 0,
+      "mean_resid_kurt": 4.7
+    },
+    "credit": {
+      "n": 2,
+      "mean_ratio": 0.9784,
+      "nonparam_wins": 2,
+      "sig_wins": 1,
+      "mean_resid_kurt": 9.8
+    },
+    "rates_vol": {
+      "n": 1,
+      "mean_ratio": 0.9928,
+      "nonparam_wins": 1,
+      "sig_wins": 1,
+      "mean_resid_kurt": 6.9
+    },
+    "agriculture": {
+      "n": 6,
+      "mean_ratio": 0.9993,
+      "nonparam_wins": 4,
+      "sig_wins": 1,
+      "mean_resid_kurt": 5.0
+    },
+    "metals": {
+      "n": 5,
+      "mean_ratio": 1.0002,
+      "nonparam_wins": 1,
+      "sig_wins": 0,
+      "mean_resid_kurt": 5.6
+    },
+    "freight": {
+      "n": 1,
+      "mean_ratio": 0.8459,
+      "nonparam_wins": 1,
+      "sig_wins": 1,
+      "mean_resid_kurt": 5.1
+    },
+    "energy": {
+      "n": 2,
+      "mean_ratio": 0.9982,
+      "nonparam_wins": 1,
+      "sig_wins": 1,
+      "mean_resid_kurt": 5.8
+    },
+    "carbon": {
+      "n": 1,
+      "mean_ratio": 1.0021,
+      "nonparam_wins": 0,
+      "sig_wins": 0,
+      "mean_resid_kurt": 288.2
+    }
+  },
+  "edge_vs_logresidkurt_corr": 0.427,
+  "n_assets": 43,
+  "n_nonparam_sig_wins": 13
+}

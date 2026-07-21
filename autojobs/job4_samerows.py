@@ -3,7 +3,7 @@
 import os, time, json, math, warnings
 import numpy as np, pandas as pd
 warnings.filterwarnings("ignore")
-RES=r"C:\Users\OWNER\Desktop\GBC_data\results\pq_trade"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+RES=r"C:\GBC_data\results\pq_trade"; RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 lg=lambda s:print(s,flush=True); t0=time.time()
 from arch import arch_model
 IQ=pd.read_csv(os.path.join(RES,"mh_quantiles_gpu_v2.csv"))

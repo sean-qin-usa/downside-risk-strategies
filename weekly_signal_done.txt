@@ -1,0 +1,35 @@
+WEEKLY_SIGNAL_START Mon 07/20/2026  9:08:37.17 
+=== WEEKLY VRP SHORT-PUT SIGNAL === 2026-07-20
+this_friday(ref) = 2026-07-24 | note: 5-15 DTE window may land on the following Friday
+secids mapped: 633
+top-100 secids by OI ready; head: [101594, 143439, 101966, 101310, 108321, 107525, 121812, 101121]
+connecting WRDS (saved pgpass; no password handled)...
+Loading library list...
+Done
+CONNECTED
+year 2026 query ERR: (psycopg2.errors.UndefinedTable) relation "optionm.opprcd2026" does not exist
+LINE 1: select max(date) d from optionm.opprcd2026 where secid in (1...
+          
+year 2025 most recent available date: 2025-08-29
+year 2025 weekly put chain rows: 1607
+CHAIN SOURCE: WRDS optionm.opprcd2025 @ 2025-08-29
+candidates with VRP: 94
+VRP cutoff (top-10%): 0.1822 | selected: 10
+SIZE: 1.0 | no prior weekly record -> full size 1.0x (first weekly run)
+BLOTTER WRITTEN: C:\Users\OWNER\Claude\Projects\GBC Project\forward_signals\weekly_signal_2026-07-20.csv rows: 10
+WEEKLY FORWARD LOG updated: C:\Users\OWNER\Claude\Projects\GBC Project\forward_signals\weekly_forward_log.csv | total weeks: 1
+---- BLOTTER ----
+  SELL_TO_OPEN XPEV   PUT 2025-09-05  K=17.0      LIMIT=0.3    w=0.1    bid/ask=0.02/0.58  d=-0.127  IV=1.4835 RV=0.7046  VRP=0.7789
+  SELL_TO_OPEN DOCU   PUT 2025-09-12  K=60.0      LIMIT=1.21   w=0.1    bid/ask=0.17/2.26  d=-0.122  IV=1.2049 RV=0.4384  VRP=0.7665
+  SELL_TO_OPEN LI     PUT 2025-09-12  K=19.0      LIMIT=0.28   w=0.1    bid/ask=0.01/0.54  d=-0.117  IV=0.9682 RV=0.4931  VRP=0.4751
+  SELL_TO_OPEN ADBE   PUT 2025-09-12  K=310.0     LIMIT=3.0    w=0.1    bid/ask=2.86/3.15  d=-0.124  IV=0.6639 RV=0.2896  VRP=0.3743
+  SELL_TO_OPEN CLF    PUT 2025-09-12  K=9.0       LIMIT=0.07   w=0.1    bid/ask=0.05/0.08  d=-0.088  IV=0.7147 RV=0.4111  VRP=0.3036
+  SELL_TO_OPEN ORCL   PUT 2025-09-12  K=195.0     LIMIT=2.02   w=0.1    bid/ask=1.85/2.18  d=-0.123  IV=0.7018 RV=0.3986  VRP=0.3032
+  SELL_TO_OPEN M      PUT 2025-09-12  K=11.5      LIMIT=0.11   w=0.1    bid/ask=0.1/0.12  d=-0.123  IV=0.6606 RV=0.3839  VRP=0.2767
+  SELL_TO_OPEN CRM    PUT 2025-09-12  K=227.5     LIMIT=1.86   w=0.1    bid/ask=1.71/2.02  d=-0.126  IV=0.5652 RV=0.3044  VRP=0.2609
+  SELL_TO_OPEN GOOGL  PUT 2025-09-12  K=195.0     LIMIT=1.06   w=0.1    bid/ask=1.03/1.1  d=-0.123  IV=0.4044 RV=0.2055  VRP=0.1989
+  SELL_TO_OPEN VZ     PUT 2025-09-05  K=42.0      LIMIT=0.11   w=0.1    bid/ask=0.01/0.2  d=-0.11  IV=0.3157 RV=0.1259  VRP=0.1898
+=== DONE_WEEKLY_SIGNAL ===
+DONE_WEEKLY_SIGNAL
+WEEKLY_SIGNAL_EXIT_RC=0 
+WEEKLY_SIGNAL_DONE Mon 07/20/2026  9:09:35.37 

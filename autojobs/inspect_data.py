@@ -1,7 +1,7 @@
 import os, glob, time
 import pandas as pd
-RES=r"C:\Users\OWNER\Desktop\GBC_data\results\pq_trade"; PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"
+RES=r"C:\GBC_data\results\pq_trade"; PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"
 out=os.path.join(PROJ,"iqn_data_inspect.txt"); L=[]; p=lambda s:L.append(str(s))
 p("INSPECT "+time.ctime())
 # IQN quantile files (in results, and exported in project)

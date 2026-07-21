@@ -1,0 +1,8 @@
+PARSE_OK
+14:HS=[5,10,21,42,63]; K=5
+65:def fit(Xw,yw,seed,init=None,epochs=70,M=8,batch=4096,lr=1e-3,patience=6):
+LAUNCHED
+steveqin 3621936  0.0  0.0  15680  3464 ?        Ss   20:23   0:00 bash -c cd ~/gbc_pq && sed -e 's/HS=\[5,10,21,42,63\]; K=3/HS=[5,10,21,42,63]; K=5/' -e 's/epochs=40/epochs=70/' gpu_iqn_mh.py > gpu_iqn_k5.py && rm -f mh_ckpt_k5.pkl && python3 -m py_compile gpu_iqn_k5.py && echo PARSE_OK && grep -nE 'K=5|epochs=70' gpu_iqn_k5.py && setsid --fork env MHVAR=k5 MHPANEL=mh_panel_v2.csv.gz MHFEATS=raw9 python3 gpu_iqn_k5.py </dev/null >train_k5.log 2>&1 ; sleep 5 ; echo LAUNCHED ; ps aux | grep [g]pu_iqn_k5 | head ; sleep 2 ; echo ---LOG---; tail -5 train_k5.log ; echo DONE_LAUNCH
+steveqin 3621942  116  2.8 9071844 919520 ?      Rsl  20:23   0:05 python3 gpu_iqn_k5.py
+---LOG---
+DONE_LAUNCH

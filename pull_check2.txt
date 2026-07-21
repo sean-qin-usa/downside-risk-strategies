@@ -1,0 +1,101 @@
+=== CHECK2 Tue 07/14/2026 17:12:06.46 === 
+--- log tail --- 
+connecting...
+Loading library list...
+Done
+CONNECTED OK
+secids: 633
+dte05_15 2005 50062
+dte05_15 2006 49846
+dte05_15 2007 56339
+dte05_15 2008 71708
+dte05_15 2009 79882
+dte05_15 2010 93275
+dte05_15 2011 137982
+dte05_15 2012 148134
+dte05_15 2013 244141
+dte05_15 2014 599729
+dte05_15 2015 942861
+dte05_15 2016 1039225
+dte05_15 2017 956630
+dte05_15 2018 1109048
+dte05_15 2019 1218954
+dte05_15 2020 1538822
+dte05_15 2021 1610187
+dte05_15 2022 1493477
+dte05_15 2023 1282518
+dte05_15 2024 1645985
+dte05_15 2025 1238480
+dte45_70 2005 136642
+dte45_70 2006 148614
+dte45_70 2007 174495
+dte45_70 2008 222635
+dte45_70 2009 256670
+dte45_70 2010 295521
+dte45_70 2011 391476
+dte45_70 2012 408416
+dte45_70 2013 410983
+dte45_70 2014 578094
+dte45_70 2015 661325
+dte45_70 2016 715224
+dte45_70 2017 692323
+dte45_70 2018 758770
+dte45_70 2019 834250
+dte45_70 2020 1098671
+dte45_70 2021 1178129
+dte45_70 2022 1155071
+dte45_70 2023 1022537
+dte45_70 2024 1243071
+dte45_70 2025 887988
+DTE PULLS DONE
+PULL_DTES_DONE 
+ 
+--- dte output files (count + list) --- 
+spreads_dte05_15_2005.csv.gz
+spreads_dte05_15_2006.csv.gz
+spreads_dte05_15_2007.csv.gz
+spreads_dte05_15_2008.csv.gz
+spreads_dte05_15_2009.csv.gz
+spreads_dte05_15_2010.csv.gz
+spreads_dte05_15_2011.csv.gz
+spreads_dte05_15_2012.csv.gz
+spreads_dte05_15_2013.csv.gz
+spreads_dte05_15_2014.csv.gz
+spreads_dte05_15_2015.csv.gz
+spreads_dte05_15_2016.csv.gz
+spreads_dte05_15_2017.csv.gz
+spreads_dte05_15_2018.csv.gz
+spreads_dte05_15_2019.csv.gz
+spreads_dte05_15_2020.csv.gz
+spreads_dte05_15_2021.csv.gz
+spreads_dte05_15_2022.csv.gz
+spreads_dte05_15_2023.csv.gz
+spreads_dte05_15_2024.csv.gz
+spreads_dte05_15_2025.csv.gz
+spreads_dte45_70_2005.csv.gz
+spreads_dte45_70_2006.csv.gz
+spreads_dte45_70_2007.csv.gz
+spreads_dte45_70_2008.csv.gz
+spreads_dte45_70_2009.csv.gz
+spreads_dte45_70_2010.csv.gz
+spreads_dte45_70_2011.csv.gz
+spreads_dte45_70_2012.csv.gz
+spreads_dte45_70_2013.csv.gz
+spreads_dte45_70_2014.csv.gz
+spreads_dte45_70_2015.csv.gz
+spreads_dte45_70_2016.csv.gz
+spreads_dte45_70_2017.csv.gz
+spreads_dte45_70_2018.csv.gz
+spreads_dte45_70_2019.csv.gz
+spreads_dte45_70_2020.csv.gz
+spreads_dte45_70_2021.csv.gz
+spreads_dte45_70_2022.csv.gz
+spreads_dte45_70_2023.csv.gz
+spreads_dte45_70_2024.csv.gz
+spreads_dte45_70_2025.csv.gz
+--- python running --- 
+
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+python.exe                   12012 Console                    1    104,352 K
+DONE2 

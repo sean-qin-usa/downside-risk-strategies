@@ -1,0 +1,14 @@
+---PROC---
+1425003 bash -c echo ---PROC---; pgrep -af gpu_iqn_mh; echo ---LOG---; tail -8 ~/gbc_pq/train_camp.log 2>/dev/null; echo ---OUT---; ls -la ~/gbc_pq/mh_quantiles_camp.csv 2>/dev/null
+---LOG---
+
+calibration by horizon (target tau -> coverage):
+h=  5 n= 51820  0.05->0.367  0.25->0.406  0.50->0.444  0.75->0.521  0.95->0.584  
+h= 10 n= 51710  0.05->0.343  0.25->0.380  0.50->0.424  0.75->0.528  0.95->0.595  
+h= 21 n= 51490  0.05->0.349  0.25->0.392  0.50->0.439  0.75->0.521  0.95->0.575  
+h= 42 n= 51048  0.05->0.339  0.25->0.386  0.50->0.436  0.75->0.516  0.95->0.557  
+h= 63 n= 50606  0.05->0.332  0.25->0.383  0.50->0.436  0.75->0.512  0.95->0.546  
+DONE 259650
+---OUT---
+-rw-rw-r-- 1 steveqin steveqin 58600636 Jul 14 19:08 /home/steveqin/gbc_pq/mh_quantiles_camp.csv
+MONDONE 

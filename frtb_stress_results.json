@@ -1,0 +1,145 @@
+{
+  "note": "FRTB 10-day horizon + stressed-window (non-Bloomberg, CRSP 2014-2024). hybrid_GBM vs garch_scale (sqrt-h) vs FHS, h=1 and h=10 overlapping cumulative returns. Split CALM (2014-19) vs STRESS (2020 COVID + 2022 bear). ES97.5+pinball. Shows whether the nonparam edge holds/grows at the FRTB 10-day horizon and concentrates in the stressed period.",
+  "h1": {
+    "all": {
+      "garch_scale": {
+        "pinball": 0.3586,
+        "ES975_pred": -6.218,
+        "ES975_real": -5.678,
+        "breach975": 0.0275,
+        "n": 166200
+      },
+      "fhs": {
+        "pinball": 0.3586,
+        "ES975_pred": -6.093,
+        "ES975_real": -5.859,
+        "breach975": 0.028,
+        "n": 166200
+      },
+      "hybrid_GBM": {
+        "pinball": 0.357,
+        "ES975_pred": -5.931,
+        "ES975_real": -5.931,
+        "breach975": 0.0281,
+        "n": 166200
+      }
+    },
+    "calm_2014_2019": {
+      "garch_scale": {
+        "pinball": NaN,
+        "ES975_pred": NaN,
+        "ES975_real": null,
+        "breach975": NaN,
+        "n": 0
+      },
+      "fhs": {
+        "pinball": NaN,
+        "ES975_pred": NaN,
+        "ES975_real": null,
+        "breach975": NaN,
+        "n": 0
+      },
+      "hybrid_GBM": {
+        "pinball": NaN,
+        "ES975_pred": NaN,
+        "ES975_real": null,
+        "breach975": NaN,
+        "n": 0
+      }
+    },
+    "stress_2020_2022": {
+      "garch_scale": {
+        "pinball": 0.3924,
+        "ES975_pred": -6.662,
+        "ES975_real": -5.875,
+        "breach975": 0.0311,
+        "n": 53100
+      },
+      "fhs": {
+        "pinball": 0.3926,
+        "ES975_pred": -6.539,
+        "ES975_real": -6.069,
+        "breach975": 0.0315,
+        "n": 53100
+      },
+      "hybrid_GBM": {
+        "pinball": 0.3911,
+        "ES975_pred": -6.301,
+        "ES975_real": -6.072,
+        "breach975": 0.0326,
+        "n": 53100
+      }
+    }
+  },
+  "h10": {
+    "all": {
+      "garch_scale": {
+        "pinball": 1.1603,
+        "ES975_pred": -19.389,
+        "ES975_real": -15.443,
+        "breach975": 0.033,
+        "n": 164850
+      },
+      "fhs": {
+        "pinball": 1.1592,
+        "ES975_pred": -18.993,
+        "ES975_real": -16.266,
+        "breach975": 0.0322,
+        "n": 164850
+      },
+      "hybrid_GBM": {
+        "pinball": 1.1438,
+        "ES975_pred": -19.051,
+        "ES975_real": -17.699,
+        "breach975": 0.0265,
+        "n": 164850
+      }
+    },
+    "calm_2014_2019": {
+      "garch_scale": {
+        "pinball": NaN,
+        "ES975_pred": NaN,
+        "ES975_real": null,
+        "breach975": NaN,
+        "n": 0
+      },
+      "fhs": {
+        "pinball": NaN,
+        "ES975_pred": NaN,
+        "ES975_real": null,
+        "breach975": NaN,
+        "n": 0
+      },
+      "hybrid_GBM": {
+        "pinball": NaN,
+        "ES975_pred": NaN,
+        "ES975_real": null,
+        "breach975": NaN,
+        "n": 0
+      }
+    },
+    "stress_2020_2022": {
+      "garch_scale": {
+        "pinball": 1.262,
+        "ES975_pred": -20.785,
+        "ES975_real": -15.636,
+        "breach975": 0.0411,
+        "n": 53100
+      },
+      "fhs": {
+        "pinball": 1.2605,
+        "ES975_pred": -20.397,
+        "ES975_real": -16.359,
+        "breach975": 0.0394,
+        "n": 53100
+      },
+      "hybrid_GBM": {
+        "pinball": 1.247,
+        "ES975_pred": -20.12,
+        "ES975_real": -17.317,
+        "breach975": 0.0353,
+        "n": 53100
+      }
+    }
+  }
+}

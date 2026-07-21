@@ -1,0 +1,20 @@
+Loading library list...
+Done
+CONNECTED 2s
+SPX securd:
+      secid ticker issue_type index_flag
+0  108105.0    SPX          A          1
+using SPX secid=108105
+spot rows 2429
+2016 rows=601815 26s
+2017 rows=822689 57s
+2018 rows=1080688 99s
+2019 rows=1114354 141s
+2020 rows=1469565 198s
+2021 rows=1499019 254s
+2022 rows=1670843 317s
+2023 rows=1699744 380s
+2024 rows=2014781 457s
+2025 rows=1411391 509s
+GEX PULL DONE
+GEXPULLDONE 

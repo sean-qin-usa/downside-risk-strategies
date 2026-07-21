@@ -1,0 +1,39 @@
+{
+  "note": "ACI coverage arm. Target VaR levels 1%/5%. garch_t (parametric), empirical (rolling 250d quantile, naive fixed), ACI (online-adapt the level, gamma=0.02). realized_breach should equal the level; roll_maxdev = mean over names of the max abs deviation of 120-day rolling coverage from nominal (lower=more stable under drift). Prediction: ACI closest to nominal & most stable; parametric/naive drift more.",
+  "W": 250,
+  "gamma": 0.02,
+  "level_0.01": {
+    "garch_t": {
+      "realized_breach": 0.0103,
+      "abs_err_vs_nominal": 0.0003,
+      "roll_maxdev": 0.0197
+    },
+    "empirical": {
+      "realized_breach": 0.0118,
+      "abs_err_vs_nominal": 0.0018,
+      "roll_maxdev": 0.0311
+    },
+    "ACI": {
+      "realized_breach": 0.0105,
+      "abs_err_vs_nominal": 0.0005,
+      "roll_maxdev": 0.0205
+    }
+  },
+  "level_0.05": {
+    "garch_t": {
+      "realized_breach": 0.0554,
+      "abs_err_vs_nominal": 0.0054,
+      "roll_maxdev": 0.0588
+    },
+    "empirical": {
+      "realized_breach": 0.0472,
+      "abs_err_vs_nominal": 0.0028,
+      "roll_maxdev": 0.0741
+    },
+    "ACI": {
+      "realized_breach": 0.0503,
+      "abs_err_vs_nominal": 0.0003,
+      "roll_maxdev": 0.0423
+    }
+  }
+}

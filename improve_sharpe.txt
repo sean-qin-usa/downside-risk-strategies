@@ -1,0 +1,79 @@
+names with px (max breadth)=542
+  2016 5579 89s
+  2017 11214 121s
+  2018 17001 153s
+  2019 22933 195s
+  2020 29019 239s
+  2021 35295 289s
+  2022 41640 332s
+  2023 48003 376s
+  2024 54364 424s
+  2025 58600 452s
+C:\Users\OWNER\Claude\Projects\GBC Project\improve_sharpe.py:71: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  keep=d2.groupby('ym',group_keys=False).apply(fn); m=keep.groupby('ym')['net'].mean()
+C:\Users\OWNER\Claude\Projects\GBC Project\improve_sharpe.py:71: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  keep=d2.groupby('ym',group_keys=False).apply(fn); m=keep.groupby('ym')['net'].mean()
+C:\Users\OWNER\Claude\Projects\GBC Project\improve_sharpe.py:71: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  keep=d2.groupby('ym',group_keys=False).apply(fn); m=keep.groupby('ym')['net'].mean()
+C:\Users\OWNER\Claude\Projects\GBC Project\improve_sharpe.py:71: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  keep=d2.groupby('ym',group_keys=False).apply(fn); m=keep.groupby('ym')['net'].mean()
+{
+  "n_trades": 58600,
+  "n_names": 542,
+  "baseline_18": null,
+  "BREADTH": {
+    "top18": {
+      "SR": 1.13,
+      "avg_bp": 46.4,
+      "names": 18,
+      "worst_mo": -6.86
+    },
+    "top50": {
+      "SR": 1.04,
+      "avg_bp": 44.5,
+      "names": 50,
+      "worst_mo": -7.78
+    },
+    "top100": {
+      "SR": 1.06,
+      "avg_bp": 42.6,
+      "names": 100,
+      "worst_mo": -8.71
+    },
+    "top200": {
+      "SR": 0.99,
+      "avg_bp": 41.2,
+      "names": 200,
+      "worst_mo": -10.72
+    },
+    "top542": {
+      "SR": 0.83,
+      "avg_bp": 43.3,
+      "names": 542,
+      "worst_mo": -17.25
+    }
+  },
+  "CROSS_SECTIONAL_VRP": {
+    "all": {
+      "SR": 0.83,
+      "avg_bp": 43.2,
+      "worst_mo": -17.25
+    },
+    "top50pct_VRP": {
+      "SR": 1.2,
+      "avg_bp": 60.4,
+      "worst_mo": -16.21
+    },
+    "top25pct_VRP": {
+      "SR": 1.99,
+      "avg_bp": 90.2,
+      "worst_mo": -13.31
+    },
+    "bottom25pct_VRP": {
+      "SR": 0.44,
+      "avg_bp": 26.9,
+      "worst_mo": -20.49
+    }
+  }
+}
+IMPROVEDONE

@@ -1,0 +1,28 @@
+{
+  "note": "Standalone (per-name) GARCH-residual hybrid on CRSP (200 names). GARCH-t vs FHS_full vs FHS_recent(250). q=mu+sigma_t*Qz(tau); Qz parametric-t / empirical-full / empirical-recent. Tests whether residual-space nonparam gives a \"never worse than GARCH standalone\" floor and wins under residual-shape misspecification. Also = a clean FHS (fixes the battery FHS calibration bug).",
+  "n_names": 200,
+  "mean_resid_excess_kurtosis": 15.9,
+  "garch_t": {
+    "overall": 0.3971,
+    "Q1_calm": 0.325,
+    "Q5_turbulent": 0.4789,
+    "breach5": 0.0554
+  },
+  "fhs_full": {
+    "overall": 0.3971,
+    "Q1_calm": 0.3249,
+    "Q5_turbulent": 0.4787,
+    "breach5": 0.0552
+  },
+  "fhs_recent": {
+    "overall": 0.3985,
+    "Q1_calm": 0.3252,
+    "Q5_turbulent": 0.4861,
+    "breach5": 0.0519
+  },
+  "bestFHS_vs_garch_pct": {
+    "overall": 0.0,
+    "Q1_calm": 0.03,
+    "Q5_turbulent": 0.04
+  }
+}

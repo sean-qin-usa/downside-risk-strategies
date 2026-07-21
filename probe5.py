@@ -1,8 +1,8 @@
 
 import os, json
 import numpy as np, pandas as pd
-RES=r"C:\Users\OWNER\Desktop\GBC_data\results\pq_trade"
-RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"
+RES=r"C:\GBC_data\results\pq_trade"
+RAW=r"C:\GBC_data\data\raw"
 OUT=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 log=[]
 def L(*a): log.append(" ".join(str(x) for x in a))

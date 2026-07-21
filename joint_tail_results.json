@@ -1,0 +1,49 @@
+{
+  "note": "Co-crash/joint-tail prototype: equal-weight CRSP largecap portfolio. Direct nonparametric portfolio-quantile (GBM) vs CCC-GARCH (constant-correlation multivariate GARCH) vs DCC-lite (EWMA dynamic correlation). Metrics: portfolio pinball(11 taus), 2.5%/1% VaR breach (targets .025/.01), 97.5% ES pred vs realized. Hypothesis: static-corr CCC underestimates crisis tail (corr spikes); DCC & nonparametric capture it.",
+  "n_names": 25,
+  "n_test": 1060,
+  "nu_p": 4.5,
+  "models": {
+    "CCC_GARCH": {
+      "pinball": 0.1719,
+      "breach_2p5": 0.0274,
+      "breach_1p": 0.0075,
+      "ES975_pred": -2.504,
+      "ES975_real": -2.813,
+      "n": 1060
+    },
+    "DCC_lite": {
+      "pinball": 0.1709,
+      "breach_2p5": 0.0358,
+      "breach_1p": 0.0085,
+      "ES975_pred": -2.414,
+      "ES975_real": -2.566,
+      "n": 1060
+    },
+    "GBM_direct": {
+      "pinball": 0.1752,
+      "breach_2p5": 0.0368,
+      "breach_1p": 0.016,
+      "ES975_pred": -2.299,
+      "ES975_real": -2.397,
+      "n": 1060
+    }
+  },
+  "crisis_high_vol_decile": {
+    "CCC_GARCH": {
+      "pinball": 0.2969,
+      "breach_2p5": 0.0472,
+      "n": 106
+    },
+    "DCC_lite": {
+      "pinball": 0.2933,
+      "breach_2p5": 0.0566,
+      "n": 106
+    },
+    "GBM_direct": {
+      "pinball": 0.3035,
+      "breach_2p5": 0.0472,
+      "n": 106
+    }
+  }
+}

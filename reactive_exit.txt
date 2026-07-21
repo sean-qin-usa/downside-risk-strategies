@@ -1,0 +1,45 @@
+  2016 168 8s
+  2017 336 13s
+  2018 504 18s
+  2019 680 23s
+  2020 863 30s
+  2021 1062 37s
+  2022 1276 43s
+  2023 1492 49s
+  2024 1708 55s
+  2025 1852 59s
+{
+  "n": 1852,
+  "hold": {
+    "avg_bp": 46.5,
+    "monthly_SR": 1.14,
+    "worst_mo_pct": -6.86,
+    "mar2020_bp": -481.4
+  },
+  "stop_-10%": {
+    "avg_bp": 25.4,
+    "monthly_SR": 0.86,
+    "worst_mo_pct": -3.62,
+    "mar2020_bp": -332.1
+  },
+  "stop_-15%": {
+    "avg_bp": 28.0,
+    "monthly_SR": 0.79,
+    "worst_mo_pct": -5.48,
+    "mar2020_bp": -548.4
+  },
+  "stop_-20%": {
+    "avg_bp": 29.3,
+    "monthly_SR": 0.66,
+    "worst_mo_pct": -7.26,
+    "mar2020_bp": -684.3
+  },
+  "stop_strike": {
+    "avg_bp": 30.9,
+    "monthly_SR": 0.87,
+    "worst_mo_pct": -7.06,
+    "mar2020_bp": -705.8
+  }
+}
+REACTDONE
+REACTJOBDONE 

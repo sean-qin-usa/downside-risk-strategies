@@ -1,0 +1,7 @@
+=== Tue 07/14/2026 19:15:55.24 === 
+LAUNCHED2
+patched. checking defs:
+   NEWF=["mo_sin","mo_cos","febmar","vrp","ivz","skwz","skew_chg","rv5","rv63","amihud","netc
+   SEAS=["mo_sin","mo_cos","febmar"]
+   FEATS=(F9 if FSET=="raw9" else (F17 if FSET=="raw17" else (F9+SEAS if FSET=="seas" else F1
+SYNTAX OK

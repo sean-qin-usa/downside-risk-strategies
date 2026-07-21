@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Sequential variant training on ai2. Fire-and-forget; logs per variant.
+cd ~/gbc_pq
+export MHPANEL=mh_panel_v2.csv.gz
+MHVAR=v2a MHLAM=0.50 MHFEATS=raw17 /usr/bin/python3 -u gpu_iqn_mh.py > train_v2a.log 2>&1
+MHVAR=v2c MHLAM=0.50 MHFEATS=raw9  /usr/bin/python3 -u gpu_iqn_mh.py > train_v2c.log 2>&1
+echo ALL_VARIANTS_DONE > variants_done.txt

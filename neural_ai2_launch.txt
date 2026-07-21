@@ -1,0 +1,10 @@
+=== scp fixed script to ai2 === 
+=== launch on ai2 (detached) === 
+LAUNCHED
+steveqin  851189  0.0  0.0  15680  3604 ?        Ss   12:50   0:00 bash -c cd ~/gbc_pq && rm -f neural_iqn_ai2.json && setsid --fork env python3 gpu_iqn_amort.py </dev/null >neural_ai2.log 2>&1 ; sleep 8 ; echo LAUNCHED ; ps aux | grep [g]pu_iqn_amort | head ; sleep 3 ; echo ---LOG--- ; tail -8 neural_ai2.log
+steveqin  851192  107  3.1 8806044 1040748 ?     Rsl  12:50   0:08 python3 gpu_iqn_amort.py
+---LOG---
+dev cuda torch 2.12.0+cu130
+training n=777157 9s
+  ep0 loss nan 10s
+DONE_LAUNCH 

@@ -5,7 +5,7 @@ def _fi(p=''):
 builtins.input=_fi
 os.environ['PGPASSFILE']=r'C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf'; os.environ.setdefault('PGUSER','seanqin2028')
 import wrds, json
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 imp=pd.read_csv(os.path.join(P,"improve_trades.csv")); imp['date']=pd.to_datetime(imp['date'])
 sec=pd.read_csv(os.path.join(W,"secids.csv"))
 imp=imp.merge(sec[['secid','cusip']].dropna(),on='secid',how='left') if 'cusip' in sec.columns else imp

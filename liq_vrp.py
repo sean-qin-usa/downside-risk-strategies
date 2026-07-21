@@ -1,6 +1,6 @@
 # Does VRP selection survive within LIQUID names (executable)? Restrict to top-100 by OI, then VRP-select.
 import os, numpy as np, pandas as pd
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 df=pd.read_csv(os.path.join(P,"improve_trades.csv")); df['ym']=pd.PeriodIndex(pd.to_datetime(df['date']).dt.to_period('M'),freq='M')
 df=df.dropna(subset=['vrp'])
 oi=pd.read_csv(os.path.join(W,"spreads_2023.csv.gz"),usecols=['secid','open_interest']).groupby('secid')['open_interest'].sum().sort_values(ascending=False)

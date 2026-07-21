@@ -13,7 +13,7 @@ import os, glob, math, json, datetime as dt
 import numpy as np, pandas as pd
 from statistics import NormalDist
 ppf=NormalDist().inv_cdf
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 
 CFG=dict(delta_target=-0.12, dte_lo=20, dte_hi=40, gate_pct=0.80, gate_win=24, n_names=18, limit="mid")
 

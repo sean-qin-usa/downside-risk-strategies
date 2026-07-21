@@ -1,0 +1,37 @@
+{
+  "note": "Neural IQN (tau-conditioned MLP, Dabney-style cosine embedding) vs gradient-boosted quantile (GBM), amortized on full CRSP panel. Avg pinball over 7 taus, held-out names. Lower=better; ratio<1 means neural better.",
+  "device": "cuda",
+  "n_train": 834374,
+  "n_test": 484531,
+  "overall": {
+    "neural_iqn": 0.6207,
+    "gbm": 0.6161,
+    "neural_vs_gbm": 1.0075
+  },
+  "by_age": {
+    "d15_60": {
+      "n": 12844,
+      "neural_iqn": 0.6646,
+      "gbm": 0.6597,
+      "neural_vs_gbm": 1.0074
+    },
+    "d60_250": {
+      "n": 52292,
+      "neural_iqn": 0.6182,
+      "gbm": 0.613,
+      "neural_vs_gbm": 1.0084
+    },
+    "d250_1000": {
+      "n": 169590,
+      "neural_iqn": 0.6721,
+      "gbm": 0.6683,
+      "neural_vs_gbm": 1.0056
+    },
+    "d1000_2700": {
+      "n": 237603,
+      "neural_iqn": 0.5843,
+      "gbm": 0.5792,
+      "neural_vs_gbm": 1.0089
+    }
+  }
+}

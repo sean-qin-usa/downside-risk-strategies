@@ -1,0 +1,19 @@
+cohorts sizes: {'Q1_liq': 28, 'Q2_mid': 28, 'Q3_mid': 28, 'Q4_mid': 28, 'Q5_illiq': 28} ; loading px...
+  2016 21s
+  2017 28s
+  2018 36s
+  2019 44s
+  2020 54s
+  2021 64s
+  2022 73s
+  2023 81s
+  2024 91s
+  2025 97s
+DONE
+  Q1_liq       gross_prem 0.79%  IV 0.45  netSR 0.42  net 16.8bp  spread 21.1bp  worst -7.0
+  Q2_mid       gross_prem 0.68%  IV 0.435  netSR 0.18  net 6.2bp  spread 38.3bp  worst -8.5
+  Q3_mid       gross_prem 0.7%  IV 0.433  netSR 0.71  net 21.1bp  spread 33.8bp  worst -7.6
+  Q4_mid       gross_prem 0.51%  IV 0.347  netSR 0.2  net 7.8bp  spread 27.3bp  worst -13.3
+  Q5_illiq     gross_prem 0.63%  IV 0.378  netSR 0.09  net 6.6bp  spread 35.2bp  worst -27.5
+  LOSS: macro-crash-months 0.75 / idio-singlename 0.25 ; var: systematic 0.21 / idio 0.79
+LIQDONE 

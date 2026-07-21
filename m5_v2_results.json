@@ -1,0 +1,13 @@
+{
+  "note": "M5-Uncertainty v2 (ai2, LEAKAGE-SAFE): sales lags>=28 only (no within-horizon leakage), price features (known ahead), 3-model ensemble, 12000 series. Level-12 SPL over 9 quantiles.",
+  "n_series": 12000,
+  "n_test": 336000,
+  "SPL_gbm_ensemble": 0.2691,
+  "SPL_baseline_empirical": 0.4015,
+  "prior_runs": {
+    "v1_price_8000series_lag7(some leakage)": 0.2443,
+    "v0_noprice_1200series": 0.2595
+  },
+  "reference": "M5-Uncertainty Level-12: winners ~0.16-0.17, naive ~0.22-0.25",
+  "improvement_vs_baseline_pct": 33.0
+}

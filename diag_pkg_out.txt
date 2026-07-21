@@ -1,0 +1,53 @@
+DIAG_PKG Mon Jul 13 19:33:58 2026
+wrds version: ?
+wrds file: C:\Users\OWNER\anaconda3\Lib\site-packages\wrds\__init__.py
+Connection.__init__ sig: (self, autoconnect=True, verbose=False, **kwargs)
+  sql.py:44  The constructor will use the .pgpass file if it exists and may make use of
+  sql.py:48  It will also direct the user to information on setting up .pgpass.
+  sql.py:119  # Connection successful. Offer to create a .pgpass for the user.
+  sql.py:120  print("WRDS recommends setting up a .pgpass file.")
+  sql.py:121  do_create_pgpass = ""
+  sql.py:122  while do_create_pgpass != "y" and do_create_pgpass != "n":
+  sql.py:123  do_create_pgpass = input("Create .pgpass file now [y/n]?: ")
+  sql.py:125  if do_create_pgpass == "y":
+  sql.py:127  self.create_pgpass_file()
+  sql.py:128  print("Created .pgpass file successfully.")
+  sql.py:130  print("Failed to create .pgpass file.")
+  sql.py:133  "with the create_pgpass_file() function."
+  sql.py:216  def create_pgpass_file(self):
+  sql.py:218  Create a .pgpass file to store WRDS connection credentials.
+  sql.py:223  The .pgpass file may contain connection entries for multiple databases,
+  sql.py:227  On Windows, this file is actually called "pgpass.conf"
+  sql.py:228  and is stored in the %APPDATA%\postgresql directory.
+  sql.py:233  >>> db.create_pgpass_file()
+  sql.py:238  self.__create_pgpass_file_win32()
+  sql.py:240  self.__create_pgpass_file_unix()
+  sql.py:242  def __create_pgpass_file_win32(self):
+  sql.py:244  Create a pgpass.conf file on Windows.
+  sql.py:248  Save the pgpass file in %APPDATA%\postgresql as 'pgpass.conf'.
+  sql.py:250  Note: The Microsoft Store version of Python virtiualizes the %APPDATA% directory.
+  sql.py:251  Rather than writing to the standard %APPDATA%\postgresql\pgpass.conf,
+  sql.py:253  If you debug this Python code, it shows that it writes to a standard %APPDATA%\postgresql\pgpass.conf,
+  sql.py:261  appdata = os.getenv("APPDATA")
+  sql.py:262  pgdir = appdata + os.path.sep + "postgresql"
+  sql.py:263  # Can we at least assume %APPDATA% always exists? I'm seriously asking.
+  sql.py:270  pgfile = pgdir + os.path.sep + "pgpass.conf"
+  sql.py:271  # Write the pgpass.conf file without clobbering
+  sql.py:272  self.__write_pgpass_file(pgfile)
+  sql.py:276  print(f"pgpass file created at {pgfile_resolved}")
+  sql.py:278  def __create_pgpass_file_unix(self):
+  sql.py:280  Create a .pgpass file on Unix-like operating systems.
+  sql.py:287  pgfile = homedir + os.path.sep + ".pgpass"
+  sql.py:291  self.__write_pgpass_file(pgfile)
+  sql.py:295  def __write_pgpass_file(self, pgfile):
+  sql.py:297  Write the WRDS connection info to the pgpass file
+  sql.py:301  as .pgpass requires.
+  sql.py:305  pgpass = "{host}:{port}:{dbname}:{user}:{passwd}\n"
+  sql.py:321  #  we replace it with the new pgpass line.
+  sql.py:329  newline = pgpass.format(
+  sql.py:342  newline = pgpass.format(
+  sql.py:353  line = pgpass.format(
+pgpass candidate C:\Users\OWNER\.pgpass : missing
+pgpass candidate C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf : EXISTS 72b
+HOME expanduser = C:\Users\OWNER
+env PGPASSFILE = (unset)

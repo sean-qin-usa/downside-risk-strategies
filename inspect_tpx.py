@@ -1,6 +1,6 @@
 import os, glob, time
 import pandas as pd
-D=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"
+D=r"C:\GBC_data\data\raw"
 out=r"C:\Users\OWNER\Claude\Projects\GBC Project\tpx_inspect_out.txt"
 L=[]; p=lambda s:L.append(str(s))
 p("TPX INSPECT "+time.ctime())

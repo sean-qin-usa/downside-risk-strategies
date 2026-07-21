@@ -7,7 +7,7 @@ builtins.input=_fake_input
 os.environ['PGPASSFILE']=r'C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf'
 os.environ.setdefault('PGUSER','seanqin2028')
 import pandas as pd, wrds, time
-OUT=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"
+OUT=r"C:\GBC_data\data\wrds"
 print("connecting...",flush=True); db=wrds.Connection(wrds_username='seanqin2028'); print("CONNECTED",flush=True)
 top=[int(s) for s in pd.read_csv(os.path.join(OUT,"spreads_2023.csv.gz"),usecols=['secid','open_interest']).groupby('secid')['open_interest'].sum().sort_values(ascending=False).index[:60]]
 secl=",".join(str(s) for s in top); print("top secids",len(top),flush=True)

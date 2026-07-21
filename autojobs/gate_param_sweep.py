@@ -1,6 +1,6 @@
 # Robust VIX-gate parameter study: threshold x window x signal-type x ERA. Goal: find era-STABLE params (anti-overfit).
 import os, json, numpy as np, pandas as pd
-RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 bt=pd.read_csv(os.path.join(P,"exp_bt_series.csv"),parse_dates=['date']); bt['ym']=bt.date.dt.to_period('M')
 s_all=bt.set_index('ym')['s0']/100.0
 v=pd.read_csv(os.path.join(RAW,'vol_indices.csv')); cl={c.lower():c for c in v.columns}

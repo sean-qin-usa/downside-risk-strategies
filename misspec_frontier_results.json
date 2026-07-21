@@ -1,0 +1,291 @@
+{
+  "note": "Misspecification frontier: amortized-GBM minus GARCH-t pinball EDGE as a function of causal per-(name,day) misspecification signals. mk63=recent 63d standardized-residual excess kurtosis (fat-tail drift); jump5=recent 5d max|z| (jump magnitude); skew63=|recent 63d residual skew| (asymmetry drift). edge_pct>0 => nonparam better. Prediction: edge rises monotonically with misspecification; ~0 in bottom deciles.",
+  "n_names": 200,
+  "n_test": 221600,
+  "overall_edge_pct": 0.44,
+  "by_mk63_residkurt": {
+    "deciles": [
+      {
+        "decile": 1,
+        "signal_mean": -0.309,
+        "garch_pin": 0.3951,
+        "gbm_pin": 0.3944,
+        "edge_abs": 0.00074,
+        "edge_pct": 0.19,
+        "n": 22160
+      },
+      {
+        "decile": 2,
+        "signal_mean": 0.18,
+        "garch_pin": 0.3901,
+        "gbm_pin": 0.3901,
+        "edge_abs": 4e-05,
+        "edge_pct": 0.01,
+        "n": 22160
+      },
+      {
+        "decile": 3,
+        "signal_mean": 0.564,
+        "garch_pin": 0.3803,
+        "gbm_pin": 0.3809,
+        "edge_abs": -0.00056,
+        "edge_pct": -0.15,
+        "n": 22160
+      },
+      {
+        "decile": 4,
+        "signal_mean": 0.955,
+        "garch_pin": 0.3821,
+        "gbm_pin": 0.3813,
+        "edge_abs": 0.00075,
+        "edge_pct": 0.2,
+        "n": 22160
+      },
+      {
+        "decile": 5,
+        "signal_mean": 1.439,
+        "garch_pin": 0.386,
+        "gbm_pin": 0.3855,
+        "edge_abs": 0.00054,
+        "edge_pct": 0.14,
+        "n": 22160
+      },
+      {
+        "decile": 6,
+        "signal_mean": 2.106,
+        "garch_pin": 0.3887,
+        "gbm_pin": 0.3875,
+        "edge_abs": 0.00114,
+        "edge_pct": 0.29,
+        "n": 22160
+      },
+      {
+        "decile": 7,
+        "signal_mean": 3.157,
+        "garch_pin": 0.4057,
+        "gbm_pin": 0.4048,
+        "edge_abs": 0.00094,
+        "edge_pct": 0.23,
+        "n": 22160
+      },
+      {
+        "decile": 8,
+        "signal_mean": 5.138,
+        "garch_pin": 0.4023,
+        "gbm_pin": 0.4015,
+        "edge_abs": 0.00077,
+        "edge_pct": 0.19,
+        "n": 22160
+      },
+      {
+        "decile": 9,
+        "signal_mean": 9.526,
+        "garch_pin": 0.396,
+        "gbm_pin": 0.3939,
+        "edge_abs": 0.00207,
+        "edge_pct": 0.52,
+        "n": 22160
+      },
+      {
+        "decile": 10,
+        "signal_mean": 25.013,
+        "garch_pin": 0.4445,
+        "gbm_pin": 0.4336,
+        "edge_abs": 0.01093,
+        "edge_pct": 2.46,
+        "n": 22160
+      }
+    ],
+    "corr_signal_edge": 0.051
+  },
+  "by_jump5": {
+    "deciles": [
+      {
+        "decile": 1,
+        "signal_mean": 0.565,
+        "garch_pin": 0.3483,
+        "gbm_pin": 0.3436,
+        "edge_abs": 0.00472,
+        "edge_pct": 1.36,
+        "n": 22163
+      },
+      {
+        "decile": 2,
+        "signal_mean": 0.839,
+        "garch_pin": 0.3586,
+        "gbm_pin": 0.3572,
+        "edge_abs": 0.00145,
+        "edge_pct": 0.4,
+        "n": 22157
+      },
+      {
+        "decile": 3,
+        "signal_mean": 1.017,
+        "garch_pin": 0.3672,
+        "gbm_pin": 0.3652,
+        "edge_abs": 0.00198,
+        "edge_pct": 0.54,
+        "n": 22160
+      },
+      {
+        "decile": 4,
+        "signal_mean": 1.171,
+        "garch_pin": 0.371,
+        "gbm_pin": 0.3691,
+        "edge_abs": 0.00189,
+        "edge_pct": 0.51,
+        "n": 22164
+      },
+      {
+        "decile": 5,
+        "signal_mean": 1.33,
+        "garch_pin": 0.3911,
+        "gbm_pin": 0.3896,
+        "edge_abs": 0.00153,
+        "edge_pct": 0.39,
+        "n": 22157
+      },
+      {
+        "decile": 6,
+        "signal_mean": 1.5,
+        "garch_pin": 0.3883,
+        "gbm_pin": 0.3872,
+        "edge_abs": 0.00114,
+        "edge_pct": 0.29,
+        "n": 22161
+      },
+      {
+        "decile": 7,
+        "signal_mean": 1.7,
+        "garch_pin": 0.4044,
+        "gbm_pin": 0.4032,
+        "edge_abs": 0.00118,
+        "edge_pct": 0.29,
+        "n": 22161
+      },
+      {
+        "decile": 8,
+        "signal_mean": 1.959,
+        "garch_pin": 0.4182,
+        "gbm_pin": 0.4184,
+        "edge_abs": -0.0002,
+        "edge_pct": -0.05,
+        "n": 22157
+      },
+      {
+        "decile": 9,
+        "signal_mean": 2.36,
+        "garch_pin": 0.4215,
+        "gbm_pin": 0.4223,
+        "edge_abs": -0.00084,
+        "edge_pct": -0.2,
+        "n": 22161
+      },
+      {
+        "decile": 10,
+        "signal_mean": 4.12,
+        "garch_pin": 0.5022,
+        "gbm_pin": 0.4977,
+        "edge_abs": 0.00451,
+        "edge_pct": 0.9,
+        "n": 22159
+      }
+    ],
+    "corr_signal_edge": 0.097
+  },
+  "by_skew63": {
+    "deciles": [
+      {
+        "decile": 1,
+        "signal_mean": 0.048,
+        "garch_pin": 0.3893,
+        "gbm_pin": 0.3884,
+        "edge_abs": 0.00092,
+        "edge_pct": 0.24,
+        "n": 22160
+      },
+      {
+        "decile": 2,
+        "signal_mean": 0.145,
+        "garch_pin": 0.3832,
+        "gbm_pin": 0.3832,
+        "edge_abs": -8e-05,
+        "edge_pct": -0.02,
+        "n": 22160
+      },
+      {
+        "decile": 3,
+        "signal_mean": 0.245,
+        "garch_pin": 0.3872,
+        "gbm_pin": 0.3867,
+        "edge_abs": 0.00046,
+        "edge_pct": 0.12,
+        "n": 22160
+      },
+      {
+        "decile": 4,
+        "signal_mean": 0.356,
+        "garch_pin": 0.3869,
+        "gbm_pin": 0.386,
+        "edge_abs": 0.00089,
+        "edge_pct": 0.23,
+        "n": 22160
+      },
+      {
+        "decile": 5,
+        "signal_mean": 0.486,
+        "garch_pin": 0.3924,
+        "gbm_pin": 0.3918,
+        "edge_abs": 0.00059,
+        "edge_pct": 0.15,
+        "n": 22160
+      },
+      {
+        "decile": 6,
+        "signal_mean": 0.651,
+        "garch_pin": 0.3863,
+        "gbm_pin": 0.3867,
+        "edge_abs": -0.0004,
+        "edge_pct": -0.1,
+        "n": 22160
+      },
+      {
+        "decile": 7,
+        "signal_mean": 0.879,
+        "garch_pin": 0.3967,
+        "gbm_pin": 0.3948,
+        "edge_abs": 0.00193,
+        "edge_pct": 0.49,
+        "n": 22160
+      },
+      {
+        "decile": 8,
+        "signal_mean": 1.235,
+        "garch_pin": 0.4069,
+        "gbm_pin": 0.4071,
+        "edge_abs": -0.00022,
+        "edge_pct": -0.05,
+        "n": 22160
+      },
+      {
+        "decile": 9,
+        "signal_mean": 1.951,
+        "garch_pin": 0.3975,
+        "gbm_pin": 0.3948,
+        "edge_abs": 0.00273,
+        "edge_pct": 0.69,
+        "n": 22160
+      },
+      {
+        "decile": 10,
+        "signal_mean": 3.976,
+        "garch_pin": 0.4444,
+        "gbm_pin": 0.4339,
+        "edge_abs": 0.01055,
+        "edge_pct": 2.37,
+        "n": 22160
+      }
+    ],
+    "corr_signal_edge": 0.046
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "note": "Crypto study: GBM-quantile (IQN-family) vs GARCH-t on major coins (extreme-instability tier of the stability gradient). ratio=nonparam/garch pinball (<1=nonparam better). resid_kurt=GJR-GARCH-t std-resid kurtosis. Thesis: crypto = biggest nonparam edge + highest resid_kurt of any asset class.",
+  "per_coin": {
+    "BTC": {
+      "start": "2015-01-02",
+      "n_days": 3955,
+      "ann_vol": 55.6,
+      "worst": -31.7,
+      "resid_kurt": null,
+      "garch": 0.5743,
+      "nonparam": 0.5846,
+      "ratio": 1.018,
+      "n_oos": 1579
+    },
+    "ETH": {
+      "start": "2018-02-09",
+      "n_days": 2972,
+      "ann_vol": 69.4,
+      "worst": -40.5,
+      "resid_kurt": null,
+      "garch": 0.7374,
+      "nonparam": 0.7505,
+      "ratio": 1.0179,
+      "n_oos": 1186
+    },
+    "XRP": {
+      "start": "2018-02-09",
+      "n_days": 2980,
+      "ann_vol": 81.2,
+      "worst": -49.2,
+      "resid_kurt": null,
+      "garch": 0.8493,
+      "nonparam": 0.86,
+      "ratio": 1.0126,
+      "n_oos": 1189
+    },
+    "LTC": {
+      "start": "2018-02-09",
+      "n_days": 2980,
+      "ann_vol": 75.4,
+      "worst": -39.3,
+      "resid_kurt": null,
+      "garch": 0.8123,
+      "nonparam": 0.8254,
+      "ratio": 1.0162,
+      "n_oos": 1189
+    },
+    "DOGE": {
+      "start": "2022-09-25",
+      "n_days": 1394,
+      "ann_vol": 74.0,
+      "worst": -25.5,
+      "resid_kurt": null,
+      "garch": 0.9872,
+      "nonparam": 1.0172,
+      "ratio": 1.0304,
+      "n_oos": 555
+    }
+  },
+  "summary": {
+    "n": 5,
+    "mean_ratio": 1.019,
+    "nonparam_wins": 0,
+    "mean_resid_kurt": null,
+    "mean_annvol": 71.1
+  }
+}

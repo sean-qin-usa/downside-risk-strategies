@@ -1,0 +1,97 @@
+{
+  "note": "FRTB-aligned benchmark. Industry set: Historical Simulation, EWMA/RiskMetrics, GARCH-t, GJR-GARCH-skew-t, GARCH-FHS (filtered historical sim, the bank best-practice) vs resid_hybrid_ML (GARCH vol x STATE-CONDITIONED nonparam residual = FHS-and-above). Metric ES97.5 (FRTB) + avg pinball; FRTB-style exception backtests Kupiec/Christoffersen at 99%; significance Diebold-Mariano (NW) + Model Confidence Set (Hansen). best=lowest pinball.",
+  "n_names": 140,
+  "n_test_rows": 155120,
+  "n_dates": 1108,
+  "per_model": {
+    "hist_sim": {
+      "avg_pinball": 0.3619,
+      "ES975_pred": -6.873,
+      "ES975_realized": -6.863,
+      "breach99": 0.0084,
+      "breach975": 0.0203,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0
+    },
+    "ewma_rm": {
+      "avg_pinball": 0.3606,
+      "ES975_pred": -5.405,
+      "ES975_realized": -5.634,
+      "breach99": 0.0163,
+      "breach975": 0.0274,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0
+    },
+    "garch_t": {
+      "avg_pinball": 0.3561,
+      "ES975_pred": -6.17,
+      "ES975_realized": -5.652,
+      "breach99": 0.0106,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.0264,
+      "christoffersen99_p": 0.0785
+    },
+    "gjr_skewt": {
+      "avg_pinball": 0.3574,
+      "ES975_pred": -5.807,
+      "ES975_realized": -5.806,
+      "breach99": 0.0122,
+      "breach975": 0.0254,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0
+    },
+    "fhs": {
+      "avg_pinball": 0.3565,
+      "ES975_pred": -6.204,
+      "ES975_realized": -5.59,
+      "breach99": 0.0105,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.0409,
+      "christoffersen99_p": 0.1236
+    },
+    "resid_hybrid_ML": {
+      "avg_pinball": 0.3551,
+      "ES975_pred": -5.799,
+      "ES975_realized": -5.763,
+      "breach99": 0.0119,
+      "breach975": 0.0289,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0
+    }
+  },
+  "best_model": "resid_hybrid_ML",
+  "DM_vs_best": {
+    "hist_sim": {
+      "DM_stat": 7.34,
+      "p_one_sided": 0.0
+    },
+    "ewma_rm": {
+      "DM_stat": 8.33,
+      "p_one_sided": 0.0
+    },
+    "garch_t": {
+      "DM_stat": 4.38,
+      "p_one_sided": 0.0
+    },
+    "gjr_skewt": {
+      "DM_stat": 5.73,
+      "p_one_sided": 0.0
+    },
+    "fhs": {
+      "DM_stat": 5.7,
+      "p_one_sided": 0.0
+    }
+  },
+  "MCS": {
+    "in_MCS_90": [
+      "resid_hybrid_ML"
+    ],
+    "elimination_pvals": {
+      "hist_sim": 0.0,
+      "ewma_rm": 0.0,
+      "gjr_skewt": 0.0,
+      "fhs": 0.0,
+      "garch_t": 0.0
+    }
+  }
+}

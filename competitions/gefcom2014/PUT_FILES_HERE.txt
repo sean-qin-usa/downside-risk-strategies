@@ -1,0 +1,27 @@
+GEFCom2014 — Global Energy Forecasting Competition 2014 (probabilistic tracks)
+=============================================================================
+WHERE TO GET IT (free):
+ - Primary: supplementary data for Hong, Pinson, Fan et al. (2016),
+   "Probabilistic energy forecasting: Global Energy Forecasting Competition 2014 and beyond,"
+   International Journal of Forecasting 32(3). The data zip is in the article's
+   supplementary material on ScienceDirect.
+ - Mirror: Dr. Tao Hong's site (search "GEFCom2014 data drhongtao") and several
+   public GitHub repos host "GEFCom2014 Data.zip".
+
+WHAT TO DOWNLOAD:
+ The competition has 4 probabilistic tracks — download whichever you want to score:
+   L  = electricity LOAD          (flagship benchmark: QRA / quantile regression)
+   P  = electricity PRICE         (flagship: QRA)
+   W  = WIND power                (flagship: quantile regression)
+   S  = SOLAR power               (flagship: quantile regression)
+
+HOW TO PLACE IT:
+ Unzip so that the per-track CSVs land directly in this folder, e.g.:
+   competitions/gefcom2014/Load/ ...
+   competitions/gefcom2014/Price/ ...
+   competitions/gefcom2014/Wind/ ...
+   competitions/gefcom2014/Solar/ ...
+ (Exact subfolder names don't matter — I'll auto-detect *.csv here.)
+
+Scoring metric the competition used: PINBALL loss averaged over the 99 quantiles
+(tau = 0.01 ... 0.99). I'll build the harness to reproduce that exactly.

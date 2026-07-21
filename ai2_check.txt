@@ -1,0 +1,40 @@
+ai2
+---GPU---
+True
+---FILES---
+-rw-rw-r--  1 steveqin steveqin      246 Jul  5 00:45 ai2_relaunch_mh.sh
+-rwxrwxr-x  1 steveqin steveqin     1083 Jul  4 18:10 ai2_setup_run.sh
+-rw-rw-r--  1 steveqin steveqin      362 Jul  5 12:22 ai2_train_variants.sh
+-rw-rw-r--  1 steveqin steveqin     2292 Jul  4 18:24 gpu_iqn21.log
+-rw-rw-r--  1 steveqin steveqin     6350 Jul  4 18:22 gpu_iqn21.py
+-rw-rw-r--  1 steveqin steveqin     5598 Jul  6 07:22 gpu_iqn_frozen.py
+-rw-rw-r--  1 steveqin steveqin     7052 Jul  5 12:22 gpu_iqn_mh.py
+-rw-rw-r--  1 steveqin steveqin     5116 Jul  5 19:53 gpu_mh_ablate.py
+-rw-rw-r--  1 steveqin steveqin      567 Jul  5 19:56 mh_ablation_fair.json
+-rw-rw-r--  1 steveqin steveqin      565 Jul  5 11:46 mh_ablation.json
+-rw-rw-r--  1 steveqin steveqin 71470233 Jul  5 11:34 mh_ckpt.pkl
+-rw-rw-r--  1 steveqin steveqin 71479445 Jul  5 12:25 mh_ckpt_v2a.pkl
+-rw-rw-r--  1 steveqin steveqin 71470231 Jul  5 13:03 mh_ckpt_v2c.pkl
+-rw-rw-r--  1 steveqin steveqin 28064539 Jul  5 00:06 mh_panel.csv.gz
+-rw-rw-r--  1 steveqin steveqin 44824816 Jul  4 23:23 mh_panel.parquet
+-rw-rw-r--  1 steveqin steveqin 37007280 Jul  5 19:46 mh_panel_v2.csv.gz
+-rw-rw-r--  1 steveqin steveqin 55103999 Jul  6 07:28 mh_quantiles_frozen_c2019.csv
+-rw-rw-r--  1 steveqin steveqin 55050503 Jul  6 07:37 mh_quantiles_frozen_c2024.csv
+-rw-rw-r--  1 steveqin steveqin 55110195 Jul  5 11:34 mh_quantiles_gpu.csv
+-rw-rw-r--  1 steveqin steveqin 57614241 Jul  5 12:26 mh_quantiles_v2a.csv
+-rw-rw-r--  1 steveqin steveqin 55102555 Jul  5 13:03 mh_quantiles_v2c.csv
+-rw-rw-r--  1 steveqin steveqin   447566 Jul  4 18:24 pq_iqn_quantiles_gpu.csv
+-rwxrwxr-x  1 steveqin steveqin      636 Jul  4 18:08 RUN_PQ_GPU.sh
+---PANELCOLS---
+date,lrv21,lewma,ret21,dsh,liv,skw,dd252,d200,lvix,slope,basis,v9r,ty10,curve,hyoas,igoas,mkt63,y5,y10,y21,y42,y63,tk
+---FEATCODE---
+2:- 113-name IV panel, features incl. own ATM IV + skew (matched-information)
+3:- h in {5,10,21,42,63} as log-horizon feature; target = h-day total-return
+19:FSET=os.environ.get("MHFEATS","raw9")
+24:FEATS=F9 if FSET=="raw9" else F17
+29:sig_d=np.exp(d.lewma/2)/math.sqrt(252)              # daily vol proxy from ewma feature
+52:def build_xy(df,sig):
+55:        ok=df[f"y{h}"].notna()&df[FEATS].notna().all(1)
+56:        X=df.loc[ok,FEATS].values.astype(np.float32)
+129:            X=np.c_[te[FEATS].values.astype(np.float32),
+AI2CHECKDONE 

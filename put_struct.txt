@@ -1,0 +1,39 @@
+  2016 168 8s
+  2017 336 13s
+  2018 504 18s
+  2019 680 23s
+  2020 863 30s
+  2021 1062 37s
+  2022 1275 43s
+  2023 1491 49s
+  2024 1707 56s
+  2025 1851 60s
+{
+  "n": 1851,
+  "naked_d12": {
+    "avg_bp": 36.7,
+    "SR": 1.09,
+    "worst_mo_pct": -5.94,
+    "mar2020_bp": -375.5
+  },
+  "spread_buy_d08": {
+    "avg_bp": 0.9,
+    "SR": 0.04,
+    "worst_mo_pct": -2.69,
+    "mar2020_bp": -268.7
+  },
+  "spread_buy_d05": {
+    "avg_bp": 15.6,
+    "SR": 0.83,
+    "worst_mo_pct": -2.59,
+    "mar2020_bp": -258.8
+  },
+  "spread_buy_d03": {
+    "avg_bp": 19.8,
+    "SR": 0.85,
+    "worst_mo_pct": -3.63,
+    "mar2020_bp": -249.3
+  }
+}
+PUTSTRUCTDONE
+FILLTESTJOBDONE 

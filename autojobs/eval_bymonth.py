@@ -1,6 +1,6 @@
 import os, json
 import numpy as np, pandas as pd
-PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"; RES=r"C:\Users\OWNER\Desktop\GBC_data\results\pq_trade"
+PROJ=r"C:\Users\OWNER\Claude\Projects\GBC Project"; RES=r"C:\GBC_data\results\pq_trade"
 seas_f=os.path.join(PROJ,"mh_quantiles_seas.csv"); base_f=os.path.join(RES,"mh_quantiles_gpu_v2.csv")
 if not os.path.exists(seas_f):
     print("SEAS OUTPUT NOT READY yet - training still running; re-drop this job when train_seas.log ends with DONE."); raise SystemExit

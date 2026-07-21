@@ -3,7 +3,7 @@ import os, glob, json, time, math
 import numpy as np, pandas as pd
 from statistics import NormalDist
 ppf=NormalDist().inv_cdf
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 t0=time.time(); lg=lambda s:print(s,flush=True)
 sec=pd.read_csv(os.path.join(W,"secids.csv")).dropna(subset=['secid']); sec['secid']=sec['secid'].astype(int)
 sym={int(r.secid):str(r.ticker) for r in sec.itertuples()}

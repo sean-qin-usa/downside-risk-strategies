@@ -1,0 +1,7 @@
+=== where python ===
+C:\Users\OWNER\AppData\Local\Programs\Python\Python312\python.exe
+C:\Users\OWNER\AppData\Local\Microsoft\WindowsApps\python.exe
+=== candidates ===
+FOUND C:\Users\OWNER\anaconda3\python.exe
+FOUND C:\Users\OWNER\Anaconda3\python.exe
+USING C:\Users\OWNER\Anaconda3\python.exe 

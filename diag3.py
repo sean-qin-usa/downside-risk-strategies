@@ -1,5 +1,5 @@
 import os, glob, time
-base=r"C:\Users\OWNER\Desktop\GBC_data"
+base=r"C:\GBC_data"
 out=r"C:\Users\OWNER\Claude\Projects\GBC Project\wrds_diag3_out.txt"
 L=[]; p=lambda s:L.append(str(s))
 p("DIAG3 "+time.ctime())

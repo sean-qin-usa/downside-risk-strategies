@@ -3,7 +3,7 @@ import os, glob, time, math, json, sys
 import numpy as np, pandas as pd
 from statistics import NormalDist
 ppf=NormalDist().inv_cdf
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 sys.path.insert(0,P)
 import paper_trade_v2 as pt
 lg=lambda s:print(s,flush=True); t0=time.time()

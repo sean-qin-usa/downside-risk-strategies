@@ -1,6 +1,6 @@
 # SKEW-COMBINED (light): join small calls_{yr} files with improve_trades (already has put IV/net/vrp). No big spreads read.
 import os, numpy as np, pandas as pd
-W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+W=r"C:\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 imp=pd.read_csv(os.path.join(P,"improve_trades.csv")); imp['ym']=pd.PeriodIndex(pd.to_datetime(imp['date']).dt.to_period('M'),freq='M'); imp=imp.dropna(subset=['vrp'])
 rows=[]
 for yr in range(2016,2026):

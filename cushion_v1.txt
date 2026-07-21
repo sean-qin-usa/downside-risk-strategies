@@ -1,0 +1,64 @@
+{
+  "hedge_carry_pctmo": -0.54,
+  "hedge_best_month_pct": 5.0,
+  "n": 110,
+  "overlay": [
+    {
+      "hedge_ratio": 0,
+      "SR": 0.59,
+      "ann_ret_pct": 1.8,
+      "maxDD": -7.9,
+      "worst_mo_pct": -4.49,
+      "mar2020": -4.49
+    },
+    {
+      "hedge_ratio": 0.25,
+      "SR": 0.36,
+      "ann_ret_pct": 0.94,
+      "maxDD": -7.2,
+      "worst_mo_pct": -3.23,
+      "mar2020": -3.23
+    },
+    {
+      "hedge_ratio": 0.5,
+      "SR": 0.03,
+      "ann_ret_pct": 0.08,
+      "maxDD": -8.5,
+      "worst_mo_pct": -2.82,
+      "mar2020": -1.98
+    },
+    {
+      "hedge_ratio": 1.0,
+      "SR": -0.52,
+      "ann_ret_pct": -1.63,
+      "maxDD": -20.0,
+      "worst_mo_pct": -3.6,
+      "mar2020": 0.54
+    },
+    {
+      "hedge_ratio": 1.5,
+      "SR": -0.75,
+      "ann_ret_pct": -3.35,
+      "maxDD": -31.5,
+      "worst_mo_pct": -5.56,
+      "mar2020": 3.06
+    },
+    {
+      "hedge_ratio": 2.0,
+      "SR": -0.84,
+      "ann_ret_pct": -5.06,
+      "maxDD": -42.7,
+      "worst_mo_pct": -7.51,
+      "mar2020": 5.57
+    },
+    {
+      "hedge_ratio": 3.0,
+      "SR": -0.9,
+      "ann_ret_pct": -8.5,
+      "maxDD": -60.2,
+      "worst_mo_pct": -11.42,
+      "mar2020": 10.6
+    }
+  ]
+}
+CUSHDONE 

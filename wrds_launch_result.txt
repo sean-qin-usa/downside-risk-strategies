@@ -1,0 +1,1 @@
+QUEUED_OK - watcher will launch the WRDS pull within ~10s. Progress: C:\Users\OWNER\Desktop\GBC_data\wrds_log.txt 

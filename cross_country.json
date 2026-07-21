@@ -1,0 +1,341 @@
+{
+  "note": "Cross-country stability gradient: GBM vs GARCH-t on equity indices by development tier, with per-date Diebold-Mariano (DM>0 & p<0.05 => nonparam sig better) and post-GARCH residual kurtosis. Tests whether the nonparam edge scales developed->frontier with country-level misspecification (resid_kurt). Extends the misspec frontier to the country level.",
+  "per_country": {
+    "US_SPX": {
+      "tier": "developed",
+      "ticker": "SPX Index",
+      "n_days": 6674,
+      "ann_vol": 19.3,
+      "resid_kurt": 5.4,
+      "ratio": 1.0056,
+      "DM": {
+        "DM": -1.32,
+        "p": 0.9061
+      }
+    },
+    "EU_SX5E": {
+      "tier": "developed",
+      "ticker": "SX5E Index",
+      "n_days": 6811,
+      "ann_vol": 22.0,
+      "resid_kurt": 4.7,
+      "ratio": 1.0049,
+      "DM": {
+        "DM": -1.4,
+        "p": 0.9199
+      }
+    },
+    "UK_UKX": {
+      "tier": "developed",
+      "ticker": "UKX Index",
+      "n_days": 6706,
+      "ann_vol": 17.9,
+      "resid_kurt": 4.3,
+      "ratio": 1.0091,
+      "DM": {
+        "DM": -2.19,
+        "p": 0.9856
+      }
+    },
+    "JP_NKY": {
+      "tier": "developed",
+      "ticker": "NKY Index",
+      "n_days": 6503,
+      "ann_vol": 23.4,
+      "resid_kurt": 4.6,
+      "ratio": 1.0021,
+      "DM": {
+        "DM": -0.5,
+        "p": 0.6928
+      }
+    },
+    "CA_SPTSX": {
+      "tier": "developed",
+      "ticker": "SPTSX Index",
+      "n_days": 6667,
+      "ann_vol": 17.1,
+      "resid_kurt": 4.5,
+      "ratio": 1.0065,
+      "DM": {
+        "DM": -1.4,
+        "p": 0.9192
+      }
+    },
+    "AU_AS51": {
+      "tier": "developed",
+      "ticker": "AS51 Index",
+      "n_days": 6717,
+      "ann_vol": 15.6,
+      "resid_kurt": 4.0,
+      "ratio": 1.0126,
+      "DM": {
+        "DM": -1.69,
+        "p": 0.9541
+      }
+    },
+    "DE_DAX": {
+      "tier": "developed",
+      "ticker": "DAX Index",
+      "n_days": 6742,
+      "ann_vol": 22.4,
+      "resid_kurt": 4.3,
+      "ratio": 1.0155,
+      "DM": {
+        "DM": -4.63,
+        "p": 1.0
+      }
+    },
+    "CH_SMI": {
+      "tier": "developed",
+      "ticker": "SMI Index",
+      "n_days": 6670,
+      "ann_vol": 17.5,
+      "resid_kurt": 5.8,
+      "ratio": 0.9996,
+      "DM": {
+        "DM": 0.1,
+        "p": 0.4593
+      }
+    },
+    "KR_KOSPI": {
+      "tier": "emerging",
+      "ticker": "KOSPI Index",
+      "n_days": 6541,
+      "ann_vol": 24.1,
+      "resid_kurt": 4.8,
+      "ratio": 1.0128,
+      "DM": {
+        "DM": -2.73,
+        "p": 0.9968
+      }
+    },
+    "TW_TWSE": {
+      "tier": "emerging",
+      "ticker": "TWSE Index",
+      "n_days": 6556,
+      "ann_vol": 20.9,
+      "resid_kurt": 5.2,
+      "ratio": 1.009,
+      "DM": {
+        "DM": -2.14,
+        "p": 0.9839
+      }
+    },
+    "IN_NIFTY": {
+      "tier": "emerging",
+      "ticker": "NIFTY Index",
+      "n_days": 6599,
+      "ann_vol": 21.6,
+      "resid_kurt": 5.6,
+      "ratio": 1.011,
+      "DM": {
+        "DM": -2.62,
+        "p": 0.9956
+      }
+    },
+    "BR_IBOV": {
+      "tier": "emerging",
+      "ticker": "IBOV Index",
+      "n_days": 6580,
+      "ann_vol": 26.9,
+      "resid_kurt": 4.4,
+      "ratio": 1.0274,
+      "DM": {
+        "DM": -5.46,
+        "p": 1.0
+      }
+    },
+    "MX_MEXBOL": {
+      "tier": "emerging",
+      "ticker": "MEXBOL Index",
+      "n_days": 6680,
+      "ann_vol": 19.4,
+      "resid_kurt": 4.6,
+      "ratio": 1.0171,
+      "DM": {
+        "DM": -3.66,
+        "p": 0.9999
+      }
+    },
+    "ZA_TOP40": {
+      "tier": "emerging",
+      "ticker": "TOP40 Index",
+      "n_days": 6633,
+      "ann_vol": 20.5,
+      "resid_kurt": 3.9,
+      "ratio": 1.0056,
+      "DM": {
+        "DM": -1.73,
+        "p": 0.958
+      }
+    },
+    "CN_SHCOMP": {
+      "tier": "emerging",
+      "ticker": "SHCOMP Index",
+      "n_days": 6430,
+      "ann_vol": 23.0,
+      "resid_kurt": 7.2,
+      "ratio": 1.0094,
+      "DM": {
+        "DM": -2.46,
+        "p": 0.9931
+      }
+    },
+    "PL_WIG": {
+      "tier": "emerging",
+      "ticker": "WIG Index",
+      "n_days": 6643,
+      "ann_vol": 20.0,
+      "resid_kurt": 4.6,
+      "ratio": 1.0104,
+      "DM": {
+        "DM": -3.09,
+        "p": 0.999
+      }
+    },
+    "TR_XU100": {
+      "tier": "emerging",
+      "ticker": "XU100 Index",
+      "n_days": 6648,
+      "ann_vol": 31.8,
+      "resid_kurt": 6.0,
+      "ratio": 1.0128,
+      "DM": {
+        "DM": -3.4,
+        "p": 0.9997
+      }
+    },
+    "ID_JCI": {
+      "tier": "emerging",
+      "ticker": "JCI Index",
+      "n_days": 6434,
+      "ann_vol": 20.4,
+      "resid_kurt": 6.7,
+      "ratio": 1.0086,
+      "DM": {
+        "DM": -1.61,
+        "p": 0.9458
+      }
+    },
+    "VN_VNINDEX": {
+      "tier": "frontier",
+      "ticker": "VNINDEX Index",
+      "n_days": 6293,
+      "ann_vol": 22.9,
+      "resid_kurt": 7.7,
+      "ratio": 1.0078,
+      "DM": {
+        "DM": -1.57,
+        "p": 0.9418
+      }
+    },
+    "EG_EGX30": {
+      "tier": "frontier",
+      "ticker": "EGX30 Index",
+      "n_days": 6473,
+      "ann_vol": 25.5,
+      "resid_kurt": 6.1,
+      "ratio": 1.0078,
+      "DM": {
+        "DM": -1.46,
+        "p": 0.9282
+      }
+    },
+    "PK_KSE100": {
+      "tier": "frontier",
+      "ticker": "KSE100 Index",
+      "n_days": 6568,
+      "ann_vol": 20.9,
+      "resid_kurt": 5.9,
+      "ratio": 0.9892,
+      "DM": {
+        "DM": 2.38,
+        "p": 0.0087
+      }
+    },
+    "NG_NGSE": {
+      "tier": "frontier",
+      "ticker": "NGSEINDX Index",
+      "n_days": 6414,
+      "ann_vol": 16.4,
+      "resid_kurt": 10.4,
+      "ratio": 0.98,
+      "DM": {
+        "DM": 2.06,
+        "p": 0.0198
+      }
+    },
+    "SA_SASEIDX": {
+      "tier": "frontier",
+      "ticker": "SASEIDX Index",
+      "n_days": 6271,
+      "ann_vol": 21.8,
+      "resid_kurt": 8.2,
+      "ratio": 0.992,
+      "DM": {
+        "DM": 1.55,
+        "p": 0.0604
+      }
+    },
+    "PH_PCOMP": {
+      "tier": "frontier",
+      "ticker": "PCOMP Index",
+      "n_days": 6496,
+      "ann_vol": 20.4,
+      "resid_kurt": 13.6,
+      "ratio": 1.0219,
+      "DM": {
+        "DM": -4.38,
+        "p": 1.0
+      }
+    },
+    "LK_CSEALL": {
+      "tier": "frontier",
+      "ticker": "CSEALL Index",
+      "n_days": 6310,
+      "ann_vol": 18.1,
+      "resid_kurt": 14.2,
+      "ratio": 0.9704,
+      "DM": {
+        "DM": 3.2,
+        "p": 0.0007
+      }
+    },
+    "KE_NSE20": {
+      "tier": "frontier",
+      "ticker": "KNSMIDX Index",
+      "n_days": 6508,
+      "ann_vol": 13.3,
+      "resid_kurt": 14.2,
+      "ratio": 0.9716,
+      "DM": {
+        "DM": 3.52,
+        "p": 0.0002
+      }
+    }
+  },
+  "by_tier": {
+    "developed": {
+      "n": 8,
+      "mean_ratio": 1.007,
+      "nonparam_wins": 1,
+      "sig_wins": 0,
+      "mean_resid_kurt": 4.7
+    },
+    "emerging": {
+      "n": 10,
+      "mean_ratio": 1.0124,
+      "nonparam_wins": 0,
+      "sig_wins": 0,
+      "mean_resid_kurt": 5.3
+    },
+    "frontier": {
+      "n": 8,
+      "mean_ratio": 0.9926,
+      "nonparam_wins": 5,
+      "sig_wins": 4,
+      "mean_resid_kurt": 10.0
+    }
+  },
+  "edge_vs_residkurt_corr": 0.528
+}

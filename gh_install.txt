@@ -1,0 +1,7 @@
+=== winget gh install === 
+Found GitHub CLI [GitHub.cli] Version 2.96.0
+This application is licensed to you by its owner.
+Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Downloading https://github.com/cli/cli/releases/download/v2.96.0/gh_2.96.0_windows_amd64.msi
+Successfully verified installer hash
+Starting package install...

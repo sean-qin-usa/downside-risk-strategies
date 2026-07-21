@@ -1,0 +1,29 @@
+  2016 8s
+  2017 13s
+  2018 18s
+  2019 23s
+  2020 29s
+  2021 36s
+  2022 42s
+  2023 48s
+  2024 55s
+  2025 59s
+{
+  "n": 1852,
+  "unhedged": {
+    "avg_bp": 46.5,
+    "monthly_SR": 1.14,
+    "worst_mo_pct": -6.86,
+    "worst_trade_pctK": -33.6,
+    "mar2020_bp": -481.4
+  },
+  "hedged": {
+    "avg_bp": 4.5,
+    "monthly_SR": 0.12,
+    "worst_mo_pct": -8.49,
+    "worst_trade_pctK": -17.3,
+    "mar2020_bp": -848.9
+  }
+}
+DHEDGEDONE
+DHEDGEJOBDONE 

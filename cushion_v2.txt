@@ -1,0 +1,78 @@
+{
+  "n_months": 124,
+  "rules": [
+    {
+      "rule": "BASELINE full-size",
+      "SR": 0.7,
+      "ann_pct": 2.04,
+      "maxDD": -7.9,
+      "worst_pct": -4.49,
+      "pct_in_mkt": 100.0,
+      "mar2020": -4.49
+    },
+    {
+      "rule": "skip month AFTER any down month",
+      "SR": 0.86,
+      "ann_pct": 2.06,
+      "maxDD": -4.9,
+      "worst_pct": -3.62,
+      "pct_in_mkt": 80.0,
+      "mar2020": -0.0
+    },
+    {
+      "rule": "skip AFTER month < -1%",
+      "SR": 0.91,
+      "ann_pct": 2.29,
+      "maxDD": -4.9,
+      "worst_pct": -3.62,
+      "pct_in_mkt": 92.0,
+      "mar2020": -0.0
+    },
+    {
+      "rule": "half-size AFTER down month",
+      "SR": 0.81,
+      "ann_pct": 2.06,
+      "maxDD": -6.2,
+      "worst_pct": -3.62,
+      "pct_in_mkt": 100.0,
+      "mar2020": -2.25
+    },
+    {
+      "rule": "skip when VIX in top 20% (24m)",
+      "SR": 2.67,
+      "ann_pct": 3.4,
+      "maxDD": -1.7,
+      "worst_pct": -1.72,
+      "pct_in_mkt": 74.0,
+      "mar2020": -0.0
+    },
+    {
+      "rule": "skip when VIX rose >20% last mo",
+      "SR": 2.28,
+      "ann_pct": 3.47,
+      "maxDD": -2.3,
+      "worst_pct": -1.9,
+      "pct_in_mkt": 81.0,
+      "mar2020": -0.0
+    },
+    {
+      "rule": "skip when VIX>VIX3M (backwardation)",
+      "SR": 1.83,
+      "ann_pct": 3.3,
+      "maxDD": -3.0,
+      "worst_pct": -2.73,
+      "pct_in_mkt": 92.0,
+      "mar2020": -0.0
+    },
+    {
+      "rule": "COMBO: not-highVIX AND contango",
+      "SR": 2.68,
+      "ann_pct": 3.41,
+      "maxDD": -1.7,
+      "worst_pct": -1.72,
+      "pct_in_mkt": 73.0,
+      "mar2020": -0.0
+    }
+  ]
+}
+CUSH2DONE 

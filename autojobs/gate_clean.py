@@ -1,6 +1,6 @@
 # DEFINITIVE look-ahead check: gate on PRIOR month-end VIX (known at entry) vs CONTEMPORANEOUS month-end VIX (look-ahead).
 import os, numpy as np, pandas as pd
-RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 bt=pd.read_csv(os.path.join(P,"exp_bt_series.csv"),parse_dates=['date']); bt['ym']=bt.date.dt.to_period('M'); s=bt.set_index('ym')['s0']/100.0
 v=pd.read_csv(os.path.join(RAW,'vol_indices.csv')); cl={c.lower():c for c in v.columns}
 vv=v[v[cl['ticker']].astype(str).str.strip().isin(['VIX','VIX Index'])]

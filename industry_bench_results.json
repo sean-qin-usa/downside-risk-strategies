@@ -1,0 +1,48 @@
+{
+  "note": "Industry-standard benchmark battery on full CRSP panel (ai2). Amortized GBM + neural IQN vs GARCH-t, GJR-GARCH-skew-t, EGARCH-t, EWMA/RiskMetrics, Filtered Historical Simulation (FHS), Historical Simulation. avg_pinball over 7 taus (lower=better); breach_5pct = realized 5% VaR breach rate (target 0.05).",
+  "n_names": 239,
+  "n_days": 188033,
+  "models": {
+    "garch_t": {
+      "avg_pinball": 0.6519,
+      "breach_5pct": 0.0528,
+      "vs_best_pct": 1.49
+    },
+    "gjr_skewt": {
+      "avg_pinball": 0.6564,
+      "breach_5pct": 0.0444,
+      "vs_best_pct": 2.2
+    },
+    "egarch_t": {
+      "avg_pinball": 1.0857,
+      "breach_5pct": 0.0132,
+      "vs_best_pct": 69.03
+    },
+    "ewma": {
+      "avg_pinball": 0.6606,
+      "breach_5pct": 0.0433,
+      "vs_best_pct": 2.85
+    },
+    "fhs": {
+      "avg_pinball": 1.3627,
+      "breach_5pct": 0.0133,
+      "vs_best_pct": 112.16
+    },
+    "histsim": {
+      "avg_pinball": 0.6589,
+      "breach_5pct": 0.0489,
+      "vs_best_pct": 2.58
+    },
+    "gbm": {
+      "avg_pinball": 0.6423,
+      "breach_5pct": 0.0501,
+      "vs_best_pct": 0.0
+    },
+    "iqn": {
+      "avg_pinball": 0.6455,
+      "breach_5pct": 0.049,
+      "vs_best_pct": 0.5
+    }
+  },
+  "best_model": "gbm"
+}

@@ -1,0 +1,9 @@
+=== Tue 07/14/2026 19:23:09.24 === 
+CLEAN PATCH inserted=True
+   F9=["lrv21","lewma","ret21","dsh","liv","skw","lvix","slope","basis"]
+   F17=F9+["v9r","y10","curve","hyoas","igoas","mkt63","dd252","d200"]
+   NEWF=["mo_sin","mo_cos","febmar","vrp","ivz","skwz","skew_chg","rv5","rv63","ami
+   SEAS=["mo_sin","mo_cos","febmar"]
+   FEATS=(F9 if FSET=="raw9" else (F17 if FSET=="raw17" else (F9+SEAS if FSET=="sea
+LAUNCHED_S
+SDEPLOYED 

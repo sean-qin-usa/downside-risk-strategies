@@ -1,0 +1,32 @@
+{
+  "note": "Significance of the misspecification-frontier win. Per-date DM test of amortized-GBM vs GARCH-t pinball edge, restricted to deciles of recent residual excess-kurtosis (mk63). Top decile should show large, SIGNIFICANT edge; bottom decile ~0/insignificant. Confirms the +2.4% top-decile claim is real, not noise.",
+  "n_names": 221600,
+  "overall": {
+    "mean_edge": 0.00174,
+    "edge_pct": 0.44,
+    "DM_stat": 5.67,
+    "p_one_sided": 0.0,
+    "n_dates": 1108
+  },
+  "top_decile_mk63": {
+    "mean_edge": 0.01205,
+    "edge_pct": 2.71,
+    "DM_stat": 6.54,
+    "p_one_sided": 0.0,
+    "n_dates": 1108
+  },
+  "bottom_decile_mk63": {
+    "mean_edge": 0.00073,
+    "edge_pct": 0.19,
+    "DM_stat": 1.41,
+    "p_one_sided": 0.0793,
+    "n_dates": 1108
+  },
+  "top2_deciles": {
+    "mean_edge": 0.00692,
+    "edge_pct": 1.65,
+    "DM_stat": 6.74,
+    "p_one_sided": 0.0,
+    "n_dates": 1108
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "note": "Edge concentration by recent-vol (rv21) quintile: amortized GBM-quantile vs per-name GARCH-t, held-out CRSP names, per test-day pinball. edge = garch_pinball - gbm_pinball (>0 = nonparam better). Thesis: edge grows with vol quintile.",
+  "n_names": 244,
+  "n_testdays": 189185,
+  "by_vol_quintile": {
+    "Q1_calm": {
+      "n": 37837,
+      "rv21_range": [
+        0.01,
+        1.39
+      ],
+      "garch_pinball": 0.3015,
+      "gbm_pinball": 0.2957,
+      "edge_garch_minus_gbm": 0.0058,
+      "ratio_np_over_garch": 0.9808
+    },
+    "Q2": {
+      "n": 37837,
+      "rv21_range": [
+        1.39,
+        1.91
+      ],
+      "garch_pinball": 0.4325,
+      "gbm_pinball": 0.4274,
+      "edge_garch_minus_gbm": 0.005,
+      "ratio_np_over_garch": 0.9884
+    },
+    "Q3": {
+      "n": 37837,
+      "rv21_range": [
+        1.91,
+        2.59
+      ],
+      "garch_pinball": 0.5476,
+      "gbm_pinball": 0.5422,
+      "edge_garch_minus_gbm": 0.0053,
+      "ratio_np_over_garch": 0.9902
+    },
+    "Q4": {
+      "n": 37837,
+      "rv21_range": [
+        2.59,
+        3.83
+      ],
+      "garch_pinball": 0.7314,
+      "gbm_pinball": 0.7246,
+      "edge_garch_minus_gbm": 0.0067,
+      "ratio_np_over_garch": 0.9908
+    },
+    "Q5_turbulent": {
+      "n": 37837,
+      "rv21_range": [
+        3.83,
+        40.57
+      ],
+      "garch_pinball": 1.2584,
+      "gbm_pinball": 1.2341,
+      "edge_garch_minus_gbm": 0.0244,
+      "ratio_np_over_garch": 0.9806
+    }
+  }
+}

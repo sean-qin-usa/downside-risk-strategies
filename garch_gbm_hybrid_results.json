@@ -1,0 +1,50 @@
+{
+  "note": "GARCH-residual HYBRID vs GARCH-t vs raw-GBM, amortized over CRSP (200 names, 221600 test rows). q_hybrid=mu+sigma_t*Qz(tau|state); Qz = pooled GBM on GARCH-standardized residuals. Nests GARCH; should DOMINATE. By vol quintile (prv21). hybrid_vs_garch_pct>0 => hybrid better.",
+  "n_names": 200,
+  "n_test": 221600,
+  "results": {
+    "garch_t": {
+      "overall": 0.3971,
+      "breach_5pct": 0.0554,
+      "Q1_calm": 0.2221,
+      "Q2": 0.291,
+      "Q3": 0.3637,
+      "Q4": 0.4496,
+      "Q5_turbulent": 0.6588
+    },
+    "raw_gbm": {
+      "overall": 0.3953,
+      "breach_5pct": 0.0507,
+      "Q1_calm": 0.221,
+      "Q2": 0.2906,
+      "Q3": 0.3624,
+      "Q4": 0.4488,
+      "Q5_turbulent": 0.6538
+    },
+    "hybrid": {
+      "overall": 0.3959,
+      "breach_5pct": 0.0567,
+      "Q1_calm": 0.2216,
+      "Q2": 0.2909,
+      "Q3": 0.3636,
+      "Q4": 0.4488,
+      "Q5_turbulent": 0.6547
+    },
+    "hybrid_vs_garch_pct": {
+      "overall": 0.3,
+      "Q1_calm": 0.23,
+      "Q2": 0.03,
+      "Q3": 0.03,
+      "Q4": 0.18,
+      "Q5_turbulent": 0.62
+    },
+    "hybrid_vs_rawgbm_pct": {
+      "overall": -0.15,
+      "Q1_calm": -0.27,
+      "Q2": -0.1,
+      "Q3": -0.33,
+      "Q4": 0.0,
+      "Q5_turbulent": -0.14
+    }
+  }
+}

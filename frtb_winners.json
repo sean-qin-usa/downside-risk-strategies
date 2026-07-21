@@ -1,0 +1,577 @@
+{
+  "note": "FRTB-grade winners table: full battery (GARCH-t/FHS/hybrid/hybrid+EVT) on nonparam-winning classes + controls. ES97.5 + Kupiec/Christoffersen at 99% AND 97.5% + DM(hybrid_EVT vs GARCH). Power/credit use price DIFFERENCES (fixes PJM log-return artifact). resid_kurt included.",
+  "per_asset": {
+    "VIX": {
+      "resid_kurt": 8.2,
+      "n_oos": 2180,
+      "DM_hybridEVT_vs_garch": {
+        "DM": 1.74,
+        "p": 0.0412
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 1.1367,
+          "ES975": -19.657,
+          "breach99": 0.0023,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.006,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "fhs": {
+          "pinball": 1.1196,
+          "ES975": -15.238,
+          "breach99": 0.0055,
+          "kupiec99": 0.021,
+          "christ99": 0.066,
+          "breach975": 0.0179,
+          "kupiec975": 0.025,
+          "christ975": 0.04
+        },
+        "hybrid": {
+          "pinball": 1.1281,
+          "ES975": -13.678,
+          "breach99": 0.0156,
+          "kupiec99": 0.015,
+          "christ99": 0.044,
+          "breach975": 0.0321,
+          "kupiec975": 0.042,
+          "christ975": 0.123
+        },
+        "hybrid_EVT": {
+          "pinball": 1.1265,
+          "ES975": -15.113,
+          "breach99": 0.006,
+          "kupiec99": 0.041,
+          "christ99": 0.114,
+          "breach975": 0.0183,
+          "kupiec975": 0.037,
+          "christ975": 0.054
+        }
+      },
+      "class": "vol",
+      "transform": "log"
+    },
+    "VVIX": {
+      "resid_kurt": 83.6,
+      "n_oos": 2024,
+      "DM_hybridEVT_vs_garch": {
+        "DM": 0.63,
+        "p": 0.2632
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 0.7425,
+          "ES975": -13.932,
+          "breach99": 0.001,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0074,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "fhs": {
+          "pinball": 0.7331,
+          "ES975": -10.166,
+          "breach99": 0.0079,
+          "kupiec99": 0.326,
+          "christ99": 0.543,
+          "breach975": 0.0247,
+          "kupiec975": 0.932,
+          "christ975": 0.807
+        },
+        "hybrid": {
+          "pinball": 0.7416,
+          "ES975": -9.235,
+          "breach99": 0.0188,
+          "kupiec99": 0.0,
+          "christ99": 0.002,
+          "breach975": 0.0375,
+          "kupiec975": 0.001,
+          "christ975": 0.003
+        },
+        "hybrid_EVT": {
+          "pinball": 0.7402,
+          "ES975": -10.973,
+          "breach99": 0.0059,
+          "kupiec99": 0.046,
+          "christ99": 0.128,
+          "breach975": 0.0257,
+          "kupiec975": 0.843,
+          "christ975": 0.843
+        }
+      },
+      "class": "vol",
+      "transform": "log"
+    },
+    "V2X": {
+      "resid_kurt": 6.6,
+      "n_oos": 2194,
+      "DM_hybridEVT_vs_garch": {
+        "DM": -0.87,
+        "p": 0.8078
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 1.0606,
+          "ES975": -17.604,
+          "breach99": 0.0009,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0119,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "fhs": {
+          "pinball": 1.0476,
+          "ES975": -14.26,
+          "breach99": 0.0096,
+          "kupiec99": 0.839,
+          "christ99": 0.8,
+          "breach975": 0.0287,
+          "kupiec975": 0.276,
+          "christ975": 0.547
+        },
+        "hybrid": {
+          "pinball": 1.0675,
+          "ES975": -12.963,
+          "breach99": 0.0173,
+          "kupiec99": 0.002,
+          "christ99": 0.007,
+          "breach975": 0.0392,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "hybrid_EVT": {
+          "pinball": 1.0665,
+          "ES975": -14.224,
+          "breach99": 0.0109,
+          "kupiec99": 0.663,
+          "christ99": 0.697,
+          "breach975": 0.0292,
+          "kupiec975": 0.223,
+          "christ975": 0.473
+        }
+      },
+      "class": "vol",
+      "transform": "log"
+    },
+    "MOVE": {
+      "resid_kurt": 6.9,
+      "n_oos": 2212,
+      "DM_hybridEVT_vs_garch": {
+        "DM": -2.0,
+        "p": 0.9773
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 0.7043,
+          "ES975": -12.285,
+          "breach99": 0.0027,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0208,
+          "kupiec975": 0.192,
+          "christ975": 0.271
+        },
+        "fhs": {
+          "pinball": 0.6992,
+          "ES975": -10.145,
+          "breach99": 0.0108,
+          "kupiec99": 0.692,
+          "christ99": 0.493,
+          "breach975": 0.0348,
+          "kupiec975": 0.005,
+          "christ975": 0.018
+        },
+        "hybrid": {
+          "pinball": 0.7144,
+          "ES975": -9.111,
+          "breach99": 0.0235,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0497,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "hybrid_EVT": {
+          "pinball": 0.7105,
+          "ES975": -10.32,
+          "breach99": 0.0108,
+          "kupiec99": 0.692,
+          "christ99": 0.493,
+          "breach975": 0.0344,
+          "kupiec975": 0.008,
+          "christ975": 0.026
+        }
+      },
+      "class": "rates_vol",
+      "transform": "log"
+    },
+    "BALTIC_DRY": {
+      "resid_kurt": 5.1,
+      "n_oos": 2152,
+      "DM_hybridEVT_vs_garch": {
+        "DM": 9.63,
+        "p": 0.0
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 0.4842,
+          "ES975": -6.865,
+          "breach99": 0.026,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0455,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "fhs": {
+          "pinball": 0.4851,
+          "ES975": -6.477,
+          "breach99": 0.0325,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0637,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "hybrid": {
+          "pinball": 0.4112,
+          "ES975": -4.609,
+          "breach99": 0.0474,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0767,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "hybrid_EVT": {
+          "pinball": 0.4109,
+          "ES975": -6.549,
+          "breach99": 0.0288,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0651,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        }
+      },
+      "class": "freight",
+      "transform": "log"
+    },
+    "IG_OAS": {
+      "resid_kurt": 42.6,
+      "n_oos": 2168,
+      "DM_hybridEVT_vs_garch": {
+        "DM": 30.6,
+        "p": 0.0
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 0.0061,
+          "ES975": -0.218,
+          "breach99": 0.0,
+          "kupiec99": null,
+          "christ99": null,
+          "breach975": 0.0,
+          "kupiec975": null,
+          "christ975": null
+        },
+        "fhs": {
+          "pinball": 0.0032,
+          "ES975": -0.06,
+          "breach99": 0.0092,
+          "kupiec99": 0.713,
+          "christ99": 0.0,
+          "breach975": 0.018,
+          "kupiec975": 0.028,
+          "christ975": 0.0
+        },
+        "hybrid": {
+          "pinball": 0.0028,
+          "ES975": -0.038,
+          "breach99": 0.0208,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0364,
+          "kupiec975": 0.001,
+          "christ975": 0.005
+        },
+        "hybrid_EVT": {
+          "pinball": 0.0029,
+          "ES975": -0.06,
+          "breach99": 0.0097,
+          "kupiec99": 0.883,
+          "christ99": 0.0,
+          "breach975": 0.0148,
+          "kupiec975": 0.001,
+          "christ975": 0.0
+        }
+      },
+      "class": "credit",
+      "transform": "diff"
+    },
+    "HY_OAS": {
+      "resid_kurt": 5.2,
+      "n_oos": 2168,
+      "DM_hybridEVT_vs_garch": {
+        "DM": 0.75,
+        "p": 0.2257
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 0.0132,
+          "ES975": -0.208,
+          "breach99": 0.0083,
+          "kupiec99": 0.413,
+          "christ99": 0.615,
+          "breach975": 0.0161,
+          "kupiec975": 0.005,
+          "christ975": 0.011
+        },
+        "fhs": {
+          "pinball": 0.013,
+          "ES975": -0.195,
+          "breach99": 0.0101,
+          "kupiec99": 0.945,
+          "christ99": 0.796,
+          "breach975": 0.0217,
+          "kupiec975": 0.311,
+          "christ975": 0.406
+        },
+        "hybrid": {
+          "pinball": 0.0131,
+          "ES975": -0.172,
+          "breach99": 0.0157,
+          "kupiec99": 0.014,
+          "christ99": 0.029,
+          "breach975": 0.0364,
+          "kupiec975": 0.001,
+          "christ975": 0.001
+        },
+        "hybrid_EVT": {
+          "pinball": 0.0131,
+          "ES975": -0.197,
+          "breach99": 0.0101,
+          "kupiec99": 0.945,
+          "christ99": 0.796,
+          "breach975": 0.0226,
+          "kupiec975": 0.467,
+          "christ975": 0.565
+        }
+      },
+      "class": "credit",
+      "transform": "diff"
+    },
+    "ERCOT_POWER": {
+      "resid_kurt": 6.9,
+      "n_oos": 1289,
+      "DM_hybridEVT_vs_garch": {
+        "DM": -2.55,
+        "p": 0.9946
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 0.0443,
+          "ES975": -0.872,
+          "breach99": 0.0047,
+          "kupiec99": 0.031,
+          "christ99": 0.096,
+          "breach975": 0.0085,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "fhs": {
+          "pinball": 0.0442,
+          "ES975": -0.825,
+          "breach99": 0.0047,
+          "kupiec99": 0.031,
+          "christ99": 0.096,
+          "breach975": 0.0124,
+          "kupiec975": 0.001,
+          "christ975": 0.005
+        },
+        "hybrid": {
+          "pinball": 0.0449,
+          "ES975": -0.752,
+          "breach99": 0.0085,
+          "kupiec99": 0.587,
+          "christ99": 0.785,
+          "breach975": 0.014,
+          "kupiec975": 0.006,
+          "christ975": 0.017
+        },
+        "hybrid_EVT": {
+          "pinball": 0.0449,
+          "ES975": -0.834,
+          "breach99": 0.0047,
+          "kupiec99": 0.031,
+          "christ99": 0.096,
+          "breach975": 0.0116,
+          "kupiec975": 0.001,
+          "christ975": 0.002
+        }
+      },
+      "class": "power",
+      "transform": "diff"
+    },
+    "PJM_POWER": {
+      "resid_kurt": 846.5,
+      "n_oos": 1516,
+      "DM_hybridEVT_vs_garch": {
+        "DM": -2.73,
+        "p": 0.9968
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 21.6258,
+          "ES975": -110.878,
+          "breach99": 0.0053,
+          "kupiec99": 0.042,
+          "christ99": 0.122,
+          "breach975": 0.0053,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "fhs": {
+          "pinball": 20.2059,
+          "ES975": -503.349,
+          "breach99": 0.0053,
+          "kupiec99": 0.042,
+          "christ99": 0.122,
+          "breach975": 0.0204,
+          "kupiec975": 0.241,
+          "christ975": 0.0
+        },
+        "hybrid": {
+          "pinball": 24.278,
+          "ES975": -239.795,
+          "breach99": 0.0053,
+          "kupiec99": 0.042,
+          "christ99": 0.122,
+          "breach975": 0.0053,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        },
+        "hybrid_EVT": {
+          "pinball": 25.3996,
+          "ES975": -1932.555,
+          "breach99": 0.0053,
+          "kupiec99": 0.042,
+          "christ99": 0.122,
+          "breach975": 0.0053,
+          "kupiec975": 0.0,
+          "christ975": 0.0
+        }
+      },
+      "class": "power",
+      "transform": "diff"
+    },
+    "SPX": {
+      "resid_kurt": 5.4,
+      "n_oos": 2168,
+      "DM_hybridEVT_vs_garch": {
+        "DM": -0.66,
+        "p": 0.7461
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 0.1568,
+          "ES975": -2.643,
+          "breach99": 0.0171,
+          "kupiec99": 0.003,
+          "christ99": 0.004,
+          "breach975": 0.0378,
+          "kupiec975": 0.0,
+          "christ975": 0.002
+        },
+        "fhs": {
+          "pinball": 0.1561,
+          "ES975": -2.864,
+          "breach99": 0.0134,
+          "kupiec99": 0.133,
+          "christ99": 0.056,
+          "breach975": 0.0258,
+          "kupiec975": 0.805,
+          "christ975": 0.492
+        },
+        "hybrid": {
+          "pinball": 0.1575,
+          "ES975": -2.614,
+          "breach99": 0.018,
+          "kupiec99": 0.001,
+          "christ99": 0.003,
+          "breach975": 0.0304,
+          "kupiec975": 0.116,
+          "christ975": 0.128
+        },
+        "hybrid_EVT": {
+          "pinball": 0.1573,
+          "ES975": -2.941,
+          "breach99": 0.012,
+          "kupiec99": 0.366,
+          "christ99": 0.078,
+          "breach975": 0.0263,
+          "kupiec975": 0.702,
+          "christ975": 0.499
+        }
+      },
+      "class": "equity_control",
+      "transform": "log"
+    },
+    "GOLD": {
+      "resid_kurt": 6.5,
+      "n_oos": 2170,
+      "DM_hybridEVT_vs_garch": {
+        "DM": -4.48,
+        "p": 1.0
+      },
+      "models": {
+        "garch_t": {
+          "pinball": 0.1539,
+          "ES975": -2.666,
+          "breach99": 0.0101,
+          "kupiec99": 0.949,
+          "christ99": 0.797,
+          "breach975": 0.0323,
+          "kupiec975": 0.038,
+          "christ975": 0.114
+        },
+        "fhs": {
+          "pinball": 0.1538,
+          "ES975": -2.789,
+          "breach99": 0.0092,
+          "kupiec99": 0.71,
+          "christ99": 0.775,
+          "breach975": 0.0295,
+          "kupiec975": 0.192,
+          "christ975": 0.426
+        },
+        "hybrid": {
+          "pinball": 0.1579,
+          "ES975": -2.552,
+          "breach99": 0.024,
+          "kupiec99": 0.0,
+          "christ99": 0.0,
+          "breach975": 0.0378,
+          "kupiec975": 0.0,
+          "christ975": 0.001
+        },
+        "hybrid_EVT": {
+          "pinball": 0.1573,
+          "ES975": -2.829,
+          "breach99": 0.0092,
+          "kupiec99": 0.71,
+          "christ99": 0.775,
+          "breach975": 0.0286,
+          "kupiec975": 0.297,
+          "christ975": 0.572
+        }
+      },
+      "class": "commodity_control",
+      "transform": "log"
+    }
+  }
+}

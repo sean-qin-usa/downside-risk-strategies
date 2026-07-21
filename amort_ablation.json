@@ -1,0 +1,34 @@
+{
+  "note": "Feature ablation of amortized quantile model (reuse cached CRSP panel, 160 names). Avg pinball over taus 0.05/0.5/0.95, held-out names. pct_worse_than_ALL = how much OOS pinball rises when that feature group is removed (bigger = more important).",
+  "ALL_pinball": 0.5996,
+  "subsets": {
+    "no_age": {
+      "pinball": 0.5993,
+      "pct_vs_ALL": -0.1
+    },
+    "ALL": {
+      "pinball": 0.5996,
+      "pct_vs_ALL": 0.0
+    },
+    "no_lags[-lag1,abs1,dn]": {
+      "pinball": 0.6009,
+      "pct_vs_ALL": 0.2
+    },
+    "no_chars[-mcap,sector,beta,annvol]": {
+      "pinball": 0.6018,
+      "pct_vs_ALL": 0.4
+    },
+    "own_recent_only[lag/absvol]": {
+      "pinball": 0.6022,
+      "pct_vs_ALL": 0.4
+    },
+    "no_realized_vol[-rv5,rv21]": {
+      "pinball": 0.6062,
+      "pct_vs_ALL": 1.1
+    },
+    "chars_only[age+mcap+sector+beta+annvol]": {
+      "pinball": 0.6184,
+      "pct_vs_ALL": 3.1
+    }
+  }
+}

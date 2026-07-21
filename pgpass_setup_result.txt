@@ -1,0 +1,12 @@
+CREATED_TEMPLATE: C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf 
+--- folder listing --- 
+ Volume in drive C has no label.
+ Volume Serial Number is 9655-3276
+
+ Directory of C:\Users\OWNER\AppData\Roaming\postgresql
+
+07/13/2026  07:16 PM    <DIR>          .
+07/13/2026  07:16 PM    <DIR>          ..
+07/13/2026  07:16 PM                85 pgpass.conf
+               1 File(s)             85 bytes
+               2 Dir(s)  24,130,351,104 bytes free

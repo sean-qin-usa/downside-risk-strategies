@@ -1,5 +1,5 @@
 import os, json, numpy as np, pandas as pd
-RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+RAW=r"C:\GBC_data\data\raw"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 bt=pd.read_csv(os.path.join(P,"exp_bt_series.csv"),parse_dates=['date']); bt['ym']=bt.date.dt.to_period('M'); bt=bt.sort_values('date')
 def volser(t):
     for fn in ['vol_indices.csv','bbg_impvol.csv']:

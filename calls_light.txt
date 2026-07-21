@@ -1,0 +1,26 @@
+connecting...
+Loading library list...
+Done
+CONNECTED
+top secids 60
+calls 2016 skip
+calls 2017 skip
+calls 2018 skip
+calls 2019 skip
+calls 2020 skip
+calls 2021 skip
+calls 2022 skip
+calls 2023 skip
+calls 2024 skip
+calls 2025 skip
+atmputs 2016 skip
+atmputs 2017 skip
+atmputs 2018 skip
+atmputs 2019 skip
+atmputs 2020 skip
+atmputs 2021 skip
+atmputs 2022 skip
+atmputs 2023 skip
+atmputs 2024 skip
+atmputs 2025 skip
+LIGHTCALLSDONE

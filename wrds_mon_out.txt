@@ -1,0 +1,17 @@
+=== MON Mon 07/13/2026 19:31:36.58 === 
+--- wrds_done.txt --- 
+done 
+ 
+--- data\wrds listing --- 
+ Volume in drive C has no label.
+ Volume Serial Number is 9655-3276
+
+ Directory of C:\Users\OWNER\Desktop\GBC_data\data\wrds
+
+07/13/2026  02:57 AM    <DIR>          .
+07/13/2026  02:57 AM    <DIR>          ..
+               0 File(s)              0 bytes
+               2 Dir(s)  24,102,551,552 bytes free
+--- wrds_log.txt --- 
+Enter your WRDS username [OWNER]:--- queue (pending) --- 
+File Not Found

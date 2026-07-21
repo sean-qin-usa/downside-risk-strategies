@@ -2,7 +2,7 @@ import os, glob, gzip, io, sys
 import pandas as pd
 
 OUT = r"C:\Users\OWNER\Claude\Projects\GBC Project\probe_inventory.txt"
-DESK = r"C:\Users\OWNER\Desktop\GBC_data"
+DESK = r"C:\GBC_data"
 PROJ = r"C:\Users\OWNER\Claude\Projects\GBC Project"
 lines = []
 def p(*a):

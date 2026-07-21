@@ -1,7 +1,7 @@
 # EARNINGS-VRP robustness FIX: use per-ticker earn_*.csv ('Earnings Announcement Date') = the source that works.
 import os, time, json, math
 import numpy as np, pandas as pd
-RAW=r"C:\Users\OWNER\Desktop\GBC_data\data\raw"; W=r"C:\Users\OWNER\Desktop\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
+RAW=r"C:\GBC_data\data\raw"; W=r"C:\GBC_data\data\wrds"; P=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 lg=lambda s:print(s,flush=True); t0=time.time()
 sym={int(r.secid):str(r.ticker) for r in pd.read_csv(os.path.join(W,"secids.csv")).dropna(subset=['secid']).astype({'secid':int}).itertuples()}
 oi=pd.read_csv(os.path.join(W,"spreads_2023.csv.gz"),usecols=['secid','open_interest']).groupby('secid')['open_interest'].sum().sort_values(ascending=False)

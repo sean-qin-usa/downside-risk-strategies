@@ -1,7 +1,7 @@
 
 import os, glob, traceback
 import pandas as pd
-RES=r"C:\Users\OWNER\Desktop\GBC_data\results\pq_trade"
+RES=r"C:\GBC_data\results\pq_trade"
 OUT=r"C:\Users\OWNER\Claude\Projects\GBC Project"
 log=[]
 def L(*a): log.append(" ".join(str(x) for x in a))
