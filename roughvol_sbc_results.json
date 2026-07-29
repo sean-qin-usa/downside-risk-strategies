@@ -1,0 +1,76 @@
+{
+  "note": "Rough Bergomi (rough-volatility) SBC via GBC \u2014 likelihood-free amortized posterior over (H roughness, eta vol-of-vol, rho leverage, xi0) from a single price path. NON-Markovian fBm vol => intractable likelihood, GARCH/MLE cannot do this. SBC coverage ~nominal = honest posterior; info_gain=fraction of prior RMSE removed. Headline: recover the Hurst roughness H.",
+  "n_paths": 30000,
+  "n_days": 252,
+  "dev": "cuda",
+  "params": {
+    "H": {
+      "IQN": {
+        "cov80": 0.77,
+        "cov90": 0.912,
+        "rmse": 0.0675
+      },
+      "GBM": {
+        "cov80": 0.783,
+        "cov90": 0.893,
+        "rmse": 0.0674
+      },
+      "prior_rmse": 0.1157,
+      "info_gain": {
+        "IQN": 0.417,
+        "GBM": 0.417
+      }
+    },
+    "eta": {
+      "IQN": {
+        "cov80": 0.767,
+        "cov90": 0.858,
+        "rmse": 0.5024
+      },
+      "GBM": {
+        "cov80": 0.79,
+        "cov90": 0.887,
+        "rmse": 0.4955
+      },
+      "prior_rmse": 0.7198,
+      "info_gain": {
+        "IQN": 0.302,
+        "GBM": 0.312
+      }
+    },
+    "rho": {
+      "IQN": {
+        "cov80": 0.779,
+        "cov90": 0.921,
+        "rmse": 0.1915
+      },
+      "GBM": {
+        "cov80": 0.78,
+        "cov90": 0.885,
+        "rmse": 0.1913
+      },
+      "prior_rmse": 0.2303,
+      "info_gain": {
+        "IQN": 0.169,
+        "GBM": 0.169
+      }
+    },
+    "xi0": {
+      "IQN": {
+        "cov80": 0.74,
+        "cov90": 0.852,
+        "rmse": 0.0211
+      },
+      "GBM": {
+        "cov80": 0.778,
+        "cov90": 0.888,
+        "rmse": 0.0203
+      },
+      "prior_rmse": 0.0233,
+      "info_gain": {
+        "IQN": 0.091,
+        "GBM": 0.126
+      }
+    }
+  }
+}

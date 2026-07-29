@@ -1,0 +1,51 @@
+{
+  "note": "Generative (VaR,ES) posterior v2. gibbs_cal = omega-CALIBRATED Gibbs (SD matched to block-bootstrap => nominal, fixes v1 over-coverage). block = block-bootstrap VaR CI. block_es = block-bootstrap ES CI (v1: 99% ES under-covered). evt_es = GPD/POT-based 99% ES CI (fix). Target coverage 0.90; truth = full-sample residual quantile/ES.",
+  "n_names": 150,
+  "target": 0.9,
+  "results": {
+    "alpha_0.01": {
+      "gibbs_cal_VaR": {
+        "coverage": 0.967,
+        "width": 0.683,
+        "n": 150
+      },
+      "block_VaR": {
+        "coverage": 0.953,
+        "width": 0.664,
+        "n": 150
+      },
+      "block_ES": {
+        "coverage": 0.86,
+        "width": 1.311,
+        "n": 150
+      },
+      "evt_ES": {
+        "coverage": 0.887,
+        "width": 2.116,
+        "n": 150
+      }
+    },
+    "alpha_0.025": {
+      "gibbs_cal_VaR": {
+        "coverage": 0.953,
+        "width": 0.356,
+        "n": 150
+      },
+      "block_VaR": {
+        "coverage": 0.953,
+        "width": 0.351,
+        "n": 150
+      },
+      "block_ES": {
+        "coverage": 0.907,
+        "width": 0.715,
+        "n": 150
+      },
+      "evt_ES": {
+        "coverage": 0.9,
+        "width": 0.911,
+        "n": 150
+      }
+    }
+  }
+}

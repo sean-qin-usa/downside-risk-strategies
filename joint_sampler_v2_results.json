@@ -1,0 +1,48 @@
+{
+  "note": "Joint sampler v2 (covariance-ingesting): DCC gives portfolio scale sigma_w; generative IQN learns the SHAPE of the standardized portfolio residual eps=port_ret/sigma_w, conditioned on concentration (herfindahl)+state+w. PIT vs Gaussian(eps~N(0,1)). Win = IQN PIT-KS << v1 (0.30) and < Gaussian, with better tail cov05/cov01. Tests whether covariance-scale + nonparametric-shape finally calibrates the multivariate/joint tail (the residual-hybrid recipe for portfolios).",
+  "n_names": 20,
+  "n_test": 1063,
+  "dev": "cuda",
+  "results": {
+    "equal": {
+      "iqn_ks": 0.0749,
+      "g_ks": 0.0712,
+      "iqn_cov05": 0.031,
+      "g_cov05": 0.0489,
+      "iqn_cov01": 0.0028,
+      "g_cov01": 0.0179
+    },
+    "top1": {
+      "iqn_ks": 0.0556,
+      "g_ks": 0.0848,
+      "iqn_cov05": 0.0282,
+      "g_cov05": 0.0395,
+      "iqn_cov01": 0.0085,
+      "g_cov01": 0.0179
+    },
+    "top3": {
+      "iqn_ks": 0.0674,
+      "g_ks": 0.0618,
+      "iqn_cov05": 0.0357,
+      "g_cov05": 0.0527,
+      "iqn_cov01": 0.0066,
+      "g_cov01": 0.0188
+    },
+    "top5": {
+      "iqn_ks": 0.0674,
+      "g_ks": 0.053,
+      "iqn_cov05": 0.0395,
+      "g_cov05": 0.0564,
+      "iqn_cov01": 0.0056,
+      "g_cov01": 0.0235
+    },
+    "random_mean": {
+      "iqn_ks": 0.0681,
+      "g_ks": 0.0655,
+      "iqn_cov05": 0.0307,
+      "g_cov05": 0.0523,
+      "iqn_cov01": 0.0029,
+      "g_cov01": 0.0182
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "note": "Generative/Gibbs posterior credible-band coverage for conditional (VaR,ES) in GARCH-residual space. Ground truth = full-sample residual quantile/ES (SBC-style). 90% credible interval should cover ~0.90. gibbs_iid & boot_iid assume independence (predict UNDER-coverage); gibbs_block & boot_block respect dependence (predict ~nominal). This is the honest-uncertainty-on-the-risk-number result no GARCH/CAViaR/hybrid provides (they give a POINT VaR). alpha=1% & 2.5%.",
+  "n_names": 150,
+  "target_coverage": 0.9,
+  "block": 20,
+  "results": {
+    "alpha_0.01": {
+      "gibbs_iid": {
+        "coverage_VaR": 0.987,
+        "width_VaR": 0.747
+      },
+      "gibbs_block": {
+        "coverage_VaR": 0.993,
+        "width_VaR": 0.789
+      },
+      "boot_iid": {
+        "coverage_VaR": 0.96,
+        "width_VaR": 0.668,
+        "coverage_ES": 0.86,
+        "width_ES": 1.321
+      },
+      "boot_block": {
+        "coverage_VaR": 0.947,
+        "width_VaR": 0.667,
+        "coverage_ES": 0.847,
+        "width_ES": 1.316
+      }
+    },
+    "alpha_0.025": {
+      "gibbs_iid": {
+        "coverage_VaR": 0.987,
+        "width_VaR": 0.422
+      },
+      "gibbs_block": {
+        "coverage_VaR": 0.993,
+        "width_VaR": 0.451
+      },
+      "boot_iid": {
+        "coverage_VaR": 0.947,
+        "width_VaR": 0.339,
+        "coverage_ES": 0.913,
+        "width_ES": 0.714
+      },
+      "boot_block": {
+        "coverage_VaR": 0.953,
+        "width_VaR": 0.347,
+        "coverage_ES": 0.9,
+        "width_ES": 0.71
+      }
+    }
+  }
+}
