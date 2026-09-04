@@ -1,0 +1,23 @@
+{
+  "note": "Single calendar-time split (train strictly < 2020-01-01, test >= for ALL names): no calendar overlap between any training and any test window. Frontier decile profile + overall edge under this split.",
+  "cut": "2020-01-01",
+  "n_names": 200,
+  "n_test": 251600,
+  "n_dates": 1258,
+  "overall_edge_pct": 0.71,
+  "overall_DM": 1.87,
+  "decile_profile_edge_pct": [
+    1.3,
+    0.7,
+    0.22,
+    0.26,
+    0.37,
+    0.34,
+    0.36,
+    0.63,
+    0.39,
+    2.47
+  ],
+  "top_decile_DM": 6.22,
+  "top_decile_n_dates": 1258
+}
