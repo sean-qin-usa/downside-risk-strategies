@@ -1,0 +1,505 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,graphicx,booktabs,multirow,threeparttable,setspace}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption,enumitem,tikz,pgfplots}
+\usetikzlibrary{positioning}
+\pgfplotsset{compat=1.17}
+\definecolor{npblue}{RGB}{31,78,121}
+\definecolor{npmid}{RGB}{72,120,168}
+\definecolor{gred}{RGB}{176,74,74}
+\definecolor{gold}{RGB}{200,162,74}
+\captionsetup{font=small,labelfont=bf}
+\setstretch{1.3}
+\newcommand{\VaR}{\mathrm{VaR}}
+\newcommand{\ES}{\mathrm{ES}}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\thefigure}{OA.\arabic{figure}}
+\renewcommand{\thetable}{OA.\arabic{table}}
+\renewcommand{\thesection}{OA.\arabic{section}}
+\title{Online Appendix\\ \large Semiparametric Value-at-Risk and Expected Shortfall with a Real-Time Misspecification Score}
+\author{Sean Qin}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Algorithms}
+\medskip\noindent\fbox{\parbox{0.96\textwidth}{
+\textbf{Algorithm OA.1 (amortized shape model).}
+(i)~Assemble the pooled panel $\{(s_{j,t}, \widehat{z}_{j,t})\}$ over
+names $j$ and days $t$.
+(ii)~Train $H_\phi$ by SGD on
+$\mathbb{E}_{\tau\sim\lambda}\,\rho_\tau(\widehat{z} - H_\phi(s,\tau))$
+[network], or boost per-$\tau$ regressions on a grid [trees]; enforce
+monotonicity by rearrangement.
+(iii)~For any asset --- including one with no return history, using
+characteristics-only $s$ --- evaluate $H_\phi(s_t,\cdot)$; no per-asset
+estimation step exists.
+(iv)~To \emph{sample}, draw $\tau^{(m)}\sim U(0,1)$ and return
+$z^{(m)} = H_\phi(s_t,\tau^{(m)})$.
+}}
+
+\medskip\noindent\fbox{\parbox{0.96\textwidth}{
+\textbf{Algorithm OA.2 (the misspecification meter, as deployed).}
+(i)~Fit equation~(1) of the paper on a trailing window; store
+$\widehat{z}_{t-62},\dots,\widehat{z}_t$.
+(ii)~Compute $\mathrm{mk}_{63}$, $|\mathrm{sk}_{63}|$, $J_5$ by
+equation~(12) of the paper.
+(iii)~Convert each to a decile rank against the trailing pooled panel
+(same asset class); the score is the rank of the maximum.
+(iv)~Act by the paper: top decile $\Rightarrow$ the
+standard parametric VaR is currently, locally wrong by $\sim$2--3\% of
+pinball with high confidence --- flag the asset for the nonparametric /
+residual-hybrid engine and for model-risk review; elsewhere
+$\Rightarrow$ no action (in the amortized setting the engine is run
+regardless; the meter serves surveillance, and day-level switching is
+unsupported, Section~5.4 of the paper).
+(v)~Latency: detection lags episode onset by median 0 / mean 2--4 days;
+the edge is back-loaded within episodes, so the lag forfeits little.
+}}
+
+\medskip\noindent\fbox{\parbox{0.96\textwidth}{
+\textbf{The production loop.}
+\emph{Nightly:} (i)~update each name's GARCH filter state
+$\widehat\sigma_{t+1}$ (recursion only; parameters refit annually);
+(ii)~assemble the state vector $s_t$ and evaluate the shared shape
+model $q_\phi(\tau\mid s_t)$ --- one model for the whole book, no
+per-name estimation; (iii)~apply the frozen GPD tail below $p_0$ and
+the conformal shifts $c_\tau$; (iv)~report
+$\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
+at the desk's levels, with ES$_{97.5}$ from the tail average; (v)~read
+the misspecification score equation~(12) of the paper as the model-risk monitor ---
+top decile means the parametric fallback is currently $\sim$2--3\% wrong
+on that name. \emph{Annually:} refit filters, retrain the shape model,
+re-estimate tail and shifts, all on trailing data. \emph{New listing:}
+evaluate (ii)--(iv) from characteristics and first ticks; no history
+required. Total marginal cost per name per day: one filter update and
+one model evaluation.}}
+
+\section{Supplementary figures}
+% order fixes numbering: OA.1 timing, OA.2 passrates, OA.3 horizon, OA.4 frtb, OA.5 universes, OA.6 frontier
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.6\textwidth, height=4.6cm, ybar, bar width=14pt,
+  symbolic x coords={deployed $S_{t-1}$, aged $S_{t-5}$, contaminated $S_t$, lead $S_{t+1}$},
+  xtick=data, ymin=0, ymax=3.1, ylabel={Top-decile edge (\%)},
+  x tick label style={font=\scriptsize}, tick label style={font=\scriptsize},
+  nodes near coords, every node near coord/.append style={font=\scriptsize}]
+\addplot[fill=npblue, draw=npblue] coordinates
+  {(deployed $S_{t-1}$,2.69) (aged $S_{t-5}$,1.67) (contaminated $S_t$,1.91) (lead $S_{t+1}$,1.92)};
+\end{axis}
+\end{tikzpicture}
+\caption{Timing diagnostics for the frontier. Top-decile edge under four
+alignments of the mk$_{63}$ score with the daily loss (200 CRSP names;
+per-date DM 5.5--6.5 in all four). The deployed lag dominates, and the
+contaminated same-day alignment yields less --- the opposite of what a
+look-ahead artifact would produce.}
+\label{fig:timing}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.86\textwidth, height=5cm, ybar, bar width=9pt,
+  symbolic x coords={HS, EWMA, GARCH-t, GJR, FHS, raw hybrid, hybrid+EVT},
+  xtick=data, ymin=0, ymax=1.05, ylabel={Per-asset Kupiec$_{99}$ pass rate},
+  x tick label style={font=\scriptsize, rotate=25}, tick label style={font=\scriptsize},
+  legend style={font=\scriptsize, at={(0.02,0.98)}, anchor=north west, draw=none}]
+\addplot[fill=npblue, draw=npblue] coordinates
+  {(HS,0.93) (EWMA,0.53) (GARCH-t,0.81) (GJR,0.79) (FHS,0.83) (raw hybrid,0.71) (hybrid+EVT,0.81)};
+\addplot[dashed, sharp plot, gray, mark=none] coordinates {(HS,0.95) (hybrid+EVT,0.95)};
+\addlegendentry{expected under exact calibration ($\approx$0.95)}
+\end{axis}
+\end{tikzpicture}
+\caption{Exception tests restated per asset (140 CRSP names, 99\% VaR):
+share of names whose individual Kupiec test is consistent with nominal.
+HS over-covers (conservative); EWMA fails; the EVT-tailed engine matches
+the parametric benchmarks while beating them on loss and ES calibration
+(Table~6 of the paper). Date-clustered tests in the table notes.}
+\label{fig:passrates}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.62\textwidth, height=4.8cm,
+  xlabel={Horizon $h$ (days)}, ylabel={Nonparam / GARCH-$\sqrt{h}$ ratio},
+  xtick={1,5,10,20}, ymin=0.945, ymax=1.005,
+  tick label style={font=\scriptsize}]
+\addplot[color=npblue, mark=*, thick] coordinates
+  {(1,0.966) (5,0.964) (10,0.960) (20,0.951)};
+\addplot[dashed, gray, mark=none] coordinates {(1,1) (20,1)};
+\node[font=\scriptsize, anchor=south] at (axis cs:20,0.951) {0.951};
+\node[font=\scriptsize, anchor=south] at (axis cs:1,0.966) {0.966};
+\end{axis}
+\end{tikzpicture}
+\caption{The edge grows with horizon. Nonparametric/GARCH pinball ratio
+at $h = 1, 5, 10, 20$ days (amortized panel): fat tails compound while
+$\sqrt{h}$ scaling compounds the shape error --- $\sim$5\% at $h=20$.}
+\label{fig:horizon}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.52\textwidth, height=5.2cm, ybar, bar width=7pt,
+  symbolic x coords={Hyb, Hyb+EVT, GARCH-t, FHS, GJR, EWMA, HS},
+  xtick=data, ymin=0.353, ymax=0.363,
+  ylabel={Avg.\ pinball}, x tick label style={font=\tiny, rotate=30},
+  tick label style={font=\scriptsize},
+  title={\small Accuracy (140 names, 155k obs)}]
+\addplot[fill=npblue, draw=npblue] coordinates
+  {(Hyb,0.3551) (Hyb+EVT,0.3554) (GARCH-t,0.3561) (FHS,0.3565)
+   (GJR,0.3574) (EWMA,0.3606) (HS,0.3619)};
+\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+\begin{axis}[width=0.44\textwidth, height=5.2cm, ybar, bar width=5pt,
+  symbolic x coords={Hyb, Hyb+EVT, GARCH-t, FHS},
+  xtick=data, ymin=-6.6, ymax=-5.2,
+  ylabel={ES$_{97.5}$}, x tick label style={font=\tiny, rotate=30},
+  tick label style={font=\scriptsize},
+  title={\small ES$_{97.5}$: predicted vs realized},
+  legend style={font=\tiny, at={(0.98,0.02)}, anchor=south east,
+                draw=none}]
+\addplot[fill=npmid, draw=npmid] coordinates
+  {(Hyb,-5.80) (Hyb+EVT,-6.08) (GARCH-t,-6.17) (FHS,-6.20)};
+\addlegendentry{predicted}
+\addplot[fill=gold, draw=gold] coordinates
+  {(Hyb,-5.76) (Hyb+EVT,-5.86) (GARCH-t,-5.65) (FHS,-5.59)};
+\addlegendentry{realized}
+\end{axis}
+\end{tikzpicture}
+\caption{The FRTB battery. Left: average pinball loss by model (axis
+truncated to resolve the ordering; differences carry DM 4.4--8.3 vs the
+hybrid, all $p \approx 0$); CAViaR, not shown, statistically ties the
+hybrid. Right: ES$_{97.5}$ predicted vs realized --- FHS and GARCH-$t$
+over-state ES by 8--11\% (over-charging capital) while the hybrid is
+nearly exact.}
+\label{fig:frtb}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.88\textwidth, height=7cm, xmode=log,
+  xlabel={Post-GARCH residual excess kurtosis (log scale)},
+  ylabel={Nonparametric edge over GARCH-$t$ (\%)},
+  ymin=-4, ymax=17, xmin=3, xmax=8000,
+  tick label style={font=\scriptsize},
+  legend style={font=\scriptsize, at={(0.02,0.98)}, anchor=north west,
+                draw=none}]
+\addplot[only marks, mark=*, color=npblue] coordinates
+  {(10,0.7) (32.8,1.3) (1920,14.3) (3298,12.0)};
+\addlegendentry{nonparametric wins (significant)}
+\addplot[only marks, mark=square*, color=gred] coordinates
+  {(4.7,-0.7) (5.3,-1.2) (8,-1.3) (39,-1.9)};
+\addlegendentry{GARCH wins}
+\addplot[only marks, mark=triangle*, color=gray] coordinates
+  {(20,0) (288,0) (3357,2.0)};
+\addlegendentry{tie / counterexample}
+\node[font=\tiny, anchor=west] at (axis cs:11,0.7) {frontier idx (8)};
+\node[font=\tiny, anchor=west] at (axis cs:36,1.3) {vol idx (VIX+)};
+\node[font=\tiny, anchor=east] at (axis cs:1800,14.3) {USDEGP};
+\node[font=\tiny, anchor=west] at (axis cs:3500,12.0) {USDARS};
+\node[font=\tiny, anchor=north] at (axis cs:4.7,-0.9) {dev.\ idx};
+\node[font=\tiny, anchor=south] at (axis cs:5.3,-1.1) {emg.\ idx};
+\node[font=\tiny, anchor=north] at (axis cs:8,-1.5) {FX EM};
+\node[font=\tiny, anchor=west] at (axis cs:43,-1.9) {FX majors};
+\node[font=\tiny, anchor=south] at (axis cs:20,0.1) {corn};
+\node[font=\tiny, anchor=south] at (axis cs:288,0.1) {carbon};
+\node[font=\tiny, anchor=west] at (axis cs:3600,2.0) {USDNGN (ns)};
+\draw[dashed, gray] (axis cs:3,0) -- (axis cs:8000,0);
+\end{axis}
+\end{tikzpicture}
+\caption{The frontier across universes: nonparametric edge vs post-GARCH
+residual kurtosis, tier means and single assets with study-reported
+kurtosis only (country universe corr 0.53; cross-asset corr 0.43).
+The hyperinflation-FX tier (kurtosis $\sim$2000--3300) carries the only
+decisive standalone wins; high kurtosis is necessary but not sufficient
+--- carbon (288) and corn (20) tie, and NGN's win is not significant.
+The Korea-2026 control (kurtosis 4--13, GARCH wins all 23 assets) sits
+in the lower-left regime.}
+\label{fig:universes}
+\end{figure}
+\clearpage
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.48\textwidth, height=4.6cm, ybar, bar width=4.5pt,
+  xlabel={Decile of $\mathrm{mk}_{63}$}, ylabel={Edge over GARCH-$t$ (\%)},
+  xtick={1,2,3,4,5,6,7,8,9,10}, ymin=-0.3, ymax=2.8,
+  title={\small Residual excess kurtosis}, tick label style={font=\scriptsize}]
+\addplot[fill=npblue, draw=npblue] coordinates
+  {(1,0)(2,0)(3,0)(4,0)(5,0)(6,0)(7,0)(8,0)(9,0.52)(10,2.46)};
+\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+\begin{axis}[width=0.48\textwidth, height=4.6cm, ybar, bar width=4.5pt,
+  xlabel={Decile of $|\mathrm{sk}_{63}|$},
+  xtick={1,2,3,4,5,6,7,8,9,10}, ymin=-0.3, ymax=2.8,
+  title={\small Residual asymmetry}, tick label style={font=\scriptsize}]
+\addplot[fill=npmid, draw=npmid] coordinates
+  {(1,0)(2,0)(3,0)(4,0)(5,0)(6,0)(7,0)(8,0)(9,0.69)(10,2.37)};
+\end{axis}
+\end{tikzpicture}
+\caption{The misspecification frontier. Nonparametric pinball edge over
+GARCH-$t$ by decile of the trailing 63-day residual excess kurtosis
+(left) and residual asymmetry (right), 200 CRSP names, 221.6k test
+asset-days. Deciles 1--8 are $\approx 0$ (drawn at zero; exact bulk
+values in the result file); the edge jumps in the top decile
+($+2.46\%$ kurtosis, $+2.37\%$ asymmetry; per-date DM 6.5 in the top
+kurtosis decile).}
+\label{fig:frontier}
+\end{figure}
+\clearpage
+\section{Supplementary tables}
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Double sort: the edge needs both a shape break and an active
+regime. Cells are the nonparametric-over-GARCH-$t$ pinball edge (\%)
+in independent quintiles of the misspecification score (rows) and
+trailing volatility (columns), design-era test panel.}
+\label{tab:doublesort}
+\footnotesize\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lccccc}
+\toprule
+ & rv$_{63}$ Q1 (calm) & Q2 & Q3 & Q4 & Q5 (active) \\
+\midrule
+mk$_{63}$ Q1 (low) & $+0.24$ & $+0.34$ & $+0.10$ & $+0.01$ & $-0.14$ \\
+Q2 & $+0.16$ & $+0.20$ & $+0.22$ & $+0.09$ & $-0.57$ \\
+Q3 & $-0.02$ & $+0.19$ & $+0.25$ & $+0.44$ & $+0.04$ \\
+Q4 & $+0.08$ & $+0.15$ & $+0.35$ & $+0.23$ & $+0.10$ \\
+Q5 (high) & $-0.10$ & $+0.44$ & $+0.68$ & $+0.61$ & $\mathbf{+2.33}$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Top-row date-clustered DM by volatility quintile: 0.7, 2.3, 1.2,
+2.8, 6.4. The bottom-left and top-right regions are the point:
+neither ingredient alone produces the concentration.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+\begin{table}[htbp]
+\centering\small
+\caption{Model selection by task and regime.
+Each row is established in the section cited.}
+\label{tab:decision}
+\begin{tabular}{p{0.44\textwidth}p{0.30\textwidth}l}
+\toprule
+Task / regime & Winner & Where \\
+\midrule
+Point quantile accuracy, tabular state & GBM (trees) & \SSection~3.2 of the paper \\
+Sampling, amortized posteriors, uncertainty & Neural IQN (only entrant) & Paper~B \\
+Single asset, calm ($\sim$90\% of asset-days) & GARCH-$t$ & \SSection~5 of the paper \\
+Single asset, top misspecification decile & Nonparametric ($+2.7\%$, DM 6.5) & \SSection~5 of the paper \\
+Amortized cross-name panel, any regime & Nonparametric always; no gate & \SSection~5.4 of the paper \\
+Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & \SSection~6 of the paper \\
+Multivariate portfolio tail & GARCH/DCC (honest negative) & Paper~B \\
+\bottomrule
+\end{tabular}
+\end{table}
+\clearpage
+\section{The two-regime example}
+\subsection*{A synthetic boundary check: when the frontier does
+\emph{not} appear}\label{sec:toy}
+
+Before the real data, a simulation with known truth --- run once, seed
+fixed --- checks the formal results and, more usefully, delineates when
+the frontier edge should \emph{fail} to appear. The data-generating
+process is deliberately favorable to the thermometer: unit-variance
+Student-$t$ residuals whose degrees of freedom switch between a calm
+regime ($\nu=12$) and a fat regime ($\nu=3$) under a persistent Markov
+chain; forecasters see the trailing 63-day kurtosis score and compete
+at $\tau \in \{0.01, 0.025\}$ (80{,}000 days; scale known, isolating
+shape). Three results. First, the Lemma~1 of the paper identity
+verifies numerically: the regret integral and the Monte-Carlo regret
+agree to five decimals ($3.5\times10^{-5}$ at $\tau=0.01$). Second, the
+conformal shift moves realized coverage toward nominal on the held-out
+split, as Proposition~1 of the paper promises. Third --- the
+instructive one --- the score-binned nonparametric forecaster does
+\emph{not} beat the fixed shape here: a single $t_{\widehat\nu}$
+fitted on the mixture ($\widehat\nu = 6.8$) is nearly unbeatable at
+these levels, with total regret under $0.5\%$ and no decile gradient.
+Two mechanisms explain it, and both teach. (i)~By
+Lemma~1 of the paper regret is \emph{quadratic} in the quantile
+wedge, and at $\tau \ge 0.01$ the wedge between the fitted compromise
+and either regime is small --- static kurtosis \emph{blending} is a
+second-order sin. (ii)~The sample kurtosis of a $t_\nu$ law has
+infinite estimator variance for $\nu \le 8$, so a moment-based
+thermometer is at its noisiest just when tails are fat, and
+sixty-three observations cannot reliably rank regimes that differ only
+in a static $\nu$. For the empirical sections this means the real-data top-decile edge of Section~5 of the paper
+cannot be an artifact of stationary fat tails being averaged over ---
+that configuration is the one the simulation shows a fixed shape
+handles --- but must reflect \emph{local} shape breaks a single fitted
+$\nu$ cannot straddle: asymmetry, jump clustering, and residual misfit
+that co-move with the score. This is the same conclusion the Korea 2026
+negative control reaches from the opposite direction (price crashes
+are not residual misspecification), and it is why the score combines
+kurtosis with asymmetry and a jump indicator rather than kurtosis
+alone. (Simulation script \texttt{toy\_example.py} ships with the code
+release.)
+
+
+\section{Trading implications and scenario generation}
+\textbf{Trading implications.} The universes where
+the nonparametric tail wins --- crisis FX, volatility indices, credit
+spreads, frontier equities --- are the desks where tail-shape-aware
+sizing and hedging matter most. The \emph{direction} of the trade matters
+as much as its location. The companion GRAFT-Q paper shows that
+\emph{buying} model-flagged crash insurance loses ($-1.7\%$ per month,
+$t=-1.9$) even in the months the calibrated model correctly flags as
+elevated-tail: the crash premium survives conditioning on a correct
+physical-measure forecast, so a right-but-still-unprofitable buy signal
+is not a deployable trade. The deployable side is the other one ---
+\emph{warehousing} (selling) the premium --- with the model supplying
+tail control rather than alpha on the mean: model-timed overlays improve
+tail outcomes, not average returns, consistent with the tail being the
+only place the model knows something a fixed-shape filter does not. The
+contribution to a premium-harvesting book is risk management (when to
+size down or step aside ahead of a genuine crash), not signal generation.
+
+\textbf{Scenario generation.} The SBC machinery of Paper~B
+calibrates intractable scenario-generator models (rough vol, and by
+extension Hawkes and jump-diffusion) with posterior uncertainty on
+stressed paths --- a principled input to CCAR/ICAAP-style stress
+design.
+
+
+%% ===== CONCLUSION (TODO: trim references to uncertainty/SBC/multivariate -> Paper B) =====
+
+\clearpage
+\section{Proofs}
+
+%% ===== GLOSSARY: demoted to the Online Appendix (paper_A_online_appendix.tex) =====
+%% A one-line pointer remains in Section 3; the main text now ends with the proofs.
+
+\section{Proofs}\label{app:proofs}
+
+The four formal results of Section~3.3 of the paper are stated with
+proof sketches in the body; the complete arguments, with all regularity
+hypotheses made explicit, are collected here. Throughout, $\rho_\tau(u)
+= u(\tau - \mathbb{I}\{u<0\})$ and $q_F = F^{-1}(\tau) = \inf\{x:F(x)\ge
+\tau\}$ is the lower generalized inverse.
+
+\subsection*{Proof of Lemma~1 of the paper (pinball regret identity)}
+
+Assume $\mathbb{E}|Z|<\infty$, so
+\[
+S(q) = (1-\tau)\!\int_{(-\infty,q]}\!(q-z)\,dF(z)
+\;+\; \tau\!\int_{(q,\infty)}\!(z-q)\,dF(z)
+\]
+is finite for every $q$, and $S$ is convex (an expectation of the
+convex maps $q\mapsto\rho_\tau(z-q)$). For fixed $z$, $q\mapsto
+\rho_\tau(z-q)$ is Lipschitz with constant $\max(\tau,1-\tau)$, so the
+difference quotients $[\rho_\tau(Z-q')-\rho_\tau(Z-q)]/(q'-q)$ are
+bounded by the integrable constant $\max(\tau,1-\tau)$; dominated
+convergence justifies differentiating under the expectation wherever the
+one-sided limits exist. Off the atoms of $F$,
+\[
+\frac{d}{dq}\,\rho_\tau(z-q) = \mathbb{I}\{z<q\}-\tau ,
+\qquad\Longrightarrow\qquad
+S'(q) = \mathbb{E}\,\mathbb{I}\{Z<q\}-\tau = F(q^-)-\tau,
+\]
+which equals $F(q)-\tau$ for all but countably many $q$. Since $S$ is
+convex, hence absolutely continuous, the fundamental theorem of
+calculus gives
+\[
+S(q)-S(q_F)=\int_{q_F}^{q}\big(F(u)-\tau\big)\,du,
+\]
+the countable atom set being Lebesgue-null; \emph{no continuity
+hypothesis on $F$ is needed for this identity}. For nonnegativity,
+note $q_F=\inf\{x:F(x)\ge\tau\}$ implies $F(u)\ge\tau$ for $u\ge q_F$
+and $F(u)<\tau$ for $u<q_F$. If $q>q_F$ the integrand is $\ge0$ on
+$[q_F,q]$, so the integral is $\ge0$; if $q<q_F$,
+\[
+S(q)-S(q_F)=\int_{q_F}^{q}\big(F(u)-\tau\big)\,du
+=\int_{q}^{q_F}\big(\tau-F(u)\big)\,du\;\ge\;0 ,
+\]
+the integrand again $\ge0$ on $[q,q_F]$. Equality holds iff $F(u)=\tau$
+for Lebesgue-a.e.\ $u$ between $q_F$ and $q$. Finally, if $F$ is
+absolutely continuous with density $0<m\le f\le M$ on the interval
+joining $q_F$ and $q$, then $F$ is continuous there, so $F(q_F)=\tau$
+and $F(u)-\tau=\int_{q_F}^{u}f$; hence $m|u-q_F|\le|F(u)-\tau|\le
+M|u-q_F|$, and integrating over the interval yields
+$\tfrac{m}{2}(q-q_F)^2\le S(q)-S(q_F)\le\tfrac{M}{2}(q-q_F)^2$.
+\hfill$\square$
+
+\subsection*{Proof of Proposition~1 of the paper (split-conformal
+validity)}
+
+Let $k=\lceil(n{+}1)\tau\rceil$ and assume $1\le k\le n$ so that the
+$k$-th order statistic $e_{(k)}=c_\tau$ of the $n$ calibration errors
+$\{e_1,\dots,e_n\}$ exists; when $k=n+1$ (i.e.\ $\tau$ within $1/(n+1)$
+of $1$) set $c_\tau=+\infty$, giving coverage $1$. Suppose the $n+1$
+errors $e_1,\dots,e_{n+1}$ (calibration plus the test error
+$e_{n+1}=z_{n+1}-\widehat q(\tau\mid s_{n+1})$) are exchangeable and
+almost surely distinct. Then the rank $R$ of $e_{n+1}$ among the pooled
+$n+1$ values is uniformly distributed on $\{1,\dots,n+1\}$. By
+construction $\widetilde q(\tau\mid s_{n+1})=\widehat q(\tau\mid
+s_{n+1})+c_\tau$, so
+\[
+\{z_{n+1}\le\widetilde q(\tau\mid s_{n+1})\}
+=\{e_{n+1}\le c_\tau\}
+=\{e_{n+1}\le e_{(k)}\}
+=\{R\le k\},
+\]
+the middle equality using a.s.\ distinctness (with ties the middle
+equality fails; e.g.\ if all $e_i$ are equal the event has probability
+$1$, which can exceed the stated upper bound). Therefore
+\[
+\Pr\big(z_{n+1}\le\widetilde q(\tau\mid s_{n+1})\big)
+=\Pr(R\le k)=\frac{k}{n+1}
+=\frac{\lceil(n{+}1)\tau\rceil}{n+1}.
+\]
+Since $(n{+}1)\tau\le\lceil(n{+}1)\tau\rceil<(n{+}1)\tau+1$, dividing by
+$n+1$ gives $\tau\le k/(n+1)<\tau+\tfrac1{n+1}$. The probability is over
+the joint law of calibration and test points; the guarantee is
+marginal, not conditional on $s_{n+1}$, because a single scalar shift
+$c_\tau$ pooled across states cannot deliver state-conditional
+coverage. \hfill$\square$
+
+\subsection*{Proof of Proposition~2 of the paper (tail wedge)}
+
+Fix $\nu>2$, so the $t_\nu$ law has finite variance and its
+unit-variance version $Z=T_\nu\sqrt{(\nu-2)/\nu}$ is well defined. The
+$t_\nu$ density is $\sim C_\nu|x|^{-(\nu+1)}$ as $|x|\to\infty$, so the
+lower tail is regularly varying with index $-\nu$: $\Pr(T_\nu<-x)=
+\tilde c_\nu x^{-\nu}(1+o(1))$. Unit-variance scaling multiplies the
+constant, $\Pr(Z<-x)=c_\nu x^{-\nu}(1+o(1))$ with
+$c_\nu=\tilde c_\nu((\nu-2)/\nu)^{\nu/2}$, and leaves the index $\nu$
+unchanged. Writing $U(\tau)=|Q_\nu(\tau)|$ and inverting the regularly
+varying tail \citep{embrechts1997} gives $\tau=c_\nu U(\tau)^{-\nu}
+(1+o(1))$, hence $U(\tau)=(c_\nu/\tau)^{1/\nu}(1+o(1))$ as
+$\tau\downarrow0$, i.e.\ $Q_\nu(\tau)=-(c_\nu/\tau)^{1/\nu}(1+o(1))$.
+For $\nu_1<\nu_2$,
+\[
+\frac{|Q_{\nu_1}(\tau)|}{|Q_{\nu_2}(\tau)|}
+=\frac{(c_{\nu_1}/\tau)^{1/\nu_1}}{(c_{\nu_2}/\tau)^{1/\nu_2}}\,(1+o(1))
+=\text{const}\cdot\tau^{-(1/\nu_1-1/\nu_2)}(1+o(1))\;\longrightarrow\;\infty
+\]
+because $1/\nu_1>1/\nu_2$. Thus for all sufficiently small $\tau$ both
+quantiles are negative with $|Q_{\nu_1}(\tau)|>|Q_{\nu_2}(\tau)|$, i.e.\
+$Q_{\nu_1}(\tau)<Q_{\nu_2}(\tau)$, and the wedge
+$|Q_{\nu_1}(\tau)-Q_{\nu_2}(\tau)|\to\infty$. The ordering therefore
+holds for every $\tau<\delta$ for some $\delta>0$; putting
+$\tau^*=\min(\delta,\tfrac12)$ gives $\tau^*\in(0,\tfrac12)$ as
+asserted. (This establishes \emph{existence} of $\tau^*$; the actual
+crossover $\tau_c$ where the ordering flips is not claimed here and is
+located numerically in the crossover remark of the paper.) Under local truth
+$t_{\nu_1}$, applying the corresponding equation of the paper with $q=Q_{\nu_2}(\tau)$ and
+$q_F=Q_{\nu_1}(\tau)$ bounds the regret below by
+$\tfrac{m}{2}(Q_{\nu_1}(\tau)-Q_{\nu_2}(\tau))^2$, with $m$ the minimum
+of the $t_{\nu_1}$ density on the wedge interval. \hfill$\square$
+
+
+
+\begin{spacing}{1.0}
+\bibliographystyle{plainnat}
+\bibliography{refs_v3}
+\end{spacing}
+\end{document}
