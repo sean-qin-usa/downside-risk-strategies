@@ -64,39 +64,16 @@ are stated at the end.}}
 \maketitle
 
 \begin{abstract}
-We propose a deployable downside-risk engine and a theory of when it
-pays. The engine --- \emph{amortized residual-hybrid} forecasting ---
-keeps the GARCH conditional scale that industry models get right and
-replaces only the fixed innovation shape with a state-conditioned
-nonparametric quantile model trained \emph{once, across hundreds of
-names}, finished with an extreme-value tail and a conformal
-recalibration. Three results. \emph{First, amortization:} one fit
-replaces per-asset estimation, transfers to names never seen in
-training, beats own-history benchmarks at every listing age
-($6$--$10\%$ of pinball loss for young listings), and prices assets
-with \emph{no return history} --- day-one risk numbers for IPOs that no
-per-asset model can produce. \emph{Second, the engine beats what banks
-run:} against historical simulation, RiskMetrics, GARCH-$t$,
-GJR-skew-$t$, and filtered historical simulation on 140 CRSP names, it
-wins on average loss with date-level Diebold--Mariano significance
-(statistics 4.4--8.3), delivers the best-calibrated 97.5\% Expected
-Shortfall (removing an $8$--$11\%$ ES over-statement that
-over-charges capital), and with its tail stages its exception counts
-are consistent with nominal at both regulatory levels, a finding that
-survives per-asset and common-date-dependence restatements and holds
-through a 2008-crisis test window under the frozen specification; the
-edge grows at the
-ten-day horizon and holds in the 2020--22 stress window. \emph{Third, a
-misspecification frontier says when the edge is large:} a real-time
-score (the excess kurtosis and asymmetry of recent GARCH-standardized
-residuals) concentrates the gain ($+2.7\%$, DM 6.5, in its top
-decile; $12$--$14\%$ on hyperinflation currencies), maps it across US
-equities, FX, twenty-six country indices, and forty-three cross-asset
-instruments, and replicates on an untouched 2000--2013 holdout run
-under registered predictions with the specification frozen (top decile
-$+0.9\%$, DM 2.2; all other deciles indistinguishable from zero). Where the score is quiet the engine ties the parametric
-benchmark, so the deployment rule is to run the engine
-everywhere and read the score as a risk dial.
+A deployable engine --- GARCH scale times an amortized nonparametric
+residual quantile, with an extreme-value tail and conformal
+recalibration --- and a real-time misspecification score that says
+when it beats the parametric standard. One pooled fit replaces
+per-asset estimation and prices new listings day one. Exception
+counts stay nominal at both regulatory levels through a 2008-crisis
+test window. The score concentrates the edge in its top decile
+($+2.7\%$, DM 6.5) and replicates on an untouched 2000--2013 holdout
+under registered predictions. Where the score is quiet the engine
+ties the benchmark --- run it everywhere, read the score as a dial.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall; FRTB;
