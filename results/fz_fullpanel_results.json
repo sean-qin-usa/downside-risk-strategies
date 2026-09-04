@@ -1,5 +1,5 @@
 {
-  "note": "Full-panel FZ0 (VaR,ES) re-scoring, registered. DM_t>0 means the row model has HIGHER (worse) FZ0 loss than the engine, date-clustered NW(10), one-sided p. GAS = one-factor score-driven (PZC-2019-style) FZ0-estimated per name.",
+  "note": "Full-panel FZ0 (VaR,ES) re-scoring, pre-committed. DM_t>0 means the row model has HIGHER (worse) FZ0 loss than the engine, date-clustered NW(10), one-sided p. GAS = one-factor score-driven (PZC-2019-style) FZ0-estimated per name.",
   "n_names": 200,
   "n_test": 221600,
   "gpd": {

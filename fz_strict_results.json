@@ -1,0 +1,141 @@
+{
+  "note": "STRICT-SPLIT conformal/FZ audit: engine variant with first-stage GARCH fit only through cp (45% of sample) so the calibration window cp..sp is held out from EVERY estimated engine component (filter, shape learner, EVT tail); recursive filtration thereafter. eng_orig replicates the fz_fullpanel construction (filter fit through sp) on identical test rows; benchmarks use the sp-fit filter in both, so engine-row differences are attributable purely to the split. GAS is unaffected (raw-returns estimation) -- see fz_fullpanel_results.json. DM_t>0 in benchmark rows = benchmark worse than that engine variant, date-clustered NW(10).",
+  "n_names": 200,
+  "n_test": 221600,
+  "eng_orig": {
+    "gpd": {
+      "u": -1.8866,
+      "xi": 0.2932,
+      "beta": 0.6412
+    },
+    "conf975": -0.3376
+  },
+  "eng_strict": {
+    "gpd": {
+      "u": -1.9239,
+      "xi": 0.2769,
+      "beta": 0.6627
+    },
+    "conf975": -0.5086
+  },
+  "per_alpha": {
+    "0.01": {
+      "orig_noshift": {
+        "meanFZ0": 2.14872,
+        "breach": 0.0102,
+        "breach_dateclust_t": 0.4,
+        "kupiec_passrate": 0.835
+      },
+      "strict_noshift": {
+        "meanFZ0": 2.1592,
+        "breach": 0.0119,
+        "breach_dateclust_t": 2.84,
+        "kupiec_passrate": 0.735
+      },
+      "garch_cpfit": {
+        "meanFZ0": 2.17111,
+        "breach": 0.0126,
+        "breach_dateclust_t": 3.58,
+        "kupiec_passrate": 0.7
+      },
+      "strict_vs_orig_noshift": {
+        "mean_diff": 0.01048,
+        "DM_t": 2.43
+      },
+      "garch_minus_orig_noshift": {
+        "mean_diff": 0.007,
+        "DM_t": 4.15
+      },
+      "garch_minus_strict_noshift": {
+        "mean_diff": -0.00348,
+        "DM_t": -0.74
+      },
+      "garchcp_minus_strict_noshift": {
+        "mean_diff": 0.01191,
+        "DM_t": 4.97
+      },
+      "garch_minus_garchcp": {
+        "mean_diff": -0.01539,
+        "DM_t": -2.79
+      },
+      "fhs_minus_strict_noshift": {
+        "mean_diff": 0.01321,
+        "DM_t": 2.58
+      },
+      "top_mk63_decile_garch_minus_strict_noshift": {
+        "mean_diff": 0.03094,
+        "DM_t": 1.91,
+        "n_dates": 1108
+      }
+    },
+    "0.025": {
+      "orig_noshift": {
+        "meanFZ0": 1.85017,
+        "breach": 0.0271,
+        "breach_dateclust_t": 1.53,
+        "kupiec_passrate": 0.73
+      },
+      "strict_noshift": {
+        "meanFZ0": 1.86253,
+        "breach": 0.0304,
+        "breach_dateclust_t": 3.65,
+        "kupiec_passrate": 0.61
+      },
+      "garch_cpfit": {
+        "meanFZ0": 1.8699,
+        "breach": 0.0319,
+        "breach_dateclust_t": 4.42,
+        "kupiec_passrate": 0.495
+      },
+      "strict_vs_orig_noshift": {
+        "mean_diff": 0.01236,
+        "DM_t": 4.01
+      },
+      "garch_minus_orig_noshift": {
+        "mean_diff": 0.00403,
+        "DM_t": 4.53
+      },
+      "garch_minus_strict_noshift": {
+        "mean_diff": -0.00834,
+        "DM_t": -2.42
+      },
+      "garchcp_minus_strict_noshift": {
+        "mean_diff": 0.00736,
+        "DM_t": 5.27
+      },
+      "garch_minus_garchcp": {
+        "mean_diff": -0.0157,
+        "DM_t": -3.83
+      },
+      "fhs_minus_strict_noshift": {
+        "mean_diff": -8e-05,
+        "DM_t": -0.03
+      },
+      "orig_static": {
+        "meanFZ0": 1.86731,
+        "breach": 0.0163,
+        "breach_dateclust_t": -9.59,
+        "kupiec_passrate": 0.48
+      },
+      "strict_static": {
+        "meanFZ0": 1.88043,
+        "breach": 0.015,
+        "breach_dateclust_t": -12.06,
+        "kupiec_passrate": 0.33
+      },
+      "strict_vs_orig_static": {
+        "mean_diff": 0.01312,
+        "DM_t": 6.25
+      },
+      "garch_minus_strict_static": {
+        "mean_diff": -0.02623,
+        "DM_t": -3.26
+      },
+      "top_mk63_decile_garch_minus_strict_noshift": {
+        "mean_diff": 0.01649,
+        "DM_t": 1.44,
+        "n_dates": 1108
+      }
+    }
+  }
+}
