@@ -1,0 +1,20 @@
+{
+  "note": "Horizon h=10 on the 2000-2013 holdout era: direct-learned 10-day quantiles (pooled GBM, causal features) vs GARCH-t sqrt(h) scaling. Overlapping targets; date-level DM NW lag 20. edge_pct>0 = direct better.",
+  "n_names": 200,
+  "n_test": 278808,
+  "n_dates": 1486,
+  "pinball_garch_sqrt_h": 0.9848,
+  "pinball_direct": 0.9784,
+  "edge_pct": 0.65,
+  "DM_date_NW20": 0.22,
+  "garch_sqrt_h_ES": {
+    "breach975": 0.028,
+    "pred_ES": -16.63,
+    "realized_ES": -16.57
+  },
+  "direct_ES": {
+    "breach975": 0.0278,
+    "pred_ES": -14.45,
+    "realized_ES": -17.6
+  }
+}
