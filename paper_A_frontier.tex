@@ -45,7 +45,9 @@
 \newtheorem{remark}{Remark}
 
 
-\title{Downside Risk at the Misspecification Frontier\thanks{Paper~A of a
+\title{Downside Risk at the Misspecification Frontier:\\
+A Real-Time Score for When Nonparametric Models Beat\\
+Industry-Standard VaR and ES\thanks{Paper~A of a
 three-paper program. The neural implicit-quantile-network estimator, the
 EVT tail graft, and the cross-sectional conformal layer used as one stage
 of the engine below are developed in the companion paper \emph{GRAFT-Q}
@@ -1386,6 +1388,58 @@ what makes state-conditioning affordable --- the amortized model
 borrows the shape information from every name's stressed days --- so
 the amortization of Section~\ref{sec:gbcmethod} is not a convenience
 on top of the frontier result but a precondition for it.
+
+\paragraph{Four robustness probes of the dial.} The score is not
+volatility in disguise, and the double sort of
+Table~\ref{tab:doublesort} is the cleanest way to see it. Sorting
+test asset-days independently into quintiles of mk$_{63}$ and of
+trailing volatility (rv$_{63}$): high volatility without a shape break
+carries no edge (top-volatility column, bottom four kurtosis quintiles:
+$-0.57\%$ to $+0.10\%$), a shape break without an active regime
+carries almost none (top-kurtosis row, calmest quintile: $-0.10\%$,
+DM 0.7), and the product state carries $+2.33\%$ with DM 6.4. The two
+ingredients interact: the score says the parametric shape is currently
+wrong, and volatility scales how much that error costs. Second, a
+superior-predictive-ability test \citep{hansen2005spa} on the per-date
+loss panel against the full desk field (GARCH-$t$, FHS, EWMA, HS)
+returns $T^{\mathrm{SPA}} = 0$, consistent $p = 1.00$: no rival's
+advantage is even positive, and each is individually worse with
+$t \geq 5.8$. Third, the dial needs no recalibration to stay useful:
+holding the design-era top-decile threshold fixed, the top-decile edge
+is positive in every test year (between $+1.7\%$ and $+3.4\%$,
+2020--2024), even though the cross-sectional 90th percentile of
+mk$_{63}$ itself drifts upward in 2023--24. Fourth, the dial is a slow
+state, so monitoring it costs little: a median name enters the top
+decile less than once a year (0.68 entries) and a median episode lasts
+24 trading days.
+
+\begin{table}[tp]
+\centering
+\begin{threeparttable}
+\caption{Double sort: the edge needs both a shape break and an active
+regime. Cells are the nonparametric-over-GARCH-$t$ pinball edge (\%)
+in independent quintiles of the misspecification score (rows) and
+trailing volatility (columns), design-era test panel.}
+\label{tab:doublesort}
+\footnotesize\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lccccc}
+\toprule
+ & rv$_{63}$ Q1 (calm) & Q2 & Q3 & Q4 & Q5 (active) \\
+\midrule
+mk$_{63}$ Q1 (low) & $+0.24$ & $+0.34$ & $+0.10$ & $+0.01$ & $-0.14$ \\
+Q2 & $+0.16$ & $+0.20$ & $+0.22$ & $+0.09$ & $-0.57$ \\
+Q3 & $-0.02$ & $+0.19$ & $+0.25$ & $+0.44$ & $+0.04$ \\
+Q4 & $+0.08$ & $+0.15$ & $+0.35$ & $+0.23$ & $+0.10$ \\
+Q5 (high) & $-0.10$ & $+0.44$ & $+0.68$ & $+0.61$ & $\mathbf{+2.33}$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Top-row date-clustered DM by volatility quintile: 0.7, 2.3, 1.2,
+2.8, 6.4. The bottom-left and top-right regions are the point:
+neither ingredient alone produces the concentration.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
 
 \paragraph{The confirmatory holdout.} Every design choice in this paper
 was made on data from 2014 onward. As a guard against specification
