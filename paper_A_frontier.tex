@@ -72,8 +72,8 @@ run:} against historical simulation, RiskMetrics, GARCH-$t$,
 GJR-skew-$t$, and filtered historical simulation on 140 CRSP names, it
 wins on average loss with date-level Diebold--Mariano significance
 (statistics 4.4--8.3), delivers the best-calibrated 97.5\% Expected
-Shortfall (removing an $8$--$11\%$ ES over-statement that
-over-charges capital), and with its tail stages its exception counts
+Shortfall (removing an $8$--$11\%$ ES over-statement that would mechanically
+inflate an ES-driven capital component), and with its tail stages its exception counts
 are consistent with nominal at both regulatory levels, a finding that
 survives per-asset and common-date-dependence restatements and holds
 through a 2008-crisis test window under the frozen specification; the
@@ -85,7 +85,7 @@ residuals) concentrates the gain ($+2.7\%$, DM 6.5, in its top
 decile; $12$--$14\%$ on hyperinflation currencies), maps it across US
 equities, FX, twenty-six country indices, and forty-three cross-asset
 instruments, and replicates on an untouched 2000--2013 holdout run
-under registered predictions with the specification frozen (top decile
+under a frozen specification with predictions written down in advance (top decile
 $+0.9\%$, DM 2.2; all other deciles indistinguishable from zero); the
 top-decile cells of all three signals survive Romano--Wolf familywise
 control over the full grid, strict calendar-time splits (including
@@ -135,10 +135,13 @@ discipline; beating a vanilla GARCH on average loss is not enough.
 One distinction, stated before anything else, prevents the most common
 misreading of our results. When the misspecification score is quiet ---
 roughly ninety percent of asset-days --- the engine we deploy and the
-parametric benchmark are statistically indistinguishable: \emph{a tie,
-not a loss}. The engine's worst outcome anywhere in our tests is that
-tie, so holding it costs nothing while it waits for the days on which
-it wins. What does lose on quiet days is a configuration we study only
+parametric benchmark are statistically indistinguishable inside an
+explicit equivalence margin (Section~\ref{sec:frontier}): \emph{no
+detectable loss on the accuracy yardstick}. On that yardstick the
+engine's worst cell in our tests is that bounded tie --- the deployed
+coverage shift's 2.5\% joint-score concession is the one measured
+exception, priced in Section~\ref{sec:frtb} --- so holding the engine
+is cheap while it waits for the days on which it wins. What does lose on quiet days is a configuration we study only
 as a cautionary boundary and never deploy: a bare per-name neural
 quantile model, which a unit-matched GJR-GARCH-$t$ beats by
 4.5--6.2\% at every horizon (DM $t$ between $+12$ and
@@ -172,15 +175,14 @@ engine deployable at industry standards.
 \subsection{Contributions}\label{sec:contributions}
 
 \begin{enumerate}[leftmargin=1.6em]
-\item \textbf{The misspecification frontier} (Section~\ref{sec:frontier}).
-A live, per-asset, per-day score that predicts when nonparametric
-quantiles beat GARCH-$t$, with per-date Diebold--Mariano
-significance, validated across four universes: CRSP US equities
-(top-decile edge $+2.71\%$, DM 6.54), FX (hyperinflation tier pooled DM
-4.12), twenty-six country indices (developed$\to$frontier gradient,
-corr 0.53), and forty-three cross-asset instruments (corr 0.43), with
-Korea-2026 as a sharpening negative control: price crashes are not
-residual misspecification.
+\item \textbf{Amortization and the cold start}
+(Sections~\ref{sec:methods} and~\ref{sec:applications}). The deployed
+forecaster is a single amortized model trained across hundreds of names:
+one fit replaces per-asset estimation, transfers to names the model has
+never seen, beats own-history benchmarks at \emph{every} listing age
+(the advantage largest for young listings), and prices assets with no
+return history at all --- the one regime where it is the only feasible
+model.
 \item \textbf{An industry-standard-and-above risk engine}
 (Section~\ref{sec:frtb}). The residual-hybrid --- GARCH conditional
 scale $\times$ state-conditioned nonparametric residual quantile ---
@@ -207,14 +209,15 @@ for the engine's accuracy layer, with the conformal shift's
 sharpness-for-coverage cost at 2.5\% quantified rather than hidden,
 and an edge that grows at the FRTB ten-day horizon and holds in the
 2020/2022 stress window.
-\item \textbf{Amortization and the cold start}
-(Sections~\ref{sec:methods} and~\ref{sec:applications}). The deployed
-forecaster is a single amortized model trained across hundreds of names:
-one fit replaces per-asset estimation, transfers to names the model has
-never seen, beats own-history benchmarks at \emph{every} listing age
-(the advantage largest for young listings), and prices assets with no
-return history at all --- the one regime where it is the only feasible
-model.
+\item \textbf{The misspecification frontier} (Section~\ref{sec:frontier}).
+A live, per-asset, per-day score that predicts when nonparametric
+quantiles beat GARCH-$t$, with per-date Diebold--Mariano
+significance, validated across four universes: CRSP US equities
+(top-decile edge $+2.71\%$, DM 6.54), FX (hyperinflation tier pooled DM
+4.12), twenty-six country indices (developed$\to$frontier gradient,
+corr 0.53), and forty-three cross-asset instruments (corr 0.43), with
+Korea-2026 as a sharpening negative control: price crashes are not
+residual misspecification.
 \item \textbf{A theory of where the edge lives}
 (Section~\ref{sec:methods}, proofs in Appendix~\ref{app:proofs}). A
 pinball regret identity showing that a forecaster's excess loss is
@@ -263,7 +266,7 @@ Top misspecification decile & $+2.7\%$ & DM 6.5 & win (concentrated) \\
 Hyperinflation FX (ARS, EGP) & $+12$--$14\%$ & DM 2.9--3.8 & win \\
 Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 & win \\
 Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 stress; 2000--13 rerun: tie, DM 0.2 & win (era-dependent) \\
-2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2, registered predictions; frozen-rule restatement in text & win (confirmatory) \\
+2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2, frozen spec, predictions written in advance; frozen-rule restatement in text & win (untouched era) \\
 Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$; overall $+0.6\%$ & DM 6.6 / 9.0, frozen real-time thresholds & win (survivorship armor) \\
 Strict calendar splits (2020 cut; pre-GFC 2007 cut) & top decile $+2.5\%$; overall $+0.3\%$ & DM 6.2; 3.1 --- no calendar overlap anywhere & win (leakage armor) \\
 Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles & win (multiplicity-priced) \\
@@ -495,7 +498,7 @@ training for the same reason. (b)~Expected Shortfall is not elicitable
 on its own --- no loss function is minimized by the true ES alone ---
 but the pair $(\VaR,\ES)$ is, under the joint scoring functions of
 \citet{fissler2016}; the FZ-scored re-evaluation of the battery is a
-registered extension (Section~\ref{sec:limitations}). (c)~Likelihood is
+pre-committed extension (Section~\ref{sec:limitations}). (c)~Likelihood is
 unavailable by design: several competitors have no tractable density, and likelihood scores
 would silently exclude them.
 
@@ -622,7 +625,8 @@ $\widetilde{q}(\tau \mid s) = \widehat{q}(\tau \mid s) + c_\tau$
 \citep{vovk2005, romano2019cqr}. This distribution-free layer repairs
 the 97.5\% level that every model in the battery otherwise fails.
 
-\begin{proposition}[split-conformal validity]\label{prop:conformal}
+\begin{proposition}[split-conformal validity under
+exchangeability]\label{prop:conformal}
 If the calibration and test residuals $e_1,\dots,e_{n+1}$ are
 exchangeable and almost surely distinct (a continuous error
 distribution, or randomized tie-breaking), then for each $\tau$ with
@@ -653,7 +657,10 @@ and time-ordered residuals are not exchangeable; the proposition
 therefore \emph{motivates} the construction, while the evidence that it
 works here is empirical --- the exception-test repairs of
 Section~\ref{sec:frtb} (the conformal stage is the only reason any
-entrant passes Kupiec at 97.5\%). Where regime drift erodes a static
+entrant passes Kupiec at 97.5\%). Conformal constructions with
+validity under dependence exist \citep{chernozhukov2018conformal}; we
+prefer the simple split form plus an empirical audit. Where regime
+drift erodes a static
 shift, an \emph{adaptive} update \citep{gibbs2021aci} is the natural
 escalation; the engine's annual-refit schedule sits
 between the static and adaptive poles, and the exception tests are the
@@ -1141,8 +1148,9 @@ $\widehat{z}_{t-62},\dots,\widehat{z}_t$.
 (iii)~Convert each to a decile rank against the trailing pooled panel
 (same asset class); the score is the rank of the maximum.
 (iv)~Act by Table~\ref{tab:decision}: top decile $\Rightarrow$ the
-standard parametric VaR is currently, locally wrong by $\sim$2--3\% of
-pinball with high confidence --- flag the asset for the nonparametric /
+parametric model's average pinball loss runs $\sim$2--3\% higher
+within this score region (a conditional average over the region, not a
+per-name point estimate) --- flag the asset for the nonparametric /
 residual-hybrid engine and for model-risk review; elsewhere
 $\Rightarrow$ no action (in the amortized setting the engine is run
 regardless; the meter serves surveillance, and day-level switching is
@@ -1159,7 +1167,7 @@ Equity panels come from CRSP daily files accessed through WRDS. The
 design panel covers 2014--2024 and contains the 200 names with the
 deepest continuous histories among those with at least 1{,}500 daily
 observations; every modeling choice in the paper was made on this
-panel. The confirmatory holdout covers 2000--2013 and was pulled once,
+panel. The untouched-era holdout covers 2000--2013 and was pulled once,
 after the specification was frozen: common shares (share codes 10 and
 11) with at least 3{,}000 observations in the window, ranked by average
 market capitalization, top 200. Returns are in percent and include
@@ -1186,7 +1194,7 @@ Table~\ref{tab:sampleflow} gives the sample flow.
 Panel & Source & Era & Names & Test obs & Role \\
 \midrule
 Design equity panel & CRSP/WRDS & 2014--2024 & 200 & 221{,}600 & frontier map; engine development \\
-Confirmatory holdout & CRSP/WRDS & 2000--2013 & 200 & 280{,}608 & frozen-spec replication \\
+Untouched-era holdout & CRSP/WRDS & 2000--2013 & 200 & 280{,}608 & frozen-spec replication \\
 Exception restatement & CRSP/WRDS & 2014--2024 & 140 & $\approx$155{,}000 & per-asset backtesting battery \\
 Cross-asset sweep & Bloomberg & through 2026 & 43 & \tnote{a} & frontier breadth \\
 Country indices & Bloomberg & through 2026 & 26 & \tnote{a} & frontier breadth \\
@@ -1224,15 +1232,18 @@ loss comparisons, the Model Confidence Set for multi-model fields, and
 Kupiec, Christoffersen, and date-clustered breach tests at the two
 regulatory levels for exception behavior.
 
-``Registered'' has a specific meaning in this paper. A run is
-registered when the full specification --- signals, features,
-hyperparameters, split rule, and test statistics --- is frozen and the
+``Frozen-specification'' has a specific meaning in this paper, and we
+deliberately avoid the stronger word \emph{registered}: no third-party
+registry or timestamp exists for these runs, so the claim is
+diffability, not notarization. A run is frozen-specification when the
+full specification --- signals, features,
+hyperparameters, split rule, and test statistics --- is fixed and the
 predictions are written down before the data are pulled. The holdout pipeline is line-for-line the design-era pipeline ---
 both files are public in the replication repository --- so a reader
 can diff the two and verify that no signal, feature, hyperparameter,
 or test statistic was altered for the holdout era. The
 2000--2013 holdout of Section~\ref{sec:frontier} ran under this rule.
-Registered runs that remain open are listed in
+Frozen-specification runs that remain open are listed in
 Section~\ref{sec:limitations}.
 
 \subsection{Common shocks, calendar overlap, and the pooled learner}
@@ -1546,11 +1557,11 @@ neither ingredient alone produces the concentration.
 \end{threeparttable}
 \end{table}
 
-\paragraph{The confirmatory holdout.} Every design choice in this paper
+\paragraph{The untouched-era holdout.} Every design choice in this paper
 was made on data from 2014 onward. As a guard against specification
 search, we froze the entire pipeline --- signals, features,
-hyperparameters, split rule, and test statistics --- registered three
-predictions (top-decile edge positive and significant; bottom decile
+hyperparameters, split rule, and test statistics --- wrote down three
+predictions in advance (top-decile edge positive and significant; bottom decile
 indistinguishable from zero; a threshold-shaped decile profile), and
 then pulled CRSP daily returns for 2000--2013, an era no prior run in
 this project had touched. The frontier replicates
@@ -1603,7 +1614,7 @@ $+2.94\%$ at DM 6.6.
 \end{tikzpicture}
 \caption{The frontier out of era. Left: the design-era decile profile
 (Table~\ref{tab:frontier}). Right: the same pipeline, frozen and run
-once on 2000--2013 CRSP data under registered predictions. Bars are
+once on 2000--2013 CRSP data under the frozen specification. Bars are
 pooled per-observation decile means (top decile $+1.01\%$); the
 inference statistic is the per-date aggregation of
 Section~\ref{sec:score}, $+0.89\%$ with DM $2.16$ over 1{,}465 dates.
@@ -1724,7 +1735,7 @@ picture inverts: the neural IQN beats the full benchmark ladder,
 including filtered historical simulation, by $\sim$0.6\% with per-date
 DM $p < 10^{-7}$. Sample density is itself a frontier dimension: more
 observations per unit of regime raise the resolvable residual-shape
-signal. A systematic intraday map of the frontier is registered and
+signal. A systematic intraday map of the frontier is pre-committed and
 blocked only on tick-data access.
 
 \subsection{Regime concentration and the futility of gating}
@@ -1833,7 +1844,7 @@ score of the preceding paragraph, not this column, is the ranking
 criterion for ES. Bold marks the best value in each column. ``---'' entries were
 not recorded in the archived runs for the lower-accuracy tier (their
 exception statistics did not affect any ranking); completing them is
-scheduled with the registered battery re-run.
+scheduled with the pre-committed battery re-run.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -1878,7 +1889,7 @@ nearly exact.}
 \label{fig:frtb}
 \end{figure}
 
-\paragraph{The stress-era replication.} The battery's registered
+\paragraph{The stress-era replication.} The battery's pre-committed
 re-run on the 2000--2013 holdout panel is complete. Splits follow
 Section~\ref{sec:protocol}, so each name's test window runs from
 roughly mid-2008 through 2013 --- the crisis and its aftermath. The
@@ -1907,7 +1918,15 @@ loss level is 0.3460 there against 0.3551 in the table --- rankings, not
 levels, are comparable across the two runs); the 90\% Model Confidence
 Set contains exactly these two. The hybrid is \emph{co-best with CAViaR},
 not uniquely dominant, and still significantly beats everything banks
-actually run. Second, the neural IQN as residual model initially loses
+actually run. The tie is also asymmetric in what the two entrants can
+do: SAV-CAViaR models one quantile level per fit and produces no ES
+--- the FRTB metric --- without a separate ad-hoc stage; it requires
+per-name history, so it cannot price a new listing at all; and in the
+same battery its pooled exception tests reject at machine zero at both
+levels, while the EVT-tailed engine sits at $p=0.02$--$0.07$ pooled
+and passes the per-asset and date-clustered restatements. The accuracy
+tie is between a specialized single-level quantile autoregression and
+one shared model that also carries the rest of the deployment brief. Second, the neural IQN as residual model initially loses
 to trees badly (0.3650 vs 0.3551, DM 13.3) with a severely thin tail
 (breach$_{99}$ 3.2\%); the tail-aware, monotone, conformally
 recalibrated version closes to a hair (0.3638 vs 0.3632, DM 3.03) with
@@ -1948,7 +1967,7 @@ alone but the pair $(\VaR,\ES)$ is jointly elicitable under the
 Fissler--Ziegel class \citep{fissler2016}, the battery was re-checked
 under the FZ0 joint score (orientation validated by Monte Carlo against
 a known-truth $t_5$ before any ranking was read; first sandbox subsets
-of the panel, full-panel re-run registered). Three results. On a
+of the panel, full-panel re-run pre-committed). Three results. On a
 45-name large-cap subset, a Gaussian-innovation GARCH is significantly
 \emph{worst} at both the 2.5\% and 1\% levels (DM 5.4 and 6.0): under a
 jointly consistent score, fat tails are strictly necessary. Among the
@@ -1962,7 +1981,7 @@ pattern reappearing under a jointly consistent score --- directionally
 but not yet significantly at this width (DM $\approx 0.9$,
 $p \approx 0.17$).
 
-The registered full-panel re-run decided it. On the full 200-name
+The pre-committed full-panel re-run decided it. On the full 200-name
 panel ($221.6$k test asset-days), with ES from the fitted GPD tail and
 per-date DM inference throughout, the engine's \emph{accuracy layer}
 --- the EVT-tailed forecaster with no conformal shift --- attains the
@@ -2035,7 +2054,7 @@ directly-learned hybrid is calibrated ($-19.05$ vs $-17.70$) with the
 best ten-day breach$_{97.5}$ (0.0265 vs target 0.025; GARCH 0.033). Fat
 tails compound with horizon; $\sqrt{h}$ Gaussian-style scaling
 compounds the shape error. A caveat: the temporal split places the whole
-test window in 2020--2024, and the registered rerun on 2000--2013 shows
+test window in 2020--2024, and the pre-committed rerun on 2000--2013 shows
 the ten-day result is era-dependent. Out of era the two methods tie on
 accuracy (direct edge $+0.65\%$, date-level DM 0.22, NW lag 20), and
 the calibration verdict reverses: $\sqrt{h}$-scaled GARCH-$t$ ES is
@@ -2049,7 +2068,7 @@ and a desk holding the engine at $h=10$ through a 2008-type era should
 keep the parametric $\sqrt{h}$ number alongside as the conservative
 envelope. The frontier itself is confirmed on 2000--2013
 (Section~\ref{sec:frontier}); this horizon result completes the
-registered comparison with a mixed verdict, reported as such.
+pre-committed comparison with a mixed verdict, reported as such.
 
 \subsection{Cross-asset winners, with corrections}
 
@@ -2090,8 +2109,8 @@ the conformal shifts $c_\tau$; (iv)~report
 $\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
 at the desk's levels, with ES$_{97.5}$ from the tail average; (v)~read
 the misspecification score \eqref{eq:score} as the model-risk monitor ---
-top decile means the parametric fallback is currently $\sim$2--3\% wrong
-on that name. \emph{Annually:} refit filters, retrain the shape model,
+top decile means the parametric fallback's conditional average loss
+in that score region runs $\sim$2--3\% higher. \emph{Annually:} refit filters, retrain the shape model,
 re-estimate tail and shifts, all on trailing data. \emph{New listing:}
 evaluate (ii)--(iv) from characteristics and first ticks; no history
 required. Total marginal cost per name per day: one filter update and
@@ -2137,24 +2156,24 @@ Replacement & $\delta_1 \to \delta_0$ & Release & bp per 100bp \\
 \midrule
 FHS $\to$ engine, $h{=}1$ & $10.9\% \to 3.8\%$ & $6.4\%$ & 6.4 \\
 GARCH-$t$ $\to$ engine, $h{=}1$ & $9.2\% \to 3.8\%$ & $4.9\%$ & 4.9 \\
-$\sqrt{h}$-scaled $\to$ direct, $h{=}10$ & $26.0\% \to 7.6\%$ & $14.6\%$ & 14.6 \\
+$\sqrt{h}$-scaled $\to$ direct, $h{=}10$ (2014--24 regime only) & $26.0\% \to 7.6\%$ & $14.6\%$ & 14.6 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \noindent The ten-day row matters most because ten days is the FRTB base
 liquidity horizon, and it carries a caveat. The $26\%$ over-statement
-is measured on 2014--2024, and the registered
+is measured on 2014--2024, and the pre-committed
 2000--2013 rerun (Section~\ref{sec:frtb}) finds $\sqrt{h}$ almost
 exactly calibrated in that era --- the ten-day release is a
 regime-dependent gain, realized in eras like the last decade and
 absent in a 2008-type era. The one-day rows are the era-robust
 component. The same fractions carry a
 certainty-equivalent reading: a desk sizing positions against a
-mean--ES mandate leaves exactly the released fraction of its risk
-budget idle when it runs the over-stated model, so the capital
-arithmetic and the maximum-expected-utility arithmetic coincide, and
-neither purchase comes with added breach risk (the engine's exception
+mean--ES mandate leaves the released fraction of its risk
+budget idle when it runs the over-stated model --- an illustrative
+certainty-equivalent reading, not a derived optimality result --- and
+neither replacement comes with added breach risk (the engine's exception
 record is the battery's best). This is illustrative arithmetic on
 measured calibration gaps --- the modelled component only, holding the
 stress-period calibration and non-modellable add-ons fixed --- and not
@@ -2237,7 +2256,7 @@ the field's enthusiasm for model-switching: most of the day-level
 advantage of any model pair is realization noise, not predictable
 structure.
 
-Most of the registered extensions within this paper's scope are now
+Most of the pre-committed extensions within this paper's scope are now
 complete and reported above: the full-panel Fissler--Ziegel
 $(\VaR,\ES)$ re-scoring (Section~\ref{sec:frtb}, accuracy layer lowest
 at both levels; the deployed shift's 2.5\% concession quantified
@@ -2269,8 +2288,10 @@ content.
 
 \section*{Data and code availability}
 \addcontentsline{toc}{section}{Data and code availability}
-A public replication package reproducing every table and figure in this
-paper --- estimation code for all stages of the engine
+A public replication package reproducing every WRDS-based table and
+figure in this paper (the Bloomberg-based exhibits are preserved
+as-run with their derived series --- terminal access ended in
+mid-2026) --- estimation code for all stages of the engine
 (\eqref{eq:garch}--\eqref{eq:hybrid}), the misspecification score
 \eqref{eq:score}, the FRTB battery, the generative-posterior and SBC
 routines, and the exact walk-forward, seeds, and hyperparameter grids
@@ -2282,13 +2303,18 @@ Bloomberg, and OptionMetrics under the author's institutional licenses
 and cannot be redistributed; the package includes the code to rebuild
 every panel from those sources, the derived non-proprietary series, and
 a synthetic example dataset (\texttt{toy\_example.py}) that runs the full
-pipeline end-to-end without licensed data. The pre-registered tuning grid
-is in \texttt{TUNING\_GRID\_PREREG.md}; the analyses deferred in
-earlier drafts and since completed (the full-panel Fissler--Ziegel
-re-scoring, the 2000--2013 holdout and its battery re-run) ship with
+pipeline end-to-end without licensed data. The holdout's frozen
+specification, including its written-in-advance predictions, is the
+header of \texttt{code/job\_wrds\_holdout.py}, line-for-line diffable
+against the design-era pipeline in the same folder. One benchmark
+implementation was corrected during adversarial audit (the
+GJR-skew-$t$ inverse CDF; Table~\ref{tab:frtb} note): the corrected
+code and output ship as \texttt{code/frtb\_bench.py} and
+\texttt{results/frtb\_bench\_v2\_results.json}, and the
+pre-correction artifact is preserved in the repository history. The
+analyses deferred in earlier drafts and since completed ship with
 their result files, and the remaining open items
-(Section~\ref{sec:limitations}) are tracked as issues in the
-repository.
+(Section~\ref{sec:limitations}) are tracked in the repository.
 
 %% ===== BIBLIOGRAPHY =====
 \bibliographystyle{plainnat}

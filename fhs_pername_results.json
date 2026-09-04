@@ -1,0 +1,50 @@
+{
+  "note": "Per-name FHS restatement on the identical 140-name battery panel: per-name train-constant and per-name rolling-500d causal z-quantiles vs the pooled variant, GARCH-t, and the hybrid. DM_vs_hybrid>0 means the row model is worse than the hybrid.",
+  "n_names": 140,
+  "n_test_rows": 155120,
+  "per_model": {
+    "garch_t": {
+      "avg_pinball": 0.3561,
+      "breach99": 0.0106,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.0264,
+      "kupiec975_p": 0.0,
+      "DM_vs_hybrid": 5.19,
+      "p_one_sided": 0.0
+    },
+    "fhs_pooled": {
+      "avg_pinball": 0.3566,
+      "breach99": 0.0099,
+      "breach975": 0.0265,
+      "kupiec99_p": 0.7944,
+      "kupiec975_p": 0.0002,
+      "DM_vs_hybrid": 6.3,
+      "p_one_sided": 0.0
+    },
+    "fhs_pername": {
+      "avg_pinball": 0.3562,
+      "breach99": 0.0111,
+      "breach975": 0.0281,
+      "kupiec99_p": 0.0,
+      "kupiec975_p": 0.0,
+      "DM_vs_hybrid": 5.39,
+      "p_one_sided": 0.0
+    },
+    "fhs_roll500": {
+      "avg_pinball": 0.3569,
+      "breach99": 0.0109,
+      "breach975": 0.025,
+      "kupiec99_p": 0.0004,
+      "kupiec975_p": 0.9223,
+      "DM_vs_hybrid": 5.84,
+      "p_one_sided": 0.0
+    },
+    "resid_hybrid_ML": {
+      "avg_pinball": 0.355,
+      "breach99": 0.0108,
+      "breach975": 0.028,
+      "kupiec99_p": 0.0009,
+      "kupiec975_p": 0.0
+    }
+  }
+}
