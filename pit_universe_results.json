@@ -1,0 +1,53 @@
+{
+  "note": "POINT-IN-TIME universe: top 200 by Q1-2000 market cap (shrcd 10/11), NO minimum-history filter, delisting returns appended; names ride to their delisting date. Fitting floors (>=750 train obs, >=100 test obs) applied symmetrically to both models; attrition reported. Frozen spec; frozen design-era mk63 edges for the real-time top bucket.",
+  "universe_rule": "top 200 avg mcap 2000-01-03..2000-03-31",
+  "pull_meta": {
+    "n_selected": 200,
+    "n_delist_events": 79
+  },
+  "n_names_kept": 164,
+  "n_dropped_fitting_floor": 36,
+  "n_test": 208556,
+  "overall": {
+    "edge_pct": 0.58,
+    "DM_stat": 8.96,
+    "p_one_sided": 0.0,
+    "n_dates": 2692
+  },
+  "top_bucket_frozen": {
+    "edge_pct": 2.94,
+    "DM_stat": 6.6,
+    "p_one_sided": 0.0,
+    "n_dates": 2200
+  },
+  "bottom_bucket_frozen": {
+    "edge_pct": 0.44,
+    "DM_stat": 5.39,
+    "p_one_sided": 0.0,
+    "n_dates": 2452
+  },
+  "top_frozen_share_pct": 5.9,
+  "decile_profile_qcut_edge_pct": [
+    0.6,
+    0.12,
+    0.39,
+    0.21,
+    0.86,
+    -0.14,
+    0.05,
+    0.41,
+    1.01,
+    2.22
+  ],
+  "design_edges_mk63": [
+    -0.0314,
+    0.38,
+    0.7497,
+    1.1761,
+    1.73,
+    2.547,
+    3.9132,
+    6.6833,
+    13.6735
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "note": "Holdout 2000-2013 frontier with mk63 thresholds FROZEN from the design era (pooled design test-sample decile edges applied as numeric constants). No holdout-era quantities enter the bucketing rule. Top bucket = mk63 >= design-era 90th pct; bottom = < 10th pct. Bin shares in the holdout will differ from 10% by construction and are reported.",
+  "design_edges_mk63": [
+    -0.0314,
+    0.38,
+    0.7497,
+    1.1761,
+    1.73,
+    2.547,
+    3.9132,
+    6.6833,
+    13.6735
+  ],
+  "n_test": 280608,
+  "overall": {
+    "edge_pct": 0.07,
+    "DM_stat": 0.37,
+    "p_one_sided": 0.3575,
+    "n_dates": 1495
+  },
+  "top_bucket_frozen": {
+    "edge_pct": 1.02,
+    "DM_stat": 1.11,
+    "p_one_sided": 0.1333,
+    "n_dates": 1389
+  },
+  "bottom_bucket_frozen": {
+    "edge_pct": -0.03,
+    "DM_stat": -0.36,
+    "p_one_sided": 0.6397,
+    "n_dates": 1444
+  },
+  "top_bucket_NWlag_sensitivity": {
+    "lag5": {
+      "edge_pct": 1.02,
+      "DM_stat": 1.21,
+      "p_one_sided": 0.1123,
+      "n_dates": 1389
+    },
+    "lag10": {
+      "edge_pct": 1.02,
+      "DM_stat": 1.11,
+      "p_one_sided": 0.1333,
+      "n_dates": 1389
+    },
+    "lag20": {
+      "edge_pct": 1.02,
+      "DM_stat": 1.11,
+      "p_one_sided": 0.1335,
+      "n_dates": 1389
+    },
+    "lag44": {
+      "edge_pct": 1.02,
+      "DM_stat": 1.11,
+      "p_one_sided": 0.133,
+      "n_dates": 1389
+    }
+  },
+  "profile_frozen_bins": [
+    {
+      "bin": 1,
+      "share_pct": 17.2,
+      "edge_pct": -0.03,
+      "n": 48228
+    },
+    {
+      "bin": 2,
+      "share_pct": 15.4,
+      "edge_pct": -0.13,
+      "n": 43335
+    },
+    {
+      "bin": 3,
+      "share_pct": 12.4,
+      "edge_pct": 0.04,
+      "n": 34830
+    },
+    {
+      "bin": 4,
+      "share_pct": 11.5,
+      "edge_pct": -0.03,
+      "n": 32186
+    },
+    {
+      "bin": 5,
+      "share_pct": 10.5,
+      "edge_pct": 0.01,
+      "n": 29447
+    },
+    {
+      "bin": 6,
+      "share_pct": 9.5,
+      "edge_pct": -0.3,
+      "n": 26626
+    },
+    {
+      "bin": 7,
+      "share_pct": 8.0,
+      "edge_pct": -0.12,
+      "n": 22325
+    },
+    {
+      "bin": 8,
+      "share_pct": 7.0,
+      "edge_pct": 0.82,
+      "n": 19709
+    },
+    {
+      "bin": 9,
+      "share_pct": 5.2,
+      "edge_pct": 0.92,
+      "n": 14525
+    },
+    {
+      "bin": 10,
+      "share_pct": 3.3,
+      "edge_pct": 1.02,
+      "n": 9397
+    }
+  ]
+}

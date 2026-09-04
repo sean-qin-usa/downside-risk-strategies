@@ -1,0 +1,74 @@
+{
+  "note": "Calendar cut 2007-01-01 inside the holdout era: everything trained strictly pre-2007; test 2007-2013 (entire GFC out-of-sample for every name; no calendar overlap). Top/bottom buckets by design-era FROZEN mk63 edges (real-time rule) and within-sample qcut profile for comparability.",
+  "cut": "2007-01-01",
+  "n_names": 200,
+  "n_test": 352093,
+  "design_edges_mk63": [
+    -0.0314,
+    0.38,
+    0.7497,
+    1.1761,
+    1.73,
+    2.547,
+    3.9132,
+    6.6833,
+    13.6735
+  ],
+  "overall": {
+    "edge_pct": 0.29,
+    "DM_stat": 3.08,
+    "p_one_sided": 0.001,
+    "n_dates": 1762
+  },
+  "top_bucket_frozen": {
+    "edge_pct": 0.85,
+    "DM_stat": 0.7,
+    "p_one_sided": 0.241,
+    "n_dates": 1695
+  },
+  "bottom_bucket_frozen": {
+    "edge_pct": 0.12,
+    "DM_stat": 0.73,
+    "p_one_sided": 0.2332,
+    "n_dates": 1762
+  },
+  "top_frozen_share_pct": 3.4,
+  "top_bucket_NWlag_sensitivity": {
+    "lag5": {
+      "edge_pct": 0.85,
+      "DM_stat": 0.79,
+      "p_one_sided": 0.2147,
+      "n_dates": 1695
+    },
+    "lag10": {
+      "edge_pct": 0.85,
+      "DM_stat": 0.7,
+      "p_one_sided": 0.241,
+      "n_dates": 1695
+    },
+    "lag20": {
+      "edge_pct": 0.85,
+      "DM_stat": 0.66,
+      "p_one_sided": 0.2555,
+      "n_dates": 1695
+    },
+    "lag44": {
+      "edge_pct": 0.85,
+      "DM_stat": 0.67,
+      "p_one_sided": 0.251,
+      "n_dates": 1695
+    }
+  },
+  "decile_profile_qcut_edge_pct": [
+    0.09,
+    0.08,
+    0.06,
+    0.26,
+    0.13,
+    0.18,
+    0.17,
+    0.45,
+    0.49,
+    1.04
+  ]
+}
