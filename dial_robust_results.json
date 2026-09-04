@@ -1,0 +1,117 @@
+{
+  "note": "Dial robustness: (A) mk63 x rv63 quintile double-sort of the GBM-vs-GARCH edge (edge_pct rows=mk63 quintile 1..5, cols=rv63 quintile 1..5); marg = top-mk63 row per rv63 quintile with date-DM. (B) Hansen SPA consistent p of benchmark=pooled GBM vs {garch_t,fhs,ewma,hs}. (C) per-year mk63 90th pct + fixed-threshold top-decile edge. (D) top-decile membership churn.",
+  "n_names": 200,
+  "n_test": 221600,
+  "A_double_sort_grid": [
+    [
+      0.24,
+      0.34,
+      0.1,
+      0.01,
+      -0.14
+    ],
+    [
+      0.16,
+      0.2,
+      0.22,
+      0.09,
+      -0.57
+    ],
+    [
+      -0.02,
+      0.19,
+      0.25,
+      0.44,
+      0.04
+    ],
+    [
+      0.08,
+      0.15,
+      0.35,
+      0.23,
+      0.1
+    ],
+    [
+      -0.1,
+      0.44,
+      0.68,
+      0.61,
+      2.33
+    ]
+  ],
+  "A_topmk_by_rv_quintile": [
+    {
+      "edge_pct": -0.1,
+      "DM_t": 0.73,
+      "n": 4553
+    },
+    {
+      "edge_pct": 0.44,
+      "DM_t": 2.29,
+      "n": 5731
+    },
+    {
+      "edge_pct": 0.68,
+      "DM_t": 1.24,
+      "n": 7984
+    },
+    {
+      "edge_pct": 0.61,
+      "DM_t": 2.79,
+      "n": 9468
+    },
+    {
+      "edge_pct": 2.33,
+      "DM_t": 6.35,
+      "n": 16584
+    }
+  ],
+  "B_SPA": {
+    "T_spa": 0.0,
+    "p_consistent": 1.0,
+    "per_rival_t": {
+      "garch_t": 5.82,
+      "fhs": 7.41,
+      "ewma": 17.48,
+      "hs": 10.85
+    },
+    "note": "positive per-rival t = rival worse than pooled GBM benchmark"
+  },
+  "C_threshold_by_year": [
+    {
+      "year": 2020,
+      "q90_mk63": 10.3,
+      "top_decile_edge_pct_fixed_thr": 3.37,
+      "n": 20600
+    },
+    {
+      "year": 2021,
+      "q90_mk63": 9.59,
+      "top_decile_edge_pct_fixed_thr": 3.06,
+      "n": 50400
+    },
+    {
+      "year": 2022,
+      "q90_mk63": 9.46,
+      "top_decile_edge_pct_fixed_thr": 2.86,
+      "n": 50200
+    },
+    {
+      "year": 2023,
+      "q90_mk63": 16.91,
+      "top_decile_edge_pct_fixed_thr": 1.68,
+      "n": 50000
+    },
+    {
+      "year": 2024,
+      "q90_mk63": 19.37,
+      "top_decile_edge_pct_fixed_thr": 2.34,
+      "n": 50400
+    }
+  ],
+  "D_churn": {
+    "mean_share_in_top": 0.1,
+    "median_entries_per_year": 0.68,
+    "median_run_days": 24.2
+  }
+}
