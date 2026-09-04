@@ -1112,6 +1112,14 @@ model is fitted on pooled estimation-window residuals, the GPD tail on
 the same pooled residuals below their empirical 2.5\% point, and the
 conformal shifts on the pooled calibration split. No stage refits
 inside the test window unless a rolling variant is named explicitly.
+Because both panels select names with near-complete histories over
+their windows, the per-name split points fall at nearly the same
+calendar date across names, and the split behaves as a calendar-time
+split rather than a per-name convenience. The holdout's observation
+filter conditions on names present for most of the era; the frontier
+comparison is relative --- both models are evaluated on the same
+names --- so this tilts the universe toward survivors but does not by
+itself favor either model in the ranking.
 
 Loss and test conventions are collected in the conventions note that
 opens Section~\ref{sec:frontier}: mean pinball loss across eleven
@@ -1125,7 +1133,10 @@ regulatory levels for exception behavior.
 ``Registered'' has a specific meaning in this paper. A run is
 registered when the full specification --- signals, features,
 hyperparameters, split rule, and test statistics --- is frozen and the
-predictions are written down before the data are pulled. The
+predictions are written down before the data are pulled. The holdout pipeline is line-for-line the design-era pipeline ---
+both files are public in the replication repository --- so a reader
+can diff the two and verify that no signal, feature, hyperparameter,
+or test statistic was altered for the holdout era. The
 2000--2013 holdout of Section~\ref{sec:frontier} ran under this rule.
 Registered runs that remain open are listed in
 Section~\ref{sec:limitations}.
