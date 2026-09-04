@@ -219,9 +219,10 @@ date-clustered restatements and a 2008-crisis window rerun --- the
 lowest joint $(\VaR,\ES)$ FZ0 score at both levels on the full panel
 for the engine's accuracy layer, with the conformal shift's
 sharpness-for-coverage cost at 2.5\% quantified rather than hidden
-(and removed overall by its adaptive form),
-and an edge that grows at the FRTB ten-day horizon and holds in the
-2020/2022 stress window.
+(and removed overall by its adaptive form). A separate direct
+multi-day extension --- not the residual-hybrid engine --- shows the
+edge growing at the ten-day horizon in 2014--2024 and reversing out
+of era.
 \item \textbf{The misspecification frontier} (Section~\ref{sec:frontier}).
 A live, per-asset, per-day score that predicts when nonparametric
 quantiles beat GARCH-$t$, with per-date Diebold--Mariano
@@ -266,7 +267,7 @@ flexible-shape edge lives.
 unless noted; DM statistics are per-date (Section~\ref{sec:frontier}
 conventions note), one-sided. Panel A: the deployed amortized
 residual-hybrid engine (worst case on the accuracy yardstick: no
-detectable loss, with calm-cell 90\% intervals bounded above
+detectable loss; calm-cell 90\% lower confidence bounds sit above
 $-0.25\%$). Panel B: boundary
 evidence from configurations not deployed, which motivates the design.}
 \label{tab:winloss}
@@ -354,9 +355,11 @@ the text.
 \subsection{Risk measures and the FRTB discipline}
 
 For a return $r_{t+1}$ with conditional law $F_t$, the level-$\alpha$
-Value-at-Risk is the conditional quantile $\VaR_t^\alpha =
-F_t^{-1}(\alpha)$ and the Expected Shortfall is $\ES_t^\alpha =
-\mathbb{E}[r_{t+1} \mid r_{t+1} \le \VaR_t^\alpha]$. FRTB
+return-space quantile is $q_t^\alpha = F_t^{-1}(\alpha)$ (negative in
+the left tail) and the return-space Expected Shortfall is
+$e_t^\alpha = \mathbb{E}[r_{t+1} \mid r_{t+1} \le q_t^\alpha]$;
+the regulatory VaR and ES are their negatives (the sign convention is
+fixed once in Section~\ref{sec:notation}). FRTB
 \citep{bcbs2019frtb} sets the
 capital metric at $\ES_{97.5}$ over a liquidity-adjusted horizon (ten
 days for the base bucket) while backtesting remains VaR-exception based:
@@ -435,8 +438,9 @@ built from a loss rather than a likelihood, targeting the risk minimizer
 directly
 \citep{jiang2008gibbs, bissiri2016general}; distribution-free
 finite-sample (exchangeability-based) guarantees enter through split-conformal and adaptive
-conformal inference (recalibrating predicted intervals on held-out data
-so that coverage holds without distributional assumptions)
+conformal inference (recalibrating predicted intervals on held-out
+data so that coverage holds without a parametric distributional
+model, under exchangeability)
 \citep{gibbs2021aci}.
 
 
@@ -459,11 +463,16 @@ information available before $t$.
 \item $Q_t(\tau)$ --- the conditional $\tau$-quantile of $r_t$ given
 $\mathcal{F}_{t-1}$, formally
 $Q_t(\tau) = \inf\{q : \Pr(r_t \le q \mid \mathcal{F}_{t-1}) \ge \tau\}$:
-the number the return falls below with probability $\tau$. Value-at-Risk
-is its negative, $\VaR_t^{\tau} = -Q_t(\tau)$;
-Expected Shortfall is the average of the quantile curve beyond it,
-$\ES_t^{\tau} = -\tau^{-1}\int_0^{\tau} Q_t(u)\,du$ --- the expected
-loss on the days VaR is breached.
+the number the return falls below with probability $\tau$. One sign
+convention is used throughout: the paper works in \emph{return space},
+$q_\tau = Q_t(\tau) < 0$ in the left tail and
+$e_\tau = \tau^{-1}\int_0^{\tau} Q_t(u)\,du \le q_\tau$ --- the
+convention of the FZ scoring function ($v,e<0$) and of every table
+(ES values such as $-6.37$ are return-space conditional means). The
+regulatory \emph{loss-space} numbers are their negatives,
+$\VaR^{\mathrm{loss}}_\tau=-q_\tau$ and
+$\ES^{\mathrm{loss}}_\tau=-e_\tau$, used only when quoting FRTB
+levels; the two are never mixed in one expression.
 \item $z_t = (r_t-\mu_t)/\sigma_t$ --- the \emph{standardized residual}:
 the return with the model's conditional mean and scale divided out. If
 the parametric model is right, the $z_t$ are i.i.d.\ draws from one
@@ -534,8 +543,9 @@ tail says \emph{beyond the data, extrapolate with the law extreme-value
 theory proves exceedances must follow, instead of trusting a fitted
 model outside its training range}; the conformal stage says
 \emph{measure your own miss rate on data you have not touched, and
-shift the curve by that measured miss} --- calibration by bookkeeping,
-no assumptions needed.
+shift the curve by that measured miss} --- calibration by
+bookkeeping, exact under exchangeability
+(Section~\ref{sec:hybrid}).
 
 \noindent\textbf{Why one should expect this to work before seeing
 data.} The architecture is not an empirical accident; each piece is
@@ -2054,7 +2064,7 @@ edge as it does the pinball edge --- the top misspecification decile
 carries DM 2.4 at the 1\% level against DM 0.2 in the panel bulk.
 Adding the conformal shift at 97.5\%, whose calibration split includes
 the 2020 crash, widens the band out of era (breach $1.6\%$ against the $2.5\%$ target) and gives
-back the FZ0 advantage there: the \emph{deployed} variant loses to
+back the FZ0 advantage there: the \emph{static-overlay} variant loses to
 GARCH-$t$ on the 2.5\% joint score (DM $-2.0$, marginal at
 the two-sided 5\% level), and the concession is largest exactly where
 the bands are widest --- in the top misspecification decile the
@@ -2080,39 +2090,45 @@ adaptive --- over-coverage fails from the other side). Every
 concession is a frozen margin's price, and the adaptive form removes
 the overall cost.
 
-\subsection{The ten-day horizon and stress}
+\subsection{The ten-day horizon: a direct multi-day extension}
 
-At the FRTB ten-day liquidity horizon (CRSP 2014--2024, directly-learned
-ten-day quantiles vs GARCH $\sqrt{h}$-scaling) the pinball edge grows
+The multi-day results in this subsection come from a \emph{direct}
+amortized model --- a pooled quantile learner trained on $h$-day
+cumulative returns with GARCH-derived features --- and \emph{not}
+from the residual-hybrid engine of Algorithm~1, whose residual
+architecture is one-day; the two are separate objects, and no
+ten-day claim in this paper attaches to the deployed engine. Training
+labels whose $h$-day window crosses the split are excluded (a
+boundary purge added after adversarial audit). At the FRTB ten-day
+liquidity horizon (CRSP 2014--2024) the direct model's pinball edge
+over $\sqrt{h}$-scaled GARCH grows
 from $\sim$0.4\% at $h=1$ to $\sim$1.4\% at $h=10$, and holds in the
-2020--2022 stress window (hybrid 1.247 $<$ FHS 1.2605 $<$ GARCH 1.262).
-Two horizon designs appear in this paper with non-comparable
-numbers: the stress battery scores the \emph{deployed engine}
-against $\sqrt{h}$-scaled GARCH ($0.4\%\!\to\!1.4\%$), while the
-direct-learning study of Figure~\ref{fig:horizon} trains a fresh
-model per horizon and finds larger ratios ($3.4\%\to4.9\%$); each
-figure names its design.
+2020--2022 stress window (hybrid 1.248 $<$ FHS 1.2605 $<$ GARCH 1.262).
+The design's $h$-curve (Figure~\ref{fig:horizon}) rises from
+$0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$ under the same purge.
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
 \begin{axis}[width=0.62\textwidth, height=4.8cm,
   xlabel={Horizon $h$ (days)}, ylabel={Nonparam / GARCH-$\sqrt{h}$ ratio},
-  xtick={1,5,10,20}, ymin=0.945, ymax=1.005,
+  xtick={1,5,10,20}, ymin=0.973, ymax=1.003,
   tick label style={font=\scriptsize}]
 \addplot[color=npblue, mark=*, thick] coordinates
-  {(1,0.966) (5,0.964) (10,0.960) (20,0.951)};
+  {(1,0.9955) (5,0.9896) (10,0.9862) (20,0.9789)};
 \addplot[dashed, gray, mark=none] coordinates {(1,1) (20,1)};
-\node[font=\scriptsize, anchor=south] at (axis cs:20,0.951) {0.951};
-\node[font=\scriptsize, anchor=south] at (axis cs:1,0.966) {0.966};
+\node[font=\scriptsize, anchor=south] at (axis cs:20,0.9789) {0.979};
+\node[font=\scriptsize, anchor=south] at (axis cs:1,0.9955) {0.996};
 \end{axis}
 \end{tikzpicture}
-\caption{The edge grows with horizon. Nonparametric/GARCH pinball ratio
-at $h = 1, 5, 10, 20$ days (amortized panel): fat tails compound while
-$\sqrt{h}$ scaling compounds the shape error --- $\sim$5\% at $h=20$.
-Direct-learning design: a fresh quantile model per horizon against
-$\sqrt{h}$-scaled GARCH-$t$; the deployed engine's own ten-day numbers
-($0.4\%\!\to\!1.4\%$) are the stress battery's and are smaller ---
-the designs differ and are labeled where quoted.}
+\caption{The edge grows with horizon. Direct-model/GARCH pinball
+ratio at $h = 1, 5, 10, 20$ days (150-name design panel; training
+labels whose $h$-day window crosses the split are purged): fat tails
+compound while $\sqrt{h}$ scaling compounds the shape error ---
+$0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$. The forecaster is the
+direct multi-day model of the main text's ten-day subsection,
+\emph{not} the residual-hybrid engine, whose architecture is
+one-day. An earlier version of this figure showed larger ratios from
+an unpurged run; the purged rerun supersedes it.}
 \label{fig:horizon}
 \end{figure}
 
@@ -2120,8 +2136,8 @@ More consequentially for tail severity --- with ten-day ES now the
 same exact tail integral as Section~\ref{sec:frtb}, and the same
 model-dependent own-tail caveat attached: every ten-day tail
 over-states its own-tail comparator, GARCH $\sqrt{h}$ most (predicted
-$-21.1$ vs realized $-15.4$) and the directly-learned hybrid least
-($-20.0$ vs $-17.2$), with the best ten-day breach$_{97.5}$ (2.83\%
+$-21.1$ vs realized $-15.4$) and the direct model least
+($-20.1$ vs $-17.3$), with the best ten-day breach$_{97.5}$ (2.79\%
 vs GARCH 3.30\% against the 2.5\% target). Fat
 tails compound with horizon; $\sqrt{h}$ Gaussian-style scaling
 compounds the shape error. A caveat: the temporal split places the whole
@@ -2130,8 +2146,8 @@ the ten-day result is era-dependent. Out of era the two methods tie on
 accuracy (direct edge $+0.65\%$, date-level DM 0.22, NW lag 20), and
 the calibration verdict reverses: $\sqrt{h}$-scaled GARCH-$t$ ES is
 almost exactly calibrated through the crisis window (predicted
-$-16.6$ vs realized $-16.6$, exact integral) while the direct-learned
-tail under-states it ($-15.9$ vs $-18.0$) --- the pooled ten-day tail,
+$-16.6$ vs realized $-16.6$, exact integral, purged) while the
+direct model's tail under-states it ($-15.9$ vs $-17.7$) --- the pooled ten-day tail,
 trained on the pre-crisis segment, did not extrapolate to 2008-scale
 ten-day losses. The ten-day tail-severity advantage
 is therefore a 2014--2024 statement,
@@ -2175,8 +2191,9 @@ selective-application rule of Section~\ref{sec:hybrid}.
 $\widehat\sigma_{t+1}$ (recursion only; parameters refit annually);
 (ii)~assemble the state vector $s_t$ and evaluate the shared shape
 model $q_\phi(\tau\mid s_t)$ --- one model for the whole book, no
-per-name estimation; (iii)~apply the frozen GPD tail below $p_0$ and
-the conformal shifts $c_\tau$; (iv)~report
+per-name estimation; (iii)~apply the frozen GPD tail below $p_0$
+and, where the desk elects the coverage overlay, the conformal shift
+$c_\tau$ (static or adaptive); (iv)~report
 $\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
 at the desk's levels, with ES$_{97.5}$ from the GPD closed form below
 the splice; (v)~read

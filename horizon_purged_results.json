@@ -1,0 +1,29 @@
+{
+  "note": "PURGED horizon-ratio rerun (idx < sp-(h-1)): direct h-day quantile GBM vs sqrt-h GARCH-t, design panel, for OA Figure 3. ratio<1 = nonparam better.",
+  "by_horizon": {
+    "h1": {
+      "n": 166200,
+      "garch": 0.386,
+      "gbm": 0.3843,
+      "ratio": 0.9955
+    },
+    "h5": {
+      "n": 165600,
+      "garch": 0.8809,
+      "gbm": 0.8717,
+      "ratio": 0.9896
+    },
+    "h10": {
+      "n": 164850,
+      "garch": 1.2511,
+      "gbm": 1.2338,
+      "ratio": 0.9862
+    },
+    "h20": {
+      "n": 163350,
+      "garch": 1.7806,
+      "gbm": 1.743,
+      "ratio": 0.9789
+    }
+  }
+}
