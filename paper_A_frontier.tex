@@ -45,9 +45,7 @@
 \newtheorem{remark}{Remark}
 
 
-\title{The Misspecification Frontier:\\
-When Flexible-Shape Quantile Models Beat the GARCH Industry Standard,
-and a Deployable Engine That Captures the Edge\thanks{Paper~A of a
+\title{Downside Risk at the Misspecification Frontier\thanks{Paper~A of a
 three-paper program. The neural implicit-quantile-network estimator, the
 EVT tail graft, and the cross-sectional conformal layer used as one stage
 of the engine below are developed in the companion paper \emph{GRAFT-Q}
@@ -161,13 +159,13 @@ capabilities no parametric point-forecasting model offers at all.
 A single measurable quantity --- the local misspecification of the
 parametric conditional tail, operationalized as the excess kurtosis and
 asymmetry of recent GARCH-standardized residuals --- governs when
-distribution-free and generative quantile methods beat industry-standard
+distribution-free quantile methods beat industry-standard
 parametric VaR/ES. Where that misspecification is high the deployed
 engine wins decisively and with statistical significance; where it is
 low the engine and the parametric model are statistically
-indistinguishable --- a tie, not a loss; and generative methods
-additionally deliver calibrated uncertainty on the risk number and
-likelihood-free calibration of intractable volatility models.
+indistinguishable --- a tie, not a loss. Everything else in the paper
+is either evidence for this claim or the engineering that makes the
+engine deployable at industry standards.
 
 \subsection{Contributions}\label{sec:contributions}
 
@@ -193,15 +191,18 @@ subset of models that cannot be statistically rejected as best at a
 given confidence level; ``co-best'' means surviving the elimination
 sequence.}, significantly
 better than GARCH-$t$/FHS/EWMA/HS/GJR-skew-$t$, best ES$_{97.5}$
-calibration, the only entrant whose pooled-panel exception counts are
-consistent with nominal at both levels
+calibration, exception counts consistent with nominal at both
+regulatory levels
 (Kupiec$+$Christoffersen\footnote{\citet{kupiec1995} tests whether the
 \emph{number} of days losses exceed VaR matches the nominal rate;
 \citet{christoffersen1998} additionally tests that exceptions arrive
 \emph{independently} rather than in clusters. Both are standard in
-regulatory backtesting.} at 99\% via the EVT tail; Kupiec at 97.5\% via
-conformal recalibration), with the edge growing at the FRTB ten-day horizon and
-holding in the 2020/2022 stress window.
+regulatory backtesting.} at 99\% via the EVT tail; conformal
+recalibration at 97.5\%) --- a finding that survives per-asset and
+date-clustered restatements and a 2008-crisis window rerun --- the
+lowest joint $(\VaR,\ES)$ FZ0 score at both levels on the full panel,
+and an edge that grows at the FRTB ten-day horizon and holds in the
+2020/2022 stress window.
 \item \textbf{Amortization and the cold start}
 (Sections~\ref{sec:methods} and~\ref{sec:applications}). The deployed
 forecaster is a single amortized model trained across hundreds of names:
@@ -1874,12 +1875,40 @@ calm days; there the score gates, and its short detection latency
 (median zero, mean two to four days) costs little because the edge is
 back-loaded within a misspecification episode.
 
-\textbf{Regulatory capital.} The hybrid$+$EVT$+$conformal engine is an
-internal-models VaR/ES candidate that tops the accuracy table while
-passing both exception tests at both levels; and because FHS/GARCH
-over-state ES$_{97.5}$ (by 8--11\% at one day, more at ten), a
-calibrated engine translates directly into capital efficiency without
-added breach risk.
+\textbf{Regulatory capital, in basis points.} The
+hybrid$+$EVT$+$conformal engine is an internal-models VaR/ES candidate
+that tops the accuracy table while passing both exception tests at
+both levels. Under the internal-models approach the modelled charge is
+linear in ES$_{97.5}$, so a model that over-states ES by a fraction
+$\delta_1$ over-charges the modelled component by the same fraction,
+and replacing it with a model of over-statement $\delta_0$ releases
+$(\delta_1-\delta_0)/(1+\delta_1)$ of that component. The measured
+calibration gaps of Section~\ref{sec:frtb} then price out as follows,
+per 100 basis points of ES-driven capital:
+
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+Replacement & $\delta_1 \to \delta_0$ & Release & bp per 100bp \\
+\midrule
+FHS $\to$ engine, $h{=}1$ & $10.9\% \to 3.8\%$ & $6.4\%$ & 6.4 \\
+GARCH-$t$ $\to$ engine, $h{=}1$ & $9.2\% \to 3.8\%$ & $4.9\%$ & 4.9 \\
+$\sqrt{h}$-scaled $\to$ direct, $h{=}10$ & $26.0\% \to 7.6\%$ & $14.6\%$ & 14.6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The ten-day row matters most because ten days is the FRTB
+base liquidity horizon. The same fractions carry a
+certainty-equivalent reading: a desk sizing positions against a
+mean--ES mandate leaves exactly the released fraction of its risk
+budget idle when it runs the over-stated model, so the capital
+arithmetic and the maximum-expected-utility arithmetic coincide, and
+neither purchase comes with added breach risk (the engine's exception
+record is the battery's best). This is illustrative arithmetic on
+measured calibration gaps --- the modelled component only, holding the
+stress-period calibration and non-modellable add-ons fixed --- and not
+a capital plan.
 
 \textbf{A misspecification monitor.} The frontier score is a live,
 per-asset dial: when a desk's asset enters the top decile of
@@ -1963,12 +1992,12 @@ the field's enthusiasm for model-switching: most of the day-level
 advantage of any model pair is realization noise, not predictable
 structure.
 
-Two of the three registered extensions within this paper's scope are
-now complete and reported above: the full-panel Fissler--Ziegel
+Most of the registered extensions within this paper's scope are now
+complete and reported above: the full-panel Fissler--Ziegel
 $(\VaR,\ES)$ re-scoring (Section~\ref{sec:frtb}, engine lowest at both
-levels) and the 2008 stress window (the 2000--2013 holdout and its
-battery re-run). Still open, in priority order: a certainty-equivalent
-(MEU) translation of the ES edge into basis points of capital; the
+levels), the 2008 stress window (the 2000--2013 holdout and its
+battery re-run), and the certainty-equivalent capital translation
+(Section~\ref{sec:applications}). Still open, in priority order: the
 horizon and ES comparison on the 2000--2013 era; and the intraday
 frontier once tick data is available.
 Companion-paper extensions (Paper~B): a leverage summary statistic to
