@@ -1,8 +1,8 @@
-# job_fz_fullpanel.py -- REGISTERED full-panel FZ0 joint (VaR,ES) re-scoring + GAS/PZC benchmark.
-# Two registered items in one shared forecast panel so every comparison is same-rows:
+# job_fz_fullpanel.py -- PRE-COMMITTED full-panel FZ0 joint (VaR,ES) re-scoring + GAS/PZC benchmark.
+# Two pre-committed items in one shared forecast panel so every comparison is same-rows:
 #   (1) FZ0 (Fissler-Ziegler 0-homogeneous, as in Patton-Ziegel-Chen 2019) scoring of the engine
 #       vs GARCH-t and FHS on the FULL design-era panel (the paper's earlier FZ run covered a
-#       subset; the full-panel re-run is registered in the text).
+#       subset; the full-panel re-run was pre-committed in the text).
 #   (2) A one-factor score-driven GAS-FZ model (PZC 2019 style) estimated per name by FZ0
 #       minimization -- the "modern semiparametric dynamics" benchmark referees will ask for.
 # FZ0 loss with v,e<0:  L = -(1/(alpha*e))*1{r<=v}*(v-r) + v/e + log(-e) - 1   (lower = better).
@@ -131,7 +131,7 @@ def dm_vs_engine(Lm,Le):
     t=nw_t(dd.values);
     return {'mean_diff':round(float(np.nanmean(Lm-Le)),5),'DM_t':None if t is None else round(t,2),
             'p_one_sided':None if t is None else round(float(1-stats.norm.cdf(t)),4)}
-OUT={'note':'Full-panel FZ0 (VaR,ES) re-scoring, registered. DM_t>0 means the row model has HIGHER (worse) FZ0 loss than the engine, date-clustered NW(10), one-sided p. GAS = one-factor score-driven (PZC-2019-style) FZ0-estimated per name.',
+OUT={'note':'Full-panel FZ0 (VaR,ES) re-scoring, pre-committed. DM_t>0 means the row model has HIGHER (worse) FZ0 loss than the engine, date-clustered NW(10), one-sided p. GAS = one-factor score-driven (PZC-2019-style) FZ0-estimated per name.',
      'n_names':int(TE.permno.nunique()),'n_test':int(len(Y)),
      'gpd':{'u':round(float(u),4),'xi':round(float(xi),4),'beta':round(float(beta),4)},'conf975':round(CONF975,4),
      'per_alpha':{}}
