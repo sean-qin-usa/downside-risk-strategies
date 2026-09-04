@@ -1,0 +1,75 @@
+% paper_A_online_appendix.tex --- Online Appendix for "The Misspecification Frontier"
+% Compile standalone with the same preamble as paper_A_frontier.tex, or \input into it.
+% Contents: cross-field glossary (demoted from the main text for journal submission).
+%% ===== GLOSSARY =====
+\section{Glossary}\label{app:glossary}
+
+Written so that a reader from any one field can parse every other
+field's terms. Formulas referenced are in Section~\ref{sec:methods}.
+
+\begin{description}[leftmargin=1.6em,itemsep=1pt,font=\normalfont\bfseries]
+\item[VaR / ES] Value-at-Risk: the loss threshold exceeded with
+probability $\tau$ (a quantile with the sign flipped); Expected
+Shortfall: the average loss \emph{given} VaR is exceeded
+(\S\ref{sec:notation}). FRTB capitalizes ES at $\tau=2.5\%$.
+\item[Pinball (check) loss] The asymmetric absolute loss
+\eqref{eq:pinball} whose minimizer is the true quantile; the strictly
+proper score for quantile forecasts. Reported edges (``$+2.7\%$ of
+pinball'') are percentage reductions in this loss.
+\item[GARCH-$t$ / GJR / EWMA] Parametric filters for conditional
+variance \eqref{eq:garch}; GJR adds a leverage term (down-moves raise
+vol more); EWMA is the fixed-decay special case (RiskMetrics);
+Student-$t$ fixes the innovation shape.
+\item[HS / FHS] Historical simulation: empirical quantiles of past
+returns. Filtered HS: empirical quantiles of GARCH-standardized
+residuals, rescaled by today's $\widehat\sigma_t$ --- the regulatory
+workhorse; the special case of \eqref{eq:hybrid} with no state
+dependence.
+\item[CAViaR] Conditional autoregressive VaR: models the quantile
+itself as an autoregression, estimated on the pinball loss; the one
+non-nested rival.
+\item[EVT / GPD / POT] Extreme-value theory: exceedances over a high
+threshold converge to the generalized Pareto distribution; fitting it
+(peaks-over-threshold) gives the tail extrapolation \eqref{eq:evt}.
+\item[Conformal prediction] Distribution-free finite-sample correction
+sized on a held-out split (Proposition~\ref{prop:conformal}); guarantees
+coverage under exchangeability without any distributional assumption.
+\item[Quantile regression / IQN] Estimating conditional quantiles by
+pinball ERM; the implicit quantile network \eqref{eq:iqn} takes the
+level $\tau$ as an \emph{input}, so one network carries the whole
+distribution and sampling is evaluation at random $\tau$.
+\item[GBM (trees)] Gradient-boosted regression trees on the pinball
+loss; the strongest point estimator on tabular features; cannot sample.
+\item[Amortization] Training one model across many assets so inference
+for a new asset is evaluation, not estimation; the generative-Bayes
+reading is the inverse map $z \overset{D}{=} H(s,\tau)$
+(\S\ref{sec:gbcmethod}).
+\item[Gibbs / generalized-Bayes posterior] A posterior built from a
+loss instead of a likelihood; $\omega$ tempers how
+fast the loss overwhelms the prior.
+\item[SBC] Simulation-based calibration: simulate known truths, check
+the posterior's ranks are uniform; the audit in Algorithm 3.
+\item[Walk-forward, purge, embargo] Refit on past data only, on a
+schedule; delete observations adjacent to the train/test boundary so
+overlapping windows cannot leak information.
+\item[DM test] Diebold--Mariano: a $t$-test on the loss difference
+between two forecasters, robust to serial correlation.
+\item[MCS] Model Confidence Set: the subset of models not
+statistically dominated at a given level --- ``co-best'' means surviving
+in that set.
+\item[Kupiec / Christoffersen] Regulatory exception tests: correct
+\emph{number} of VaR breaches (unconditional coverage) and breaches
+arriving \emph{independently} rather than in clusters.
+\item[DCC] Dynamic conditional correlation: the standard multivariate
+GARCH benchmark for portfolio tails.
+\item[VRP; $\PP$ vs.\ $\Q$] Variance risk premium: option-implied
+variance exceeds realized on average. $\PP$ is the physical measure
+(what happens); $\Q$ the risk-neutral measure (what option prices
+imply); their wedge at the put wing is the crash premium.
+\item[Misspecification frontier] The trailing residual-shape score
+\eqref{eq:score} and the empirical fact that the nonparametric edge
+concentrates in its top decile.
+\end{description}
+
+
+%% ===== PROOFS: regret + conformal + wedge =====

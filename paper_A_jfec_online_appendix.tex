@@ -299,12 +299,10 @@ Each row is established in the section cited.}
 Task / regime & Winner & Where \\
 \midrule
 Point quantile accuracy, tabular state & GBM (trees) & Section~3.2 of the paper \\
-Sampling, amortized posteriors, uncertainty & Neural IQN (only entrant) & Paper~B \\
 Single asset, calm ($\sim$90\% of asset-days) & GARCH-$t$ & Section~5 of the paper \\
 Single asset, top misspecification decile & Nonparametric ($+2.7\%$, DM 6.5) & Section~5 of the paper \\
 Amortized cross-name panel, any regime & Nonparametric always; no gate & Section~5.4 of the paper \\
 Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & Section~6 of the paper \\
-Multivariate portfolio tail & GARCH/DCC (honest negative) & Paper~B \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -356,12 +354,10 @@ release.)
 the nonparametric tail wins --- crisis FX, volatility indices, credit
 spreads, frontier equities --- are the desks where tail-shape-aware
 sizing and hedging matter most. The \emph{direction} of the trade matters
-as much as its location. The companion GRAFT-Q paper shows that
-\emph{buying} model-flagged crash insurance loses ($-1.7\%$ per month,
-$t=-1.9$) even in the months the calibrated model correctly flags as
-elevated-tail: the crash premium survives conditioning on a correct
-physical-measure forecast, so a right-but-still-unprofitable buy signal
-is not a deployable trade. The deployable side is the other one ---
+as much as its location: a correct physical-measure tail forecast
+does not by itself make bought crash insurance profitable, because the
+crash risk premium can survive conditioning on a correct forecast.
+The deployable side is the other one ---
 \emph{warehousing} (selling) the premium --- with the model supplying
 tail control rather than alpha on the mean: model-timed overlays improve
 tail outcomes, not average returns, consistent with the tail being the
@@ -369,14 +365,13 @@ only place the model knows something a fixed-shape filter does not. The
 contribution to a premium-harvesting book is risk management (when to
 size down or step aside ahead of a genuine crash), not signal generation.
 
-\textbf{Scenario generation.} The SBC machinery of Paper~B
-calibrates intractable scenario-generator models (rough vol, and by
-extension Hawkes and jump-diffusion) with posterior uncertainty on
-stressed paths --- a principled input to CCAR/ICAAP-style stress
-design.
+\textbf{Scenario generation.} Because the shape stage carries an exact
+inverse-CDF sampler, calibrating intractable scenario generators
+(rough volatility, Hawkes, jump-diffusions) for CCAR/ICAAP-style
+stress design is a natural extension; it is not developed here.
 
 
-%% ===== CONCLUSION (TODO: trim references to uncertainty/SBC/multivariate -> Paper B) =====
+%% ===== CONCLUSION =====
 
 \clearpage
 \section{Proofs}
