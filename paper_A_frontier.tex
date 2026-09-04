@@ -206,7 +206,8 @@ recalibration at 97.5\%) --- a finding that survives per-asset and
 date-clustered restatements and a 2008-crisis window rerun --- the
 lowest joint $(\VaR,\ES)$ FZ0 score at both levels on the full panel
 for the engine's accuracy layer, with the conformal shift's
-sharpness-for-coverage cost at 2.5\% quantified rather than hidden,
+sharpness-for-coverage cost at 2.5\% quantified rather than hidden
+(and removed overall by its adaptive form),
 and an edge that grows at the FRTB ten-day horizon and holds in the
 2020/2022 stress window.
 \item \textbf{The misspecification frontier} (Section~\ref{sec:frontier}).
@@ -266,12 +267,12 @@ Top misspecification decile & $+2.7\%$ & DM 6.5 & win (concentrated) \\
 Hyperinflation FX (ARS, EGP) & $+12$--$14\%$ & DM 2.9--3.8 & win \\
 Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 & win \\
 Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 stress; 2000--13 rerun: tie, DM 0.2 & win (era-dependent) \\
-2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2, frozen spec, predictions written in advance; frozen-rule restatement in text & win (untouched era) \\
+2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2 (sort); recursive real-time rule $+1.0\%$, DM 2.15; frozen-constant restatement in text & win (untouched era) \\
 Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$; overall $+0.6\%$ & DM 6.6 / 9.0, frozen real-time thresholds & win (survivorship armor) \\
 Strict calendar splits (2020 cut; pre-GFC 2007 cut) & top decile $+2.5\%$; overall $+0.3\%$ & DM 6.2; 3.1 --- no calendar overlap anywhere & win (leakage armor) \\
 Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles & win (multiplicity-priced) \\
 Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\% & date-clustered $t$ 0.17 at 99\%; at 97.5\%, 0.35 (EVT tail) and $-1.09$ (deployed shift, conservative); HS, EWMA fail & win (stress) \\
-Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.1--4.7 vs GARCH-$t$, FHS; 6.0--9.2 vs GAS; deployed shift concedes 2.5\% (DM $-2.0$) & win (accuracy layer; the shift trades score for coverage) \\
+Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.1--4.7 vs GARCH-$t$, FHS; 6.0--9.2 vs GAS; static shift concedes 2.5\% (DM $-2.0$), adaptive shift erases it (tie; top-decile cost remains) & win (accuracy layer; margins priced) \\
 ES$_{97.5}$ over-statement removed & $8$--$11\%$ & calibration, Table~\ref{tab:frtb} & win (capital) \\
 Cold start / young listings & $+6$--$10\%$ & full-scale panel & win (unique capability) \\
 Calm-quintile edge & $\approx 0$, never negative & --- & tie (costless to hold) \\
@@ -1587,10 +1588,16 @@ below --- and the top-bin point edge is slightly \emph{larger} than
 the within-sample sort's ($+1.02\%$ vs $+0.89\%$), but the cell
 thins to $3.3\%$ occupancy in this lower-kurtosis era and the
 per-date test loses power (DM 1.11, insensitive to Newey--West lags
-5--44). The frozen rule's decisive test is the point-in-time
-universe of Section~\ref{sec:fwer}, where the same fixed thresholds
-meet a universe selected with no later information and deliver
-$+2.94\%$ at DM 6.6.
+5--44). A second real-time rule needs no design-era constant at all: an
+expanding pooled 90th-percentile threshold over strictly earlier
+dates (250-date burn-in) restores natural occupancy ($9.5\%$) and
+recovers the sort's result with significance --- $+0.99\%$, DM 2.15,
+insensitive to Newey--West lags 5--44; the bottom bucket is
+$-0.18\%$ ($t=-1.4$). The conditional sort, the frozen constant, and
+the recursive rule agree on the size of the top-cell edge; the
+recursive rule is the version a desk could have run from day one
+(the frozen thresholds' own decisive test is the point-in-time
+universe of Section~\ref{sec:fwer}: $+2.94\%$, DM 6.6).
 
 \begin{figure}[t]
 \centering
@@ -1795,6 +1802,8 @@ Residual-hybrid (GBM) & \textbf{0.3551} & $\mathbf{-5.80\;/\;-5.76}$ & 1.19\% & 
 \quad $+$ EVT tail & 0.3554 & $-6.08$ / $-5.86$ & \textbf{1.04\%} & \textbf{0.10} \\
 GARCH(1,1)-$t$ & 0.3561 & $-6.17$ / $-5.65$ & 1.06\% & 0.026 \\
 GARCH-FHS & 0.3565 & $-6.20$ / $-5.59$ & 1.05\% & 0.041 \\
+GARCH-FHS (per-name)\tnote{b} & 0.3562 & --- & 1.11\% & 0.00 \\
+GARCH-FHS (rolling 500d)\tnote{b} & 0.3569 & --- & 1.09\% & 0.00 \\
 GJR-GARCH-skew-$t$ & 0.3562 & $-6.10$ / $-5.84$ & 1.05\% & 0.062 \\
 EWMA (RiskMetrics) & 0.3606 & --- & --- & --- \\
 Historical simulation & 0.3619 & --- & --- & --- \\
@@ -1813,7 +1822,12 @@ correction improves the benchmark (pinball $0.3574 \to 0.3562$; it
 now passes both 99\% exception tests, Kupiec $p=0.062$,
 Christoffersen $p=0.103$) and tightens the hybrid's margin (DM $5.73
 \to 4.52$); a full battery re-run reproduces every other row to the
-fourth decimal, and the MCS still contains the hybrid alone. Hybrid$+$EVT still beats
+fourth decimal, and the MCS still contains the hybrid alone.
+\item[b] Per-name FHS restatement, run on the identical panel (trimmed
+slightly by the rolling window's burn-in): per-name train-constant and
+per-name rolling 500-day causal $z$-quantiles --- the textbook desk
+implementations --- lose to the hybrid by DM 5.39 and 5.84, bracketing
+the pooled variant (DM 6.30 in the same run). Hybrid$+$EVT still beats
 GARCH-$t$ (DM 3.90) and FHS (DM 4.28); its 0.0003 pinball concession to
 the raw hybrid (DM $-5.06$) buys the exception-test pass.
 Hybrid$+$EVT passes Christoffersen$_{99}$ ($p=0.20$); no other model in
@@ -1926,7 +1940,12 @@ same battery its pooled exception tests reject at machine zero at both
 levels, while the EVT-tailed engine sits at $p=0.02$--$0.07$ pooled
 and passes the per-asset and date-clustered restatements. The accuracy
 tie is between a specialized single-level quantile autoregression and
-one shared model that also carries the rest of the deployment brief. Second, the neural IQN as residual model initially loses
+one shared model that also carries the rest of the deployment brief.
+Restating FHS the textbook way changes nothing: per-name
+train-constant and per-name rolling 500-day causal variants, run on
+the identical panel, lose to the hybrid by DM 5.4 and 5.8 (pinball
+0.3562 and 0.3569 against 0.3550), bracketing the pooled variant the
+battery uses. Second, the neural IQN as residual model initially loses
 to trees badly (0.3650 vs 0.3551, DM 13.3) with a severely thin tail
 (breach$_{99}$ 3.2\%); the tail-aware, monotone, conformally
 recalibrated version closes to a hair (0.3638 vs 0.3632, DM 3.03) with
@@ -2005,10 +2024,20 @@ a strictly consistent score, and its error direction is conservative
 conservative coverage margin keeps the shift; one scored on FZ0
 efficiency
 runs the EVT tail alone, which passes the exception battery on its
-own (Figure~\ref{fig:passrates}). Every headline in this paper that
-says ``lowest FZ0 at both levels'' refers to the accuracy layer; the
-deployed variant's 2.5\% concession is the quantified price of its
-coverage margin, not an unreported loss.
+own (Figure~\ref{fig:passrates}). The concession is
+mostly \emph{staleness}, not structure: the adaptive form of the
+shift \citep{gibbs2021aci}, updated daily from the panel breach
+frequency, walks the margin back out of era ($-0.32$ to $-0.10$;
+breach $1.7\%\to2.1\%$) and erases the overall concession --- the
+adaptive variant ties GARCH-$t$ on 2.5\% FZ0 (DM $-0.1$) where the
+static loses (DM $-1.7$, same run). The top-decile cost survives any
+shift ($-4.7$ vs $-6.8$): the irreducible price of a margin where
+bands are widest. The static shift also buys per-name coverage badly
+(Kupiec$_{97.5}$ pass rate 50\% against 71\% unshifted, 68\%
+adaptive --- over-coverage fails from the other side). Every
+``lowest FZ0'' headline refers to the accuracy layer; the static
+concession is a frozen margin's price, and the adaptive form removes
+the overall cost.
 
 \subsection{The ten-day horizon and stress}
 
@@ -2016,14 +2045,12 @@ At the FRTB ten-day liquidity horizon (CRSP 2014--2024, directly-learned
 ten-day quantiles vs GARCH $\sqrt{h}$-scaling) the pinball edge grows
 from $\sim$0.4\% at $h=1$ to $\sim$1.4\% at $h=10$, and holds in the
 2020--2022 stress window (hybrid 1.247 $<$ FHS 1.2605 $<$ GARCH 1.262).
-Two horizon designs appear in this paper and their numbers are not
-comparable: the stress battery here scores the \emph{deployed
-engine's} $h$-day quantiles against $\sqrt{h}$-scaled GARCH on
-overlapping cumulative returns ($0.4\%\!\to\!1.4\%$), while the
-separate direct-learning study of Figure~\ref{fig:horizon} trains a
-fresh quantile model \emph{at each horizon} and
-finds larger ratios ($3.4\%$ at $h{=}1$ to $4.9\%$ at $h{=}20$) ---
-the baselines and estimands differ, and each figure names its own.
+Two horizon designs appear in this paper with non-comparable
+numbers: the stress battery scores the \emph{deployed engine}
+against $\sqrt{h}$-scaled GARCH ($0.4\%\!\to\!1.4\%$), while the
+direct-learning study of Figure~\ref{fig:horizon} trains a fresh
+model per horizon and finds larger ratios ($3.4\%\to4.9\%$); each
+figure names its design.
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}

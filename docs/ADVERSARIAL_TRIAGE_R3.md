@@ -95,7 +95,22 @@ benchmark implementation details, provenance language, and overclaims.
     unlosable claim) now leads the contributions list, matching the abstract's
     order; industry battery second; frontier third; theory fourth.
 
-## Newly queued jobs (fold on landing, win or lose)
-- job_fz_aci.py        -> fz_aci_results.json        (adaptive shift: coverage without the FZ0 loss?)
-- job_fhs_pername.py   -> fhs_pername_results.json   (bank-exact FHS rows)
-- job_holdout_recthr.py-> holdout_recthr_results.json (recursive ex-ante threshold)
+## Second-wave armor results (ran 2026-09-04, folded into both builds)
+- ACI adaptive shift (fz_aci_results.json): PARTIAL WIN, honestly reported. At
+  gamma=0.05 the shift walks from -0.32 to -0.10, breach 1.69% -> 2.09%, and the
+  overall 2.5% FZ0 gap vs GARCH-t goes from DM -1.67 (static, same run) to -0.09
+  (dead tie). Top-decile cost survives any shift (-4.7 vs -6.8). Bonus finding:
+  the static shift's per-name Kupiec975 pass rate (50.5%) is WORSE than no shift
+  (70.5%) -- over-coverage fails from the other side; adaptive sits at 68%. R3's
+  FATAL #1 is dissolved for the overall panel; the top-decile margin cost stays
+  disclosed as the price of conservatism where bands are widest.
+- Per-name FHS (fhs_pername_results.json): KILL. Textbook per-name constant
+  (0.3562, DM 5.39 vs hybrid) and rolling-500d causal (0.3569, DM 5.84) both lose
+  decisively on the identical panel, bracketing the pooled variant (0.3566, DM
+  6.30). R4's benchmark attack dead; rows quoted in the battery discussion.
+- Recursive ex-ante threshold (holdout_recthr_results.json): KILL. Expanding
+  pooled q90 over strictly earlier dates, 250-date burn-in, occupancy 9.5%:
+  top bucket +0.99%, DM 2.15 (p=.016), insensitive to NW lags 5-44; bottom
+  -0.18% (t=-1.4). Exactly R3's requested refutation, delivered: the real-time
+  rule recovers the registered sort's size AND its significance. The holdout
+  claim no longer leans on test-era ranks at all.
