@@ -274,6 +274,7 @@ CAViaR (strongest academic rival) & tie & DM 0.59 & tie (co-best) \\
 Bare standalone neural net, single names & $-4.5$ to $-6.2\%$ & DM $+12$ to $+18$ & why the engine is a hybrid \\
 Standalone nonparametric, calm single assets & GARCH as good or better & pooled DM $-9.5$ to $-13.7$ & scope: shape edge needs misspecification \\
 Korea 2026 crisis, 23 assets (negative control) & GARCH wins all & DM $-2.5$ to $-5$ & validates the frontier: price crash $\ne$ shape break \\
+mk$_{63}$-reweighted FHS (absorber probe) & worse than plain FHS & DM $-11$ overall and top decile & why pooling: conditioning alone collapses the sample \\
 Baltic freight; IG credit\tnote{a} & $+15\%$; $+52\%$ & DM 9.6; 30.6 & accuracy only; calibration open \\
 \bottomrule
 \end{tabular}
@@ -1365,6 +1366,27 @@ look-ahead artifact would produce.}
 \label{fig:timing}
 \end{figure}
 
+\paragraph{The signal cannot be absorbed by reweighting.} If the
+frontier score were merely an omitted variable, a parametric-adjacent
+fix should capture the edge without any pooled learner: run filtered
+historical simulation per name, but reweight the historical residual
+window toward days whose mk$_{63}$ resembles today's (Gaussian kernel,
+bandwidth half the signal's per-name standard deviation). We ran that
+absorber on the full panel. It fails, and not narrowly: the reweighted
+FHS is significantly \emph{worse} than plain FHS overall (per-date DM
+$-11.3$) and much worse in the top misspecification decile (average
+pinball 0.541 against 0.444, DM $-11.1$), while the pooled shape model
+beats plain FHS in that decile by $2.7\%$ of pinball (DM 8.8) and
+GARCH-$t$ by $2.8\%$ (DM 9.1). The mechanism is effective-sample
+collapse: sharp univariate conditioning shrinks a name's usable
+history to the handful of days that resemble today, exactly when today
+is unusual; smoothing the kernel only interpolates back toward the
+unconditional FHS it was meant to improve. Pooling across names is
+what makes state-conditioning affordable --- the amortized model
+borrows the shape information from every name's stressed days --- so
+the amortization of Section~\ref{sec:gbcmethod} is not a convenience
+on top of the frontier result but a precondition for it.
+
 \paragraph{The confirmatory holdout.} Every design choice in this paper
 was made on data from 2014 onward. As a guard against specification
 search, we froze the entire pipeline --- signals, features,
@@ -2017,11 +2039,12 @@ battery re-run), and the certainty-equivalent capital translation
 (Section~\ref{sec:applications}), and the horizon and ES comparison on
 the 2000--2013 era is complete with a mixed verdict, reported in
 Section~\ref{sec:frtb}: accuracy ties out of era and the $\sqrt{h}$
-ES calibration verdict reverses. Still open: the intraday frontier
-once tick data is available, and the signal-absorption study (whether
-a state-reweighted historical simulation captures the frontier edge
-without a pooled learner), whose specification is registered in the
-repository.
+ES calibration verdict reverses. The signal-absorption study is also
+complete (Section~\ref{sec:frontier}): a state-reweighted historical
+simulation does not capture the frontier edge, and the failure mode
+--- effective-sample collapse under sharp univariate conditioning ---
+is why the pooled learner is a precondition rather than a convenience.
+Still open: the intraday frontier once tick data is available.
 Companion-paper extensions (Paper~B): a leverage summary statistic to
 identify $\rho$ in the SBC studies, and Hawkes and jump-diffusion
 simulators as the next likelihood-free targets; vector quantile
