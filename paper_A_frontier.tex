@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{array}
 \usepackage{threeparttable}
 \usepackage{setspace}
 \usepackage[round]{natbib}
@@ -25,6 +26,11 @@
 \captionsetup{font=small,labelfont=bf}
 \setstretch{1.15}
 \emergencystretch=1.5em
+% float discipline: let tall tables place instead of queueing to the end
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.6}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.8}
 \graphicspath{{figures/}}
 
 \newcommand{\pending}{\multicolumn{1}{c}{\textit{pending}}}
@@ -77,8 +83,9 @@ wins on average loss with date-level Diebold--Mariano significance
 Shortfall (removing an $8$--$11\%$ ES over-statement that
 over-charges capital), and with its tail stages its exception counts
 are consistent with nominal at both regulatory levels, a finding that
-survives per-asset and common-date-dependence restatements; the edge
-grows at the
+survives per-asset and common-date-dependence restatements and holds
+through a 2008-crisis test window under the frozen specification; the
+edge grows at the
 ten-day horizon and holds in the 2020--22 stress window. \emph{Third, a
 misspecification frontier says when the edge is large:} a real-time
 score (the excess kurtosis and asymmetry of recent GARCH-standardized
@@ -242,7 +249,8 @@ reading guide), one-sided. Panel A: the deployed amortized
 residual-hybrid engine (worst case anywhere: a tie). Panel B: boundary
 evidence from configurations not deployed, which motivates the design.}
 \label{tab:winloss}
-\begin{tabular}{p{0.46\textwidth}lll}
+\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}}
 \toprule
 \multicolumn{4}{l}{\emph{Panel A: the engine's record}} \\
 Result & Magnitude & Significance & Status \\
@@ -253,6 +261,8 @@ Hyperinflation FX (ARS, EGP) & $+12$--$14\%$ & DM 2.9--3.8 & win \\
 Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 & win \\
 Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ & holds in 2020--22 stress & win \\
 2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2, registered predictions & win (confirmatory) \\
+Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% & date-clustered $t$ 0.2 / 0.4; HS, EWMA fail & win (stress) \\
+Joint $(\VaR,\ES)$ FZ0 score, full panel & lowest at both levels & DM 4.1--4.7 vs GARCH-$t$, FHS; 6.0--9.2 vs GAS & win (registered) \\
 ES$_{97.5}$ over-statement removed & $8$--$11\%$ & calibration, Table~\ref{tab:frtb} & win (capital) \\
 Cold start / young listings & $+6$--$10\%$ & full-scale panel & win (unique capability) \\
 Calm-quintile edge & $\approx 0$, never negative & --- & tie (costless to hold) \\
@@ -1172,6 +1182,7 @@ Table~\ref{tab:sampleflow} gives the sample flow.
 \begin{threeparttable}
 \caption{Sample flow across evaluation panels.}
 \label{tab:sampleflow}
+\footnotesize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lllrrl}
 \toprule
 Panel & Source & Era & Names & Test obs & Role \\
@@ -1412,6 +1423,7 @@ statistics are the correct summary.
 nonparam/GARCH-$t$ pinball ($<1$: nonparametric wins). All fits
 standalone per asset except where noted.}
 \label{tab:universes}
+\footnotesize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{llccl}
 \toprule
 Universe & Segment & Ratio & Resid.\ kurt. & Significance \\
@@ -1429,7 +1441,7 @@ Country indices (26) & developed (8) & 1.007 & 4.7 & 0 nonparam wins \\
 Cross-asset (43) & vol indices & $\sim$0.987 & 32.8 & 3/3 significant \\
  & Baltic freight & 0.846 & --- & DM $9.4$ (calib.\ fails) \\
  & IG credit OAS & 0.960 & --- & DM $2.3$ (indep.\ fails) \\
- & 13/43 significant wins overall; corr(log kurt, edge) $= 0.43$ & & & \\
+\multicolumn{5}{l}{\quad 13/43 significant wins overall; corr(log kurt, edge) $= 0.43$} \\
 \midrule
 Korea 2026 (23) & all types & 1.01--1.12 & 4--13 & GARCH wins all, DM $-2.5$ to $-5$ \\
 \bottomrule
@@ -1559,6 +1571,7 @@ Table~\ref{tab:frtb} reports the full battery on 140 CRSP names
 ES$_{97.5}$ calibration, and 99\% exception tests. 140 CRSP names, 155k
 test observations.}
 \label{tab:frtb}
+\small\setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{lcccc}
 \toprule
 Model & Avg.\ pinball & ES$_{97.5}$ pred.\ vs realized & Breach$_{99}$ & Kupiec$_{99}$ $p$ \\
@@ -1652,6 +1665,26 @@ nearly exact.}
 \label{fig:frtb}
 \end{figure}
 
+\paragraph{The stress-era replication.} The battery's registered
+re-run on the 2000--2013 holdout panel is complete. Splits follow
+Section~\ref{sec:protocol}, so each name's test window runs from
+roughly mid-2008 through 2013 --- the crisis and its aftermath. The
+EVT-tailed engine passes Kupiec at 99\% for $94\%$ of names and
+Christoffersen for $95\%$, with date-clustered $t$-statistics of
+$0.17$ at 99\% and $0.35$ at 97.5\% --- consistent with nominal at
+both regulatory levels through the crisis window. The two models most
+common on desks do not survive the same test: historical simulation
+breaches at $1.53\%$ against a $1\%$ target (pass rate $61\%$,
+date-clustered $t=2.08$) and EWMA at $1.57\%$ ($t=2.83$). GARCH-$t$ is
+also well calibrated in this era ($94\%$ pass rate), which is the
+frontier's own prediction --- calibration parity is the norm, and the
+engine's added value in any era is the accuracy edge where the
+misspecification score is high. The conformal layer, calibrated on
+pre-crisis data, tilts conservative out of era (breach $2.21\%$ at
+97.5\%, $t=-1.09$, not significant): the safety margin widens when the
+calibration era is calmer than the test era, and the direction of the
+error is the one regulators prefer.
+
 Three caveats qualify the headline. First, adding SAV-CAViaR ---
 absent from banks' standard toolkit but the strongest semiparametric
 academic benchmark --- produces a statistical tie: CAViaR 0.3461 vs
@@ -1712,8 +1745,28 @@ score does not reward. On a 40-name top-kurtosis subset the ordering
 flips and the hybrid$+$EVT attains the lowest FZ0 --- the frontier
 pattern reappearing under a jointly consistent score --- directionally
 but not yet significantly at this width (DM $\approx 0.9$,
-$p \approx 0.17$), which is what the registered full-panel re-run is
-powered to decide.
+$p \approx 0.17$).
+
+The registered full-panel re-run decided it. On the full 200-name
+panel ($221.6$k test asset-days), with ES from the fitted GPD tail and
+per-date DM inference throughout, the engine attains the lowest FZ0 at
+both regulatory levels: at 1\% it beats GARCH-$t$ (DM 4.1), FHS (DM
+4.7), and a per-name score-driven one-factor GAS model estimated by
+FZ0 minimization in the style of \citet{patton2019} (DM 9.2, zero fit
+failures); at 2.5\% the accuracy layer again wins (DM 4.2 over
+GARCH-$t$, 6.0 over GAS). The frontier concentrates the joint-score
+edge as it does the pinball edge --- the top misspecification decile
+carries DM 2.4 at the 1\% level against DM 0.2 in the panel bulk. One
+configuration choice is priced explicitly: adding the conformal shift
+at 97.5\%, whose calibration split includes the 2020 crash, widens the
+band out of era (breach $1.6\%$ against the $2.5\%$ target) and gives
+back the FZ0 advantage there (DM $-2.0$ against GARCH-$t$, marginal at
+the two-sided 5\% level). The coverage guarantee costs sharpness under
+a strictly consistent score, and its error direction is conservative
+--- wider bands, fewer breaches than nominal. A desk that prizes the
+finite-sample guarantee keeps the shift; one scored on FZ0 efficiency
+runs the EVT tail alone, which passes the exception battery on its
+own (Figure~\ref{fig:passrates}).
 
 \subsection{The ten-day horizon and stress}
 
@@ -1898,9 +1951,10 @@ estimator; the neural IQN earns its place through sampling and
 amortized posterior inference rather than point accuracy. The frontier score is necessary-not-sufficient (carbon/corn
 counterexamples; Baltic Dry wins at moderate kurtosis via limit-move
 dynamics). Credit and freight show large accuracy edges but clustered
-exceptions --- unresolved. The frontier's 2008 exposure is now covered by the
-2000--2013 holdout; the FRTB battery's stress re-run on that era remains
-registered. Intraday extension is blocked
+exceptions --- unresolved. The frontier's 2008 exposure is covered by the
+2000--2013 holdout, and the FRTB battery's stress re-run on that era is
+complete (Section~\ref{sec:frtb}: the engine passes both levels through
+the crisis window). Intraday extension is blocked
 on tick-data access. The 99\% ES credible band reaches 0.887 rather than
 0.90, at $\sim$1.6$\times$ width --- the price of deep-tail
 uncertainty (companion Paper~B).
@@ -1909,13 +1963,14 @@ the field's enthusiasm for model-switching: most of the day-level
 advantage of any model pair is realization noise, not predictable
 structure.
 
-Registered extensions within this paper's scope, in priority order: the
-\emph{full-panel} Fissler--Ziegel $(\VaR,\ES)$ re-scoring (the sandbox
-subsets of Section~\ref{sec:frtb} establish necessity of fat tails and
-the frontier direction; the full panel is powered for the high-kurtosis
-crossover) and a certainty-equivalent (MEU) translation of the ES edge
-into basis points of capital; the 2000--2024 WRDS panel for a 2008
-stress window; and the intraday frontier once tick data is available.
+Two of the three registered extensions within this paper's scope are
+now complete and reported above: the full-panel Fissler--Ziegel
+$(\VaR,\ES)$ re-scoring (Section~\ref{sec:frtb}, engine lowest at both
+levels) and the 2008 stress window (the 2000--2013 holdout and its
+battery re-run). Still open, in priority order: a certainty-equivalent
+(MEU) translation of the ES edge into basis points of capital; the
+horizon and ES comparison on the 2000--2013 era; and the intraday
+frontier once tick data is available.
 Companion-paper extensions (Paper~B): a leverage summary statistic to
 identify $\rho$ in the SBC studies, and Hawkes and jump-diffusion
 simulators as the next likelihood-free targets; vector quantile
@@ -1939,10 +1994,12 @@ and cannot be redistributed; the package includes the code to rebuild
 every panel from those sources, the derived non-proprietary series, and
 a synthetic example dataset (\texttt{toy\_example.py}) that runs the full
 pipeline end-to-end without licensed data. The pre-registered tuning grid
-is in \texttt{TUNING\_GRID\_PREREG.md}; deferred analyses flagged in the
-text (the Fissler--Ziegel joint $(\VaR,\ES)$ re-scoring, the full GPC
-iteration, and the 2000--2024 stress window) are tracked as open issues
-in the repository.
+is in \texttt{TUNING\_GRID\_PREREG.md}; the analyses deferred in
+earlier drafts and since completed (the full-panel Fissler--Ziegel
+re-scoring, the 2000--2013 holdout and its battery re-run) ship with
+their result files, and the remaining open items
+(Section~\ref{sec:limitations}) are tracked as issues in the
+repository.
 
 %% ===== BIBLIOGRAPHY =====
 \bibliographystyle{plainnat}
