@@ -117,7 +117,9 @@ look-ahead artifact would produce.}
 share of names whose individual Kupiec test is consistent with nominal.
 HS over-covers (conservative); EWMA fails; the EVT-tailed engine matches
 the parametric benchmarks while beating them on loss and ES calibration
-(Table~6 of the paper). Date-clustered tests in the table notes.}
+(Table~6 of the paper). Date-clustered tests in the table notes. The
+GJR bar predates the skew-$t$ correction of Table~6's note; the
+corrected pooled battery row passes both 99\% tests.}
 \label{fig:passrates}
 \end{figure}
 \clearpage
@@ -137,7 +139,11 @@ the parametric benchmarks while beating them on loss and ES calibration
 \end{tikzpicture}
 \caption{The edge grows with horizon. Nonparametric/GARCH pinball ratio
 at $h = 1, 5, 10, 20$ days (amortized panel): fat tails compound while
-$\sqrt{h}$ scaling compounds the shape error --- $\sim$5\% at $h=20$.}
+$\sqrt{h}$ scaling compounds the shape error --- $\sim$5\% at $h=20$.
+Direct-learning design: a fresh quantile model per horizon against
+$\sqrt{h}$-scaled GARCH-$t$; the deployed engine's own ten-day numbers
+in the main text ($0.4\%\!\to\!1.4\%$) come from the stress battery
+and are smaller --- the designs differ and are labeled where quoted.}
 \label{fig:horizon}
 \end{figure}
 \clearpage
@@ -152,7 +158,7 @@ $\sqrt{h}$ scaling compounds the shape error --- $\sim$5\% at $h=20$.}
   title={\small Accuracy (140 names, 155k obs)}]
 \addplot[fill=npblue, draw=npblue] coordinates
   {(Hyb,0.3551) (Hyb+EVT,0.3554) (GARCH-t,0.3561) (FHS,0.3565)
-   (GJR,0.3574) (EWMA,0.3606) (HS,0.3619)};
+   (GJR,0.3562) (EWMA,0.3606) (HS,0.3619)};
 \end{axis}
 \end{tikzpicture}\hfill
 \begin{tikzpicture}
@@ -292,12 +298,12 @@ Each row is established in the section cited.}
 \toprule
 Task / regime & Winner & Where \\
 \midrule
-Point quantile accuracy, tabular state & GBM (trees) & \SSection~3.2 of the paper \\
+Point quantile accuracy, tabular state & GBM (trees) & Section~3.2 of the paper \\
 Sampling, amortized posteriors, uncertainty & Neural IQN (only entrant) & Paper~B \\
-Single asset, calm ($\sim$90\% of asset-days) & GARCH-$t$ & \SSection~5 of the paper \\
-Single asset, top misspecification decile & Nonparametric ($+2.7\%$, DM 6.5) & \SSection~5 of the paper \\
-Amortized cross-name panel, any regime & Nonparametric always; no gate & \SSection~5.4 of the paper \\
-Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & \SSection~6 of the paper \\
+Single asset, calm ($\sim$90\% of asset-days) & GARCH-$t$ & Section~5 of the paper \\
+Single asset, top misspecification decile & Nonparametric ($+2.7\%$, DM 6.5) & Section~5 of the paper \\
+Amortized cross-name panel, any regime & Nonparametric always; no gate & Section~5.4 of the paper \\
+Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & Section~6 of the paper \\
 Multivariate portfolio tail & GARCH/DCC (honest negative) & Paper~B \\
 \bottomrule
 \end{tabular}
