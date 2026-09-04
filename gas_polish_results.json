@@ -1,0 +1,99 @@
+{
+  "note": "GAS POLISH: one-factor FZ-score-driven benchmark with 3 starts x maxiter 300, best objective kept, scipy convergence flag recorded per name. DM_t>0 = row model worse than engine. Compare gas_pzc rows to the single-start run in fz_fullpanel_results.json.",
+  "gas_convergence_rate": {
+    "0.01": 0.995,
+    "0.025": 1.0
+  },
+  "n_names": 200,
+  "n_test": 221600,
+  "gpd": {
+    "u": -1.8866,
+    "xi": 0.2932,
+    "beta": 0.6412
+  },
+  "conf975": -0.3272,
+  "per_alpha": {
+    "0.01": {
+      "engine_meanFZ0": 2.14835,
+      "engine_breach": 0.0102,
+      "engine_noconf_meanFZ0": 2.14835,
+      "engine_noconf_breach": 0.0102,
+      "engine_noconf_vs_engine": {
+        "mean_diff": 0.0,
+        "DM_t": 0.0,
+        "p_one_sided": 0.5
+      },
+      "garch_minus_engine_noconf": {
+        "mean_diff": 0.00737,
+        "DM_t": 4.3
+      },
+      "garch_t": {
+        "mean_diff": 0.00737,
+        "DM_t": 4.3,
+        "p_one_sided": 0.0,
+        "meanFZ0": 2.15572,
+        "breach": 0.0103
+      },
+      "fhs": {
+        "mean_diff": 0.02406,
+        "DM_t": 4.87,
+        "p_one_sided": 0.0,
+        "meanFZ0": 2.17241,
+        "breach": 0.0124
+      },
+      "gas_pzc": {
+        "mean_diff": 821472.8123,
+        "DM_t": 1.05,
+        "p_one_sided": 0.147,
+        "meanFZ0": 821474.9589,
+        "breach": 0.0093
+      },
+      "top_mk63_decile_garch_minus_engine": {
+        "mean_diff": 0.00772,
+        "DM_t": 1.97,
+        "n_dates": 1108
+      }
+    },
+    "0.025": {
+      "engine_meanFZ0": 1.86556,
+      "engine_breach": 0.0169,
+      "engine_noconf_meanFZ0": 1.85113,
+      "engine_noconf_breach": 0.0274,
+      "engine_noconf_vs_engine": {
+        "mean_diff": -0.01443,
+        "DM_t": -2.12,
+        "p_one_sided": 0.9829
+      },
+      "garch_minus_engine_noconf": {
+        "mean_diff": 0.00307,
+        "DM_t": 3.59
+      },
+      "garch_t": {
+        "mean_diff": -0.01136,
+        "DM_t": -1.74,
+        "p_one_sided": 0.9588,
+        "meanFZ0": 1.8542,
+        "breach": 0.0271
+      },
+      "fhs": {
+        "mean_diff": -0.00311,
+        "DM_t": -0.37,
+        "p_one_sided": 0.6426,
+        "meanFZ0": 1.86245,
+        "breach": 0.0308
+      },
+      "gas_pzc": {
+        "mean_diff": 0.03146,
+        "DM_t": 5.9,
+        "p_one_sided": 0.0,
+        "meanFZ0": 1.89702,
+        "breach": 0.0259
+      },
+      "top_mk63_decile_garch_minus_engine": {
+        "mean_diff": -0.0422,
+        "DM_t": -6.8,
+        "n_dates": 1108
+      }
+    }
+  }
+}
