@@ -8,13 +8,13 @@ The draft at the link above is the working version and is updated continuously; 
 
 ## What the paper shows
 
-A single measurable quantity — the excess kurtosis and asymmetry of recent GARCH-standardized residuals — governs when flexible-shape quantile methods beat parametric VaR/ES. Where that misspecification score is high, an amortized nonparametric engine wins decisively (top decile +2.7% pinball, DM 6.5; replicated on an untouched 2000–2013 holdout under registered predictions); where it is low, the engine and the parametric model tie. The engine passes Kupiec and Christoffersen backtests at both regulatory levels through a 2008-crisis test window, and its accuracy layer attains the lowest joint (VaR, ES) FZ0 score at both regulatory levels on the full panel — the deployed coverage shift's one measured concession (the 2.5% joint score, DM −2.0) is quantified in the paper rather than averaged away.
+A single measurable quantity — the excess kurtosis and asymmetry of recent GARCH-standardized residuals — governs when flexible-shape quantile methods beat parametric VaR/ES. Where that misspecification score is high, an amortized nonparametric engine wins decisively (top decile +2.7% pinball, DM 6.5; replicated on an untouched 2000–2013 holdout under a frozen specification with predictions written in advance); where it is low the advantage shrinks toward zero — the score orders the magnitude of the edge (top decile ≈ 7× the calm region), never a detectable loss. The engine passes Kupiec and Christoffersen backtests at both regulatory levels through a 2008-crisis test window, and its accuracy layer attains the lowest joint (VaR, ES) FZ0 score at both regulatory levels on the full panel — the deployed coverage shift's one measured concession (the 2.5% joint score, DM −2.0) is quantified in the paper rather than averaged away, and its adaptive form removes the overall cost.
 
 ## Repository layout
 
 | Folder | Contents |
 |---|---|
-| `paper/` | Other manuscripts (online appendix, companion drafts) and `archive_pdfs/` with dated snapshots |
+| `paper/` | Other manuscripts (online appendix, earlier drafts) and `archive_pdfs/` with dated snapshots |
 | `code/` | Study and job scripts (standalone; each documents its data inputs at the top) |
 | `results/` | Derived statistics as JSON — every number in the paper traces to one of these |
 | `logs/` | Run consoles and pipeline logs |

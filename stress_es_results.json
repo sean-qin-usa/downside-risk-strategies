@@ -1,0 +1,172 @@
+{
+  "note": "TRUE ES97.5 for the ten-day sections, both eras, uniform methods: closed-form t ES for sqrt-h GARCH, exact empirical train-z tail mean for per-name FHS, 20-node midpoint sub-alpha GBM integral for the direct/hybrid model. Replaces the 3-node (design) and 5-node (holdout) tail-average proxies. Overlapping h-day targets as before.",
+  "design_2014_2024": {
+    "h1": {
+      "all": {
+        "garch_scale": {
+          "pinball": 0.3586,
+          "ES975_pred_true": -6.744,
+          "ES975_real_ownVaR": -5.678,
+          "breach975": 0.0275,
+          "n": 166200
+        },
+        "fhs": {
+          "pinball": 0.3586,
+          "ES975_pred_true": -6.66,
+          "ES975_real_ownVaR": -5.859,
+          "breach975": 0.028,
+          "n": 166200
+        },
+        "hybrid_GBM": {
+          "pinball": 0.3569,
+          "ES975_pred_true": -6.367,
+          "ES975_real_ownVaR": -6.061,
+          "breach975": 0.0269,
+          "n": 166200
+        }
+      },
+      "calm": {
+        "garch_scale": {
+          "pinball": NaN,
+          "ES975_pred_true": NaN,
+          "ES975_real_ownVaR": null,
+          "breach975": NaN,
+          "n": 0
+        },
+        "fhs": {
+          "pinball": NaN,
+          "ES975_pred_true": NaN,
+          "ES975_real_ownVaR": null,
+          "breach975": NaN,
+          "n": 0
+        },
+        "hybrid_GBM": {
+          "pinball": NaN,
+          "ES975_pred_true": NaN,
+          "ES975_real_ownVaR": null,
+          "breach975": NaN,
+          "n": 0
+        }
+      },
+      "stress": {
+        "garch_scale": {
+          "pinball": 0.3924,
+          "ES975_pred_true": -7.221,
+          "ES975_real_ownVaR": -5.875,
+          "breach975": 0.0311,
+          "n": 53100
+        },
+        "fhs": {
+          "pinball": 0.3926,
+          "ES975_pred_true": -7.148,
+          "ES975_real_ownVaR": -6.069,
+          "breach975": 0.0315,
+          "n": 53100
+        },
+        "hybrid_GBM": {
+          "pinball": 0.3909,
+          "ES975_pred_true": -6.764,
+          "ES975_real_ownVaR": -6.215,
+          "breach975": 0.0311,
+          "n": 53100
+        }
+      }
+    },
+    "h10": {
+      "all": {
+        "garch_scale": {
+          "pinball": 1.1603,
+          "ES975_pred_true": -21.051,
+          "ES975_real_ownVaR": -15.443,
+          "breach975": 0.033,
+          "n": 164850
+        },
+        "fhs": {
+          "pinball": 1.1592,
+          "ES975_pred_true": -20.786,
+          "ES975_real_ownVaR": -16.266,
+          "breach975": 0.0322,
+          "n": 164850
+        },
+        "hybrid_GBM": {
+          "pinball": 1.1439,
+          "ES975_pred_true": -20.038,
+          "ES975_real_ownVaR": -17.226,
+          "breach975": 0.0283,
+          "n": 164850
+        }
+      },
+      "calm": {
+        "garch_scale": {
+          "pinball": NaN,
+          "ES975_pred_true": NaN,
+          "ES975_real_ownVaR": null,
+          "breach975": NaN,
+          "n": 0
+        },
+        "fhs": {
+          "pinball": NaN,
+          "ES975_pred_true": NaN,
+          "ES975_real_ownVaR": null,
+          "breach975": NaN,
+          "n": 0
+        },
+        "hybrid_GBM": {
+          "pinball": NaN,
+          "ES975_pred_true": NaN,
+          "ES975_real_ownVaR": null,
+          "breach975": NaN,
+          "n": 0
+        }
+      },
+      "stress": {
+        "garch_scale": {
+          "pinball": 1.262,
+          "ES975_pred_true": -22.554,
+          "ES975_real_ownVaR": -15.636,
+          "breach975": 0.0411,
+          "n": 53100
+        },
+        "fhs": {
+          "pinball": 1.2605,
+          "ES975_pred_true": -22.322,
+          "ES975_real_ownVaR": -16.359,
+          "breach975": 0.0394,
+          "n": 53100
+        },
+        "hybrid_GBM": {
+          "pinball": 1.2474,
+          "ES975_pred_true": -21.238,
+          "ES975_real_ownVaR": -16.853,
+          "breach975": 0.0378,
+          "n": 53100
+        }
+      }
+    }
+  },
+  "holdout_2000_2013_h10": {
+    "all": {
+      "garch_scale": {
+        "pinball": 0.914,
+        "ES975_pred_true": -16.633,
+        "ES975_real_ownVaR": -16.574,
+        "breach975": 0.028,
+        "n": 278808
+      },
+      "fhs": {
+        "pinball": 0.9148,
+        "ES975_pred_true": -16.744,
+        "ES975_real_ownVaR": -16.344,
+        "breach975": 0.0297,
+        "n": 278808
+      },
+      "hybrid_GBM": {
+        "pinball": 0.909,
+        "ES975_pred_true": -15.886,
+        "ES975_real_ownVaR": -17.968,
+        "breach975": 0.0276,
+        "n": 278808
+      }
+    }
+  }
+}
