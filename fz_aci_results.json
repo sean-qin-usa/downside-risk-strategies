@@ -1,0 +1,50 @@
+{
+  "note": "Adaptive (ACI-style, pooled) conformal shift at 97.5% vs static shift and no shift. c updates daily from panel breach freq, warm start at static conf, clip [-3,1]. Same engine/panel/GPD as fz_fullpanel. garch_minus_this_DM>0 means this variant beats GARCH-t on FZ0.",
+  "static_conf": -0.3232,
+  "n_test": 221600,
+  "n_dates": 1108,
+  "variants": {
+    "no_shift": {
+      "breach": 0.0273,
+      "breach_dateclust_t": 1.68,
+      "kupiec975_passrate": 0.705,
+      "meanFZ0": 1.85084,
+      "garch_minus_this_DM": 4.16,
+      "top_decile_garch_minus_this_DM": 3.34
+    },
+    "static_shift": {
+      "breach": 0.0169,
+      "breach_dateclust_t": -8.73,
+      "kupiec975_passrate": 0.505,
+      "meanFZ0": 1.86509,
+      "garch_minus_this_DM": -1.67,
+      "top_decile_garch_minus_this_DM": -6.79
+    },
+    "aci_gamma_0.02": {
+      "breach": 0.0189,
+      "breach_dateclust_t": -5.94,
+      "kupiec975_passrate": 0.615,
+      "meanFZ0": 1.85832,
+      "garch_minus_this_DM": -0.76,
+      "top_decile_garch_minus_this_DM": -5.75,
+      "c_final": -0.1887,
+      "c_range": [
+        -0.3232,
+        -0.186
+      ]
+    },
+    "aci_gamma_0.05": {
+      "breach": 0.0209,
+      "breach_dateclust_t": -3.7,
+      "kupiec975_passrate": 0.68,
+      "meanFZ0": 1.8546,
+      "garch_minus_this_DM": -0.09,
+      "top_decile_garch_minus_this_DM": -4.65,
+      "c_final": -0.0972,
+      "c_range": [
+        -0.3232,
+        -0.0887
+      ]
+    }
+  }
+}

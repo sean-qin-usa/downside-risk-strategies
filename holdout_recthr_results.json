@@ -1,0 +1,50 @@
+{
+  "note": "Recursive ex-ante threshold on the 2000-2013 holdout: top bucket = mk63 >= expanding pooled 90th percentile over strictly earlier dates (250-date burn-in); no design-era constant, no test-era ranks. Membership computable in real time on day one of the test window.",
+  "n_test": 280608,
+  "n_scored": 280608,
+  "top_share_pct": 9.5,
+  "top_recursive": {
+    "edge_pct": 0.99,
+    "DM_stat": 2.15,
+    "p_one_sided": 0.0156,
+    "n_dates": 1457
+  },
+  "bottom_recursive": {
+    "edge_pct": -0.18,
+    "DM_stat": -1.43,
+    "p_one_sided": 0.923,
+    "n_dates": 1443
+  },
+  "top_NWlag_sensitivity": {
+    "lag5": {
+      "edge_pct": 0.99,
+      "DM_stat": 2.36,
+      "p_one_sided": 0.0092,
+      "n_dates": 1457
+    },
+    "lag10": {
+      "edge_pct": 0.99,
+      "DM_stat": 2.15,
+      "p_one_sided": 0.0156,
+      "n_dates": 1457
+    },
+    "lag20": {
+      "edge_pct": 0.99,
+      "DM_stat": 2.11,
+      "p_one_sided": 0.0175,
+      "n_dates": 1457
+    },
+    "lag44": {
+      "edge_pct": 0.99,
+      "DM_stat": 2.05,
+      "p_one_sided": 0.02,
+      "n_dates": 1457
+    }
+  },
+  "overall": {
+    "edge_pct": 0.08,
+    "DM_stat": 0.54,
+    "p_one_sided": 0.2935,
+    "n_dates": 1495
+  }
+}
