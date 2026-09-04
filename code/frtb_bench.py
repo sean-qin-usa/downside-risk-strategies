@@ -1,4 +1,8 @@
 # frtb_bench.py -- FRTB-aligned benchmark battery. CORRECTED 2026-09-04.
+# SUPERSEDED FOR TABLE 6: the canonical generator is code/frtb_table.py ->
+# results/frtb_table_results.json, which additionally computes predicted ES as the
+# exact tail integral (this file's es975_pred remains the historical three-node
+# average). Retained for the skew-t correction history.
 # CORRECTION HISTORY (found in adversarial audit; disclosed in the paper, Table 6 note):
 # the original implementation's skewt_ppf(t,nu_,la_) ignored la_ (returned a symmetric
 # standardized t) and read params.get('nu',8) although arch names the skew-t dof 'eta',

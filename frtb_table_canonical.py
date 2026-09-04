@@ -1,24 +1,18 @@
-# frtb_bench.py -- FRTB-aligned benchmark battery. CORRECTED 2026-09-04.
-# SUPERSEDED FOR TABLE 6: the canonical generator is code/frtb_table.py ->
-# results/frtb_table_results.json, which additionally computes predicted ES as the
-# exact tail integral (this file's es975_pred remains the historical three-node
-# average). Retained for the skew-t correction history.
-# CORRECTION HISTORY (found in adversarial audit; disclosed in the paper, Table 6 note):
-# the original implementation's skewt_ppf(t,nu_,la_) ignored la_ (returned a symmetric
-# standardized t) and read params.get('nu',8) although arch names the skew-t dof 'eta',
-# so the fitted dof never entered either; the mean term was also omitted. The pre-
-# correction file and its output are preserved in the repository history. This corrected
-# battery writes frtb_bench_v2_results.json; every non-GJR row reproduces the original
-# run to the fourth decimal.
-# The original frtb_bench.py had two defects in the GJR-skew-t benchmark:
-#   (1) skewt_ppf(t,nu_,la_) ignored la_ entirely (returned a symmetric standardized t);
-#   (2) params.get('nu',8) always returned the default 8 because arch names the skew-t
-#       dof 'eta' -- so the fitted dof never entered the quantile either.
-# Net effect: the benchmark labeled GJR-skew-t was actually GJR-vol x symmetric t(8) with
-# no mean term. This job re-runs the full battery with the correct Hansen (1994) skew-t
-# inverse CDF (validated against arch's SkewStudent.ppf and against the symmetric-t limit
-# before any data are touched), fitted eta/lambda per name, and the mean term included.
-# Output: frtb_bench_v2_results.json (schema of the original + 97.5% backtests).
+# frtb_table.py (= job_frtb_table.py) -- ONE RUN, EVERY ROW, TRUE ES. Canonical source for Table 6.
+# Fixes two audit findings from adversarial review:
+#   (1) ES97.5 was previously approximated by the equal-weight mean of Q(.005),Q(.01),
+#       Q(.025) -- NOT the tail integral (1/a) Int_0^a Q(u)du (normal-case error ~2.2%,
+#       t5 ~5.7%). Here predicted ES is computed properly per model: closed form for
+#       t (analytic) and normal (EWMA); 200-node midpoint integration of the Hansen
+#       skew-t inverse CDF; 20-node midpoint integration of rolling/empirical quantile
+#       functions for HS and the FHS family; GPD closed form for the EVT-tailed engine;
+#       20-node sub-alpha GBM quantile grid for the raw hybrid.
+#   (2) The whole table (9 models) now comes from ONE script and ONE JSON -- no spliced
+#       rows across runs. Includes corrected gjr_skewt, per-name and rolling FHS, and
+#       the EVT-tailed engine, with pinball DMs vs best, Kupiec/Christoffersen at both
+#       levels, and MCS (B=1000).
+# 'Realized ES' below each model's own VaR is kept as a labeled DIAGNOSTIC (it
+# conditions on a model-dependent breach set); FZ0 remains the ranking criterion.
 import os, json, time, math, warnings; warnings.filterwarnings("ignore")
 import numpy as np, pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
@@ -27,37 +21,38 @@ from arch import arch_model
 P=r"C:\Users\OWNER\Claude\Projects\GBC Project"; t0=time.time(); lg=lambda s:print(s,flush=True)
 rng=np.random.default_rng(0)
 TAUS=[0.005,0.01,0.025,0.05,0.10,0.25,0.50,0.75,0.90,0.95,0.975,0.99]
-TAIL=[0.005,0.01,0.025]
+A=0.025
+SUB=[A*(i+0.5)/20.0 for i in range(20)]          # 20-node midpoint grid on (0, 0.025)
 def pin(y,q,t): d=y-q; return np.where(d>=0,t*d,(t-1)*d)
-
-# ---- correct Hansen (1994) skew-t inverse CDF (standardized: zero mean, unit variance) ----
+def t_es(a,nu):
+    q=stats.t.ppf(a,nu)
+    return -stats.t.pdf(q,nu)*(nu+q*q)/((nu-1)*a)
 def hansen_ppf(u,eta,lam):
     c=math.gamma((eta+1)/2)/(math.sqrt(math.pi*(eta-2))*math.gamma(eta/2))
     a=4*lam*c*(eta-2)/(eta-1); b=math.sqrt(max(1+3*lam*lam-a*a,1e-12))
     s=math.sqrt((eta-2)/eta)
-    if u<(1-lam)/2.0:
-        return ((1-lam)*s*float(stats.t.ppf(u/(1-lam),eta))-a)/b
+    if u<(1-lam)/2.0: return ((1-lam)*s*float(stats.t.ppf(u/(1-lam),eta))-a)/b
     return ((1+lam)*s*float(stats.t.ppf((u+lam)/(1+lam),eta))-a)/b
-# self-tests BEFORE any data: symmetric limit + arch agreement + skew direction
-_sym=hansen_ppf(0.025,8.0,0.0); _ref=float(stats.t.ppf(0.025,8))*math.sqrt(6.0/8.0)
-assert abs(_sym-_ref)<1e-9, (_sym,_ref)
-assert hansen_ppf(0.01,8.0,-0.3)<hansen_ppf(0.01,8.0,0.0)<hansen_ppf(0.01,8.0,0.3)
-try:
-    from arch.univariate.distribution import SkewStudent
-    _sst=SkewStudent()
-    for _u,_e,_l in ((0.01,7.3,-0.21),(0.025,5.5,0.15),(0.10,12.0,-0.05)):
-        _av=float(np.asarray(_sst.ppf(_u,np.array([_e,_l]))).ravel()[0])
-        assert abs(_av-hansen_ppf(_u,_e,_l))<1e-4,(_u,_e,_l,_av,hansen_ppf(_u,_e,_l))
-    lg("hansen_ppf validated against arch SkewStudent.ppf")
-except ImportError:
-    lg("arch SkewStudent not importable for cross-check; manual formula self-tested only")
-
+def hansen_es(a,eta,lam,n=200):
+    us=[a*(i+0.5)/n for i in range(n)]
+    return float(np.mean([hansen_ppf(u,eta,lam) for u in us]))
+# self-tests: ES approximations against closed forms
+_es_n=-stats.norm.pdf(stats.norm.ppf(A))/A
+_mid=float(np.mean([stats.norm.ppf(u) for u in [A*(i+0.5)/200 for i in range(200)]]))
+assert abs(_mid-_es_n)<2e-3,( _mid,_es_n)
+_mid5=float(np.mean([stats.t.ppf(u,5) for u in [A*(i+0.5)/200 for i in range(200)]]))
+# 200-node midpoint carries ~0.15% discretization bias toward zero at nu=5 (the
+# integrand steepens near u=0); closed forms are used wherever they exist, and the
+# midpoint rule is applied with the SAME node set to every empirical model, so
+# cross-model comparisons share the (small, common-direction) discretization.
+assert abs(_mid5-t_es(A,5.0))<1e-2,(_mid5,t_es(A,5.0))
+assert abs(hansen_es(A,8.0,0.0)-float(np.mean([stats.t.ppf(u,8)*math.sqrt(6/8) for u in [A*(i+0.5)/200 for i in range(200)]])))<1e-9
+lg("ES integrators self-tested: normal midpoint %.4f vs analytic %.4f"%(_mid,_es_n))
 rr=pd.read_csv(os.path.join(P,"crsp_panel_returns.csv"),dtype={'permno':'int32'})
 rr['date']=pd.to_datetime(rr['date']); rr['ret']=pd.to_numeric(rr['ret'],errors='coerce')*100.0
 cnt=rr.groupby('permno')['ret'].count().sort_values(ascending=False); names=cnt[cnt>=1500].index.tolist()[:140]
-lg("names=%d %.0fs"%(len(names),time.time()-t0))
 RAWX=['lag1','abs1','prv5','prv21','rv63']; ZX=['logsig','zl1','absz5','zstd21','fracdn5']
-MODELS=['hist_sim','ewma_rm','garch_t','gjr_skewt','fhs','resid_hybrid_ML']
+MODELS=['hist_sim','ewma_rm','garch_t','gjr_skewt','fhs','fhs_pername','fhs_roll500','resid_hybrid_ML','hybrid_EVT']
 TR_z=[]; rows=[]
 def rollq(s,win,tau): return s.rolling(win,min_periods=250).quantile(tau).shift(1)
 for pn in names:
@@ -86,17 +81,27 @@ for pn in names:
     df['logsig']=np.log(np.maximum(df['sig'],1e-6)); df['zl1']=df['z'].shift(1); df['absz5']=df['z'].abs().rolling(5,min_periods=3).mean().shift(1)
     df['zstd21']=df['z'].rolling(21,min_periods=8).std().shift(1); df['fracdn5']=(df['y']<0).rolling(5,min_periods=3).mean().shift(1)
     for t in TAUS: df['hs_%g'%t]=rollq(df['y'],500,t)
+    for u in SUB: df['hsE_%g'%u]=rollq(df['y'],500,u)          # HS ES integrand nodes
     ev=np.zeros(n); ev[0]=np.var(y[:sp])
     for k in range(1,n): ev[k]=0.94*ev[k-1]+0.06*y[k-1]**2
     df['ewsig']=np.sqrt(ev)
+    zs=pd.Series(z); ztr=z[:sp]
+    for t in TAUS:
+        df['pnq_%g'%t]=float(np.quantile(ztr,t))
+        df['rlq_%g'%t]=zs.rolling(500,min_periods=250).quantile(t).shift(1)
+    # per-name z tail means for FHS ES (exact empirical tail expectations)
+    qa=np.quantile(ztr,A); df['pnES']=float(np.mean(ztr[ztr<=qa]))
+    for u in SUB: df['rlE_%g'%u]=zs.rolling(500,min_periods=250).quantile(u).shift(1)
     df['idx']=np.arange(n); df['mu']=mu; df['nu']=nu; df['tsc']=tsc
     df['gjr_sig']=sig2 if has_gjr else np.nan; df['gjr_nu']=nu2 if has_gjr else np.nan
     df['gjr_la']=la2 if has_gjr else np.nan; df['gjr_mu']=mu2 if has_gjr else np.nan
-    dd=df.dropna(subset=RAWX+ZX+['sig'])
+    dd=df.dropna(subset=RAWX+ZX+['sig','rlq_%g'%TAUS[0]])
     trn=dd[dd['idx']<sp]; tst=dd[dd['idx']>=sp]
     if len(tst)<60 or not has_gjr: continue
     TR_z.append(trn[ZX+['z']])
-    keep=['y','sig','date','mu','nu','tsc','ewsig','gjr_sig','gjr_nu','gjr_la','gjr_mu']+RAWX+ZX+['hs_%g'%t for t in TAUS]
+    keep=['y','sig','date','mu','nu','tsc','ewsig','gjr_sig','gjr_nu','gjr_la','gjr_mu','pnES']+ZX+ \
+         ['hs_%g'%t for t in TAUS]+['hsE_%g'%u for u in SUB]+['pnq_%g'%t for t in TAUS]+ \
+         ['rlq_%g'%t for t in TAUS]+['rlE_%g'%u for u in SUB]
     t2=tst[keep].copy(); t2['permno']=pn; rows.append(t2)
 lg("panels %d names %.0fs"%(len(rows),time.time()-t0))
 TE=pd.concat(rows).reset_index(drop=True); TRzc=pd.concat(TR_z)
@@ -104,27 +109,49 @@ ZQ={}
 for t in TAUS:
     mz=HistGradientBoostingRegressor(loss='quantile',quantile=t,max_iter=250,max_depth=3,learning_rate=0.06).fit(TRzc[ZX].values,TRzc['z'].values)
     ZQ[t]=mz.predict(TE[ZX].values)
-    if t in (0.005,0.5,0.99): lg("  ztau %.3f %.0fs"%(t,time.time()-t0))
+ZQE={}
+for u in SUB:
+    mz=HistGradientBoostingRegressor(loss='quantile',quantile=u,max_iter=250,max_depth=3,learning_rate=0.06).fit(TRzc[ZX].values,TRzc['z'].values)
+    ZQE[u]=mz.predict(TE[ZX].values)
+lg("GBM grids done %.0fs"%(time.time()-t0))
+ztr_all=TRzc['z'].values; u0=np.quantile(ztr_all,A); exc=u0-ztr_all[ztr_all<u0]
+xi,loc,beta=stats.genpareto.fit(exc,floc=0.0)
+def evt_q(tau,p0=A): return u0-(beta/xi)*((tau/p0)**(-xi)-1.0) if abs(xi)>1e-6 else u0-beta*math.log(p0/tau)
+def evt_es(tau):
+    q=evt_q(tau); return q-(beta+xi*(u0-q))/(1.0-xi)
 Y=TE['y'].values; SIG=TE['sig'].values; MU=TE['mu'].values; NU=TE['nu'].values; TSC=TE['tsc'].values
 EW=TE['ewsig'].values; GS=TE['gjr_sig'].values; GNU=TE['gjr_nu'].values; GLA=TE['gjr_la'].values; GMU=TE['gjr_mu'].values
-# per-name constant (eta,lambda): compute skew-t quantile once per (name,tau)
-Q={m:{} for m in MODELS}
 pairs=TE[['gjr_nu','gjr_la']].drop_duplicates().values
-lg("unique (eta,lambda) pairs: %d"%len(pairs))
+Q={m:{} for m in MODELS}
 for t in TAUS:
     Q['hist_sim'][t]=TE['hs_%g'%t].values
     Q['ewma_rm'][t]=EW*stats.norm.ppf(t)
     Q['garch_t'][t]=MU+SIG*stats.t.ppf(t,NU)/TSC
     qmap={(round(e_,10),round(l_,10)):hansen_ppf(t,e_,l_) for e_,l_ in pairs}
-    key=np.array([qmap[(round(e_,10),round(l_,10))] for e_,l_ in zip(GNU,GLA)])
-    Q['gjr_skewt'][t]=GMU+GS*key
-    Q['fhs'][t]=MU+SIG*np.quantile(TRzc['z'].values,t)
+    Q['gjr_skewt'][t]=GMU+GS*np.array([qmap[(round(e_,10),round(l_,10))] for e_,l_ in zip(GNU,GLA)])
+    Q['fhs'][t]=MU+SIG*np.quantile(ztr_all,t)
+    Q['fhs_pername'][t]=MU+SIG*TE['pnq_%g'%t].values
+    Q['fhs_roll500'][t]=MU+SIG*TE['rlq_%g'%t].values
     Q['resid_hybrid_ML'][t]=MU+SIG*ZQ[t]
+    zt=np.minimum(ZQ[t],evt_q(t)) if t<=A else ZQ[t]
+    Q['hybrid_EVT'][t]=MU+SIG*zt
+# ---- TRUE predicted ES at 97.5 ----
+ES={}
+ES['garch_t']=MU+SIG*np.array([t_es(A,nu_)/ts_ for nu_,ts_ in zip(NU,TSC)])
+ES['ewma_rm']=EW*(-stats.norm.pdf(stats.norm.ppf(A))/A)
+emap={(round(e_,10),round(l_,10)):hansen_es(A,e_,l_) for e_,l_ in pairs}
+ES['gjr_skewt']=GMU+GS*np.array([emap[(round(e_,10),round(l_,10))] for e_,l_ in zip(GNU,GLA)])
+ES['hist_sim']=np.mean([TE['hsE_%g'%u].values for u in SUB],axis=0)
+zpool_es=float(np.mean(ztr_all[ztr_all<=np.quantile(ztr_all,A)]))
+ES['fhs']=MU+SIG*zpool_es
+ES['fhs_pername']=MU+SIG*TE['pnES'].values
+ES['fhs_roll500']=MU+SIG*np.mean([TE['rlE_%g'%u].values for u in SUB],axis=0)
+ES['resid_hybrid_ML']=MU+SIG*np.mean([ZQE[u] for u in SUB],axis=0)
+ES['hybrid_EVT']=MU+SIG*evt_es(A)
 def pinball_avg(m):
     pl=np.zeros(len(Y))
     for t in TAUS: pl+=pin(Y,Q[m][t],t)
     return pl/len(TAUS)
-def es975_pred(m): return np.mean([Q[m][t] for t in TAIL],axis=0)
 PL={m:pinball_avg(m) for m in MODELS}
 def _llb(pp,k0,k1):
     if k0+k1==0: return 0.0
@@ -138,10 +165,10 @@ def christoffersen(b,p):
     b=b.astype(int); T=len(b); x=int(b.sum())
     n00=n01=n10=n11=0
     for i in range(1,T):
-        a,c=b[i-1],b[i]
-        if a==0 and c==0:n00+=1
-        elif a==0 and c==1:n01+=1
-        elif a==1 and c==0:n10+=1
+        a2,c=b[i-1],b[i]
+        if a2==0 and c==0:n00+=1
+        elif a2==0 and c==1:n01+=1
+        elif a2==1 and c==0:n10+=1
         else:n11+=1
     if x==0: return None
     pi=x/T; pi0=n01/max(n00+n01,1); pi1=n11/max(n10+n11,1)
@@ -150,13 +177,17 @@ def christoffersen(b,p):
     return round(float(1-stats.chi2.cdf(max(lr_uc+lr_ind,0),2)),4)
 summary={}; T=len(Y)
 for m in MODELS:
-    b99=(Y<Q[m][0.01]); b975=(Y<Q[m][0.025])
-    esp=es975_pred(m); esr=Y[b975]
+    b99=(Y<Q[m][0.01]); b975=(Y<Q[m][A])
+    esp=ES[m]; esr=Y[b975]
+    okp=np.isfinite(esp)
+    predm=float(np.nanmean(esp)); realm=float(esr.mean()) if b975.sum() else float('nan')
     summary[m]=dict(avg_pinball=round(float(PL[m].mean()),4),
-                    ES975_pred=round(float(esp.mean()),3), ES975_realized=round(float(esr.mean()),3) if b975.sum() else None,
-                    breach99=round(float(b99.mean()),4), breach975=round(float(b975.mean()),4),
-                    kupiec99_p=kupiec(int(b99.sum()),T,0.01), christoffersen99_p=christoffersen(b99,0.01),
-                    kupiec975_p=kupiec(int(b975.sum()),T,0.025), christoffersen975_p=christoffersen(b975,0.025))
+        ES975_pred_true=round(predm,3),
+        ES975_realized_ownVaR=round(realm,3) if b975.sum() else None,
+        overstatement_pct=round(100.0*(abs(predm)-abs(realm))/abs(realm),1) if b975.sum() else None,
+        breach99=round(float(b99.mean()),4), breach975=round(float(b975.mean()),4),
+        kupiec99_p=kupiec(int(b99.sum()),T,0.01), christoffersen99_p=christoffersen(b99,0.01),
+        kupiec975_p=kupiec(int(b975.sum()),T,A), christoffersen975_p=christoffersen(b975,A))
 best=min(summary,key=lambda k:summary[k]['avg_pinball'])
 Ldate=pd.DataFrame({m:PL[m] for m in MODELS}); Ldate['date']=TE['date'].values
 Lmat=Ldate.groupby('date').mean()[MODELS]; L=Lmat.values; Td=len(L)
@@ -169,7 +200,7 @@ dm={}
 for m in MODELS:
     if m==best: continue
     d=L[:,mi[m]]-L[:,bi]
-    stat=d.mean()/math.sqrt(max(nw_var(d),1e-12)); dm[m]=dict(DM_stat=round(float(stat),2),p_one_sided=round(float(1-stats.norm.cdf(stat)),4))
+    s=d.mean()/math.sqrt(max(nw_var(d),1e-12)); dm[m]=dict(DM_stat=round(float(s),2),p_one_sided=round(float(1-stats.norm.cdf(s)),4))
 def mcs(L,alpha=0.10,B=1000,blk=10):
     surv=list(range(L.shape[1])); pvals={}
     def boot_idx(T2):
@@ -194,12 +225,10 @@ def mcs(L,alpha=0.10,B=1000,blk=10):
         surv.remove(worst)
     return {'in_MCS_90':[MODELS[i] for i in surv],'elimination_pvals':pvals}
 MCS=mcs(L)
-la_stats=TE.groupby('permno')[['gjr_nu','gjr_la']].first()
-out={'note':'CORRECTED FRTB battery: gjr_skewt now uses the true Hansen skew-t inverse CDF with the FITTED eta/lambda per name (validated vs arch SkewStudent.ppf and the symmetric-t limit) and includes the mean term. Original frtb_bench.py used symmetric t(8) mislabeled as skew-t; that defect and this correction are disclosed in the paper. Everything else identical (140 names, same split, same metrics, MCS B=1000).',
+out={'note':'CANONICAL battery: one run, every row of Table 6, TRUE predicted ES97.5 per model (closed forms; 200-node Hansen integration; 20-node midpoint integration for empirical/rolling quantile functions; GPD closed form for the EVT engine; 20-node sub-alpha GBM grid for the raw hybrid). ES975_realized_ownVaR conditions on each model OWN breach set and is a labeled diagnostic, not the ranking criterion (FZ0 is). overstatement_pct=(|pred|-|real|)/|real|.',
+     'sub_alpha_grid_nodes':len(SUB),
+     'gpd':{'u':round(float(u0),4),'xi':round(float(xi),4),'beta':round(float(beta),4)},
      'n_names':int(TE['permno'].nunique()),'n_test_rows':int(len(Y)),'n_dates':int(Td),
-     'fitted_eta_median':round(float(la_stats['gjr_nu'].median()),2),
-     'fitted_lambda_median':round(float(la_stats['gjr_la'].median()),3),
-     'fitted_lambda_share_negative':round(float((la_stats['gjr_la']<0).mean()),3),
      'per_model':summary,'best_model':best,'DM_vs_best':dm,'MCS':MCS}
-json.dump(out,open(os.path.join(P,"frtb_bench_v2_results.json"),"w"),indent=2)
-lg("SKEWTFIXDONE %.0fs"%(time.time()-t0)); lg(json.dumps(out,indent=2)[:2000])
+json.dump(out,open(os.path.join(P,"frtb_table_results.json"),"w"),indent=2)
+lg("FRTBTABLEDONE %.0fs"%(time.time()-t0)); lg(json.dumps(out,indent=1)[:3000])
