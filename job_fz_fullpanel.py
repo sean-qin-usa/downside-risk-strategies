@@ -80,10 +80,12 @@ def evt_es(tau):
 s975=CALzc['z'].values-ZQcal[0.025]; CONF975=float(np.quantile(s975,0.025*(1+1/len(s975))))
 lg(f"GPD u={u:.3f} xi={xi:.3f} beta={beta:.3f}; conf975 {CONF975:+.4f}; evt_es01={evt_es(0.01):.3f} evt_es025={evt_es(0.025):.3f}")
 Y=TE['y'].values; SIG=TE['sig'].values; MU=TE['mu'].values
-ENG={}
+ENG={}; ENGNC={}
 zq01=np.minimum(ZQ[0.01],evt_q(0.01)); zq025=np.minimum(ZQ[0.025],evt_q(0.025))
 ENG[0.01]=(MU+SIG*zq01, MU+SIG*np.minimum(evt_es(0.01),zq01-1e-6))
 ENG[0.025]=(MU+SIG*(zq025+CONF975), MU+SIG*(np.minimum(evt_es(0.025),zq025-1e-6)+CONF975))
+ENGNC[0.01]=ENG[0.01]
+ENGNC[0.025]=(MU+SIG*zq025, MU+SIG*np.minimum(evt_es(0.025),zq025-1e-6))
 # ---------------- GAS one-factor (PZC 2019) per name, FZ0-estimated ----------------
 def gas_filter(y,a,b,om_,be_,ga_,k0,alpha):
     n=len(y); k=np.empty(n); k[0]=k0; v=np.empty(n); e=np.empty(n)
@@ -137,6 +139,14 @@ for a in ALPHAS:
     ve,ee=ENG[a]; Le=fz0(Y,ve,ee,a)
     rows_out={'engine_meanFZ0':round(float(np.mean(Le)),5),
               'engine_breach':round(float(np.mean(Y<=ve)),4)}
+    vnc,enc=ENGNC[a]; Lnc=fz0(Y,vnc,enc,a)
+    rows_out['engine_noconf_meanFZ0']=round(float(np.mean(Lnc)),5)
+    rows_out['engine_noconf_breach']=round(float(np.mean(Y<=vnc)),4)
+    rows_out['engine_noconf_vs_engine']=dm_vs_engine(Lnc,Le)
+    Lg_=fz0(Y,TE[f'g_v{a}'].values,TE[f'g_e{a}'].values,a)
+    dgn=pd.DataFrame({'d':Lg_-Lnc,'date':dates}).groupby('date')['d'].mean(); tgn=nw_t(dgn.values)
+    rows_out['garch_minus_engine_noconf']={'mean_diff':round(float(np.nanmean(Lg_-Lnc)),5),
+        'DM_t':None if tgn is None else round(tgn,2)}
     for nm,(vm,em) in [('garch_t',(TE[f'g_v{a}'].values,TE[f'g_e{a}'].values)),
                        ('fhs',(TE[f'fhs_v{a}'].values,TE[f'fhs_e{a}'].values)),
                        ('gas_pzc',GVE[a])]:
