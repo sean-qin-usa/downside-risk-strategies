@@ -1,0 +1,35 @@
+{
+  "note": "TRUE ANNUAL WALK-FORWARD (the recommended production schedule): at each Jan-1 cutoff 2020-2024, per-name GARCH refit on expanding pre-cutoff data, features and mk63 rebuilt under the refit parameters, pooled GBM retrained on pre-cutoff rows, next calendar year predicted. Kills the stale-parameterization alternative: no stage carries stale estimates into test.",
+  "test_years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "n_test": 251600,
+  "n_dates": 1258,
+  "overall_edge_pct": 0.32,
+  "overall_DM": 0.8,
+  "decile_profile_edge_pct": [
+    0.74,
+    0.1,
+    -0.25,
+    0.01,
+    -0.01,
+    -0.14,
+    -0.07,
+    0.16,
+    0.04,
+    2.47
+  ],
+  "top_decile_edge_pct": 2.47,
+  "top_decile_DM": 6.05,
+  "top_decile_n_dates": 1258,
+  "top_decile_NWlag_sensitivity": {
+    "lag5": 6.6,
+    "lag10": 6.05,
+    "lag20": 5.71,
+    "lag44": 5.39
+  }
+}

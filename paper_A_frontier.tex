@@ -61,8 +61,8 @@ pays. The engine --- \emph{amortized residual-hybrid} forecasting ---
 keeps the GARCH conditional scale that industry models get right and
 replaces only the fixed innovation shape with a state-conditioned
 nonparametric quantile model trained \emph{once, across hundreds of
-names}, finished with an extreme-value tail and a conformal
-recalibration. Three results. \emph{First, amortization:} one fit
+names}, finished with an extreme-value tail; an optional conformal
+overlay adds a conservative coverage margin. Three results. \emph{First, amortization:} one fit
 replaces per-asset estimation of the innovation shape (the
 conditional-scale filter remains the industry's per-name recursion),
 transfers to names never seen in
@@ -197,7 +197,8 @@ exists.
 \item \textbf{An industry-standard-and-above risk engine}
 (Section~\ref{sec:frtb}). The residual-hybrid --- GARCH conditional
 scale $\times$ state-conditioned nonparametric residual quantile ---
-with an extreme-value left tail and split-conformal recalibration:
+with an extreme-value left tail and an optional split-conformal
+coverage overlay:
 co-best with CAViaR\footnote{CAViaR \citep{engle2004caviar} models the
 quantile itself as an autoregressive process estimated on the pinball
 loss --- the strongest non-nested rival in the battery.} in the 90\%
@@ -236,7 +237,7 @@ pinball regret identity showing that a forecaster's excess loss is
 quadratic in its quantile wedge, so any edge must concentrate where the
 wedge is largest, and a tail-wedge proposition showing that innovation-shape
 misspecification creates that wedge in the tail --- together the
-reason the frontier is where the empirical edge must, and does, appear.
+motivation for looking where the empirical edge in fact appears.
 \end{enumerate}
 
 \medskip
@@ -282,7 +283,7 @@ Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 & win \\
 Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 stress; 2000--13 rerun: tie, DM 0.2 & win (era-dependent) \\
 2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2 (sort); recursive real-time rule $+1.0\%$, DM 2.15; frozen-constant restatement in text & win (untouched era) \\
 Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$; overall $+0.6\%$ & DM 6.6 / 9.0, frozen real-time thresholds & win (survivorship armor) \\
-Strict calendar splits (2020 cut; pre-GFC 2007 cut) & top decile $+2.5\%$; overall $+0.3\%$ & DM 6.2; 3.1 --- no calendar overlap anywhere & win (leakage armor) \\
+Strict calendar splits; annual-refit walk-forward & top decile $+2.5\%$ under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 6.1 (walk-forward) & win (leakage and staleness armor) \\
 Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles & win (multiplicity-priced) \\
 Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\% & date-clustered $t$ 0.17 at 99\%; at 97.5\%, 0.35 (EVT tail) and $-1.09$ (deployed shift, conservative); HS, EWMA fail & win (stress) \\
 Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.1--4.7 vs GARCH-$t$, FHS; 6.0--9.2 vs GAS; static shift concedes 2.5\% (DM $-2.0$), adaptive shift erases it (tie; top-decile cost remains) & win (accuracy layer; margins priced) \\
@@ -711,9 +712,12 @@ model by \eqref{eq:shapeERM}.
 $p_0$.
 (iv)~Learn the conformal shifts $c_\tau$ on a calibration split
 disjoint from the training data.
-(v)~Forecast by \eqref{eq:hybrid}; refit all stages on the walk-forward
-schedule (annual refit; all windows trailing; evaluation strictly
-out-of-sample).
+(v)~Forecast by \eqref{eq:hybrid}. In \emph{production} all stages
+refit on an annual walk-forward schedule; the paper's \emph{evaluated}
+protocol freezes every stage once per split (the more conservative
+test --- no stage ever adapts to the test era), and
+Section~\ref{sec:calendarleak} verifies the frontier separately under
+the true annual-refit schedule.
 }}
 
 \begin{figure}[t]
@@ -748,8 +752,10 @@ data; the dashed top arrow carries the conditional scale
 $\widehat\sigma_t$ that rescales the finished residual quantile curve;
 dashed boxes are inputs shared across assets (the pooled panel that
 trains the amortized shape model) or held out from training (the
-calibration split behind the conformal guarantee). Every stage refits
-on the walk-forward schedule using only past data.}
+calibration split behind the conformal overlay). In production every
+stage refits annually using only past data; the evaluated protocol
+freezes each stage once per split, and the annual-refit rerun is
+reported separately.}
 \label{fig:pipeline}
 \end{figure}
 
@@ -897,12 +903,13 @@ Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & 
 \subsection{Formal results: why shape misspecification must show up in
 the loss}\label{sec:theory}
 
-The paper's organizing claim --- that the nonparametric edge lives
-exactly where the fixed innovation shape is locally wrong --- is more
-than an empirical pattern: it follows from the structure of the pinball
-loss. The results below are elementary but do real work: they convert
-``the model's shape assumption is violated'' into a quantitative lower
-bound on forecastable loss.
+The paper's organizing claim --- the nonparametric edge lives where
+the fixed innovation shape is locally wrong --- is an empirical
+finding with a structural motivation in the pinball loss. The results
+below are deliberately modest: a shape violation creates a quantile
+wedge, and regret is quadratic in that wedge --- motivation for
+looking where trailing shape diagnostics are extreme, not proof that
+mk$_{63}$ estimates the wedge; that link is established empirically.
 
 \begin{lemma}[pinball regret identity]\label{lem:regret}
 Let $Z \sim F$ with $\mathbb{E}|Z| < \infty$ (so $S$ is finite) and
@@ -1271,34 +1278,25 @@ Section~\ref{sec:limitations}.
 
 The design panels are split per name, 60/40 in each name's own time
 index. In an unbalanced panel such a rule can place one name's
-training window on the calendar dates of another name's test window,
-and a learner pooled across names could then meet a systemic event
---- a common volatility shock, a market-wide liquidity break ---
-during training that a per-name model would only ever meet out of
-sample. The channel requires no individual feature to look ahead; the
-leak, if present, rides the cross-section through calendar time. We
-concede the point in principle: a per-asset split cannot by itself
-support a causal reading of a pooled model's edge. In these
-particular panels the channel is nearly degenerate --- both universes
-select names with near-complete histories, so per-name split points
-fall on almost the same calendar date --- but nearly is not zero, and
-the question deserves an answer by construction rather than by
-argument.
+training window on another name's test dates, so a pooled learner
+could meet a systemic event in training that a per-name model would
+only meet out of sample --- a leak that needs no individual feature
+to look ahead. We concede the point in principle: a per-asset split
+cannot by itself support a causal reading of a pooled edge. Here the
+channel is nearly degenerate (near-complete histories put split
+points on almost the same date), but nearly is not zero, and the
+question deserves an answer by construction.
 
 The construction is a strict calendar-time split: every stage ---
-each GARCH fit, the pooled residual learner, the GPD tail --- is
-re-estimated on data strictly before 2020-01-01, and testing starts
-at that date for every name simultaneously, so no training window of
-any name shares a single calendar day with any test window of any
-name. The frontier survives. The top misspecification decile carries
-a $+2.47\%$ edge with per-date DM 6.22 over the 1{,}258 test dates
-(compare $+2.7\%$, DM 6.5, under the per-name split); the overall
-edge is $+0.71\%$ (DM 1.87). The profile's bottom decile is elevated
-in this split ($+1.3\%$: a 2020--22 test era leaves few truly calm
-cells), but the ordering that matters is intact --- the top decile
-roughly doubles every other cell. The pooled edge, and its
-concentration where the score is high, is not a calendar-overlap
-artifact.
+each GARCH fit, the pooled learner, the GPD tail --- is re-estimated
+on data strictly before 2020-01-01 and tested from that date for
+every name simultaneously, so no training window shares a single
+calendar day with any test window. The frontier survives: top decile
+$+2.47\%$, per-date DM 6.22 over 1{,}258 dates (per-name split:
+$+2.7\%$, DM 6.5); overall $+0.71\%$ (DM 1.87). The bottom decile is
+elevated here ($+1.3\%$; a 2020--22 test era leaves few calm cells)
+but the ordering is intact --- the top decile roughly doubles every
+other cell. The concentration is not a calendar-overlap artifact.
 A second cut targets the harder era: inside the 2000--2013 holdout,
 everything is re-estimated strictly before 2007-01-01 and tested on
 2007--2013, so the global financial crisis is entirely absent from
@@ -1312,16 +1310,27 @@ thin in that era to test alone ($3.4\%$ occupancy, $+0.85\%$, DM
 significant edge through the crisis it never saw is the opposite of
 what the leakage story predicts.
 
+A last construction tests the schedule the paper recommends: the
+evaluated protocol freezes every stage once per split, so the score
+could in principle measure parameter staleness rather than shape.
+Under the true annual walk-forward --- per-name GARCH refit on
+expanding data at each January-1 cutoff 2020--2024, residuals and
+score rebuilt under the refit parameters, pooled learner retrained ---
+the top decile carries $+2.47\%$ at per-date DM 6.05 (lags 5--44:
+6.6--5.4), indistinguishable from the frozen-fit frontier, while the
+overall edge compresses to $+0.32\%$ (DM 0.8): annual refits help
+the benchmark everywhere \emph{except} where the score says shape is
+the problem. The frontier measures shape, not staleness.
+
 \subsection{Cross-sectional dependence, family-wise error, and the
 universe rule}
 \label{sec:fwer}
 
-Three inference-level objections deserve the same treatment.
-\emph{Dependence:} all headline tests already collapse the
-cross-section to one number per date before any variance is estimated
-(Section~\ref{sec:frontier}, conventions), so common-date dependence
-enters the test through the date series itself rather than being
-ignored; block-bootstrap procedures (SPA, MCS) resample dates, not
+Three inference-level objections get the same treatment.
+\emph{Dependence:} every headline test collapses the cross-section
+to one number per date before any variance is estimated
+(Section~\ref{sec:frontier}), so common-date dependence enters
+through the date series; bootstrap procedures resample dates, not
 asset-days. \emph{Multiplicity:} the frontier grid spans three
 signals and ten deciles, and per-cell $p$-values ignore the thirty
 hypotheses' joint draw. We therefore report Romano--Wolf step-down
@@ -1948,15 +1957,14 @@ loss level is 0.3460 there against 0.3551 in the table --- rankings, not
 levels, are comparable across the two runs); the 90\% Model Confidence
 Set contains exactly these two. The hybrid is \emph{co-best with CAViaR},
 not uniquely dominant, and still significantly beats everything banks
-actually run. The tie is also asymmetric in what the two entrants can
-do: SAV-CAViaR models one quantile level per fit and produces no ES
---- the FRTB metric --- without a separate ad-hoc stage; it requires
-per-name history, so it cannot price a new listing at all; and in the
-same battery its pooled exception tests reject at machine zero at both
-levels, while the EVT-tailed engine sits at $p=0.02$--$0.07$ pooled
-and passes the per-asset and date-clustered restatements. The accuracy
-tie is between a specialized single-level quantile autoregression and
-one shared model that also carries the rest of the deployment brief.
+actually run. The tie is asymmetric in capability: SAV-CAViaR models one quantile
+level per fit, produces no ES --- the FRTB metric --- without an
+ad-hoc stage, needs per-name history (no new listings), and its
+pooled exception tests reject at machine zero at both levels, while
+the EVT-tailed engine sits at $p=0.02$--$0.07$ pooled and passes the
+aggregate date-clustered restatements. The accuracy tie is between a
+single-level autoregression and one shared model carrying the whole
+deployment brief.
 Restating FHS the textbook way changes nothing: per-name
 train-constant and per-name rolling 500-day causal variants, run on
 the identical panel, lose to the hybrid by DM 5.4 and 5.8 (pinball
@@ -2036,8 +2044,10 @@ is why the benchmark is deliberately lightweight and read as
 appendix-grade); at 2.5\% it again wins (DM 4.2 over
 GARCH-$t$, 6.0 over GAS); the accuracy layer is thus the single
 unified configuration a referee could ask for --- lowest FZ0 at both
-levels \emph{and} a pass on the per-asset and date-clustered
-exception restatements at both levels (Figure~\ref{fig:passrates}),
+levels \emph{and} a pass on the aggregate date-clustered exception
+test at both levels, with per-name diagnostics showing residual
+cross-sectional calibration heterogeneity (81\%/86\% pass rates at
+99\%; Figure~\ref{fig:passrates}),
 with only the hypersensitive pooled 155k-observation Kupiec at 97.5\%
 against it. The frontier concentrates the joint-score
 edge as it does the pinball edge --- the top misspecification decile
@@ -2193,10 +2203,11 @@ negligible over the calm $\sim$90\% of asset-days and concentrated
 ($+2.7\%$ pinball, DM 6.5) in the top misspecification decile and the
 most turbulent volatility regimes (an $\sim$fourfold gap,
 Section~\ref{sec:gate}). A desk should therefore run the robust engine always and read the
-score as a monitor: the nonparametric/residual-hybrid family \emph{ties} the
-parametric benchmark on calm days (no statistically detectable loss)
-and wins in stress, so holding it is cheap and the stress-period edge
-accrues automatically. The
+score as a monitor: on calm days the nonparametric/residual-hybrid
+family is statistically indistinguishable from the parametric
+benchmark (noninferior within the $-0.25\%$ margin where tested)
+and it wins in stress, so holding it is cheap and the stress-period
+edge accrues automatically. The
 one setting in which the score does drive a switch is the
 per-name/standalone model, where nonparametric quantiles underperform on
 calm days; there the score gates, and its short detection latency
@@ -2205,8 +2216,9 @@ back-loaded within a misspecification episode.
 
 \textbf{Regulatory capital.} The
 hybrid engine is an internal-models VaR/ES candidate that tops the
-accuracy table while passing the per-asset and date-clustered
-exception restatements at both levels. Earlier drafts converted the
+accuracy table while passing the aggregate date-clustered exception
+test at both levels (per-name diagnostics show residual
+cross-sectional heterogeneity). Earlier drafts converted the
 predicted-vs-realized ES wedge into a capital-release figure; an
 adversarial audit dissolved that arithmetic. The wedge roughly
 doubles when the three-node tail average is replaced by the exact
@@ -2363,12 +2375,14 @@ a synthetic example dataset (\texttt{toy\_example.py}) that runs the full
 pipeline end-to-end without licensed data. The holdout's frozen
 specification, including its written-in-advance predictions, is the
 header of \texttt{code/job\_wrds\_holdout.py}, line-for-line diffable
-against the design-era pipeline in the same folder. One benchmark
-implementation was corrected during adversarial audit (the
-GJR-skew-$t$ inverse CDF; Table~\ref{tab:frtb} note): the corrected
-code and output ship as \texttt{code/frtb\_bench.py} and
-\texttt{results/frtb\_bench\_v2\_results.json}, and the
-pre-correction artifact is preserved in the repository history. The
+against the design-era pipeline in the same folder. Two corrections from adversarial audit are canonical in the package:
+the GJR-skew-$t$ inverse CDF (history preserved in
+\texttt{code/frtb\_bench.py}) and the exact-tail-integral ES.
+Table~\ref{tab:frtb} is generated by \texttt{code/frtb\_table.py}
+$\to$ \texttt{results/frtb\_table\_results.json}; the ten-day
+figures by \texttt{code/frtb\_stress\_exact.py} $\to$
+\texttt{results/stress\_es\_results.json}; pre-correction artifacts
+are preserved in the repository history, not in the working tree. The
 analyses deferred in earlier drafts and since completed ship with
 their result files, and the remaining open items
 (Section~\ref{sec:limitations}) are tracked in the repository.
