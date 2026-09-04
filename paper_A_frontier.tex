@@ -1145,6 +1145,80 @@ the edge is back-loaded within episodes, so the lag forfeits little.
 
 
 %% ===== THE MISSPECIFICATION FRONTIER =====
+\section{Data and evaluation protocol}\label{sec:protocol}
+
+Equity panels come from CRSP daily files accessed through WRDS. The
+design panel covers 2014--2024 and contains the 200 names with the
+deepest continuous histories among those with at least 1{,}500 daily
+observations; every modeling choice in the paper was made on this
+panel. The confirmatory holdout covers 2000--2013 and was pulled once,
+after the specification was frozen: common shares (share codes 10 and
+11) with at least 3{,}000 observations in the window, ranked by average
+market capitalization, top 200. Returns are in percent and include
+CRSP delisting returns where present; the one delisting event in the
+design panel moves headline results by less than two basis points. The
+cross-asset sweep (43 instruments), the country-index panel (26
+markets), and the single-asset FRTB fits use Bloomberg terminal data.
+Terminal access ended in mid-2026, so those exhibits are frozen at the
+version reported here and all continuing work runs on WRDS alone.
+
+Licensed rows never leave the machines they were pulled to. The public
+repository carries code, configuration, and derived statistics; the
+panels rebuild from the queries above for any licensed subscriber.
+Table~\ref{tab:sampleflow} gives the sample flow.
+
+\begin{table}[t]
+\centering\small
+\begin{threeparttable}
+\caption{Sample flow across evaluation panels.}
+\label{tab:sampleflow}
+\begin{tabular}{lllrrl}
+\toprule
+Panel & Source & Era & Names & Test obs & Role \\
+\midrule
+Design equity panel & CRSP/WRDS & 2014--2024 & 200 & 221{,}600 & frontier map; engine development \\
+Confirmatory holdout & CRSP/WRDS & 2000--2013 & 200 & 280{,}608 & frozen-spec replication \\
+Exception restatement & CRSP/WRDS & 2014--2024 & 140 & $\approx$155{,}000 & per-asset backtesting battery \\
+Cross-asset sweep & Bloomberg & through 2026 & 43 & \tnote{a} & frontier breadth \\
+Country indices & Bloomberg & through 2026 & 26 & \tnote{a} & frontier breadth \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item[a] Frozen exhibits; per-instrument windows vary and are
+documented instrument-by-instrument in the repository.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Splits are chronological within each name. The first 60\% of a name's
+history is the estimation window and the last 40\% is test; the final
+quarter of the estimation window (15\% of the history) is held out as
+the calibration split. A GARCH-$t$ model is fitted once per name on
+the estimation window and its variance recursion is then filtered
+through the full history, so test-period scales depend on test-period
+data only through the recursion itself. The pooled residual quantile
+model is fitted on pooled estimation-window residuals, the GPD tail on
+the same pooled residuals below their empirical 2.5\% point, and the
+conformal shifts on the pooled calibration split. No stage refits
+inside the test window unless a rolling variant is named explicitly.
+
+Loss and test conventions are collected in the reading guide that
+opens Section~\ref{sec:frontier}: mean pinball loss across eleven
+quantile levels for distributional accuracy, the zero-homogeneous FZ
+loss \citep{fissler2016,patton2019} for joint (VaR, ES) pairs,
+per-date Diebold--Mariano statistics with a Newey--West variance for
+loss comparisons, the Model Confidence Set for multi-model fields, and
+Kupiec, Christoffersen, and date-clustered breach tests at the two
+regulatory levels for exception behavior.
+
+``Registered'' has a specific meaning in this paper. A run is
+registered when the full specification --- signals, features,
+hyperparameters, split rule, and test statistics --- is frozen and the
+predictions are written down before the data are pulled. The
+2000--2013 holdout of Section~\ref{sec:frontier} ran under this rule.
+Registered runs that remain open are listed in
+Section~\ref{sec:limitations}.
+
 \section{The misspecification frontier}\label{sec:frontier}
 
 \noindent\textbf{How to read every number in this and later sections.}

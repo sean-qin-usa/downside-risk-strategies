@@ -1,0 +1,73 @@
+{
+  "note": "Full-panel FZ0 (VaR,ES) re-scoring, registered. DM_t>0 means the row model has HIGHER (worse) FZ0 loss than the engine, date-clustered NW(10), one-sided p. GAS = one-factor score-driven (PZC-2019-style) FZ0-estimated per name.",
+  "n_names": 200,
+  "n_test": 221600,
+  "gpd": {
+    "u": -1.8866,
+    "xi": 0.2932,
+    "beta": 0.6412
+  },
+  "conf975": -0.3344,
+  "per_alpha": {
+    "0.01": {
+      "engine_meanFZ0": 2.14924,
+      "engine_breach": 0.0103,
+      "garch_t": {
+        "mean_diff": 0.00648,
+        "DM_t": 4.01,
+        "p_one_sided": 0.0,
+        "meanFZ0": 2.15572,
+        "breach": 0.0103
+      },
+      "fhs": {
+        "mean_diff": 0.02317,
+        "DM_t": 4.73,
+        "p_one_sided": 0.0,
+        "meanFZ0": 2.17241,
+        "breach": 0.0124
+      },
+      "gas_pzc": {
+        "mean_diff": 0.08288,
+        "DM_t": 9.07,
+        "p_one_sided": 0.0,
+        "meanFZ0": 2.23212,
+        "breach": 0.0092
+      },
+      "top_mk63_decile_garch_minus_engine": {
+        "mean_diff": 0.00811,
+        "DM_t": 2.21,
+        "n_dates": 1108
+      }
+    },
+    "0.025": {
+      "engine_meanFZ0": 1.86651,
+      "engine_breach": 0.0166,
+      "garch_t": {
+        "mean_diff": -0.01231,
+        "DM_t": -1.86,
+        "p_one_sided": 0.9683,
+        "meanFZ0": 1.8542,
+        "breach": 0.0271
+      },
+      "fhs": {
+        "mean_diff": -0.00405,
+        "DM_t": -0.47,
+        "p_one_sided": 0.6814,
+        "meanFZ0": 1.86245,
+        "breach": 0.0308
+      },
+      "gas_pzc": {
+        "mean_diff": 0.03274,
+        "DM_t": 6.27,
+        "p_one_sided": 0.0,
+        "meanFZ0": 1.89924,
+        "breach": 0.0255
+      },
+      "top_mk63_decile_garch_minus_engine": {
+        "mean_diff": -0.04365,
+        "DM_t": -6.92,
+        "n_dates": 1108
+      }
+    }
+  }
+}
