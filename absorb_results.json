@@ -1,0 +1,61 @@
+{
+  "note": "Absorption test: does mk63-kernel-reweighted FHS absorb the frontier signal? DM_t>0 in a_vs_b means model a has HIGHER loss (b better). Pinball = 11-tau average.",
+  "n_names": 200,
+  "n_test": 221600,
+  "mean_pinball": {
+    "garch_t": 0.39708,
+    "fhs": 0.39713,
+    "fhs_mk63": 0.4091,
+    "pooled_z": 0.39531
+  },
+  "top_decile_mean_pinball": {
+    "garch_t": 0.44448,
+    "fhs": 0.4438,
+    "fhs_mk63": 0.54052,
+    "pooled_z": 0.43189
+  },
+  "overall": {
+    "fhs_vs_fhs_mk63": {
+      "mean_diff": -0.01198,
+      "DM_t": -11.27,
+      "n_dates": 1108
+    },
+    "fhs_mk63_vs_pooled": {
+      "mean_diff": 0.01379,
+      "DM_t": 12.51,
+      "n_dates": 1108
+    },
+    "fhs_vs_pooled": {
+      "mean_diff": 0.00181,
+      "DM_t": 7.73,
+      "n_dates": 1108
+    },
+    "garch_vs_pooled": {
+      "mean_diff": 0.00176,
+      "DM_t": 7.92,
+      "n_dates": 1108
+    }
+  },
+  "top_mk63_decile": {
+    "fhs_vs_fhs_mk63": {
+      "mean_diff": -0.09672,
+      "DM_t": -11.09,
+      "n_dates": 1108
+    },
+    "fhs_mk63_vs_pooled": {
+      "mean_diff": 0.10863,
+      "DM_t": 12.22,
+      "n_dates": 1108
+    },
+    "fhs_vs_pooled": {
+      "mean_diff": 0.01191,
+      "DM_t": 8.8,
+      "n_dates": 1108
+    },
+    "garch_vs_pooled": {
+      "mean_diff": 0.01259,
+      "DM_t": 9.11,
+      "n_dates": 1108
+    }
+  }
+}
