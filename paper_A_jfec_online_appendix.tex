@@ -75,8 +75,10 @@ the misspecification score equation~(12) of the paper as the model-risk monitor 
 top decile means the parametric fallback's conditional average loss
 in that score region runs $\sim$2--3\% higher. \emph{Annually:} refit filters, retrain the shape model,
 re-estimate tail and shifts, all on trailing data. \emph{New listing:}
-evaluate (ii)--(iv) from characteristics and first ticks; no history
-required. Total marginal cost per name per day: one filter update and
+run the separate characteristics-only amortized forecaster until an
+own-history sample sufficient to initialize the per-name scale filter
+accrues; then attach this residual-hybrid pipeline. Total marginal
+cost per name per day: one filter update and
 one model evaluation.}}
 
 \section{Supplementary figures}
@@ -118,7 +120,8 @@ look-ahead artifact would produce.}
 \caption{Exception tests restated per asset (140 CRSP names, 99\% VaR):
 share of names whose individual Kupiec test is consistent with nominal.
 HS over-covers (conservative); EWMA fails; the EVT-tailed engine matches
-the parametric benchmarks while beating them on loss and ES calibration
+the parametric benchmarks while beating them on loss and the joint
+FZ0 score
 (Table~6 of the paper). Date-clustered tests in the table notes. The
 GJR bar predates the skew-$t$ correction of Table~6's note; the
 corrected pooled battery row passes both 99\% tests.}
@@ -339,7 +342,13 @@ second-order sin. (ii)~The sample kurtosis of a $t_\nu$ law has
 infinite estimator variance for $\nu \le 8$, so a moment-based
 thermometer is at its noisiest just when tails are fat, and
 sixty-three observations cannot reliably rank regimes that differ only
-in a static $\nu$. For the empirical sections this means the real-data top-decile edge of Section~5 of the paper
+in a static $\nu$. In the empirical sorts this noise works
+\emph{against} the frontier, not for it: misclassification across
+bucket boundaries attenuates measured top-bucket edges, so the
+reported concentration is if anything understated; the jump and
+asymmetry signals, whose top deciles independently survive familywise
+control, corroborate the ordering, and a tail-index (Hill-type)
+variant of the score is an obvious robustness extension. For the empirical sections this means the real-data top-decile edge of Section~5 of the paper
 cannot be an artifact of stationary fat tails being averaged over ---
 that configuration is the one the simulation shows a fixed shape
 handles --- but must reflect \emph{local} shape breaks a single fitted
