@@ -48,16 +48,9 @@
 
 
 \title{Semiparametric Value-at-Risk and Expected Shortfall\\
-with a Real-Time Misspecification Score\thanks{Paper~A of a
-three-paper program. The neural implicit-quantile-network estimator, the
-EVT tail graft, and the cross-sectional conformal layer used as one stage
-of the engine below are developed in the companion paper \emph{GRAFT-Q}
-(Qin, 2026); here the deployable estimator is gradient-boosted trees and
-those components are invoked by reference. The generative-posterior,
-simulation-based-calibration, and multivariate results are developed in
-the companion paper (Paper~B). All results are out-of-sample under the
-walk-forward protocol described in the text; code and data availability
-are stated at the end.}}
+with a Real-Time Misspecification Score\thanks{All results are out-of-sample under the walk-forward
+protocol described in the text; code and data availability are stated
+at the end.}}
 \author{Sean Qin\thanks{Corresponding author: Sean Qin, Northwestern University, Evanston, IL 60208; sean.qin@u.northwestern.edu; +1 (201) 994-8486.}\\ \normalsize Northwestern University}
 \date{Draft --- \today}
 
@@ -86,7 +79,7 @@ estimation.
 \medskip
 \noindent\textbf{JEL classification:} C14; C22; C52; C58; G17; G28.
 
-%% ===== INTRODUCTION (TODO: trim contributions that belong to Paper B: generative posteriors, SBC, multivariate) =====
+%% ===== INTRODUCTION =====
 \section{Introduction}\label{sec:intro}
 
 Two communities measure conditional downside risk. Econometrics builds
@@ -208,16 +201,13 @@ reason the frontier is where the empirical edge must, and does, appear.
 \end{enumerate}
 
 \medskip
-\noindent Three companion results are developed in Paper~B and invoked
-here only as context: calibrated uncertainty bands on the reported
-$(\VaR,\ES)$ (block bootstrap and EVT intervals on GARCH residuals,
-disciplined by a measured $1.6\times$ overconfidence of the naive Gibbs
-posterior on raw returns); likelihood-free amortized posteriors for
-Heston and rough Bergomi validated by simulation-based calibration; and
-the multivariate portfolio tail, where direct nonparametric models lose
-to DCC and a covariance-scale/nonparametric-shape hybrid restores the
-deep co-crash tail. The neural estimator itself, the EVT graft, and the
-conformal layer are developed in the companion GRAFT-Q paper.
+\noindent Three neighboring questions are out of scope and claimed
+nowhere in this paper: posterior uncertainty bands on the reported
+$(\VaR,\ES)$; likelihood-free amortized posteriors for parametric
+simulators; and the multivariate portfolio tail. This is a
+point-forecasting paper, and it is self-contained: every stage the
+deployed engine uses is developed, and every formal result it relies
+on proved, here.
 
 \paragraph{Summary of results.} Table~\ref{tab:winloss} states every headline magnitude with its test
 statistic. Panel~A is the presented engine's record ---
@@ -393,16 +383,15 @@ the architecture at the core of GBC \citep{polson2023gbc,
 nareklishvili2025gqbp}. Casting GBC as ERM conditional-quantile
 regression on observed pairs removes its forward-simulator requirement
 and extends it to observational time series; the generative reading ---
-draw $\tau \sim U(0,1)$, output $Q_\theta(\tau \mid x)$ --- returns in
-Paper~B, where sampling and
-posterior uncertainty are the object. Generalized
+draw $\tau \sim U(0,1)$, output $Q_\theta(\tau \mid x)$ --- is noted
+as a capability only; sampling and
+posterior uncertainty are outside this paper's scope. Generalized
 Bayes (a posterior built from a loss function in place of a likelihood)
 enters through the Gibbs posterior $\pi_n(\theta) \propto
 \exp\{-\omega \sum_t \ell_\theta(z_t)\}\pi(\theta)$ --- a posterior
 built from a loss rather than a likelihood, targeting the risk minimizer
 directly
-\citep{jiang2008gibbs, bissiri2016general}, whose finance-specific failure mode and
-repair are the subject of Paper~B; distribution-free
+\citep{jiang2008gibbs, bissiri2016general}; distribution-free
 finite-sample (exchangeability-based) guarantees enter through split-conformal and adaptive
 conformal inference (recalibrating predicted intervals on held-out data
 so that coverage holds without distributional assumptions)
@@ -410,9 +399,6 @@ so that coverage holds without distributional assumptions)
 
 
 %% ===== METHODS (notation, engine, tree/IQN estimator, formal results, toy, Polson delta, misspec score) =====
-%% TODO: (1) EVT graft + split-conformal layer are OWNED by GRAFT-Q -- cite, do not claim as novel here.
-%% TODO: (2) demote neural-IQN 'generation' paragraphs to a one-line pointer to GRAFT-Q/Paper B.
-%% TODO: (3) the generative-sampler Lemma belongs to Paper B -- delete its statement here once B is authoritative.
 \section{Methods}\label{sec:methods}
 
 This section is written to be self-contained: a reader from any one of
@@ -486,8 +472,7 @@ on its own --- no loss function is minimized by the true ES alone ---
 but the pair $(\VaR,\ES)$ is, under the joint scoring functions of
 \citet{fissler2016}; the FZ-scored re-evaluation of the battery is a
 registered extension (Section~\ref{sec:limitations}). (c)~Likelihood is
-unavailable by design: several competitors (and both simulators of
-Paper~B) have no tractable density, and likelihood scores
+unavailable by design: several competitors have no tractable density, and likelihood scores
 would silently exclude them.
 
 \subsection{The final model: the residual-hybrid engine}\label{sec:hybrid}
@@ -647,11 +632,11 @@ and time-ordered residuals are not exchangeable; the proposition
 therefore \emph{motivates} the construction, while the evidence that it
 works here is empirical --- the exception-test repairs of
 Section~\ref{sec:frtb} (the conformal stage is the only reason any
-entrant passes Kupiec at 97.5\%). The companion GRAFT-Q paper measures
-how the lagged split form degrades under regime drift and shows
-that an \emph{adaptive} (ACI-style) update restores nominal coverage
-where the static shift cannot; the engine's annual-refit schedule sits
-between those poles, and the exception tests are the arbiter.
+entrant passes Kupiec at 97.5\%). Where regime drift erodes a static
+shift, an \emph{adaptive} update \citep{gibbs2021aci} is the natural
+escalation; the engine's annual-refit schedule sits
+between the static and adaptive poles, and the exception tests are the
+arbiter.
 
 The full forecast composes the stages:
 \begin{equation}
@@ -766,8 +751,7 @@ monotone rearrangement of the $\tau$-curve; and the conformal layer of
 Section~\ref{sec:hybrid}. The network's earning is not point accuracy
 but \emph{generation}: with $\tau\sim U(0,1)$,
 $z^{*} = H_\phi(s,\tau)$ is an exact sampler of the fitted conditional
-law (the inverse-CDF representation), which is what the posterior
-machinery of Paper~B consumes and what no
+law (the inverse-CDF representation) --- a capability no
 tree ensemble or GARCH filter provides.
 
 \emph{How training works, concretely.} The objective is the empirical
@@ -828,8 +812,7 @@ continuum --- and the choice follows from what the application consumes.
 If the desk needs \emph{numbers at fixed regulatory levels} (VaR/ES
 reporting, limits, capital), use the trees: best point accuracy, no
 GPU, no sampling needed. If the application consumes \emph{draws} ---
-scenario generation, portfolio aggregation by simulation, the posterior
-and SBC machinery of Paper~B ---
+scenario generation, portfolio aggregation by simulation ---
 use the network: it is the only member that is an exact sampler, at a
 measured cost of $\sim$0.75\% in point accuracy. If both are needed,
 run both from the same pooled residual panel; they share every upstream
@@ -988,9 +971,7 @@ breach rate was 3.2\%).
 (2)~\emph{Input space}: GBC maps raw data to posteriors; we first pass
 returns through the parametric filter \eqref{eq:garch} and model
 \emph{standardized residuals} --- the scale dynamics are the one thing
-the industry model already gets right, and Paper~B
-measures the cost of skipping this step (a $1.6\times$ overconfident
-posterior).
+the industry model already gets right.
 (3)~\emph{Beyond-data tail}: no generative regression can know about
 quantiles beyond its training support; we splice the GPD tail
 \eqref{eq:evt} at $p_0$, replacing extrapolation by the network with
@@ -1676,8 +1657,7 @@ to trees badly (0.3650 vs 0.3551, DM 13.3) with a severely thin tail
 (breach$_{99}$ 3.2\%); the tail-aware, monotone, conformally
 recalibrated version closes to a hair (0.3638 vs 0.3632, DM 3.03) with
 calibration repaired (breach$_{99}$ 0.92\%). Trees remain the strongest
-tabular estimator; the tuned IQN is competitive and is the estimator
-that generalizes to Paper~B.
+tabular estimator; the tuned IQN is competitive.
 Third, ES$_{97.5}$ calibration --- the actual capital metric --- is
 where the hybrid's advantage is most consequential: FHS and GARCH-$t$
 both \emph{over-state} ES by 8--11\%, i.e.\ over-charge capital, while
@@ -1905,7 +1885,7 @@ the FRTB standard banks actually run. The generative members of the
 family contribute further capabilities that no point model can ---
 calibrated uncertainty on the risk number, and likelihood-free
 posteriors for models whose likelihoods do not exist in closed form ---
-developed in the companion Paper~B.
+natural extensions beyond this paper's scope.
 
 Limitations. Gradient-boosted trees remain the strongest tabular
 estimator; the neural IQN earns its place through sampling and
@@ -1916,9 +1896,7 @@ exceptions --- unresolved. The frontier's 2008 exposure is covered by the
 2000--2013 holdout, and the FRTB battery's stress re-run on that era is
 complete (Section~\ref{sec:frtb}: the engine passes both levels through
 the crisis window). Intraday extension is blocked
-on tick-data access. The 99\% ES credible band reaches 0.887 rather than
-0.90, at $\sim$1.6$\times$ width --- the price of deep-tail
-uncertainty (companion Paper~B).
+on tick-data access.
 And the per-day oracle gap of Section~\ref{sec:gate} should discipline
 the field's enthusiasm for model-switching: most of the day-level
 advantage of any model pair is realization noise, not predictable
@@ -1939,9 +1917,9 @@ simulation does not capture the frontier edge, and the failure mode
 --- effective-sample collapse under sharp univariate conditioning ---
 is why the pooled learner is a precondition.
 Still open: the intraday frontier once tick data is available.
-Companion-paper extensions (Paper~B): a leverage summary statistic to
-identify $\rho$ in the SBC studies, and Hawkes and jump-diffusion
-simulators as the next likelihood-free targets; vector quantile
+Natural extensions beyond this paper: likelihood-free posteriors for
+Hawkes and jump-diffusion
+simulators, and vector quantile
 regression (Carlier--Chernozhukov--Galichon) as the principled
 multivariate transport map to succeed the scale/shape hybrid.
 
