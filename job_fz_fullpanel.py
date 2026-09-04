@@ -61,7 +61,7 @@ for pn in names:
     trn=dd[dd['idx']<cp]; cal=dd[(dd['idx']>=cp)&(dd['idx']<sp)]; tst=dd[dd['idx']>=sp]
     if len(tst)<60 or len(cal)<60: continue
     TRz.append(trn[ZX+['z']]); CALz.append(cal[ZX+['z']])
-    keep=['y','sig','date','mu','mk63']+[c for c in df.columns if c.startswith(('fhs_','g_'))]
+    keep=['y','sig','date','mu','mk63']+ZX+[c for c in df.columns if c.startswith(('fhs_','g_'))]
     t2=tst[keep].copy(); t2['permno']=pn; rows.append(t2)
     gasrows.append((pn,y,dts,sp))
 lg("panels %d %.0fs"%(len(rows),time.time()-t0))
