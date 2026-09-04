@@ -1,0 +1,69 @@
+=== remote === 
+origin	https://github.com/sean-qin-usa/downside-risk-strategies.git (fetch)
+origin	https://github.com/sean-qin-usa/downside-risk-strategies.git (push)
+=== status (first 40) === 
+D  PAPER_DIRECTION.md
+ M RESEARCH_IDEAS_BACKLOG.md
+ M ai2jobs/_hb.txt
+ M autojobs/_heartbeat.txt
+ D autojobs/zz_git_fix.bat
+D  gibbs_var_es_posterior.py
+D  gibbs_var_es_posterior_results.json
+D  gibbs_var_es_v2.py
+D  gibbs_var_es_v2_results.json
+ M git_fix_done.txt
+D  joint_sampler.py
+D  joint_sampler_results.json
+D  joint_sampler_v2.py
+D  joint_sampler_v2_results.json
+D  roughvol_sbc.py
+D  roughvol_sbc_results.json
+?? .log
+?? EXTERNAL_REVIEW_2026-08.md
+?? GRAFTQ_V2_UPDATES.tex
+?? GRAFTQ_main_v2_2026-08-15.pdf
+?? HALLUCINATION_SWEEP_2026-09-03.md
+?? INNOVATIONS_AND_FINDINGS_ASSESSMENT.md
+?? JIANG_MEMO_2026-07-20.md
+?? PAPER_DIRECTION.md
+?? PAPER_PORTFOLIO.md
+?? PAPER_SPLIT_PLAN.md
+?? PROOF_VERIFICATION_REPORT.md
+?? PROOF_VERIFICATION_REPORT.pdf
+?? PUBLICATION_READINESS_ASSESSMENT.md
+?? PUBLICATION_READINESS_ASSESSMENT.pdf
+?? PULL_SPEC_IVY96.md
+?? PaperA_frontier_2026-08-15.pdf
+?? PaperA_frontier_2026-08-15b.pdf
+?? PaperA_frontier_2026-09-03_postaudit.pdf
+?? PaperA_frontier_2026-09-03c_winsled.pdf
+?? PaperA_frontier_2026-09-03d.pdf
+?? PaperB_likelihoodfree_2026-08-15.pdf
+?? START_RUNNER_CLICK_ME.bat
+?? STRATEGY_PNL_VOL_CHARTS.html
+?? STRATEGY_TABLES_DISPLAY.html
+155
+=== log === 
+5b950e8 GBC-core studies + paper direction + audited v2 refinements
+240f2bc GBC research 2026-07-20: misspec frontier + FRTB battery (CAViaR/EVT/Kupiec/Christoffersen/DM/MCS) + Heston SBC + Bloomberg cross-asset (FX/Korea/countries/universal) with significance + thesis-alignment memo
+ed368c0 GBC research snapshot: VRP strategies, IQN/amortization, regime detector, reusable tooling
+=== gitignore === 
+# DATA — never commit: CRSP/WRDS + Bloomberg licenses prohibit redistribution (and files are large).
+# Safe to commit: *.py scripts, *.md docs, aggregate *_results.json/*_sig.json (summary stats only, no raw data).
+*.csv
+*.csv.gz
+*.parquet
+*.pkl
+*.gz
+*.h5
+autojobs/done/
+__pycache__/
+*.pyc
+mh_quantiles*.csv
+samerows_merged.csv
+# large console/log dumps (raw, noisy)
+*_console.txt
+*_log.txt
+*.png
+=== gh auth/visibility === 
+DONE 

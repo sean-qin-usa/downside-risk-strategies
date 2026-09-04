@@ -1,0 +1,24 @@
+{
+  "asof": "2026-07-21",
+  "book": "xasset",
+  "chain_source": "yfinance delayed (LIVE)",
+  "sleeves": [
+    "QQQ",
+    "TLT",
+    "GLD",
+    "USO",
+    "UNG",
+    "FXE",
+    "HYG"
+  ],
+  "n_selected": 6,
+  "size_mult": 1.0,
+  "size_reason": "no prior record -> 1.0x",
+  "delta_target": -0.12,
+  "dte_window": [
+    20,
+    40
+  ],
+  "rv_window": 21,
+  "weighting": "inverse trailing RV21"
+}

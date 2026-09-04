@@ -1,0 +1,47 @@
+{
+  "note": "Gibbs loss-in-exponent ablation. Posterior p(q)~exp(-omega*sum loss(z,q)), omega calibrated to block-bootstrap SD. truth=full-sample residual alpha-quantile; target coverage 0.90. pinball->alpha-quantile (correct VaR); expectile->alpha-expectile (WRONG functional, expect bias + miscoverage); qhuber=smooth pinball surrogate. In-sandbox CRSP subset.",
+  "n_names": 20,
+  "target": 0.9,
+  "results": {
+    "alpha_0.025": {
+      "pinball": {
+        "coverage": 0.95,
+        "width": 0.341,
+        "mean_bias": 0.0056,
+        "n": 20
+      },
+      "expectile": {
+        "coverage": 0.1,
+        "width": 0.345,
+        "mean_bias": 0.4328,
+        "n": 20
+      },
+      "qhuber": {
+        "coverage": 0.3,
+        "width": 0.343,
+        "mean_bias": 0.214,
+        "n": 20
+      }
+    },
+    "alpha_0.01": {
+      "pinball": {
+        "coverage": 0.9,
+        "width": 0.786,
+        "mean_bias": -0.0823,
+        "n": 20
+      },
+      "expectile": {
+        "coverage": 0.4,
+        "width": 0.742,
+        "mean_bias": 0.5049,
+        "n": 20
+      },
+      "qhuber": {
+        "coverage": 0.75,
+        "width": 0.787,
+        "mean_bias": 0.1453,
+        "n": 20
+      }
+    }
+  }
+}

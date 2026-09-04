@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GBC Strategies — PnL & Volatility over time</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+ body{font-family:Segoe UI,Arial,sans-serif;margin:24px auto;max-width:1150px;color:#1a1a1a}
+ h1{font-size:21px} h2{font-size:16px;margin:30px 0 4px;border-bottom:2px solid #ddd;padding-bottom:3px}
+ .row{display:flex;gap:18px;flex-wrap:wrap} .chartbox{flex:1;min-width:480px;height:300px;position:relative}
+ .note{font-size:12.5px;color:#555;background:#f7f7f7;padding:7px 11px;border-left:3px solid #bbb;margin:6px 0}
+</style>
+</head>
+<body>
+<h1>PnL and volatility side by side, per strategy (backtest, net of costs)</h1>
+<div class="note">Left charts: cumulative growth of $1. Right charts: rolling 12-month annualized volatility. Trade count per period is constant by design (monthly single-name ≈ 10–11 tickets/mo; cross-asset 6–8/mo), so volatility — not trade count — is the informative series. 2021–25 flattered all short-vol; judge on 2016–20.</div>
+
+<h2>1 · Monthly single-name VRP book (top-10% VRP, de-risk 0.5×) — mid vs bid execution</h2>
+<div class="row"><div class="chartbox"><canvas id="c1a"></canvas></div><div class="chartbox"><canvas id="c1b"></canvas></div></div>
+
+<h2>2 · Cross-asset ETF book (7 sleeves, 10%-vol target = ~6–7× levered)</h2>
+<div class="row"><div class="chartbox"><canvas id="c2a"></canvas></div><div class="chartbox"><canvas id="c2b"></canvas></div></div>
+<div class="note">Unlevered version: divide returns by the leverage multiple — same shape, same Sharpe, vol ~1.5% instead of 10% (see STRATEGY_TABLES_DISPLAY.html for the with/without-leverage table). Feb–Mar 2020 and late-2018 are the co-crash months where the 0.05 average correlation temporarily fails — visible as the vol spikes.</div>
+
+<h2>3 · Index variance leg & weekly single-name book</h2>
+<div class="note">The index P−Q leg's series (1995–2026) is in per-unit-variance-notional units, and the weekly book's monthly series lives in the GBC_data results parquets — both need a processing pass to convert to %-on-capital; charts to be added on the next sandbox session. The static dashboards pq_results_dashboard.png and pq_live_equity.png in this folder cover the index leg meanwhile.</div>
+
+<script>
+const YM=["2016-01","2016-02","2016-03","2016-04","2016-05","2016-06","2016-07","2016-08","2016-09","2016-10","2016-11","2016-12","2017-01","2017-02","2017-03","2017-04","2017-05","2017-06","2017-07","2017-08","2017-09","2017-10","2017-11","2017-12","2018-01","2018-02","2018-03","2018-04","2018-05","2018-06","2018-07","2018-08","2018-09","2018-10","2018-11","2018-12","2019-01","2019-02","2019-03","2019-04","2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08"];
+const MID=[0.0001,0.0339,0.0395,0.0174,0.0138,0.0236,0.0293,-0.0100,0.0299,0.0224,0.0213,-0.0086,0.0348,0.0130,0.0106,0.0184,0.0121,0.0077,0.0142,-0.0377,0.0165,0.0081,0.0113,0.0133,0.0153,0.0117,0.0150,0.0385,0.0105,0.0180,0.0203,0.0088,0.0172,-0.0394,-0.0007,0.0239,0.0319,0.0091,0.0124,0.0196,-0.0207,0.0375,0.0280,0.0114,-0.0152,0.0383,0.0247,0.0174,0.0220,-0.1108,-0.1003,0.0688,0.0610,0.0750,0.0550,0.0228,0.0454,0.0439,0.0683,0.0292,0.0266,0.0463,-0.0070,0.0186,0.0146,0.0175,0.0038,0.0166,0.0293,0.0033,-0.0505,0.0024,0.0222,-0.0362,0.0216,0.0022,-0.0434,0.0126,0.0555,0.0318,0.0100,0.0341,0.0225,-0.0035,0.0679,0.0185,0.0022,0.0212,0.0308,0.0230,0.0263,-0.0011,0.0011,-0.0019,0.0282,0.0210,0.0188,0.0096,0.0143,0.0313,0.0145,0.0597,0.0618,0.0753,0.0229,0.0478,0.0210,0.0290,0.0326,0.0202,0.0395,0.0371,0.0263,0.0139,0.0280,0.0224];
+const BID=[-0.0176,0.0147,0.0297,0.0054,0.0046,0.0064,0.0143,-0.0215,0.0066,0.0017,-0.0030,-0.0110,0.0136,-0.0062,0.0049,0.0058,0.0086,0.0059,0.0044,-0.0433,0.0121,0.0059,0.0081,0.0091,0.0108,-0.0050,0.0050,0.0178,0.0047,0.0151,0.0075,0.0061,0.0101,-0.0453,-0.0043,0.0032,0.0290,0.0030,0.0089,0.0105,-0.0289,0.0274,0.0221,-0.0173,-0.0186,0.0266,0.0183,0.0152,0.0185,-0.1163,-0.1120,0.0250,0.0334,0.0379,0.0309,0.0160,0.0194,0.0312,0.0562,0.0188,0.0202,0.0318,-0.0196,0.0064,0.0075,0.0056,-0.0094,0.0101,0.0142,-0.0058,-0.0531,-0.0051,-0.0112,-0.0394,0.0191,-0.0048,-0.0469,0.0045,0.0484,0.0295,0.0068,0.0221,0.0192,-0.0067,0.0632,0.0164,-0.0159,0.0174,0.0282,0.0203,0.0243,-0.0054,-0.0051,-0.0062,0.0252,0.0182,0.0027,0.0055,0.0061,0.0105,0.0034,0.0012,0.0059,0.0236,0.0020,-0.0011,0.0109,0.0095,0.0114,-0.0110,0.0005,0.0022,0.0097,0.0020,0.0136,0.0161];
+const XEQ=[1.0241,1.0609,1.1024,1.1361,1.1353,1.1702,1.2061,1.2404,1.2736,1.3014,1.1630,1.2060,1.2452,1.2657,1.2965,1.3333,1.3655,1.3763,1.4131,1.4434,1.4750,1.5071,1.5427,1.5538,1.5550,1.5964,1.6432,1.6661,1.6819,1.7120,1.7591,1.7969,1.8384,1.7637,1.7887,1.6872,1.7516,1.7909,1.8283,1.8690,1.9037,1.9654,2.0153,2.0704,2.1305,2.1993,2.2141,2.2637,2.2759,2.1001,1.9981,2.1214,2.2466,2.3478,2.4414,2.5436,2.6350,2.7682,2.8822,2.9907,3.1208,3.1550,3.2914,3.3868,3.5121,3.4395,3.5334,3.6465,3.7079,3.8333,3.7690,3.9441,3.8643,3.9066,3.9751,3.6867,3.8826,3.7841,3.9827,4.1587,4.2670,4.4758,4.6859,4.7216,4.8156,4.6389,4.7886,4.9942,5.1624,5.3209,5.4146,5.4658,5.3115,5.4945,5.4055,5.5684,5.7319,5.8125,5.8895,6.1089,6.2599,6.4446,6.4501,6.6874,6.9302,6.3852,6.6488,6.6829,6.9213,7.2803,7.4732,7.6656,7.9858,8.2719,8.5607,8.8419];
+
+const cum=r=>{let e=1;return r.map(x=>e*=(1+x))};
+const rets=eq=>eq.map((v,i)=>i? v/eq[i-1]-1 : v-1);
+function rollvol(r,w=12){const out=[];for(let i=0;i<r.length;i++){if(i<w-1){out.push(null);continue}
+ const s=r.slice(i-w+1,i+1),m=s.reduce((a,b)=>a+b,0)/w;
+ out.push(Math.sqrt(s.reduce((a,b)=>a+(b-m)**2,0)/(w-1))*Math.sqrt(12)*100)}return out}
+const opts=(title,ylab,pct)=>({responsive:true,maintainAspectRatio:false,
+ plugins:{title:{display:true,text:title},legend:{position:"bottom"}},
+ scales:{x:{ticks:{maxTicksLimit:10}},y:{title:{display:true,text:ylab}}}});
+function line(id,title,ylab,datasets){new Chart(document.getElementById(id),
+ {type:"line",data:{labels:YM,datasets:datasets.map(d=>({...d,pointRadius:0,borderWidth:2,tension:.1}))},options:opts(title,ylab)})}
+
+line("c1a","Cumulative PnL — growth of $1","$",
+ [{label:"mid execution",data:cum(MID),borderColor:"#1a6fb5"},
+  {label:"bid (worst-case cost)",data:cum(BID),borderColor:"#c2622a"}]);
+line("c1b","Rolling 12m annualized volatility","% / yr",
+ [{label:"mid",data:rollvol(MID),borderColor:"#1a6fb5"},
+  {label:"bid",data:rollvol(BID),borderColor:"#c2622a"}]);
+const xr=rets(XEQ);
+line("c2a","Cumulative PnL — growth of $1 (levered, 10% vol target)","$",
+ [{label:"combined 7-sleeve book",data:XEQ.map(x=>x),borderColor:"#2a7a3d"}]);
+line("c2b","Rolling 12m annualized volatility","% / yr",
+ [{label:"combined book",data:rollvol(xr),borderColor:"#2a7a3d"}]);
+</script>
+</body>
+</html>
