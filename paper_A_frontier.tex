@@ -96,7 +96,7 @@ instruments, and replicates on an untouched 2000--2013 holdout run
 under registered predictions with the specification frozen (top decile
 $+0.9\%$, DM 2.2; all other deciles indistinguishable from zero). Where the score is quiet the engine ties the parametric
 benchmark, so the deployment rule is to run the engine
-everywhere and read the score as a risk dial.
+everywhere and use the score as a model-risk monitor.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall; FRTB;
@@ -234,7 +234,7 @@ to DCC and a covariance-scale/nonparametric-shape hybrid restores the
 deep co-crash tail. The neural estimator itself, the EVT graft, and the
 conformal layer are developed in the companion GRAFT-Q paper.
 
-\paragraph{The ledger.} Table~\ref{tab:winloss} states every headline magnitude with its test
+\paragraph{Summary of results.} Table~\ref{tab:winloss} states every headline magnitude with its test
 statistic. Panel~A is the presented engine's record ---
 its worst cell anywhere in the battery is a \emph{tie}. Panel~B is not
 the engine's record at all: it collects the boundary evidence ---
@@ -245,9 +245,9 @@ flexible-shape edge lives.
 \begin{table}[t]
 \centering\small
 \begin{threeparttable}
-\caption{The paper's ledger. Edges are percentage pinball reductions
+\caption{Summary of results and scope conditions. Edges are percentage pinball reductions
 unless noted; DM statistics are per-date (Section~\ref{sec:frontier}
-reading guide), one-sided. Panel A: the deployed amortized
+conventions note), one-sided. Panel A: the deployed amortized
 residual-hybrid engine (worst case anywhere: a tie). Panel B: boundary
 evidence from configurations not deployed, which motivates the design.}
 \label{tab:winloss}
@@ -860,7 +860,7 @@ $z^{(m)} = H_\phi(s_t,\tau^{(m)})$.
 
 \begin{table}[t]
 \centering\small
-\caption{Which model when: the paper's results as one decision object.
+\caption{Model selection by task and regime.
 Each row is established in the section cited.}
 \label{tab:decision}
 \begin{tabular}{p{0.44\textwidth}p{0.30\textwidth}l}
@@ -1216,7 +1216,7 @@ the same pooled residuals below their empirical 2.5\% point, and the
 conformal shifts on the pooled calibration split. No stage refits
 inside the test window unless a rolling variant is named explicitly.
 
-Loss and test conventions are collected in the reading guide that
+Loss and test conventions are collected in the conventions note that
 opens Section~\ref{sec:frontier}: mean pinball loss across eleven
 quantile levels for distributional accuracy, the zero-homogeneous FZ
 loss \citep{fissler2016,patton2019} for joint (VaR, ES) pairs,
@@ -1388,7 +1388,7 @@ stressed days. The amortization of Section~\ref{sec:gbcmethod} is a
 precondition for the frontier result; a single name's history cannot
 support sharp state-conditioning on its own.
 
-\paragraph{Robustness of the dial.} Table~\ref{tab:doublesort} double-sorts the edge on the score and on
+\paragraph{Robustness of the score.} Table~\ref{tab:doublesort} double-sorts the edge on the score and on
 trailing volatility. Sorting
 test asset-days independently into quintiles of mk$_{63}$ and of
 trailing volatility (rv$_{63}$): high volatility without a shape break
@@ -1401,11 +1401,11 @@ superior-predictive-ability test \citep{hansen2005spa} on the per-date
 loss panel against the full desk field (GARCH-$t$, FHS, EWMA, HS)
 returns $T^{\mathrm{SPA}} = 0$, consistent $p = 1.00$: no rival's
 advantage is even positive, and each is individually worse with
-$t \geq 5.8$. Third, the dial needs no recalibration to stay useful:
+$t \geq 5.8$. Third, the score needs no recalibration to stay useful:
 holding the design-era top-decile threshold fixed, the top-decile edge
 is positive in every test year (between $+1.7\%$ and $+3.4\%$,
 2020--2024), even though the cross-sectional 90th percentile of
-mk$_{63}$ itself drifts upward in 2023--24. Fourth, the dial is a slow
+mk$_{63}$ itself drifts upward in 2023--24. Fourth, the score is a slow
 state, so monitoring it costs little: a median name enters the top
 decile less than once a year (0.68 entries) and a median episode lasts
 24 trading days.
@@ -1488,7 +1488,7 @@ weakness of the story but its point: the relation is a threshold
 nonlinearity, not a linear trend, and the top-decile Diebold--Mariano
 statistics are the correct summary.
 
-\subsection{The frontier as geography: four universes}
+\subsection{The frontier across universes}
 
 \begin{table}[t]
 \centering
@@ -1562,7 +1562,7 @@ illustrating necessity-not-sufficiency.
 \draw[dashed, gray] (axis cs:3,0) -- (axis cs:8000,0);
 \end{axis}
 \end{tikzpicture}
-\caption{The frontier as geography: nonparametric edge vs post-GARCH
+\caption{The frontier across universes: nonparametric edge vs post-GARCH
 residual kurtosis, tier means and single assets with study-reported
 kurtosis only (country universe corr 0.53; cross-asset corr 0.43).
 The hyperinflation-FX tier (kurtosis $\sim$2000--3300) carries the only
@@ -1927,7 +1927,7 @@ per-name estimation; (iii)~apply the frozen GPD tail below $p_0$ and
 the conformal shifts $c_\tau$; (iv)~report
 $\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
 at the desk's levels, with ES$_{97.5}$ from the tail average; (v)~read
-the misspecification score \eqref{eq:score} as the model-risk dial ---
+the misspecification score \eqref{eq:score} as the model-risk monitor ---
 top decile means the parametric fallback is currently $\sim$2--3\% wrong
 on that name. \emph{Annually:} refit filters, retrain the shape model,
 re-estimate tail and shifts, all on trailing data. \emph{New listing:}
@@ -1948,9 +1948,9 @@ negligible over the calm $\sim$90\% of asset-days and concentrated
 ($+2.7\%$ pinball, DM 6.5) in the top misspecification decile and the
 most turbulent volatility regimes (an $\sim$fourfold gap,
 Section~\ref{sec:gate}). A desk should therefore run the robust engine always and read the
-score as a dial: the nonparametric/residual-hybrid family \emph{ties} the
+score as a monitor: the nonparametric/residual-hybrid family \emph{ties} the
 parametric benchmark on calm days and wins in stress, so a desk pays
-nothing to hold it and harvests the stress-period edge automatically. The
+nothing to hold it and collects the stress-period edge automatically. The
 one setting in which the score does drive a switch is the
 per-name/standalone model, where nonparametric quantiles underperform on
 calm days; there the score gates, and its short detection latency
@@ -1985,7 +1985,7 @@ liquidity horizon, and it carries a caveat. The $26\%$ over-statement
 is measured on 2014--2024, and the registered
 2000--2013 rerun (Section~\ref{sec:frtb}) finds $\sqrt{h}$ almost
 exactly calibrated in that era --- the ten-day release is a
-regime-dependent harvest, banked in eras like the last decade and
+regime-dependent gain, realized in eras like the last decade and
 absent in a 2008-type era. The one-day rows are the era-robust
 component. The same fractions carry a
 certainty-equivalent reading: a desk sizing positions against a
@@ -1999,7 +1999,7 @@ stress-period calibration and non-modellable add-ons fixed --- and not
 a capital plan.
 
 \textbf{A misspecification monitor.} The frontier score is a live,
-per-asset dial: when a desk's asset enters the top decile of
+per-asset monitor: when a desk's asset enters the top decile of
 residual-shape extremity, its standard VaR model is currently,
 locally wrong by $\sim$2--3\% of pinball with high confidence. This is
 deployable as model-risk surveillance because it is real-time and
@@ -2055,7 +2055,7 @@ assumption holds, which is most assets on most days. The paper's answer
 to ``when and why beat it'' is a measurable frontier: local violation of
 the residual-shape assumption, at whose top decile the distribution-free
 family wins decisively, significantly, and portably across four
-universes. The engine that harvests this --- parametric scale,
+universes. The engine that captures this --- parametric scale,
 nonparametric shape, EVT tail, conformal finish --- meets and exceeds
 the FRTB standard banks actually run. The generative members of the
 family contribute further capabilities that no point model can ---
