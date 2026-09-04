@@ -12,6 +12,8 @@
 \usepackage[round]{natbib}
 \usepackage[hidelinks]{hyperref}
 \usepackage{caption}
+\usepackage{endnotes}
+\usepackage[nolists]{endfloat}
 \usepackage{enumitem}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -56,11 +58,12 @@ simulation-based-calibration, and multivariate results are developed in
 the companion paper (Paper~B). All results are out-of-sample under the
 walk-forward protocol described in the text; code and data availability
 are stated at the end.}}
-\author{Sean Qin}
+\author{Sean Qin\thanks{Corresponding author: Sean Qin, Northwestern University, Evanston, IL 60208; sean.qin@u.northwestern.edu; +1 (201) 994-8486.}\\ \normalsize Northwestern University}
 \date{Draft --- \today}
 
 \begin{document}
 \maketitle
+\let\footnote\endnote
 
 \begin{abstract}
 A deployable engine --- GARCH scale times an amortized nonparametric
@@ -75,9 +78,9 @@ under registered predictions. Where the score is quiet the engine
 ties the benchmark --- run it everywhere, read the score as a dial.
 \end{abstract}
 
-\noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall; FRTB;
-quantile regression; extreme value theory; conformal prediction;
-misspecification; amortized estimation.
+\noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall;
+misspecification; quantile regression; extreme value theory; amortized
+estimation.
 
 \medskip
 \noindent\textbf{JEL classification:} C14; C22; C52; C58; G17; G28.
@@ -1301,7 +1304,8 @@ Section~\ref{sec:score}, $+0.89\%$ with DM $2.16$ over 1{,}465 dates.
 All other deciles sit between $-0.18\%$ and $+0.28\%$. The threshold
 shape survives an untouched era containing the 2008 crisis.}
 \label{fig:holdout}
-\end{figure} The low
+\end{figure}
+The low
 overall correlation between signal and edge (0.05--0.10) is not a
 weakness of the story but its point: the relation is a threshold
 nonlinearity, not a linear trend, and the top-decile Diebold--Mariano
@@ -1763,6 +1767,15 @@ simulators as the next likelihood-free targets; vector quantile
 regression (Carlier--Chernozhukov--Galichon) as the principled
 multivariate transport map to succeed the scale/shape hybrid.
 
+\section*{Funding}
+This work was supported by the Northwestern University Department of
+Statistics and Data Science [Undergraduate Research Fellowship Grant,
+2026].
+
+\section*{Acknowledgments}
+I thank Professor Wenxin Jiang for guidance and comments throughout
+this project. All errors are mine.
+
 \section*{Data and code availability}
 \addcontentsline{toc}{section}{Data and code availability}
 A public replication package reproducing every table and figure in this
@@ -1787,11 +1800,15 @@ their result files, and the remaining open items
 (Section~\ref{sec:limitations}) are tracked as issues in the
 repository.
 
+\begingroup
+\parindent 0pt\parskip 1ex
+\renewcommand{\enotesize}{\normalsize}
+\theendnotes
+\endgroup
+
 %% ===== BIBLIOGRAPHY =====
-\begin{spacing}{1.0}
-\bibliographystyle{plainnat}
+\bibliographystyle{apalike}
 \bibliography{refs_v3}
-\end{spacing}
 
 % Proofs and supplementary exhibits are in the Online Appendix.
 
