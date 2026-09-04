@@ -56,7 +56,7 @@ for pn in names:
     ztr=trn['z'].values; mtr=trn['mk63'].values
     bw=max(float(np.nanstd(mtr))/2.0,1e-3)
     qs_fhs={t:float(np.quantile(ztr,t)) for t in TAUS}
-    t2=tst[['y','sig','date','mu','nu','tsc','mk63']+ZX].copy(); t2['permno']=pn
+    t2=tst[['y','sig','date','mu','nu','tsc']+ZX].copy(); t2['permno']=pn   # mk63 already in ZX; listing it twice made a duplicate column and broke broadcasting
     # fhs (static) quantiles
     for t in TAUS: t2[f'fhs_{t}']=mu+t2['sig']*qs_fhs[t]
     # mk63-kernel-reweighted FHS, row by row (vectorized kernel per row-block)
