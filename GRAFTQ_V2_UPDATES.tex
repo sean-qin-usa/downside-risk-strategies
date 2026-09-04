@@ -1,0 +1,168 @@
+% GRAFTQ_V2_UPDATES.tex — drop-in updates for graftq_main.tex (Paper 2)
+% Created 2026-07-21. Integrates the Jul 6-20 work that belongs to the
+% GRAFT-Q paper's own story. Deliberately EXCLUDED (they belong to the
+% companion broad paper, see PAPER_PORTFOLIO.md): misspec frontier, FRTB
+% battery, uncertainty bands, SBC. Each block below states WHERE to
+% paste, keyed to graftq_main.tex labels.
+%
+% Sources: RIGOR_CAMPAIGN_2026-07-15.md (same-rows audit, weekly-tenor
+% net-of-cost, ETF diversification, earnings, harness) and
+% frtb_neural_v2 results (tail-aware IQN fix, companion setting).
+
+% ======================================================================
+% UPDATE 1 (major) — new subsection at the END of Section 5 (Validation
+% protocol), after \label{sec:battery}. Also DELETE any surviving
+% reference to the retired "IQN beats t-GARCH by ~38%" figure.
+% ======================================================================
+
+\subsection{A unit-matched parametric audit (added July 2026)}
+\label{sec:samerows}
+
+An earlier internal comparison showed the network beating a $t$-GARCH
+benchmark by roughly 38\%; an audit found the two models had been scored
+on different universes and possibly different target scalings, and that
+figure is retired. The corrected comparison scores both models on
+identical (ticker, date, horizon) rows --- 102{,}391 rows, 111 names,
+horizons $h = 5/10/21/42/63$ trading days --- against a unit-matched
+GJR-GARCH-$t$ (zero-mean, Student-$t$ innovations, annual walk-forward
+refits, $h$-day quantiles by Monte Carlo path simulation).
+
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{Same-rows audit: IQN vs unit-matched GJR-GARCH-$t$, average
+pinball loss on identical (ticker, date, horizon) rows.}
+\label{tab:samerows}
+\begin{tabular}{ccccc}
+\toprule
+Horizon (days) & IQN & GJR-GARCH-$t$ & ratio & DM $t$ \\
+\midrule
+5  & 0.01302 & 0.01245 & 1.046 & $+12.3$ \\
+10 & 0.01871 & 0.01769 & 1.058 & $+17.2$ \\
+21 & 0.02762 & 0.02602 & 1.062 & $+18.1$ \\
+42 & 0.03895 & 0.03710 & 1.050 & $+14.0$ \\
+63 & 0.04757 & 0.04552 & 1.045 & $+12.3$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item The parametric model wins by 4.5--6.2\% at every horizon, all
+strongly significant. The gap is concentrated in the tails (downside
+$\tau{=}.05$ $\approx$7\% worse at all horizons; the body $\tau{=}.50$
+is nearly tied at 1.02--1.05). Applying the paper's past-only pooled
+tail recalibration fixes coverage (5\% breach $0.071$--$0.089 \to
+0.051$--$0.064$) and roughly halves the pinball gap at long horizons
+(ratios $\to$ 1.029--1.048) --- but GJR-GARCH-$t$ still wins: the
+deficiency is not purely a fixable tail-calibration artifact.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+This audit sharpens rather than undermines the paper's claims: on
+single-name daily-to-quarterly equity forecasting the leverage-GARCH is
+the honest benchmark and the network does not beat it. The network's
+demonstrated advantages are exactly the ones GARCH structurally lacks
+--- calibrated full-distribution term structures after the EVT graft,
+forecasting unseen assets, and the amortized cross-sectional problem ---
+and the trading results of Appendix~A never depended on beating GARCH on
+average loss.
+
+% ======================================================================
+% UPDATE 2 — amend the tau-sampling row of Table \ref{tab:gbc} (design
+% decisions) and add one sentence at the end of Section \ref{sec:iqn}.
+% ======================================================================
+
+% In tab:gbc, tau-sampling row, replace the justification cell with:
+%   "uniform retained; heavy-left v2c rejected (0.108 vs 0.103). A later
+%    companion-paper experiment shows the effective fix is tail-aware
+%    Beta(0.3,0.3) sampling PLUS monotone rearrangement and a conformal
+%    layer (raw 99\% breach 3.2\% -> 0.92\%), not heavier sampling
+%    alone."
+
+% At the end of sec:iqn add:
+In subsequent work on residual-space quantiles (companion paper), the
+combination of tail-aware $\tau$-sampling (half uniform, half
+$\mathrm{Beta}(0.3,0.3)$), monotone rearrangement, and a split-conformal
+level shift repaired the neural tail's under-coverage --- consistent
+with this paper's finding that heavier \emph{sampling} alone (v2c) does
+not: the missing ingredients were the monotonicity constraint and the
+distribution-free recalibration, not more tail draws.
+
+% ======================================================================
+% UPDATE 3 — trading appendix. The weekly-tenor replication that
+% Table \ref{tab:wrds} pre-registered has now been RUN (Bloomberg-side,
+% 5-15 DTE). Add to Appendix app:variants (new sub-block) and update the
+% corresponding "pending" language.
+% ======================================================================
+
+\paragraph{Weekly tenor, net of measured half-spread (pre-registered
+exhibit, now computed).} A weekly (5--15 DTE) VRP series directly
+comparable to the monthly book was built from 178{,}787 puts on 542
+names, 2016--2025, same cross-sectional selection (top-10\% VRP). At mid
+execution weekly beats monthly at every selection tier (top-10\% Sharpe
+3.46 vs 2.38) with structurally truncated tails (worst month $-1.2\%$ vs
+$-8.4\%$). The decisive test is net of the full bid/ask half-spread:
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+top-10\% VRP & mid Sharpe & bid (net) Sharpe & bid worst mo. &
+half-spread eats \\
+\midrule
+Weekly  & 3.46 & \textbf{2.08} & $-1.4\%$ & 57\% of gross \\
+Monthly & 2.38 & 0.51 & $-9.6\%$ & 82\% of gross \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+At the bid, monthly collapses ($2.38 \to 0.51$) while weekly holds
+($3.46 \to 2.08$): the half-spread consumes 82\% of monthly's fat
+deep-OTM premium but only 57\% of weekly's tighter near-dated premium,
+and weekly's tail truncation dominates. Weekly is the better vehicle net
+of cost. Caveats: ``bid'' is worst-case full-cross (posting at mid lands
+between, weekly $\sim$2--3, monthly $\sim$1--2); liquid names only.
+
+\paragraph{Cross-asset diversification, in/out of sample.} Seven liquid
+ETF option sleeves (QQQ, TLT, GLD, USO, UNG, FXE, HYG; average pairwise
+correlation 0.05): combined risk-weighted Sharpe 2.33 full-sample, 2.30
+in-sample (2016--20), 4.46 out-of-sample (2021--25) --- the
+diversification benefit is stable across eras, unlike a VIX-regime gate
+(a look-ahead artifact, retired). Per-sleeve Sharpes rotate across eras,
+which is precisely why the combination is the object. A 10\%-vol-target
+combined book runs CAGR 25.3\% with max drawdown $-12.2\%$.
+
+\paragraph{Earnings exposure priced, no filter needed.} Earnings names
+carry richer premium (VRP 0.137 vs 0.078; 186 vs 142 bp per trade) but
+not the Sharpe (1.94 vs 1.99); down-weighting earnings $0.5\times$
+slightly hurts ($2.38 \to 2.24$). Accept earnings exposure at full
+weight as priced.
+
+\paragraph{Forward harness validated.} The production spec replayed
+through the live signal harness over 116 months reproduces the strategy
+(mid Sharpe 2.22, out-of-sample above in-sample). Monthly and weekly
+signal generators now run on schedule, building the parallel
+out-of-sample paper record whose limit-fill quality is the one number no
+backtest can provide. The harness never places orders.
+
+% ======================================================================
+% UPDATE 4 — companion-paper cross-reference. Add to the \thanks
+% footnote and to Related literature.
+% ======================================================================
+
+% Append to \thanks{...}:
+%   "A companion paper develops the residual-hybrid risk engine, the
+%    misspecification frontier, and generative-Bayesian extensions on
+%    broader universes; the two papers cross-reference and do not
+%    duplicate claims."
+
+% Add to Related literature (EVT subsection), one sentence:
+The generalized Pareto graft developed here is applied selectively in
+the companion paper's multi-asset setting: on several volatility-index
+series the raw quantile body does not under-cover and the graft degrades
+accuracy, so the splice should be gated on measured tail under-coverage
+rather than applied universally.
+
+% ======================================================================
+% NOT INCLUDED (belongs to the companion broad paper): misspecification
+% frontier, FRTB battery/ES97.5, CAViaR comparison, (VaR,ES) uncertainty
+% bands, Heston/rough-vol SBC, joint-tail sampler. See PAPER_PORTFOLIO.md.
+% ======================================================================

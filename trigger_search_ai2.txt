@@ -1,0 +1,5 @@
+/home/steveqin/sean_dev/GBC_data/code/pq_trade/pq_31_iqn_rerun.py:3:(b) tail-hedge trigger (IQN 5% tail vs market), (c) Kelly strike selector with
+/home/steveqin/sean_dev/GBC_data/code/pq_trade/pq_31_iqn_rerun.py:33:    # (b) tail trigger: IQN 5% below market 5% strike = model sees fatter tail
+/home/steveqin/sean_dev/GBC_data/code/pq_trade/pq_31_iqn_rerun.py:44:    res_h[f"h{h}"]={"tail_trigger_months":int(trig.sum()),
+---FILES---
+/home/steveqin/sean_dev/GBC_data/code/pq_trade/pq_31_iqn_rerun.py

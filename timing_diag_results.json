@@ -1,0 +1,51 @@
+{
+  "note": "Timing diagnostics: top-mk63-decile edge under signal alignments. lag1=deployed; lag5=persistence; lag0=contaminated diagnostic; lead1=invalid placebo.",
+  "lag1": {
+    "top_decile": {
+      "edge_pct": 2.69,
+      "DM": 6.53,
+      "n_dates": 1108
+    },
+    "bottom_decile": {
+      "edge_pct": 0.18,
+      "DM": 1.41,
+      "n_dates": 1108
+    }
+  },
+  "lag5": {
+    "top_decile": {
+      "edge_pct": 1.67,
+      "DM": 6.43,
+      "n_dates": 1108
+    },
+    "bottom_decile": {
+      "edge_pct": 0.39,
+      "DM": 1.88,
+      "n_dates": 1108
+    }
+  },
+  "lag0": {
+    "top_decile": {
+      "edge_pct": 1.91,
+      "DM": 5.49,
+      "n_dates": 1108
+    },
+    "bottom_decile": {
+      "edge_pct": 0.33,
+      "DM": 2.61,
+      "n_dates": 1108
+    }
+  },
+  "lead1": {
+    "top_decile": {
+      "edge_pct": 1.92,
+      "DM": 5.53,
+      "n_dates": 1107
+    },
+    "bottom_decile": {
+      "edge_pct": 0.3,
+      "DM": 2.49,
+      "n_dates": 1107
+    }
+  }
+}

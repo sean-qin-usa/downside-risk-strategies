@@ -1,0 +1,500 @@
+{
+  "stages_done": [
+    1,
+    2,
+    3
+  ],
+  "errors": {
+    "stage4": "TypeError('boolean value of NA is ambiguous')"
+  },
+  "stage1": {
+    "n_delist": 19902,
+    "n_names": 25774
+  },
+  "stage2": {
+    "n_panel_names": 111,
+    "n_matched": 83,
+    "unmatched": [
+      "ARKK",
+      "BABA",
+      "BBBYQ",
+      "EEM",
+      "EFA",
+      "EWJ",
+      "EWZ",
+      "FXI",
+      "HTZGQ",
+      "HYG",
+      "IWM",
+      "LQD",
+      "MDY",
+      "QQQ",
+      "SHLDQ",
+      "TLT",
+      "VNQ",
+      "XBI",
+      "XLB",
+      "XLE",
+      "XLF",
+      "XLI",
+      "XLK",
+      "XLP",
+      "XLU",
+      "XLV",
+      "XLY",
+      "XRT"
+    ]
+  },
+  "stage3": {
+    "n_panel_delistings": 70,
+    "detail": [
+      {
+        "tk": "ARM",
+        "dlstdt": "2022-08-02 00:00:00",
+        "dlret": 0.0,
+        "dlstcd": 233
+      },
+      {
+        "tk": "BBBY",
+        "dlstdt": "2023-05-02 00:00:00",
+        "dlret": 0.304927,
+        "dlstcd": 584
+      },
+      {
+        "tk": "ORCL",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "MSFT",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "KO",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "XOM",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "GE",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "GM",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "IBM",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "META",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "PCG",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "AMC",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "AAPL",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "GPRO",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "MARA",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "W",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "ETSY",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "PYPL",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "HTZ",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "SPCE",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "TLRY",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "PG",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "ZM",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "CAT",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "BYND",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "CHWY",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "PTON",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "CLOV",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "BA",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "SNOW",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "LCID",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "PLTR",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "U",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "FUBO",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "SOFI",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "DASH",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "ABNB",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "UPST",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "AFRM",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "RBLX",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "COIN",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "HOOD",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "PFE",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "JNJ",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "RIVN",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "F",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "DIS",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "SMH",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "MU",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "WMT",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "INTC",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "AMD",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "VZ",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "T",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "HD",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "AIG",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "C",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "PENN",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "SIRI",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "NVAX",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "AMZN",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "MSTR",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "NVDA",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "GS",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "PLUG",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "NFLX",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "GOOGL",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "RIOT",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "UNH",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      },
+      {
+        "tk": "TSLA",
+        "dlstdt": "2024-12-31 00:00:00",
+        "dlret": null,
+        "dlstcd": 100
+      }
+    ],
+    "exposure_by_h": {
+      "5": {
+        "n_exposed": 70,
+        "n_total": 51930,
+        "share": 0.001348
+      },
+      "10": {
+        "n_exposed": 139,
+        "n_total": 51930,
+        "share": 0.002677
+      },
+      "21": {
+        "n_exposed": 292,
+        "n_total": 51930,
+        "share": 0.005623
+      },
+      "42": {
+        "n_exposed": 568,
+        "n_total": 51930,
+        "share": 0.010938
+      },
+      "63": {
+        "n_exposed": 883,
+        "n_total": 51930,
+        "share": 0.017004
+      }
+    }
+  }
+}

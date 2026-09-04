@@ -1,0 +1,77 @@
+{
+  "stages_done": [
+    2,
+    3,
+    4
+  ],
+  "errors": {},
+  "stage2": {
+    "n_matched": 110,
+    "unmatched": [
+      "HTZGQ"
+    ]
+  },
+  "stage3": {
+    "n_real_delistings": 1,
+    "detail": [
+      {
+        "tk": "BBBY",
+        "dlstdt": "2023-05-02 00:00:00",
+        "dlret": 0.304927,
+        "dlstcd": 584
+      }
+    ]
+  },
+  "stage4_restated": [
+    {
+      "h": 5,
+      "n_restated": 2,
+      "breach5_raw": 0.0742,
+      "breach5_adj": 0.07422,
+      "breach1_raw": 0.0208,
+      "breach1_adj": 0.02082,
+      "crash20_raw": 0.01304,
+      "crash20_adj": 0.01306
+    },
+    {
+      "h": 10,
+      "n_restated": 3,
+      "breach5_raw": 0.08313,
+      "breach5_adj": 0.08317,
+      "breach1_raw": 0.02557,
+      "breach1_adj": 0.02561,
+      "crash20_raw": 0.02971,
+      "crash20_adj": 0.02975
+    },
+    {
+      "h": 21,
+      "n_restated": 5,
+      "breach5_raw": 0.09318,
+      "breach5_adj": 0.09326,
+      "breach1_raw": 0.03135,
+      "breach1_adj": 0.03141,
+      "crash20_raw": 0.06181,
+      "crash20_adj": 0.06189
+    },
+    {
+      "h": 42,
+      "n_restated": 9,
+      "breach5_raw": 0.09879,
+      "breach5_adj": 0.09894,
+      "breach1_raw": 0.0379,
+      "breach1_adj": 0.03801,
+      "crash20_raw": 0.09798,
+      "crash20_adj": 0.09813
+    },
+    {
+      "h": 63,
+      "n_restated": 13,
+      "breach5_raw": 0.09994,
+      "breach5_adj": 0.10017,
+      "breach1_raw": 0.03913,
+      "breach1_adj": 0.0393,
+      "crash20_raw": 0.12057,
+      "crash20_adj": 0.1208
+    }
+  ]
+}

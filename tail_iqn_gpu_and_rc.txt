@@ -1,0 +1,5 @@
+===GPU===
+memory.used [MiB], memory.total [MiB], memory.free [MiB], utilization.gpu [%]
+5071 MiB, 8192 MiB, 2715 MiB, 85 %
+===RUN===
+RC=0

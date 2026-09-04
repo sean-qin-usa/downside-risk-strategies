@@ -1,0 +1,16 @@
+{
+  "asof": "2026-07-27",
+  "book": "weekly",
+  "chain_source": "yfinance delayed (LIVE)",
+  "n_candidates": 52,
+  "n_selected": 5,
+  "vrp_cutoff": 0.3745,
+  "size_mult": 1.0,
+  "size_reason": "no prior record -> 1.0x",
+  "delta_target": -0.12,
+  "dte_window": [
+    5,
+    15
+  ],
+  "rv_window": 21
+}

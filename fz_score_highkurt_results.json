@@ -1,0 +1,159 @@
+{
+  "note": "Fissler-Ziegel FZ0 joint (VaR,ES) scoring (Patton-Ziegel-Chen 2019) + economic translation. FZ0 lower=better; DM alt-vs-hybrid_evt positive stat => alt WORSE (hybrid better). capital_bps = mean |ES97.5| in bps (FRTB capital base); ce_bps = mean-ES certainty-equivalent gap vs hybrid at lambda=0.1. In-sandbox CRSP subset.",
+  "n_names": 40,
+  "alphas": [
+    0.025,
+    0.01
+  ],
+  "per_alpha": {
+    "alpha_0.025": {
+      "models": {
+        "garch_norm": {
+          "avg_FZ0": 2.4743,
+          "avg_pinball": 0.3117,
+          "breach": 0.0222,
+          "target": 0.025,
+          "avg_absES_bps": 1063.9,
+          "realized_tail_mean": -10.569
+        },
+        "garch_t": {
+          "avg_FZ0": 2.4388,
+          "avg_pinball": 0.3081,
+          "breach": 0.0247,
+          "target": 0.025,
+          "avg_absES_bps": 1307.9,
+          "realized_tail_mean": -10.359
+        },
+        "fhs": {
+          "avg_FZ0": 2.4341,
+          "avg_pinball": 0.3058,
+          "breach": 0.0301,
+          "target": 0.025,
+          "avg_absES_bps": 1237.2,
+          "realized_tail_mean": -10.041
+        },
+        "hybrid_evt": {
+          "avg_FZ0": 2.432,
+          "avg_pinball": 0.3059,
+          "breach": 0.0294,
+          "target": 0.025,
+          "avg_absES_bps": 1245.2,
+          "realized_tail_mean": -10.13
+        }
+      },
+      "DM_vs_hybrid_evt": {
+        "garch_norm": {
+          "dFZ0": 0.11214,
+          "DM_stat": 1.36,
+          "p_one_sided": 0.0868,
+          "n_dates": 1164
+        },
+        "garch_t": {
+          "dFZ0": 0.04348,
+          "DM_stat": 0.98,
+          "p_one_sided": 0.1636,
+          "n_dates": 1164
+        },
+        "fhs": {
+          "dFZ0": 0.02475,
+          "DM_stat": 1.01,
+          "p_one_sided": 0.1571,
+          "n_dates": 1164
+        }
+      },
+      "economic": {
+        "garch_norm": {
+          "capital_bps_vs_hybrid": -181.3,
+          "ce_bps_vs_hybrid": -18.13
+        },
+        "garch_t": {
+          "capital_bps_vs_hybrid": 62.7,
+          "ce_bps_vs_hybrid": 6.27
+        },
+        "fhs": {
+          "capital_bps_vs_hybrid": -8.0,
+          "ce_bps_vs_hybrid": -0.8
+        },
+        "hybrid_evt": {
+          "capital_bps_vs_hybrid": 0.0,
+          "ce_bps_vs_hybrid": 0.0
+        }
+      }
+    },
+    "alpha_0.01": {
+      "models": {
+        "garch_norm": {
+          "avg_FZ0": 2.9174,
+          "avg_pinball": 0.1712,
+          "breach": 0.0136,
+          "target": 0.01,
+          "avg_absES_bps": 1211.7,
+          "realized_tail_mean": -12.507
+        },
+        "garch_t": {
+          "avg_FZ0": 2.7878,
+          "avg_pinball": 0.1731,
+          "breach": 0.0093,
+          "target": 0.01,
+          "avg_absES_bps": 1784.4,
+          "realized_tail_mean": -14.609
+        },
+        "fhs": {
+          "avg_FZ0": 2.7822,
+          "avg_pinball": 0.1706,
+          "breach": 0.0123,
+          "target": 0.01,
+          "avg_absES_bps": 1735.7,
+          "realized_tail_mean": -13.832
+        },
+        "hybrid_evt": {
+          "avg_FZ0": 2.7791,
+          "avg_pinball": 0.1709,
+          "breach": 0.0108,
+          "target": 0.01,
+          "avg_absES_bps": 1737.3,
+          "realized_tail_mean": -14.5
+        }
+      },
+      "DM_vs_hybrid_evt": {
+        "garch_norm": {
+          "dFZ0": 0.37873,
+          "DM_stat": 1.4,
+          "p_one_sided": 0.0802,
+          "n_dates": 1164
+        },
+        "garch_t": {
+          "dFZ0": 0.11869,
+          "DM_stat": 0.95,
+          "p_one_sided": 0.1699,
+          "n_dates": 1164
+        },
+        "fhs": {
+          "dFZ0": 0.04771,
+          "DM_stat": 0.9,
+          "p_one_sided": 0.1847,
+          "n_dates": 1164
+        }
+      },
+      "economic": {
+        "garch_norm": {
+          "capital_bps_vs_hybrid": -525.6,
+          "ce_bps_vs_hybrid": -52.56
+        },
+        "garch_t": {
+          "capital_bps_vs_hybrid": 47.1,
+          "ce_bps_vs_hybrid": 4.71
+        },
+        "fhs": {
+          "capital_bps_vs_hybrid": -1.6,
+          "ce_bps_vs_hybrid": -0.16
+        },
+        "hybrid_evt": {
+          "capital_bps_vs_hybrid": 0.0,
+          "ce_bps_vs_hybrid": 0.0
+        }
+      }
+    }
+  },
+  "selection": "highkurt"
+}

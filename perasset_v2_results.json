@@ -1,0 +1,42 @@
+{
+  "note": "Finished-engine per-asset + date-clustered exception restatement (v2). GPD u/xi/beta and conformal shifts frozen pre-test.",
+  "gpd": {
+    "u": -1.8977,
+    "xi": 0.2809,
+    "beta": 0.6353
+  },
+  "conf_shifts": {
+    "0.01": -0.5219,
+    "0.025": -0.3465
+  },
+  "n_names": 140,
+  "per_variant": {
+    "raw_hybrid": {
+      "breach99": 0.0134,
+      "kupiec99_passrate": 0.707,
+      "christoffersen99_passrate": 0.721,
+      "dateclustered99_NW_t": 4.46,
+      "breach975": 0.0331,
+      "kupiec975_passrate": 0.543,
+      "dateclustered975_NW_t": 5.0
+    },
+    "hybrid_EVT": {
+      "breach99": 0.0106,
+      "kupiec99_passrate": 0.814,
+      "christoffersen99_passrate": 0.864,
+      "dateclustered99_NW_t": 1.01,
+      "breach975": 0.0275,
+      "kupiec975_passrate": 0.714,
+      "dateclustered975_NW_t": 1.86
+    },
+    "hybrid_EVT_conf": {
+      "breach99": 0.0059,
+      "kupiec99_passrate": 0.643,
+      "christoffersen99_passrate": 0.712,
+      "dateclustered99_NW_t": -11.08,
+      "breach975": 0.0164,
+      "kupiec975_passrate": 0.493,
+      "dateclustered975_NW_t": -9.6
+    }
+  }
+}

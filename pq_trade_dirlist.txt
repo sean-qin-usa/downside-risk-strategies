@@ -1,0 +1,35 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 9655-3276
+
+ Directory of C:\GBC_data\code\pq_trade
+
+07/05/2026  02:09 AM    <DIR>          .
+07/05/2026  02:09 AM    <DIR>          ..
+07/05/2026  07:53 PM    <DIR>          gpu
+07/04/2026  04:20 PM             4,331 pq_01_data.py
+07/04/2026  04:18 PM             8,621 pq_02_pmodels.py
+07/04/2026  04:18 PM             9,271 pq_03_backtest.py
+07/04/2026  04:18 PM             2,654 pq_04_analysis.py
+07/04/2026  04:18 PM             2,084 pq_05_verify.py
+07/04/2026  04:18 PM             1,198 pq_06_chart.py
+07/04/2026  05:59 PM             2,488 pq_07b_qq_spx.py
+07/04/2026  04:42 PM             4,046 pq_07_qq_extract.py
+07/04/2026  05:19 PM             3,101 pq_08_iqn_pq.py
+07/04/2026  05:19 PM             2,667 pq_09_wedge.py
+07/04/2026  06:20 PM             3,012 pq_10_holdout.py
+07/04/2026  06:20 PM             5,665 pq_11_splits.py
+07/04/2026  08:54 PM             3,063 pq_12_regime_matrix.py
+07/04/2026  08:54 PM             2,643 pq_13_legB2004.py
+07/04/2026  08:54 PM             5,770 pq_14_panel.py
+07/04/2026  09:43 PM             3,033 pq_15_eras.py
+07/04/2026  09:43 PM             6,756 pq_16_adv.py
+07/04/2026  10:06 PM             2,563 pq_17_gate.py
+07/04/2026  10:06 PM             7,496 pq_18_grand.py
+07/04/2026  11:16 PM             3,769 pq_19_mhprep.py
+07/04/2026  11:16 PM             4,333 pq_20_termstruct.py
+07/04/2026  11:49 PM             5,818 pq_22_mh_trade.py
+07/05/2026  12:12 AM             5,925 pq_26_strategies.py
+07/05/2026  02:09 AM             2,632 pq_31_iqn_rerun.py
+07/04/2026  04:33 PM             4,565 pq_live_signal.py
+              25 File(s)        107,504 bytes
+               3 Dir(s)   9,587,208,192 bytes free

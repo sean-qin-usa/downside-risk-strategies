@@ -1,0 +1,44 @@
+{
+  "note": "Tail-aware neural IQN vs trees vs GARCH-t on conditional VaR. avg pinball at tail taus, lower=better. iqn_tail = tail-weighted tau sampling + loss weight + monotone output; iqn_unif = uniform tau. gap = iqn_tail - gbm.",
+  "n_names": 120,
+  "n_test": 131520,
+  "tails": [
+    0.01,
+    0.025,
+    0.05
+  ],
+  "models": {
+    "garch_t": {
+      "pinball_0.01": 0.0899,
+      "pinball_0.025": 0.1661,
+      "pinball_0.05": 0.2644
+    },
+    "gbm": {
+      "pinball_0.01": 0.0879,
+      "pinball_0.025": 0.1633,
+      "pinball_0.05": 0.2613
+    },
+    "iqn_unif": {
+      "pinball_0.01": 0.0878,
+      "pinball_0.025": 0.1629,
+      "pinball_0.05": 0.2627
+    },
+    "iqn_tail": {
+      "pinball_0.01": 0.0894,
+      "pinball_0.025": 0.1652,
+      "pinball_0.05": 0.2639
+    }
+  },
+  "trees": "sklearn",
+  "gap_iqn_tail_minus_gbm": {
+    "pinball_0.01": 0.0015,
+    "pinball_0.025": 0.0019,
+    "pinball_0.05": 0.0026
+  },
+  "gap_iqn_tail_minus_unif": {
+    "pinball_0.01": 0.0016,
+    "pinball_0.025": 0.0022,
+    "pinball_0.05": 0.0012
+  },
+  "dev": "cuda"
+}
