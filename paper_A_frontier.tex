@@ -64,16 +64,39 @@ are stated at the end.}}
 \maketitle
 
 \begin{abstract}
-A deployable engine --- GARCH scale times an amortized nonparametric
-residual quantile, with an extreme-value tail and conformal
-recalibration --- and a real-time misspecification score that says
-when it beats the parametric standard. One pooled fit replaces
-per-asset estimation and prices new listings day one. Exception
-counts stay nominal at both regulatory levels through a 2008-crisis
-test window. The score concentrates the edge in its top decile
-($+2.7\%$, DM 6.5) and replicates on an untouched 2000--2013 holdout
-under registered predictions. Where the score is quiet the engine
-ties the benchmark --- run it everywhere, read the score as a dial.
+We propose a deployable downside-risk engine and a theory of when it
+pays. The engine --- \emph{amortized residual-hybrid} forecasting ---
+keeps the GARCH conditional scale that industry models get right and
+replaces only the fixed innovation shape with a state-conditioned
+nonparametric quantile model trained \emph{once, across hundreds of
+names}, finished with an extreme-value tail and a conformal
+recalibration. Three results. \emph{First, amortization:} one fit
+replaces per-asset estimation, transfers to names never seen in
+training, beats own-history benchmarks at every listing age
+($6$--$10\%$ of pinball loss for young listings), and prices assets
+with \emph{no return history} --- day-one risk numbers for IPOs that no
+per-asset model can produce. \emph{Second, the engine beats what banks
+run:} against historical simulation, RiskMetrics, GARCH-$t$,
+GJR-skew-$t$, and filtered historical simulation on 140 CRSP names, it
+wins on average loss with date-level Diebold--Mariano significance
+(statistics 4.4--8.3), delivers the best-calibrated 97.5\% Expected
+Shortfall (removing an $8$--$11\%$ ES over-statement that
+over-charges capital), and with its tail stages its exception counts
+are consistent with nominal at both regulatory levels, a finding that
+survives per-asset and common-date-dependence restatements and holds
+through a 2008-crisis test window under the frozen specification; the
+edge grows at the
+ten-day horizon and holds in the 2020--22 stress window. \emph{Third, a
+misspecification frontier says when the edge is large:} a real-time
+score (the excess kurtosis and asymmetry of recent GARCH-standardized
+residuals) concentrates the gain ($+2.7\%$, DM 6.5, in its top
+decile; $12$--$14\%$ on hyperinflation currencies), maps it across US
+equities, FX, twenty-six country indices, and forty-three cross-asset
+instruments, and replicates on an untouched 2000--2013 holdout run
+under registered predictions with the specification frozen (top decile
+$+0.9\%$, DM 2.2; all other deciles indistinguishable from zero). Where the score is quiet the engine ties the parametric
+benchmark, so the deployment rule is to run the engine
+everywhere and read the score as a risk dial.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall; FRTB;
@@ -211,8 +234,7 @@ to DCC and a covariance-scale/nonparametric-shape hybrid restores the
 deep co-crash tail. The neural estimator itself, the EVT graft, and the
 conformal layer are developed in the companion GRAFT-Q paper.
 
-\paragraph{The ledger: what the engine wins, where it ties, and the scope
-conditions.} Table~\ref{tab:winloss} states every headline magnitude with its test
+\paragraph{The ledger.} Table~\ref{tab:winloss} states every headline magnitude with its test
 statistic. Panel~A is the presented engine's record ---
 its worst cell anywhere in the battery is a \emph{tie}. Panel~B is not
 the engine's record at all: it collects the boundary evidence ---
@@ -1128,8 +1150,8 @@ standard parametric VaR is currently, locally wrong by $\sim$2--3\% of
 pinball with high confidence --- flag the asset for the nonparametric /
 residual-hybrid engine and for model-risk review; elsewhere
 $\Rightarrow$ no action (in the amortized setting the engine is run
-regardless; the meter is surveillance, not a switch,
-Section~\ref{sec:gate}).
+regardless; the meter serves surveillance, and day-level switching is
+unsupported, Section~\ref{sec:gate}).
 (v)~Latency: detection lags episode onset by median 0 / mean 2--4 days;
 the edge is back-loaded within episodes, so the lag forfeits little.
 }}
@@ -1213,7 +1235,7 @@ Section~\ref{sec:limitations}.
 
 \section{The misspecification frontier}\label{sec:frontier}
 
-\noindent\textbf{How to read every number in this and later sections.}
+\noindent\textbf{Conventions.}
 Conventions are fixed once, here. (i)~\emph{Edges} are percentage
 reductions in pinball loss, so \emph{larger is better} for the named
 model; a ``$+2.7\%$ edge'' means the model's average loss is 2.7\%
@@ -1345,13 +1367,13 @@ look-ahead artifact would produce.}
 \label{fig:timing}
 \end{figure}
 
-\paragraph{The signal cannot be absorbed by reweighting.} If the
+\paragraph{An absorption test.} If the
 frontier score were merely an omitted variable, a parametric-adjacent
 fix should capture the edge without any pooled learner: run filtered
 historical simulation per name, but reweight the historical residual
 window toward days whose mk$_{63}$ resembles today's (Gaussian kernel,
 bandwidth half the signal's per-name standard deviation). We ran that
-absorber on the full panel. It fails, and not narrowly: the reweighted
+absorber on the full panel. The reweighted
 FHS is significantly \emph{worse} than plain FHS overall (per-date DM
 $-11.3$) and much worse in the top misspecification decile (average
 pinball 0.541 against 0.444, DM $-11.1$), while the pooled shape model
@@ -1360,23 +1382,21 @@ GARCH-$t$ by $2.8\%$ (DM 9.1). The mechanism is effective-sample
 collapse: sharp univariate conditioning shrinks a name's usable
 history to the handful of days that resemble today, exactly when today
 is unusual; smoothing the kernel only interpolates back toward the
-unconditional FHS it was meant to improve. Pooling across names is
-what makes state-conditioning affordable --- the amortized model
-borrows the shape information from every name's stressed days --- so
-the amortization of Section~\ref{sec:gbcmethod} is not a convenience
-on top of the frontier result but a precondition for it.
+unconditional FHS it was meant to improve. Pooling across names is what makes state-conditioning affordable ---
+the amortized model borrows the shape information from every name's
+stressed days. The amortization of Section~\ref{sec:gbcmethod} is a
+precondition for the frontier result; a single name's history cannot
+support sharp state-conditioning on its own.
 
-\paragraph{Four robustness probes of the dial.} The score is not
-volatility in disguise, and the double sort of
-Table~\ref{tab:doublesort} is the cleanest way to see it. Sorting
+\paragraph{Robustness of the dial.} Table~\ref{tab:doublesort} double-sorts the edge on the score and on
+trailing volatility. Sorting
 test asset-days independently into quintiles of mk$_{63}$ and of
 trailing volatility (rv$_{63}$): high volatility without a shape break
 carries no edge (top-volatility column, bottom four kurtosis quintiles:
 $-0.57\%$ to $+0.10\%$), a shape break without an active regime
 carries almost none (top-kurtosis row, calmest quintile: $-0.10\%$,
-DM 0.7), and the product state carries $+2.33\%$ with DM 6.4. The two
-ingredients interact: the score says the parametric shape is currently
-wrong, and volatility scales how much that error costs. Second, a
+DM 0.7), and the product state carries $+2.33\%$ with DM 6.4. The two ingredients interact. The score flags a currently wrong
+parametric shape; volatility scales the cost of the error. Second, a
 superior-predictive-ability test \citep{hansen2005spa} on the per-date
 loss panel against the full desk field (GARCH-$t$, FHS, EWMA, HS)
 returns $T^{\mathrm{SPA}} = 0$, consistent $p = 1.00$: no rival's
@@ -1602,8 +1622,8 @@ still converges to always-nonparametric. The per-day oracle gap
 state. The deployable conclusions: in the amortized setting, use the
 nonparametric model always (it does not underperform on calm days); use
 the residual-hybrid where a guaranteed $\ge$GARCH floor is wanted; and
-use the frontier score as a \emph{monitor} (Section~\ref{sec:applications}),
-not a switch. (The score's detection latency is small --- median zero,
+use the frontier score as a \emph{monitor} (Section~\ref{sec:applications});
+day-level switching adds nothing. (The score's detection latency is small --- median zero,
 mean two to four days --- and because the nonparametric edge is
 back-loaded within misspecification episodes, the lag costs little even
 in the per-name setting, where gating does matter because standalone
@@ -1810,10 +1830,9 @@ FZ0 minimization in the style of \citet{patton2019} (DM 9.2, zero fit
 failures); at 2.5\% the accuracy layer again wins (DM 4.2 over
 GARCH-$t$, 6.0 over GAS). The frontier concentrates the joint-score
 edge as it does the pinball edge --- the top misspecification decile
-carries DM 2.4 at the 1\% level against DM 0.2 in the panel bulk. One
-configuration choice is priced explicitly: adding the conformal shift
-at 97.5\%, whose calibration split includes the 2020 crash, widens the
-band out of era (breach $1.6\%$ against the $2.5\%$ target) and gives
+carries DM 2.4 at the 1\% level against DM 0.2 in the panel bulk.
+Adding the conformal shift at 97.5\%, whose calibration split includes
+the 2020 crash, widens the band out of era (breach $1.6\%$ against the $2.5\%$ target) and gives
 back the FZ0 advantage there (DM $-2.0$ against GARCH-$t$, marginal at
 the two-sided 5\% level). The coverage guarantee costs sharpness under
 a strictly consistent score, and its error direction is conservative
@@ -1899,7 +1918,7 @@ selective-application rule of Section~\ref{sec:hybrid}.
 \section{Applications and deployment}\label{sec:applications}
 
 \medskip\noindent\fbox{\parbox{0.96\textwidth}{
-\textbf{How a desk runs this (the whole production loop).}
+\textbf{The production loop.}
 \emph{Nightly:} (i)~update each name's GARCH filter state
 $\widehat\sigma_{t+1}$ (recursion only; parameters refit annually);
 (ii)~assemble the state vector $s_t$ and evaluate the shared shape
@@ -1917,7 +1936,7 @@ required. Total marginal cost per name per day: one filter update and
 one model evaluation.}}
 
 \medskip
-\textbf{A forward-looking monitor, not a switch.} Because the frontier score is a trailing window on
+\textbf{Ex ante use of the score.} Because the frontier score is a trailing window on
 GARCH-standardized residuals, it is available \emph{ex ante}: a desk
 computes today's score from today's data and acts on it for tomorrow's
 risk number. What the evidence does \emph{not} support is day-level
@@ -1928,9 +1947,8 @@ gate collapses to always-nonparametric. The edge is, in effect,
 negligible over the calm $\sim$90\% of asset-days and concentrated
 ($+2.7\%$ pinball, DM 6.5) in the top misspecification decile and the
 most turbulent volatility regimes (an $\sim$fourfold gap,
-Section~\ref{sec:gate}). The deployable reading is therefore not ``wait,
-then switch'' but ``run the robust engine always and read the score as a
-dial'': the nonparametric/residual-hybrid family \emph{ties} the
+Section~\ref{sec:gate}). A desk should therefore run the robust engine always and read the
+score as a dial: the nonparametric/residual-hybrid family \emph{ties} the
 parametric benchmark on calm days and wins in stress, so a desk pays
 nothing to hold it and harvests the stress-period edge automatically. The
 one setting in which the score does drive a switch is the
@@ -1939,7 +1957,7 @@ calm days; there the score gates, and its short detection latency
 (median zero, mean two to four days) costs little because the edge is
 back-loaded within a misspecification episode.
 
-\textbf{Regulatory capital, in basis points.} The
+\textbf{Regulatory capital.} The
 hybrid$+$EVT$+$conformal engine is an internal-models VaR/ES candidate
 that tops the accuracy table while passing both exception tests at
 both levels. Under the internal-models approach the modelled charge is
@@ -1962,9 +1980,9 @@ $\sqrt{h}$-scaled $\to$ direct, $h{=}10$ & $26.0\% \to 7.6\%$ & $14.6\%$ & 14.6 
 \end{tabular}
 \end{center}
 
-\noindent The ten-day row matters most because ten days is the FRTB
-base liquidity horizon, and it carries the sharpest caveat: the
-$26\%$ over-statement is measured on 2014--2024, and the registered
+\noindent The ten-day row matters most because ten days is the FRTB base
+liquidity horizon, and it carries a caveat. The $26\%$ over-statement
+is measured on 2014--2024, and the registered
 2000--2013 rerun (Section~\ref{sec:frtb}) finds $\sqrt{h}$ almost
 exactly calibrated in that era --- the ten-day release is a
 regime-dependent harvest, banked in eras like the last decade and
@@ -2005,7 +2023,7 @@ model has learned one universal vol-state-to-quantile mapping rather
 than per-name parameters. Risk limits, margining, and market-making
 inventory for the newest names are the immediate use cases.
 
-\textbf{Where the edge trades --- and on which side.} The universes where
+\textbf{Trading implications.} The universes where
 the nonparametric tail wins --- crisis FX, volatility indices, credit
 spreads, frontier equities --- are the desks where tail-shape-aware
 sizing and hedging matter most. The \emph{direction} of the trade matters
@@ -2074,7 +2092,7 @@ ES calibration verdict reverses. The signal-absorption study is also
 complete (Section~\ref{sec:frontier}): a state-reweighted historical
 simulation does not capture the frontier edge, and the failure mode
 --- effective-sample collapse under sharp univariate conditioning ---
-is why the pooled learner is a precondition rather than a convenience.
+is why the pooled learner is a precondition.
 Still open: the intraday frontier once tick data is available.
 Companion-paper extensions (Paper~B): a leverage summary statistic to
 identify $\rho$ in the SBC studies, and Hawkes and jump-diffusion
