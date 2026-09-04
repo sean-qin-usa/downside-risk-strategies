@@ -1,0 +1,172 @@
+{
+  "note": "CANONICAL battery: one run, every row of Table 6, TRUE predicted ES97.5 per model (closed forms; 200-node Hansen integration; 20-node midpoint integration for empirical/rolling quantile functions; GPD closed form for the EVT engine; 20-node sub-alpha GBM grid for the raw hybrid). ES975_realized_ownVaR conditions on each model OWN breach set and is a labeled diagnostic, not the ranking criterion (FZ0 is). overstatement_pct=(|pred|-|real|)/|real|.",
+  "sub_alpha_grid_nodes": 20,
+  "gpd": {
+    "u": -1.9809,
+    "xi": 0.2852,
+    "beta": 0.67
+  },
+  "n_names": 140,
+  "n_test_rows": 155120,
+  "n_dates": 1108,
+  "per_model": {
+    "hist_sim": {
+      "avg_pinball": 0.3619,
+      "ES975_pred_true": -7.206,
+      "ES975_realized_ownVaR": -6.863,
+      "overstatement_pct": 5.0,
+      "breach99": 0.0084,
+      "breach975": 0.0203,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "ewma_rm": {
+      "avg_pinball": 0.3606,
+      "ES975_pred_true": -5.524,
+      "ES975_realized_ownVaR": -5.634,
+      "overstatement_pct": -2.0,
+      "breach99": 0.0163,
+      "breach975": 0.0274,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "garch_t": {
+      "avg_pinball": 0.3561,
+      "ES975_pred_true": -6.692,
+      "ES975_realized_ownVaR": -5.652,
+      "overstatement_pct": 18.4,
+      "breach99": 0.0106,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.0264,
+      "christoffersen99_p": 0.0785,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "gjr_skewt": {
+      "avg_pinball": 0.3562,
+      "ES975_pred_true": -6.582,
+      "ES975_realized_ownVaR": -5.84,
+      "overstatement_pct": 12.7,
+      "breach99": 0.0105,
+      "breach975": 0.0267,
+      "kupiec99_p": 0.0617,
+      "christoffersen99_p": 0.1029,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0001
+    },
+    "fhs": {
+      "avg_pinball": 0.3566,
+      "ES975_pred_true": -6.895,
+      "ES975_realized_ownVaR": -5.668,
+      "overstatement_pct": 21.6,
+      "breach99": 0.0099,
+      "breach975": 0.0265,
+      "kupiec99_p": 0.7944,
+      "christoffersen99_p": 0.8017,
+      "kupiec975_p": 0.0002,
+      "christoffersen975_p": 0.001
+    },
+    "fhs_pername": {
+      "avg_pinball": 0.3562,
+      "ES975_pred_true": -6.611,
+      "ES975_realized_ownVaR": -5.84,
+      "overstatement_pct": 13.2,
+      "breach99": 0.0111,
+      "breach975": 0.0281,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0001,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "fhs_roll500": {
+      "avg_pinball": 0.3569,
+      "ES975_pred_true": -6.534,
+      "ES975_realized_ownVaR": -5.981,
+      "overstatement_pct": 9.3,
+      "breach99": 0.0109,
+      "breach975": 0.025,
+      "kupiec99_p": 0.0004,
+      "christoffersen99_p": 0.0017,
+      "kupiec975_p": 0.9223,
+      "christoffersen975_p": 0.9232
+    },
+    "resid_hybrid_ML": {
+      "avg_pinball": 0.3551,
+      "ES975_pred_true": -6.373,
+      "ES975_realized_ownVaR": -5.832,
+      "overstatement_pct": 9.3,
+      "breach99": 0.0109,
+      "breach975": 0.0277,
+      "kupiec99_p": 0.0005,
+      "christoffersen99_p": 0.0001,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "hybrid_EVT": {
+      "avg_pinball": 0.3555,
+      "ES975_pred_true": -6.904,
+      "ES975_realized_ownVaR": -5.909,
+      "overstatement_pct": 16.8,
+      "breach99": 0.0091,
+      "breach975": 0.0242,
+      "kupiec99_p": 0.0003,
+      "christoffersen99_p": 0.0,
+      "kupiec975_p": 0.0498,
+      "christoffersen975_p": 0.0013
+    }
+  },
+  "best_model": "resid_hybrid_ML",
+  "DM_vs_best": {
+    "hist_sim": {
+      "DM_stat": 7.54,
+      "p_one_sided": 0.0
+    },
+    "ewma_rm": {
+      "DM_stat": 8.79,
+      "p_one_sided": 0.0
+    },
+    "garch_t": {
+      "DM_stat": 5.22,
+      "p_one_sided": 0.0
+    },
+    "gjr_skewt": {
+      "DM_stat": 5.18,
+      "p_one_sided": 0.0
+    },
+    "fhs": {
+      "DM_stat": 6.43,
+      "p_one_sided": 0.0
+    },
+    "fhs_pername": {
+      "DM_stat": 5.42,
+      "p_one_sided": 0.0
+    },
+    "fhs_roll500": {
+      "DM_stat": 5.88,
+      "p_one_sided": 0.0
+    },
+    "hybrid_EVT": {
+      "DM_stat": 6.72,
+      "p_one_sided": 0.0
+    }
+  },
+  "MCS": {
+    "in_MCS_90": [
+      "resid_hybrid_ML"
+    ],
+    "elimination_pvals": {
+      "hist_sim": 0.0,
+      "ewma_rm": 0.0,
+      "fhs_roll500": 0.0,
+      "fhs": 0.0,
+      "fhs_pername": 0.0,
+      "gjr_skewt": 0.0,
+      "garch_t": 0.0,
+      "hybrid_EVT": 0.0
+    }
+  }
+}

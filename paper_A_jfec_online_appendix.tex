@@ -48,9 +48,10 @@ $\widehat{z}_{t-62},\dots,\widehat{z}_t$.
 equation~(12) of the paper.
 (iii)~Convert each to a decile rank against the trailing pooled panel
 (same asset class); the score is the rank of the maximum.
-(iv)~Act by the paper: top decile $\Rightarrow$ the
-standard parametric VaR is currently, locally wrong by $\sim$2--3\% of
-pinball with high confidence --- flag the asset for the nonparametric /
+(iv)~Act by the paper: top decile $\Rightarrow$ the parametric
+model's average pinball loss runs $\sim$2--3\% higher within this
+score region (a conditional average, not a per-name point estimate)
+--- flag the asset for the nonparametric /
 residual-hybrid engine and for model-risk review; elsewhere
 $\Rightarrow$ no action (in the amortized setting the engine is run
 regardless; the meter serves surveillance, and day-level switching is
@@ -68,10 +69,11 @@ model $q_\phi(\tau\mid s_t)$ --- one model for the whole book, no
 per-name estimation; (iii)~apply the frozen GPD tail below $p_0$ and
 the conformal shifts $c_\tau$; (iv)~report
 $\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
-at the desk's levels, with ES$_{97.5}$ from the tail average; (v)~read
+at the desk's levels, with ES$_{97.5}$ from the GPD closed form below
+the splice; (v)~read
 the misspecification score equation~(12) of the paper as the model-risk monitor ---
-top decile means the parametric fallback is currently $\sim$2--3\% wrong
-on that name. \emph{Annually:} refit filters, retrain the shape model,
+top decile means the parametric fallback's conditional average loss
+in that score region runs $\sim$2--3\% higher. \emph{Annually:} refit filters, retrain the shape model,
 re-estimate tail and shifts, all on trailing data. \emph{New listing:}
 evaluate (ii)--(iv) from characteristics and first ticks; no history
 required. Total marginal cost per name per day: one filter update and
@@ -157,33 +159,34 @@ and are smaller --- the designs differ and are labeled where quoted.}
   tick label style={font=\scriptsize},
   title={\small Accuracy (140 names, 155k obs)}]
 \addplot[fill=npblue, draw=npblue] coordinates
-  {(Hyb,0.3551) (Hyb+EVT,0.3554) (GARCH-t,0.3561) (FHS,0.3565)
+  {(Hyb,0.3551) (Hyb+EVT,0.3555) (GARCH-t,0.3561) (FHS,0.3566)
    (GJR,0.3562) (EWMA,0.3606) (HS,0.3619)};
 \end{axis}
 \end{tikzpicture}\hfill
 \begin{tikzpicture}
 \begin{axis}[width=0.44\textwidth, height=5.2cm, ybar, bar width=5pt,
   symbolic x coords={Hyb, Hyb+EVT, GARCH-t, FHS},
-  xtick=data, ymin=-6.6, ymax=-5.2,
+  xtick=data, ymin=-7.2, ymax=-5.2,
   ylabel={ES$_{97.5}$}, x tick label style={font=\tiny, rotate=30},
   tick label style={font=\scriptsize},
   title={\small ES$_{97.5}$: predicted vs realized},
   legend style={font=\tiny, at={(0.98,0.02)}, anchor=south east,
                 draw=none}]
 \addplot[fill=npmid, draw=npmid] coordinates
-  {(Hyb,-5.80) (Hyb+EVT,-6.08) (GARCH-t,-6.17) (FHS,-6.20)};
+  {(Hyb,-6.37) (Hyb+EVT,-6.90) (GARCH-t,-6.69) (FHS,-6.90)};
 \addlegendentry{predicted}
 \addplot[fill=gold, draw=gold] coordinates
-  {(Hyb,-5.76) (Hyb+EVT,-5.86) (GARCH-t,-5.65) (FHS,-5.59)};
+  {(Hyb,-5.83) (Hyb+EVT,-5.91) (GARCH-t,-5.65) (FHS,-5.67)};
 \addlegendentry{realized}
 \end{axis}
 \end{tikzpicture}
 \caption{The FRTB battery. Left: average pinball loss by model (axis
-truncated to resolve the ordering; differences carry DM 4.4--8.3 vs the
+truncated to resolve the ordering; differences carry DM 5.2--8.8 vs the
 hybrid, all $p \approx 0$); CAViaR, not shown, statistically ties the
-hybrid. Right: ES$_{97.5}$ predicted vs realized --- FHS and GARCH-$t$
-over-state ES by 8--11\% (over-charging capital) while the hybrid is
-nearly exact.}
+hybrid. Right: ES$_{97.5}$ predicted (exact tail integral) vs realized
+below each model's own VaR --- a model-dependent diagnostic, not a
+ranking (every fat-tailed entrant's integral exceeds its own-tail
+mean); the joint FZ0 score of the paper is the ranking criterion.}
 \label{fig:frtb}
 \end{figure}
 \clearpage
