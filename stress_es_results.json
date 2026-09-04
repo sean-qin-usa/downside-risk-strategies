@@ -1,5 +1,5 @@
 {
-  "note": "PURGED + TRUE ES97.5 for the ten-day sections, both eras: training labels whose h-day window crosses the split are excluded (idx < sp-(h-1)), removing the boundary look-ahead found in adversarial review. Uniform exact ES methods: closed-form t ES for sqrt-h GARCH, exact empirical train-z tail mean for per-name FHS, 20-node midpoint sub-alpha GBM integral for the direct/hybrid model. Replaces the 3-node (design) and 5-node (holdout) tail-average proxies. Overlapping h-day targets as before.",
+  "note": "PURGED + TRUE ES97.5 for the ten-day sections, both eras: training labels whose h-day window crosses the split are excluded (idx < sp-(h-1)), removing the boundary look-ahead found in adversarial review. Uniform exact ES methods: closed-form t ES for sqrt-h GARCH, exact empirical train-z tail mean for per-name FHS, 20-node midpoint sub-alpha GBM integral for the direct/hybrid model. Replaces the 3-node (design) and 5-node (holdout) tail-average proxies. Overlapping h-day targets as before. Wave-7 addendum: holdout block recomputed by job_stress_dm.py with exact edge percentages and date-clustered NW(10) DM t-stats stored in-artifact.",
   "design_2014_2024": {
     "h1": {
       "all": {
@@ -161,12 +161,16 @@
         "n": 278808
       },
       "hybrid_GBM": {
-        "pinball": 0.9091,
-        "ES975_pred_true": -15.933,
-        "ES975_real_ownVaR": -17.733,
-        "breach975": 0.0282,
+        "pinball": 0.9096,
+        "ES975_pred_true": -15.936,
+        "ES975_real_ownVaR": -17.794,
+        "breach975": 0.0284,
         "n": 278808
       }
-    }
+    },
+    "edge_pct_direct_vs_garch": 0.489,
+    "DM_t_direct_vs_garch": 0.07,
+    "edge_pct_direct_vs_fhs": 0.57,
+    "DM_t_direct_vs_fhs": 0.2
   }
 }

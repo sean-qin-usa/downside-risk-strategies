@@ -63,8 +63,8 @@ conformal coverage overlay --- and a real-time misspecification score
 saying
 when it beats the parametric standard. One pooled fit replaces
 per-asset shape estimation and, characteristics-only, prices
-day-one listings. Exception counts
-stay nominal at both levels through the 2008 crisis. The
+day-one listings. Aggregate date-clustered
+exception counts stay nominal at both levels through the 2008 crisis. The
 score concentrates the edge in its top decile ($+2.7\%$, DM 6.5),
 replicating on a frozen-specification 2000--2013 holdout, under Romano--Wolf
 familywise control, and in a point-in-time universe keeping delisted
@@ -187,8 +187,9 @@ regulatory levels
 \citet{christoffersen1998} additionally tests that exceptions arrive
 \emph{independently} rather than in clusters. Both are standard in
 regulatory backtesting.} at 99\% via the EVT tail; conformal
-recalibration at 97.5\%) --- a finding that survives per-asset and
-date-clustered restatements and a 2008-crisis window rerun --- the
+recalibration at 97.5\%) --- nominal on the aggregate date-clustered
+tests and through a 2008-crisis window rerun, with per-name pass rates
+disclosed as residual heterogeneity --- the
 lowest joint $(\VaR,\ES)$ FZ0 score at both levels on the full panel
 for the engine's accuracy layer, with the conformal shift's
 sharpness-for-coverage cost at 2.5\% quantified rather than hidden
@@ -227,7 +228,9 @@ on proved, here.
 statistic. Panel~A is the presented engine's record ---
 its worst cell on the accuracy yardstick is a \emph{tie}, and its one
 scored concession --- the coverage shift's 2.5\% joint-score cost ---
-is flagged in its own row rather than absorbed into an average. Panel~B is not
+is flagged in its own row rather than absorbed into an average. The
+ten-day line sits in its own block because it belongs to the direct
+multi-day extension, not the engine. Panel~B is not
 the engine's record at all: it collects the boundary evidence ---
 configurations we deliberately do \emph{not} deploy and negative
 controls --- that motivates the engine's design and delimits where the
@@ -241,7 +244,8 @@ unless noted; DM statistics are per-date (Section~\ref{sec:frontier}
 conventions note), one-sided. Panel A: the deployed amortized
 residual-hybrid engine (worst case on the accuracy yardstick: no
 detectable loss; calm-cell 90\% lower confidence bounds sit above
-$-0.25\%$). Panel B: boundary
+$-0.25\%$). A separate block reports the direct multi-day
+extension, which is not the engine. Panel B: boundary
 evidence from configurations not deployed, which motivates the design.}
 \label{tab:winloss}
 \footnotesize\setlength{\tabcolsep}{3.5pt}
@@ -254,7 +258,6 @@ vs GARCH-$t$ / EWMA / HS, $h{=}1$ (avg) & $+0.3$ / $+1.5$ / $+1.9\%$ & DM 4.4--8
 Top misspecification decile & $+2.7\%$ & DM 6.5 & win (concentrated) \\
 Hyperinflation FX (ARS, EGP) & $+12$--$14\%$ & DM 2.9--3.8 & win \\
 Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 & win \\
-Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 stress; 2000--13 rerun: tie, DM 0.2 & win (era-dependent) \\
 2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2 (sort); recursive real-time rule $+1.0\%$, DM 2.15; frozen-constant restatement in text & win (untouched era) \\
 Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$; overall $+0.6\%$ & DM 6.6 / 9.0, frozen real-time thresholds & win (survivorship armor) \\
 Strict calendar splits; annual-refit walk-forward & top decile $+2.5\%$ under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 6.1 (walk-forward) & win (leakage and staleness armor) \\
@@ -264,6 +267,10 @@ Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels 
 Cold start / young listings & $+6$--$10\%$ & full-scale panel & win (unique capability) \\
 Calm-quintile edge & $\approx 0$ (point estimates $+0.0$--$+0.2\%$) & bottom-decile 90\% CIs lie above $-0.25\%$ & noninferior (no detectable loss) \\
 CAViaR (strongest academic rival) & tie & DM 0.59 & tie (co-best) \\
+\midrule
+\multicolumn{4}{l}{\emph{Extension (a separate direct multi-day model --- not the engine)}} \\
+\midrule
+Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 stress; 2000--13 rerun: tie, DM 0.07 & win (era-dependent) \\
 \midrule
 \multicolumn{4}{l}{\emph{Panel B: boundary evidence (not the engine) --- why the design is what it is}} \\
 \midrule
@@ -660,7 +667,21 @@ works here is empirical --- the exception-test repairs of
 Section~\ref{sec:frtb} (the conformal stage is the only reason any
 entrant passes Kupiec at 97.5\%). Conformal constructions with
 validity under dependence exist \citep{chernozhukov2018conformal}; we
-prefer the simple split form plus an empirical audit. Where regime
+prefer the simple split form plus an empirical audit. One further
+implementation gap is disclosed rather than hidden: the first-stage
+GARCH is fit on the full pre-test history, calibration window
+included, so the calibration errors are held out from the shape
+learner and the EVT tail but not from the filter. The accuracy-layer
+contests never read the calibration split and share their filter with
+the benchmark (identical information sets); the overlay's shift does
+use it, so the audit was rerun end-to-end strict, filter estimation
+stopped at the calibration boundary. Against the matched-information
+benchmark the advantage is intact (DM 5.0 and 5.3 at the two levels);
+the strict engine's gap to the full-window benchmark ($-0.7$, $-2.4$)
+matches that benchmark's own margin over its short-window twin (2.8,
+3.8) --- a quarter less estimation data, not leakage. The static shift
+widens (per-name pass 33\% against 48\%), consistent with its
+disclosed conservatism; the adaptive form remains the answer. Where regime
 drift erodes a static
 shift, an \emph{adaptive} update \citep{gibbs2021aci} is the natural
 escalation; the engine's annual-refit schedule sits
@@ -1756,12 +1777,10 @@ per-date DM inference throughout, the engine's \emph{accuracy layer}
 lowest FZ0 at both regulatory levels: at 1\% it beats GARCH-$t$ (DM
 4.1), FHS (DM 4.7), and a per-name score-driven one-factor GAS model
 estimated by FZ0 minimization in the style of \citet{patton2019} (DM
-9.2; no optimizer exceptions under a single-start Nelder--Mead
-estimate, and a three-start, convergence-audited re-estimate
-reproduces the 2.5\% comparison --- DM 5.9, every flag converged ---
-while destabilizing the filter at 1\% for a handful of names, which
-is why the benchmark is deliberately lightweight and read as
-appendix-grade); at 2.5\% it again wins (DM 4.2 over
+9.2; a three-start, convergence-audited re-estimate reproduces the
+2.5\% comparison at DM 5.9 but destabilizes the filter at 1\% for a
+handful of names --- the benchmark is deliberately lightweight and
+read as appendix-grade); at 2.5\% it again wins (DM 4.2 over
 GARCH-$t$, 6.0 over GAS); the accuracy layer is thus the single
 unified configuration a referee could ask for --- lowest FZ0 at both
 levels \emph{and} a pass on the aggregate date-clustered exception
@@ -1829,11 +1848,11 @@ tails compound with horizon; $\sqrt{h}$ Gaussian-style scaling
 compounds the shape error. A caveat: the temporal split places the whole
 test window in 2020--2024, and the pre-committed rerun on 2000--2013 shows
 the ten-day result is era-dependent. Out of era the two methods tie on
-accuracy (direct edge $+0.65\%$, date-level DM 0.22, NW lag 20), and
+accuracy (direct edge $+0.49\%$, date-level DM 0.07, NW lag 10), and
 the calibration verdict reverses: $\sqrt{h}$-scaled GARCH-$t$ ES is
 almost exactly calibrated through the crisis window (predicted
 $-16.6$ vs realized $-16.6$, exact integral, purged) while the
-direct model's tail under-states it ($-15.9$ vs $-17.7$) --- the pooled ten-day tail,
+direct model's tail under-states it ($-15.9$ vs $-17.8$) --- the pooled ten-day tail,
 trained on the pre-crisis segment, did not extrapolate to 2008-scale
 ten-day losses. The ten-day tail-severity advantage
 is therefore a 2014--2024 statement,
@@ -1963,15 +1982,20 @@ A fixed-shape parametric filter is hard to beat where its
 assumption holds, which is most assets on most days. The paper's answer
 to ``when and why beat it'' is a measurable frontier: local violation of
 the residual-shape assumption, at whose top decile the distribution-free
-family wins decisively, significantly, and portably across four
+family wins decisively and portably across four
 universes. The engine that captures this --- parametric scale,
 nonparametric shape, EVT tail, conformal finish --- beats the
 market-risk forecasting benchmarks banks commonly run, at
 FRTB-relevant probability levels and on FRTB-aligned diagnostics;
 implementing the full IMA approval machinery is a different exercise
-and is not claimed. Generative extensions (calibrated uncertainty on
-the risk number, likelihood-free posteriors) lie beyond this paper's
-scope and are claimed nowhere in it.
+and is not claimed.
+
+The pre-committed extensions within this paper's scope are complete
+and reported above --- the full-panel Fissler--Ziegel re-scoring
+(Section~\ref{sec:frtb}), the withdrawn capital translation
+(Section~\ref{sec:applications}), the 2000--2013 horizon comparison
+with its mixed verdict, and the signal-absorption study
+(Section~\ref{sec:frontier}).
 
 Limitations. Gradient-boosted trees remain the strongest tabular
 estimator; the neural IQN earns its place through sampling and
@@ -1979,36 +2003,12 @@ amortized posterior inference rather than point accuracy. The frontier score is 
 counterexamples; Baltic Dry wins at moderate kurtosis via limit-move
 dynamics). Credit and freight show large accuracy edges but clustered
 exceptions --- unresolved. The frontier's 2008 exposure is covered by the
-2000--2013 holdout, and the FRTB battery's stress re-run on that era is
-complete (Section~\ref{sec:frtb}: the engine passes both levels through
-the crisis window). Intraday extension is blocked
-on tick-data access.
-And the per-day oracle gap of Section~\ref{sec:gate} should discipline
-the field's enthusiasm for model-switching: most of the day-level
+2000--2013 holdout and its battery re-run (Section~\ref{sec:frtb}:
+both levels pass through the crisis window). The intraday extension awaits tick data.
+The per-day oracle gap of Section~\ref{sec:gate} disciplines
+model-switching enthusiasm: most of the day-level
 advantage of any model pair is realization noise, not predictable
 structure.
-
-Most of the pre-committed extensions within this paper's scope are now
-complete and reported above: the full-panel Fissler--Ziegel
-$(\VaR,\ES)$ re-scoring (Section~\ref{sec:frtb}, accuracy layer lowest
-at both levels; the deployed shift's 2.5\% concession quantified
-there), the 2008 stress window (the 2000--2013 holdout and its
-battery re-run), and the capital-translation exercise --- since
-withdrawn after the ES-estimator audit, with the withdrawal explained
-in Section~\ref{sec:applications} --- and the horizon and ES comparison on
-the 2000--2013 era is complete with a mixed verdict, reported in
-Section~\ref{sec:frtb}: accuracy ties out of era and the $\sqrt{h}$
-ES calibration verdict reverses. The signal-absorption study is also
-complete (Section~\ref{sec:frontier}): a state-reweighted historical
-simulation does not capture the frontier edge, and the failure mode
---- effective-sample collapse under sharp univariate conditioning ---
-is why the pooled learner is a precondition.
-Still open: the intraday frontier once tick data is available.
-Natural extensions beyond this paper: likelihood-free posteriors for
-Hawkes and jump-diffusion
-simulators, and vector quantile
-regression (Carlier--Chernozhukov--Galichon) as the principled
-multivariate transport map to succeed the scale/shape hybrid.
 
 \section*{Funding}
 This work was supported by the Northwestern University Department of

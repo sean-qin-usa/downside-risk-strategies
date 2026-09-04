@@ -34,8 +34,9 @@ A single measurable quantity — the excess kurtosis and asymmetry of recent GAR
 | Script | Output | Feeds |
 |---|---|---|
 | `code/frtb_table.py` | `results/frtb_table_results.json` | Table 6 (battery, exact tail-integral ES) |
-| `code/frtb_stress_exact.py` | `results/stress_es_results.json` | Ten-day sections, both eras (boundary-purged) |
+| `code/frtb_stress_exact.py` | `results/stress_es_results.json` | Ten-day sections, both eras (boundary-purged; `code/job_stress_dm.py` adds the stored out-of-era edge and DM) |
 | `code/job_wrds_holdout.py` | `results/holdout_frontier_results.json` | Untouched-era holdout (frozen spec; its header carries the written-in-advance predictions) |
+| `code/job_conformal_strict.py` | `results/fz_strict_results.json` | Strict-split conformal/FZ audit (filter estimation stopped before the calibration window) with the matched-information GARCH control |
 
 Superseded implementations (for example the pre-correction skew-t and the three-node ES approximation) are preserved in the repository history, not in the working tree; `code/frtb_bench.py` carries its correction history in the header.
 
