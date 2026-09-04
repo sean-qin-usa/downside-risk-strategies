@@ -1,8 +1,8 @@
-# Downside Risk at the Misspecification Frontier
+# Semiparametric Value-at-Risk and Expected Shortfall with a Real-Time Misspecification Score
 
 **The paper: [paper_A_frontier.pdf](paper_A_frontier.pdf)** ([LaTeX](paper_A_frontier.tex) | [bibliography](refs_v3.bib) | [online appendix](paper_A_online_appendix.tex))
 
-A real-time score for when nonparametric models beat industry-standard VaR and ES, with a deployable amortized engine. Sole-authored by Sean Qin; developed with the guidance of Prof. Wenxin Jiang (Northwestern).
+A semiparametric VaR/ES engine — parametric scale, amortized flexible tails — and a real-time misspecification score for when it beats industry-standard risk models. Sole-authored by Sean Qin; developed with the guidance of Prof. Wenxin Jiang (Northwestern).
 
 Repository layout: `code/` holds the study scripts, `results/` the derived statistics behind every number in the paper, `figures/` exported charts, `docs/` submission material (cover letter, journal requirements, abstracts). No licensed data (CRSP/WRDS, Bloomberg) are redistributed; every panel rebuilds from the queries documented in the paper's data section for licensed subscribers. Day-to-day working notes live in a separate private working repository; this repository carries the paper of record and everything needed to replicate it.
 
