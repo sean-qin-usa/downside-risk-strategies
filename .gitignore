@@ -15,3 +15,6 @@ samerows_merged.csv
 *_console.txt
 *_log.txt
 *.png
+_scrub_backup/ 
+_github_private/ 
+tpx_inspect_out.txt 
