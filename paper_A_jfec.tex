@@ -1111,8 +1111,9 @@ the text
 wherever it is discussed. The paper's guard against selection across
 its many exercises is replication, not one joint correction over
 everything reported: the headline is family-wise controlled within its
-grid, specified before the run and replicated on the untouched 2000--2013
-holdout, and recovered under a strictly non-anticipating decile cutoff, so it
+grid, specified before the run and, as the frozen kurtosis component,
+replicated on the untouched 2000--2013 holdout, and recovered under a strictly
+non-anticipating decile cutoff, so it
 does not hang on a single surviving test. The exploratory
 single-instrument universes, which are not jointly controlled with the
 equity grid, are labeled as such and carry their own 93-comparison
@@ -1334,8 +1335,8 @@ hyperparameters, split rule, and test statistics), wrote down three
 predictions in advance (top-decile edge positive and significant; bottom decile
 indistinguishable from zero; a threshold-shaped decile profile), and
 then pulled CRSP daily returns for 2000--2013, an era no prior run in
-this project had touched. The frontier replicates
-(Figure~\ref{fig:holdout}): the top-decile edge is $+0.89\%$ with
+this project had touched. The pre-specified kurtosis-component frontier
+replicates (Figure~\ref{fig:holdout}): the top-decile edge is $+0.89\%$ with
 per-date DM $2.16$ ($p=0.016$; 1{,}465 dates), deciles one through nine
 sit between $-0.18\%$ and $+0.28\%$, and the overall edge is
 $+0.02\%$: the same threshold nonlinearity, attenuated in a
@@ -1762,12 +1763,12 @@ volatility indices, motivating the selective-application rule of
 Section~\ref{sec:hybrid}. Instrument-level results and diagnostics are
 collected in the Online Appendix.
 
-\paragraph{The intraday ceiling.} Against a Realized GARCH
-\citep{hansen2012realized} that reads intraday data, the daily-data core
-concedes FZ0 at both levels (DM $6.0$ and $4.5$; Online Appendix): the gap is
-the realized \emph{scale}, not the tail, it opens only where intraday data
-exist, and a realized-hybrid would carry the estimator's shape model and score
-onto that scale.
+\paragraph{The scale--shape decomposition.} Against a proper Realized GARCH
+\citep{hansen2012realized} on intraday data the daily-data core concedes FZ0 at
+both levels (DM $6.0$ and $4.5$); but re-fitting the shape learner, EVT tail, and
+score on the realized residuals leaves the score within noise, so on large caps
+the frontier is largely daily-scale misspecification, and elsewhere (day-one,
+illiquid, cross-asset) the only such diagnostic available (Online Appendix).
 
 %% ===== APPLICATIONS =====
 \section{Extensions and implications}\label{sec:applications}
@@ -1857,21 +1858,24 @@ advantage while matching the benchmark elsewhere. This engine improves on
 the market-risk models banks commonly run, judged by FRTB-aligned
 diagnostics. We do not claim the full internal-models-approval machinery.
 
-Three qualifications bound these conclusions. First, the score is
-predictive rather than a necessary or sufficient condition for the
-flexible model to win. High residual kurtosis coincides with ties in some
-markets and with a nonparametric win at moderate kurtosis in others, and
-in credit and freight the accuracy edges sit alongside calibration
-failures that the current tail stages leave open; the score orders the
-edge as an empirical regularity, and the data do not identify residual
-misspecification as its structural cause. Second, the study is
-daily-frequency, and an intraday extension that exploits high-frequency
-data is the natural next step. Third, the score is a monitor of the
-frontier rather than a rule for switching models from one day to the
-next. The day-ahead gap between the oracle and the achievable forecast is
-largely unforecastable noise, as Section~\ref{sec:gate} shows, so the
-score earns its keep by stratifying where the flexible model helps, not
-by timing a daily switch.
+These conclusions carry qualifications. The score is predictive, not a
+necessary or sufficient condition for the flexible model to win: high residual
+kurtosis coincides with ties in some markets and with a nonparametric win at
+moderate kurtosis in others, and in credit and freight the accuracy edges sit
+alongside calibration failures the current tail stages leave open. It orders
+the edge as an empirical regularity, and the data do not identify residual
+misspecification as its structural cause. The evaluation is daily-frequency by
+design, and the intraday comparison we do run is itself revealing: on large
+capitalizations where five-minute realized measures can be built, a
+realized-variance scale absorbs most of what the score detects on daily-GARCH
+residuals (Section~\ref{sec:frtb}), so on that segment the frontier is largely a
+diagnostic of daily-scale misspecification rather than an independent
+conditional-shape phenomenon. Where intraday data do not exist, which is the
+estimator's operating regime, the daily flexible model and its score remain the
+tool one has. And the score is a monitor, not a rule for switching models from
+one day to the next: the day-ahead gap between the oracle and the achievable
+forecast is largely unforecastable noise (Section~\ref{sec:gate}), so its value
+is in stratifying where the flexible model helps, not in timing a daily switch.
 
 \section*{Funding}
 This work was supported by the Northwestern University Department of
