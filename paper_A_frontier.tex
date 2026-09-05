@@ -92,8 +92,8 @@ misspecification; amortized estimation.
 Banks measure the downside risk of a trading book by its Value-at-Risk
 (VaR) and Expected Shortfall (ES): the lower-tail quantile of the
 conditional return distribution, and the average loss beyond it. Two
-research traditions produce these forecasts, and they make opposite
-modeling bets. Econometrics builds parametric filters, such as GARCH and
+research traditions produce these forecasts, and they impose different
+restrictions on the conditional return distribution. Econometrics builds parametric filters, such as GARCH and
 its leverage and skew extensions, whose conditional scale dynamics are
 excellent but whose innovation law is fixed by assumption. Machine
 learning builds distribution-free conditional quantile estimators, such
@@ -248,18 +248,17 @@ The closest antecedent in this journal's own pages is
 \citet{zhang2024commonality}, who forecast realized volatility with
 machine-learning models pooled across stocks and document transfer to previously unseen names, evidence of a shared volatility mechanism
 that our amortized design also exploits. The differences delimit this
-paper's contribution. Their target is a point forecast of realized
-variance; ours is the full conditional return distribution and its
-regulatory tail, held to calibration, exception-test, and capital
-discipline. Their question is whether machine learning wins on average;
-ours is when, and our answer, that on roughly ninety percent
-of asset-days it does not, reads as a caution against extrapolating
-average ML superiority to the tails. Our amortization is pushed to the
-cold-start limit (day-one forecasts from characteristics alone) and
-stress-tested against own-history benchmarks at every listing age. And
-we reach the opposite estimator verdict on tabular state (trees over
-networks), a divergence we attribute to the different target and feature
-set rather than a contradiction.
+paper's contribution. Their object is average realized-variance forecast
+performance; ours is state dependence in conditional tail-risk forecast
+performance, the full return distribution and its regulatory tail held to
+calibration, exception-test, and capital discipline. Where a flexible
+model helps is itself the question: on roughly ninety percent of
+asset-days it does not improve on the parametric benchmark, which cautions
+against extrapolating average machine-learning superiority to the tails.
+Our amortization is pushed to the cold-start limit (day-one forecasts from
+characteristics alone) and stress-tested against own-history benchmarks at
+every listing age; on tabular state gradient-boosted trees outperform the
+network, which we attribute to the different target and feature set.
 
 The nonparametric family estimates $Q_\theta(\tau \mid x_t)$ directly by
 pinball-loss empirical risk minimization \citep{koenker1978}:
@@ -338,7 +337,7 @@ continuous ranked probability score up to a factor of two, as recorded
 below). The loss is density-free, which is what permits every estimator
 below to dispense with a likelihood.
 
-\emph{Why this loss and not another.} We score pinball at the
+\emph{Choice of scoring rule.} We score pinball at the
 decision-relevant levels rather than a global proper score, for two
 reasons. (a)~The continuous ranked probability
 score (CRPS) is exactly the integral of the pinball loss over all
@@ -656,22 +655,19 @@ learning rates, and seeds are reported with the code release.
 \emph{Amortization.} One model is trained over the pooled (state, loss)
 pairs of hundreds of names; in generative-Bayes terms, $H$ is an
 amortized map evaluated at any new $(s,\tau)$ without per-asset
-refitting. The intuition for why this works, and why it works at
-cold-start in particular, is actuarial. A per-asset GARCH learns
-\emph{name-specific parameters} from that name's own history, so with no
-history it has nothing. The amortized model instead learns one
-universal mapping from observable state to residual shape
-(``assets whose trailing volatility looks like this, with
-characteristics like that, produce surprises shaped like so''),
-estimated from millions of asset-days of other names. A newly
-listed asset is not a new problem: its first ticks and characteristics
-place it at a point of state space already densely populated by other
-names' history, much as an insurer prices a new driver from a population table rather
-than from an empty claims file. As the name's own history accrues, its
-trailing realized volatility enters $s_t$ and the forecast tracks its
-own dynamics automatically. The same fact explains why the
-explicit own-history blends fail: the state vector already carries the
-name's own recent information, so bolting it on again adds only noise. Feature ablation at full scale (1.32M rows, 720 names, 288
+refitting. The reason it works, and works at cold-start in particular, is that the
+mapping is estimated across names rather than within one. A per-asset
+GARCH learns \emph{name-specific parameters} from that name's own
+history, so with no history it has nothing. The amortized model instead
+learns a single mapping from observable state to residual shape,
+estimated from millions of asset-days across names. A newly listed asset
+is therefore not a new problem: its first ticks and characteristics place
+it at a point of the state space already densely populated by other
+names' histories, and the estimated mapping applies there directly. As
+the name's own history accrues, its trailing realized volatility enters
+$s_t$ and the forecast tracks its own dynamics automatically. The same
+fact explains why the explicit own-history blends add nothing: the state
+vector already carries the name's own recent information. Feature ablation at full scale (1.32M rows, 720 names, 288
 held out) shows the transfer edge is carried overwhelmingly by each
 name's own recent dynamics (realized vol above all; removing it
 costs $+1.0\%$, removing all cross-sectional characteristics only
@@ -684,15 +680,15 @@ pipeline scores a leakage-safe weighted scaled pinball of 0.269
 (benchmark tier) on the M5 competition data, outside finance
 altogether.
 
-\noindent\textbf{Practitioner's selection rule.} The two estimators
+\noindent\textbf{Estimator choice by forecasting objective.} The two estimators
 minimize the same loss over different index sets: the trees solve
 $\min \sum_{k}\sum_{i}\rho_{\tau_k}(\widehat{z}_i - q_k(s_i))$ on a
 fixed grid $\{\tau_k\}$, one model per level; the network solves
 $\min_\phi \sum_i \mathbb{E}_{\tau\sim\lambda}\,
 \rho_\tau(\widehat{z}_i - H_\phi(s_i,\tau))$, one model for the continuum, and the choice follows from what the application consumes.
-If the desk needs numbers at fixed regulatory levels (VaR/ES
-reporting, limits, capital), use the trees: best point accuracy, no
-GPU, no sampling needed. If the application consumes draws, scenario generation, portfolio aggregation by simulation, use the network: it learns one continuous conditional quantile map, so
+At fixed regulatory levels (VaR/ES
+reporting, limits, capital) the trees are preferable: best point accuracy, no
+GPU, no sampling. Where the application consumes draws (scenario generation, portfolio aggregation by simulation) the network is preferable: it learns one continuous conditional quantile map, so
 draws come by inverse transform with no grid interpolation, at a
 measured cost of $\sim$0.75\% in point accuracy (a GARCH-$t$ or FHS
 model also simulates, from its fixed innovation law; a tree grid
@@ -1102,15 +1098,16 @@ loss comparisons, the Model Confidence Set for multi-model fields, and
 Kupiec, Christoffersen, and date-clustered breach tests at the two
 regulatory levels for exception behavior.
 
-``Frozen-specification'' has a specific meaning in this paper, and we
-deliberately avoid the stronger word \emph{registered}: no third-party
-registry or timestamp exists for these runs, so the claim is
-diffability, not notarization. A run is frozen-specification when the
-full specification (signals, features,
+``Frozen-specification'' has a specific meaning here: a run is
+frozen-specification when the full specification (signals, features,
 hyperparameters, split rule, and test statistics) is fixed and the
-predictions are written down before the data are pulled. The holdout pipeline is line-for-line the design-era pipeline, so both files are public in the replication repository, so a reader
-can diff the two and verify that no signal, feature, hyperparameter,
-or test statistic was altered for the holdout era. The
+predictions are written down before the data are pulled. We do not use
+the word \emph{registered}, since no third-party registry or timestamp
+exists for these runs. The holdout pipeline is line-for-line the
+design-era pipeline and both files are public in the replication
+repository, so the two can be compared directly to verify that no signal,
+feature, hyperparameter, or test statistic was altered for the holdout
+era. The
 2000--2013 holdout of Section~\ref{sec:frontier} ran under this rule. As
 a post-hoc check, the deployed composite also replicates on this holdout
 (top decile $+1.12\%$, DM 2.51; expanding prior-only cutoff $+0.71\%$,
@@ -1485,8 +1482,8 @@ Q5 (high) & $-0.10$ & $+0.44$ & $+0.68$ & $+0.61$ & $\mathbf{+2.33}$ \\
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item Top-row date-clustered DM by volatility quintile: 0.7, 2.3, 1.2,
-2.8, 6.4. The bottom-left and top-right regions are the point:
-neither ingredient alone produces the concentration.
+2.8, 6.4. Neither ingredient alone produces the concentration; it
+appears only in the bottom-left and top-right cells.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -1664,7 +1661,7 @@ significantly wins all twenty-three assets even inside the crisis
 window. The frontier is about the residual shape, not about headline
 turbulence.
 
-One adjustment prices the breadth of this search. The three
+Multiplicity across these comparisons is addressed as follows. The three
 exploratory universes contain 93 instrument-level comparisons; treated
 as one family, a Holm step-down at familywise 5\% keeps eight numerical survivors, of which one (PJM power)
 is already reclassified by the audit below as a log-return artifact on
@@ -2078,10 +2075,11 @@ models McNeil--Frey does not reject (engine mean exceedance residual $-0.02$,
 $p=0.49$), while GARCH-$t$ and the Gaussian filter are. The limitation is the
 $1\%$ tail: there every model's mean exceedance residual is significantly
 negative, the engine included, and FHS's is in fact marginally closer to zero
-than the engine's ($-0.19$ against $-0.24$), though both are rejected. Inference
-is clustered by calendar date rather than pooled across asset-days, because the
-$140$ names share market shocks within a day; the effective sample is the
-$1{,}108$ test dates. Read within this daily-data battery, the message is
+than the engine's ($-0.19$ against $-0.24$), though both are rejected. Standard
+errors cluster on the $1{,}108$ trading dates rather than treat the $155{,}120$
+asset-days as independent: the $140$ names share market shocks within a day, so a
+pooled-independent error would badly understate the sampling variability. Read
+within this daily-data battery, the message is
 consistent with the exception tests and the joint score: fat-tailed
 specifications materially improve tail calibration, the engine's tail is the
 best calibrated overall, and the $1\%$ tail on large caps leaves room that no
@@ -2111,9 +2109,9 @@ Engine (hybrid$+$EVT) & $0.028$ & $0.00$ & $\mathbf{-0.12}$ & $\mathbf{-0.02\,(0
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item Inference for the McNeil--Frey and $Z_2$ $p$-values is clustered by
-calendar date over the $1{,}108$ test dates, not pooled across the $155{,}120$
-asset-days, since the $140$ names share within-day market shocks. Kupiec is the
+\item Inference for the McNeil--Frey and $Z_2$ $p$-values clusters on the
+$1{,}108$ trading dates rather than treating the $155{,}120$ asset-days as
+independent, since the $140$ names share within-day market shocks. Kupiec is the
 analytic unconditional-coverage test. Source: \texttt{es\_backtests\_results.json}.
 \end{tablenotes}
 \end{threeparttable}
@@ -2205,9 +2203,7 @@ daily; the intersection is common across models. Source:
 %% ===== APPLICATIONS =====
 \section{Extensions and implications}\label{sec:applications}
 
-\medskip\noindent\fbox{\parbox{0.96\textwidth}{
-\textbf{The production loop.}
-\emph{Nightly:} (i)~update each name's GARCH filter state
+\medskip\noindent\textbf{Deployed pipeline.} Each day: (i)~update each name's GARCH filter state
 $\widehat\sigma_{t+1}$ (recursion only; parameters refit annually);
 (ii)~assemble the state vector $s_t$ and evaluate the shared shape model $q_\phi(\tau\mid s_t)$, one model for the whole book, no
 per-name estimation; (iii)~apply the frozen GPD tail below $p_0$
@@ -2224,7 +2220,7 @@ run the separate characteristics-only amortized forecaster until an
 own-history sample sufficient to initialize the per-name scale filter
 accrues; then attach this residual-hybrid pipeline. Total marginal
 cost per name per day: one filter update and
-one model evaluation.}}
+one model evaluation.
 
 \medskip
 \textbf{Ex ante use of the score.} Because the frontier score is a trailing window on
@@ -2300,10 +2296,11 @@ sizing and hedging matter most. The \emph{direction} of the trade matters
 as much as its location: a correct physical-measure tail forecast
 does not by itself make bought crash insurance profitable, because the
 crash risk premium can survive conditioning on a correct forecast.
-The deployable side is the other one, \emph{warehousing} (selling) the premium, with the model supplying tail control rather than alpha on the mean. The
-gating experiment provides no evidence that the score times individual
-crash days, so its role in a premium-harvesting book is continuous
-tail-risk measurement, not a market-timing signal.
+The application the evidence supports is the opposite side, selling tail
+protection, where the model supplies tail control rather than alpha on
+the mean. The gating experiment provides no evidence that the score times
+individual crash days, so its role there is continuous tail-risk
+measurement, not a market-timing signal.
 
 \textbf{Scenario generation.} Because the shape stage carries an exact
 inverse-CDF sampler, calibrating intractable scenario generators
@@ -2315,7 +2312,7 @@ stress design is a natural extension; it is not developed here.
 
 A fixed-shape parametric filter is hard to beat where its shape
 assumption holds, and for most assets on most days it holds well. This
-paper makes that exception measurable: we
+paper locates that exception with an observable signal. We
 identify a state, indexed by a real-time score of residual-shape stress,
 in which a distribution-free family has a large and significant advantage
 over the parametric benchmark, and we build an engine that captures that

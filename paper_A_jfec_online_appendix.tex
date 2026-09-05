@@ -59,9 +59,7 @@ unsupported, Section~5.4 of the paper).
 the edge is back-loaded within episodes, so the lag forfeits little.
 }}
 
-\medskip\noindent\fbox{\parbox{0.96\textwidth}{
-\textbf{The production loop.}
-\emph{Nightly:} (i)~update each name's GARCH filter state
+\medskip\noindent\textbf{Deployed pipeline.} Each day: (i)~update each name's GARCH filter state
 $\widehat\sigma_{t+1}$ (recursion only; parameters refit annually);
 (ii)~assemble the state vector $s_t$ and evaluate the shared shape model $q_\phi(\tau\mid s_t)$, one model for the whole book, no
 per-name estimation; (iii)~apply the frozen GPD tail below $p_0$
@@ -78,7 +76,7 @@ run the separate characteristics-only amortized forecaster until an
 own-history sample sufficient to initialize the per-name scale filter
 accrues; then attach this residual-hybrid pipeline. Total marginal
 cost per name per day: one filter update and
-one model evaluation.}}
+one model evaluation.
 
 \section{Supplementary figures}
 % order fixes numbering: OA.1 timing, OA.2 passrates, OA.3 horizon, OA.4 frtb, OA.5 universes, OA.6 frontier
@@ -462,9 +460,9 @@ Engine (hybrid$+$EVT) & $0.028$ & $0.00$ & $\mathbf{-0.12}$ & $\mathbf{-0.02\,(0
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item Inference for the McNeil--Frey and $Z_2$ $p$-values is clustered by
-calendar date over the $1{,}108$ test dates, not pooled across the $155{,}120$
-asset-days, since the $140$ names share within-day market shocks. Kupiec is the
+\item Inference for the McNeil--Frey and $Z_2$ $p$-values clusters on the
+$1{,}108$ trading dates rather than treating the $155{,}120$ asset-days as
+independent, since the $140$ names share within-day market shocks. Kupiec is the
 analytic unconditional-coverage test. Source: \texttt{es\_backtests\_results.json}.
 \end{tablenotes}
 \end{threeparttable}
@@ -578,10 +576,11 @@ sizing and hedging matter most. The \emph{direction} of the trade matters
 as much as its location: a correct physical-measure tail forecast
 does not by itself make bought crash insurance profitable, because the
 crash risk premium can survive conditioning on a correct forecast.
-The deployable side is the other one, \emph{warehousing} (selling) the premium, with the model supplying tail control rather than alpha on the mean. The
-gating experiment provides no evidence that the score times individual
-crash days, so its role in a premium-harvesting book is continuous
-tail-risk measurement, not a market-timing signal.
+The application the evidence supports is the opposite side, selling tail
+protection, where the model supplies tail control rather than alpha on
+the mean. The gating experiment provides no evidence that the score times
+individual crash days, so its role there is continuous tail-risk
+measurement, not a market-timing signal.
 
 \textbf{Scenario generation.} Because the shape stage carries an exact
 inverse-CDF sampler, calibrating intractable scenario generators
