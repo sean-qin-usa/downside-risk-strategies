@@ -1,0 +1,153 @@
+{
+  "note": "nu-relative misspecification score test: mk63 converted to a percentile against the simulated null of 63-window sample excess kurtosis (pandas G2 estimator) under each name's fitted t_nu (grid interpolation, 4000 sims per grid point, nu grid spans [2.6,50] so no fitted nu in this panel is clipped from below; the finite-window null is well defined for every nu even where population kurtosis is not). Frontier deciles re-sorted by the percentile; edge = (garch-engine)/garch avg 11-level pinball, per-date DM NW(10). If the top decile survives, the score is model-relative rather than raw tail mass.",
+  "nu_summary": {
+    "min": 2.73,
+    "p25": 3.39,
+    "median": 3.93,
+    "p75": 4.53,
+    "max": 7.88
+  },
+  "overall_edge_pct": 0.361,
+  "raw_mk63": {
+    "deciles": [
+      {
+        "decile": 1,
+        "edge_pct": -0.158,
+        "DM": -1.0,
+        "n": 22160
+      },
+      {
+        "decile": 2,
+        "edge_pct": -0.023,
+        "DM": 0.27,
+        "n": 22160
+      },
+      {
+        "decile": 3,
+        "edge_pct": -0.086,
+        "DM": -0.89,
+        "n": 22160
+      },
+      {
+        "decile": 4,
+        "edge_pct": 0.118,
+        "DM": 1.05,
+        "n": 22160
+      },
+      {
+        "decile": 5,
+        "edge_pct": 0.051,
+        "DM": 0.52,
+        "n": 22160
+      },
+      {
+        "decile": 6,
+        "edge_pct": 0.123,
+        "DM": 1.26,
+        "n": 22160
+      },
+      {
+        "decile": 7,
+        "edge_pct": -0.187,
+        "DM": -1.7,
+        "n": 22160
+      },
+      {
+        "decile": 8,
+        "edge_pct": 0.004,
+        "DM": -0.23,
+        "n": 22160
+      },
+      {
+        "decile": 9,
+        "edge_pct": 0.455,
+        "DM": 2.92,
+        "n": 22160
+      },
+      {
+        "decile": 10,
+        "edge_pct": 2.968,
+        "DM": 10.49,
+        "n": 22160
+      }
+    ],
+    "top": {
+      "decile": 10,
+      "edge_pct": 2.968,
+      "DM": 10.49,
+      "n": 22160
+    }
+  },
+  "nu_relative": {
+    "deciles": [
+      {
+        "decile": 1,
+        "edge_pct": 0.027,
+        "DM": 1.37,
+        "n": 22161
+      },
+      {
+        "decile": 2,
+        "edge_pct": -0.022,
+        "DM": -0.05,
+        "n": 22159
+      },
+      {
+        "decile": 3,
+        "edge_pct": 0.063,
+        "DM": 0.84,
+        "n": 22160
+      },
+      {
+        "decile": 4,
+        "edge_pct": 0.122,
+        "DM": 1.37,
+        "n": 22160
+      },
+      {
+        "decile": 5,
+        "edge_pct": 0.013,
+        "DM": 0.17,
+        "n": 22160
+      },
+      {
+        "decile": 6,
+        "edge_pct": -0.064,
+        "DM": -0.48,
+        "n": 22160
+      },
+      {
+        "decile": 7,
+        "edge_pct": -0.203,
+        "DM": -1.83,
+        "n": 22160
+      },
+      {
+        "decile": 8,
+        "edge_pct": -0.043,
+        "DM": -0.5,
+        "n": 22160
+      },
+      {
+        "decile": 9,
+        "edge_pct": 0.66,
+        "DM": 4.57,
+        "n": 22161
+      },
+      {
+        "decile": 10,
+        "edge_pct": 2.994,
+        "DM": 8.53,
+        "n": 22159
+      }
+    ],
+    "top": {
+      "decile": 10,
+      "edge_pct": 2.994,
+      "DM": 8.53,
+      "n": 22159
+    }
+  },
+  "spearman_raw_vs_percentile": 0.971,
+  "top_decile_overlap_frac": 0.825
+}

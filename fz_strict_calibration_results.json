@@ -1,5 +1,5 @@
 {
-  "note": "STRICT-SPLIT conformal/FZ audit: engine variant with first-stage GARCH fit only through cp (45% of sample) so the calibration window cp..sp is held out from EVERY estimated engine component (filter, shape learner, EVT tail); recursive filtration thereafter. eng_orig replicates the fz_fullpanel construction (filter fit through sp) on identical test rows; benchmarks use the sp-fit filter in both, so engine-row differences are attributable purely to the split. GAS is unaffected (raw-returns estimation) -- see fz_fullpanel_results.json. DM_t>0 in benchmark rows = benchmark worse than that engine variant, date-clustered NW(10). Canonical artifact name: fz_strict_calibration_results.json (wave-8 rename of fz_strict_results.json; content identical to the run of 2026-09-04).",
+  "note": "STRICT-SPLIT conformal/FZ audit: engine variant with first-stage GARCH fit only through cp (45% of sample) so the calibration window cp..sp is held out from EVERY estimated engine component (filter, shape learner, EVT tail); recursive filtration thereafter. eng_orig replicates the fz_fullpanel construction (filter fit through sp) on identical test rows; benchmarks use the sp-fit filter in both, so engine-row differences are attributable purely to the split. GAS is unaffected (raw-returns estimation) -- see fz_fullpanel_results.json. DM_t>0 in benchmark rows = benchmark worse than that engine variant, date-clustered NW(10).",
   "n_names": 200,
   "n_test": 221600,
   "eng_orig": {
@@ -8,7 +8,7 @@
       "xi": 0.2932,
       "beta": 0.6412
     },
-    "conf975": -0.3376
+    "conf975": -0.3416
   },
   "eng_strict": {
     "gpd": {
@@ -16,21 +16,21 @@
       "xi": 0.2769,
       "beta": 0.6627
     },
-    "conf975": -0.5086
+    "conf975": -0.507
   },
   "per_alpha": {
     "0.01": {
       "orig_noshift": {
-        "meanFZ0": 2.14872,
+        "meanFZ0": 2.14858,
         "breach": 0.0102,
-        "breach_dateclust_t": 0.4,
+        "breach_dateclust_t": 0.35,
         "kupiec_passrate": 0.835
       },
       "strict_noshift": {
-        "meanFZ0": 2.1592,
+        "meanFZ0": 2.15858,
         "breach": 0.0119,
-        "breach_dateclust_t": 2.84,
-        "kupiec_passrate": 0.735
+        "breach_dateclust_t": 2.8,
+        "kupiec_passrate": 0.745
       },
       "garch_cpfit": {
         "meanFZ0": 2.17111,
@@ -39,47 +39,47 @@
         "kupiec_passrate": 0.7
       },
       "strict_vs_orig_noshift": {
-        "mean_diff": 0.01048,
-        "DM_t": 2.43
+        "mean_diff": 0.01,
+        "DM_t": 2.35
       },
       "garch_minus_orig_noshift": {
-        "mean_diff": 0.007,
-        "DM_t": 4.15
+        "mean_diff": 0.00714,
+        "DM_t": 4.24
       },
       "garch_minus_strict_noshift": {
-        "mean_diff": -0.00348,
-        "DM_t": -0.74
+        "mean_diff": -0.00286,
+        "DM_t": -0.6
       },
       "garchcp_minus_strict_noshift": {
-        "mean_diff": 0.01191,
-        "DM_t": 4.97
+        "mean_diff": 0.01253,
+        "DM_t": 5.1
       },
       "garch_minus_garchcp": {
         "mean_diff": -0.01539,
         "DM_t": -2.79
       },
       "fhs_minus_strict_noshift": {
-        "mean_diff": 0.01321,
-        "DM_t": 2.58
+        "mean_diff": 0.01383,
+        "DM_t": 2.69
       },
       "top_mk63_decile_garch_minus_strict_noshift": {
-        "mean_diff": 0.03094,
+        "mean_diff": 0.03082,
         "DM_t": 1.91,
         "n_dates": 1108
       }
     },
     "0.025": {
       "orig_noshift": {
-        "meanFZ0": 1.85017,
+        "meanFZ0": 1.85051,
         "breach": 0.0271,
-        "breach_dateclust_t": 1.53,
-        "kupiec_passrate": 0.73
+        "breach_dateclust_t": 1.56,
+        "kupiec_passrate": 0.715
       },
       "strict_noshift": {
-        "meanFZ0": 1.86253,
-        "breach": 0.0304,
-        "breach_dateclust_t": 3.65,
-        "kupiec_passrate": 0.61
+        "meanFZ0": 1.86283,
+        "breach": 0.0305,
+        "breach_dateclust_t": 3.71,
+        "kupiec_passrate": 0.58
       },
       "garch_cpfit": {
         "meanFZ0": 1.8699,
@@ -88,53 +88,68 @@
         "kupiec_passrate": 0.495
       },
       "strict_vs_orig_noshift": {
-        "mean_diff": 0.01236,
-        "DM_t": 4.01
+        "mean_diff": 0.01232,
+        "DM_t": 3.96
       },
       "garch_minus_orig_noshift": {
-        "mean_diff": 0.00403,
-        "DM_t": 4.53
+        "mean_diff": 0.00369,
+        "DM_t": 4.24
       },
       "garch_minus_strict_noshift": {
-        "mean_diff": -0.00834,
-        "DM_t": -2.42
+        "mean_diff": -0.00863,
+        "DM_t": -2.48
       },
       "garchcp_minus_strict_noshift": {
-        "mean_diff": 0.00736,
-        "DM_t": 5.27
+        "mean_diff": 0.00707,
+        "DM_t": 5.38
       },
       "garch_minus_garchcp": {
         "mean_diff": -0.0157,
         "DM_t": -3.83
       },
       "fhs_minus_strict_noshift": {
-        "mean_diff": -8e-05,
-        "DM_t": -0.03
+        "mean_diff": -0.00038,
+        "DM_t": -0.13
       },
       "orig_static": {
-        "meanFZ0": 1.86731,
-        "breach": 0.0163,
-        "breach_dateclust_t": -9.59,
-        "kupiec_passrate": 0.48
+        "meanFZ0": 1.86789,
+        "breach": 0.0162,
+        "breach_dateclust_t": -9.69,
+        "kupiec_passrate": 0.475
       },
       "strict_static": {
-        "meanFZ0": 1.88043,
-        "breach": 0.015,
-        "breach_dateclust_t": -12.06,
-        "kupiec_passrate": 0.33
+        "meanFZ0": 1.87982,
+        "breach": 0.0151,
+        "breach_dateclust_t": -11.7,
+        "kupiec_passrate": 0.34
       },
       "strict_vs_orig_static": {
-        "mean_diff": 0.01312,
-        "DM_t": 6.25
+        "mean_diff": 0.01193,
+        "DM_t": 5.86
       },
       "garch_minus_strict_static": {
-        "mean_diff": -0.02623,
-        "DM_t": -3.26
+        "mean_diff": -0.02562,
+        "DM_t": -3.2
       },
       "top_mk63_decile_garch_minus_strict_noshift": {
-        "mean_diff": 0.01649,
-        "DM_t": 1.44,
+        "mean_diff": 0.01607,
+        "DM_t": 1.41,
         "n_dates": 1108
+      },
+      "strict_aci_gamma_0.05": {
+        "meanFZ0": 1.8627,
+        "breach": 0.0194,
+        "breach_dateclust_t": -5.36,
+        "kupiec_passrate": 0.57,
+        "c_final": -0.1985,
+        "c_range": [
+          -0.507,
+          -0.1902
+        ]
+      },
+      "garch_minus_strict_aci": {
+        "mean_diff": -0.0085,
+        "DM_t": -1.49
       }
     }
   }

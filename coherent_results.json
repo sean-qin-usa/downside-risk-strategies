@@ -1,0 +1,93 @@
+{
+  "note": "Coherent-curve audit: final implemented quantile curve Q*(u)=min(body,EVT) for u<=p0 (body alone above p0), monotonized by rearrangement per observation; VaR_a=Q*(a); ES_a = 20-node midpoint integral of the SAME rearranged curve. Compared on identical rows with the shipped convention (VaR=min at a, ES=GPD closed form capped below VaR) and with GARCH-t closed forms. bind_frac = fraction of (row,node) pairs in u<=min(p0,a) where the body branch is the minimum. Also p0 splice sensitivity. All DMs date-clustered NW(10); positive DM favors the second-named.",
+  "xi_guard": "ES formula requires xi<1; fitted xi reported per p0.",
+  "per_p0": {
+    "p0_0.015": {
+      "gpd": {
+        "xi": 0.3132,
+        "beta": 0.7227,
+        "u": -2.2445
+      },
+      "alpha_0.01": {
+        "bind_frac_body_min": 0.39,
+        "breach": 0.0103,
+        "meanFZ0_coherent": 2.14742,
+        "meanFZ0_shipped": 2.14877,
+        "shipped_minus_coherent_DM": 2.5,
+        "garch_minus_coherent_DM": 4.82,
+        "garch_minus_shipped_DM": 4.4,
+        "mean_ES_coherent": -9.279,
+        "mean_ES_shipped": -9.256
+      },
+      "alpha_0.025": {
+        "bind_frac_body_min": 0.3882,
+        "breach": 0.0326,
+        "meanFZ0_coherent": 1.84364,
+        "meanFZ0_shipped": 1.84364,
+        "shipped_minus_coherent_DM": 0.0,
+        "garch_minus_coherent_DM": 3.52,
+        "garch_minus_shipped_DM": 3.52,
+        "mean_ES_coherent": -6.669,
+        "mean_ES_shipped": -6.669
+      }
+    },
+    "p0_0.025": {
+      "gpd": {
+        "xi": 0.2932,
+        "beta": 0.6412,
+        "u": -1.8866
+      },
+      "alpha_0.01": {
+        "bind_frac_body_min": 0.3849,
+        "breach": 0.0103,
+        "meanFZ0_coherent": 2.14753,
+        "meanFZ0_shipped": 2.14889,
+        "shipped_minus_coherent_DM": 2.46,
+        "garch_minus_coherent_DM": 4.78,
+        "garch_minus_shipped_DM": 4.34,
+        "mean_ES_coherent": -9.282,
+        "mean_ES_shipped": -9.246
+      },
+      "alpha_0.025": {
+        "bind_frac_body_min": 0.3876,
+        "breach": 0.0275,
+        "meanFZ0_coherent": 1.84918,
+        "meanFZ0_shipped": 1.85126,
+        "shipped_minus_coherent_DM": 5.31,
+        "garch_minus_coherent_DM": 4.76,
+        "garch_minus_shipped_DM": 3.58,
+        "mean_ES_coherent": -6.871,
+        "mean_ES_shipped": -6.883
+      }
+    },
+    "p0_0.05": {
+      "gpd": {
+        "xi": 0.2645,
+        "beta": 0.5555,
+        "u": -1.4617
+      },
+      "alpha_0.01": {
+        "bind_frac_body_min": 0.3768,
+        "breach": 0.0102,
+        "meanFZ0_coherent": 2.14791,
+        "meanFZ0_shipped": 2.14941,
+        "shipped_minus_coherent_DM": 2.45,
+        "garch_minus_coherent_DM": 4.6,
+        "garch_minus_shipped_DM": 4.06,
+        "mean_ES_coherent": -9.276,
+        "mean_ES_shipped": -9.209
+      },
+      "alpha_0.025": {
+        "bind_frac_body_min": 0.3747,
+        "breach": 0.0275,
+        "meanFZ0_coherent": 1.8492,
+        "meanFZ0_shipped": 1.85127,
+        "shipped_minus_coherent_DM": 5.21,
+        "garch_minus_coherent_DM": 4.72,
+        "garch_minus_shipped_DM": 3.47,
+        "mean_ES_coherent": -6.878,
+        "mean_ES_shipped": -6.878
+      }
+    }
+  }
+}
