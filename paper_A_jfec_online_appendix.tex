@@ -33,8 +33,7 @@ names $j$ and days $t$.
 $\mathbb{E}_{\tau\sim\lambda}\,\rho_\tau(\widehat{z} - H_\phi(s,\tau))$
 [network], or boost per-$\tau$ regressions on a grid [trees]; enforce
 monotonicity by rearrangement.
-(iii)~For any asset --- including one with no return history, using
-characteristics-only $s$ --- evaluate $H_\phi(s_t,\cdot)$; no per-asset
+(iii)~For any asset, including one with no return history, using characteristics-only $s$, evaluate $H_\phi(s_t,\cdot)$; no per-asset
 estimation step exists.
 (iv)~To \emph{sample}, draw $\tau^{(m)}\sim U(0,1)$ and return
 $z^{(m)} = H_\phi(s_t,\tau^{(m)})$.
@@ -50,8 +49,7 @@ equation~(12) of the paper.
 (same asset class); the score is the rank of the maximum.
 (iv)~Act by the paper: top decile $\Rightarrow$ the parametric
 model's average pinball loss runs $\sim$2--3\% higher within this
-score region (a conditional average, not a per-name point estimate)
---- flag the asset for the nonparametric /
+score region (a conditional average, not a per-name point estimate), flag the asset for the nonparametric /
 residual-hybrid engine and for model-risk review; elsewhere
 $\Rightarrow$ no action (in the amortized setting the engine is run
 regardless; the meter serves surveillance, and day-level switching is
@@ -64,16 +62,14 @@ the edge is back-loaded within episodes, so the lag forfeits little.
 \textbf{The production loop.}
 \emph{Nightly:} (i)~update each name's GARCH filter state
 $\widehat\sigma_{t+1}$ (recursion only; parameters refit annually);
-(ii)~assemble the state vector $s_t$ and evaluate the shared shape
-model $q_\phi(\tau\mid s_t)$ --- one model for the whole book, no
+(ii)~assemble the state vector $s_t$ and evaluate the shared shape model $q_\phi(\tau\mid s_t)$, one model for the whole book, no
 per-name estimation; (iii)~apply the frozen GPD tail below $p_0$
 and, where the desk elects the coverage overlay, the conformal shift
 $c_\tau$ (static or adaptive); (iv)~report
 $\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
 at the desk's levels, with ES$_{97.5}$ from the GPD closed form below
 the splice; (v)~read
-the misspecification score equation~(12) of the paper as the model-risk monitor ---
-top decile means the parametric fallback's conditional average loss
+the misspecification score equation~(12) of the paper as the model-risk monitor: top decile means the parametric fallback's conditional average loss
 in that score region runs $\sim$2--3\% higher. \emph{Annually:} refit filters, retrain the shape model,
 re-estimate tail and shifts, all on trailing data. \emph{New listing:}
 run the separate characteristics-only amortized forecaster until an
@@ -99,8 +95,7 @@ one model evaluation.}}
 \caption{Timing diagnostics for the frontier. Top-decile edge under four
 alignments of the mk$_{63}$ score with the daily loss (200 CRSP names;
 per-date DM 5.5--6.5 in all four). The deployed lag dominates, and the
-contaminated same-day alignment yields less --- the opposite of what a
-look-ahead artifact would produce.}
+contaminated same-day alignment yields less, the opposite of what a look-ahead artifact would produce.}
 \label{fig:timing}
 \end{figure}
 \clearpage
@@ -146,8 +141,7 @@ corrected pooled battery row passes both 99\% tests.}
 \caption{The edge grows with horizon. Direct-model/GARCH pinball
 ratio at $h = 1, 5, 10, 20$ days (150-name design panel; training
 labels whose $h$-day window crosses the split are purged): fat tails
-compound while $\sqrt{h}$ scaling compounds the shape error ---
-$0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$. The forecaster is the
+compound while $\sqrt{h}$ scaling compounds the shape error, from $0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$. The forecaster is the
 direct multi-day model of the main text's ten-day subsection,
 \emph{not} the residual-hybrid engine, whose architecture is
 one-day. An earlier version of this figure showed larger ratios from
@@ -190,7 +184,7 @@ an unpurged run; the purged rerun supersedes it.}
 truncated to resolve the ordering; differences carry DM 5.2--8.8 vs the
 hybrid, all $p \approx 0$); CAViaR, not shown, statistically ties the
 hybrid. Right: ES$_{97.5}$ predicted (exact tail integral) vs realized
-below each model's own VaR --- a model-dependent diagnostic, not a
+below each model's own VaR, a model-dependent diagnostic, not a
 ranking (every fat-tailed entrant's integral exceeds its own-tail
 mean); the joint FZ0 score of the paper is the ranking criterion.}
 \label{fig:frtb}
@@ -233,8 +227,7 @@ mean); the joint FZ0 score of the paper is the ranking criterion.}
 residual kurtosis, tier means and single assets with study-reported
 kurtosis only (country universe corr 0.53; cross-asset corr 0.43).
 The hyperinflation-FX tier (kurtosis $\sim$2000--3300) carries the only
-decisive standalone wins; high kurtosis is necessary but not sufficient
---- carbon (288) and corn (20) tie, and NGN's win is not significant.
+decisive standalone wins; high kurtosis is predictive but neither necessary nor sufficient: carbon (288) and corn (20) tie, and NGN's win is not significant.
 The Korea-2026 control (kurtosis 4--13, GARCH wins all 23 assets) sits
 in the lower-left regime.}
 \label{fig:universes}
@@ -298,7 +291,7 @@ Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$;
 Strict calendar splits; annual-refit walk-forward & top decile $+2.5\%$ under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 6.1 (walk-forward) \\
 Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles \\
 Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\% & date-clustered $t$ 0.17 at 99\%; at 97.5\%, 0.35 (EVT tail) and $-1.09$ (static overlay, conservative); HS, EWMA fail \\
-Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.0--4.7 vs GARCH-$t$, FHS; 6.9--9.3 vs GAS; static shift concedes 2.5\% (DM $-1.6$), adaptive shift erases it (tie; top-decile cost remains) \\
+Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.8--4.9 vs GARCH-$t$, FHS at 1\%, 5.1 at 2.5\%; 6.2--9.6 vs GAS; static shift concedes 2.5\% (DM $-1.6$), adaptive shift erases it (tie; top-decile cost remains) \\
 Cold start / young listings & $+6$--$10\%$ & full-scale panel; no per-asset model applies \\
 Calm-quintile edge & $\approx 0$ (point estimates $+0.0$--$+0.2\%$) & bottom-decile 90\% CIs lie above $-0.25\%$; no detectable loss \\
 CAViaR (strongest academic rival) & tie (co-best in MCS) & DM 0.59 \\
@@ -320,8 +313,7 @@ Baltic freight; IG credit\tnote{a} & $+15\%$; $+52\%$ & DM 9.6; 30.6; accuracy o
 \item[a] Credit and freight fail breach-independence (exceptions
 cluster); their entries are accuracy results only. The
 credit magnitude is from the FRTB-grade single-asset battery; the
-smaller $4\%$ figure in the paper's cross-universe table is from the
-separate lean hybrid-vs-GARCH sweep --- different battery, both reported.
+smaller $4\%$ figure in the paper's cross-universe table is from the separate lean hybrid-vs-GARCH sweep, different battery, both reported.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -412,9 +404,7 @@ family; they are the replication evidence the paper's cross-universe
 claims rest on.
 \item[a] Retained in the family because the raw sweep contains it,
 but not a win: the paper's cross-asset audit reclassifies electricity
-as a log-return artifact on near-zero and negative prices --- refit on
-price differences, GARCH wins PJM (DM $-2.73$) --- so the survivor
-count the text quotes is seven.
+as a log-return artifact on near-zero and negative prices, refit on price differences, GARCH wins PJM (DM $-2.73$), so the survivor count the text quotes is seven.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -469,16 +459,12 @@ release.)
 
 
 \section{Trading implications and scenario generation}
-\textbf{Trading implications.} The universes where
-the nonparametric tail wins --- crisis FX, volatility indices, credit
-spreads, frontier equities --- are the desks where tail-shape-aware
+\textbf{Trading implications.} The universes where the nonparametric tail wins (crisis FX, volatility indices, credit spreads, frontier equities) are the desks where tail-shape-aware
 sizing and hedging matter most. The \emph{direction} of the trade matters
 as much as its location: a correct physical-measure tail forecast
 does not by itself make bought crash insurance profitable, because the
 crash risk premium can survive conditioning on a correct forecast.
-The deployable side is the other one ---
-\emph{warehousing} (selling) the premium --- with the model supplying
-tail control rather than alpha on the mean: model-timed overlays improve
+The deployable side is the other one, \emph{warehousing} (selling) the premium, with the model supplying tail control rather than alpha on the mean: model-timed overlays improve
 tail outcomes, not average returns, consistent with the tail being the
 only place the model knows something a fixed-shape filter does not. The
 contribution to a premium-harvesting book is risk management (when to

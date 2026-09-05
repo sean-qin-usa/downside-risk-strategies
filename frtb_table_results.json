@@ -1,5 +1,5 @@
 {
-  "note": "CANONICAL battery: one run, every row of Table 6, TRUE predicted ES97.5 per model (closed forms; 200-node Hansen integration; 20-node midpoint integration for empirical/rolling quantile functions; GPD closed form for the EVT engine; 20-node sub-alpha GBM grid for the raw hybrid). ES975_realized_ownVaR conditions on each model OWN breach set and is a labeled diagnostic, not the ranking criterion (FZ0 is). overstatement_pct=(|pred|-|real|)/|real|.",
+  "note": "CANONICAL battery: one run, every row of Table 6, TRUE predicted ES97.5 per model (closed forms; 200-node Hansen integration; 20-node midpoint integration for empirical/rolling quantile functions; coherent min-envelope curve Q* integrated numerically for the EVT engine; 20-node sub-alpha GBM grid for the raw hybrid). ES975_realized_ownVaR conditions on each model OWN breach set and is a labeled diagnostic, not the ranking criterion (FZ0 is). overstatement_pct=(|pred|-|real|)/|real|.",
   "sub_alpha_grid_nodes": 20,
   "gpd": {
     "u": -1.9809,
@@ -96,61 +96,61 @@
     },
     "resid_hybrid_ML": {
       "avg_pinball": 0.3551,
-      "ES975_pred_true": -6.373,
-      "ES975_realized_ownVaR": -5.832,
-      "overstatement_pct": 9.3,
-      "breach99": 0.0109,
-      "breach975": 0.0277,
-      "kupiec99_p": 0.0005,
-      "christoffersen99_p": 0.0001,
+      "ES975_pred_true": -6.379,
+      "ES975_realized_ownVaR": -5.827,
+      "overstatement_pct": 9.5,
+      "breach99": 0.0111,
+      "breach975": 0.0282,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0,
       "kupiec975_p": 0.0,
       "christoffersen975_p": 0.0
     },
     "hybrid_EVT": {
       "avg_pinball": 0.3555,
-      "ES975_pred_true": -6.904,
-      "ES975_realized_ownVaR": -5.909,
-      "overstatement_pct": 16.8,
-      "breach99": 0.0091,
-      "breach975": 0.0242,
-      "kupiec99_p": 0.0003,
-      "christoffersen99_p": 0.0,
-      "kupiec975_p": 0.0498,
-      "christoffersen975_p": 0.0013
+      "ES975_pred_true": -6.92,
+      "ES975_realized_ownVaR": -5.905,
+      "overstatement_pct": 17.2,
+      "breach99": 0.0092,
+      "breach975": 0.0243,
+      "kupiec99_p": 0.0008,
+      "christoffersen99_p": 0.0003,
+      "kupiec975_p": 0.058,
+      "christoffersen975_p": 0.0021
     }
   },
   "best_model": "resid_hybrid_ML",
   "DM_vs_best": {
     "hist_sim": {
-      "DM_stat": 7.54,
+      "DM_stat": 7.5,
       "p_one_sided": 0.0
     },
     "ewma_rm": {
-      "DM_stat": 8.79,
+      "DM_stat": 8.65,
       "p_one_sided": 0.0
     },
     "garch_t": {
-      "DM_stat": 5.22,
+      "DM_stat": 4.94,
       "p_one_sided": 0.0
     },
     "gjr_skewt": {
-      "DM_stat": 5.18,
+      "DM_stat": 4.96,
       "p_one_sided": 0.0
     },
     "fhs": {
-      "DM_stat": 6.43,
+      "DM_stat": 6.12,
       "p_one_sided": 0.0
     },
     "fhs_pername": {
-      "DM_stat": 5.42,
+      "DM_stat": 5.17,
       "p_one_sided": 0.0
     },
     "fhs_roll500": {
-      "DM_stat": 5.88,
+      "DM_stat": 5.68,
       "p_one_sided": 0.0
     },
     "hybrid_EVT": {
-      "DM_stat": 6.72,
+      "DM_stat": 6.39,
       "p_one_sided": 0.0
     }
   },

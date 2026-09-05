@@ -7,87 +7,87 @@
     "xi": 0.2932,
     "beta": 0.6412
   },
-  "conf975": -0.3165,
+  "conf975": -0.3437,
   "per_alpha": {
     "0.01": {
-      "engine_meanFZ0": 2.14837,
-      "engine_breach": 0.0101,
-      "engine_noconf_meanFZ0": 2.14837,
-      "engine_noconf_breach": 0.0101,
+      "engine_meanFZ0": 2.14739,
+      "engine_breach": 0.0103,
+      "engine_noconf_meanFZ0": 2.14739,
+      "engine_noconf_breach": 0.0103,
       "engine_noconf_vs_engine": {
         "mean_diff": 0.0,
         "DM_t": 0.0,
         "p_one_sided": 0.5
       },
       "garch_minus_engine_noconf": {
-        "mean_diff": 0.00735,
-        "DM_t": 4.04
+        "mean_diff": 0.00832,
+        "DM_t": 4.79
       },
       "garch_t": {
-        "mean_diff": 0.00735,
-        "DM_t": 4.04,
+        "mean_diff": 0.00832,
+        "DM_t": 4.79,
         "p_one_sided": 0.0,
         "meanFZ0": 2.15572,
         "breach": 0.0103
       },
       "fhs": {
-        "mean_diff": 0.02404,
-        "DM_t": 4.73,
+        "mean_diff": 0.02502,
+        "DM_t": 4.93,
         "p_one_sided": 0.0,
         "meanFZ0": 2.17241,
         "breach": 0.0124
       },
       "gas_pzc": {
-        "mean_diff": 0.08375,
-        "DM_t": 9.33,
+        "mean_diff": 0.08473,
+        "DM_t": 9.55,
         "p_one_sided": 0.0,
         "meanFZ0": 2.23212,
         "breach": 0.0092
       },
       "top_mk63_decile_garch_minus_engine": {
-        "mean_diff": 0.00854,
-        "DM_t": 2.04,
+        "mean_diff": 0.01043,
+        "DM_t": 3.36,
         "n_dates": 1108
       }
     },
     "0.025": {
-      "engine_meanFZ0": 1.86411,
-      "engine_breach": 0.017,
-      "engine_noconf_meanFZ0": 1.85069,
+      "engine_meanFZ0": 1.86666,
+      "engine_breach": 0.0164,
+      "engine_noconf_meanFZ0": 1.84877,
       "engine_noconf_breach": 0.0274,
       "engine_noconf_vs_engine": {
-        "mean_diff": -0.01342,
-        "DM_t": -2.03,
-        "p_one_sided": 0.9788
+        "mean_diff": -0.01789,
+        "DM_t": -2.56,
+        "p_one_sided": 0.9948
       },
       "garch_minus_engine_noconf": {
-        "mean_diff": 0.00351,
-        "DM_t": 4.42
+        "mean_diff": 0.00543,
+        "DM_t": 5.06
       },
       "garch_t": {
-        "mean_diff": -0.00991,
-        "DM_t": -1.55,
-        "p_one_sided": 0.9389,
+        "mean_diff": -0.01246,
+        "DM_t": -1.8,
+        "p_one_sided": 0.964,
         "meanFZ0": 1.8542,
         "breach": 0.0271
       },
       "fhs": {
-        "mean_diff": -0.00166,
-        "DM_t": -0.2,
-        "p_one_sided": 0.5785,
+        "mean_diff": -0.00421,
+        "DM_t": -0.47,
+        "p_one_sided": 0.6822,
         "meanFZ0": 1.86245,
         "breach": 0.0308
       },
       "gas_pzc": {
-        "mean_diff": 0.03513,
-        "DM_t": 6.89,
+        "mean_diff": 0.03258,
+        "DM_t": 6.17,
         "p_one_sided": 0.0,
         "meanFZ0": 1.89924,
         "breach": 0.0255
       },
       "top_mk63_decile_garch_minus_engine": {
-        "mean_diff": -0.04031,
-        "DM_t": -6.73,
+        "mean_diff": -0.04441,
+        "DM_t": -6.53,
         "n_dates": 1108
       }
     }
