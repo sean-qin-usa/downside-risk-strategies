@@ -108,7 +108,7 @@ contaminated same-day alignment yields less, the opposite of what a look-ahead a
   x tick label style={font=\scriptsize, rotate=25}, tick label style={font=\scriptsize},
   legend style={font=\scriptsize, at={(0.02,0.98)}, anchor=north west, draw=none}]
 \addplot[fill=npblue, draw=npblue] coordinates
-  {(HS,0.93) (EWMA,0.53) (GARCH-t,0.81) (GJR,0.79) (FHS,0.83) (raw hybrid,0.71) (hybrid+EVT,0.81)};
+  {(HS,0.93) (EWMA,0.53) (GARCH-t,0.81) (GJR,0.86) (FHS,0.84) (raw hybrid,0.80) (hybrid+EVT,0.84)};
 \addplot[dashed, sharp plot, gray, mark=none] coordinates {(HS,0.95) (hybrid+EVT,0.95)};
 \addlegendentry{expected under exact calibration ($\approx$0.95)}
 \end{axis}
@@ -118,9 +118,7 @@ share of names whose individual Kupiec test is consistent with nominal.
 HS over-covers (conservative); EWMA fails; the EVT-tailed engine matches
 the parametric benchmarks while beating them on loss and the joint
 FZ0 score
-(Table~6 of the paper). Date-clustered tests in the table notes. The
-GJR bar predates the skew-$t$ correction of Table~6's note; the
-corrected pooled battery row passes both 99\% tests.}
+(Table~6 of the paper). Date-clustered tests in the table notes.}
 \label{fig:passrates}
 \end{figure}
 \clearpage

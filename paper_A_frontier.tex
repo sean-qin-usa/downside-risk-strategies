@@ -1230,7 +1230,15 @@ significance under familywise control, and the headline claims rest on
 the cells that survive it. Any cell that loses significance under the
 adjustment is reported as statistically indistinguishable from zero in
 the text
-wherever it is discussed. \emph{Survivorship:} the holdout's
+wherever it is discussed. The paper's guard against selection across
+its many exercises is replication, not one joint correction over
+everything reported: the headline is family-wise controlled within its
+grid, pre-registered and reproduced on the untouched 2000--2013
+holdout, and recovered under a strictly causal decile cutoff, so it
+does not hang on a single surviving test. The exploratory
+single-instrument universes, which are not jointly controlled with the
+equity grid, are labeled as such and carry their own 93-comparison
+adjustment. \emph{Survivorship:} the holdout's
 observation filter conditions on names present for most of the era;
 the frontier comparison is relative (both models score the same
 names), so the filter tilts the universe toward survivors without
@@ -1409,6 +1417,20 @@ contaminated same-day alignment yields less, the opposite of what a look-ahead a
 \label{fig:timing}
 \end{figure}
 
+\paragraph{The decile boundary is causal too.} The sort forms deciles
+once over the pooled test panel, so top-decile membership draws on the
+full-sample distribution of mk$_{63}$ even though the score itself is
+causal. Re-forming the $90$th-percentile cutoff at each date from only
+mk$_{63}$ observed on strictly earlier dates ($250$-day burn-in, the
+rule the deployed monitor uses) leaves $86\%$ of membership unchanged
+and holds the top-bucket edge at $+2.45\%$ (DM 8.3), essentially the
+headline: the pooled-panel cutoff is not what produces the
+concentration. A within-date cross-sectional decile, which is not the
+deployed rule and forces $10\%$ occupancy on every date including calm
+cross-sections with no misspecified name, dilutes the edge to
+$+0.26\%$ (DM 2.2). The frontier ranks the absolute level of residual
+misspecification, not within-day position.
+
 \paragraph{An absorption test.} If the score were merely an omitted
 variable, a parametric-adjacent fix should capture the edge without a
 pooled learner: per-name FHS with the residual window reweighted
@@ -1542,10 +1564,10 @@ Section~\ref{sec:score}, $+0.89\%$ with DM $2.16$ over 1{,}465 dates.
 All other deciles sit between $-0.18\%$ and $+0.28\%$. The threshold
 shape survives an untouched era containing the 2008 crisis.}
 \label{fig:holdout}
-\end{figure} The low
-overall signal--edge correlation (0.05--0.10) is the point, not a
-weakness: a threshold nonlinearity, summarized correctly by the
-top-decile Diebold--Mariano statistics.
+\end{figure} The overall
+signal--edge correlation is low (0.05--0.10) because the relationship
+is a threshold nonlinearity, not a linear one; the top-decile
+Diebold--Mariano statistics are the appropriate summary.
 
 \subsection{The frontier across universes}
 
@@ -1581,7 +1603,7 @@ Korea 2026 (23) & all types & 1.01--1.12 & 4--13 & GARCH wins all, DM $-2.5$ to 
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item[a] Sri Lanka (DM 3.20), Kenya (3.52), Pakistan (2.38), Nigeria (2.06); exploratory: only Kenya survives the 93-comparison
-familywise adjustment (Online Appendix Table~OA.3). Cross-index corr(log residual kurtosis, edge) $= 0.53$.
+familywise adjustment. Cross-index corr(log residual kurtosis, edge) $= 0.53$.
 Philippines is the exception (GARCH wins despite kurtosis 13.6),
 illustrating that kurtosis is neither necessary nor sufficient.
 \end{tablenotes}
@@ -1648,8 +1670,7 @@ turbulence.
 
 One adjustment prices the breadth of this search. The three
 exploratory universes contain 93 instrument-level comparisons; treated
-as one family, a Holm step-down at familywise 5\% (Online Appendix
-Table~OA.3) keeps eight numerical survivors, of which one (PJM power)
+as one family, a Holm step-down at familywise 5\% keeps eight numerical survivors, of which one (PJM power)
 is already reclassified by the audit below as a log-return artifact on
 near-zero prices, leaving seven: the three volatility indices, Baltic
 freight, wheat, USDEGP, and Kenya. Sri Lanka, Argentina, Pakistan, and
@@ -1744,10 +1765,11 @@ one monotonized min-envelope curve $Q^{*}=\min\{$body$,$EVT$\}$. An earlier draf
 approximated predicted ES by a three-node tail-quantile average,
 understating it by 2--6\%; the numerical integral is why these levels
 differ from prior versions.
-Diebold--Mariano vs the hybrid: GARCH-$t$ 4.94, GJR-skew-$t$ 4.96,
-FHS pooled 6.12, per-name 5.17, rolling 5.68, HS 7.50, EWMA 8.65 (all
-$p\approx0$); the EVT variant concedes 0.0004 pinball to the raw
-hybrid (DM 6.39) as the price of its tail; the 90\% MCS contains the
+Diebold--Mariano vs the hybrid: GARCH-$t$ 5.0, GJR-skew-$t$ 5.0,
+FHS pooled 6.2, per-name 5.2, rolling 5.7, HS 7.5, EWMA 8.7 (all
+$p\approx0$; rounded, and stable across reruns); the EVT variant
+concedes 0.0004 pinball to the raw hybrid (DM ${\approx}6$) as the
+price of its tail; the 90\% MCS contains the
 raw hybrid alone, and CAViaR (separate common-sample run)
 statistically ties it.
 \item The ES columns are a \emph{diagnostic}, not a ranking:
@@ -1882,7 +1904,7 @@ on.
   x tick label style={font=\scriptsize, rotate=25}, tick label style={font=\scriptsize},
   legend style={font=\scriptsize, at={(0.02,0.98)}, anchor=north west, draw=none}]
 \addplot[fill=npblue, draw=npblue] coordinates
-  {(HS,0.93) (EWMA,0.53) (GARCH-t,0.81) (GJR,0.79) (FHS,0.83) (raw hybrid,0.71) (hybrid+EVT,0.81)};
+  {(HS,0.93) (EWMA,0.53) (GARCH-t,0.81) (GJR,0.86) (FHS,0.84) (raw hybrid,0.80) (hybrid+EVT,0.84)};
 \addplot[dashed, sharp plot, gray, mark=none] coordinates {(HS,0.95) (hybrid+EVT,0.95)};
 \addlegendentry{expected under exact calibration ($\approx$0.95)}
 \end{axis}
@@ -1892,9 +1914,6 @@ share of names whose individual Kupiec test is consistent with nominal.
 HS over-covers (conservative); EWMA fails; the EVT-tailed engine matches
 the parametric benchmarks while beating them on loss and the joint
 FZ0 score
-(the GJR bar predates the skew-$t$ correction of
-Table~\ref{tab:frtb}'s note; the corrected pooled row passes both
-99\% tests)
 (Table~\ref{tab:frtb}). Date-clustered tests in the table notes.}
 \label{fig:passrates}
 \end{figure}
@@ -1919,13 +1938,14 @@ panel ($221.6$k test asset-days), with VaR and ES read from the
 coherent min-envelope curve $Q^{*}$ and per-date DM inference
 throughout, the engine's \emph{accuracy layer}, the EVT-tailed forecaster with no
 conformal shift, attains the
-lowest FZ0 at both regulatory levels: at 1\% it beats GARCH-$t$ (DM
-4.8), FHS (DM 4.9), and a per-name score-driven one-factor GAS model
-estimated by FZ0 minimization in the style of \citet{patton2019} (DM
-9.6; a three-start re-estimate reproduces the 2.5\% comparison at DM
-5.9 but destabilizes at 1\% for a few names; the benchmark is read as
-appendix-grade); at 2.5\% it again wins (DM 5.1 over
-GARCH-$t$, 6.2 over GAS); the accuracy layer is thus a single
+lowest FZ0 at both regulatory levels: at 1\% it beats GARCH-$t$ (DM 4.8) and FHS (DM 4.9), the two standard
+benchmarks the accuracy claim rests on. A per-name score-driven
+one-factor GAS model estimated by FZ0 minimization in the style of
+\citet{patton2019} loses by more (DM 9.6 at 1\%, 6.2 at 2.5\%), but we
+read that comparison as indicative only: a few names' GAS optimizers
+destabilize at 1\% and inflate the gap, while a three-start re-estimate
+settles the stable 2.5\% comparison near DM 5.9. At 2.5\% the engine
+again wins over GARCH-$t$ (DM 5.1); the accuracy layer is thus a single
 unified configuration: lowest FZ0 at both
 levels \emph{and} a pass on the aggregate date-clustered exception
 test at both levels, with per-name diagnostics showing residual

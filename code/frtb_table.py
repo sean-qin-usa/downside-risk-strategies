@@ -199,6 +199,16 @@ for m in MODELS:
         breach99=round(float(b99.mean()),4), breach975=round(float(b975.mean()),4),
         kupiec99_p=kupiec(int(b99.sum()),T,0.01), christoffersen99_p=christoffersen(b99,0.01),
         kupiec975_p=kupiec(int(b975.sum()),T,A), christoffersen975_p=christoffersen(b975,A))
+# per-name Kupiec99 pass rate (share of names whose own 99% VaR breach count is consistent with nominal, p>=0.05)
+_permno=TE['permno'].values; _unpn=np.unique(_permno); passrate99={}
+for m in MODELS:
+    _b99=(Y<Q[m][0.01]); ok=0; tot=0
+    for pn in _unpn:
+        sel=_permno==pn; Tn=int(sel.sum())
+        if Tn<250: continue
+        kp=kupiec(int(_b99[sel].sum()),Tn,0.01); tot+=1
+        if kp is not None and kp>=0.05: ok+=1
+    passrate99[m]=round(ok/tot,3) if tot else None
 best=min(summary,key=lambda k:summary[k]['avg_pinball'])
 Ldate=pd.DataFrame({m:PL[m] for m in MODELS}); Ldate['date']=TE['date'].values
 Lmat=Ldate.groupby('date').mean()[MODELS]; L=Lmat.values; Td=len(L)
@@ -230,7 +240,8 @@ def mcs(L,alpha=0.10,B=1000,blk=10):
         varij=bootd.var(0)+1e-12
         tij=np.abs(dij)/np.sqrt(varij); TR2=np.nanmax(tij)
         bootTR=np.array([np.nanmax(np.abs(bootd[bb]-dij)/np.sqrt(varij)) for bb in range(B)])
-        pv=float(np.mean(bootTR>=TR2)); worst=surv[int(np.argmax(means))]
+        pv=float(np.mean(bootTR>=TR2))
+        tij_signed=dij/np.sqrt(varij); worst=surv[int(np.argmax(np.nanmax(tij_signed,axis=1)))]
         pvals[MODELS[worst]]=round(pv,3)
         if pv>=alpha: break
         surv.remove(worst)
@@ -240,6 +251,6 @@ out={'note':'CANONICAL battery: one run, every row of Table 6, TRUE predicted ES
      'sub_alpha_grid_nodes':len(SUB),
      'gpd':{'u':round(float(u0),4),'xi':round(float(xi),4),'beta':round(float(beta),4)},
      'n_names':int(TE['permno'].nunique()),'n_test_rows':int(len(Y)),'n_dates':int(Td),
-     'per_model':summary,'best_model':best,'DM_vs_best':dm,'MCS':MCS}
+     'per_model':summary,'best_model':best,'DM_vs_best':dm,'MCS':MCS,'passrate99_perasset':passrate99}
 json.dump(out,open(os.path.join(P,"frtb_table_results.json"),"w"),indent=2)
 lg("FRTBTABLEDONE %.0fs"%(time.time()-t0)); lg(json.dumps(out,indent=1)[:3000])
