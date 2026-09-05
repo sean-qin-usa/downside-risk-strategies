@@ -73,9 +73,11 @@ these forecasts we construct a real-time score of residual-shape stress
 that flags when the flexible model improves on the parametric standard.
 The method lowers quantile loss relative to standard benchmarks, with
 exception counts near nominal at both regulatory levels through the 2008
-crisis. The advantage is not uniform. It concentrates in the states the
-score identifies, and this concentration replicates out of sample on an
-untouched 2000--2013 sample. We document these results on individual
+crisis. The advantage is not uniform; it concentrates in the states the score
+identifies. One component of that score, fixed in advance, reproduces the
+concentration out of sample on an untouched 2000--2013 window. The fuller
+composite we deploy is tuned in sample, so we read its holdout behavior as
+corroboration rather than as an independent test. We document these results on individual
 U.S.\ equities, and across foreign-exchange, country-index, and
 cross-asset universes.
 \end{abstract}
@@ -129,7 +131,7 @@ produce.
 Recent-residual tail diagnostics, the excess kurtosis and asymmetry of
 the GARCH-standardized residuals, predict when distribution-free
 quantile methods improve on parametric VaR/ES. Where
-that misspecification is high the flexible estimator has a large and
+residual-shape stress is high the flexible estimator has a large and
 significant advantage; where it is low the advantage is
 statistically indistinguishable from zero in the design panel, a small
 positive in the point-in-time universe, with no detectable loss. The
@@ -139,13 +141,13 @@ roughly seven times the calm region), not a hard threshold.
 \medskip\noindent The paper contributes to three literatures. To the
 evaluation of VaR and ES forecasts and the comparison of competing
 conditional models, it offers the misspecification frontier: a live,
-causal, per-asset, per-day score that predicts when distribution-free
+real-time, per-asset, per-day score that predicts when distribution-free
 quantiles beat a GARCH-$t$ benchmark, with per-date Diebold--Mariano
 significance and validation across four universes: CRSP US equities
 (top-decile edge $+2.71\%$, DM 6.54), foreign exchange (hyperinflation
 tier, pooled DM 4.12), twenty-six country indices (a
 developed-to-frontier gradient), and forty-three cross-asset
-instruments, with Korea-2026 as a negative control that sharpens the
+instruments, with Korea-2026 as a falsification case that sharpens the
 claim: price crashes are not residual misspecification. To global,
 pooled forecasting and cross-asset transfer, it shows that a single
 amortized shape model trained across hundreds of names carries
@@ -164,7 +166,7 @@ HS, and GJR-skew-$t$, and attains the lowest joint $(\VaR,\ES)$ FZ0
 score at both FRTB levels with exception counts near nominal through a
 2008-crisis window. Two formal results motivate the search: a pinball
 regret identity, by which a forecaster's excess loss is locally quadratic in
-its quantile wedge so any edge concentrates where the wedge is largest,
+its quantile wedge so an edge concentrates where the wedge is largest,
 and a tail-wedge proposition, by which innovation-shape misspecification
 opens that wedge in the tail.
 
@@ -227,7 +229,7 @@ EWMA/RiskMetrics \citep{zumbach2007}; GARCH(1,1)-$t$
 skewness;][]{glosten1993};
 GARCH-FHS \citep[parametric scale, empirical standardized residuals, the volatile-regime best practice;][]{baroneadesi1999fhs}; and SAV-CAViaR
 \citep{engle2004caviar}, the strongest non-nested semiparametric
-rival, and the strongest available comparator for the accuracy claim.
+rival among the classical benchmarks.
 The SAV (symmetric absolute value) specification models the quantile
 directly on the pinball loss,
 $q_t(\tau) = \beta_0 + \beta_1\, q_{t-1}(\tau) + \beta_2\,|r_{t-1}|$, the
@@ -307,7 +309,7 @@ the return with the model's conditional mean and scale divided out. If
 the parametric model is right, the $z_t$ are i.i.d.\ draws from one
 fixed law.
 \item $s_t$: the state vector (trailing realized volatility,
-residual-shape scores, lags) on which nonparametric quantiles condition.
+misspecification scores, lags) on which nonparametric quantiles condition.
 \item $\tau \sim \lambda$: a quantile level drawn from a base
 distribution $\lambda$; $H_\phi(s,\tau)$: a learned generator mapping
 (state, level) to a quantile, in the sense of
@@ -475,7 +477,13 @@ deployment the calibration split necessarily precedes the test period,
 and time-ordered residuals are not exchangeable; the proposition
 therefore motivates the construction, while the evidence that it works here is empirical: the exception-test repairs of
 Section~\ref{sec:frtb} (the conformal stage is the only reason any
-entrant passes Kupiec at 97.5\%). Conformal constructions with
+entrant passes Kupiec at 97.5\%). The guarantee also attaches to the
+shifted quantile alone, not to the deployed curve of \eqref{eq:hybrid},
+whose tail branch takes the more conservative of the shifted and EVT
+values and is then monotone-rearranged; the exact finite-sample coverage
+identity need not survive that composition, so the coverage claim at the
+reported levels rests on these exception tests rather than on
+Proposition~\ref{prop:conformal}. Conformal constructions with
 validity under dependence exist \citep{chernozhukov2018conformal}; we
 prefer the simple split form plus an empirical audit. One further
 implementation gap: the first-stage
@@ -797,7 +805,7 @@ estimate.
 \medskip\noindent The tail-wedge result of Proposition~\ref{prop:wedge}
 motivates, but does not on its own establish, the empirical regularity
 that organizes the paper: that the nonparametric edge is ordered by the
-residual-shape score. We do not claim a monotonicity theorem at the
+misspecification score. We do not claim a monotonicity theorem at the
 deployable levels, because two features of the standardized problem
 block one. First, Proposition~\ref{prop:wedge} orders a given pair of
 tail indices only below a pair-specific level $\tau^*(\nu_1,\nu_2)$; it
@@ -905,9 +913,9 @@ sign); everywhere the text says ``asymmetry,'' the statistic computed
 is $|\mathrm{sk}_{63}|$. The score also uses the five-day jump indicator
 $J_5(t) = \max_{i \in \{t-5,\dots,t-1\}} |\widehat{z}_i|$. The frontier
 score is the decile rank of these within the trailing cross-section.
-All three are causal (trailing-window) and computable on any asset with a fitted GARCH, which is what makes the frontier a deployable monitor
+All three are predetermined (trailing-window) and computable on any asset with a fitted GARCH, which is what makes the frontier a deployable monitor
 rather than an ex-post classification. Informally we will call this the
-residual-shape score; Online Appendix Table~OA.3 reports the associated
+misspecification score; Online Appendix Table~OA.3 reports the associated
 per-decile actions.
 
 \emph{Why these statistics.} Conditional on the fitted location-scale
@@ -1062,7 +1070,7 @@ score rebuilt under the refit parameters, pooled learner retrained) the top deci
 6.6--5.4), indistinguishable from the frozen-fit frontier, while the
 overall edge is not statistically detectable ($+0.32\%$, DM 0.8).
 Under the production annual refit the aggregate accuracy gap closes
-while the conditional high-score advantage does not: refitting removes
+while the conditional high-misspecification advantage does not: refitting removes
 the average gap but not the concentration, so stale benchmark
 parameters are not what produce the conditional result.
 
@@ -1099,7 +1107,7 @@ wherever it is discussed. The paper's guard against selection across
 its many exercises is replication, not one joint correction over
 everything reported: the headline is family-wise controlled within its
 grid, specified before the run and replicated on the untouched 2000--2013
-holdout, and recovered under a strictly causal decile cutoff, so it
+holdout, and recovered under a strictly non-anticipating decile cutoff, so it
 does not hang on a single surviving test. The exploratory
 single-instrument universes, which are not jointly controlled with the
 equity grid, are labeled as such and carry their own 93-comparison
@@ -1175,7 +1183,7 @@ Table~\ref{tab:frontier} shows the result that organizes the paper.
 \centering
 \begin{threeparttable}
 \caption{The misspecification frontier: nonparametric edge over
-GARCH-$t$ by decile of the trailing residual-shape score (200 CRSP
+GARCH-$t$ by decile of the trailing misspecification score (200 CRSP
 names, 221.6k test asset-days). Edge $=$ (GARCH pinball $-$ nonparam
 pinball)/GARCH pinball.}
 \label{tab:frontier}
@@ -1208,7 +1216,7 @@ one-day lag.
 \end{table}
 
 The edge is a top-decile phenomenon. It is large and significant
-where the residual-shape score is high, and
+where the misspecification score is high, and
 statistically indistinguishable from zero where it is not.
 
 \paragraph{The deployed composite.} The monitor the paper deploys is not
@@ -1216,7 +1224,7 @@ $\mathrm{mk}_{63}$ alone but the composite score, the maximum across the
 three signals' trailing-panel percentiles (kurtosis, asymmetry, jump).
 Evaluated directly, its top decile reproduces the frontier at $+2.79\%$
 (DM 8.9), a clean $10\%$ cell whose lower nine deciles sit between
-$-0.3\%$ and $+0.35\%$, and it survives the strictly causal expanding
+$-0.3\%$ and $+0.35\%$, and it survives the strictly non-anticipating expanding
 cutoff at $+2.72\%$ (DM 9.0). The three components each carry a
 top-decile edge on their own, $+2.98\%$, $+2.78\%$, and $+1.96\%$
 (kurtosis, asymmetry, jumps); the maximum of decile ranks
@@ -1264,10 +1272,10 @@ alignment a look-ahead artifact would favor, yields less than
 the deployed lag ($+1.91\%$; a one-day-ahead placebo gives $+1.92\%$).
 Same-day sorting does not manufacture the edge.
 
-\paragraph{The decile boundary is causal too.} The sort forms deciles
+\paragraph{The decile boundary is non-anticipating too.} The sort forms deciles
 once over the pooled test panel, so top-decile membership draws on the
 full-sample distribution of mk$_{63}$ even though the score itself is
-causal. Re-forming the $90$th-percentile cutoff at each date from only
+non-anticipating. Re-forming the $90$th-percentile cutoff at each date from only
 mk$_{63}$ observed on strictly earlier dates ($250$-day burn-in, the
 rule the deployed monitor uses) leaves $86\%$ of membership unchanged
 and holds the top-bucket edge at $+2.45\%$ (DM 8.3), essentially the
@@ -1479,11 +1487,11 @@ every quintile (overall: GARCH 0.6543, GBM 0.6447, IQN 0.6478).
 A natural inference is that one should gate: run GARCH on calm
 days and switch to the nonparametric model when the score is high. Gating
 does not improve on continuous use of the flexible model. A classifier
-gate trained on the misspecification
+gate trained on the residual-shape
 signals routes 90.5\% of days to the nonparametric model and exactly
 matches always-nonparametric (0.3987 vs GARCH 0.4000); worse, its
 routing runs backwards across score deciles, because nonparametric
-wins on high-score days are rare-but-large while a classifier targets
+wins on high-misspecification days are rare-but-large while a classifier targets
 frequency. A regression gate on the edge magnitude fixes the direction
 (routing flat $\approx 1.0$, predicted-edge correlation $+0.16$) and
 still converges to always-nonparametric. The per-day oracle gap
@@ -1614,7 +1622,7 @@ model, ours included; the date-clustered restatement is the appropriate reading.
 single-level autoregression and one shared model carrying the whole
 deployment brief.
 Restating FHS the textbook way changes nothing: per-name
-train-constant and per-name rolling 500-day causal variants, run on
+train-constant and per-name rolling 500-day trailing variants, run on
 the identical panel, lose to the hybrid by DM 5.4 and 5.8 (pinball
 0.3562 and 0.3569 against 0.3550), bracketing the pooled variant the
 battery uses. Second, the neural IQN as residual model initially loses
@@ -1777,7 +1785,7 @@ one setting in which the score does drive a switch is the
 per-name/standalone model, where nonparametric quantiles underperform on
 calm days; there the score gates, and its short detection latency
 (median zero, mean two to four days) costs little because the edge is
-back-loaded within a misspecification episode.
+back-loaded within a residual-shape stress episode.
 
 \textbf{Regulatory capital.} The
 hybrid engine is an internal-models VaR/ES candidate that tops the
