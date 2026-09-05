@@ -1,25 +1,26 @@
-# Resume bullets — downside-risk paper
+# Resume bullets — drop-in for the paper project
 
-**Project line (pick one):**
-- Semiparametric VaR/ES with a Real-Time Misspecification Score — sole-author manuscript, submitted to the *Journal of Financial Econometrics* (advised by Prof. Wenxin Jiang, Northwestern Statistics)
-- Tail-Risk Forecasting Research — sole author; JFEC submission
+Header stays as on your resume ("Semiparametric Value-at-Risk/Expected
+Shortfall with a Real-Time Misspecification Score (GitHub) — Working Paper
+with Prof. Wenxin Jiang, Northwestern University"). After ScholarOne, change
+"Working Paper" to "Submitted to the Journal of Financial Econometrics."
 
-**Full version (3–4 bullets):**
+**Delete the first two current bullets** ("Building a Bayesian/ML framework…
+cryptocurrency…" and "Developing a reproducible evaluation pipeline… GP
+surrogates… CRPS…") — they describe an early version of the project that no
+longer matches the paper, and the GitHub link next to them invites the
+cross-check.
 
-- Built a bank-grade tail-risk engine (GARCH volatility × one pooled gradient-boosted quantile model across hundreds of stocks, extreme-value tail, conformal calibration) that beats the models banks actually run — filtered historical simulation, GARCH-t, RiskMetrics — on 140 CRSP names with date-clustered Diebold–Mariano statistics of 4.4–8.3, and passes both FRTB regulatory exception tests through the 2008 crisis.
+**Replace all five with these three:**
 
-- Discovered a real-time "misspecification score" from GARCH residuals that predicts *when* machine learning beats parametric risk models: its top decile carries a +2.7% forecast-accuracy edge (DM 6.5, ~7× the calm-market edge), a pattern that replicates across US equities, FX, 26 country indices, and 43 cross-asset instruments.
+- Built a semiparametric VaR/Expected Shortfall engine: GARCH volatility, one shared machine-learned quantile model, extreme-value tail; beats industry-standard risk models out of sample (**DM 4.4–8.3**) and passes regulatory backtests through the 2008 crisis.
 
-- Stress-tested every headline claim like a hostile referee: frozen-specification 2000–2013 holdout with predictions written down in advance, Romano–Wolf familywise error control, point-in-time universe including delisted stocks, strict pre-2008 calendar splits, annual walk-forward refits, and leakage/calibration audits — all conclusions survived.
+- Introduced a real-time misspecification score predicting when ML beats parametric risk models; its top decile carries a **+2.7% accuracy edge (DM 6.5)**, replicated on a frozen 2000–2013 holdout with pre-committed predictions.
 
-- Because one pooled fit replaces per-asset estimation, the model prices day-one IPOs and new listings from characteristics alone — risk numbers no per-asset model can produce — with 6–10% accuracy gains on young listings.
+- One pooled fit replaces per-asset estimation, prices day-one listings no per-asset model can, and gains **6–10%** on newly listed names.
 
-**Compact version (2 bullets):**
+**Two-bullet version if space is tight:**
 
-- Sole-authored a JFEC submission: a semiparametric VaR/Expected Shortfall engine that beats bank-standard models (DM 4.4–8.3, 140 US stocks) and passes FRTB exception tests through the 2008 crisis, plus a real-time score identifying when the machine-learning edge is large (+2.7% top decile, DM 6.5, replicated out-of-era 2000–2013).
+- Built a semiparametric VaR/ES engine (GARCH volatility, one shared ML quantile model, EVT tail) that beats industry-standard risk models out of sample (**DM 4.4–8.3**) and passes regulatory backtests through the 2008 crisis; prices day-one listings no per-asset model can (**6–10%** gains on young names).
 
-- Hardened all results through adversarial-review cycles: frozen-spec holdout with pre-committed predictions, Romano–Wolf multiplicity control, point-in-time universe with delistings, calendar-split and walk-forward leakage audits.
-
-**One-liner (for space-starved resumes):**
-
-- Sole-author JFEC submission: semiparametric VaR/ES engine beating bank-standard models (DM 4.4–8.3) with a real-time score that predicts when the edge is large (+2.7% top decile, replicated on a frozen 2000–2013 holdout).
+- Introduced a real-time misspecification score predicting when ML beats parametric models; top decile carries **+2.7% (DM 6.5)**, replicated on a frozen 2000–2013 holdout with pre-committed predictions.

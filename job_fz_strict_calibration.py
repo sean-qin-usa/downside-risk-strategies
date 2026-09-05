@@ -1,4 +1,6 @@
 # job_fz_strict_calibration.py -- STRICT-SPLIT conformal/FZ audit (adversarial review, wave 7).
+# Wave-9: exact ceil((n+1)tau) conformal order statistic; adaptive (ACI) variant run under
+# the strict split so the adaptive remedy is established, not asserted.
 # (Canonical name; wave-8 rename of job_conformal_strict.py so the strict audit is impossible
 #  to miss next to job_fz_fullpanel.py, per reviewer request. Logic identical.)
 # The reviewer's point: in job_fz_fullpanel.py the first-stage GARCH is fit on y[:sp]
@@ -28,6 +30,9 @@ rr=pd.read_csv(os.path.join(P,"crsp_panel_returns.csv"),dtype={'permno':'int32'}
 rr['date']=pd.to_datetime(rr['date']); rr['ret']=pd.to_numeric(rr['ret'],errors='coerce')*100.0
 cnt=rr.groupby('permno')['ret'].count().sort_values(ascending=False); names=cnt[cnt>=1500].index.tolist()[:200]
 ALPHAS=[0.01,0.025]
+def conf_ostat(sc,tau):
+    n=len(sc); k=int(math.ceil((n+1)*tau)); k=min(max(k,1),n)
+    return float(np.sort(np.asarray(sc,float))[k-1])
 def fz0(r,v,e,a):
     v=np.minimum(v,-1e-8); e=np.minimum(e,v)
     hit=(r<=v).astype(float)
@@ -112,17 +117,18 @@ def build_engine(TRc,CALc,suf,SIG,MU):
         return u-(beta/xi)*((tau/p0)**(-xi)-1.0) if abs(xi)>1e-6 else u-beta*math.log(p0/tau)
     def evt_es(tau):
         q=evt_q(tau); return q-(beta+xi*(u-q))/(1.0-xi)
-    s975=CALc[zcol].values-ZQcal[0.025]; CONF=float(np.quantile(s975,0.025*(1+1/len(s975))))
+    s975=CALc[zcol].values-ZQcal[0.025]; CONF=conf_ostat(s975,0.025)   # exact order statistic (Prop. 1)
     zq01=np.minimum(ZQ[0.01],evt_q(0.01)); zq025=np.minimum(ZQ[0.025],evt_q(0.025))
     V={}; E={}
     V[(0.01,'ns')]=MU+SIG*zq01; E[(0.01,'ns')]=MU+SIG*np.minimum(evt_es(0.01),zq01-1e-6)
     V[(0.025,'ns')]=MU+SIG*zq025; E[(0.025,'ns')]=MU+SIG*np.minimum(evt_es(0.025),zq025-1e-6)
     V[(0.025,'st')]=MU+SIG*(zq025+CONF); E[(0.025,'st')]=MU+SIG*(np.minimum(evt_es(0.025),zq025-1e-6)+CONF)
     meta={'gpd':{'u':round(float(u),4),'xi':round(float(xi),4),'beta':round(float(beta),4)},'conf975':round(CONF,4)}
-    return V,E,meta
-VB,EB,metaB=build_engine(TRBc,CALBc,'_B',TE['sigB'].values,TE['muB'].values)
+    zsp={'zq025':zq025,'zes025':np.minimum(evt_es(0.025),zq025-1e-6),'CONF':CONF}
+    return V,E,meta,zsp
+VB,EB,metaB,zspB=build_engine(TRBc,CALBc,'_B',TE['sigB'].values,TE['muB'].values)
 lg("orig engine built %.0fs"%(time.time()-t0))
-VE,EE,metaE=build_engine(TREc,CALEc,'_E',TE['sigE'].values,TE['muE'].values)
+VE,EE,metaE,zspE=build_engine(TREc,CALEc,'_E',TE['sigE'].values,TE['muE'].values)
 lg("strict engine built %.0fs"%(time.time()-t0))
 def dmrow(Lm,Le):
     d=pd.DataFrame({'d':Lm-Le,'date':dates}).groupby('date')['d'].mean()
@@ -175,6 +181,31 @@ for a in ALPHAS:
         'DM_t':None if tt is None else round(tt,2),'n_dates':int(len(dtop))}
     OUT['per_alpha'][str(a)]=variants
     lg(f"alpha={a}: {json.dumps(variants)}")
+
+# ---- adaptive conformal (ACI, pooled, gamma=0.05) UNDER THE STRICT SPLIT ----
+# Same update rule as job_fz_aci.py: c_{t+1} = c_t - gamma*(b_t - alpha), warm start at the
+# strict static shift, clip [-3,1]; applied to the strict engine so the adaptive remedy is
+# established under the same strict information architecture the reviewer required.
+A=0.025; gam=0.05
+SIGE=TE['sigE'].values; MUE=TE['muE'].values
+zqE=zspE['zq025']; zeE=zspE['zes025']; C0s=zspE['CONF']
+dvals=pd.to_datetime(TE['date'].values).values
+udates=np.sort(np.unique(dvals)); didx=np.searchsorted(udates,dvals); nT=len(udates)
+c=np.empty(nT); c[0]=C0s; rowshift=np.empty(len(Y))
+for i in range(nT):
+    msk=didx==i
+    rowshift[msk]=c[i]
+    v=MUE[msk]+SIGE[msk]*(zqE[msk]+c[i])
+    b=float(np.mean(Y[msk]<=v))
+    if i+1<nT: c[i+1]=min(max(c[i]-gam*(b-A),-3.0),1.0)
+vA=MUE+SIGE*(zqE+rowshift); eA=MUE+SIGE*(zeE+rowshift)
+LA,rA=audit(vA,eA,A)
+Lg=fz0(Y,TE['g_v0.025'].values,TE['g_e0.025'].values,A)
+OUT['per_alpha']['0.025']['strict_aci_gamma_0.05']=rA
+OUT['per_alpha']['0.025']['strict_aci_gamma_0.05']['c_final']=round(float(c[-1]),4)
+OUT['per_alpha']['0.025']['strict_aci_gamma_0.05']['c_range']=[round(float(c.min()),4),round(float(c.max()),4)]
+OUT['per_alpha']['0.025']['garch_minus_strict_aci']=dmrow(Lg,LA)
+lg('strict ACI: %s'%json.dumps(OUT['per_alpha']['0.025']['strict_aci_gamma_0.05']))
 json.dump(OUT,open(os.path.join(P,"fz_strict_calibration_results.json"),"w"),indent=2)
 # patch the old audit JSON's stale 'registered' note wording in place
 fp=os.path.join(P,"results","fz_fullpanel_results.json")

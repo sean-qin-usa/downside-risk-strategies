@@ -372,12 +372,12 @@ count the text quotes is seven.
 Before the real data, a simulation with known truth (run once, seed
 fixed) checks the formal results and, more usefully, delineates when
 the frontier edge should \emph{fail} to appear. The data-generating
-process is deliberately favorable to the thermometer: unit-variance
+process is deliberately favorable to the score: unit-variance
 Student-$t$ residuals whose degrees of freedom switch between a calm
 regime ($\nu=12$) and a fat regime ($\nu=3$) under a persistent Markov
 chain; forecasters see the trailing 63-day kurtosis score and compete
 at $\tau \in \{0.01, 0.025\}$ (80{,}000 days; scale known, isolating
-shape). Three results. First, the Lemma~1 of the paper identity
+shape). First, the Lemma~1 of the paper identity
 verifies numerically: the regret integral and the Monte-Carlo regret
 agree to five decimals ($3.5\times10^{-5}$ at $\tau=0.01$). Second, the
 conformal shift moves realized coverage toward nominal on the held-out
@@ -392,7 +392,7 @@ wedge, and at $\tau \ge 0.01$ the wedge between the fitted compromise
 and either regime is small; static kurtosis \emph{blending} is a
 second-order sin. (ii)~The sample kurtosis of a $t_\nu$ law has
 infinite estimator variance for $\nu \le 8$, so a moment-based
-thermometer is at its noisiest just when tails are fat, and
+score estimate is at its noisiest just when tails are fat, and
 sixty-three observations cannot reliably rank regimes that differ only
 in a static $\nu$. In the empirical sorts this noise works
 \emph{against} the frontier, not for it: misclassification across
@@ -403,8 +403,8 @@ control, corroborate the ordering, and a tail-index (Hill-type)
 variant of the score is an obvious robustness extension. For the empirical sections this means the real-data top-decile edge of Section~5 of the paper
 cannot be an artifact of stationary fat tails being averaged over
 (that configuration is the one the simulation shows a fixed shape
-handles) but must reflect \emph{local} shape breaks a single fitted
-$\nu$ cannot straddle: asymmetry, jump clustering, and residual misfit
+handles) and is consistent with \emph{local} shape breaks a single
+fitted $\nu$ cannot straddle: asymmetry, jump clustering, and residual misfit
 that co-move with the score. This is the same conclusion the Korea 2026
 negative control reaches from the opposite direction (price crashes
 are not residual misspecification), and it is why the score combines
@@ -438,11 +438,6 @@ stress design is a natural extension; it is not developed here.
 %% ===== CONCLUSION =====
 
 \clearpage
-\section{Proofs}
-
-%% ===== GLOSSARY: demoted to the Online Appendix (paper_A_online_appendix.tex) =====
-%% A one-line pointer remains in Section 3; the main text now ends with the proofs.
-
 \section{Proofs}\label{app:proofs}
 
 The four formal results of Section~3.3 of the paper are stated with
@@ -567,4 +562,23 @@ of the $t_{\nu_1}$ density on the wedge interval. \hfill$\square$
 \bibliographystyle{plainnat}
 \bibliography{refs_v3}
 \end{spacing}
+
+\subsection*{Proof of Lemma~2 of the paper (generative sampler)}
+Let $\widetilde{q}(\cdot \mid s)$ be nondecreasing and left-continuous
+on $(0,1)$ and $\tau \sim U(0,1)$, and set
+$Z^*=\widetilde q(\tau\mid s)$ and
+$G(x)=\sup\{t\in(0,1):\widetilde q(t\mid s)\le x\}$ (with
+$\sup\emptyset=0$). Monotonicity makes
+$\{t:\widetilde q(t\mid s)\le x\}$ an interval with left endpoint $0$,
+and left-continuity ensures the supremum is attained when the set is
+nonempty, so the set equals $(0,G(x)]$; hence
+$\{Z^*\le x\}=\{\tau\le G(x)\}$ and
+$\Pr(Z^*\le x)=G(x)$, i.e.\ $Z^*$ has CDF $G$. Because $G$ so defined
+is the upper generalized inverse of $\widetilde q$, and a
+left-continuous nondecreasing $\widetilde q$ is in turn the lower
+generalized inverse of $G$, the quantile function of $Z^*$ is exactly
+$\widetilde q(\cdot\mid s)$. When $\widetilde q$ is an estimated curve,
+the argument applies verbatim to the estimate: the sampler is exact for
+the \emph{fitted} conditional law, which is the claim. $\square$
+
 \end{document}

@@ -57,12 +57,12 @@ with a Real-Time Misspecification Score}
 \let\footnote\endnote
 
 \begin{abstract}
-A deployable downside-risk engine (GARCH scale, one pooled
-state-conditioned residual-quantile fit, an extreme-value tail, an
-optional conformal overlay) and a real-time misspecification score
-that says when it beats the parametric standard. Amortization: one fit
-serves hundreds of names and prices day-one listings from
-characteristics. Against the benchmarks banks run it wins on average
+We develop a semiparametric downside-risk engine (GARCH scale, one
+pooled state-conditioned residual-quantile fit, an extreme-value tail,
+an optional conformal overlay) and a real-time misspecification score
+that predicts when it beats the parametric standard. Amortization: one
+fit serves hundreds of names and prices day-one listings from
+characteristics. Against standard benchmark models it reduces quantile
 loss (date-level DM 4.4--8.3), and aggregate date-clustered exception
 counts stay nominal at both FRTB levels through the 2008 crisis. The
 score concentrates the edge in its top decile ($+2.7\%$, DM 6.5),
@@ -108,8 +108,7 @@ are historical simulation (HS) and GARCH-filtered historical simulation
 therefore beat HS and FHS on ES$_{97.5}$ under exception-test
 discipline; beating a vanilla GARCH on average loss is not enough.
 
-One distinction, stated before anything else, prevents the most common
-misreading of our results. When the misspecification score is quiet, on
+One distinction comes first. When the misspecification score is quiet, on
 roughly ninety percent of asset-days, the engine we deploy and the
 parametric benchmark are statistically indistinguishable
 (Section~\ref{sec:frontier} reports the widths): \emph{no
@@ -122,10 +121,13 @@ as a cautionary boundary and never deploy: a bare per-name neural
 quantile model, which a unit-matched GJR-GARCH-$t$ beats by
 4.5--6.2\% at every horizon (DM $t$ between $+12$ and
 $+18$)\footnote{Throughout, DM denotes the \citet{dieboldmariano1995}
-test: a $t$-statistic on the mean difference of two forecasters' losses
-(here, pinball loss), with a serial-correlation-robust standard error.
-Positive DM $t$ favors the first-named model; $|t|>1.96$ is significant
-at 5\%.} That failure is what dictates the engine's hybrid design. The
+test: a $t$-statistic on the per-date mean loss difference of two
+forecasters (pinball loss unless stated), with a serial-correlation-robust
+standard error. The difference is oriented so that positive $t$ favors
+the model reported as winning; the engine's headline comparisons use
+$d_t=\ell_t^{\text{benchmark}}-\ell_t^{\text{engine}}$. Headline tests
+are one-sided at the 5\% level ($t>1.645$); two-sided readings are
+noted where used.} That failure is what dictates the engine's hybrid design. The
 contribution is thus a \emph{predictive theory of when flexible-shape
 methods win}, an engine that converts the theory into a risk model
 that beats the market-risk forecasting benchmarks banks commonly run
@@ -215,7 +217,7 @@ motivation for looking where the empirical edge in fact appears.
 \end{enumerate}
 
 \medskip
-\noindent Three neighboring questions are out of scope and claimed
+\noindent Some neighboring questions are out of scope and claimed
 nowhere in this paper: posterior uncertainty bands on the reported
 $(\VaR,\ES)$; likelihood-free amortized posteriors for parametric
 simulators; and the multivariate portfolio tail. This is a
@@ -248,41 +250,41 @@ extension, which is not the engine. Panel B: boundary
 evidence from configurations not deployed, which motivates the design.}
 \label{tab:winloss}
 \footnotesize\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}}
 \toprule
-\multicolumn{4}{l}{\emph{Panel A: the engine's record}} \\
-Result & Magnitude & Significance & Status \\
+\multicolumn{3}{l}{\emph{Panel A: the engine}} \\
+Result & Magnitude & Significance \\
 \midrule
-vs GARCH-$t$ / EWMA / HS, $h{=}1$ (avg) & $+0.3$ / $+1.5$ / $+1.9\%$ & DM 4.4--8.3 & win \\
-Top misspecification decile & $+2.7\%$ & DM 6.5 & win (concentrated) \\
-Hyperinflation FX (ARS, EGP) & $+12$--$14\%$ & DM 2.9--3.8 & win \\
-Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 & win \\
-2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2 (sort); recursive real-time rule $+1.0\%$, DM 2.15; frozen-constant restatement in text & win (untouched era) \\
-Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$; overall $+0.6\%$ & DM 6.6 / 9.0, frozen real-time thresholds & win (survivorship armor) \\
-Strict calendar splits; annual-refit walk-forward & top decile $+2.5\%$ under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 6.1 (walk-forward) & win (leakage and staleness armor) \\
-Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles & win (multiplicity-priced) \\
-Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\% & date-clustered $t$ 0.17 at 99\%; at 97.5\%, 0.35 (EVT tail) and $-1.09$ (deployed shift, conservative); HS, EWMA fail & win (stress) \\
-Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.1--4.7 vs GARCH-$t$, FHS; 6.0--9.2 vs GAS; static shift concedes 2.5\% (DM $-2.0$), adaptive shift erases it (tie; top-decile cost remains) & win (accuracy layer; margins priced) \\
-Cold start / young listings & $+6$--$10\%$ & full-scale panel & win (unique capability) \\
-Calm-quintile edge & $\approx 0$ (point estimates $+0.0$--$+0.2\%$) & bottom-decile 90\% CIs lie above $-0.25\%$ & noninferior (no detectable loss) \\
-CAViaR (strongest academic rival) & tie & DM 0.59 & tie (co-best) \\
+vs GARCH-$t$ / EWMA / HS, $h{=}1$ (avg) & $+0.3$ / $+1.5$ / $+1.9\%$ & DM 4.4--8.3 \\
+Top misspecification decile & $+2.7\%$ & DM 6.5 \\
+Hyperinflation FX (ARS, EGP) & $+12$--$14\%$ & DM 2.9--3.8 \\
+Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 \\
+2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2 (sort); recursive real-time rule $+1.0\%$, DM 2.15; frozen-constant restatement in text \\
+Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$; overall $+0.6\%$ & DM 6.6 / 9.0, frozen real-time thresholds \\
+Strict calendar splits; annual-refit walk-forward & top decile $+2.5\%$ under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 6.1 (walk-forward) \\
+Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles \\
+Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\% & date-clustered $t$ 0.17 at 99\%; at 97.5\%, 0.35 (EVT tail) and $-1.09$ (static overlay, conservative); HS, EWMA fail \\
+Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.0--4.7 vs GARCH-$t$, FHS; 6.9--9.3 vs GAS; static shift concedes 2.5\% (DM $-1.6$), adaptive shift erases it (tie; top-decile cost remains) \\
+Cold start / young listings & $+6$--$10\%$ & full-scale panel; no per-asset model applies \\
+Calm-quintile edge & $\approx 0$ (point estimates $+0.0$--$+0.2\%$) & bottom-decile 90\% CIs lie above $-0.25\%$; no detectable loss \\
+CAViaR (strongest academic rival) & tie (co-best in MCS) & DM 0.59 \\
 \midrule
-\multicolumn{4}{l}{\emph{Extension (a separate direct multi-day model --- not the engine)}} \\
+\multicolumn{3}{l}{\emph{Extension (a separate direct multi-day model, not the engine)}} \\
 \midrule
-Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 stress; 2000--13 rerun: tie, DM 0.07 & win (era-dependent) \\
+Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 stress; 2000--13 rerun: tie, DM 0.07 (era-dependent) \\
 \midrule
-\multicolumn{4}{l}{\emph{Panel B: boundary evidence (not the engine) --- why the design is what it is}} \\
+\multicolumn{3}{l}{\emph{Panel B: boundary evidence from configurations not deployed}} \\
 \midrule
-Bare standalone neural net, single names & $-4.5$ to $-6.2\%$ & DM $+12$ to $+18$ & why the engine is a hybrid \\
-Standalone nonparametric, calm single assets & GARCH as good or better & pooled DM $-9.5$ to $-13.7$ & scope: shape edge needs misspecification \\
-Korea 2026 crisis, 23 assets (negative control) & GARCH wins all & DM $-2.5$ to $-5$ & validates the frontier: price crash $\ne$ shape break \\
-mk$_{63}$-reweighted FHS (absorber probe) & worse than plain FHS & DM $-11$ overall and top decile & why pooling: conditioning alone collapses the sample \\
-Baltic freight; IG credit\tnote{a} & $+15\%$; $+52\%$ & DM 9.6; 30.6 & accuracy only; calibration open \\
+Bare standalone neural net, single names & $-4.5$ to $-6.2\%$ & DM $+12$ to $+18$; motivates the hybrid design \\
+Standalone nonparametric, calm single assets & GARCH as good or better & pooled DM $-9.5$ to $-13.7$; the shape edge needs misspecification \\
+Korea 2026 crisis, 23 assets (negative control) & GARCH wins all & DM $-2.5$ to $-5$; a price crash is not a shape break \\
+mk$_{63}$-reweighted FHS (reweighting probe) & worse than plain FHS & DM $-11$ overall and top decile; sharp univariate conditioning collapses the sample \\
+Baltic freight; IG credit\tnote{a} & $+15\%$; $+52\%$ & DM 9.6; 30.6; accuracy only, calibration open \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item[a] Credit and freight fail breach-independence (exceptions
-cluster) and are excluded from the win column pending repair. The
+cluster); their entries are accuracy results only. The
 credit magnitude is from the FRTB-grade single-asset battery; the
 smaller $4\%$ figure in Table~\ref{tab:universes} is from the separate
 lean hybrid-vs-GARCH sweep --- different battery, both reported.
@@ -290,24 +292,16 @@ lean hybrid-vs-GARCH sweep --- different battery, both reported.
 \end{threeparttable}
 \end{table}
 
-Two pieces of context make these magnitudes readable. First, the
-\emph{asymmetry of the loss profile} is the economic argument for
-adoption: when the frontier is quiet, the deployable engine ties or
-edges the parametric benchmark (its calm-quintile edge is $\approx 0$
-but not negative, and by construction it nests FHS); the one
-configuration that loses materially --- a bare standalone neural network
-on single names, $-4.5$ to $-6.2\%$ --- is the configuration
-Online Appendix Table~OA.2 says never to deploy. Adopting the engine
-therefore risks a rounding error to collect a concentrated $+2.7\%$ in
-the decile where risk models actually fail, and $12$--$14\%$ where the
-parametric assumption breaks entirely. Second, for readers without a
-pinball intuition: a percentage pinball edge is a percentage reduction
-in the average forecast error at the quoted level. This paper
-deliberately does not convert forecast-error edges into capital
-claims: an adversarial audit showed the predicted-vs-realized ES
-wedge depends on both the ES estimator and each model's own breach
-set, so the joint FZ0 score of Section~\ref{sec:frtb} carries the
-economic comparison instead.
+The asymmetry of the loss profile is the economic argument for
+adoption: when the frontier is quiet the engine ties or edges the
+parametric benchmark (calm-quintile edge $\approx 0$, never negative),
+so holding it costs at most a rounding error while it collects
+$+2.7\%$ in the decile where risk models actually fail and
+$12$--$14\%$ where the parametric assumption breaks entirely. A
+percentage pinball edge is a percentage reduction in average quantile
+loss at the quoted level; the joint FZ0 score of
+Section~\ref{sec:frtb} carries the economic comparison, and no
+capital-release arithmetic is attempted.
 
 Throughout, the exposition follows three reporting conventions fixed in advance.
 First, the strongest tabular estimator\footnote{``Tabular'' data:
@@ -406,9 +400,8 @@ point at a time),
 the architecture at the core of GBC \citep{polson2023gbc,
 nareklishvili2025gqbp}. Casting GBC as ERM conditional-quantile
 regression on observed pairs removes its forward-simulator requirement
-and extends it to observational time series. To be plain about what
-is deployed: the engine's shape model is the trees; the IQN is
-retained as a benchmark, and its generative reading (draw $\tau \sim
+and extends it to observational time series. The deployed shape model
+is the trees; the IQN is retained as a benchmark, and its generative reading (draw $\tau \sim
 U(0,1)$, output $Q_\theta(\tau \mid x)$) is a capability we note
 without using, since sampling and posterior uncertainty are outside
 this paper's scope. Generalized Bayes enters through the Gibbs
@@ -480,19 +473,20 @@ $\Pr(z < q) = \tau$, so the loss \emph{elicits} the quantile the way
 squared error elicits the mean --- under-prediction is charged $\tau$
 per unit, over-prediction $1-\tau$, and the charges balance exactly at
 the $\tau$-quantile. Averaging \eqref{eq:pinball} over $\tau\in(0,1)$
-targets the whole distribution at once: the 1-Wasserstein distance
-between two laws is the $L_1$ distance between their quantile functions,
-$W_1(F,G)=\int_0^1 |F^{-1}(\tau)-G^{-1}(\tau)|\,d\tau$, so pinball
-empirical-risk minimization across levels is distribution matching in
-$W_1$ --- density-free, which is what permits every estimator below to
+targets the whole distribution at once (the integrated loss is the
+continuous ranked probability score up to a factor of two, as recorded
+below), and quantile functions carry a natural $L_1$ geometry,
+$W_1(F,G)=\int_0^1 |F^{-1}(\tau)-G^{-1}(\tau)|\,d\tau$. Both facts
+are density-free, which is what permits every estimator below to
 dispense with a likelihood.
 
-\emph{Why this loss and not another.} Three alternatives are standard,
-and the choices are deliberate. (a)~The continuous ranked probability
+\emph{Why this loss and not another.} The choices among standard
+alternatives are deliberate. (a)~The continuous ranked probability
 score (CRPS) is exactly the integral of the pinball loss over all
 levels, $\mathrm{CRPS}(F,y) = 2\int_0^1 \rho_\tau(y - F^{-1}(\tau))\,
 d\tau$ \citep{gneitingraftery2007}; scoring by CRPS therefore weights
-the distribution's body and tails equally by construction. Downside
+quantile levels uniformly, so a 1\% tail occupies 1\% of the
+integral. Downside
 risk lives at fixed regulatory levels ($\tau \in \{0.01, 0.025\}$), and
 the models in this paper differ almost entirely in the tail --- CRPS
 would average those differences away against a body where all
@@ -523,8 +517,8 @@ likely is a move five times that, and is down likelier than up?'' The
 engine keeps GARCH's answer to the first question and learns the second
 from data. Each finishing stage has the same one-line logic: the EVT
 tail says \emph{beyond the data, extrapolate with the law extreme-value
-theory proves exceedances must follow, instead of trusting a fitted
-model outside its training range}; the conformal stage says
+theory motivates for high-threshold exceedances, instead of trusting a
+fitted model outside its training range}; the conformal stage says
 \emph{measure your own miss rate on data you have not touched, and
 shift the curve by that measured miss} --- calibration by
 bookkeeping, exact under exchangeability
@@ -584,9 +578,12 @@ residuals, trained by pinball ERM \emph{pooled across names},
 \end{equation}
 
 \emph{Stage 3 (EVT tail).} Beyond the estimation range of
-\eqref{eq:shapeERM}, extrapolate with the distribution extreme-value
-theory says exceedances must follow \citep{pickands1975,
-mcneilfrey2000}.\footnote{Extreme-value theory has two classical
+\eqref{eq:shapeERM}, extrapolate with the generalized Pareto
+approximation that extreme-value theory motivates for exceedances over
+a high threshold, under the standard max-domain-of-attraction
+conditions \citep{pickands1975, mcneilfrey2000}; the ES formula below
+requires $\xi<1$, a condition every fitted tail in this paper
+satisfies by a wide margin and the code guards explicitly.\footnote{Extreme-value theory has two classical
 formulations, and the distinction matters for reading the literature.
 The \emph{block-maxima} approach models the maximum of each block (e.g.,
 yearly worst loss), which converges to the generalized extreme value
@@ -676,28 +673,40 @@ contests never read the calibration split and share their filter with
 the benchmark (identical information sets); the overlay's shift does
 use it, so the audit was rerun end-to-end strict, filter estimation
 stopped at the calibration boundary. Against the matched-information
-benchmark the advantage is intact (DM 5.0 and 5.3 at the two levels);
-the strict engine's gap to the full-window benchmark ($-0.7$, $-2.4$)
+benchmark the advantage is intact (DM 5.1 and 5.4 at the two levels);
+the strict engine's gap to the full-window benchmark ($-0.6$, $-2.5$)
 matches that benchmark's own margin over its short-window twin (2.8,
 3.8) --- a quarter less estimation data, not leakage (replication
 artifacts: \texttt{job\_fz\_strict\_calibration.py} $\to$
 \texttt{fz\_strict\_calibration\_results.json}). The static shift
-widens (per-name pass 33\% against 48\%), consistent with its
-disclosed conservatism; the adaptive form remains the answer. Where regime
-drift erodes a static
-shift, an \emph{adaptive} update \citep{gibbs2021aci} is the natural
-escalation; the engine's annual-refit schedule sits
-between the static and adaptive poles, and the exception tests are the
-arbiter.
+widens (per-name pass 34\% against 48\%), consistent with its
+disclosed conservatism. Run under this same strict split, the adaptive
+update \citep{gibbs2021aci} walks the shift from $-0.51$ to $-0.20$,
+lifts the per-name pass rate to 57\%, and shrinks the joint-score gap
+to GARCH-$t$ from DM $-3.2$ (static) to $-1.5$, not significant at the
+two-sided 5\% level: the adaptive form is established as the remedy
+under the same information architecture. The engine's annual-refit
+schedule sits between the static and adaptive poles, and the exception
+tests decide between them.
 
 The full forecast composes the stages:
 \begin{equation}
 \widehat{Q}_t(\tau) \;=\; \widehat{\sigma}_t \cdot
-\Big[\, \widetilde{q}_\phi(\tau \mid s_t)\,\mathbb{I}\{\tau > p_0\}
-\;+\; \widehat{q}^{\,\mathrm{EVT}}(\tau)\,\mathbb{I}\{\tau \le p_0\}
-\Big].
+\mathrm{R}\Big[\, \min\{\widetilde{q}_\phi(\tau \mid s_t),\,
+\widehat{q}^{\,\mathrm{EVT}}(\tau)\}\,\mathbb{I}\{\tau \le p_0\}
+\;+\; \widetilde{q}_\phi(\tau \mid s_t)\,\mathbb{I}\{\tau > p_0\}
+\Big],
 \label{eq:hybrid}
 \end{equation}
+where $\mathrm{R}[\cdot]$ is the monotone rearrangement across
+levels. The tail forecast is the pointwise more conservative branch (a
+feature, not a guard: the body branch is the minimum on 38\% of tail
+nodes), and both risk measures come from this one curve. Recomputing
+ES$_\alpha$ as the exact integral of \eqref{eq:hybrid} rather than
+the GPD closed form leaves every comparison in place (at 2.5\%, FZ0
+1.849 against 1.851, the integral marginally better, DM 5.3;
+engine-over-GARCH DM 4.8 at both levels), and the splice level is
+immaterial ($p_0\in\{1.5\%,2.5\%,5\%\}$: DM 4.6--4.8).
 
 \noindent\textbf{Industry models as special cases.} Equation
 \eqref{eq:hybrid} nests the standard toolkit. Historical simulation:
@@ -799,7 +808,7 @@ H_\phi(s,\tau) \;=\; g\big(\psi(s)\circ\varphi(\tau)\big),
 \label{eq:iqn}
 \end{equation}
 where $\circ$ is elementwise multiplication and $g,\psi$ are
-feed-forward nets. Three modifications, each forced by a documented
+feed-forward nets. Its modifications, each forced by a documented
 failure, make it competitive on financial data: tail-aware
 $\tau$-sampling, $\lambda = \tfrac12\,U(0,1) +
 \tfrac12\,\mathrm{Beta}(0.3,0.3)$, oversampling the extremes that
@@ -870,8 +879,11 @@ If the desk needs \emph{numbers at fixed regulatory levels} (VaR/ES
 reporting, limits, capital), use the trees: best point accuracy, no
 GPU, no sampling needed. If the application consumes \emph{draws} ---
 scenario generation, portfolio aggregation by simulation ---
-use the network: it is the only member that is an exact sampler, at a
-measured cost of $\sim$0.75\% in point accuracy. If both are needed,
+use the network: it learns one continuous conditional quantile map, so
+draws come by inverse transform with no grid interpolation, at a
+measured cost of $\sim$0.75\% in point accuracy (a GARCH-$t$ or FHS
+model also simulates, from its fixed innovation law; a tree grid
+requires monotone interpolation first). If both are needed,
 run both from the same pooled residual panel; they share every upstream
 and downstream stage of \eqref{eq:hybrid}, so the swap is one component,
 not a new pipeline.
@@ -918,7 +930,8 @@ $F(q)-\tau$); integrating from $q_F$ to $q$ gives \eqref{eq:regret}
 $F(u)-\tau$ has the sign of $u-q_F$ (by definition of $q_F$), so the
 integral is $\ge 0$ whichever side $q$ lies; \eqref{eq:quadratic} then
 follows from $F(q_F)=\tau$ (supplied by the density hypothesis) and
-$m|u-q_F|\le F(u)-\tau\le M|u-q_F|$. Full details, including both
+$m|u-q_F|\le |F(u)-\tau|\le M|u-q_F|$ for almost every $u$ between
+$q_F$ and $q$. Full details, including both
 orientations of the integral, are in the Online Appendix.
 \end{proof}
 
@@ -928,7 +941,7 @@ reduces to: does shape misspecification create a quantile wedge at the
 risk levels that matter? For the paper's canonical case --- a fixed
 Student-$t$ shape when the true local shape is fatter --- it must:
 
-\begin{proposition}[tail wedge under kurtosis misspecification]
+\begin{proposition}[tail wedge under tail-shape misspecification]
 \label{prop:wedge}
 Let $Q_\nu(\tau)$ denote the $\tau$-quantile of the unit-variance
 Student-$t$ with $\nu > 2$ degrees of freedom. There exists
@@ -1028,8 +1041,8 @@ levels that downside risk is about (the uniform-trained net's 99\%
 breach rate was 3.2\%).
 (2)~\emph{Input space}: GBC maps raw data to posteriors; we first pass
 returns through the parametric filter \eqref{eq:garch} and model
-\emph{standardized residuals}: the scale dynamics are the one thing
-the industry model already gets right.
+\emph{standardized residuals}: the scale dynamics are the component
+the industry model already estimates well.
 (3)~\emph{Beyond-data tail}: no generative regression can know about
 quantiles beyond its training support; we splice the GPD tail
 \eqref{eq:evt} at $p_0$, replacing extrapolation by the network with
@@ -1037,7 +1050,7 @@ extrapolation by extreme-value theory.
 (4)~\emph{Finite-sample guarantee}: GBC's output carries no coverage
 guarantee; the conformal stage adds an exchangeability-based one
 (Proposition~\ref{prop:conformal}), whose deployment status
-(motivation under time ordering, with the exception tests as arbiter)
+(motivation under time ordering, judged by the exception tests)
 Section~\ref{sec:hybrid} states.
 (5)~\emph{Amortization target}: GBC amortizes across \emph{simulations
 of one model}; we amortize across the real cross-section of hundreds of
@@ -1164,10 +1177,9 @@ model is fitted on pooled estimation-window residuals, the GPD tail on
 the same pooled residuals below their empirical 2.5\% point, and the
 conformal shifts on the pooled calibration split. No stage refits
 inside the test window unless a rolling variant is named explicitly.
-Two structural objections to this protocol --- calendar overlap in
-pooled training, and the universe rule's survivorship --- get their
-own subsections at the end of this section, each with the test that
-settles it.
+Two structural properties of this protocol, calendar overlap in
+pooled training and the universe rule's survivorship, are examined in
+their own subsections at the end of this section.
 
 Loss and test conventions are collected in the conventions note that
 opens Section~\ref{sec:frontier}: mean pinball loss across eleven
@@ -1245,8 +1257,8 @@ the problem. The frontier measures shape, not staleness.
 universe rule}
 \label{sec:fwer}
 
-Three inference-level objections get the same treatment.
-\emph{Dependence:} every headline test collapses the cross-section
+Dependence, multiplicity, and survivorship receive the same
+treatment. \emph{Dependence:} every headline test collapses the cross-section
 to one number per date before any variance is estimated
 (Section~\ref{sec:frontier}), so common-date dependence enters
 through the date series; bootstrap procedures resample dates, not
@@ -1307,7 +1319,9 @@ the edge (0.973 $=$ a 2.7\% win; 1.043 $=$ a 4.3\% loss).
 (iii)~\emph{DM} is the Diebold--Mariano $t$-statistic on the loss
 difference. \emph{Per-date DM} means, concretely: losses are first
 averaged across names within each date,
-$d_t = N_t^{-1}\sum_i (\ell^{A}_{it} - \ell^{B}_{it})$, and the test is
+$d_t = N_t^{-1}\sum_i (\ell^{A}_{it} - \ell^{B}_{it})$ with the
+orientation stated at each use (benchmark minus engine in the engine's
+headline comparisons, so positive favors the engine), and the test is
 run on the resulting $\sim$1{,}100-date series with a Newey--West
 (lag-10) variance---the effective sample is the number of dates, never
 the number of asset-days. Reported $p$-values are \emph{one-sided} in
@@ -1366,7 +1380,12 @@ Overall & \multicolumn{3}{c}{$+0.44$} \\
 $+2.71\%$, DM $6.54$ ($p \approx 0$); bottom decile $+0.19\%$, DM $1.41$
 ($p = 0.079$, not significant); top two deciles pooled $+1.65\%$, DM
 $6.74$; overall $+0.44\%$, DM $5.67$. Top-decile signal means: kurtosis
-$\approx 25$, $|$skew$| \approx 4$.
+$\approx 25$, $|$skew$| \approx 4$. Three top-decile conventions
+appear in this section and differ by construction: pooled asset-day
+weighting gives $+2.46$ (the table cells), equal-date weighting gives
+$+2.71$ (the DM convention), and the timing-diagnostics run
+(Online Appendix Figure~OA.1) reports $+2.69$ under its deployed
+one-day lag.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -1377,37 +1396,39 @@ The edge is a top-decile phenomenon. It is large and significant
 where the fixed-$t$ shape assumption is currently broken, and
 statistically indistinguishable from zero where it is not.
 
+The score is model-relative, and a normalization makes that
+testable: raw trailing kurtosis mixes the heavy tail a correctly
+specified $t_{\nu_i}$ already implies with local departure from that
+law, so we convert each observation's mk$_{63}$ into a percentile of
+the simulated null of 63-window sample kurtosis under the name's own
+fitted $t_{\nu_i}$ (population kurtosis does not exist below $\nu=4$
+and the median fitted $\nu$ is $3.9$; the finite-window null is the
+only valid normalizer). The re-sorted frontier is unchanged: top
+decile $+3.0\%$ (DM 8.5) against $+3.0\%$ (DM 10.5) raw, deciles one
+through eight at zero, 82\% top-decile overlap. The score reads
+departure from the fitted law, not raw tail mass.
+
 \paragraph{Timing diagnostics.} The score is computed from residuals
-through day $t-1$ and paired with the day-$t$ loss; Online Appendix Figure~OA.1
-probes that alignment. The deployed lag gives the largest top-decile
-edge ($+2.69\%$, DM 6.5). A five-day-old score retains $+1.67\%$
-(DM 6.4), so the signal is persistent enough to act on. A deliberately
-contaminated same-day window --- the alignment a look-ahead artifact
-would favor --- yields \emph{less} than the deployed lag ($+1.91\%$),
-and a one-day-ahead placebo matches the contaminated value rather than
-exceeding the deployed one ($+1.92\%$; with a 63-day window the score's
-one-day autocorrelation is near one, so lead placebos are weak by
-construction and the informative comparison is deployed-vs-contaminated).
+through day $t-1$ and paired with the day-$t$ loss; Online Appendix
+Figure~OA.1 probes that alignment. The deployed lag gives the largest
+top-decile edge ($+2.69\%$, DM 6.5); a five-day-old score retains
+$+1.67\%$ (DM 6.4). A deliberately contaminated same-day window, the
+alignment a look-ahead artifact would favor, yields \emph{less} than
+the deployed lag ($+1.91\%$; a one-day-ahead placebo gives $+1.92\%$).
 Same-day sorting does not manufacture the edge.
 
 
 
-\paragraph{An absorption test.} If the
-frontier score were merely an omitted variable, a parametric-adjacent
-fix should capture the edge without any pooled learner: run filtered
-historical simulation per name, but reweight the historical residual
-window toward days whose mk$_{63}$ resembles today's (Gaussian kernel,
-bandwidth half the signal's per-name standard deviation). We ran that
-absorber on the full panel. The reweighted
-FHS is significantly \emph{worse} than plain FHS overall (per-date DM
-$-11.3$) and much worse in the top misspecification decile (average
-pinball 0.541 against 0.444, DM $-11.1$), while the pooled shape model
-beats plain FHS in that decile by $2.7\%$ of pinball (DM 8.8) and
-GARCH-$t$ by $2.8\%$ (DM 9.1). The mechanism is effective-sample
-collapse: sharp univariate conditioning shrinks a name's usable
-history to the handful of days that resemble today, exactly when today
-is unusual; smoothing the kernel only interpolates back toward the
-unconditional FHS it was meant to improve. Pooling across names is what makes state-conditioning affordable ---
+\paragraph{An absorption test.} If the score were merely an omitted
+variable, a parametric-adjacent fix should capture the edge without a
+pooled learner: per-name FHS with the residual window reweighted
+toward days whose mk$_{63}$ resembles today's (Gaussian kernel). On
+the full panel the reweighted FHS is significantly \emph{worse} than
+plain FHS overall (per-date DM $-11.3$) and in the top decile (pinball
+0.541 against 0.444), while the pooled model beats plain FHS there by
+$2.7\%$ (DM 8.8). The mechanism is effective-sample collapse: sharp
+univariate conditioning shrinks a name's usable history exactly when
+today is unusual. Pooling across names is what makes state-conditioning affordable ---
 the amortized model borrows the shape information from every name's
 stressed days. The amortization of Section~\ref{sec:gbcmethod} is a
 precondition for the frontier result; a single name's history cannot
@@ -1557,7 +1578,7 @@ illustrating necessity-not-sufficiency.
 
 
 Table~\ref{tab:universes} shows the same axis at work across markets.
-Three features stand out. First, the only decisive
+First, the only decisive
 \emph{standalone} single-asset wins anywhere are the hyperinflation and
 capital-control currencies --- Argentine and Egyptian pesos, 12--14\%
 better with significance --- whose residual kurtosis ($\sim$2000--3300)
@@ -1619,11 +1640,9 @@ prior-day state. The deployable conclusions: in the amortized setting, use the
 nonparametric model always (it does not underperform on calm days); use
 the residual-hybrid where a guaranteed $\ge$GARCH floor is wanted; and
 use the frontier score as a \emph{monitor} (Section~\ref{sec:applications});
-day-level switching adds nothing. (The score's detection latency is small (median zero,
-mean two to four days), and because the nonparametric edge is
-back-loaded within misspecification episodes, the lag costs little even
-in the per-name setting, where gating does matter because standalone
-nonparametric models underperform on calm days.)
+day-level switching adds nothing. (Detection latency is small, median zero, and the edge is back-loaded
+within episodes, so the lag costs little even in the per-name
+setting.)
 
 
 %% ===== FRTB BATTERY =====
@@ -1669,8 +1688,8 @@ normal entrants, 200-node integration of the Hansen skew-$t$ inverse
 CDF, the GPD closed form for the EVT tail, and a matched 20-node
 midpoint rule for the empirical quantile models. An earlier draft
 approximated predicted ES by a three-node tail-quantile average,
-understating it by 2--6\%; the correction, prompted by adversarial
-audit, is why these levels differ from prior versions.
+understating it by 2--6\%; the exact integral is why these levels
+differ from prior versions.
 Diebold--Mariano vs the hybrid: GARCH-$t$ 5.22, GJR-skew-$t$ 5.18,
 FHS pooled 6.43, per-name 5.42, rolling 5.88, HS 7.54, EWMA 8.79 (all
 $p\approx0$); the EVT variant concedes 0.0004 pinball to the raw
@@ -1727,7 +1746,8 @@ pre-crisis data, tilts conservative out of era (breach $2.21\%$ at
 calibration era is calmer than the test era, and the direction of the
 error is the one regulators prefer.
 
-Three caveats qualify the headline. First, adding SAV-CAViaR, a model absent from banks' standard toolkit
+The headline carries caveats. First, adding SAV-CAViaR, a model
+absent from banks' standard toolkit
 but the strongest semiparametric
 academic benchmark, produces a statistical tie: CAViaR 0.3461 vs
 hybrid 0.3460 (DM 0.59, $p=0.28$; the CAViaR study's common sample
@@ -1756,8 +1776,8 @@ recalibrated version closes to a hair (0.3638 vs 0.3632, DM 3.03) with
 calibration repaired (breach$_{99}$ 0.92\%). Trees remain the strongest
 tabular estimator; the tuned IQN is competitive.
 Third, the ES columns are a diagnostic, not a ranking. Under the
-exact tail integral (a correction from adversarial audit; the
-earlier three-node tail average understated predicted ES by 2--6\%),
+exact tail integral (a numerical correction: the earlier three-node
+tail average understated predicted ES by 2--6\%),
 every fat-tailed entrant's predicted ES exceeds the realized mean
 below its own VaR, by 9\% (raw hybrid, rolling FHS) to 22\% (pooled
 FHS), and the comparator conditions on each model's own breach set.
@@ -1771,7 +1791,7 @@ alone but the pair $(\VaR,\ES)$ is jointly elicitable under the
 Fissler--Ziegel class \citep{fissler2016}, the battery was re-checked
 under the FZ0 joint score (orientation validated by Monte Carlo against
 a known-truth $t_5$ before any ranking was read; first sandbox subsets
-of the panel, full-panel re-run pre-committed). Three results. On a
+of the panel, full-panel re-run pre-committed). On a
 45-name large-cap subset, a Gaussian-innovation GARCH is significantly
 \emph{worst} at both the 2.5\% and 1\% levels (DM 5.4 and 6.0): under a
 jointly consistent score, fat tails are strictly necessary. Among the
@@ -1785,19 +1805,18 @@ pattern reappearing under a jointly consistent score --- directionally
 but not yet significantly at this width (DM $\approx 0.9$,
 $p \approx 0.17$).
 
-The pre-committed full-panel re-run decided it. On the full 200-name
+On the full 200-name
 panel ($221.6$k test asset-days), with ES from the fitted GPD tail and
 per-date DM inference throughout, the engine's \emph{accuracy layer}, the EVT-tailed forecaster with no
 conformal shift, attains the
 lowest FZ0 at both regulatory levels: at 1\% it beats GARCH-$t$ (DM
-4.1), FHS (DM 4.7), and a per-name score-driven one-factor GAS model
+4.0), FHS (DM 4.7), and a per-name score-driven one-factor GAS model
 estimated by FZ0 minimization in the style of \citet{patton2019} (DM
-9.2; a three-start, convergence-audited re-estimate reproduces the
-2.5\% comparison at DM 5.9 but destabilizes the filter at 1\% for a
-handful of names; the benchmark is deliberately lightweight and
-read as appendix-grade); at 2.5\% it again wins (DM 4.2 over
-GARCH-$t$, 6.0 over GAS); the accuracy layer is thus the single
-unified configuration a referee could ask for: lowest FZ0 at both
+9.3; a three-start re-estimate reproduces the 2.5\% comparison at DM
+5.9 but destabilizes at 1\% for a few names; the benchmark is read as
+appendix-grade); at 2.5\% it again wins (DM 4.4 over
+GARCH-$t$, 6.9 over GAS); the accuracy layer is thus a single
+unified configuration: lowest FZ0 at both
 levels \emph{and} a pass on the aggregate date-clustered exception
 test at both levels, with per-name diagnostics showing residual
 cross-sectional calibration heterogeneity (81\%/86\% pass rates at
@@ -1809,10 +1828,10 @@ carries DM 2.4 at the 1\% level against DM 0.2 in the panel bulk.
 Adding the conformal shift at 97.5\%, whose calibration split includes
 the 2020 crash, widens the band out of era (breach $1.6\%$ against the $2.5\%$ target) and gives
 back the FZ0 advantage there: the \emph{static-overlay} variant loses to
-GARCH-$t$ on the 2.5\% joint score (DM $-2.0$, marginal at
+GARCH-$t$ on the 2.5\% joint score (DM $-1.6$, not significant at
 the two-sided 5\% level), and the concession is largest exactly where
 the bands are widest: in the top misspecification decile the
-deployed shift's joint-score deficit reaches DM $-7.1$. The coverage
+static shift's joint-score deficit reaches DM $-6.7$. The coverage
 property costs sharpness under
 a strictly consistent score, and its error direction is conservative
 (wider bands, fewer breaches than nominal). A desk that prizes the
@@ -1822,13 +1841,13 @@ runs the EVT tail alone, which passes the exception battery on its
 own (Online Appendix Figure~OA.2). The concession is
 mostly \emph{staleness}, not structure: the adaptive form of the
 shift \citep{gibbs2021aci}, updated daily from the panel breach
-frequency, walks the margin back out of era ($-0.32$ to $-0.10$;
-breach $1.7\%\to2.1\%$) and erases the overall concession: the
-adaptive variant ties GARCH-$t$ on 2.5\% FZ0 (DM $-0.1$) where the
-static loses (DM $-1.7$, same run). The top-decile cost survives any
-shift ($-4.7$ vs $-6.8$): the irreducible price of a margin where
+frequency, walks the margin back out of era ($-0.35$ to $-0.10$;
+breach $1.8\%\to2.1\%$) and erases the overall concession: the
+adaptive variant ties GARCH-$t$ on 2.5\% FZ0 (DM $-0.3$) where the
+static loses (DM $-2.0$, same run). The top-decile cost survives any
+shift ($-4.8$ vs $-6.0$): the irreducible price of a margin where
 bands are widest. The static shift also buys per-name coverage badly
-(Kupiec$_{97.5}$ pass rate 50\% against 71\% unshifted, 68\%
+(Kupiec$_{97.5}$ pass rate 47\% against 72\% unshifted, 69\%
 adaptive; over-coverage fails from the other side). Every
 ``lowest FZ0'' headline refers to the accuracy layer; the static
 concession is a frozen margin's price, and the adaptive form removes
@@ -1842,8 +1861,8 @@ cumulative returns with GARCH-derived features --- and \emph{not}
 from the residual-hybrid engine of Algorithm~1, whose residual
 architecture is one-day; the two are separate objects, and no
 ten-day claim in this paper attaches to the deployed engine. Training
-labels whose $h$-day window crosses the split are excluded (a
-boundary purge added after adversarial audit). At the FRTB ten-day
+labels whose $h$-day window crosses the split are excluded, so no
+label contains test-era returns. At the FRTB ten-day
 liquidity horizon (CRSP 2014--2024) the direct model's pinball edge
 over $\sqrt{h}$-scaled GARCH grows
 from $\sim$0.4\% at $h=1$ to $\sim$1.4\% at $h=10$, and holds in the
@@ -1936,12 +1955,10 @@ back-loaded within a misspecification episode.
 hybrid engine is an internal-models VaR/ES candidate that tops the
 accuracy table while passing the aggregate date-clustered exception
 test at both levels (per-name diagnostics show residual
-cross-sectional heterogeneity). Earlier drafts converted the
-predicted-vs-realized ES wedge into a capital-release figure; an
-adversarial audit dissolved that arithmetic. The wedge roughly
-doubles when the three-node tail average is replaced by the exact
-tail integral, and it conditions on each model's own breach set ---
-so this paper makes \emph{no} capital-release claim. What survives
+cross-sectional heterogeneity). This paper makes \emph{no}
+capital-release claim: the predicted-vs-realized ES wedge conditions
+on each model's own breach set and doubles under the exact tail
+integral, so no defensible arithmetic converts it to capital. What survives
 audit is a mechanism stated with its limits: the ES-based component
 of an IMA charge scales with the ES forecast, but actual FRTB capital
 also involves liquidity-horizon adjustment, stressed-period ES on a
@@ -1951,20 +1968,17 @@ attribution --- so no one-for-one mapping from a single-name ES
 forecast to desk capital exists, and none is claimed. Establishing
 genuine calibration differences requires a jointly valid standard,
 and the FZ0 comparison of Section~\ref{sec:frtb} is the version of
-that comparison this paper stands on. The ten-day horizon adds its own
-caution: the pre-committed 2000--2013 rerun shows
-$\sqrt{h}$-scaled GARCH almost exactly calibrated through the crisis
-era while the direct-learned tail under-states it, so any multi-day
-capital economics would be regime-dependent in the direction that
-matters most.
+that comparison this paper stands on. The ten-day rerun on
+2000--2013 shows $\sqrt{h}$-scaled GARCH almost exactly calibrated
+through the crisis era while the direct-learned tail under-states it:
+multi-day capital economics would be regime-dependent in the direction
+that matters most.
 
-\textbf{A misspecification monitor.} The frontier score is a live,
-per-asset monitor: when a desk's asset enters the top decile of
-residual-shape extremity, it sits in the region where the standard
-parametric model's conditional average pinball loss runs
-$\sim$2--3\% higher. This is
-deployable as model-risk surveillance because it is real-time and
-cheap (a trailing window on GARCH residuals).
+\textbf{A misspecification monitor.} The score is a live, per-asset
+monitor: an asset entering its top decile sits where the parametric
+model's conditional loss runs $\sim$2--3\% higher, and the input is a
+trailing window on GARCH residuals, so surveillance is real-time and
+cheap.
 
 \textbf{Cold-start risk for new listings.} The amortized model in its
 characteristics-only form is the
@@ -1990,15 +2004,12 @@ rather than per-name parameters.
 \section{Conclusion and limitations}\label{sec:limitations}
 
 A fixed-shape parametric filter is hard to beat where its
-assumption holds: most assets on most days. The paper's answer
-to ``when and why beat it'' is a measurable frontier: local violation of
-the residual-shape assumption, at whose top decile the distribution-free
-family wins decisively across four
-universes. The engine that captures this beats the
-market-risk forecasting benchmarks banks commonly run, at
-FRTB-relevant probability levels and on FRTB-aligned diagnostics;
-the full IMA approval machinery is a
-different exercise, not claimed here.
+assumption holds: most assets on most days. The paper's answer to
+``when and why beat it'' is a measurable frontier: local violation of
+the residual-shape assumption, at whose top decile the
+distribution-free family wins decisively. The engine that captures this beats the market-risk benchmarks banks
+commonly run on FRTB-aligned diagnostics; the full IMA approval
+machinery is not claimed.
 
 Limitations. Gradient-boosted trees remain the strongest tabular estimator; the
 IQN earns its place through sampling rather than point accuracy. The score is necessary-not-sufficient (carbon and corn tie at high
@@ -2055,7 +2066,7 @@ a synthetic example dataset (\texttt{toy\_example.py}) that runs the full
 pipeline end-to-end without licensed data. The holdout's frozen
 specification, including its written-in-advance predictions, is the
 header of \texttt{code/job\_wrds\_holdout.py}, line-for-line diffable
-against the design-era pipeline in the same folder. Two corrections from adversarial audit are canonical in the package:
+against the design-era pipeline in the same folder. Two numerical corrections are canonical in the package:
 the GJR-skew-$t$ inverse CDF (history preserved in
 \texttt{code/frtb\_bench.py}) and the exact-tail-integral ES.
 Table~\ref{tab:frtb} is generated by \texttt{code/frtb\_table.py}

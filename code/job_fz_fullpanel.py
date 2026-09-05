@@ -1,4 +1,6 @@
 # job_fz_fullpanel.py -- PRE-COMMITTED full-panel FZ0 joint (VaR,ES) re-scoring + GAS/PZC benchmark.
+# Wave-9: conformal shift computed with the exact ceil((n+1)tau) order statistic used by
+# Proposition 1, replacing interpolated np.quantile, so theorem and code state one rule.
 # Two pre-committed items in one shared forecast panel so every comparison is same-rows:
 #   (1) FZ0 (Fissler-Ziegler 0-homogeneous, as in Patton-Ziegel-Chen 2019) scoring of the engine
 #       vs GARCH-t and FHS on the FULL design-era panel (the paper's earlier FZ run covered a
@@ -19,6 +21,9 @@ rr=pd.read_csv(os.path.join(P,"crsp_panel_returns.csv"),dtype={'permno':'int32'}
 rr['date']=pd.to_datetime(rr['date']); rr['ret']=pd.to_numeric(rr['ret'],errors='coerce')*100.0
 cnt=rr.groupby('permno')['ret'].count().sort_values(ascending=False); names=cnt[cnt>=1500].index.tolist()[:200]
 ALPHAS=[0.01,0.025]
+def conf_ostat(sc,tau):
+    n=len(sc); k=int(math.ceil((n+1)*tau)); k=min(max(k,1),n)
+    return float(np.sort(np.asarray(sc,float))[k-1])
 def fz0(r,v,e,a):
     v=np.minimum(v,-1e-8); e=np.minimum(e,v)   # enforce e<=v<0
     hit=(r<=v).astype(float)
@@ -77,7 +82,7 @@ def evt_q(tau,p0=0.025):
     return u-(beta/xi)*((tau/p0)**(-xi)-1.0) if abs(xi)>1e-6 else u-beta*math.log(p0/tau)
 def evt_es(tau):
     q=evt_q(tau); return q-(beta+xi*(u-q))/(1.0-xi)
-s975=CALzc['z'].values-ZQcal[0.025]; CONF975=float(np.quantile(s975,0.025*(1+1/len(s975))))
+s975=CALzc['z'].values-ZQcal[0.025]; CONF975=conf_ostat(s975,0.025)   # exact ceil((n+1)tau) order statistic (Prop. 1)
 lg(f"GPD u={u:.3f} xi={xi:.3f} beta={beta:.3f}; conf975 {CONF975:+.4f}; evt_es01={evt_es(0.01):.3f} evt_es025={evt_es(0.025):.3f}")
 Y=TE['y'].values; SIG=TE['sig'].values; MU=TE['mu'].values
 ENG={}; ENGNC={}
