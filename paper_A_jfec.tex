@@ -103,7 +103,11 @@ learning builds distribution-free conditional quantile estimators, such
 as gradient-boosted quantile trees, neural implicit quantile networks
 (IQN), and generative Bayesian computation (GBC) \citep{polson2023gbc},
 which assume nothing about the innovation law but must learn it from
-data. Industry practice sits between the two. Under the Basel Fundamental
+data. Learners of this kind now forecast conditional volatility better than
+fixed-form parametric models on average across large cross-sections
+\citep{zhang2024commonality}; whether that average advantage reaches the
+regulatory tail, and on which days, is the question this paper takes up.
+Industry practice sits between the two. Under the Basel Fundamental
 Review of the Trading Book (FRTB), the reported measure is Expected
 Shortfall at the 97.5\% level, the workhorse internal models are
 historical simulation (HS) and its GARCH-filtered variant (FHS), and
@@ -161,10 +165,11 @@ per-asset estimation of the innovation shape, transfers to names never
 seen in training, and, in its characteristics-only form, prices assets
 with no return history at all, the day-one regime in which no
 per-asset model exists. To semiparametric conditional tail-risk
-forecasting, it develops the estimator that captures the frontier, a
-GARCH conditional scale times a state-conditioned nonparametric
-residual quantile with an extreme-value left tail and an optional
-split-conformal overlay, which is co-best with CAViaR
+forecasting, it develops the estimator that captures the frontier. The design keeps the
+parametric filter's scale, which is hard to improve, and replaces only its
+fixed innovation law where it fails: a GARCH conditional scale times a
+state-conditioned nonparametric residual quantile with an extreme-value left
+tail and an optional split-conformal overlay, which is co-best with CAViaR
 \citep{engle2004caviar} in the $90\%$ Model Confidence Set
 \citep{hansen2011mcs}, improves significantly on GARCH-$t$, FHS, EWMA,
 HS, and GJR-skew-$t$, and attains the lowest joint $(\VaR,\ES)$ FZ0
@@ -1043,10 +1048,8 @@ could meet a systemic event in training that a per-name model would only meet ou
 to look ahead. We concede the point in principle: a per-asset split
 cannot by itself support a causal reading of a pooled edge. Here the
 channel is nearly degenerate (near-complete histories put split
-points on almost the same date), but nearly is not zero, and the
-question deserves an answer by construction.
-
-The construction is a strict calendar-time split: every stage (each GARCH fit, the pooled learner, the GPD tail) is re-estimated on data strictly before 2020-01-01 and tested from that date for
+points on almost the same date), but nearly is not zero, so we settle it
+with a strict calendar-time split. Every stage (each GARCH fit, the pooled learner, the GPD tail) is re-estimated on data strictly before 2020-01-01 and tested from that date for
 every name simultaneously, so no training window shares a single
 calendar day with any test window. The frontier survives: top decile
 $+2.47\%$, per-date DM 6.22 over 1{,}258 dates (per-name split:
@@ -1503,11 +1506,11 @@ frequency. A regression gate on the edge magnitude fixes the direction
 still converges to always-nonparametric. The per-day oracle gap
 ($4.4\%$) is unreachable because per-day model advantage is dominated by
 which day the tail event lands, and that is unpredictable from
-prior-day state. The deployable conclusions: in the amortized setting, use the
-nonparametric model always (it does not underperform on calm days); use
-the residual-hybrid where a guaranteed $\ge$GARCH floor is wanted; and
-use the frontier score as a monitor (Section~\ref{sec:applications});
-day-level switching adds nothing. (Detection latency is small, median zero, and the edge is back-loaded
+prior-day state. In deployment the amortized setting uses the
+nonparametric model throughout, since it does not underperform on calm
+days; the residual-hybrid is the choice where a guaranteed $\ge$GARCH
+floor is wanted, and the frontier score serves as a monitor
+(Section~\ref{sec:applications}); day-level switching adds nothing. (Detection latency is small, median zero, and the edge is back-loaded
 within episodes, so the lag costs little even in the per-name
 setting.)
 
@@ -1711,6 +1714,17 @@ adaptive; over-coverage fails from the other side). Every
 concession is a frozen margin's price, and the adaptive form removes
 the overall cost.
 
+\paragraph{Direct ES backtests.} Exception counts test VaR, not ES. Two direct
+ES backtests, the McNeil--Frey (2000) exceedance-residual bootstrap
+\citep{mcneilfrey2000} and the Acerbi--Sz\'ekely (2014) $Z_2$
+\citep{acerbi2014backtesting}, in the joint-elicitability framework of
+\citet{noldeziegel2017elicitability, bayer2022esr}, put the same ordering on the
+battery (Online Appendix): the Gaussian filter is worst on every ES metric, and
+the EVT-tailed engine is the best-calibrated entrant, carrying the smallest
+$Z_2$, passing McNeil--Frey at $2.5\%$, and alone passing the $1\%$ Kupiec test.
+The $1\%$ deep tail on large caps is imperfect for every model, the engine
+included, which we report rather than smooth over.
+
 \subsection{The ten-day horizon: a direct multi-day extension}
 
 The multi-day results in this subsection come from a direct amortized model, a pooled quantile learner trained on $h$-day
@@ -1849,8 +1863,8 @@ the name's own realized volatility takes over as it ages.
 \section{Conclusion}\label{sec:limitations}
 
 A fixed-shape parametric filter is hard to beat where its shape
-assumption holds, and for most assets on most days it holds well. The
-contribution of this paper is to make the exception measurable. We
+assumption holds, and for most assets on most days it holds well. This
+paper makes that exception measurable: we
 identify a state, indexed by a real-time score of residual-shape stress,
 in which a distribution-free family has a large and significant advantage
 over the parametric benchmark, and we build an engine that captures that
