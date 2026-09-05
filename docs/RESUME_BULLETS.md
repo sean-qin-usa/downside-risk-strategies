@@ -1,26 +1,25 @@
 # Resume bullets — drop-in for the paper project
 
-Header stays as on your resume ("Semiparametric Value-at-Risk/Expected
-Shortfall with a Real-Time Misspecification Score (GitHub) — Working Paper
-with Prof. Wenxin Jiang, Northwestern University"). After ScholarOne, change
-"Working Paper" to "Submitted to the Journal of Financial Econometrics."
+Header as you now have it ("Forecasting Value-at-Risk and Expected Shortfall
+with a Real-Time Misspecification Score — Working Paper with Prof. Wenxin
+Jiang"). After ScholarOne, change "Working Paper" to "Submitted to the
+*Journal of Financial Econometrics*."
 
-**Delete the first two current bullets** ("Building a Bayesian/ML framework…
-cryptocurrency…" and "Developing a reproducible evaluation pipeline… GP
-surrogates… CRPS…") — they describe an early version of the project that no
-longer matches the paper, and the GitHub link next to them invites the
-cross-check.
+**Still to do on the doc:** delete the two old bullets above these
+("Building a Bayesian/ML framework… cryptocurrency…" and "…GP surrogates…
+CRPS…") — they describe an early version that no longer matches the paper the
+GitHub link points to.
 
-**Replace all five with these three:**
+**Layman-clear version (replace the three highlighted bullets):**
 
-- Built a semiparametric VaR/Expected Shortfall engine: GARCH volatility, one shared machine-learned quantile model, extreme-value tail; beats industry-standard risk models out of sample (**DM 4.4–8.3**) and passes regulatory backtests through the 2008 crisis.
+- Built a model forecasting worst-case daily stock losses (Value-at-Risk/Expected Shortfall): GARCH filtering plus one machine-learned tail model shared across stocks; beats the risk models banks use out of sample (**t-stats 4.4–8.3**), passing regulatory backtests through the 2008 crisis.
 
-- Introduced a real-time misspecification score predicting when ML beats parametric risk models; its top decile carries a **+2.7% accuracy edge (DM 6.5)**, replicated on a frozen 2000–2013 holdout with pre-committed predictions.
+- Created a real-time warning score that flags when machine learning will beat classical risk models: forecasts improve **+2.7%** (**t = 6.5**) on flagged days, repeated on untouched 2000–2013 data with predictions written down in advance.
 
-- One pooled fit replaces per-asset estimation, prices day-one listings no per-asset model can, and gains **6–10%** on newly listed names.
+- Amortized the estimation: one model trained across all stocks replaces thousands of individually fitted ones, transfers to stocks never seen in training, and prices brand-new IPOs from day one (no per-stock model can), with **6–10%** gains on young listings.
 
-**Two-bullet version if space is tight:**
+**Two-bullet squeeze:**
 
-- Built a semiparametric VaR/ES engine (GARCH volatility, one shared ML quantile model, EVT tail) that beats industry-standard risk models out of sample (**DM 4.4–8.3**) and passes regulatory backtests through the 2008 crisis; prices day-one listings no per-asset model can (**6–10%** gains on young names).
+- Built a model forecasting worst-case daily stock losses (VaR/Expected Shortfall) that beats the risk models banks actually use (**t-stats 4.4–8.3** out of sample, Diebold–Mariano), stays accurate through the 2008 crisis in regulatory backtests, and prices brand-new IPOs from day one (**6–10%** gains on young listings).
 
-- Introduced a real-time misspecification score predicting when ML beats parametric models; top decile carries **+2.7% (DM 6.5)**, replicated on a frozen 2000–2013 holdout with pre-committed predictions.
+- Created a real-time warning score flagging when machine learning beats classical risk models: **+2.7%** improvement (**t = 6.5**) on flagged days, repeated on untouched 2000–2013 data with predictions written down in advance.
