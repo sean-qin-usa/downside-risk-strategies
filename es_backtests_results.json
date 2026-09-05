@@ -1,0 +1,74 @@
+{
+  "note": "Modern ES/VaR backtests, pooled test panel. Kupiec UC (VaR); Acerbi-Szekely 2014 Z2 (ES; <0 understates risk); McNeil-Frey 2000 exceedance-residual bootstrap (ES). Framework: Bayer-Dimitriadis 2022 ESR, Nolde-Ziegel 2017.",
+  "n_names": 140,
+  "per_alpha": {
+    "alpha_0.025": {
+      "garch_norm": {
+        "breach": 0.0274,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.3569,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.5593,
+        "MF_p": 0.0
+      },
+      "garch_t": {
+        "breach": 0.0277,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.1381,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.0746,
+        "MF_p": 0.0008
+      },
+      "fhs": {
+        "breach": 0.0281,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.1406,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.0226,
+        "MF_p": 0.31
+      },
+      "hybrid_evt": {
+        "breach": 0.0276,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.1186,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.0177,
+        "MF_p": 0.4564
+      }
+    },
+    "alpha_0.01": {
+      "garch_norm": {
+        "breach": 0.016,
+        "kupiec_p": 0.0,
+        "AS_Z2": -1.0653,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.7846,
+        "MF_p": 0.0
+      },
+      "garch_t": {
+        "breach": 0.0106,
+        "kupiec_p": 0.0264,
+        "AS_Z2": -0.1391,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.2886,
+        "MF_p": 0.0
+      },
+      "fhs": {
+        "breach": 0.0111,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.1766,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.1917,
+        "MF_p": 0.0
+      },
+      "hybrid_evt": {
+        "breach": 0.0104,
+        "kupiec_p": 0.1172,
+        "AS_Z2": -0.1192,
+        "AS_Z2_p": 0.0001,
+        "MF_exres": -0.2441,
+        "MF_p": 0.0
+      }
+    }
+  }
+}

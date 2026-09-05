@@ -409,6 +409,61 @@ as a log-return artifact on near-zero and negative prices, refit on price differ
 \end{threeparttable}
 \end{table}
 
+\subsection*{Direct expected-shortfall backtests}\label{sec:esbt-oa}
+Exception counts test the VaR level; they do not test ES. Because $(\VaR,\ES)$
+is jointly elicitable \citep{fissler2016}, ES admits direct backtests, and the
+main text adds two: the McNeil--Frey (2000) exceedance-residual bootstrap, the
+mean standardized loss beyond VaR and zero under a correct ES
+\citep{mcneilfrey2000}; and the Acerbi--Sz\'ekely (2014) statistic $Z_2$,
+negative when ES understates the realized tail \citep{acerbi2014backtesting}.
+Both sit in the joint-elicitability backtesting framework of
+\citet{noldeziegel2017elicitability} and the ES-regression backtests of
+\citet{bayer2022esr}. Table~\ref{tab:esbt} reports them on the pooled test
+panel (140 CRSP names, per-name GARCH-$t$ fit on the first $60\%$, evaluated on
+the held-out $40\%$; $155{,}120$ pooled test observations per model). Two
+readings stand out. Fat tails are necessary: the Gaussian-innovation filter is
+worst on every ES metric, its mean exceedance residual reaching $-0.79$ standard
+deviations at the $1\%$ level ($Z_2=-1.07$). And the EVT-tailed engine is the
+best-calibrated entrant: it carries the smallest $Z_2$ at both levels, its ES
+passes the McNeil--Frey test at $2.5\%$ (mean exceedance residual $-0.02$,
+$p=0.46$), and it is the only entrant whose $1\%$ exception count passes Kupiec.
+The honest limit is the deep tail. At $1\%$ every model's mean exceedance
+residual is significantly negative on this large-capitalization panel, the
+engine included; and, as with the pooled Kupiec test at this sample size, the
+$Z_2$ $p$-values are hypersensitive, so the statistic magnitudes and the
+McNeil--Frey ordering, not the pooled $p$-values, are the informative reading.
+
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{Direct expected-shortfall backtests. 140 CRSP names, pooled test
+panel. Breach is the realized exception rate (target $\alpha$); Kupiec $p$ is
+the unconditional-coverage test. $Z_2$ is the Acerbi--Sz\'ekely (2014)
+statistic, negative when ES understates the tail. MF is the McNeil--Frey (2000)
+mean exceedance residual (standardized loss beyond VaR, zero under correct ES)
+with its bootstrap $p$.}
+\label{tab:esbt}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lcccc|cccc}
+\toprule
+ & \multicolumn{4}{c}{$\alpha=2.5\%$} & \multicolumn{4}{c}{$\alpha=1\%$}\\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+Model & Breach & Kupiec\,$p$ & $Z_2$ & MF ($p$) & Breach & Kupiec\,$p$ & $Z_2$ & MF ($p$) \\
+\midrule
+GARCH-normal & $0.027$ & $0.00$ & $-0.36$ & $-0.56\,(0.00)$ & $0.016$ & $0.00$ & $-1.07$ & $-0.79\,(0.00)$ \\
+GARCH-$t$ & $0.028$ & $0.00$ & $-0.14$ & $-0.08\,(0.00)$ & $0.011$ & $0.03$ & $-0.14$ & $-0.29\,(0.00)$ \\
+GARCH-FHS & $0.028$ & $0.00$ & $-0.14$ & $-0.02\,(0.31)$ & $0.011$ & $0.00$ & $-0.18$ & $-0.19\,(0.00)$ \\
+Engine (hybrid$+$EVT) & $0.028$ & $0.00$ & $\mathbf{-0.12}$ & $\mathbf{-0.02\,(0.46)}$ & $0.010$ & $\mathbf{0.12}$ & $\mathbf{-0.12}$ & $-0.24\,(0.00)$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item $Z_2$ magnitudes are the calibration reading; the pooled $p$-values are
+hypersensitive at $155$k observations (the same caveat the text records for
+Kupiec). Source: \texttt{es\_backtests\_results.json}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \subsection*{Realized measures and the scale--shape decomposition}\label{sec:rgarch-oa}
 The main-text battery reads only daily returns, the regime the estimator is built
 for. To place it against a method that reads intraday data, and to ask what the
