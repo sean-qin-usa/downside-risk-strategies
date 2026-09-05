@@ -1284,10 +1284,17 @@ content ($t=-5.2$); double-sorting agrees, the top-raw-kurtosis-quintile
 edge \emph{falls} from $+1.9\%$ for the most fat-tailed (low-$\nu$) names
 to $+1.5\%$ for the thinnest-tailed, and observations high in the
 $\nu$-relative score but not in raw kurtosis carry no edge ($+0.3\%$, DM
-$0.5$). The frontier is therefore a statement about the absolute level of
-recent tail activity, not about departure from each name's fitted law:
-the score flags where the fixed-shape parametric model underperforms, but
-normalizing by the fitted $\nu$ adds nothing.
+$0.5$). The signal is thus the absolute level of recent tail activity rather than
+a per-name $\nu$-normalized surprise. This does not make it less a
+misspecification diagnostic: $\mathrm{mk}_{63}$ is computed on the
+\emph{standardized} residuals the model itself assumes are stationary
+$t_\nu$, so an elevated value is by construction a departure from the
+fitted innovation shape; what the data reject is only the finer per-name
+normalization, for a clean reason: a name's fitted $\nu$ is estimated
+from the same residuals, and a low value is itself a symptom of the tail
+activity that matters, so dividing it out removes part of the signal. The
+fixed-shape model is inadequate wherever recent standardized-residual tail
+activity is high, which is exactly where the flexible engine wins.
 
 \paragraph{Timing diagnostics.} The score is computed from residuals
 through day $t-1$ and paired with the day-$t$ loss; Online Appendix
