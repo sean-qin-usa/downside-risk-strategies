@@ -6,7 +6,7 @@ import numpy as np, pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
 from scipy import stats, optimize
 from arch import arch_model
-D=os.path.expanduser("~/sean_dev/GBC_data"); t0=time.time(); lg=lambda s:print(s,flush=True); rng=np.random.default_rng(0)
+D="C:/Users/OWNER/Claude/Projects/GBC Project"; t0=time.time(); lg=lambda s:print(s,flush=True); rng=np.random.default_rng(0)
 TAUS=[0.005,0.01,0.025,0.05,0.10,0.25,0.50,0.75,0.90,0.95,0.975,0.99]; TAILT=[0.005,0.01,0.025]
 def pin(y,q,t): d=y-q; return np.where(d>=0,t*d,(t-1)*d)
 rr=pd.read_csv(os.path.join(D,"crsp_panel_returns.csv"),dtype={'permno':'int32'})
