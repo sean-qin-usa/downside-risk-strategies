@@ -1,0 +1,91 @@
+{
+  "note": "DEPLOYED COMPOSITE (max of mk63/|skew63|/jump5 pooled percentiles, re-deciled) on the 2000-2013 holdout; frozen holdout engine from job_wrds_holdout. Reported as post-hoc replication on an already-inspected historical sample, NOT a frozen-specification validation of the composite. edge=(GARCH-t minus GBM)/GARCH-t 11-tau pinball, per-date NW(10) DM.",
+  "n_names": 200,
+  "n_test": 280608,
+  "composite_top_decile": {
+    "edge_pct": 1.123,
+    "DM": 2.51,
+    "n": 28061,
+    "occ_pct": 10.0
+  },
+  "composite_causal_expanding_top": {
+    "edge_pct": 0.71,
+    "DM": 2.08,
+    "n": 24364,
+    "occ_pct": 8.68
+  },
+  "mk63_top_decile": {
+    "edge_pct": 1.043,
+    "DM": 2.16,
+    "n": 28061,
+    "occ_pct": 10.0
+  },
+  "composite_decile_profile": {
+    "1": {
+      "edge_pct": 0.078,
+      "DM": -1.76,
+      "n": 28061,
+      "occ_pct": 10.0
+    },
+    "2": {
+      "edge_pct": -0.222,
+      "DM": -1.94,
+      "n": 28064,
+      "occ_pct": 10.0
+    },
+    "3": {
+      "edge_pct": -0.068,
+      "DM": -1.27,
+      "n": 28058,
+      "occ_pct": 10.0
+    },
+    "4": {
+      "edge_pct": -0.012,
+      "DM": -0.81,
+      "n": 28066,
+      "occ_pct": 10.0
+    },
+    "5": {
+      "edge_pct": -0.253,
+      "DM": -1.21,
+      "n": 28056,
+      "occ_pct": 10.0
+    },
+    "6": {
+      "edge_pct": -0.12,
+      "DM": -0.44,
+      "n": 28060,
+      "occ_pct": 10.0
+    },
+    "7": {
+      "edge_pct": -0.309,
+      "DM": -1.4,
+      "n": 28060,
+      "occ_pct": 10.0
+    },
+    "8": {
+      "edge_pct": -0.053,
+      "DM": 0.14,
+      "n": 28061,
+      "occ_pct": 10.0
+    },
+    "9": {
+      "edge_pct": 0.207,
+      "DM": 1.44,
+      "n": 28061,
+      "occ_pct": 10.0
+    },
+    "10": {
+      "edge_pct": 1.123,
+      "DM": 2.51,
+      "n": 28061,
+      "occ_pct": 10.0
+    }
+  },
+  "overall": {
+    "edge_pct": 0.07,
+    "DM": 0.4,
+    "n": 280608,
+    "occ_pct": 100.0
+  }
+}
