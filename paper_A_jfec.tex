@@ -107,7 +107,12 @@ data. Industry practice sits between the two. Under the Basel Fundamental
 Review of the Trading Book (FRTB), the reported measure is Expected
 Shortfall at the 97.5\% level, the workhorse internal models are
 historical simulation (HS) and its GARCH-filtered variant (FHS), and
-forecasts are judged by VaR exception counts at 99\% and 97.5\%. A method
+forecasts are judged by VaR exception counts at 99\% and 97.5\%. That
+figure is not a diagnostic: the reported ES sets the market-risk capital a
+bank holds against its book \citep{bcbs2019frtb}, so errors are costly both
+ways, freezing capital that could fund positions when the forecast runs high
+and, as exceptions accumulate, lifting the multiplier on the charge when it
+runs low. A method
 that claims to beat the industry standard must therefore beat HS and FHS
 on ES$_{97.5}$ under exception-test discipline. Beating a vanilla GARCH
 on average loss is not enough.
@@ -163,7 +168,7 @@ split-conformal overlay, which is co-best with CAViaR
 \citep{engle2004caviar} in the $90\%$ Model Confidence Set
 \citep{hansen2011mcs}, improves significantly on GARCH-$t$, FHS, EWMA,
 HS, and GJR-skew-$t$, and attains the lowest joint $(\VaR,\ES)$ FZ0
-score at both FRTB levels with exception counts near nominal through a
+score among these daily-data benchmarks at both FRTB levels with exception counts near nominal through a
 2008-crisis window. Two formal results motivate the search: a pinball
 regret identity, by which a forecaster's excess loss is locally quadratic in
 its quantile wedge so an edge concentrates where the wedge is largest,
@@ -1756,6 +1761,13 @@ was corrected for near-zero prices. The GPD tail also hurts some
 volatility indices, motivating the selective-application rule of
 Section~\ref{sec:hybrid}. Instrument-level results and diagnostics are
 collected in the Online Appendix.
+
+\paragraph{The intraday ceiling.} Against a Realized GARCH
+\citep{hansen2012realized} that reads intraday data, the daily-data core
+concedes FZ0 at both levels (DM $6.0$ and $4.5$; Online Appendix): the gap is
+the realized \emph{scale}, not the tail, it opens only where intraday data
+exist, and a realized-hybrid would carry the estimator's shape model and score
+onto that scale.
 
 %% ===== APPLICATIONS =====
 \section{Extensions and implications}\label{sec:applications}

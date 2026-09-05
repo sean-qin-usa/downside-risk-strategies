@@ -104,7 +104,12 @@ data. Industry practice sits between the two. Under the Basel Fundamental
 Review of the Trading Book (FRTB), the reported measure is Expected
 Shortfall at the 97.5\% level, the workhorse internal models are
 historical simulation (HS) and its GARCH-filtered variant (FHS), and
-forecasts are judged by VaR exception counts at 99\% and 97.5\%. A method
+forecasts are judged by VaR exception counts at 99\% and 97.5\%. That
+figure is not a diagnostic: the reported ES sets the market-risk capital a
+bank holds against its book \citep{bcbs2019frtb}, so errors are costly both
+ways, freezing capital that could fund positions when the forecast runs high
+and, as exceptions accumulate, lifting the multiplier on the charge when it
+runs low. A method
 that claims to beat the industry standard must therefore beat HS and FHS
 on ES$_{97.5}$ under exception-test discipline. Beating a vanilla GARCH
 on average loss is not enough.
@@ -160,7 +165,7 @@ split-conformal overlay, which is co-best with CAViaR
 \citep{engle2004caviar} in the $90\%$ Model Confidence Set
 \citep{hansen2011mcs}, improves significantly on GARCH-$t$, FHS, EWMA,
 HS, and GJR-skew-$t$, and attains the lowest joint $(\VaR,\ES)$ FZ0
-score at both FRTB levels with exception counts near nominal through a
+score among these daily-data benchmarks at both FRTB levels with exception counts near nominal through a
 2008-crisis window. Two formal results motivate the search: a pinball
 regret identity, by which a forecaster's excess loss is locally quadratic in
 its quantile wedge so an edge concentrates where the wedge is largest,
@@ -2044,6 +2049,84 @@ was corrected for near-zero prices. The GPD tail also hurts some
 volatility indices, motivating the selective-application rule of
 Section~\ref{sec:hybrid}. Instrument-level results and diagnostics are
 collected in the Online Appendix.
+
+\subsection{A modern realized-measure benchmark: the intraday ceiling}
+\label{sec:rgarch}
+The battery to this point reads only daily returns. That is deliberate: it is
+the regime the estimator is built for, and the one in which amortization,
+day-one forecasting, and cross-asset transfer have force. A reader will still
+ask how a daily-data forecaster compares with a method that reads intraday
+data, and the honest answer is that it should not win. On the thirty
+large-capitalization U.S.\ names for which we build clean five-minute realized
+measures from TAQ over 2014--2024, we fit a Realized GARCH, the conditional
+variance driven by lagged realized variance \citep{hansen2012realized}, and
+score its $(\VaR,\ES)$ forecasts under the same FZ0 loss and date-clustered
+Diebold--Mariano inference used throughout, against the estimator's daily-data
+accuracy core, a GARCH scale with the EVT tail.
+
+Table~\ref{tab:rgarch} is unambiguous. With intraday information the
+realized-measure model lowers FZ0 by a wide margin at both regulatory levels
+(DM $6.0$ at 2.5\% and $4.5$ at 1\%), and its exception rates are at least as
+well calibrated. The realized-variance scale is the whole of it: whether the
+tail is parametric-$t$ or our EVT construction, the two realized fits are
+within noise of each other, so what a daily filter cannot match is the
+\emph{scale}, not the tail. This squares with the paper's own finding that,
+among fat-tailed daily models on large caps, the tail treatment is not the
+first-order differentiator.
+
+We read this as the ceiling intraday information buys, not a defeat of the
+daily forecaster, for three reasons. First, the realized-measure model is
+unavailable in exactly the settings the estimator is designed for: a name with
+no clean intraday history, a newly listed asset on day one, an illiquid
+instrument whose five-minute grid is too sparse to estimate $\mathrm{RV}$.
+Second, the estimator's contribution is orthogonal to this comparison. What
+separates the realized model is a better conditional scale, and the estimator's
+scale is a standard GARCH filter; its distinctive parts, the amortized pooled
+shape model and the misspecification score, address the innovation law and the
+timing of the flexible model's advantage, neither of which a Realized GARCH
+supplies. Third, the two combine: folding a realized-variance scale into the
+pooled engine, a realized-hybrid, is the natural way to carry the estimator's
+tail and score into the intraday regime, and the estimator's EVT tail transfers
+there without loss. The daily-data estimator is the frontier where intraday
+data do not exist; where they do, the realized scale is the piece it lacks, and
+the two are complements rather than rivals.
+
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{A modern realized-measure comparator on the intraday-covered
+subsample. Thirty large-cap U.S.\ equities, 2014--2024 (1{,}108 test dates),
+joint $(\VaR,\ES)$ FZ0 loss (lower is better) at both FRTB levels; breach is
+the realized exception rate against the target. DM is date-clustered
+(Newey--West, 5 lags) against the daily-data accuracy core (GARCH scale $+$
+EVT tail); a negative DM means the row beats that core.}
+\label{tab:rgarch}
+\small\setlength{\tabcolsep}{5.5pt}
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{$\alpha=2.5\%$} & \multicolumn{3}{c}{$\alpha=1\%$}\\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Model & FZ0 & Breach & DM & FZ0 & Breach & DM \\
+\midrule
+GARCH(1,1)-$t$ (daily) & $1.508$ & $0.032$ & $+1.6$ & $1.784$ & $0.012$ & $+1.5$ \\
+GARCH $+$ EVT (daily core) & $1.501$ & $0.028$ & --- & $1.774$ & $0.011$ & --- \\
+Realized GARCH ($t$ tail) & $\mathbf{1.444}$ & $0.023$ & $\mathbf{-6.0}$ & $\mathbf{1.713}$ & $0.010$ & $\mathbf{-4.5}$ \\
+Realized GARCH $+$ EVT tail & $1.448$ & $0.022$ & $-5.4$ & $1.722$ & $0.009$ & $-3.9$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Realized variance $\mathrm{RV}_t$ is the sum of squared five-minute
+log-returns from TAQ, cleaned by regular sale conditions, a daily price band,
+and a $20\%$ return clip. The Realized GARCH variance recursion
+$\log h_t=\omega+\beta\log h_{t-1}+\gamma\log \mathrm{RV}_{t-1}$
+\citep{hansen2012realized} is estimated by Gaussian QMLE on the training split;
+the EVT tail is a generalized-Pareto fit to the model's standardized residuals,
+the same construction as the daily engine. Returns are CRSP daily; the
+intersection with the realized panel is common across models. Source:
+\texttt{rgarch\_bench\_results.json}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
 
 %% ===== APPLICATIONS =====
 \section{Extensions and implications}\label{sec:applications}
