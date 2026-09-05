@@ -594,32 +594,40 @@ $\tfrac{m}{2}(Q_{\nu_1}(\tau)-Q_{\nu_2}(\tau))^2$, with $m$ the minimum
 of the $t_{\nu_1}$ density on the wedge interval. \hfill$\square$
 
 \subsection*{Proof of Proposition~3 of the paper (the score orders the frontier)}
-Fix $\tau$ below the crossover level of the paper's crossover remark, so
-that by Proposition~2 of the paper $Q_G(\tau)$ is strictly less extreme
-than $Q_{F_\delta}(\tau)$ and the gap $w(\delta)=|Q_G(\tau)-Q_{F_\delta}(\tau)|$
-is strictly increasing in the excess kurtosis $\kappa(\delta)$: raising
-$\delta$ raises $\kappa(\delta)$ by construction of the family, which by
-the tail ordering of Proposition~2 pushes $Q_{F_\delta}(\tau)$
-monotonically outward while $Q_G(\tau)$ is fixed, so $w'(\delta)>0$. By
-Lemma~1 of the paper (the regret identity), the benchmark's level-$\tau$
-excess loss under local truth $F_\delta$ is
+Work in the tail-ordered family of Proposition~3: $F_\delta=t_{\nu(\delta)}$
+(or a regularly varying family with left-tail index $\alpha(\delta)$) with
+$\nu(\delta)$ strictly decreasing, so a single index sets both the lower
+tail and $\kappa(\delta)=6/(\nu(\delta)-4)$ (strictly increasing). Fix
+$\tau$ below the crossover level of the paper's crossover remark. By
+Proposition~2 of the paper, applied \emph{within} this family, $Q_G(\tau)$
+is strictly less extreme than $Q_{F_\delta}(\tau)$, and decreasing
+$\nu(\delta)$ pushes $Q_{F_\delta}(\tau)$ monotonically outward while
+$Q_G(\tau)$ is fixed, so the gap $w(\delta)=|Q_G(\tau)-Q_{F_\delta}(\tau)|$
+is strictly increasing in $\delta$ (equivalently in $\kappa(\delta)$),
+$w'(\delta)>0$. By Lemma~1 of the paper (the regret identity), the
+benchmark's level-$\tau$ excess loss under local truth $F_\delta$ is
 $A_\tau(\delta)=\tfrac12 f_\delta(Q_{F_\delta}(\tau))\,w(\delta)^2+o(w(\delta)^2)$,
-a strictly increasing function of $w(\delta)$ and hence of $\delta$ near
-$\delta=0$; the oracle attains $Q_{F_\delta}(\tau)$ and carries no
-first-order regret, and the nonparametric estimator attains it up to
-$O_p(n^{-1/2})$, which is $o(1)$ in the advantage as the sample grows.
-Finally, the trailing-window sample excess kurtosis $S_t$ is the fourth
-standardized sample moment minus three; by the law of large numbers
-$S_t\xrightarrow{p}\kappa(\delta)$ whenever $\mathbb{E}[z^4]<\infty$ (so
-for $t_\nu$ with $\nu>4$; the sampling variance of $S_t$ is finite for
-$\nu>8$). Composing the monotone maps
-$S_t\mapsto\kappa(\delta)\mapsto w(\delta)\mapsto A_\tau(\delta)$ shows the
-probability limit of the score orders the level-$\tau$ advantage. The
-aggregate pinball advantage is the $\tau$-weighted sum
-$\sum_\tau \omega_\tau A_\tau(\delta)$, dominated by the tail levels for
-which the monotonicity holds, and the joint $(\mathrm{VaR},\mathrm{ES})$
-object is a level-by-level functional of the same quantile curve; both
-inherit the ordering. \hfill$\square$
+strictly positive for $w(\delta)>0$ and vanishing only as $w(\delta)\to0$;
+the oracle attains $Q_{F_\delta}(\tau)$ and carries no first-order regret,
+and a consistent nonparametric estimator attains it in the limit,
+contributing $o(1)$ to the advantage. The advantage is thus positive and
+driven by the wedge; its exact monotonicity in $\delta$ additionally
+requires the tail density factor $f_\delta(Q_{F_\delta}(\tau))$ not to fall
+faster than $w(\delta)^2$ grows, which we do not assume and instead verify
+empirically. Finally the trailing-window sample excess kurtosis $S_t$ is the
+fourth standardized sample moment minus three, so
+$S_t\xrightarrow{p}\kappa(\delta)$ whenever $\mathbb{E}[z^4]<\infty$ (so for
+$t_\nu$ with $\nu>4$; the sampling variance of $S_t$ is finite for $\nu>8$),
+and $\kappa$ is strictly monotone in the index, so $S_t$ identifies it.
+Composing the monotone maps $S_t\mapsto\kappa(\delta)\mapsto w(\delta)$, the
+probability limit of the score orders the tail index and the wedge that
+drives the level-$\tau$ advantage. The aggregate pinball advantage is the
+$\tau$-weighted sum $\sum_\tau \omega_\tau A_\tau(\delta)$, dominated by the
+sub-crossover tail levels for which the ordering holds, and the joint
+$(\mathrm{VaR},\mathrm{ES})$ object is a level-by-level functional of the
+same quantile curve; both are shown to inherit the ordering empirically,
+since the crossover remark shows the level-$\tau$ ordering can reverse at
+moderate $\tau$. \hfill$\square$
 
 
 

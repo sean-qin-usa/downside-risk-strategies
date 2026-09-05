@@ -67,8 +67,8 @@ fit serves hundreds of names and produces day-one forecasts for newly
 listed assets. It cuts quantile loss over standard benchmarks, with
 exception counts near nominal at both FRTB levels through 2008. The
 composite concentrates the design-panel advantage in its top decile
-($+2.8\%$, DM 8.9); the kurtosis component reproduces it on a frozen
-2000--2013 holdout, and the component grid survives familywise
+($+2.8\%$, DM 8.9); the kurtosis component replicates on the untouched
+2000--2013 era, and the component grid survives familywise
 correction.
 \end{abstract}
 
@@ -814,51 +814,61 @@ Section~\ref{sec:score} is used as a rank rather than a moment
 estimate.
 \end{remark}
 
-\begin{proposition}[the score orders the frontier]\label{prop:scorefrontier}
+\begin{proposition}[the score orders the frontier in a tail-ordered family]\label{prop:scorefrontier}
 Let the standardized innovation $z_t=(r_t-\mu_t)/\sigma_t$ have true law
 $F$ with density $f>0$ at the quantiles of interest, while the benchmark
 imposes the fixed law $G=t_\nu$; both forecasters share the scale
 $\sigma_t$, reporting $\sigma_t G^{-1}(\tau)$ and the oracle
 $\sigma_t F^{-1}(\tau)$, the latter the target of the nonparametric
-estimator (attained up to $O_p(n^{-1/2})$). Embed the truth in a family
-$\{F_\delta\}_{\delta\ge0}$ with $F_0=G$, smooth in $\delta$, whose excess
-kurtosis $\kappa(\delta)$ is strictly increasing with
-$\kappa(0)=\kappa_{t_\nu}$, and write the level-$\tau$ advantage of the
-oracle over the benchmark as
+estimator (assumed consistent for $F^{-1}(\tau)$). Embed the truth in a
+one-parameter tail-ordered family $\{F_\delta\}_{\delta\ge0}$ with
+$F_0=G$: let $F_\delta=t_{\nu(\delta)}$ (or any regularly varying family
+with left-tail index $\alpha(\delta)$), with $\nu(\delta)$ strictly
+decreasing, so a single index governs both the lower-tail heaviness and
+the excess kurtosis $\kappa(\delta)$, the latter strictly increasing with
+$\kappa(0)=\kappa_{t_\nu}$. Write the level-$\tau$ advantage of the oracle
+over the benchmark as
 $A_\tau(\delta)=\mathbb{E}_{F_\delta}\rho_\tau(z-G^{-1}(\tau))
 -\mathbb{E}_{F_\delta}\rho_\tau(z-F_\delta^{-1}(\tau))$. Then, under the
 conditions of Lemma~\ref{lem:regret} and Proposition~\ref{prop:wedge}:
 \emph{(i)}~$A_\tau(\delta)=\tfrac12
 f_\delta(F_\delta^{-1}(\tau))(G^{-1}(\tau)-F_\delta^{-1}(\tau))^2+o(\cdot)\ge0$,
-with equality iff the laws agree at $\tau$; \emph{(ii)}~for $\tau$ below
-the crossover of Remark~\ref{rem:crossover},
-$|G^{-1}(\tau)-F_\delta^{-1}(\tau)|$ and hence $A_\tau(\delta)$ are
-strictly increasing in $\delta$, thus in $\kappa(\delta)$; and
-\emph{(iii)}~the trailing-window sample excess kurtosis $S_t$ satisfies
-$S_t\xrightarrow{p}\kappa(\delta)$ whenever $\mathbb{E}[z^4]<\infty$.
-Composing the monotone maps
-$S_t\mapsto\kappa(\delta)\mapsto|\text{wedge}|\mapsto A_\tau$, the
-population limit of the score orders the advantage: the nonparametric
-edge is largest, in expectation, where the score is largest.
+zero iff the laws agree at $\tau$; \emph{(ii)}~for $\tau$ below the
+crossover of Remark~\ref{rem:crossover}, the quantile wedge
+$|G^{-1}(\tau)-F_\delta^{-1}(\tau)|$ is strictly increasing in $\delta$
+(Proposition~\ref{prop:wedge}, applied within the family it governs), so
+by~\emph{(i)} the advantage is strictly positive and widens with the
+wedge the misspecification opens; and \emph{(iii)}~the trailing-window
+sample excess kurtosis $S_t$ satisfies $S_t\xrightarrow{p}\kappa(\delta)$
+whenever $\mathbb{E}[z^4]<\infty$, with $\kappa$ strictly monotone in the
+index, so $S_t$ identifies it. The score thus orders the tail index and
+the wedge that drives the edge; that the density factor and the
+$\tau$-aggregation preserve the ordering of the \emph{advantage} itself
+is of next order and is confirmed for the deployed estimator in
+Sections~\ref{sec:frontier}--\ref{sec:frtb}.
 \end{proposition}
 \begin{proof}[Proof sketch]
-Part~(i) is Lemma~\ref{lem:regret} applied to the benchmark wedge;
-part~(ii) is Proposition~\ref{prop:wedge}, since raising $\kappa(\delta)$
-pushes the tail quantile $F_\delta^{-1}(\tau)$ outward while $G^{-1}(\tau)$
-is fixed; part~(iii) is the law of large numbers for the fourth
-standardized sample moment. Composing the three monotone maps gives the
-ordering; the tail restriction is the crossover of
-Remark~\ref{rem:crossover}. Full argument in Appendix~\ref{app:proofs}.
+Part~(i) is Lemma~\ref{lem:regret} at the benchmark wedge. Part~(ii)
+applies Proposition~\ref{prop:wedge} inside the Student-$t$ (regularly
+varying) family: decreasing $\nu(\delta)$ pushes $F_\delta^{-1}(\tau)$
+outward for $\tau$ below the crossover while $G^{-1}(\tau)$ is fixed, so
+the wedge widens and, by~(i), the advantage stays positive and grows with
+it. Part~(iii) is the law of large numbers for the fourth standardized
+moment with $\kappa=6/(\nu-4)$ strictly decreasing in $\nu$. The density
+factor and the $\tau$-aggregation enter at next order and are checked
+empirically. Full argument in Appendix~\ref{app:proofs}.
 \end{proof}
 
-\medskip\noindent This is a population, first-order statement: it
-explains why an \emph{observable} shape statistic must order the
-nonparametric edge, so the frontier is a predicted regularity and not
-only an estimated one. It abstracts from the estimator's $O_p(n^{-1/2})$
-error, the GARCH scale filter, and the aggregation over $\tau$ (the
-reported pinball edge is a $\tau$-weighted sum dominated by the tail
-terms); Sections~\ref{sec:frontier}--\ref{sec:frtb} confirm the ordering
-under all three.
+\medskip\noindent This is a population statement for a stylized
+tail-ordered family: within it, an \emph{observable} shape statistic
+orders the mechanism that opens the nonparametric edge, so the frontier
+is a theoretically grounded regularity and not only an estimated one. It
+covers tail-heavying misspecification rather than an arbitrary change of
+shape, and abstracts from the estimator's sampling error, the GARCH scale
+filter, and the $\tau$-aggregation (the reported pinball edge is a
+$\tau$-weighted sum dominated by the sub-crossover tail terms); the
+empirical sections document that the score orders the edge more broadly
+than the family proves.
 
 \begin{lemma}[validity of the generative sampler]\label{lem:sampler}
 If $\tau \mapsto \widetilde{q}(\tau \mid s)$ is nondecreasing and
@@ -2169,9 +2179,9 @@ stress design is a natural extension; it is not developed here.
 
 A fixed-shape parametric filter is hard to beat where its
 assumption holds: most assets on most days. The paper's answer to
-``when and why beat it'' is a measurable frontier: local violation of
-the residual-shape assumption, at whose top decile the
-distribution-free family has a large and significant advantage. The
+``when to beat it'' is a measurable frontier: residual-shape stress, at
+whose top decile the distribution-free family has a large and
+significant advantage. The
 engine that captures this improves on the market-risk benchmarks banks
 commonly run on FRTB-aligned diagnostics; the full IMA approval
 machinery is not claimed.
@@ -2181,8 +2191,8 @@ is predictive, not a necessary or sufficient condition: high residual
 kurtosis coincides with ties on carbon and corn, Baltic freight wins at
 moderate kurtosis, and credit and freight show accuracy edges with
 clustered exceptions the current tail stages leave open. Proposition~\ref{prop:scorefrontier}
-shows why an observable shape statistic must order the edge in a stylized
-misspecification family, but the data do not identify residual
+shows why an observable shape statistic orders the edge in a stylized
+tail-ordered family, but the data do not identify residual
 misspecification as its structural cause. Finally, the study is
 daily-frequency: an intraday extension awaits tick data, and the score
 is a monitor of the frontier, not a validated daily switching rule,
@@ -2360,26 +2370,36 @@ $\tfrac{m}{2}(Q_{\nu_1}(\tau)-Q_{\nu_2}(\tau))^2$, with $m$ the minimum
 of the $t_{\nu_1}$ density on the wedge interval. \hfill$\square$
 
 \subsection*{Proof of Proposition~\ref{prop:scorefrontier} (the score orders the frontier)}
-Fix $\tau$ below the crossover level of Remark~\ref{rem:crossover}, so that
-by Proposition~\ref{prop:wedge} $Q_G(\tau)$ is strictly less extreme than
-$Q_{F_\delta}(\tau)$ and the gap $w(\delta)=|Q_G(\tau)-Q_{F_\delta}(\tau)|$
-is strictly increasing in the excess kurtosis $\kappa(\delta)$: raising
-$\delta$ raises $\kappa(\delta)$ by construction of the family, which by
-the tail ordering of Proposition~\ref{prop:wedge} pushes $Q_{F_\delta}(\tau)$
-monotonically outward while $Q_G(\tau)$ is fixed, so $w'(\delta)>0$. By
-Lemma~\ref{lem:regret}, the benchmark's level-$\tau$ excess loss under local
-truth $F_\delta$ is $A_\tau(\delta)=\tfrac12 f_\delta(Q_{F_\delta}(\tau))\,w(\delta)^2+o(w(\delta)^2)$,
-strictly increasing in $w(\delta)$ and hence in $\delta$ near $\delta=0$;
-the oracle attains $Q_{F_\delta}(\tau)$ and carries no first-order regret,
-and the nonparametric estimator attains it up to $O_p(n^{-1/2})=o(1)$ in
-the advantage. Finally the trailing-window sample excess kurtosis $S_t$ is
-the fourth standardized sample moment minus three, so
+Work in the tail-ordered family of Proposition~\ref{prop:scorefrontier}:
+$F_\delta=t_{\nu(\delta)}$ (or a regularly varying family with left-tail
+index $\alpha(\delta)$) with $\nu(\delta)$ strictly decreasing, so a single
+index sets both the lower tail and $\kappa(\delta)=6/(\nu(\delta)-4)$
+(strictly increasing). Fix $\tau$ below the crossover level of
+Remark~\ref{rem:crossover}. By Proposition~\ref{prop:wedge}, applied
+\emph{within} this family, $Q_G(\tau)$ is strictly less extreme than
+$Q_{F_\delta}(\tau)$, and decreasing $\nu(\delta)$ pushes $Q_{F_\delta}(\tau)$
+monotonically outward while $Q_G(\tau)$ is fixed, so the wedge
+$w(\delta)=|Q_G(\tau)-Q_{F_\delta}(\tau)|$ is strictly increasing in $\delta$
+(equivalently in $\kappa(\delta)$), $w'(\delta)>0$. By Lemma~\ref{lem:regret},
+the benchmark's level-$\tau$ excess loss under local truth $F_\delta$ is
+$A_\tau(\delta)=\tfrac12 f_\delta(Q_{F_\delta}(\tau))\,w(\delta)^2+o(w(\delta)^2)$,
+strictly positive for $w(\delta)>0$ and vanishing only as $w(\delta)\to0$;
+the oracle carries no first-order regret and a consistent nonparametric
+estimator attains it in the limit ($o(1)$ in the advantage). The advantage
+is thus positive and driven by the wedge; its exact monotonicity in $\delta$
+additionally requires the density factor $f_\delta(Q_{F_\delta}(\tau))$ not
+to fall faster than $w(\delta)^2$ grows, which we verify empirically rather
+than assume. Finally the trailing-window sample excess kurtosis $S_t$ is the
+fourth standardized sample moment minus three, so
 $S_t\xrightarrow{p}\kappa(\delta)$ whenever $\mathbb{E}[z^4]<\infty$ ($\nu>4$;
-sampling variance finite for $\nu>8$). Composing
-$S_t\mapsto\kappa(\delta)\mapsto w(\delta)\mapsto A_\tau(\delta)$ shows the
-probability limit of the score orders the level-$\tau$ advantage; the
-aggregate pinball edge ($\tau$-weighted, tail-dominated) and the joint
-$(\mathrm{VaR},\mathrm{ES})$ curve inherit it. \hfill$\square$
+sampling variance finite for $\nu>8$), and $\kappa$ is strictly monotone in
+the index. Composing $S_t\mapsto\kappa(\delta)\mapsto w(\delta)$, the
+probability limit of the score orders the tail index and the wedge that
+drives the level-$\tau$ advantage; the aggregate pinball edge
+($\tau$-weighted, dominated by the sub-crossover levels) and the joint
+$(\mathrm{VaR},\mathrm{ES})$ curve are shown to inherit the ordering
+empirically, since Remark~\ref{rem:crossover} shows it can reverse at
+moderate $\tau$. \hfill$\square$
 
 \subsection*{Proof of Lemma~2 of the paper (generative sampler)}
 Let $\widetilde{q}(\cdot \mid s)$ be nondecreasing and left-continuous
