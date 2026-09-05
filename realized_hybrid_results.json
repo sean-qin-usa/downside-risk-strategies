@@ -1,0 +1,169 @@
+{
+  "note": "Realized-hybrid experiment (GPT test). proper HHS Realized GARCH scale; pooled GBM shape + EVT + score on realized residuals. Key: rg_shape/rg_hybrid vs rg_uncond overall and in top score decile (9). Negative DM = beats rg_uncond.",
+  "n_names": 30,
+  "hist_gbm": true,
+  "per_alpha": {
+    "alpha_0.025": {
+      "FZ0_overall": {
+        "rg_uncond": 1.4458,
+        "rg_evt": 1.4457,
+        "rg_shape": 1.4451,
+        "rg_hybrid": 1.446
+      },
+      "DM_vs_rg_uncond": {
+        "rg_evt": {
+          "dFZ0": -0.00013,
+          "DM": -0.22,
+          "n": 1108
+        },
+        "rg_shape": {
+          "dFZ0": -0.00075,
+          "DM": -0.2,
+          "n": 1108
+        },
+        "rg_hybrid": {
+          "dFZ0": 0.00017,
+          "DM": 0.06,
+          "n": 1108
+        }
+      },
+      "FZ0_topdecile9": {
+        "rg_uncond": 1.496,
+        "rg_evt": 1.4966,
+        "rg_shape": 1.5057,
+        "rg_hybrid": 1.4986
+      },
+      "FZ0_botdecile0": {
+        "rg_uncond": 1.4485,
+        "rg_evt": 1.4469,
+        "rg_shape": 1.4547,
+        "rg_hybrid": 1.445
+      },
+      "topdecile_DM": {
+        "rg_shape_d9": {
+          "dFZ0": 0.00412,
+          "DM": 0.24,
+          "n": 1000
+        },
+        "rg_hybrid_d9": {
+          "dFZ0": -0.00691,
+          "DM": -0.5,
+          "n": 1000
+        },
+        "rg_shape_d89": {
+          "dFZ0": -0.00391,
+          "DM": -0.29,
+          "n": 1086
+        },
+        "rg_hybrid_d89": {
+          "dFZ0": -0.00869,
+          "DM": -0.81,
+          "n": 1086
+        },
+        "rg_shape_d789": {
+          "dFZ0": 0.00459,
+          "DM": 0.54,
+          "n": 1106
+        },
+        "rg_hybrid_d789": {
+          "dFZ0": 0.00018,
+          "DM": 0.03,
+          "n": 1106
+        }
+      },
+      "shapeGain_uncond_minus_hybrid_by_decile": {
+        "0": 0.0035,
+        "1": 0.0146,
+        "2": -0.0102,
+        "3": 0.0061,
+        "4": -0.0077,
+        "5": -0.0025,
+        "6": 0.0023,
+        "7": -0.0048,
+        "8": -0.0004,
+        "9": -0.0026
+      }
+    },
+    "alpha_0.01": {
+      "FZ0_overall": {
+        "rg_uncond": 1.7372,
+        "rg_evt": 1.7396,
+        "rg_shape": 1.7392,
+        "rg_hybrid": 1.736
+      },
+      "DM_vs_rg_uncond": {
+        "rg_evt": {
+          "dFZ0": 0.00249,
+          "DM": 1.42,
+          "n": 1108
+        },
+        "rg_shape": {
+          "dFZ0": 0.00208,
+          "DM": 0.31,
+          "n": 1108
+        },
+        "rg_hybrid": {
+          "dFZ0": -0.0012,
+          "DM": -0.31,
+          "n": 1108
+        }
+      },
+      "FZ0_topdecile9": {
+        "rg_uncond": 1.7772,
+        "rg_evt": 1.7795,
+        "rg_shape": 1.7758,
+        "rg_hybrid": 1.7698
+      },
+      "FZ0_botdecile0": {
+        "rg_uncond": 1.7316,
+        "rg_evt": 1.744,
+        "rg_shape": 1.7719,
+        "rg_hybrid": 1.7383
+      },
+      "topdecile_DM": {
+        "rg_shape_d9": {
+          "dFZ0": 0.01305,
+          "DM": 0.4,
+          "n": 1000
+        },
+        "rg_hybrid_d9": {
+          "dFZ0": -0.01184,
+          "DM": -0.77,
+          "n": 1000
+        },
+        "rg_shape_d89": {
+          "dFZ0": 0.00205,
+          "DM": 0.09,
+          "n": 1086
+        },
+        "rg_hybrid_d89": {
+          "dFZ0": -0.01579,
+          "DM": -1.35,
+          "n": 1086
+        },
+        "rg_shape_d789": {
+          "dFZ0": 0.00473,
+          "DM": 0.24,
+          "n": 1106
+        },
+        "rg_hybrid_d789": {
+          "dFZ0": -0.0117,
+          "DM": -1.4,
+          "n": 1106
+        }
+      },
+      "shapeGain_uncond_minus_hybrid_by_decile": {
+        "0": -0.0067,
+        "1": 0.0267,
+        "2": -0.0044,
+        "3": -0.0126,
+        "4": -0.0183,
+        "5": -0.0075,
+        "6": -0.0068,
+        "7": 0.0151,
+        "8": 0.0192,
+        "9": 0.0074
+      }
+    }
+  }
+}

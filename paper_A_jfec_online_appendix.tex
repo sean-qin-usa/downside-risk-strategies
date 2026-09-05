@@ -409,58 +409,58 @@ as a log-return artifact on near-zero and negative prices, refit on price differ
 \end{threeparttable}
 \end{table}
 
-\subsection*{The intraday ceiling: a realized-measure comparator}\label{sec:rgarch-oa}
-The main-text battery reads only daily returns, the regime the estimator is
-built for. To place it against a method that reads intraday data, we build
-five-minute realized measures from TAQ for thirty large-capitalization U.S.\
-equities over 2014--2024 (realized variance is the sum of squared five-minute
-log-returns, cleaned by regular sale conditions, a daily price band, and a
-$20\%$ return clip), and fit a Realized GARCH
-\citep{hansen2012realized}, the conditional variance driven by lagged realized
-variance, $\log h_t=\omega+\beta\log h_{t-1}+\gamma\log \mathrm{RV}_{t-1}$,
-estimated by Gaussian QMLE on the training split. We give the realized model
-both a parametric-$t$ tail and, for a matched comparison, the paper's own EVT
-tail on its standardized residuals, and score every model on the identical
-$(\VaR,\ES)$ FZ0 loss and date-clustered Diebold--Mariano test used in the main
-text. Table~\ref{tab:rgarch} reports the result on 1{,}108 common test dates.
-The realized-measure model lowers FZ0 well below the daily-data accuracy core
-at both levels (DM $6.0$ at 2.5\%, $4.5$ at 1\%), and is at least as well
-calibrated. The advantage is entirely the conditional scale: the two tail
-choices are within noise of each other, so what the daily filter cannot match
-is the realized \emph{scale}, not the tail treatment. The estimator's own
-contribution, the amortized pooled shape model and the misspecification score,
-is orthogonal to this scale channel and unavailable to the realized model in
-the day-one and no-history regimes; a realized-hybrid that carries the
-estimator's tail and score on a realized-variance scale is the natural
-combination.
+\subsection*{Realized measures and the scale--shape decomposition}\label{sec:rgarch-oa}
+The main-text battery reads only daily returns, the regime the estimator is built
+for. To place it against a method that reads intraday data, and to ask what the
+misspecification frontier is made of, we build five-minute realized measures from
+TAQ for thirty large-capitalization U.S.\ equities over 2014--2024 (realized
+variance is the sum of squared five-minute log-returns, cleaned by regular sale
+conditions, a daily price band, and a $20\%$ return clip) and fit a Realized GARCH
+\citep{hansen2012realized}: the log-linear conditional variance
+$\log h_t=\omega+\beta\log h_{t-1}+\gamma\log \mathrm{RV}_{t-1}$ with a measurement
+equation $\log\mathrm{RV}_t=\xi+\phi\log h_t+\tau(z_t)+u_t$ linking the realized
+measure to the latent variance, estimated jointly by Gaussian quasi-maximum
+likelihood. Table~\ref{tab:rgarch} reports the result on 1{,}108 common test dates.
+Two facts follow. The realized scale lowers FZ0 well below the daily-data accuracy
+core at both levels (DM $6.0$ at 2.5\%, $4.5$ at 1\%): intraday information prices
+volatility more sharply than any daily filter. But the gain is scale, not shape.
+Holding the realized scale fixed and re-fitting the pooled state-conditioned
+residual-quantile learner, the EVT tail, and the misspecification score on the
+realized residuals moves FZ0 within noise, in magnitude below one Diebold--Mariano
+standard error overall and in the top realized-residual score decile (the top three
+deciles reach DM $-1.4$ at $1\%$, directional but not significant). On these
+large-capitalization names a realized scale absorbs most of what the score detects
+on daily-GARCH residuals, so on the intraday-covered segment the two are
+substitutes; the score's distinctive value is in the daily-data regime and the
+cross-asset and day-one settings where a realized scale does not exist.
 
 \begin{table}[t]
 \centering
 \begin{threeparttable}
-\caption{A modern realized-measure comparator on the intraday-covered
-subsample. Thirty large-cap U.S.\ equities, 2014--2024 (1{,}108 test dates),
-joint $(\VaR,\ES)$ FZ0 loss (lower is better) at both FRTB levels; breach is
-the realized exception rate against the target. DM is date-clustered
-(Newey--West, 5 lags) against the daily-data accuracy core (GARCH scale $+$
-EVT tail); a negative DM means the row beats that core.}
+\caption{The scale--shape decomposition. Thirty large-cap U.S.\ equities, 2014--2024
+(1{,}108 test dates), joint $(\VaR,\ES)$ FZ0 loss (lower is better) at both FRTB
+levels. The scale is a proper Realized GARCH except in the first row (the daily-data
+accuracy core). DM is date-clustered (Newey--West, 5 lags) against the realized scale
+with an unconditional residual quantile; a positive DM is worse than that benchmark.}
 \label{tab:rgarch}
-\small\setlength{\tabcolsep}{5.5pt}
-\begin{tabular}{lcccccc}
+\small\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lcccc}
 \toprule
- & \multicolumn{3}{c}{$\alpha=2.5\%$} & \multicolumn{3}{c}{$\alpha=1\%$}\\
-\cmidrule(lr){2-4}\cmidrule(lr){5-7}
-Model & FZ0 & Breach & DM & FZ0 & Breach & DM \\
+Model & FZ0 $2.5\%$ & DM & FZ0 $1\%$ & DM \\
 \midrule
-GARCH(1,1)-$t$ (daily) & $1.508$ & $0.032$ & $+1.6$ & $1.784$ & $0.012$ & $+1.5$ \\
-GARCH $+$ EVT (daily core) & $1.501$ & $0.028$ & --- & $1.774$ & $0.011$ & --- \\
-Realized GARCH ($t$ tail) & $\mathbf{1.444}$ & $0.023$ & $\mathbf{-6.0}$ & $\mathbf{1.713}$ & $0.010$ & $\mathbf{-4.5}$ \\
-Realized GARCH $+$ EVT tail & $1.448$ & $0.022$ & $-5.4$ & $1.722$ & $0.009$ & $-3.9$ \\
+Daily core (GARCH-$t$ $+$ EVT) & $1.501$ & $+6.0$ & $1.774$ & $+4.5$ \\
+Realized scale $+$ residual quantile & $1.446$ & --- & $1.737$ & --- \\
+\quad $+$ EVT tail & $1.446$ & $-0.2$ & $1.740$ & $+1.4$ \\
+\quad $+$ pooled shape learner & $1.445$ & $-0.2$ & $1.739$ & $+0.3$ \\
+\quad $+$ shape $+$ EVT (realized-hybrid) & $1.446$ & $+0.1$ & $1.736$ & $-0.3$ \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item Returns are CRSP daily; the intersection with the realized panel is
-common across models. The daily core is the paper's GARCH scale with the EVT
-tail (no conformal shift). Source: \texttt{rgarch\_bench\_results.json}.
+\item The daily core's DM is against the realized benchmark (the intraday-scale gain).
+The pooled shape learner is the paper's state-conditioned residual-quantile model,
+retrained on the realized-scale residuals. Returns are CRSP daily; the intersection is
+common across models. Source: \texttt{rgarch\_bench\_results.json},
+\texttt{realized\_hybrid\_results.json}.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
