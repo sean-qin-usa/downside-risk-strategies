@@ -1,0 +1,24 @@
+===== CLONE DIAG Sat 09/05/2026  5:07:53.24 ===== 
+--- remote --- 
+origin	https://github.com/sean-qin-usa/downside-risk-paper.git (fetch)
+origin	https://github.com/sean-qin-usa/downside-risk-paper.git (push)
+--- current branch/status --- 
+## main...origin/main
+--- local HEAD log --- 
+c7b326f JFEC-ification: unnumbered intro, prose contributions, renamed sections, roadmap, de-refereed intro, two-author title block; submission and reading copy both updated
+5700607 R20 FIX: submission tex now carries the deployed-composite paragraph and Algorithm OA.2 rewording (prior push was stale); code/job_wrds_holdout.py credential/path leak scrubbed to env vars; job_composite.py + composite_results.json present
+615a8a0 R20: deployed-composite evaluation folded in (+2.79%/DM 8.9, causal +2.72%/DM 9.0); Algorithm OA.2 (iii) reworded to the evaluated score; job_wrds_holdout.py credential/path leak scrubbed to env vars; job_composite.py + composite_results.json added; four text fixes; submission text held under the 40-page double-spaced limit
+35fa068 R19b framing sync
+--- fetch --- 
+--- origin/main log --- 
+c7b326f JFEC-ification: unnumbered intro, prose contributions, renamed sections, roadmap, de-refereed intro, two-author title block; submission and reading copy both updated
+5700607 R20 FIX: submission tex now carries the deployed-composite paragraph and Algorithm OA.2 rewording (prior push was stale); code/job_wrds_holdout.py credential/path leak scrubbed to env vars; job_composite.py + composite_results.json present
+615a8a0 R20: deployed-composite evaluation folded in (+2.79%/DM 8.9, causal +2.72%/DM 9.0); Algorithm OA.2 (iii) reworded to the evaluated score; job_wrds_holdout.py credential/path leak scrubbed to env vars; job_composite.py + composite_results.json added; four text fixes; submission text held under the 40-page double-spaced limit
+35fa068 R19b framing sync
+--- PUSH ATTEMPT (HEAD:main) --- 
+Everything up-to-date
+--- origin/main AFTER push --- 
+c7b326f JFEC-ification: unnumbered intro, prose contributions, renamed sections, roadmap, de-refereed intro, two-author title block; submission and reading copy both updated
+5700607 R20 FIX: submission tex now carries the deployed-composite paragraph and Algorithm OA.2 rewording (prior push was stale); code/job_wrds_holdout.py credential/path leak scrubbed to env vars; job_composite.py + composite_results.json present
+615a8a0 R20: deployed-composite evaluation folded in (+2.79%/DM 8.9, causal +2.72%/DM 9.0); Algorithm OA.2 (iii) reworded to the evaluated score; job_wrds_holdout.py credential/path leak scrubbed to env vars; job_composite.py + composite_results.json added; four text fixes; submission text held under the 40-page double-spaced limit
+DIAGDONE 
