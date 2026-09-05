@@ -1,5 +1,7 @@
 # job_fz_fullpanel.py -- PRE-COMMITTED full-panel FZ0 joint (VaR,ES) re-scoring + GAS/PZC benchmark.
-# Wave-9: conformal shift computed with the exact ceil((n+1)tau) order statistic used by
+# Wave-9 canonical: engine VaR and ES both come from one monotonized min-envelope curve Q*;
+# ES is the 20-node numerical integral of that same Q* (retires the GPD-closed-form ES).
+# Conformal shift computed with the exact ceil((n+1)tau) order statistic used by
 # Proposition 1, replacing interpolated np.quantile, so theorem and code state one rule.
 # Two pre-committed items in one shared forecast panel so every comparison is same-rows:
 #   (1) FZ0 (Fissler-Ziegler 0-homogeneous, as in Patton-Ziegel-Chen 2019) scoring of the engine
@@ -76,6 +78,18 @@ for t in ALPHAS:
     m=HistGradientBoostingRegressor(loss='quantile',quantile=t,max_iter=250,max_depth=3,learning_rate=0.06).fit(TRzc[ZX].values,TRzc['z'].values)
     ZQ[t]=m.predict(TE[ZX].values); ZQcal[t]=m.predict(CALzc[ZX].values)
     lg("  ztau %.3f %.0fs"%(t,time.time()-t0))
+# sub-alpha grids for the coherent Q* ES integral (20-node midpoint on (0,alpha])
+SUBN=20; ZQSUB={a:{} for a in ALPHAS}
+for a in ALPHAS:
+    for j in range(SUBN):
+        u=a*(j+0.5)/SUBN
+        mz=HistGradientBoostingRegressor(loss='quantile',quantile=u,max_iter=250,max_depth=3,learning_rate=0.06).fit(TRzc[ZX].values,TRzc['z'].values)
+        ZQSUB[a][j]=mz.predict(TE[ZX].values)
+    lg("  sub-alpha grid a=%.3f %.0fs"%(a,time.time()-t0))
+def coherent_star(a):
+    # z*(u)=min(body,EVT) on the 20 sub-alpha nodes, then monotone rearrangement (sort asc)
+    cols=[np.minimum(ZQSUB[a][j], evt_q(a*(j+0.5)/SUBN)) for j in range(SUBN)]
+    return np.sort(np.stack(cols,axis=1),axis=1)   # rows x 20, ascending
 ztr=TRzc['z'].values; u=np.quantile(ztr,0.025); exc=u-ztr[ztr<u]
 xi,loc,beta=stats.genpareto.fit(exc,floc=0.0)
 def evt_q(tau,p0=0.025):
@@ -86,11 +100,15 @@ s975=CALzc['z'].values-ZQcal[0.025]; CONF975=conf_ostat(s975,0.025)   # exact ce
 lg(f"GPD u={u:.3f} xi={xi:.3f} beta={beta:.3f}; conf975 {CONF975:+.4f}; evt_es01={evt_es(0.01):.3f} evt_es025={evt_es(0.025):.3f}")
 Y=TE['y'].values; SIG=TE['sig'].values; MU=TE['mu'].values
 ENG={}; ENGNC={}
+# CANONICAL coherent construction: both VaR and ES from one monotonized min-envelope Q*.
+star01=coherent_star(0.01); star025=coherent_star(0.025)
 zq01=np.minimum(ZQ[0.01],evt_q(0.01)); zq025=np.minimum(ZQ[0.025],evt_q(0.025))
-ENG[0.01]=(MU+SIG*zq01, MU+SIG*np.minimum(evt_es(0.01),zq01-1e-6))
-ENG[0.025]=(MU+SIG*(zq025+CONF975), MU+SIG*(np.minimum(evt_es(0.025),zq025-1e-6)+CONF975))
+zq01=np.maximum(zq01,star01[:,-1]); zq025=np.maximum(zq025,star025[:,-1])   # VaR node = curve endpoint
+es01=star01.mean(axis=1); es025=star025.mean(axis=1)                         # ES = numerical integral of Q*
+ENG[0.01]=(MU+SIG*zq01, MU+SIG*np.minimum(es01,zq01-1e-6))
+ENG[0.025]=(MU+SIG*(zq025+CONF975), MU+SIG*(np.minimum(es025,zq025-1e-6)+CONF975))
 ENGNC[0.01]=ENG[0.01]
-ENGNC[0.025]=(MU+SIG*zq025, MU+SIG*np.minimum(evt_es(0.025),zq025-1e-6))
+ENGNC[0.025]=(MU+SIG*zq025, MU+SIG*np.minimum(es025,zq025-1e-6))
 # ---------------- GAS one-factor (PZC 2019) per name, FZ0-estimated ----------------
 def gas_filter(y,a,b,om_,be_,ga_,k0,alpha):
     n=len(y); k=np.empty(n); k[0]=k0; v=np.empty(n); e=np.empty(n)

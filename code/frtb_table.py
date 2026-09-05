@@ -7,6 +7,9 @@
 #       skew-t inverse CDF; 20-node midpoint integration of rolling/empirical quantile
 #       functions for HS and the FHS family; GPD closed form for the EVT-tailed engine;
 #       20-node sub-alpha GBM quantile grid for the raw hybrid.
+# Wave-9 canonical change: the hybrid_EVT engine's VaR and ES both come from ONE
+# monotonized min-envelope curve Q*(u)=min(body,EVT); ES is the numerical (20-node
+# midpoint) integral of that same Q*, retiring the GPD-closed-form ES convention.
 #   (2) The whole table (9 models) now comes from ONE script and ONE JSON -- no spliced
 #       rows across runs. Includes corrected gjr_skewt, per-name and rolling FHS, and
 #       the EVT-tailed engine, with pinball DMs vs best, Kupiec/Christoffersen at both
@@ -134,7 +137,7 @@ for t in TAUS:
     Q['fhs_roll500'][t]=MU+SIG*TE['rlq_%g'%t].values
     Q['resid_hybrid_ML'][t]=MU+SIG*ZQ[t]
     zt=np.minimum(ZQ[t],evt_q(t)) if t<=A else ZQ[t]
-    Q['hybrid_EVT'][t]=MU+SIG*zt
+    Q['hybrid_EVT'][t]=MU+SIG*zt   # VaR node; the coherent curve Q* is assembled below
 # ---- TRUE predicted ES at 97.5 ----
 ES={}
 ES['garch_t']=MU+SIG*np.array([t_es(A,nu_)/ts_ for nu_,ts_ in zip(NU,TSC)])
@@ -147,7 +150,15 @@ ES['fhs']=MU+SIG*zpool_es
 ES['fhs_pername']=MU+SIG*TE['pnES'].values
 ES['fhs_roll500']=MU+SIG*np.mean([TE['rlE_%g'%u].values for u in SUB],axis=0)
 ES['resid_hybrid_ML']=MU+SIG*np.mean([ZQE[u] for u in SUB],axis=0)
-ES['hybrid_EVT']=MU+SIG*evt_es(A)
+# Coherent Q*: on the sub-alpha grid, z*(u)=min(body_GBM(u), EVT(u)) for u<=A, then
+# monotone rearrangement across u (sort ascending). VaR_A = Q*(A) (the a-node value),
+# ES_A = numerical integral of the SAME rearranged Q* over (0,A] (20-node midpoint).
+_starz=np.sort(np.stack([np.minimum(ZQE[u],evt_q(u)) for u in SUB],axis=1),axis=1)  # rows x 20, ascending
+# re-anchor the VaR node to the coherent curve endpoint for internal consistency
+_va=np.minimum(ZQ[A],evt_q(A))
+_va=np.maximum(_va,_starz[:,-1])
+Q['hybrid_EVT'][A]=MU+SIG*_va
+ES['hybrid_EVT']=MU+SIG*_starz.mean(axis=1)   # integral of the coherent Q*, replaces GPD closed form
 def pinball_avg(m):
     pl=np.zeros(len(Y))
     for t in TAUS: pl+=pin(Y,Q[m][t],t)
@@ -225,7 +236,7 @@ def mcs(L,alpha=0.10,B=1000,blk=10):
         surv.remove(worst)
     return {'in_MCS_90':[MODELS[i] for i in surv],'elimination_pvals':pvals}
 MCS=mcs(L)
-out={'note':'CANONICAL battery: one run, every row of Table 6, TRUE predicted ES97.5 per model (closed forms; 200-node Hansen integration; 20-node midpoint integration for empirical/rolling quantile functions; GPD closed form for the EVT engine; 20-node sub-alpha GBM grid for the raw hybrid). ES975_realized_ownVaR conditions on each model OWN breach set and is a labeled diagnostic, not the ranking criterion (FZ0 is). overstatement_pct=(|pred|-|real|)/|real|.',
+out={'note':'CANONICAL battery: one run, every row of Table 6, TRUE predicted ES97.5 per model (closed forms; 200-node Hansen integration; 20-node midpoint integration for empirical/rolling quantile functions; coherent min-envelope curve Q* integrated numerically for the EVT engine; 20-node sub-alpha GBM grid for the raw hybrid). ES975_realized_ownVaR conditions on each model OWN breach set and is a labeled diagnostic, not the ranking criterion (FZ0 is). overstatement_pct=(|pred|-|real|)/|real|.',
      'sub_alpha_grid_nodes':len(SUB),
      'gpd':{'u':round(float(u0),4),'xi':round(float(xi),4),'beta':round(float(beta),4)},
      'n_names':int(TE['permno'].nunique()),'n_test_rows':int(len(Y)),'n_dates':int(Td),
