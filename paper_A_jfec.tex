@@ -1714,16 +1714,19 @@ adaptive; over-coverage fails from the other side). Every
 concession is a frozen margin's price, and the adaptive form removes
 the overall cost.
 
-\paragraph{Direct ES backtests.} Exception counts test VaR, not ES. Two direct
-ES backtests, the McNeil--Frey (2000) exceedance-residual bootstrap
-\citep{mcneilfrey2000} and the Acerbi--Sz\'ekely (2014) $Z_2$
-\citep{acerbi2014backtesting}, in the joint-elicitability framework of
-\citet{noldeziegel2017elicitability, bayer2022esr}, put the same ordering on the
-battery (Online Appendix): the Gaussian filter is worst on every ES metric, and
-the EVT-tailed engine is the best-calibrated entrant, carrying the smallest
-$Z_2$, passing McNeil--Frey at $2.5\%$, and alone passing the $1\%$ Kupiec test.
-The $1\%$ deep tail on large caps is imperfect for every model, the engine
-included, which we report rather than smooth over.
+\paragraph{Direct ES calibration backtests.} Exception counts test VaR, not ES.
+Two direct ES \emph{calibration} backtests, the McNeil--Frey (2000)
+exceedance-residual test \citep{mcneilfrey2000} and the Acerbi--Sz\'ekely (2014)
+$Z_2$ \citep{acerbi2014backtesting}, complement the jointly consistent FZ0 loss
+above; \citet{noldeziegel2017elicitability} and \citet{bayer2022esr} draw the
+distinction between backtesting the calibration of an ES forecast and comparing
+forecasts through a joint score. On the pooled panel (Online Appendix; inference
+clustered by calendar date over the $1{,}108$ test dates) the Gaussian filter is
+worst on every ES metric, and among the fat-tailed entrants the EVT-tailed engine
+is the best calibrated overall: it carries the $Z_2$ closest to zero at both
+levels and is the only entrant not rejected by the $1\%$ Kupiec test, while on the
+McNeil--Frey residual it and FHS trade places across levels and the $1\%$ tail
+rejects every model, which we report rather than smooth over.
 
 \subsection{The ten-day horizon: a direct multi-day extension}
 

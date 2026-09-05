@@ -1,5 +1,5 @@
 {
-  "note": "Modern ES/VaR backtests, pooled test panel. Kupiec UC (VaR); Acerbi-Szekely 2014 Z2 (ES; <0 understates risk); McNeil-Frey 2000 exceedance-residual bootstrap (ES). Framework: Bayer-Dimitriadis 2022 ESR, Nolde-Ziegel 2017.",
+  "note": "Modern ES/VaR backtests, pooled test panel; inference DATE-CLUSTERED (block bootstrap over calendar dates) to respect cross-sectional dependence across the 140 names. Kupiec UC (VaR); Acerbi-Szekely 2014 Z2 (ES; <0 understates risk); McNeil-Frey 2000 exceedance-residual (ES). Point estimates unchanged vs an iid resample; only p-values differ. Framework distinction: these are ES CALIBRATION backtests (Nolde-Ziegel 2017; Bayer-Dimitriadis 2022 describe MF/NZ as calibration tests) complementing the FZ0 comparative loss.",
   "n_names": 140,
   "per_alpha": {
     "alpha_0.025": {
@@ -9,31 +9,39 @@
         "AS_Z2": -0.3569,
         "AS_Z2_p": 0.0,
         "MF_exres": -0.5593,
-        "MF_p": 0.0
+        "MF_p": 0.0,
+        "n_test_dates": 1108,
+        "n_breach_dates": 867
       },
       "garch_t": {
         "breach": 0.0277,
         "kupiec_p": 0.0,
         "AS_Z2": -0.1381,
-        "AS_Z2_p": 0.0,
+        "AS_Z2_p": 0.0086,
         "MF_exres": -0.0746,
-        "MF_p": 0.0008
+        "MF_p": 0.0024,
+        "n_test_dates": 1108,
+        "n_breach_dates": 871
       },
       "fhs": {
         "breach": 0.0281,
         "kupiec_p": 0.0,
         "AS_Z2": -0.1406,
-        "AS_Z2_p": 0.0,
+        "AS_Z2_p": 0.0059,
         "MF_exres": -0.0226,
-        "MF_p": 0.31
+        "MF_p": 0.3904,
+        "n_test_dates": 1108,
+        "n_breach_dates": 883
       },
       "hybrid_evt": {
         "breach": 0.0276,
         "kupiec_p": 0.0,
         "AS_Z2": -0.1186,
-        "AS_Z2_p": 0.0,
+        "AS_Z2_p": 0.0169,
         "MF_exres": -0.0177,
-        "MF_p": 0.4564
+        "MF_p": 0.4944,
+        "n_test_dates": 1108,
+        "n_breach_dates": 883
       }
     },
     "alpha_0.01": {
@@ -43,31 +51,39 @@
         "AS_Z2": -1.0653,
         "AS_Z2_p": 0.0,
         "MF_exres": -0.7846,
-        "MF_p": 0.0
+        "MF_p": 0.0,
+        "n_test_dates": 1108,
+        "n_breach_dates": 736
       },
       "garch_t": {
         "breach": 0.0106,
         "kupiec_p": 0.0264,
         "AS_Z2": -0.1391,
-        "AS_Z2_p": 0.0,
+        "AS_Z2_p": 0.0172,
         "MF_exres": -0.2886,
-        "MF_p": 0.0
+        "MF_p": 0.0,
+        "n_test_dates": 1108,
+        "n_breach_dates": 629
       },
       "fhs": {
         "breach": 0.0111,
         "kupiec_p": 0.0,
         "AS_Z2": -0.1766,
-        "AS_Z2_p": 0.0,
+        "AS_Z2_p": 0.0028,
         "MF_exres": -0.1917,
-        "MF_p": 0.0
+        "MF_p": 0.0,
+        "n_test_dates": 1108,
+        "n_breach_dates": 660
       },
       "hybrid_evt": {
         "breach": 0.0104,
         "kupiec_p": 0.1172,
         "AS_Z2": -0.1192,
-        "AS_Z2_p": 0.0001,
+        "AS_Z2_p": 0.0306,
         "MF_exres": -0.2441,
-        "MF_p": 0.0
+        "MF_p": 0.0,
+        "n_test_dates": 1108,
+        "n_breach_dates": 640
       }
     }
   }
