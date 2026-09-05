@@ -1,0 +1,49 @@
+{
+  "note": "Design-era headline frontier under causal decile rules. (A) global qcut = shipped rule; (B) expanding pooled 90th-pct threshold over strictly-earlier dates (250-date burn-in), the as-deployed real-time rule; (C) within-date cross-sectional top decile (rank assets within each date only). Engine/panel identical to fz_fullpanel. edge=(garch-engine)/garch avg 11-tau pinball, per-date NW(10) DM. If B and C reproduce A, the global-qcut classification introduces no material future information.",
+  "n_rows": 221600,
+  "n_names": 200,
+  "A_global_qcut": {
+    "top": {
+      "edge_pct": 2.964,
+      "DM": 10.12,
+      "n": 22160
+    },
+    "bottom": {
+      "edge_pct": -0.17,
+      "DM": -1.12,
+      "n": 22160
+    },
+    "overall": {
+      "edge_pct": 0.341,
+      "DM": 5.09,
+      "n": 221600
+    }
+  },
+  "B_expanding_threshold": {
+    "top": {
+      "edge_pct": 2.45,
+      "DM": 8.28,
+      "n": 23932
+    },
+    "top_within_defined_region": {
+      "edge_pct": 2.45,
+      "DM": 8.28,
+      "n": 23932
+    },
+    "n_defined": 171600,
+    "overall_defined": {
+      "edge_pct": 0.34,
+      "DM": 4.37,
+      "n": 171600
+    }
+  },
+  "C_within_date_topdecile": {
+    "top": {
+      "edge_pct": 0.259,
+      "DM": 2.17,
+      "n": 22160
+    }
+  },
+  "overlap_A_top_vs_B_top": 0.862,
+  "overlap_A_top_vs_C_top": 0.1
+}
