@@ -409,6 +409,62 @@ as a log-return artifact on near-zero and negative prices, refit on price differ
 \end{threeparttable}
 \end{table}
 
+\subsection*{The intraday ceiling: a realized-measure comparator}\label{sec:rgarch-oa}
+The main-text battery reads only daily returns, the regime the estimator is
+built for. To place it against a method that reads intraday data, we build
+five-minute realized measures from TAQ for thirty large-capitalization U.S.\
+equities over 2014--2024 (realized variance is the sum of squared five-minute
+log-returns, cleaned by regular sale conditions, a daily price band, and a
+$20\%$ return clip), and fit a Realized GARCH
+\citep{hansen2012realized}, the conditional variance driven by lagged realized
+variance, $\log h_t=\omega+\beta\log h_{t-1}+\gamma\log \mathrm{RV}_{t-1}$,
+estimated by Gaussian QMLE on the training split. We give the realized model
+both a parametric-$t$ tail and, for a matched comparison, the paper's own EVT
+tail on its standardized residuals, and score every model on the identical
+$(\VaR,\ES)$ FZ0 loss and date-clustered Diebold--Mariano test used in the main
+text. Table~\ref{tab:rgarch} reports the result on 1{,}108 common test dates.
+The realized-measure model lowers FZ0 well below the daily-data accuracy core
+at both levels (DM $6.0$ at 2.5\%, $4.5$ at 1\%), and is at least as well
+calibrated. The advantage is entirely the conditional scale: the two tail
+choices are within noise of each other, so what the daily filter cannot match
+is the realized \emph{scale}, not the tail treatment. The estimator's own
+contribution, the amortized pooled shape model and the misspecification score,
+is orthogonal to this scale channel and unavailable to the realized model in
+the day-one and no-history regimes; a realized-hybrid that carries the
+estimator's tail and score on a realized-variance scale is the natural
+combination.
+
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{A modern realized-measure comparator on the intraday-covered
+subsample. Thirty large-cap U.S.\ equities, 2014--2024 (1{,}108 test dates),
+joint $(\VaR,\ES)$ FZ0 loss (lower is better) at both FRTB levels; breach is
+the realized exception rate against the target. DM is date-clustered
+(Newey--West, 5 lags) against the daily-data accuracy core (GARCH scale $+$
+EVT tail); a negative DM means the row beats that core.}
+\label{tab:rgarch}
+\small\setlength{\tabcolsep}{5.5pt}
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{$\alpha=2.5\%$} & \multicolumn{3}{c}{$\alpha=1\%$}\\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Model & FZ0 & Breach & DM & FZ0 & Breach & DM \\
+\midrule
+GARCH(1,1)-$t$ (daily) & $1.508$ & $0.032$ & $+1.6$ & $1.784$ & $0.012$ & $+1.5$ \\
+GARCH $+$ EVT (daily core) & $1.501$ & $0.028$ & --- & $1.774$ & $0.011$ & --- \\
+Realized GARCH ($t$ tail) & $\mathbf{1.444}$ & $0.023$ & $\mathbf{-6.0}$ & $\mathbf{1.713}$ & $0.010$ & $\mathbf{-4.5}$ \\
+Realized GARCH $+$ EVT tail & $1.448$ & $0.022$ & $-5.4$ & $1.722$ & $0.009$ & $-3.9$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Returns are CRSP daily; the intersection with the realized panel is
+common across models. The daily core is the paper's GARCH scale with the EVT
+tail (no conformal shift). Source: \texttt{rgarch\_bench\_results.json}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \clearpage
 \section{The two-regime example}
 \subsection*{A synthetic boundary check: when the frontier does

@@ -1,0 +1,346 @@
+{
+  "note": "Realized GARCH (RV-driven log-variance, Gaussian return QMLE; t and EVT tails) vs classical battery, 2014-2024 intraday-covered 30-name subsample, FZ0 joint (VaR,ES) loss, date-clustered DM (NW lag 5). DM alt-vs-hybrid_evt: positive => alt WORSE than the paper's EVT-hybrid core.",
+  "n_names": 30,
+  "names": [
+    "AAPL",
+    "BA",
+    "BAC",
+    "C",
+    "CAT",
+    "CSCO",
+    "CVX",
+    "DIS",
+    "GS",
+    "HD",
+    "IBM",
+    "INTC",
+    "JNJ",
+    "JPM",
+    "KO",
+    "MCD",
+    "MMM",
+    "MRK",
+    "MSFT",
+    "NKE",
+    "ORCL",
+    "PFE",
+    "PG",
+    "QCOM",
+    "T",
+    "TXN",
+    "VZ",
+    "WFC",
+    "WMT",
+    "XOM"
+  ],
+  "alphas": [
+    0.025,
+    0.01
+  ],
+  "per_alpha": {
+    "alpha_0.025": {
+      "models": {
+        "garch_t": {
+          "avg_FZ0": 1.5076,
+          "breach": 0.0316,
+          "target": 0.025,
+          "avg_absES_pct": 4.384
+        },
+        "fhs": {
+          "avg_FZ0": 1.4993,
+          "breach": 0.0281,
+          "target": 0.025,
+          "avg_absES_pct": 4.647
+        },
+        "hybrid_evt": {
+          "avg_FZ0": 1.5008,
+          "breach": 0.0282,
+          "target": 0.025,
+          "avg_absES_pct": 4.666
+        },
+        "rgarch_t": {
+          "avg_FZ0": 1.4442,
+          "breach": 0.0233,
+          "target": 0.025,
+          "avg_absES_pct": 4.362
+        },
+        "rgarch_evt": {
+          "avg_FZ0": 1.4483,
+          "breach": 0.0224,
+          "target": 0.025,
+          "avg_absES_pct": 4.624
+        }
+      },
+      "DM_vs_hybrid_evt": {
+        "garch_t": {
+          "dFZ0": 0.00677,
+          "DM_stat": 1.63,
+          "n_dates": 1108
+        },
+        "fhs": {
+          "dFZ0": -0.00151,
+          "DM_stat": -2.6,
+          "n_dates": 1108
+        },
+        "rgarch_t": {
+          "dFZ0": -0.05661,
+          "DM_stat": -6.01,
+          "n_dates": 1108
+        },
+        "rgarch_evt": {
+          "dFZ0": -0.05252,
+          "DM_stat": -5.44,
+          "n_dates": 1108
+        }
+      },
+      "DM_rgarch_evt_vs_garch_t": {
+        "dFZ0": -0.05929,
+        "DM_stat": -4.87,
+        "n_dates": 1108
+      }
+    },
+    "alpha_0.01": {
+      "models": {
+        "garch_t": {
+          "avg_FZ0": 1.7843,
+          "breach": 0.0124,
+          "target": 0.01,
+          "avg_absES_pct": 5.709
+        },
+        "fhs": {
+          "avg_FZ0": 1.7788,
+          "breach": 0.0103,
+          "target": 0.01,
+          "avg_absES_pct": 6.037
+        },
+        "hybrid_evt": {
+          "avg_FZ0": 1.774,
+          "breach": 0.0106,
+          "target": 0.01,
+          "avg_absES_pct": 6.134
+        },
+        "rgarch_t": {
+          "avg_FZ0": 1.7134,
+          "breach": 0.0101,
+          "target": 0.01,
+          "avg_absES_pct": 5.475
+        },
+        "rgarch_evt": {
+          "avg_FZ0": 1.7215,
+          "breach": 0.0085,
+          "target": 0.01,
+          "avg_absES_pct": 5.957
+        }
+      },
+      "DM_vs_hybrid_evt": {
+        "garch_t": {
+          "dFZ0": 0.01022,
+          "DM_stat": 1.46,
+          "n_dates": 1108
+        },
+        "fhs": {
+          "dFZ0": 0.0048,
+          "DM_stat": 2.93,
+          "n_dates": 1108
+        },
+        "rgarch_t": {
+          "dFZ0": -0.06059,
+          "DM_stat": -4.51,
+          "n_dates": 1108
+        },
+        "rgarch_evt": {
+          "dFZ0": -0.05253,
+          "DM_stat": -3.92,
+          "n_dates": 1108
+        }
+      },
+      "DM_rgarch_evt_vs_garch_t": {
+        "dFZ0": -0.06275,
+        "DM_stat": -3.63,
+        "n_dates": 1108
+      }
+    }
+  },
+  "rgarch_params": [
+    {
+      "ticker": "AAPL",
+      "omega": 0.6672,
+      "beta": 0.3874,
+      "gamma": 0.4857
+    },
+    {
+      "ticker": "BA",
+      "omega": 0.7608,
+      "beta": 0.3241,
+      "gamma": 0.5697
+    },
+    {
+      "ticker": "BAC",
+      "omega": 0.5179,
+      "beta": 0.4882,
+      "gamma": 0.4578
+    },
+    {
+      "ticker": "C",
+      "omega": 0.431,
+      "beta": 0.5449,
+      "gamma": 0.4793
+    },
+    {
+      "ticker": "CAT",
+      "omega": 0.2381,
+      "beta": 0.7628,
+      "gamma": 0.2136
+    },
+    {
+      "ticker": "CSCO",
+      "omega": 0.7988,
+      "beta": 0.1125,
+      "gamma": 0.9438
+    },
+    {
+      "ticker": "CVX",
+      "omega": 0.6304,
+      "beta": 0.2764,
+      "gamma": 0.7027
+    },
+    {
+      "ticker": "DIS",
+      "omega": 0.7481,
+      "beta": 0.1832,
+      "gamma": 0.7846
+    },
+    {
+      "ticker": "GS",
+      "omega": 0.3151,
+      "beta": 0.6649,
+      "gamma": 0.3445
+    },
+    {
+      "ticker": "HD",
+      "omega": 0.4535,
+      "beta": 0.4006,
+      "gamma": 0.5631
+    },
+    {
+      "ticker": "IBM",
+      "omega": 0.7329,
+      "beta": 0.3004,
+      "gamma": 0.6156
+    },
+    {
+      "ticker": "INTC",
+      "omega": 0.9879,
+      "beta": 0.0032,
+      "gamma": 0.9819
+    },
+    {
+      "ticker": "JNJ",
+      "omega": 0.2641,
+      "beta": 0.6356,
+      "gamma": 0.3262
+    },
+    {
+      "ticker": "JPM",
+      "omega": 0.5951,
+      "beta": 0.3701,
+      "gamma": 0.6227
+    },
+    {
+      "ticker": "KO",
+      "omega": 0.4278,
+      "beta": 0.4319,
+      "gamma": 0.5016
+    },
+    {
+      "ticker": "MCD",
+      "omega": 0.7433,
+      "beta": 0.0616,
+      "gamma": 0.8141
+    },
+    {
+      "ticker": "MMM",
+      "omega": 0.169,
+      "beta": 0.8388,
+      "gamma": 0.144
+    },
+    {
+      "ticker": "MRK",
+      "omega": 0.5039,
+      "beta": 0.3509,
+      "gamma": 0.5059
+    },
+    {
+      "ticker": "MSFT",
+      "omega": 0.8442,
+      "beta": 0.0717,
+      "gamma": 0.8742
+    },
+    {
+      "ticker": "NKE",
+      "omega": 0.7831,
+      "beta": 0.2271,
+      "gamma": 0.6843
+    },
+    {
+      "ticker": "ORCL",
+      "omega": 0.917,
+      "beta": 0.0,
+      "gamma": 0.9482
+    },
+    {
+      "ticker": "PFE",
+      "omega": 0.4139,
+      "beta": 0.363,
+      "gamma": 0.6023
+    },
+    {
+      "ticker": "PG",
+      "omega": 0.3843,
+      "beta": 0.4876,
+      "gamma": 0.4894
+    },
+    {
+      "ticker": "QCOM",
+      "omega": 0.2794,
+      "beta": 0.7943,
+      "gamma": 0.1687
+    },
+    {
+      "ticker": "T",
+      "omega": 0.6259,
+      "beta": 0.1771,
+      "gamma": 0.6972
+    },
+    {
+      "ticker": "TXN",
+      "omega": 0.1626,
+      "beta": 0.8454,
+      "gamma": 0.1498
+    },
+    {
+      "ticker": "VZ",
+      "omega": 0.3605,
+      "beta": 0.3837,
+      "gamma": 0.4618
+    },
+    {
+      "ticker": "WFC",
+      "omega": 0.5774,
+      "beta": 0.3838,
+      "gamma": 0.6316
+    },
+    {
+      "ticker": "WMT",
+      "omega": 0.6228,
+      "beta": 0.2993,
+      "gamma": 0.6116
+    },
+    {
+      "ticker": "XOM",
+      "omega": 0.6658,
+      "beta": 0.2265,
+      "gamma": 0.7645
+    }
+  ]
+}
