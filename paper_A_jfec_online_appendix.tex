@@ -304,7 +304,7 @@ Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 
 \midrule
 Bare standalone neural net, single names & $-4.5$ to $-6.2\%$ & DM $+12$ to $+18$; motivates the hybrid design \\
 Standalone nonparametric, calm single assets & GARCH as good or better & pooled DM $-9.5$ to $-13.7$; the shape edge needs misspecification \\
-Korea 2026 crisis, 23 assets (negative control) & GARCH wins all & DM $-2.5$ to $-5$; a price crash is not a shape break \\
+Korea 2026 crisis, 23 assets (falsification case) & GARCH wins all & DM $-2.5$ to $-5$; a price crash is not a shape break \\
 mk$_{63}$-reweighted FHS (reweighting probe) & worse than plain FHS & DM $-11$ overall and top decile; sharp univariate conditioning collapses the sample \\
 Baltic freight; IG credit\tnote{a} & $+15\%$; $+52\%$ & DM 9.6; 30.6; accuracy only, calibration open \\
 \bottomrule
@@ -394,7 +394,7 @@ Rank & Instrument & Universe & DM & $p$ (one-sided) & Holm cutoff & Verdict \\
 \end{tabular}
 \begin{tablenotes}\footnotesize
 \item The family is every instrument-level look in the three
-exploratory universes; the Korea-2026 negative control (23 assets,
+exploratory universes; the Korea-2026 falsification case (23 assets,
 GARCH-$t$ wins throughout) is not part of the win family. Bonferroni
 at $0.05/93$ gives the identical survivor set. The pooled crisis-FX
 comparison (DM 4.12, $p\approx1.9\times10^{-5}$) and the
@@ -448,7 +448,7 @@ cannot be an artifact of stationary fat tails being averaged over
 handles) and is consistent with \emph{local} shape breaks a single
 fitted $\nu$ cannot straddle: asymmetry, jump clustering, and residual misfit
 that co-move with the score. This is the same conclusion the Korea 2026
-negative control reaches from the opposite direction (price crashes
+falsification case reaches from the opposite direction (price crashes
 are not residual misspecification), and it is why the score combines
 kurtosis with asymmetry and a jump indicator rather than kurtosis
 alone. (Simulation script \texttt{toy\_example.py} ships with the code
