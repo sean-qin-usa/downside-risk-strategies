@@ -135,10 +135,9 @@ elsewhere on the accuracy yardstick, and a demonstration that the generative mem
 family deliver capabilities no parametric point-forecasting model
 offers at all.
 
-A single measurable quantity, the local misspecification of the
-parametric conditional tail, operationalized as the excess kurtosis and
-asymmetry of recent GARCH-standardized residuals, governs when
-distribution-free quantile methods improve on parametric VaR/ES. Where
+Recent-residual tail diagnostics, the excess kurtosis and asymmetry of
+the GARCH-standardized residuals, predict when distribution-free
+quantile methods improve on parametric VaR/ES. Where
 that misspecification is high the flexible engine has a large and
 significant advantage; where it is low the advantage is
 statistically indistinguishable from zero in the design panel, a small
@@ -441,8 +440,10 @@ parametric filter, so the shape stage is where flexible methods can
 add value; per-asset tail data is scarce, which motivates pooling the
 standardized residuals across names. The EVT stage extrapolates the
 tail by the generalized Pareto family \citep{balkema1974,
-pickands1975}, and the conformal stage carries the finite-sample
-guarantee of Proposition~\ref{prop:conformal}. These are the
+pickands1975}, and the conformal stage is motivated by the
+split-conformal guarantee of Proposition~\ref{prop:conformal}, exact
+under exchangeability and approximate for the deployed time-ordered
+residuals. These are the
 statistical reasons for each stage; the empirical sections test
 whether the combination delivers.
 
@@ -1267,6 +1268,18 @@ The edge is a top-decile phenomenon. It is large and significant
 where the fixed-$t$ shape assumption is currently broken, and
 statistically indistinguishable from zero where it is not.
 
+\paragraph{The deployed composite.} The monitor the paper deploys is not
+$\mathrm{mk}_{63}$ alone but the composite score, the maximum across the
+three signals' trailing-panel percentiles (kurtosis, asymmetry, jump).
+Evaluated directly, its top decile reproduces the frontier at $+2.79\%$
+(DM 8.9), a clean $10\%$ cell whose lower nine deciles sit between
+$-0.3\%$ and $+0.35\%$, and it survives the strictly causal expanding
+cutoff at $+2.72\%$ (DM 9.0). The three components each carry a
+top-decile edge on their own, $+2.98\%$, $+2.78\%$, and $+1.96\%$
+(kurtosis, asymmetry, jumps); the maximum of decile \emph{ranks}
+instead flags the union of the three top deciles, a $19\%$ cell at
+$+1.72\%$, so we report the re-deciled composite.
+
 Does the score\'s content come from model-\emph{relative}
 misspecification, departure from each name\'s own fitted $t_{\nu_i}$, or
 simply from the absolute level of recent tail activity? Converting each
@@ -1908,21 +1921,18 @@ machinery is not claimed.
 Several limitations bound these conclusions. On this tabular state
 representation gradient-boosted trees remain the strongest point
 estimator, so the neural network earns its place through direct
-sampling rather than accuracy, and the misspecification score is
-predictive rather than a necessary or sufficient condition: high
-residual kurtosis coincides with ties on carbon and corn, while Baltic
-freight is a nonparametric win at moderate kurtosis. Credit and
-freight also show sizable accuracy edges alongside clustered
-exceptions that the current tail stages do not resolve, and their
-calibration is left open.
-
-The evidence has the usual boundaries of a daily-frequency study. The
-2000--2013 holdout and its exception-test re-run cover the frontier's
-2008 exposure, but an intraday extension awaits tick data, and the
-per-day oracle gap of Section~\ref{sec:gate} indicates that most of
-the day-level advantage of any model pair is realization noise rather
-than forecastable structure, so the score is best read as a monitor of
-where the flexible model helps rather than a daily switching rule.
+sampling rather than accuracy. The misspecification score is
+predictive, not a necessary or sufficient condition: high residual
+kurtosis coincides with ties on carbon and corn, Baltic freight is a
+nonparametric win at moderate kurtosis, and credit and freight show
+accuracy edges alongside clustered exceptions whose calibration the
+current tail stages leave open. Finally, the study is daily-frequency:
+the 2000--2013 holdout and its exception-test re-run cover the
+frontier's 2008 exposure but an intraday extension awaits tick data,
+and because the per-day oracle gap of Section~\ref{sec:gate} is mostly
+realization noise rather than forecastable structure, the score is best
+read as a monitor of where the flexible model helps rather than a
+daily switching rule.
 
 \section*{Funding}
 This work was supported by the Northwestern University Department of

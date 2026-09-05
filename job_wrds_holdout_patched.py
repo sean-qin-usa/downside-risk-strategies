@@ -10,22 +10,26 @@
 # (ii) overall edge small positive; (iii) decile profile qualitatively matches Table 2.
 # Data stays LOCAL (holdout_panel_2000_2013.csv is gitignored; CRSP no-redistribution).
 import builtins, os, json, time, math, warnings; warnings.filterwarnings("ignore")
+# Reproducibility: set WRDS_USERNAME to your own WRDS login and (optionally) GBC_PROJECT_DIR to
+# your local data directory. The wrds package reads the password from your platform's standard
+# pgpass file (~/.pgpass on POSIX, %APPDATA%\postgresql\pgpass.conf on Windows); none is stored here.
+WRDS_USER=os.environ.get('WRDS_USERNAME','YOUR_WRDS_USERNAME')
 def _fi(p=''):
-    s=str(p).lower(); return 'seanqin2028' if 'username' in s else 'n'
+    s=str(p).lower(); return WRDS_USER if 'username' in s else 'n'
 builtins.input=_fi
-os.environ['PGPASSFILE']=r'C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf'; os.environ.setdefault('PGUSER','seanqin2028')
+os.environ.setdefault('PGUSER', WRDS_USER)
 import numpy as np, pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
 from scipy import stats
 from arch import arch_model
-P=r"C:\Users\OWNER\Claude\Projects\GBC Project"; t0=time.time(); lg=lambda s:print(s,flush=True)
+P=os.environ.get('GBC_PROJECT_DIR', os.path.dirname(os.path.abspath(__file__))); t0=time.time(); lg=lambda s:print(s,flush=True)
 OUTJ=os.path.join(P,"holdout_frontier_results.json")
 CACHE=os.path.join(P,"holdout_panel_2000_2013.csv")
 
 # ---------- pull (cached) ----------
 if not os.path.exists(CACHE):
     import wrds
-    db=wrds.Connection(wrds_username='seanqin2028'); lg("WRDS CONNECTED %ds"%(time.time()-t0))
+    db=wrds.Connection(wrds_username=WRDS_USER); lg("WRDS CONNECTED %ds"%(time.time()-t0))
     cand=db.raw_sql("""
         select a.permno, count(*) as n, avg(abs(a.prc)*a.shrout) as mc
         from crsp.dsf a

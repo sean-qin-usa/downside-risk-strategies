@@ -10,14 +10,14 @@
 # design-era mk63 edges for the real-time top bucket; qcut profile for comparability.
 import builtins, os, json, time, math, warnings; warnings.filterwarnings("ignore")
 def _fi(p=''):
-    s=str(p).lower(); return 'seanqin2028' if 'username' in s else 'n'
+    s=str(p).lower(); return os.environ.get('WRDS_USERNAME','YOUR_WRDS_USERNAME') if 'username' in s else 'n'
 builtins.input=_fi
-os.environ['PGPASSFILE']=r'C:\Users\OWNER\AppData\Roaming\postgresql\pgpass.conf'; os.environ.setdefault('PGUSER','seanqin2028')
+os.environ.setdefault('PGUSER', os.environ.get('WRDS_USERNAME','YOUR_WRDS_USERNAME'))  # WRDS reads the password from your standard pgpass file
 import numpy as np, pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
 from scipy import stats
 from arch import arch_model
-P=r"C:\Users\OWNER\Claude\Projects\GBC Project"; t0=time.time(); lg=lambda s:print(s,flush=True)
+P=os.environ.get('GBC_PROJECT_DIR', os.path.dirname(os.path.abspath(__file__))); t0=time.time(); lg=lambda s:print(s,flush=True)
 CACHE=os.path.join(P,"pit_panel_2000_2013.csv")
 TAUS=[0.01,0.025,0.05,0.10,0.25,0.50,0.75,0.90,0.95,0.975,0.99]
 def pin(y,q,t): d=y-q; return np.where(d>=0,t*d,(t-1)*d)
@@ -26,7 +26,7 @@ RAWX=['lag1','abs1','prv5','prv21','rv63']
 # ---------- pull (cached): universe fixed at Q1-2000, delistings kept ----------
 if not os.path.exists(CACHE):
     import wrds
-    db=wrds.Connection(wrds_username='seanqin2028'); lg("WRDS CONNECTED %ds"%(time.time()-t0))
+    db=wrds.Connection(wrds_username=os.environ.get('WRDS_USERNAME','YOUR_WRDS_USERNAME')); lg("WRDS CONNECTED %ds"%(time.time()-t0))
     cand=db.raw_sql("""
         select a.permno, avg(abs(a.prc)*a.shrout) as mc, count(*) as n
         from crsp.dsf a

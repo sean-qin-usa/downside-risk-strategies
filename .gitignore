@@ -18,3 +18,7 @@ samerows_merged.csv
 _scrub_backup/ 
 _github_private/ 
 tpx_inspect_out.txt 
+
+*.tgz
+_r20tmp*
+_HELD_*
