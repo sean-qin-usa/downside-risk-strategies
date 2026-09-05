@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,amsthm,graphicx,booktabs,multirow,threeparttable,setspace}
+\usepackage{amsmath,amssymb,amsthm,graphicx,booktabs,multirow,threeparttable,setspace,array}
 \usepackage[round]{natbib}
 \usepackage[hidelinks]{hyperref}
 \usepackage{caption,enumitem,tikz,pgfplots}
@@ -271,6 +271,61 @@ kurtosis decile).}
 \end{figure}
 \clearpage
 \section{Supplementary tables}
+\begin{table}[htbp]
+\centering\small
+\begin{threeparttable}
+\caption{Summary of the paper's results and scope conditions. Edges are
+percentage pinball reductions unless noted; DM statistics are per-date
+(conventions note of Section~5 of the paper), one-sided. Panel A: the deployed amortized
+residual-hybrid engine (worst case on the accuracy yardstick: no
+detectable loss; calm-cell 90\% lower confidence bounds sit above
+$-0.25\%$). A separate block reports the direct multi-day
+extension, which is not the engine. Panel B: boundary
+evidence from configurations not deployed, which motivates the design.}
+\label{tab:winloss}
+\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}}
+\toprule
+\multicolumn{3}{l}{\emph{Panel A: the engine}} \\
+Result & Magnitude & Significance \\
+\midrule
+vs GARCH-$t$ / EWMA / HS, $h{=}1$ (avg) & $+0.3$ / $+1.5$ / $+1.9\%$ & DM 4.4--8.3 \\
+Top misspecification decile & $+2.7\%$ & DM 6.5 \\
+Hyperinflation FX (ARS, EGP) & $+12$--$14\%$ & DM 2.9--3.8 \\
+Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 \\
+2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2 (sort); recursive real-time rule $+1.0\%$, DM 2.15; frozen-constant restatement in text \\
+Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$; overall $+0.6\%$ & DM 6.6 / 9.0, frozen real-time thresholds \\
+Strict calendar splits; annual-refit walk-forward & top decile $+2.5\%$ under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 6.1 (walk-forward) \\
+Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles \\
+Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\% & date-clustered $t$ 0.17 at 99\%; at 97.5\%, 0.35 (EVT tail) and $-1.09$ (static overlay, conservative); HS, EWMA fail \\
+Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.0--4.7 vs GARCH-$t$, FHS; 6.9--9.3 vs GAS; static shift concedes 2.5\% (DM $-1.6$), adaptive shift erases it (tie; top-decile cost remains) \\
+Cold start / young listings & $+6$--$10\%$ & full-scale panel; no per-asset model applies \\
+Calm-quintile edge & $\approx 0$ (point estimates $+0.0$--$+0.2\%$) & bottom-decile 90\% CIs lie above $-0.25\%$; no detectable loss \\
+CAViaR (strongest academic rival) & tie (co-best in MCS) & DM 0.59 \\
+\midrule
+\multicolumn{3}{l}{\emph{Extension (a separate direct multi-day model, not the engine)}} \\
+\midrule
+Ten-day horizon vs $\sqrt{h}$-scaling & $+1.4\%$ (2014--24) & holds in 2020--22 stress; 2000--13 rerun: tie, DM 0.07 (era-dependent) \\
+\midrule
+\multicolumn{3}{l}{\emph{Panel B: boundary evidence from configurations not deployed}} \\
+\midrule
+Bare standalone neural net, single names & $-4.5$ to $-6.2\%$ & DM $+12$ to $+18$; motivates the hybrid design \\
+Standalone nonparametric, calm single assets & GARCH as good or better & pooled DM $-9.5$ to $-13.7$; the shape edge needs misspecification \\
+Korea 2026 crisis, 23 assets (negative control) & GARCH wins all & DM $-2.5$ to $-5$; a price crash is not a shape break \\
+mk$_{63}$-reweighted FHS (reweighting probe) & worse than plain FHS & DM $-11$ overall and top decile; sharp univariate conditioning collapses the sample \\
+Baltic freight; IG credit\tnote{a} & $+15\%$; $+52\%$ & DM 9.6; 30.6; accuracy only, calibration open \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item[a] Credit and freight fail breach-independence (exceptions
+cluster); their entries are accuracy results only. The
+credit magnitude is from the FRTB-grade single-asset battery; the
+smaller $4\%$ figure in the paper's cross-universe table is from the
+separate lean hybrid-vs-GARCH sweep --- different battery, both reported.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \begin{table}[htbp]
 \centering
 \begin{threeparttable}

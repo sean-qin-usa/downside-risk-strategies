@@ -113,3 +113,32 @@ The engine's displayed math now IS the implemented model; the conformal code
 now IS the proposition's rule; the score's name is now earned, not asserted.
 Files: `job_nurel.py`, `job_coherent.py`, and the three rerun conformal jobs
 ship as canonical artifacts with their JSONs.
+
+
+## Addendum: Review #15 (JFEC-corpus structural review, same wave)
+
+Grounded in ~200 JFEC titles and close reads of the nearest analogues
+(DNN-VaR 2024, ML-volatility-commonality 2024, graph-covariances 2025,
+MIDAS-LASSO 2025). Its verdict: results are genuinely JFEC-level; do NOT
+radically restructure; curate. Actions taken immediately:
+
+- **Summary win/loss table deleted from the introduction entirely** (both
+  reviewers #14 and #15 called it the strongest non-JFEC feature). Preserved
+  as a supplementary table in the online appendix; the introduction now flows
+  motivation → contributions → roadmap.
+- **Headings made descriptive**: "The FRTB-aligned forecasting battery" →
+  "VaR and Expected Shortfall forecast evaluation"; "Regime concentration and
+  the futility of gating" → "Regime dependence and model selection";
+  "Cross-asset winners, with corrections" → "Cross-asset evidence"; "What is
+  different from Polson--Sokolov GBC" → "Comparison with generative Bayesian
+  computation".
+- Title kept (rated 8.5/10 for JFEC fit by the review; matches Sean's
+  earlier decision).
+- Its two technical conditions were already satisfied by this wave's
+  experiments (ν-relative score PASSED; coherent-curve FZ0 PASSED).
+- The deeper main/OA content split (ten-day → OA, gating → OA, FHS variants
+  → OA, intro to 3–4pp) is staged as a follow-up decision — the four decisive
+  robustness constructions (calendar/refit, point-in-time, holdout,
+  multiplicity) stay in the main text per the review's own table.
+
+Reading copy now 39pp; submission text ends p41 with slack.
