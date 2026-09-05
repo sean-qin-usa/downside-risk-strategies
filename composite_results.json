@@ -1,0 +1,111 @@
+{
+  "note": "Exact Algorithm-OA.2 composite score = rank of the MAX of {mk63, |sk63|, jump5}. individual_top_deciles: each signal alone. composite_maxrank10 = literal max-of-decile-ranks==10 (union of the three top deciles; note occupancy>>10%). composite_score_topdecile = top decile of the re-deciled max-of-percentiles score (a proper 10% cell). causal_expanding = as-deployed prior-only 90th-pct cutoff on the composite percentile. edge=(garch-engine)/garch 11-tau pinball, per-date NW(10).",
+  "n_rows": 221600,
+  "n_names": 200,
+  "individual_top_decile": {
+    "mk63": {
+      "edge_pct": 2.982,
+      "DM": 10.48,
+      "n": 22160,
+      "occupancy_pct": 10.0
+    },
+    "skew63": {
+      "edge_pct": 2.784,
+      "DM": 9.85,
+      "n": 22160,
+      "occupancy_pct": 10.0
+    },
+    "jump5": {
+      "edge_pct": 1.96,
+      "DM": 7.63,
+      "n": 22159,
+      "occupancy_pct": 10.0
+    }
+  },
+  "composite_maxrank10_union": {
+    "edge_pct": 1.716,
+    "DM": 9.67,
+    "n": 42731,
+    "occupancy_pct": 19.28
+  },
+  "composite_score_topdecile": {
+    "edge_pct": 2.787,
+    "DM": 8.91,
+    "n": 22160,
+    "occupancy_pct": 10.0
+  },
+  "composite_score_decile_profile": {
+    "1": {
+      "edge_pct": -0.004,
+      "DM": 0.36,
+      "n": 22160,
+      "occupancy_pct": 10.0
+    },
+    "2": {
+      "edge_pct": -0.066,
+      "DM": -1.28,
+      "n": 22161,
+      "occupancy_pct": 10.0
+    },
+    "3": {
+      "edge_pct": -0.101,
+      "DM": -1.25,
+      "n": 22159,
+      "occupancy_pct": 10.0
+    },
+    "4": {
+      "edge_pct": 0.119,
+      "DM": 1.42,
+      "n": 22164,
+      "occupancy_pct": 10.0
+    },
+    "5": {
+      "edge_pct": -0.287,
+      "DM": -3.44,
+      "n": 22157,
+      "occupancy_pct": 10.0
+    },
+    "6": {
+      "edge_pct": -0.089,
+      "DM": -0.69,
+      "n": 22164,
+      "occupancy_pct": 10.0
+    },
+    "7": {
+      "edge_pct": 0.012,
+      "DM": 0.47,
+      "n": 22157,
+      "occupancy_pct": 10.0
+    },
+    "8": {
+      "edge_pct": 0.108,
+      "DM": 1.34,
+      "n": 22159,
+      "occupancy_pct": 10.0
+    },
+    "9": {
+      "edge_pct": 0.347,
+      "DM": 3.15,
+      "n": 22159,
+      "occupancy_pct": 10.0
+    },
+    "10": {
+      "edge_pct": 2.787,
+      "DM": 8.91,
+      "n": 22160,
+      "occupancy_pct": 10.0
+    }
+  },
+  "composite_causal_expanding_top": {
+    "edge_pct": 2.72,
+    "DM": 8.98,
+    "n": 21612,
+    "occupancy_pct": 9.75
+  },
+  "overall": {
+    "edge_pct": 0.353,
+    "DM": 5.35,
+    "n": 221600,
+    "occupancy_pct": 100.0
+  }
+}
