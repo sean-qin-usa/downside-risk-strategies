@@ -45,8 +45,9 @@ $z^{(m)} = H_\phi(s_t,\tau^{(m)})$.
 $\widehat{z}_{t-62},\dots,\widehat{z}_t$.
 (ii)~Compute $\mathrm{mk}_{63}$, $|\mathrm{sk}_{63}|$, $J_5$ by
 equation~(12) of the paper.
-(iii)~Convert each to a decile rank against the trailing pooled panel
-(same asset class); the score is the rank of the maximum.
+(iii)~Convert each to its percentile against the trailing pooled panel
+(same asset class); the score is the maximum of the three percentiles,
+re-ranked into deciles.
 (iv)~Act by the paper: top decile $\Rightarrow$ the parametric
 model's average pinball loss runs $\sim$2--3\% higher within this
 score region (a conditional average, not a per-name point estimate), flag the asset for the nonparametric /
@@ -434,14 +435,11 @@ Two mechanisms explain it, and both teach. (i)~By
 Lemma~1 of the paper regret is \emph{quadratic} in the quantile
 wedge, and at $\tau \ge 0.01$ the wedge between the fitted compromise
 and either regime is small; static kurtosis \emph{blending} is a
-second-order sin. (ii)~The sample kurtosis of a $t_\nu$ law has
-infinite estimator variance for $\nu \le 8$, so a moment-based
-score estimate is at its noisiest just when tails are fat, and
-sixty-three observations cannot reliably rank regimes that differ only
-in a static $\nu$. In the empirical sorts this noise works
-\emph{against} the frontier, not for it: misclassification across
-bucket boundaries attenuates measured top-bucket edges, so the
-reported concentration is if anything understated; the jump and
+second-order sin. (ii)~The sample kurtosis of a $t_\nu$ law is a noisy statistic when
+tails are fat: its usual moment-based asymptotic variance requires a
+finite eighth moment ($\nu>8$), and the population kurtosis itself does
+not exist for $\nu\le4$, so sixty-three observations cannot reliably
+rank regimes that differ only in a static $\nu$. The jump and
 asymmetry signals, whose top deciles independently survive familywise
 control, corroborate the ordering, and a tail-index (Hill-type)
 variant of the score is an obvious robustness extension. For the empirical sections this means the real-data top-decile edge of Section~5 of the paper
@@ -463,11 +461,10 @@ sizing and hedging matter most. The \emph{direction} of the trade matters
 as much as its location: a correct physical-measure tail forecast
 does not by itself make bought crash insurance profitable, because the
 crash risk premium can survive conditioning on a correct forecast.
-The deployable side is the other one, \emph{warehousing} (selling) the premium, with the model supplying tail control rather than alpha on the mean: model-timed overlays improve
-tail outcomes, not average returns, consistent with the tail being the
-only place the model knows something a fixed-shape filter does not. The
-contribution to a premium-harvesting book is risk management (when to
-size down or step aside ahead of a genuine crash), not signal generation.
+The deployable side is the other one, \emph{warehousing} (selling) the premium, with the model supplying tail control rather than alpha on the mean. The
+gating experiment provides no evidence that the score times individual
+crash days, so its role in a premium-harvesting book is continuous
+tail-risk measurement, not a market-timing signal.
 
 \textbf{Scenario generation.} Because the shape stage carries an exact
 inverse-CDF sampler, calibrating intractable scenario generators
