@@ -1,4 +1,6 @@
-# job_conformal_strict.py -- STRICT-SPLIT conformal/FZ audit (adversarial review, wave 7).
+# job_fz_strict_calibration.py -- STRICT-SPLIT conformal/FZ audit (adversarial review, wave 7).
+# (Canonical name; wave-8 rename of job_conformal_strict.py so the strict audit is impossible
+#  to miss next to job_fz_fullpanel.py, per reviewer request. Logic identical.)
 # The reviewer's point: in job_fz_fullpanel.py the first-stage GARCH is fit on y[:sp]
 # (the whole 60% estimation period), so the parameters that filter the calibration
 # residuals (indices cp..sp) were estimated USING those calibration returns. The
@@ -173,7 +175,7 @@ for a in ALPHAS:
         'DM_t':None if tt is None else round(tt,2),'n_dates':int(len(dtop))}
     OUT['per_alpha'][str(a)]=variants
     lg(f"alpha={a}: {json.dumps(variants)}")
-json.dump(OUT,open(os.path.join(P,"fz_strict_results.json"),"w"),indent=2)
+json.dump(OUT,open(os.path.join(P,"fz_strict_calibration_results.json"),"w"),indent=2)
 # patch the old audit JSON's stale 'registered' note wording in place
 fp=os.path.join(P,"results","fz_fullpanel_results.json")
 try:

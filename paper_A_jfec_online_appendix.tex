@@ -315,13 +315,62 @@ Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & 
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Cross-universe multiplicity: Holm step-down over all 93
+instrument-level comparisons in the three exploratory universes of the
+paper's cross-universe table (24 FX pairs, 26 country indices, 43
+cross-asset instruments). One-sided $p$ from each instrument's date-clustered DM
+statistic; familywise $\alpha=5\%$. Ranks below twelve all have
+$p>0.02$ and are omitted.}
+\label{tab:holm}
+\footnotesize\setlength{\tabcolsep}{5pt}
+\begin{tabular}{rllcccl}
+\toprule
+Rank & Instrument & Universe & DM & $p$ (one-sided) & Holm cutoff & Verdict \\
+\midrule
+1 & PJM power\tnote{a} & cross-asset & 283.1 & $<10^{-16}$ & $5.38\times10^{-4}$ & artifact\tnote{a} \\
+2 & Baltic Dry & cross-asset & 9.36 & $<10^{-16}$ & $5.43\times10^{-4}$ & survives \\
+3 & VIX & cross-asset & 5.71 & $5.7\times10^{-9}$ & $5.49\times10^{-4}$ & survives \\
+4 & V2X & cross-asset & 5.03 & $2.5\times10^{-7}$ & $5.56\times10^{-4}$ & survives \\
+5 & VVIX & cross-asset & 4.66 & $1.6\times10^{-6}$ & $5.62\times10^{-4}$ & survives \\
+6 & USDEGP & FX & 3.80 & $7.2\times10^{-5}$ & $5.68\times10^{-4}$ & survives \\
+7 & Kenya NSE20 & indices & 3.52 & $2.2\times10^{-4}$ & $5.75\times10^{-4}$ & survives \\
+8 & Wheat & cross-asset & 3.51 & $2.2\times10^{-4}$ & $5.81\times10^{-4}$ & survives \\
+9 & MOVE & cross-asset & 3.22 & $6.4\times10^{-4}$ & $5.88\times10^{-4}$ & fails \\
+10 & Sri Lanka CSEALL & indices & 3.20 & $6.9\times10^{-4}$ & $5.95\times10^{-4}$ & fails \\
+11 & Gasoline & cross-asset & 3.20 & $6.9\times10^{-4}$ & $6.02\times10^{-4}$ & fails \\
+12 & USDARS & FX & 2.86 & $2.1\times10^{-3}$ & $6.10\times10^{-4}$ & fails \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item The family is every instrument-level look in the three
+exploratory universes; the Korea-2026 negative control (23 assets,
+GARCH-$t$ wins throughout) is not part of the win family. Bonferroni
+at $0.05/93$ gives the identical survivor set. The pooled crisis-FX
+comparison (DM 4.12, $p\approx1.9\times10^{-5}$) and the
+kurtosis--edge correlations (0.53 across indices, 0.43 cross-asset)
+are pooled and gradient statistics outside this instrument-level
+family; they are the replication evidence the paper's cross-universe
+claims rest on.
+\item[a] Retained in the family because the raw sweep contains it,
+but not a win: the paper's cross-asset audit reclassifies electricity
+as a log-return artifact on near-zero and negative prices --- refit on
+price differences, GARCH wins PJM (DM $-2.73$) --- so the survivor
+count the text quotes is seven.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \clearpage
 \section{The two-regime example}
 \subsection*{A synthetic boundary check: when the frontier does
 \emph{not} appear}\label{sec:toy}
 
-Before the real data, a simulation with known truth --- run once, seed
-fixed --- checks the formal results and, more usefully, delineates when
+Before the real data, a simulation with known truth (run once, seed
+fixed) checks the formal results and, more usefully, delineates when
 the frontier edge should \emph{fail} to appear. The data-generating
 process is deliberately favorable to the thermometer: unit-variance
 Student-$t$ residuals whose degrees of freedom switch between a calm
@@ -332,15 +381,15 @@ shape). Three results. First, the Lemma~1 of the paper identity
 verifies numerically: the regret integral and the Monte-Carlo regret
 agree to five decimals ($3.5\times10^{-5}$ at $\tau=0.01$). Second, the
 conformal shift moves realized coverage toward nominal on the held-out
-split, as Proposition~1 of the paper promises. Third --- the
-instructive one --- the score-binned nonparametric forecaster does
+split, as Proposition~1 of the paper promises. Third, and most instructive, the score-binned nonparametric
+forecaster does
 \emph{not} beat the fixed shape here: a single $t_{\widehat\nu}$
 fitted on the mixture ($\widehat\nu = 6.8$) is nearly unbeatable at
 these levels, with total regret under $0.5\%$ and no decile gradient.
 Two mechanisms explain it, and both teach. (i)~By
 Lemma~1 of the paper regret is \emph{quadratic} in the quantile
 wedge, and at $\tau \ge 0.01$ the wedge between the fitted compromise
-and either regime is small --- static kurtosis \emph{blending} is a
+and either regime is small; static kurtosis \emph{blending} is a
 second-order sin. (ii)~The sample kurtosis of a $t_\nu$ law has
 infinite estimator variance for $\nu \le 8$, so a moment-based
 thermometer is at its noisiest just when tails are fat, and
@@ -352,9 +401,9 @@ reported concentration is if anything understated; the jump and
 asymmetry signals, whose top deciles independently survive familywise
 control, corroborate the ordering, and a tail-index (Hill-type)
 variant of the score is an obvious robustness extension. For the empirical sections this means the real-data top-decile edge of Section~5 of the paper
-cannot be an artifact of stationary fat tails being averaged over ---
-that configuration is the one the simulation shows a fixed shape
-handles --- but must reflect \emph{local} shape breaks a single fitted
+cannot be an artifact of stationary fat tails being averaged over
+(that configuration is the one the simulation shows a fixed shape
+handles) but must reflect \emph{local} shape breaks a single fitted
 $\nu$ cannot straddle: asymmetry, jump clustering, and residual misfit
 that co-move with the score. This is the same conclusion the Korea 2026
 negative control reaches from the opposite direction (price crashes
