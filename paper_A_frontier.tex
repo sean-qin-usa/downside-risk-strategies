@@ -112,7 +112,7 @@ detectable loss on the accuracy yardstick}. On that yardstick the
 engine's worst cell in our tests is that bounded tie (the coverage
 shift's 2.5\% joint-score concession, priced in
 Section~\ref{sec:frtb}, is the one measured exception), so holding the
-engine is cheap while it waits for the days on which it wins. What does lose on quiet days is a configuration we study only
+engine carries no detectable accuracy penalty on quiet days. What does lose on quiet days is a configuration we study only
 as a cautionary boundary and never deploy: a bare per-name neural
 quantile model, which a unit-matched GJR-GARCH-$t$ beats by
 4.5--6.2\% at every horizon (DM $t$ between $+12$ and
@@ -126,9 +126,9 @@ are one-sided at the 5\% level ($t>1.645$); two-sided readings are
 noted where used.} That failure is what dictates the engine's hybrid design. The
 contribution is thus a \emph{predictive theory of when flexible-shape
 methods win}, an engine that converts the theory into a risk model
-that beats the market-risk forecasting benchmarks banks commonly run
-on distributional accuracy while never doing worse than them on that
-yardstick, and a demonstration that the generative members of the
+whose forecasting advantage over the benchmarks banks commonly run
+concentrates in high-misspecification states, with no detectable loss
+elsewhere on the accuracy yardstick, and a demonstration that the generative members of the
 family deliver capabilities no parametric point-forecasting model
 offers at all.
 
@@ -215,12 +215,12 @@ deployed engine uses is developed, and every formal result it relies
 on proved, here.
 
 
-The asymmetry of the loss profile is the economic argument for
-adoption: when the frontier is quiet the engine ties or edges the
-parametric benchmark (calm-quintile edge $\approx 0$, never negative),
-and the top-decile improvement is $+2.7\%$ (and $12$--$14\%$ on the
-hyperinflation currencies where the parametric assumption breaks
-entirely), with no material loss in the calm region. A
+The loss profile is asymmetric in the score: when the frontier is
+quiet the engine ties or edges the parametric benchmark (calm-quintile
+edge $\approx 0$, never negative), and the top-decile improvement is
+$+2.7\%$ (and $12$--$14\%$ on the hyperinflation currencies where the
+parametric assumption breaks entirely). These are reductions in a
+proper scoring rule, not a monetary welfare measure. A
 percentage pinball edge is a percentage reduction in average quantile
 loss at the quoted level; the joint FZ0 score of
 Section~\ref{sec:frtb} carries the economic comparison, and no
@@ -1186,9 +1186,8 @@ within-sample decile profile keeps its shape (top three deciles
 $+0.45$--$+1.04\%$ against $+0.06$--$+0.09\%$ in the bottom three);
 the frozen-threshold top cell of Section~\ref{sec:frontier} is too
 thin in that era to test alone ($3.4\%$ occupancy, $+0.85\%$, DM
-0.7). A model that never saw a systemic crisis in training carrying a
-significant edge through the crisis it never saw is the opposite of
-what the leakage story predicts.
+0.7). The holdout spans the 2008 crisis, which lay in no training window,
+so the significant edge there is not an artifact of a calm era.
 
 A last construction tests the schedule the paper recommends: the
 evaluated protocol freezes every stage once per split, so the score
@@ -1197,9 +1196,11 @@ Under the true annual walk-forward (per-name GARCH refit on
 expanding data at each January-1 cutoff 2020--2024, residuals and
 score rebuilt under the refit parameters, pooled learner retrained) the top decile carries $+2.47\%$ at per-date DM 6.05 (lags 5--44:
 6.6--5.4), indistinguishable from the frozen-fit frontier, while the
-overall edge compresses to $+0.32\%$ (DM 0.8): annual refits help
-the benchmark everywhere \emph{except} where the score says shape is
-the problem. The frontier measures shape, not staleness.
+overall edge is not statistically detectable ($+0.32\%$, DM 0.8).
+Under the production annual refit the aggregate accuracy gap closes
+while the conditional high-score advantage does not: refitting removes
+the average gap but not the concentration, so stale benchmark
+parameters are not what produce the conditional result.
 
 \subsection{Cross-sectional dependence, family-wise error, and the
 universe rule}
@@ -1233,7 +1234,7 @@ the text
 wherever it is discussed. The paper's guard against selection across
 its many exercises is replication, not one joint correction over
 everything reported: the headline is family-wise controlled within its
-grid, pre-registered and reproduced on the untouched 2000--2013
+grid, specified before the run and replicated on the untouched 2000--2013
 holdout, and recovered under a strictly causal decile cutoff, so it
 does not hang on a single surviving test. The exploratory
 single-instrument universes, which are not jointly controlled with the
@@ -1256,11 +1257,11 @@ the 164 of 200 Q1-2000 names that clear the symmetric fitting floors
 edge is $+0.58\%$ with per-date DM 8.96 over 2{,}692 dates, and the
 frozen design-era top bucket carries $+2.94\%$ at DM 6.6 ($5.9\%$
 occupancy; the bottom bucket is $+0.44\%$, DM 5.4, in this era even calm cells lean positive, at one-seventh the top bucket's size).
-The edge is \emph{larger} than in the survivor-tilted holdout: the
-observation filter turns out to have biased the reported edge
-downward, not upward. Names that later die are where shapes break; a
-universe that keeps them is kinder to the flexible engine and harder
-on the leakage-and-selection story.
+The edge is \emph{larger} than in the survivor-tilted holdout, so the
+observation filter biased the reported edge downward rather than
+upward. This point-in-time construction still requires the symmetric
+fitting floors, so 36 of the 200 names, those the estimators cannot
+fit, do not enter; the estimand is the 164 that clear them.
 
 \section{The misspecification frontier}\label{sec:frontier}
 
@@ -1376,18 +1377,27 @@ The edge is a top-decile phenomenon. It is large and significant
 where the fixed-$t$ shape assumption is currently broken, and
 statistically indistinguishable from zero where it is not.
 
-The score is model-relative, and a normalization makes that
-testable: raw trailing kurtosis mixes the heavy tail a correctly
-specified $t_{\nu_i}$ already implies with local departure from that
-law, so we convert each observation's mk$_{63}$ into a percentile of
-the simulated null of 63-window sample kurtosis under the name's own
-fitted $t_{\nu_i}$ (population kurtosis does not exist below $\nu=4$
-and the median fitted $\nu$ is $3.9$, so a finite-window null
-normalization is used, which stays well defined when the fitted
-$\nu\le4$). The re-sorted frontier is unchanged: top
-decile $+3.0\%$ (DM 8.5) against $+3.0\%$ (DM 10.5) raw, deciles one
-through eight at zero, 82\% top-decile overlap. The score reads
-departure from the fitted law, not raw tail mass.
+Does the score\'s content come from model-\emph{relative}
+misspecification, departure from each name\'s own fitted $t_{\nu_i}$, or
+simply from the absolute level of recent tail activity? Converting each
+mk$_{63}$ into a percentile of the simulated null of 63-window kurtosis
+under the name's fitted $t_{\nu_i}$ leaves the frontier essentially
+unchanged (top decile $+3.0\%$, DM 8.5, against $+3.0\%$, DM 10.5 raw),
+but this normalization is nearly rank-preserving (Spearman $0.97$, $82\%$
+top-decile overlap) and so cannot by itself separate the two. A
+discriminating test settles it \emph{against} the model-relative reading.
+In a within-date cross-sectional (Fama--MacBeth) regression of the
+per-observation edge on the raw score and the $\nu$-relative percentile,
+the raw score carries the predictive content ($t=7.8$) while the
+$\nu$-relative percentile has significantly \emph{negative} incremental
+content ($t=-5.2$); double-sorting agrees, the top-raw-kurtosis-quintile
+edge \emph{falls} from $+1.9\%$ for the most fat-tailed (low-$\nu$) names
+to $+1.5\%$ for the thinnest-tailed, and observations high in the
+$\nu$-relative score but not in raw kurtosis carry no edge ($+0.3\%$, DM
+$0.5$). The frontier is therefore a statement about the absolute level of
+recent tail activity, not about departure from each name's fitted law:
+the score flags where the fixed-shape parametric model underperforms, but
+normalizing by the fitted $\nu$ adds nothing.
 
 \paragraph{Timing diagnostics.} The score is computed from residuals
 through day $t-1$ and paired with the day-$t$ loss;
@@ -1788,7 +1798,7 @@ either direction (the EVT variant's 0.91\% sits on the conservative
 side; pooled FHS happens to land at 0.99\%), so pooled $p$-values are
 reported, not leaned on. The regulatory reading is the per-asset and
 date-clustered restatement (Figure~\ref{fig:passrates}): per asset the
-EVT-tailed engine passes Kupiec at 99\% for $81\%$ of names and
+EVT-tailed engine passes Kupiec at 99\% for $84\%$ of names and
 Christoffersen for $86\%$, and the date-clustered test passes at both
 levels ($t=1.01$ at 99\%, $1.86$ at 97.5\%) while the raw hybrid is rejected ($t=4.5$): the tail stages carry the regulatory
 calibration, and the 2008-era battery re-run confirms it out of era.
@@ -1861,15 +1871,16 @@ The headline carries caveats. First, adding SAV-CAViaR, a model
 absent from banks' standard toolkit
 but the strongest semiparametric
 academic benchmark, produces a statistical tie: CAViaR 0.3461 vs
-hybrid 0.3460 (DM 0.59, $p=0.28$; the CAViaR study's common sample
+hybrid 0.3460 (DM 0.4, $p=0.34$; the CAViaR study's common sample
 differs slightly from Table~\ref{tab:frtb}'s, which is why the hybrid's
 loss level is 0.3460 there against 0.3551 in the table; rankings, not
 levels, are comparable across the two runs); the 90\% Model Confidence
 Set contains exactly these two. The hybrid is \emph{co-best with CAViaR},
 not uniquely dominant, and still significantly beats everything banks
-actually run. The tie is asymmetric in capability: SAV-CAViaR models one quantile
-level per fit, produces no ES (the FRTB metric) without an
-ad-hoc stage, and needs per-name history (no new listings). We do not
+actually run. SAV-CAViaR models one quantile level per fit, produces
+no ES (the FRTB metric) without an ad-hoc stage, and needs per-name
+history (no new listings), where the hybrid produces the full curve
+and prices new listings. We do not
 hold pooled exception rejections against it: pooled asset-day tests
 ignore cross-sectional dependence and overstate rejection for every
 model, ours included; the date-clustered restatement is the reading
@@ -1949,7 +1960,7 @@ again wins over GARCH-$t$ (DM 5.1); the accuracy layer is thus a single
 unified configuration: lowest FZ0 at both
 levels \emph{and} a pass on the aggregate date-clustered exception
 test at both levels, with per-name diagnostics showing residual
-cross-sectional calibration heterogeneity (81\%/86\% pass rates at
+cross-sectional calibration heterogeneity (84\%/86\% pass rates at
 99\%; Figure~\ref{fig:passrates}),
 with only the hypersensitive pooled 155k-observation Kupiec at 97.5\%
 against it. The frontier concentrates the joint-score
@@ -2083,8 +2094,9 @@ per-name estimation; (iii)~apply the frozen GPD tail below $p_0$
 and, where the desk elects the coverage overlay, the conformal shift
 $c_\tau$ (static or adaptive); (iv)~report
 $\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
-at the desk's levels, with ES$_{97.5}$ from the GPD closed form below
-the splice; (v)~read
+at the desk's levels, with VaR and ES$_{97.5}$ both read from the coherent
+min-envelope curve $Q^{*}=\min\{$body$,$EVT$\}$ (VaR at the $\alpha$
+node, ES its numerical tail integral); (v)~read
 the misspecification score \eqref{eq:score} as the model-risk monitor: top decile means the parametric fallback's conditional average loss
 in that score region runs $\sim$2--3\% higher. \emph{Annually:} refit filters, retrain the shape model,
 re-estimate tail and shifts, all on trailing data. \emph{New listing:}

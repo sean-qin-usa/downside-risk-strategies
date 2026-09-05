@@ -20,7 +20,7 @@
 \renewcommand{\thetable}{OA.\arabic{table}}
 \renewcommand{\thesection}{OA.\arabic{section}}
 \title{Online Appendix\\ \large Semiparametric Value-at-Risk and Expected Shortfall with a Real-Time Misspecification Score}
-\author{Sean Qin}
+\author{Sean Qin \and Wenxin Jiang}
 \date{\today}
 \begin{document}
 \maketitle
@@ -67,8 +67,9 @@ per-name estimation; (iii)~apply the frozen GPD tail below $p_0$
 and, where the desk elects the coverage overlay, the conformal shift
 $c_\tau$ (static or adaptive); (iv)~report
 $\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
-at the desk's levels, with ES$_{97.5}$ from the GPD closed form below
-the splice; (v)~read
+at the desk's levels, with VaR and ES$_{97.5}$ both read from the coherent
+min-envelope curve $Q^{*}=\min\{$body$,$EVT$\}$ (VaR at the $\alpha$
+node, ES its numerical tail integral); (v)~read
 the misspecification score equation~(12) of the paper as the model-risk monitor: top decile means the parametric fallback's conditional average loss
 in that score region runs $\sim$2--3\% higher. \emph{Annually:} refit filters, retrain the shape model,
 re-estimate tail and shifts, all on trailing data. \emph{New listing:}
@@ -292,7 +293,7 @@ Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\
 Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.8--4.9 vs GARCH-$t$, FHS at 1\%, 5.1 at 2.5\%; 6.2--9.6 vs GAS; static shift concedes 2.5\% (DM $-1.6$), adaptive shift erases it (tie; top-decile cost remains) \\
 Cold start / young listings & $+6$--$10\%$ & full-scale panel; no per-asset model applies \\
 Calm-quintile edge & $\approx 0$ (point estimates $+0.0$--$+0.2\%$) & bottom-decile 90\% CIs lie above $-0.25\%$; no detectable loss \\
-CAViaR (strongest academic rival) & tie (co-best in MCS) & DM 0.59 \\
+CAViaR (strongest academic rival) & tie (co-best in MCS) & DM 0.4 \\
 \midrule
 \multicolumn{3}{l}{\emph{Extension (a separate direct multi-day model, not the engine)}} \\
 \midrule

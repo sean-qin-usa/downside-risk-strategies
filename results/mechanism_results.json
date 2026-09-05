@@ -1,0 +1,98 @@
+{
+  "note": "Mechanism identification [R19#1]. Fama-MacBeth: within-date cross-sectional OLS of the per-obs GARCH-minus-engine 11-tau pinball edge on within-date-demeaned z(raw mk63) and z(nu-relative pctile); betas averaged, NW(10) t across dates. t_nurel is the incremental content of the nu-relative score HOLDING raw kurtosis fixed (and t_raw vice versa). Double-sort: edge% by raw-kurt quintile (rows 0=low..4=high) x fitted-nu quintile (cols 0=low..4=high). Discordant: top-decile under one measure but not the other. If neither has robust incremental content, the two measures are empirically the same object and no mechanism can be separated from the frontier.",
+  "n_rows": 221600,
+  "n_names": 200,
+  "spearman_raw_nurel": 0.971,
+  "topdecile_overlap": 0.825,
+  "edge_top_raw": {
+    "edge_pct": 2.982,
+    "DM": 10.48,
+    "n": 22160
+  },
+  "edge_top_nurel": {
+    "edge_pct": 3.008,
+    "DM": 8.59,
+    "n": 22161
+  },
+  "famamacbeth_incremental": {
+    "beta_raw_mean": 0.00655,
+    "t_raw": 7.76,
+    "beta_nurel_mean": -0.00239,
+    "t_nurel": -5.23,
+    "n_dates": 1108
+  },
+  "doublesort_rawQ_rows_x_nuQ_cols": [
+    [
+      0.36,
+      0.14,
+      -0.2,
+      -0.36,
+      -0.53
+    ],
+    [
+      0.4,
+      0.01,
+      0.01,
+      -0.28,
+      -0.38
+    ],
+    [
+      0.53,
+      0.24,
+      -0.03,
+      -0.14,
+      -0.47
+    ],
+    [
+      0.07,
+      -0.08,
+      -0.03,
+      -0.22,
+      -0.39
+    ],
+    [
+      1.9,
+      1.88,
+      1.85,
+      1.52,
+      1.46
+    ]
+  ],
+  "edge_by_nuQ_within_top_raw_quintile": {
+    "0": {
+      "edge_pct": 1.899,
+      "DM": 5.68,
+      "n": 10958
+    },
+    "1": {
+      "edge_pct": 1.876,
+      "DM": 7.82,
+      "n": 10630
+    },
+    "2": {
+      "edge_pct": 1.846,
+      "DM": 4.8,
+      "n": 10111
+    },
+    "3": {
+      "edge_pct": 1.52,
+      "DM": 2.33,
+      "n": 7334
+    },
+    "4": {
+      "edge_pct": 1.461,
+      "DM": 2.28,
+      "n": 5287
+    }
+  },
+  "discordant_topnurel_not_topraw": {
+    "edge_pct": 0.347,
+    "DM": 0.52,
+    "n": 3878
+  },
+  "discordant_topraw_not_topnurel": {
+    "edge_pct": 1.23,
+    "DM": 4.36,
+    "n": 3877
+  }
+}
