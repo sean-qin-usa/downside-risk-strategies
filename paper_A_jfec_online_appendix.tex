@@ -593,41 +593,31 @@ $q_F=Q_{\nu_1}(\tau)$ bounds the regret below by
 $\tfrac{m}{2}(Q_{\nu_1}(\tau)-Q_{\nu_2}(\tau))^2$, with $m$ the minimum
 of the $t_{\nu_1}$ density on the wedge interval. \hfill$\square$
 
-\subsection*{Proof of Proposition~3 of the paper (the score orders the frontier)}
-Work in the tail-ordered family of Proposition~3: $F_\delta=t_{\nu(\delta)}$
-(or a regularly varying family with left-tail index $\alpha(\delta)$) with
-$\nu(\delta)$ strictly decreasing, so a single index sets both the lower
-tail and $\kappa(\delta)=6/(\nu(\delta)-4)$ (strictly increasing). Fix
-$\tau$ below the crossover level of the paper's crossover remark. By
-Proposition~2 of the paper, applied \emph{within} this family, $Q_G(\tau)$
-is strictly less extreme than $Q_{F_\delta}(\tau)$, and decreasing
-$\nu(\delta)$ pushes $Q_{F_\delta}(\tau)$ monotonically outward while
-$Q_G(\tau)$ is fixed, so the gap $w(\delta)=|Q_G(\tau)-Q_{F_\delta}(\tau)|$
-is strictly increasing in $\delta$ (equivalently in $\kappa(\delta)$),
-$w'(\delta)>0$. By Lemma~1 of the paper (the regret identity), the
-benchmark's level-$\tau$ excess loss under local truth $F_\delta$ is
-$A_\tau(\delta)=\tfrac12 f_\delta(Q_{F_\delta}(\tau))\,w(\delta)^2+o(w(\delta)^2)$,
-strictly positive for $w(\delta)>0$ and vanishing only as $w(\delta)\to0$;
-the oracle attains $Q_{F_\delta}(\tau)$ and carries no first-order regret,
-and a consistent nonparametric estimator attains it in the limit,
-contributing $o(1)$ to the advantage. The advantage is thus positive and
-driven by the wedge; its exact monotonicity in $\delta$ additionally
-requires the tail density factor $f_\delta(Q_{F_\delta}(\tau))$ not to fall
-faster than $w(\delta)^2$ grows, which we do not assume and instead verify
-empirically. Finally the trailing-window sample excess kurtosis $S_t$ is the
-fourth standardized sample moment minus three, so
-$S_t\xrightarrow{p}\kappa(\delta)$ whenever $\mathbb{E}[z^4]<\infty$ (so for
-$t_\nu$ with $\nu>4$; the sampling variance of $S_t$ is finite for $\nu>8$),
-and $\kappa$ is strictly monotone in the index, so $S_t$ identifies it.
-Composing the monotone maps $S_t\mapsto\kappa(\delta)\mapsto w(\delta)$, the
-probability limit of the score orders the tail index and the wedge that
-drives the level-$\tau$ advantage. The aggregate pinball advantage is the
-$\tau$-weighted sum $\sum_\tau \omega_\tau A_\tau(\delta)$, dominated by the
-sub-crossover tail levels for which the ordering holds, and the joint
-$(\mathrm{VaR},\mathrm{ES})$ object is a level-by-level functional of the
-same quantile curve; both are shown to inherit the ordering empirically,
-since the crossover remark shows the level-$\tau$ ordering can reverse at
-moderate $\tau$. \hfill$\square$
+\subsection*{On the score-ordering: why it is an empirical regularity, not a theorem}
+We state the score-ordering as an empirical regularity rather than a
+theorem, and record here why no clean monotonicity theorem holds at the
+deployable levels. The tail-wedge result (Proposition~2 of the paper)
+orders a given pair of Student-$t$ tail indices only below a pair-specific
+crossover level $\tau^*(\nu_1,\nu_2)$; it does not deliver monotonicity of
+the wedge in the tail index at a fixed operational $\tau$. More
+fundamentally, the innovations are unit-variance by construction, and for
+the unit-variance $t_\nu$ the level-$\tau$ quantile is
+$Q_\nu(\tau)=\sqrt{(\nu-2)/\nu}\;t_\nu^{-1}(\tau)$, which is \emph{not}
+monotone in $\nu$: as $\nu\downarrow2$ the normalization
+$\sqrt{(\nu-2)/\nu}\to0$ pulls the fixed-$\tau$ quantile back toward zero,
+so an arbitrarily heavy-tailed unit-variance $t$ eventually has a
+fixed-$\tau$ quantile arbitrarily close to the center rather than far into
+the tail. The non-monotonicity is already active at the regulatory levels:
+at $\tau=0.025$, $Q_5(0.025)\approx-1.99$ is \emph{less} extreme than
+$Q_8(0.025)\approx-2.00$, so a heavier-tailed standardized $t$ carries the
+less extreme $2.5\%$ quantile. A clean ordering theorem would therefore
+have to restrict the tail index to an explicit interval, isolate a range
+of $\tau$ on which $\partial Q_\nu(\tau)/\partial\nu$ has one sign, and
+control the density factor in the regret expansion; we do not pursue that
+narrow statement. The exact content we retain is the regret identity
+(Lemma~1 of the paper) and the tail-wedge ordering (Proposition~2 of the
+paper), and the frontier itself is documented empirically in the paper.
+\hfill$\square$
 
 
 
