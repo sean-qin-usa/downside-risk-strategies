@@ -47,10 +47,7 @@
 \title{Semiparametric Value-at-Risk and Expected Shortfall\\
 with a Real-Time Misspecification Score}
 \author{%
-  Sean Qin\thanks{Corresponding author. E-mail:
-  \texttt{sean.qin@u.northwestern.edu}.}
-  \and
-  Wenxin Jiang\thanks{E-mail: \texttt{wjiang@northwestern.edu}.}\\[4pt]
+  Sean Qin\thanks{E-mail: \texttt{sean.qin@u.northwestern.edu}.}\\[4pt]
   \normalsize Department of Statistics and Data Science, Northwestern
   University, Evanston, IL 60208}
 \date{Draft: \today}
@@ -173,7 +170,7 @@ HS, and GJR-skew-$t$, and attains the lowest joint $(\VaR,\ES)$ FZ0
 score among these daily-data benchmarks at both FRTB levels with exception counts near nominal through a
 2008-crisis window. Two formal results motivate the search: a pinball
 regret identity, by which a forecaster's excess loss is locally quadratic in
-its quantile wedge so an edge concentrates where the wedge is largest,
+its quantile wedge, so larger quantile wedges generate larger regret,
 and a tail-wedge proposition, by which innovation-shape misspecification
 opens that wedge in the tail.
 
@@ -634,8 +631,8 @@ $\tau$-sampling, $\lambda = \tfrac12\,U(0,1) +
 \tfrac12\,\mathrm{Beta}(0.3,0.3)$, oversampling the extremes that
 uniform sampling starves (the raw net's 99\% breach rate was 3.2\%);
 monotone rearrangement of the $\tau$-curve; and the conformal layer of
-Section~\ref{sec:hybrid}. The network's earning is not point accuracy
-but generation: with $\tau\sim U(0,1)$,
+Section~\ref{sec:hybrid}. The network's role is generation rather than
+point accuracy: with $\tau\sim U(0,1)$,
 $z^{*} = H_\phi(s,\tau)$ draws from the fitted conditional law by
 inverse transform. The network learns one continuous
 state-conditional quantile map, so draws are available directly,
@@ -1125,7 +1122,7 @@ The design panels are split per name, 60/40 in each name's own time
 index. In an unbalanced panel such a rule can place one name's
 training window on another name's test dates, so a pooled learner
 could meet a systemic event in training that a per-name model would only meet out of sample, a leak that needs no individual feature
-to look ahead. We concede the point in principle: a per-asset split
+to look ahead. In principle this is correct: a per-asset split
 cannot by itself support a causal reading of a pooled edge. Here the
 channel is nearly degenerate (near-complete histories put split
 points on almost the same date), but nearly is not zero, so we settle it
@@ -1851,7 +1848,7 @@ error is the one regulators prefer.
 
 Adding SAV-CAViaR, a model
 absent from banks' standard toolkit
-but the strongest semiparametric
+but a leading semiparametric
 academic benchmark, produces a statistical tie: CAViaR 0.3461 vs
 hybrid 0.3460 (DM 0.4, $p=0.34$; the CAViaR study's common sample
 differs slightly from Table~\ref{tab:frtb}'s, which is why the hybrid's
@@ -1915,15 +1912,16 @@ alone but the pair $(\VaR,\ES)$ is jointly elicitable under the
 Fissler--Ziegel class \citep{fissler2016}, the battery was re-checked
 under the FZ0 joint score (orientation validated by Monte Carlo against
 a known-truth $t_5$ before any ranking was read; first sandbox subsets
-of the panel, full-panel re-run pre-committed). On a
-45-name large-cap subset, a Gaussian-innovation GARCH is significantly
-worst at both the 2.5\% and 1\% levels (DM 5.4 and 6.0): under a
-jointly consistent score, fat tails are strictly necessary. Among the fat-tailed entrants (GARCH-$t$, FHS, and the hybrid$+$EVT) FZ0 differences on large caps are statistically indistinguishable
-($|$DM$|<1.4$): on the well-behaved segment the EVT stage's distinct
-value is its exception-test compliance, a calibration property the FZ0
-score does not reward. On a 40-name top-kurtosis subset the ordering
-flips and the hybrid$+$EVT attains the lowest FZ0, the frontier pattern reappearing under a jointly consistent score, directionally but not yet significantly at this width (DM $\approx 0.9$,
-$p \approx 0.17$).
+of the panel, full-panel re-run pre-committed). On the
+large-cap sandbox subset used to fix the score's orientation, a
+Gaussian-innovation GARCH is significantly worst at both the 2.5\% and 1\%
+levels (DM 5.4 and 6.0): under a jointly consistent score, Gaussian innovations
+are decisively inadequate. Among the fat-tailed entrants the FZ0 differences on
+large caps are small ($|$DM$|<1.4$), the frontier's own prediction that the
+shape edge is flat on well-behaved names; on a high-kurtosis subset the ordering
+favors the shape-aware forecaster, directionally but not yet significantly at
+that width. The pre-committed full-panel re-run, reported next, settles the
+magnitudes on the engine's own forecasts.
 
 On the full 200-name
 panel ($221.6$k test asset-days), with VaR and ES read from the
@@ -1956,7 +1954,7 @@ the bands are widest: in the top misspecification decile the
 static shift's joint-score deficit reaches DM $-6.7$. The coverage
 property costs sharpness under
 a strictly consistent score, and its error direction is conservative
-(wider bands, fewer breaches than nominal). A desk that prizes the
+(wider bands, fewer breaches than nominal). A desk that values the
 conservative coverage margin keeps the shift; one scored on FZ0
 efficiency
 runs the EVT tail alone, which passes the exception battery on its
@@ -2062,38 +2060,44 @@ VaR, zero under a correct ES \citep{mcneilfrey2000}; and the Acerbi--Sz\'ekely
 used for forecast comparison; \citet{noldeziegel2017elicitability} and
 \citet{bayer2022esr} draw the distinction between backtesting the calibration of
 an ES forecast and comparing forecasts through a jointly consistent score.
-Table~\ref{tab:esbt} reports the two calibration tests on the pooled test panel,
-with inference clustered by calendar date.
+Table~\ref{tab:esbt} reports the two calibration tests on the same $200$-name
+panel and $221{,}600$ held-out asset-days ($1{,}108$ test dates) as the
+full-panel FZ0 re-scoring, with the engine's VaR and ES read from its own
+coherent min-envelope curve $Q^{*}$ --- the exact forecasts the joint loss
+scores, not a simpler proxy --- and inference by a stationary block bootstrap
+over calendar dates.
 
 Gaussian innovations are decisively inadequate in this daily-data battery: the
 Gaussian filter is worst on every ES metric, its mean exceedance residual
-reaching $-0.78$ standard deviations at the $1\%$ level ($Z_2=-1.07$). Among the
-fat-tailed entrants no model dominates every diagnostic. The EVT-tailed engine
-carries the $Z_2$ closest to zero at both levels and is the only entrant not
-rejected by the $1\%$ Kupiec exception test; at $2.5\%$ it and FHS are the only
-models McNeil--Frey does not reject (engine mean exceedance residual $-0.02$,
-$p=0.49$), while GARCH-$t$ and the Gaussian filter are. The limitation is the
-$1\%$ tail: there every model's mean exceedance residual is significantly
-negative, the engine included, and FHS's is in fact marginally closer to zero
-than the engine's ($-0.19$ against $-0.24$), though both are rejected. Standard
-errors cluster on the $1{,}108$ trading dates rather than treat the $155{,}120$
-asset-days as independent: the $140$ names share market shocks within a day, so a
-pooled-independent error would badly understate the sampling variability. Read
-within this daily-data battery, the message is
-consistent with the exception tests and the joint score: fat-tailed
-specifications materially improve tail calibration, the engine's tail is the
-best calibrated overall, and the $1\%$ tail on large caps leaves room that no
-daily model here closes.
+reaching $-0.77$ standard deviations at the $1\%$ level ($Z_2=-0.99$). Among the
+fat-tailed entrants no model dominates every diagnostic. On the Acerbi--Sz\'ekely
+$Z_2$ the engine is best calibrated in the tail: it carries the statistic closest
+to zero at $1\%$ ($-0.07$, not rejected) and is effectively tied with GARCH-$t$
+at $2.5\%$ ($-0.11$ against $-0.10$). The engine and GARCH-$t$ are the two
+entrants that pass the $1\%$ Kupiec unconditional-coverage test; FHS and the
+Gaussian filter fail it. On the McNeil--Frey exceedance residual FHS --- which
+fits the empirical residual tail directly --- sits closest to zero and is the
+only entrant the test does not reject at $1\%$ ($-0.10$, $p=0.07$); at $2.5\%$
+FHS, GARCH-$t$ and the engine all fall inside the non-rejection region. Standard
+errors come from a stationary block bootstrap over the $1{,}108$ trading dates
+rather than treating the $221{,}600$ asset-days as independent: the $200$ names
+share market shocks within a day, so a pooled-independent error would badly
+understate the sampling variability. The reading is consistent with the exception
+tests and the joint score: fat tails materially improve tail calibration, the
+engine and GARCH-$t$ are the best-calibrated pair on the direct tests, and the
+engine's decisive margin is the comparative FZ0 loss, where it beats both
+GARCH-$t$ and FHS at each level.
 
 \begin{table}[t]
 \centering
 \begin{threeparttable}
-\caption{Direct expected-shortfall backtests. 140 CRSP names, pooled test
-panel. Breach is the realized exception rate (target $\alpha$); Kupiec $p$ is
-the unconditional-coverage test. $Z_2$ is the Acerbi--Sz\'ekely (2014)
-statistic, negative when ES understates the tail. MF is the McNeil--Frey (2000)
-mean exceedance residual (standardized loss beyond VaR, zero under correct ES)
-with its bootstrap $p$.}
+\caption{Direct expected-shortfall backtests. $200$ CRSP names, pooled test
+panel --- the same held-out rows as the full-panel FZ0 re-scoring; the engine's
+VaR and ES are its own coherent min-envelope forecasts. Breach is the realized
+exception rate (target $\alpha$); Kupiec $p$ is the pooled unconditional-coverage
+test. $Z_2$ is the Acerbi--Sz\'ekely (2014) statistic, negative when ES
+understates the tail. MF is the McNeil--Frey (2000) mean exceedance residual
+(standardized loss beyond VaR, zero under correct ES) with its bootstrap $p$.}
 \label{tab:esbt}
 \small\setlength{\tabcolsep}{5pt}
 \begin{tabular}{lcccc|cccc}
@@ -2102,17 +2106,21 @@ with its bootstrap $p$.}
 \cmidrule(lr){2-5}\cmidrule(lr){6-9}
 Model & Breach & Kupiec\,$p$ & $Z_2$ & MF ($p$) & Breach & Kupiec\,$p$ & $Z_2$ & MF ($p$) \\
 \midrule
-GARCH-normal & $0.027$ & $0.00$ & $-0.36$ & $-0.56\,(0.00)$ & $0.016$ & $0.00$ & $-1.07$ & $-0.78\,(0.00)$ \\
-GARCH-$t$ & $0.028$ & $0.00$ & $-0.14$ & $-0.07\,(0.00)$ & $0.011$ & $0.03$ & $-0.14$ & $-0.29\,(0.00)$ \\
-GARCH-FHS & $0.028$ & $0.00$ & $-0.14$ & $-0.02\,(0.39)$ & $0.011$ & $0.00$ & $-0.18$ & $-0.19\,(0.00)$ \\
-Engine (hybrid$+$EVT) & $0.028$ & $0.00$ & $\mathbf{-0.12}$ & $\mathbf{-0.02\,(0.49)}$ & $0.010$ & $\mathbf{0.12}$ & $\mathbf{-0.12}$ & $-0.24\,(0.00)$ \\
+GARCH-normal & $0.027$ & $0.00$ & $-0.31$ & $-0.55\,(0.00)$ & $0.016$ & $0.00$ & $-0.99$ & $-0.77\,(0.00)$ \\
+GARCH-$t$ & $0.027$ & $0.00$ & $\mathbf{-0.10}$ & $-0.05\,(0.14)$ & $0.010$ & $\mathbf{0.17}$ & $-0.09$ & $-0.23\,(0.00)$ \\
+GARCH-FHS & $0.031$ & $0.00$ & $-0.24$ & $\mathbf{+0.01\,(0.84)}$ & $0.012$ & $0.00$ & $-0.29$ & $\mathbf{-0.10\,(0.07)}$ \\
+Engine (EVT-tailed) & $0.027$ & $0.00$ & $-0.11$ & $-0.04\,(0.26)$ & $0.010$ & $\mathbf{0.15}$ & $\mathbf{-0.07}$ & $-0.14\,(0.04)$ \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item Inference for the McNeil--Frey and $Z_2$ $p$-values clusters on the
-$1{,}108$ trading dates rather than treating the $155{,}120$ asset-days as
-independent, since the $140$ names share within-day market shocks. Kupiec is the
-analytic unconditional-coverage test. Source: \texttt{es\_backtests\_results.json}.
+\item Inference for the McNeil--Frey and $Z_2$ $p$-values is a stationary block
+bootstrap over the $1{,}108$ trading dates (mean block ten dates) rather than
+treating the $221{,}600$ asset-days as independent, since the $200$ names share
+within-day market shocks. Kupiec is the pooled analytic unconditional-coverage
+test, hypersensitive at this sample size (every model is rejected at $2.5\%$).
+The deployed engine adds a $97.5\%$ conformal shift and is conservative out of
+era (breach $1.7\%$, $Z_2=+0.29$ at $2.5\%$), overstating the tail in the
+regulator-preferred direction. Source: \texttt{engine\_esbt\_results.json}.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -2132,9 +2140,10 @@ jointly by Gaussian quasi-maximum likelihood.
 
 Two facts follow, and together they locate the frontier. The realized scale is a
 materially better conditional scale: the Realized GARCH lowers the joint FZ0 score
-well below the daily-data accuracy core at both regulatory levels (DM $6.0$ at
-2.5\%, $4.5$ at 1\%). Intraday information prices volatility more sharply than any
-daily filter, and the joint score rewards it.
+well below the daily-data accuracy core at both regulatory levels (DM $6.2$ at
+2.5\%, $4.5$ at 1\%), and the economic gap is largest in the top misspecification
+decile, where the daily scale is coarsest. Intraday information prices volatility
+more sharply than any daily filter, and the joint score rewards it.
 
 The gain is scale, not shape. We hold the realized scale fixed and ask whether the
 estimator's distinctive stages still contribute: we replace only the scale (daily
@@ -2142,8 +2151,9 @@ GARCH by the Realized GARCH), leave the pooled state-conditioned residual-quanti
 learner, the EVT tail, and the misspecification score unchanged, and recompute the
 standardized residuals from scratch. Table~\ref{tab:rgarch} reports the
 decomposition. Once the scale is realized, adding the pooled shape learner or the
-EVT tail moves the FZ0 score within noise, in magnitude below one Diebold--Mariano
-standard error both overall and in the top realized-residual score decile. The
+EVT tail moves the FZ0 score within noise, every stage's Diebold--Mariano statistic
+against the realized benchmark below $1.4$ in magnitude, both overall and in the top
+realized-residual score decile. The
 residual-shape signal that orders the frontier on daily-GARCH residuals is, on
 these large-capitalization names, largely absorbed once the conditional scale is
 measured properly.
@@ -2180,11 +2190,11 @@ that realized benchmark.}
 \toprule
 Model & FZ0 $2.5\%$ & DM & FZ0 $1\%$ & DM \\
 \midrule
-Daily core (GARCH-$t$ $+$ EVT) & $1.501$ & $+6.0$ & $1.774$ & $+4.5$ \\
-Realized scale $+$ residual quantile & $1.446$ & --- & $1.737$ & --- \\
-\quad $+$ EVT tail & $1.446$ & $-0.2$ & $1.740$ & $+1.4$ \\
-\quad $+$ pooled shape learner & $1.445$ & $-0.2$ & $1.739$ & $+0.3$ \\
-\quad $+$ shape $+$ EVT (realized-hybrid) & $1.446$ & $+0.1$ & $1.736$ & $-0.3$ \\
+Daily core (GARCH-$t$ $+$ EVT) & $1.500$ & $+6.2$ & $1.774$ & $+4.5$ \\
+Realized scale $+$ residual quantile & $1.445$ & --- & $1.716$ & --- \\
+\quad $+$ EVT tail & $1.444$ & $-0.3$ & $1.716$ & $+0.5$ \\
+\quad $+$ pooled shape learner & $1.445$ & $+0.2$ & $1.710$ & $-1.3$ \\
+\quad $+$ shape $+$ EVT (realized-hybrid) & $1.447$ & $+0.7$ & $1.718$ & $+0.6$ \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
@@ -2192,10 +2202,11 @@ Realized scale $+$ residual quantile & $1.446$ & --- & $1.737$ & --- \\
 by regular sale conditions, a daily price band, and a $20\%$ return clip. The daily
 core's DM is against the realized benchmark (it is the intraday-scale gain). The
 pooled shape learner is the paper's state-conditioned residual-quantile model,
-retrained on the realized-scale residuals; its top-decile DM against the realized
-benchmark reaches $-1.4$ at $1\%$ (directional, not significant). Returns are CRSP
-daily; the intersection is common across models. Source:
-\texttt{rgarch\_bench\_results.json}, \texttt{realized\_hybrid\_results.json}.
+retrained on the realized-scale residuals; its DM against the realized benchmark
+stays within $1.4$ in magnitude at both levels and in the top score decile
+(directional, not significant). All five rows share one pipeline and the same
+$20$-node ES integral. Returns are CRSP daily; the intersection is common across
+models. Source: \texttt{scaleshape\_canonical\_results.json}.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -2341,11 +2352,12 @@ is in stratifying where the flexible model helps, not in timing a daily switch.
 
 \section*{Acknowledgments}
 \addcontentsline{toc}{section}{Acknowledgments}
-We thank seminar participants and colleagues for comments. All errors
-are ours.
+I thank Wenxin Jiang for his advice and guidance throughout this
+research, and seminar participants and colleagues for comments. All
+errors are mine.
 AI assistance (Anthropic's Claude) was used in drafting and editing
-the manuscript and in developing analysis code; the authors designed
-the research, verified all results, and are responsible for the
+the manuscript and in developing analysis code; the author designed
+the research, verified all results, and is responsible for the
 content.
 
 \section*{Data and code availability}

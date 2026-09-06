@@ -1,0 +1,134 @@
+{
+  "note": "FATAL-2 fix: ONE canonical scale-shape pipeline. 30 TAQ names, same test rows, dense 20-node ES for every row, all DMs date-clustered NW(5) vs rg_uncond (proper HHS realized scale + unconditional residual quantile). daily_core = daily GARCH-t scale + EVT tail (computed here, same names). DM>0 worse than rg_uncond.",
+  "n_names": 30,
+  "per_alpha": {
+    "alpha_0.025": {
+      "FZ0": {
+        "daily_core": 1.5003,
+        "rg_uncond": 1.4446,
+        "rg_evt": 1.4444,
+        "rg_shape": 1.4453,
+        "rg_hybrid": 1.4468
+      },
+      "n_scored": 33240,
+      "DM_vs_rg_uncond": {
+        "daily_core": {
+          "dFZ0": 0.05571,
+          "DM": 6.18,
+          "n": 1108
+        },
+        "rg_evt": {
+          "dFZ0": -0.00018,
+          "DM": -0.26,
+          "n": 1108
+        },
+        "rg_shape": {
+          "dFZ0": 0.0007,
+          "DM": 0.18,
+          "n": 1108
+        },
+        "rg_hybrid": {
+          "dFZ0": 0.00222,
+          "DM": 0.73,
+          "n": 1108
+        }
+      },
+      "topdecile_DM_vs_rg_uncond": {
+        "rg_shape_d9": {
+          "dFZ0": 0.00602,
+          "DM": 0.31,
+          "n": 1000
+        },
+        "rg_hybrid_d9": {
+          "dFZ0": -0.00914,
+          "DM": -0.59,
+          "n": 1000
+        },
+        "daily_core_d9": {
+          "dFZ0": 0.11269,
+          "DM": 2.81,
+          "n": 1000
+        },
+        "rg_shape_d789": {
+          "dFZ0": 0.00733,
+          "DM": 0.85,
+          "n": 1106
+        },
+        "rg_hybrid_d789": {
+          "dFZ0": 0.00321,
+          "DM": 0.58,
+          "n": 1106
+        },
+        "daily_core_d789": {
+          "dFZ0": 0.0642,
+          "DM": 4.56,
+          "n": 1106
+        }
+      }
+    },
+    "alpha_0.01": {
+      "FZ0": {
+        "daily_core": 1.7744,
+        "rg_uncond": 1.7155,
+        "rg_evt": 1.7162,
+        "rg_shape": 1.71,
+        "rg_hybrid": 1.7177
+      },
+      "n_scored": 33240,
+      "DM_vs_rg_uncond": {
+        "daily_core": {
+          "dFZ0": 0.05885,
+          "DM": 4.54,
+          "n": 1108
+        },
+        "rg_evt": {
+          "dFZ0": 0.00066,
+          "DM": 0.5,
+          "n": 1108
+        },
+        "rg_shape": {
+          "dFZ0": -0.0055,
+          "DM": -1.32,
+          "n": 1108
+        },
+        "rg_hybrid": {
+          "dFZ0": 0.0022,
+          "DM": 0.61,
+          "n": 1108
+        }
+      },
+      "topdecile_DM_vs_rg_uncond": {
+        "rg_shape_d9": {
+          "dFZ0": -0.00022,
+          "DM": -0.01,
+          "n": 1000
+        },
+        "rg_hybrid_d9": {
+          "dFZ0": -0.00687,
+          "DM": -0.52,
+          "n": 1000
+        },
+        "daily_core_d9": {
+          "dFZ0": 0.12947,
+          "DM": 1.98,
+          "n": 1000
+        },
+        "rg_shape_d789": {
+          "dFZ0": -0.00469,
+          "DM": -0.34,
+          "n": 1106
+        },
+        "rg_hybrid_d789": {
+          "dFZ0": -0.00118,
+          "DM": -0.17,
+          "n": 1106
+        },
+        "daily_core_d789": {
+          "dFZ0": 0.06426,
+          "DM": 3.2,
+          "n": 1106
+        }
+      }
+    }
+  }
+}

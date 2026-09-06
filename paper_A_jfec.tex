@@ -49,10 +49,7 @@
 \title{Semiparametric Value-at-Risk and Expected Shortfall\\
 with a Real-Time Misspecification Score}
 \author{%
-  Sean Qin\thanks{Corresponding author. E-mail:
-  \texttt{sean.qin@u.northwestern.edu}.}
-  \and
-  Wenxin Jiang\thanks{E-mail: \texttt{wjiang@northwestern.edu}.}\\[4pt]
+  Sean Qin\thanks{E-mail: \texttt{sean.qin@u.northwestern.edu}.}\\[4pt]
   \normalsize Department of Statistics and Data Science, Northwestern
   University, Evanston, IL 60208}
 \date{Draft: \today}
@@ -176,7 +173,7 @@ HS, and GJR-skew-$t$, and attains the lowest joint $(\VaR,\ES)$ FZ0
 score among these daily-data benchmarks at both FRTB levels with exception counts near nominal through a
 2008-crisis window. Two formal results motivate the search: a pinball
 regret identity, by which a forecaster's excess loss is locally quadratic in
-its quantile wedge so an edge concentrates where the wedge is largest,
+its quantile wedge, so larger quantile wedges generate larger regret,
 and a tail-wedge proposition, by which innovation-shape misspecification
 opens that wedge in the tail.
 
@@ -641,8 +638,8 @@ $\tau$-sampling, $\lambda = \tfrac12\,U(0,1) +
 \tfrac12\,\mathrm{Beta}(0.3,0.3)$, oversampling the extremes that
 uniform sampling starves (the raw net's 99\% breach rate was 3.2\%);
 monotone rearrangement of the $\tau$-curve; and the conformal layer of
-Section~\ref{sec:hybrid}. The network's earning is not point accuracy
-but generation: with $\tau\sim U(0,1)$,
+Section~\ref{sec:hybrid}. The network's role is generation rather than
+point accuracy: with $\tau\sim U(0,1)$,
 $z^{*} = H_\phi(s,\tau)$ draws from the fitted conditional law by
 inverse transform. The network learns one continuous
 state-conditional quantile map, so draws are available directly,
@@ -1042,7 +1039,7 @@ The design panels are split per name, 60/40 in each name's own time
 index. In an unbalanced panel such a rule can place one name's
 training window on another name's test dates, so a pooled learner
 could meet a systemic event in training that a per-name model would only meet out of sample, a leak that needs no individual feature
-to look ahead. We concede the point in principle: a per-asset split
+to look ahead. In principle this is correct: a per-asset split
 cannot by itself support a causal reading of a pooled edge. Here the
 channel is nearly degenerate (near-complete histories put split
 points on almost the same date), but nearly is not zero, so we settle it
@@ -1610,7 +1607,7 @@ error is the one regulators prefer.
 
 Adding SAV-CAViaR, a model
 absent from banks' standard toolkit
-but the strongest semiparametric
+but a leading semiparametric
 academic benchmark, produces a statistical tie: CAViaR 0.3461 vs
 hybrid 0.3460 (DM 0.4, $p=0.34$; the CAViaR study's common sample
 differs slightly from Table~\ref{tab:frtb}'s, which is why the hybrid's
@@ -1651,15 +1648,16 @@ alone but the pair $(\VaR,\ES)$ is jointly elicitable under the
 Fissler--Ziegel class \citep{fissler2016}, the battery was re-checked
 under the FZ0 joint score (orientation validated by Monte Carlo against
 a known-truth $t_5$ before any ranking was read; first sandbox subsets
-of the panel, full-panel re-run pre-committed). On a
-45-name large-cap subset, a Gaussian-innovation GARCH is significantly
-worst at both the 2.5\% and 1\% levels (DM 5.4 and 6.0): under a
-jointly consistent score, fat tails are strictly necessary. Among the fat-tailed entrants (GARCH-$t$, FHS, and the hybrid$+$EVT) FZ0 differences on large caps are statistically indistinguishable
-($|$DM$|<1.4$): on the well-behaved segment the EVT stage's distinct
-value is its exception-test compliance, a calibration property the FZ0
-score does not reward. On a 40-name top-kurtosis subset the ordering
-flips and the hybrid$+$EVT attains the lowest FZ0, the frontier pattern reappearing under a jointly consistent score, directionally but not yet significantly at this width (DM $\approx 0.9$,
-$p \approx 0.17$).
+of the panel, full-panel re-run pre-committed). On the
+large-cap sandbox subset used to fix the score's orientation, a
+Gaussian-innovation GARCH is significantly worst at both the 2.5\% and 1\%
+levels (DM 5.4 and 6.0): under a jointly consistent score, Gaussian innovations
+are decisively inadequate. Among the fat-tailed entrants the FZ0 differences on
+large caps are small ($|$DM$|<1.4$), the frontier's own prediction that the
+shape edge is flat on well-behaved names; on a high-kurtosis subset the ordering
+favors the shape-aware forecaster, directionally but not yet significantly at
+that width. The pre-committed full-panel re-run, reported next, settles the
+magnitudes on the engine's own forecasts.
 
 On the full 200-name
 panel ($221.6$k test asset-days), with VaR and ES read from the
@@ -1692,7 +1690,7 @@ the bands are widest: in the top misspecification decile the
 static shift's joint-score deficit reaches DM $-6.7$. The coverage
 property costs sharpness under
 a strictly consistent score, and its error direction is conservative
-(wider bands, fewer breaches than nominal). A desk that prizes the
+(wider bands, fewer breaches than nominal). A desk that values the
 conservative coverage margin keeps the shift; one scored on FZ0
 efficiency
 runs the EVT tail alone, which passes the exception battery on its
@@ -1717,13 +1715,16 @@ exceedance-residual test \citep{mcneilfrey2000} and the Acerbi--Sz\'ekely (2014)
 $Z_2$ \citep{acerbi2014backtesting}, complement the jointly consistent FZ0 loss
 above; \citet{noldeziegel2017elicitability} and \citet{bayer2022esr} draw the
 distinction between backtesting the calibration of an ES forecast and comparing
-forecasts through a joint score. On the pooled panel (Online Appendix; inference
-clustered by calendar date over the $1{,}108$ test dates) the Gaussian filter is
-worst on every ES metric, and among the fat-tailed entrants the EVT-tailed engine
-is the best calibrated overall: it carries the $Z_2$ closest to zero at both
-levels and is the only entrant not rejected by the $1\%$ Kupiec test, while on the
-McNeil--Frey residual it and FHS trade places across levels and the $1\%$ tail
-rejects every model, which we report rather than smooth over.
+forecasts through a joint score. Computed on the engine's own min-envelope
+forecasts over the same $200$-name panel (Online Appendix; stationary block
+bootstrap over the $1{,}108$ test dates), the Gaussian filter is worst on every
+ES metric, and among the fat-tailed entrants no single model dominates every
+diagnostic: the engine carries the $Z_2$ closest to zero at $1\%$ and ties
+GARCH-$t$ at $2.5\%$, the engine and GARCH-$t$ are the pair that pass the $1\%$
+Kupiec test, and on the McNeil--Frey residual FHS, which targets the empirical
+tail directly, is closest to zero. The calibration tests show the engine's tail
+is well calibrated; its decisive result is the comparative FZ0 loss, where the
+edge over GARCH-$t$ and FHS is significant at both levels.
 
 \subsection{The ten-day horizon: a direct multi-day extension}
 
@@ -1779,7 +1780,7 @@ collected in the Online Appendix.
 
 \paragraph{The scale--shape decomposition.} Against a proper Realized GARCH
 \citep{hansen2012realized} on intraday data the daily-data core concedes FZ0 at
-both levels (DM $6.0$ and $4.5$); but re-fitting the shape learner, EVT tail, and
+both levels (DM $6.2$ and $4.5$); but re-fitting the shape learner, EVT tail, and
 score on the realized residuals leaves the score within noise, so on large caps
 the frontier is largely daily-scale misspecification, and elsewhere (day-one,
 illiquid, cross-asset) the only such diagnostic available (Online Appendix).
@@ -1897,11 +1898,12 @@ Statistics and Data Science [Undergraduate Research Fellowship Grant,
 2026].
 
 \section*{Acknowledgments}
-We thank seminar participants and colleagues for comments. All errors
-are ours.
+I thank Wenxin Jiang for his advice and guidance throughout this
+research, and seminar participants and colleagues for comments. All
+errors are mine.
 AI assistance (Anthropic's Claude) was used in drafting and editing
-the manuscript and in developing analysis code; the authors designed
-the research, verified all results, and are responsible for the
+the manuscript and in developing analysis code; the author designed
+the research, verified all results, and is responsible for the
 content.
 
 \section*{Conflict of interest}

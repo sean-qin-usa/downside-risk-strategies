@@ -1,3 +1,9 @@
+# [SUPERSEDED 2026-09-06] The paper's ES calibration backtests now come from job_engine_esbt.py,
+# which scores the REAL engine's own coherent min-envelope (VaR,ES) forecasts on the same 200-name
+# panel as the full-panel FZ0, with a STATIONARY BLOCK bootstrap over calendar dates. This file scored
+# a GARCH-t+GPD proxy labelled 'hybrid_evt' and used an iid date-cluster resample (the 'block bootstrap'
+# phrasing below was imprecise). Kept for provenance; it is no longer a paper source.
+
 # Modern ES/VaR backtests on the FRTB battery, pooled test panel (CRSP daily).
 #  - Kupiec (1995) unconditional-coverage LR test (VaR)
 #  - Acerbi-Szekely (2014) Test 2 (Z2) for ES (sign: <0 = ES understates risk)

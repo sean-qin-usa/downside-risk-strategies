@@ -1,0 +1,138 @@
+{
+  "note": "FATAL-1 fix: direct ES calibration backtests (Kupiec UC, Acerbi-Szekely 2014 Z2, McNeil-Frey 2000) computed on the REAL engine (coherent min-envelope Q*) per-day (VaR,ES), same 200-name panel/rows as the full-panel FZ0. Engine reported as ACCURACY LAYER (no conformal, == FZ0 engine) and DEPLOYED (conformal at 97.5%). Inference = STATIONARY BLOCK BOOTSTRAP over calendar dates (mean block 10). Z2<0 => ES understates the tail. MF exceedance residual =0 under correct ES. FZ0/DM recomputed as internal cross-check vs fz_fullpanel_results.json.",
+  "n_names": 200,
+  "n_test": 221600,
+  "n_dates": 1108,
+  "gpd": {
+    "u": -1.8866,
+    "xi": 0.2932,
+    "beta": 0.6412
+  },
+  "conf975": -0.3354,
+  "per_alpha": {
+    "0.01": {
+      "garch_norm": {
+        "breach": 0.0155,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.9925,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.7677,
+        "MF_p": 0.0,
+        "n_breach": 3428,
+        "meanFZ0": 2.27563,
+        "DM_vs_engine_noconf": 7.12,
+        "n_dates": 1108
+      },
+      "garch_t": {
+        "breach": 0.0103,
+        "kupiec_p": 0.1672,
+        "AS_Z2": -0.0949,
+        "AS_Z2_p": 0.1303,
+        "MF_exres": -0.2341,
+        "MF_p": 0.0002,
+        "n_breach": 2281,
+        "meanFZ0": 2.15572,
+        "DM_vs_engine_noconf": 4.8,
+        "n_dates": 1108
+      },
+      "fhs": {
+        "breach": 0.0124,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.2907,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.1008,
+        "MF_p": 0.0701,
+        "n_breach": 2737,
+        "meanFZ0": 2.17241,
+        "DM_vs_engine_noconf": 4.97,
+        "n_dates": 1108
+      },
+      "engine_noconf": {
+        "breach": 0.0103,
+        "kupiec_p": 0.1546,
+        "AS_Z2": -0.0674,
+        "AS_Z2_p": 0.2652,
+        "MF_exres": -0.1378,
+        "MF_p": 0.0377,
+        "n_breach": 2283,
+        "meanFZ0": 2.14749,
+        "DM_vs_engine_noconf": 0.0,
+        "n_dates": 1108
+      },
+      "engine_conf": {
+        "breach": 0.0103,
+        "kupiec_p": 0.1546,
+        "AS_Z2": -0.0674,
+        "AS_Z2_p": 0.2683,
+        "MF_exres": -0.1378,
+        "MF_p": 0.0377,
+        "n_breach": 2283,
+        "meanFZ0": 2.14749,
+        "DM_vs_engine_noconf": 0.0,
+        "n_dates": 1108
+      }
+    },
+    "0.025": {
+      "garch_norm": {
+        "breach": 0.0266,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.312,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.549,
+        "MF_p": 0.0,
+        "n_breach": 5886,
+        "meanFZ0": 1.88442,
+        "DM_vs_engine_noconf": 8.38,
+        "n_dates": 1108
+      },
+      "garch_t": {
+        "breach": 0.0271,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.1045,
+        "AS_Z2_p": 0.0494,
+        "MF_exres": -0.0503,
+        "MF_p": 0.1429,
+        "n_breach": 6009,
+        "meanFZ0": 1.8542,
+        "DM_vs_engine_noconf": 5.12,
+        "n_dates": 1108
+      },
+      "fhs": {
+        "breach": 0.0308,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.2415,
+        "AS_Z2_p": 0.0,
+        "MF_exres": 0.0062,
+        "MF_p": 0.8374,
+        "n_breach": 6832,
+        "meanFZ0": 1.86245,
+        "DM_vs_engine_noconf": 5.46,
+        "n_dates": 1108
+      },
+      "engine_noconf": {
+        "breach": 0.0273,
+        "kupiec_p": 0.0,
+        "AS_Z2": -0.1082,
+        "AS_Z2_p": 0.0394,
+        "MF_exres": -0.0383,
+        "MF_p": 0.2581,
+        "n_breach": 6060,
+        "meanFZ0": 1.84892,
+        "DM_vs_engine_noconf": 0.0,
+        "n_dates": 1108
+      },
+      "engine_conf": {
+        "breach": 0.0166,
+        "kupiec_p": 0.0,
+        "AS_Z2": 0.2945,
+        "AS_Z2_p": 0.0,
+        "MF_exres": -0.1961,
+        "MF_p": 0.0,
+        "n_breach": 3681,
+        "meanFZ0": 1.86542,
+        "DM_vs_engine_noconf": 2.4,
+        "n_dates": 1108
+      }
+    }
+  }
+}
