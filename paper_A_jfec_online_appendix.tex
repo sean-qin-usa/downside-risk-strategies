@@ -236,19 +236,19 @@ in the lower-left regime.}
 \begin{tikzpicture}
 \begin{axis}[width=0.48\textwidth, height=4.6cm, ybar, bar width=4.5pt,
   xlabel={Decile of $\mathrm{mk}_{63}$}, ylabel={Edge over GARCH-$t$ (\%)},
-  xtick={1,2,3,4,5,6,7,8,9,10}, ymin=-0.3, ymax=2.8,
+  xtick={1,2,3,4,5,6,7,8,9,10}, ymin=-0.3, ymax=3.2,
   title={\small Residual excess kurtosis}, tick label style={font=\scriptsize}]
 \addplot[fill=npblue, draw=npblue] coordinates
-  {(1,0)(2,0)(3,0)(4,0)(5,0)(6,0)(7,0)(8,0)(9,0.52)(10,2.46)};
+  {(1,0)(2,0)(3,0)(4,0)(5,0)(6,0)(7,0)(8,0)(9,0.46)(10,2.98)};
 \end{axis}
 \end{tikzpicture}\hfill
 \begin{tikzpicture}
 \begin{axis}[width=0.48\textwidth, height=4.6cm, ybar, bar width=4.5pt,
   xlabel={Decile of $|\mathrm{sk}_{63}|$},
-  xtick={1,2,3,4,5,6,7,8,9,10}, ymin=-0.3, ymax=2.8,
+  xtick={1,2,3,4,5,6,7,8,9,10}, ymin=-0.3, ymax=3.2,
   title={\small Residual asymmetry}, tick label style={font=\scriptsize}]
 \addplot[fill=npmid, draw=npmid] coordinates
-  {(1,0)(2,0)(3,0)(4,0)(5,0)(6,0)(7,0)(8,0)(9,0.69)(10,2.37)};
+  {(1,0)(2,0)(3,0)(4,0)(5,0)(6,0)(7,0)(8,0)(9,0.59)(10,2.78)};
 \end{axis}
 \end{tikzpicture}
 \caption{The misspecification frontier. Nonparametric pinball edge over
@@ -256,7 +256,7 @@ GARCH-$t$ by decile of the trailing 63-day residual excess kurtosis
 (left) and residual asymmetry (right), 200 CRSP names, 221.6k test
 asset-days. Deciles 1--8 are $\approx 0$ (drawn at zero; exact bulk
 values in the result file); the edge jumps in the top decile
-($+2.46\%$ kurtosis, $+2.37\%$ asymmetry; per-date DM 6.5 in the top
+($+2.98\%$ kurtosis, $+2.78\%$ asymmetry; per-date DM 10.5 in the top
 kurtosis decile).}
 \label{fig:frontier}
 \end{figure}
@@ -281,12 +281,12 @@ evidence from configurations not deployed, which motivates the design.}
 Result & Magnitude & Significance \\
 \midrule
 vs GARCH-$t$ / EWMA / HS, $h{=}1$ (avg) & $+0.3$ / $+1.5$ / $+1.9\%$ & DM 4.4--8.3 \\
-Top misspecification decile & $+2.7\%$ & DM 6.5 \\
+Top misspecification decile & $+2.98\%$ & DM 10.5 \\
 Hyperinflation FX (ARS, EGP) & $+12$--$14\%$ & DM 2.9--3.8 \\
 Frontier equity indices (4 of 8) & $\sim$$+1$--$3\%$ & DM 2.1--3.5 \\
 2000--2013 frozen-spec holdout (untouched era) & top decile $+0.9\%$ & DM 2.2 (sort); recursive real-time rule $+1.0\%$, DM 2.15; frozen-constant restatement in text \\
 Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$; overall $+0.6\%$ & DM 6.6 / 9.0, frozen real-time thresholds \\
-Strict calendar splits; annual-refit walk-forward & top decile $+2.5\%$ under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 6.1 (walk-forward) \\
+Strict calendar splits; annual-refit walk-forward & top-decile edge holds under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 4.43 (annual-refit residual-hybrid walk-forward, $+2.09\%$) \\
 Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles \\
 Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\% & date-clustered $t$ 0.17 at 99\%; at 97.5\%, 0.35 (EVT tail) and $-1.09$ (static overlay, conservative); HS, EWMA fail \\
 Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.8--4.9 vs GARCH-$t$, FHS at 1\%, 5.1 at 2.5\%; 6.2--9.6 vs GAS; static shift concedes 2.5\% (DM $-1.6$), adaptive shift erases it (tie; top-decile cost remains) \\
@@ -354,7 +354,7 @@ Task / regime & Winner & Where \\
 \midrule
 Point quantile accuracy, tabular state & GBM (trees) & Section~3.2 of the paper \\
 Single asset, calm ($\sim$90\% of asset-days) & GARCH-$t$ & Section~5 of the paper \\
-Single asset, top misspecification decile & Nonparametric ($+2.7\%$, DM 6.5) & Section~5 of the paper \\
+Single asset, top misspecification decile & Nonparametric ($+2.98\%$, DM 10.5) & Section~5 of the paper \\
 Amortized cross-name panel, any regime & Nonparametric always; no gate & Section~5.4 of the paper \\
 Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & Section~6 of the paper \\
 \bottomrule
