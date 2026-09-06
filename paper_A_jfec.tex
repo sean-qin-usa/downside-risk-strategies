@@ -81,13 +81,14 @@ estimation.
 \section*{Introduction}\label{sec:intro}
 
 A risk model is judged on its worst days, and those are the days on which
-a fixed parametric tail is most likely to be wrong; the error is costly in
-both directions, tying up capital against risk that never arrives or
-leaving too little against the loss that does. Deciding when a more
-flexible model is worth its added complexity is therefore a practical
-question, and not only for the bank trading desks that Basel regulates:
-asset managers, hedge funds, and any function that forecasts a conditional
-tail face the same choice. Value-at-Risk (VaR) and Expected Shortfall
+a fixed parametric tail is most likely to be wrong. The error is costly in
+both directions. A forecast that runs high ties up capital against risk
+that never arrives, and one that runs low leaves too little against the
+loss that does. Deciding when a more flexible model is worth its added
+complexity is therefore a practical question. It is not only a question
+for the bank trading desks that Basel regulates. Asset managers, hedge
+funds, and any function that forecasts a conditional tail face the same
+choice. Value-at-Risk (VaR) and Expected Shortfall
 (ES), the forecasts at issue, summarize the downside risk of a trading
 book: the lower-tail quantile of the conditional return distribution, and
 the average loss beyond it. Three
@@ -108,7 +109,7 @@ econometric idea \citep{koenker1978}, and machine learning has scaled
 it up. Its members here are gradient-boosted quantile trees, neural
 implicit quantile networks (IQN) \citep{dabney2018iqn}, and the
 quantile-network generator of generative Bayesian computation (GBC)
-\citep{polson2023gbc}. GBC is a simulation-based posterior method; it
+\citep{polson2023gbc}. GBC is a simulation-based posterior method. It
 becomes a conditional quantile learner once its forward simulator is
 replaced by observed state and return pairs, as
 Section~\ref{sec:background} does. These learners place no distributional restriction on the
@@ -117,17 +118,17 @@ state vector. Machine-learning models now forecast realized volatility better th
 heterogeneous-autoregressive benchmarks \citep{bucci2020,
 christensen2023ml}, and when pooled across a cross-section of US stocks
 they transfer to names outside the training set
-\citep{zhang2024commonality}. Whether a comparable advantage exists for
+\citep{zhang2024commonality}. This paper asks whether a comparable advantage exists for
 the quantile learners studied here, whether it reaches the regulatory
-tail, and on which days, is the question this paper takes up.
+tail, and on which days it appears.
 
-Industry practice sits between these classes. Under the Basel Fundamental Review of the Trading Book (FRTB), the workhorse internal models are historical simulation (HS), by far the most common method in bank disclosures \citep{perignonsmith2010}, and its GARCH-filtered variant (FHS) \citep{baroneadesi1999fhs}. The regulatory choice is not between a fixed model and a proprietary one but between a prescribed standardized formula and a bank's own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain. The same classical toolkit is what the buy side runs: asset managers and hedge funds, though outside Basel, forecast VaR and ES with historical simulation, parametric filters, and Monte Carlo, largely through vendor risk systems. The comparison in this paper is therefore against the methods in standard use across the industry, not a regulatory strawman. Forecasts are judged by VaR exception counts at 99\% and 97.5\%, and the reported measure is Expected Shortfall at the 97.5\% level. That measure is more than a diagnostic: the reported ES sets the market-risk capital a bank holds against its book \citep{bcbs2019frtb}, so errors are costly in both directions. A forecast that runs high ties up capital that could fund positions, while one that runs low raises the multiplier on the charge as exceptions accumulate. A method
+Industry practice sits between these classes. Under the Basel Fundamental Review of the Trading Book (FRTB), the workhorse internal models are historical simulation (HS), by far the most common method in bank disclosures \citep{perignonsmith2010}, and its GARCH-filtered variant (FHS) \citep{baroneadesi1999fhs}. The regulatory choice is not between a fixed model and a proprietary one but between a prescribed standardized formula and a bank's own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain. The same classical toolkit is what the buy side runs: asset managers and hedge funds, though outside Basel, forecast VaR and ES with historical simulation, parametric filters, and Monte Carlo, largely through vendor risk systems. The comparison in this paper is therefore against the methods in standard use across the industry, not a regulatory strawman. Forecasts are judged by VaR exception counts at 99\% and 97.5\%, and the reported measure is Expected Shortfall at the 97.5\% level. That measure is more than a diagnostic. The reported ES sets the market-risk capital a bank holds against its book \citep{bcbs2019frtb}, so errors are costly in both directions. A forecast that runs high ties up capital that could fund positions, while one that runs low raises the multiplier on the charge as exceptions accumulate. A method
 that claims to beat the industry standard must therefore beat HS and FHS
 on a jointly consistent $(\VaR,\ES)$ score at the 97.5\% level
 \citep{fissler2016}, since ES alone cannot be scored \citep{gneiting2011},
 and it must do so under exception-test discipline
-\citep{noldeziegel2017elicitability}; beating a vanilla GARCH on average
-loss is accordingly not enough, though neither is it trivial, since bank
+\citep{noldeziegel2017elicitability}. Beating a vanilla GARCH on average
+loss is accordingly not enough. Neither is it trivial, because bank
 internal models have historically failed to beat a simple GARCH fitted
 to their own profit and loss \citep{berkowitzobrien2002}. The GARCH
 filter is the floor of this paper's comparisons rather than its target.
@@ -157,9 +158,8 @@ the density-forecast diagnostics of \citet{berkowitz2001}. What is new is
 the use to which these diagnostics are put: computed on recent
 residuals, they predict when distribution-free quantile methods improve
 on parametric VaR/ES. Where residual-shape stress is high the flexible estimator has a large and significant advantage, and where it is low the advantage is statistically indistinguishable from zero in the design panel and a small positive in the point-in-time universe, with no detectable loss in either. The
-score's content is an ordering of magnitudes, with the edge
-concentrated in the top decile; there is no sharp threshold below which
-it vanishes.
+score's content is an ordering of magnitudes. The edge concentrates in
+the top decile, and there is no sharp threshold below which it vanishes.
 
 \medskip\noindent This paper makes three contributions. First, to the evaluation of VaR and ES forecasts and the comparison of competing conditional models, it introduces the misspecification frontier: a real-time, per-asset, per-day score that predicts when distribution-free quantiles beat a GARCH-$t$ benchmark, with significance from Diebold--Mariano tests on date-averaged loss differentials (the per-date DM of Section~\ref{sec:protocol}). The frontier is validated across four universes, namely CRSP US equities (top-decile edge $+2.98\%$, DM 10.5), foreign exchange (hyperinflation tier, pooled DM 4.12), twenty-six country indices (a developed-to-frontier-market gradient), and forty-three cross-asset instruments. A central contribution is to identify what that advantage is made of. Measured against a jump-robust GARCH that cannot overshoot its variance after a large shock, we show that most of it is the standard filter's post-outlier scale error, with a smaller but significant component surviving a robust scale (the top-decile $+2.98\%$ becomes $+0.3$--$0.5\%$, DM $2.5$--$4.7$). This attribution, drawn on a 200-name panel and tied to a live score, is new to the flexible-versus-parametric tail-risk literature. The Korea-2026 crash, which unfolded under circuit breakers and left residual kurtosis in its ordinary range, provides a falsification case that sharpens the claim: a price crash is not residual misspecification, and GARCH-$t$ wins there, as the frontier predicts.
 
@@ -950,60 +950,53 @@ tells the same story. It is the reason the score is read as a monitor of
 parametric-model stress, part scale and part shape, and not as a
 diagnostic of shape alone.
 
-\paragraph{Timing diagnostics.} The score is computed from residuals
-through day $t-1$ and paired with the day-$t$ loss. Online Appendix
-Figure~OA.1 probes that alignment. The one-day lag gives the largest
-top-decile edge in this returns-space diagnostic ($+2.69\%$, DM 6.5), and a five-day-old score retains
-$+1.67\%$ (DM 6.4). A deliberately contaminated same-day window, the
-alignment a look-ahead artifact would favor, yields less than
-the one-day lag ($+1.91\%$), and a one-day-ahead placebo gives $+1.92\%$,
-so same-day sorting does not manufacture the edge.
+\paragraph{Timing diagnostics.} The score uses residuals through day
+$t-1$ paired with the day-$t$ loss; Online Appendix Figure~OA.1 probes
+that alignment. The one-day lag gives the largest top-decile edge in this
+returns-space diagnostic ($+2.69\%$, DM 6.5) and a five-day-old score
+still retains $+1.67\%$ (DM 6.4), whereas a contaminated same-day window
+and a one-day-ahead placebo both yield less ($+1.91\%$, $+1.92\%$), so
+same-day sorting does not manufacture the edge.
 
 \paragraph{Non-anticipating decile boundaries.} The sort forms deciles
-once over the pooled test panel, so top-decile membership draws on the
-full-sample distribution of mk$_{63}$ even though the score itself is
-non-anticipating. Re-forming the $90$th-percentile cutoff at each date from only
-mk$_{63}$ observed on strictly earlier dates ($250$-day burn-in, the
-rule the monitor uses) leaves $86\%$ of membership unchanged
-and makes the sorting variable measurable at the forecast date, as the conditional test requires.
-The top-bucket edge holds at $+2.45\%$ (DM 8.3), essentially the
-full-sample figure, so the pooled-panel cutoff does not produce the
-concentration. A within-date cross-sectional decile, which is not the
-rule in use and forces $10\%$ occupancy on each date including calm
-cross-sections with no misspecified name, dilutes the edge to
-$+0.26\%$ (DM 2.2). The frontier ranks the absolute level of residual
-misspecification, not within-day position.
+once over the pooled test panel, so membership draws on the full-sample
+distribution of mk$_{63}$. Re-forming the $90$th-percentile cutoff at
+each date from only strictly earlier mk$_{63}$ ($250$-day burn-in, the
+rule the monitor uses) makes the sorting variable measurable at the
+forecast date and leaves $86\%$ of membership unchanged; the top-bucket
+edge holds at $+2.45\%$ (DM 8.3), so the pooled-panel cutoff does not
+produce the concentration. A within-date cross-sectional decile, which
+forces $10\%$ occupancy on every date including calm cross-sections,
+instead dilutes the edge to $+0.26\%$ (DM 2.2): the frontier ranks the
+absolute level of residual misspecification, not within-day position.
 
 \paragraph{An absorption test.} If the score were merely an omitted
 variable, a parametric-adjacent fix should capture the edge without a
-pooled learner. The natural candidate is per-name FHS with the residual
-window reweighted, by a Gaussian kernel, toward days whose mk$_{63}$
-resembles today's. On the full panel this reweighted FHS is
-significantly worse than plain FHS, both overall (per-date DM $-11.3$)
-and in the top decile (pinball 0.541 against 0.444), whereas the pooled
-model beats plain FHS there by $2.7\%$ (DM 8.8). The deterioration is
-consistent with a collapse of the effective sample, since sharp
-univariate conditioning shrinks a name's usable history exactly when
-today is unusual; pooling across names makes state-conditioning
-affordable, as it does for volatility forecasts
+pooled learner. Per-name FHS with its residual window Gaussian-reweighted
+toward days whose mk$_{63}$ resembles today's is significantly
+\emph{worse} than plain FHS, both overall (per-date DM $-11.3$) and in
+the top decile (pinball 0.541 against 0.444), where the pooled model
+instead beats plain FHS by $2.7\%$ (DM 8.8). Sharp univariate
+conditioning collapses a name's effective sample exactly when today is
+unusual; pooling across names makes state-conditioning affordable
 \citep{bollerslev2018risk, zhang2024commonality}, because the amortized
-model of Section~\ref{sec:gbcmethod} borrows shape information from
-every name's stressed days.
+model of Section~\ref{sec:gbcmethod} borrows shape information from every
+name's stressed days.
 
-\paragraph{Robustness of the score.} Online Appendix Table~OA.2 sorts test asset-days independently into
-quintiles of mk$_{63}$ and of trailing volatility (rv$_{63}$). High volatility without a shape break carries no edge (top-volatility column, bottom four kurtosis quintiles: $-0.57\%$ to $+0.10\%$), and a shape break without an active regime carries almost none (top-kurtosis row, calmest quintile: $-0.10\%$, DM 0.7). The product state carries $+2.33\%$ with DM 6.4. The two ingredients interact: the score flags a currently wrong parametric shape, and volatility scales the cost of the error. A
-superior-predictive-ability test \citep{hansen2005spa} on the per-date
-loss panel against the full set of industry benchmarks (GARCH-$t$, FHS, EWMA, HS)
-returns $T^{\mathrm{SPA}} = 0$, consistent $p = 1.00$: no rival's
-advantage is positive, and each is individually worse with
-$t \geq 5.8$. The score also needs no recalibration: holding the
-design-era top-decile threshold fixed, the top-decile edge is positive
-in each test year from 2020 to 2024 (between $+1.7\%$ and $+3.4\%$),
-even though the cross-sectional 90th percentile of mk$_{63}$ drifts
-upward in 2023--24. The score is a slow
-state, so monitoring it costs little: a median name enters the top
-decile less than once a year (0.68 entries) and a median episode lasts
-24 trading days.
+\paragraph{Robustness of the score.} A double sort into quintiles of
+mk$_{63}$ and of trailing volatility (Online Appendix Table~OA.2) shows
+the two ingredients interacting: high volatility without a shape break
+carries no edge and a shape break in the calmest regime almost none
+($-0.10\%$, DM 0.7), while the product state carries $+2.33\%$ (DM 6.4).
+A superior-predictive-ability test \citep{hansen2005spa} against the
+industry benchmarks (GARCH-$t$, FHS, EWMA, HS) returns
+$T^{\mathrm{SPA}}=0$ ($p=1.00$; each rival worse with $t\ge 5.8$). The
+score needs no recalibration: with the design-era threshold held fixed
+the top-decile edge is positive in every test year from 2020 to 2024
+($+1.7\%$ to $+3.4\%$) despite an upward drift in the cross-sectional
+90th percentile of mk$_{63}$. It is a slow state, so monitoring costs
+little: a median name enters the top decile less than once a year (0.68
+entries) and a median episode lasts 24 trading days.
 
 \paragraph{The untouched-era holdout.} Each design choice in this paper
 was made on data from 2014 onward. As a guard against specification
@@ -1264,14 +1257,14 @@ shape edge is flat on well-behaved names. On a high-kurtosis subset the ordering
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=0.7\linewidth,height=5cm, ybar, bar width=9pt,
+\begin{axis}[width=0.7\linewidth,height=5cm, ybar, bar width=7pt,
   ymin=0, ymax=0.095, ylabel={Excess FZ0 vs.\ the accuracy layer},
-  symbolic x coords={GARCH-$t$,FHS,GAS}, xtick=data,
+  symbolic x coords={GARCH-$t$,Taylor,FHS,GAS}, xtick=data,
   enlarge x limits=0.28, ymajorgrids,
   legend style={font=\footnotesize,at={(0.03,0.97)},anchor=north west,draw=none},
   tick label style={font=\footnotesize}, label style={font=\footnotesize}]
-\addplot[fill=npblue,draw=npblue] coordinates {(GARCH-$t$,0.00832)(FHS,0.02502)(GAS,0.08473)};
-\addplot[fill=npmid,draw=npmid] coordinates {(GARCH-$t$,0.00543)(FHS,0.01368)(GAS,0.05047)};
+\addplot[fill=npblue,draw=npblue] coordinates {(GARCH-$t$,0.00848)(Taylor,0.01748)(FHS,0.02517)(GAS,0.08514)};
+\addplot[fill=npmid,draw=npmid] coordinates {(GARCH-$t$,0.00545)(Taylor,0.00024)(FHS,0.01370)(GAS,0.05030)};
 \legend{$\alpha=1\%$,$\alpha=2.5\%$}
 \end{axis}
 \end{tikzpicture}
@@ -1280,11 +1273,14 @@ residual-hybrid's accuracy layer (the EVT-tailed variant without the
 conformal shift), on the full 200-name panel. A positive bar
 means worse than the accuracy layer. The accuracy layer (the zero baseline) attains the
 lowest FZ0 at both regulatory levels, beating GARCH-$t$ (DM $4.8$ at
-$1\%$, $5.1$ at $2.5\%$) and FHS (DM $4.9$).}
+$1\%$, $5.1$ at $2.5\%$) and FHS (DM $4.9$), together with the two
+FZ-estimated dynamic-ES benchmarks fitted per name by multi-start FZ0
+minimization, the GAS of \citet{patton2019} (DM $9.5$ and $8.6$) and the
+ES-CAViaR of \citet{taylor2019} (DM $3.6$ at $1\%$, a tie at $2.5\%$).}
 \label{fig:fz0}
 \end{figure}
 
-On the full 200-name panel ($221.6$k test asset-days), VaR and ES are read from the coherent min-envelope curve $Q^{*}$ and per-date DM inference is used throughout. The residual-hybrid's \emph{accuracy layer}, the EVT-tailed variant with no conformal shift, attains the lowest FZ0 at both regulatory levels. At 1\% it beats GARCH-$t$ (DM 4.8) and FHS (DM 4.9), the two standard benchmarks the accuracy claim rests on. A per-name one-factor GAS model for $(\VaR,\ES)$ estimated by FZ0 minimization \citep{patton2019} loses by more (DM 9.6 at 1\%, 6.2 at 2.5\%). We read that comparison as indicative only. A few names' GAS optimizers destabilize at 1\% and inflate the gap, and a three-start re-estimate settles the stable 2.5\% comparison near DM 5.9. At 2.5\% the accuracy layer again wins over GARCH-$t$ (DM 5.1). This ranking survives the annual walk-forward refit of Section~\ref{sec:calendarleak}: re-estimating every stage at each January-1 cutoff and re-scoring the 2020--2024 panel, the accuracy layer keeps the lowest FZ0 at both levels, beating GARCH-$t$ and FHS by DM 3.6 and 2.7 at 1\% and 3.1 and 2.6 at 2.5\% (one-sided $p<0.005$). Refitting narrows these margins but does not close them, unlike the average pinball edge, which closes under the same refit. The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels and passes the aggregate date-clustered exception test at 99\% and marginally at 97.5\%. Per-name diagnostics show residual cross-sectional calibration heterogeneity (84\% and 86\% pass rates at 99\%, Online Appendix Figure~OA.2). The one failed test is the pooled 155k-observation Kupiec at 97.5\%, which at this sample size rejects very small deviations. The frontier concentrates the joint-score
+On the full 200-name panel ($221.6$k test asset-days), VaR and ES are read from the coherent min-envelope curve $Q^{*}$ and per-date DM inference is used throughout. The residual-hybrid's \emph{accuracy layer}, the EVT-tailed variant with no conformal shift, attains the lowest FZ0 at both regulatory levels. At 1\% it beats GARCH-$t$ (DM 4.8) and FHS (DM 4.9), the two standard benchmarks the accuracy claim rests on. At 2.5\% it again wins over GARCH-$t$ (DM 5.1). The two FZ-estimated dynamic $(\VaR,\ES)$ models a referee would turn to next are the one-factor score-driven GAS of \citet{patton2019} and the ES-CAViaR of \citet{taylor2019}. Each is estimated per name on the same panel by minimizing the same FZ0 loss, and under a three-start optimizer both converge for all $200$ names, so the single-start instability of an earlier attempt does not arise. The accuracy layer beats the GAS at both levels (DM 9.5 at 1\%, 8.6 at 2.5\%), and it beats the Taylor model at 1\% (DM 3.6) while tying it at 2.5\% (DM 0.1), the near-tie the fat-tailed benchmarks all show at 2.5\% where the shape edge is thin. This ranking survives the annual walk-forward refit of Section~\ref{sec:calendarleak}: re-estimating every stage at each January-1 cutoff and re-scoring the 2020--2024 panel, the accuracy layer keeps the lowest FZ0 at both levels, beating GARCH-$t$ and FHS by DM 3.6 and 2.7 at 1\% and 3.1 and 2.6 at 2.5\% (one-sided $p<0.005$). Refitting narrows these margins but does not close them, unlike the average pinball edge, which closes under the same refit. The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels and passes the aggregate date-clustered exception test at 99\% and marginally at 97.5\%. Per-name diagnostics show residual cross-sectional calibration heterogeneity (84\% and 86\% pass rates at 99\%, Online Appendix Figure~OA.2). The one failed test is the pooled 155k-observation Kupiec at 97.5\%, which at this sample size rejects very small deviations. The frontier concentrates the joint-score
 edge as it does the pinball edge: the top misspecification decile
 carries DM 2.4 at the 1\% level against DM 0.2 in the panel bulk.
 Adding the conformal shift at 97.5\%, whose calibration split includes

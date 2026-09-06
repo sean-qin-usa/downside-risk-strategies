@@ -1,0 +1,87 @@
+{
+  "note": "Dynamic-ES benchmarks (PZC-2019 GAS + Taylor-2019 ES-CAViaR), FZ0-estimated per name with multi-start, scored on the SAME full-panel forecast rows as the engine. DM_t>0 means the row model has HIGHER (worse) FZ0 loss than the engine, date-clustered NW(10), one-sided p.",
+  "n_names": 200,
+  "n_test": 221600,
+  "gpd": {
+    "u": -1.8866,
+    "xi": 0.2932,
+    "beta": 0.6412
+  },
+  "conf975": -0.3416,
+  "gas_fails": 0,
+  "taylor_fails": 0,
+  "per_alpha": {
+    "0.01": {
+      "engine_meanFZ0": 2.14724,
+      "engine_breach": 0.0103,
+      "garch_t": {
+        "mean_diff": 0.00848,
+        "DM_t": 4.78,
+        "p_one_sided": 0.0,
+        "meanFZ0": 2.15572,
+        "breach": 0.0103,
+        "n_scored": 221600
+      },
+      "fhs": {
+        "mean_diff": 0.02517,
+        "DM_t": 4.94,
+        "p_one_sided": 0.0,
+        "meanFZ0": 2.17241,
+        "breach": 0.0124,
+        "n_scored": 221600
+      },
+      "gas_pzc": {
+        "mean_diff": 0.08514,
+        "DM_t": 9.51,
+        "p_one_sided": 0.0,
+        "meanFZ0": 2.23238,
+        "breach": 0.0092,
+        "n_scored": 221600
+      },
+      "taylor_al": {
+        "mean_diff": 0.01748,
+        "DM_t": 3.58,
+        "p_one_sided": 0.0002,
+        "meanFZ0": 2.16472,
+        "breach": 0.0098,
+        "n_scored": 221600
+      }
+    },
+    "0.025": {
+      "engine_meanFZ0": 1.84875,
+      "engine_breach": 0.0273,
+      "garch_t": {
+        "mean_diff": 0.00545,
+        "DM_t": 5.01,
+        "p_one_sided": 0.0,
+        "meanFZ0": 1.8542,
+        "breach": 0.0271,
+        "n_scored": 221600
+      },
+      "fhs": {
+        "mean_diff": 0.0137,
+        "DM_t": 5.27,
+        "p_one_sided": 0.0,
+        "meanFZ0": 1.86245,
+        "breach": 0.0308,
+        "n_scored": 221600
+      },
+      "gas_pzc": {
+        "mean_diff": 0.0503,
+        "DM_t": 8.6,
+        "p_one_sided": 0.0,
+        "meanFZ0": 1.89905,
+        "breach": 0.0253,
+        "n_scored": 221600
+      },
+      "taylor_al": {
+        "mean_diff": 0.00024,
+        "DM_t": 0.08,
+        "p_one_sided": 0.468,
+        "meanFZ0": 1.84899,
+        "breach": 0.0262,
+        "n_scored": 221600
+      }
+    }
+  }
+}
