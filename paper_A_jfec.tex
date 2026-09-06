@@ -58,16 +58,16 @@ with a Real-Time Misspecification Score}
 \let\footnote\endnote
 
 \begin{abstract}
-Value-at-Risk and Expected Shortfall are usually built from a parametric
-return distribution that is hard to beat on most days. We construct a
-real-time score, from trailing GARCH-standardized residuals, that predicts
-per asset and day when a distribution-free alternative wins, and decompose
-that advantage: a jump-robust GARCH shows most of it is the filter's
-variance overstatement after a shock, with a smaller significant part
-genuine conditional shape. The gain concentrates in the score's top
-decile; elsewhere the forecasts match. An amortized estimator attains the
-lowest joint (VaR, ES) loss against standard benchmarks and prices newly
-listed names from day one.
+Value-at-Risk and Expected Shortfall are typically built from a parametric
+distribution that is hard to beat on most days. A real-time score from
+trailing GARCH-standardized residuals predicts, for each asset and date,
+when a nonparametric alternative is more accurate; the advantage
+concentrates in the score's top decile (+3.0\% pinball, DM 10.5) and is
+negligible elsewhere. A jump-robust refit attributes most of it to
+variance overstatement after a shock, with a smaller but significant part
+surviving the refit. An amortized estimator attains the lowest joint (VaR,
+ES) loss against standard benchmarks and extends to newly listed assets
+without refitting.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall;
@@ -161,7 +161,7 @@ score's content is an ordering of magnitudes, with the edge
 concentrated in the top decile; there is no sharp threshold below which
 it vanishes.
 
-\medskip\noindent This paper makes three contributions. First, to the evaluation of VaR and ES forecasts and the comparison of competing conditional models, it introduces the misspecification frontier: a real-time, per-asset, per-day score that predicts when distribution-free quantiles beat a GARCH-$t$ benchmark, with significance from Diebold--Mariano tests on date-averaged loss differentials (the per-date DM of Section~\ref{sec:protocol}). The frontier is validated across four universes, namely CRSP US equities (top-decile edge $+2.98\%$, DM 10.5), foreign exchange (hyperinflation tier, pooled DM 4.12), twenty-six country indices (a developed-to-frontier-market gradient), and forty-three cross-asset instruments. A central contribution is to identify what that advantage is made of. Measured against a jump-robust GARCH that cannot overshoot its variance after a large shock, we show that most of it is the standard filter's post-outlier scale error, cleanly separated from a smaller but significant conditional-shape component that survives a robust scale (the top-decile $+2.98\%$ becomes $+0.3$--$0.5\%$, DM $2.5$--$4.7$). This attribution, drawn on a 200-name panel and tied to a live score, is new to the flexible-versus-parametric tail-risk literature. The Korea-2026 crash, which unfolded under circuit breakers and left residual kurtosis in its ordinary range, provides a falsification case that sharpens the claim: a price crash is not residual misspecification, and GARCH-$t$ wins there, as the frontier predicts.
+\medskip\noindent This paper makes three contributions. First, to the evaluation of VaR and ES forecasts and the comparison of competing conditional models, it introduces the misspecification frontier: a real-time, per-asset, per-day score that predicts when distribution-free quantiles beat a GARCH-$t$ benchmark, with significance from Diebold--Mariano tests on date-averaged loss differentials (the per-date DM of Section~\ref{sec:protocol}). The frontier is validated across four universes, namely CRSP US equities (top-decile edge $+2.98\%$, DM 10.5), foreign exchange (hyperinflation tier, pooled DM 4.12), twenty-six country indices (a developed-to-frontier-market gradient), and forty-three cross-asset instruments. A central contribution is to identify what that advantage is made of. Measured against a jump-robust GARCH that cannot overshoot its variance after a large shock, we show that most of it is the standard filter's post-outlier scale error, with a smaller but significant component surviving a robust scale (the top-decile $+2.98\%$ becomes $+0.3$--$0.5\%$, DM $2.5$--$4.7$). This attribution, drawn on a 200-name panel and tied to a live score, is new to the flexible-versus-parametric tail-risk literature. The Korea-2026 crash, which unfolded under circuit breakers and left residual kurtosis in its ordinary range, provides a falsification case that sharpens the claim: a price crash is not residual misspecification, and GARCH-$t$ wins there, as the frontier predicts.
 
 Second, to global pooled forecasting and cross-asset transfer, it shows that a single shape model pooled across hundreds of names (amortized, in the machine-learning sense that one fit serves every asset) carries transferable information about conditional tail shape: it replaces per-asset estimation of the innovation shape and transfers to names never seen in training. In its characteristics-only form it forecasts VaR and ES for assets with no return history at all, the day-one regime in which no per-asset model exists.
 
@@ -937,7 +937,7 @@ filter's post-outlier scale error rather than any error in the
 innovation shape. The two can be separated with a jump-robust GARCH,
 which bounds the squared-innovation news term at $K\sigma_{t-1}^2$ (a
 $\sqrt{K}$-sigma cap that keeps a single shock from propagating into the
-variance) and so cannot overshoot. Against that benchmark the top-decile
+variance) and so does not overshoot after a single shock. Against that benchmark the top-decile
 edge falls from $+2.98\%$ (DM $10.5$) to $+0.45\%$ (DM $4.7$) at a
 three-sigma cap and to $+0.27\%$ (DM $2.5$) at four sigma, while the
 robust filter alone accounts for $+3.17\%$ (DM $8.2$) of the
