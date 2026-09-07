@@ -546,6 +546,62 @@ This section collects the constructions summarized in Section~4 of the paper.
 
 \paragraph{The point-in-time universe.} The holdout's observation filter conditions on names present for most of the era, tilting the universe toward survivors. A point-in-time re-selection fixes the universe at the top 200 names by market capitalization as of Q1-2000, applies no minimum-history filter, and rides each delisting return to the end. On the 164 of 200 names that clear the symmetric fitting floors (36 dropped, 79 delisting returns ridden to the end), the overall edge is $+0.58\%$ at per-date DM 8.96 over 2{,}692 dates, the frozen design-era top bucket carries $+2.94\%$ at DM 6.6 ($5.9\%$ occupancy), and the bottom bucket is $+0.44\%$ (DM 5.4). The edge is larger than in the survivor-tilted holdout, so the observation filter biased the reported edge downward.
 
+\section{Estimator schematic and evaluation panels}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, minimum height=8.5mm,
+    inner sep=4pt, font=\small},
+  lab/.style={font=\scriptsize\itshape, align=center},
+  arr/.style={->, thick}]
+\node[box, fill=gray!8]    (ret)   at (0,0)      {returns $r_t$\\(one asset)};
+\node[box, fill=blue!12]   (garch) at (3.2,0)    {\textbf{Stage 1}\\GARCH-$t$ filter};
+\node[box, fill=blue!12]   (shape) at (7.2,0)    {\textbf{Stage 2}\\shape model $q_\phi(\tau\,|\,s_t)$};
+\node[box, fill=red!12]    (evt)   at (11.2,0)   {\textbf{Stage 3}\\GPD tail, $\tau\le p_0$};
+\node[box, fill=orange!22] (conf)  at (11.2,-2.6){\textbf{Stage 4}\\conformal shift $c_\tau$};
+\node[box, fill=gray!8]    (out)   at (4.6,-2.6) {forecast $\widehat{Q}_t(\tau)$};
+\node[box, dashed, fill=white] (pool) at (7.2,-4.4) {pooled residual panel\\$\{(s_{j,t},\widehat z_{j,t})\}$, all names $j$};
+\node[box, dashed, fill=white] (cal)  at (11.2,-4.4) {held-out\\calibration split};
+\draw[arr] (ret) -- (garch);
+\draw[arr] (garch) -- node[lab, above] {$\widehat z_t$, $s_t$} (shape);
+\draw[arr] (shape) -- node[lab, above] {splice at $p_0$} (evt);
+\draw[arr] (evt) -- (conf);
+\draw[arr] (conf) -- node[lab, above] {calibrated curve $\widetilde q$} (out);
+\draw[arr] ([xshift=-5mm]garch.south) |- node[lab, left, pos=0.25]
+  {$\widehat z$} (pool.west);
+\draw[arr] (pool.north) -- node[lab, right] {train} (shape.south);
+\draw[arr] (cal.north) -- (conf.south);
+\draw[arr, dashed] ([xshift=5mm]garch.south) |-
+  node[lab, left, pos=0.22] {$\widehat\sigma_t$} (out.west);
+\end{tikzpicture}
+\caption{The residual-hybrid estimator as a pipeline (Section~3 of the paper). Solid arrows carry data; the dashed top arrow carries the conditional scale $\widehat\sigma_t$ that rescales the finished residual quantile curve. Dashed boxes are inputs shared across assets (the pooled panel that trains the amortized shape model) or held out from training (the calibration split behind the conformal overlay).}
+\label{fig:pipeline}
+\end{figure}
+
+\begin{table}[h]
+\centering\small
+\begin{threeparttable}
+\caption{Sample flow across evaluation panels (Section~4 of the paper).}
+\label{tab:sampleflow}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lllrrl}
+\toprule
+Panel & Source & Era & Names & Test obs & Role \\
+\midrule
+Design equity panel & CRSP/WRDS & 2014--2024 & 200 & 221{,}600 & frontier map, estimator development \\
+Untouched-era holdout & CRSP/WRDS & 2000--2013 & 200 & 280{,}608 & frozen-spec replication \\
+Exception restatement & CRSP/WRDS & 2014--2024 & 140 & $\approx$155{,}000 & per-asset backtesting \\
+Cross-asset sweep & Bloomberg & through 2026 & 43 & \tnote{a} & frontier breadth \\
+Country indices & Bloomberg & through 2026 & 26 & \tnote{a} & frontier breadth \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item[a] Frozen exhibits. Per-instrument windows vary and are documented instrument-by-instrument in the repository.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \section{The two-regime example}
 \subsection*{A synthetic boundary check: when the frontier does
 \emph{not} appear}\label{sec:toy}

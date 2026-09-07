@@ -58,16 +58,16 @@ with a Real-Time Misspecification Score}
 \let\footnote\endnote
 
 \begin{abstract}
-Value-at-Risk and Expected Shortfall are typically built from a parametric
-distribution that is hard to beat on most days. A real-time score from
-trailing GARCH-standardized residuals predicts, for each asset and date,
-when a nonparametric alternative is more accurate; the advantage
-concentrates in the score's top decile (+3.0\% pinball, DM 10.5) and is
-negligible elsewhere. A jump-robust refit attributes most of it to
-variance overstatement after a shock, with a smaller but significant part
-surviving the refit. An amortized estimator attains the lowest joint (VaR,
-ES) loss against standard benchmarks and extends to newly listed assets
-without refitting.
+We forecast Value-at-Risk and Expected Shortfall with an amortized
+semiparametric estimator that keeps the GARCH volatility scale and learns
+the tail shape nonparametrically. The same fit forecasts newly listed
+assets with no history, evidence of a tail-shape mechanism shared across
+stocks. A real-time score of residual-shape stress flags when the flexible
+tail wins, an edge large and significant in its top decile and negligible
+elsewhere. A jump-robust refit traces most of it to variance overstatement
+after a shock, and a smaller but significant part to genuine conditional
+shape. The estimator attains the lowest joint (VaR, ES) loss against
+standard benchmarks.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall;
@@ -275,7 +275,7 @@ would silently exclude them.
 
 \subsection{The final model: the residual-hybrid estimator}\label{sec:hybrid}
 
-Figure~\ref{fig:pipeline} summarizes the estimator's stages and data flow; the paragraphs below define each stage.
+The paragraphs below define each stage of the estimator; a schematic of the full pipeline is in the Online Appendix.
 
 The estimator is a four-stage composition in the two-step tradition of filtered historical simulation and GARCH-EVT \citep{baroneadesi1999fhs, hullwhite1998, mcneilfrey2000}. The parametric
 filter estimates conditional scale, which it does well and with few
@@ -409,43 +409,6 @@ disjoint from the training data.
 refit on an annual walk-forward schedule. The paper's \emph{evaluated} protocol freezes each stage once per split, the more conservative test since no stage ever adapts to the test era. Section~\ref{sec:calendarleak} verifies the frontier separately under the true annual-refit schedule.
 }}
 
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[
-  box/.style={draw, rounded corners=2pt, align=center, minimum height=8.5mm,
-    inner sep=4pt, font=\small},
-  lab/.style={font=\scriptsize\itshape, align=center},
-  arr/.style={->, thick}]
-\node[box, fill=gray!8]    (ret)   at (0,0)      {returns $r_t$\\(one asset)};
-\node[box, fill=npblue!12] (garch) at (3.2,0)    {\textbf{Stage 1}\\GARCH-$t$ filter\\Eq.~\eqref{eq:garch}};
-\node[box, fill=npblue!12] (shape) at (7.2,0)    {\textbf{Stage 2}\\shape model $q_\phi(\tau\,|\,s_t)$\\Eq.~\eqref{eq:shapeERM}};
-\node[box, fill=gred!12]   (evt)   at (11.2,0)   {\textbf{Stage 3}\\GPD tail, $\tau\le p_0$\\Eq.~\eqref{eq:evt}};
-\node[box, fill=gold!18]   (conf)  at (11.2,-2.6){\textbf{Stage 4}\\conformal shift $c_\tau$\\Prop.~\ref{prop:conformal}};
-\node[box, fill=gray!8]    (out)   at (4.6,-2.6) {forecast $\widehat{Q}_t(\tau)$\\Eq.~\eqref{eq:hybrid}};
-\node[box, dashed, fill=white] (pool) at (7.2,-4.4) {pooled residual panel\\$\{(s_{j,t},\widehat z_{j,t})\}$, all names $j$};
-\node[box, dashed, fill=white] (cal)  at (11.2,-4.4) {held-out\\calibration split};
-\draw[arr] (ret) -- (garch);
-\draw[arr] (garch) -- node[lab, above] {$\widehat z_t$, $s_t$} (shape);
-\draw[arr] (shape) -- node[lab, above] {splice at $p_0$} (evt);
-\draw[arr] (evt) -- (conf);
-\draw[arr] (conf) -- node[lab, above] {calibrated curve $\widetilde q$} (out);
-\draw[arr] ([xshift=-5mm]garch.south) |- node[lab, left, pos=0.25]
-  {$\widehat z$} (pool.west);
-\draw[arr] (pool.north) -- node[lab, right] {train, Eq.~\eqref{eq:shapeERM}} (shape.south);
-\draw[arr] (cal.north) -- (conf.south);
-\draw[arr, dashed] ([xshift=5mm]garch.south) |-
-  node[lab, left, pos=0.22] {$\widehat\sigma_t$} (out.west);
-\end{tikzpicture}
-\caption{The residual-hybrid estimator as a pipeline. Solid arrows carry
-data. The dashed top arrow carries the conditional scale
-$\widehat\sigma_t$ that rescales the finished residual quantile curve. Dashed boxes are inputs shared across assets (the pooled panel that
-trains the amortized shape model) or held out from training (the
-calibration split behind the conformal overlay). In ongoing use each
-stage refits annually using only past data. The evaluated protocol
-freezes each stage once per split, and the annual-refit rerun is
-reported separately.}
-\label{fig:pipeline}
-\end{figure}
 
 \subsection{Estimating the shape: gradient boosting and neural quantile
 generation}\label{sec:gbcmethod}
@@ -643,31 +606,11 @@ markets), and the single-asset FRTB fits use Bloomberg terminal data.
 
 The replication repository carries code, configuration, and derived
 statistics, and the panels can be rebuilt from the queries above by any
-licensed subscriber. Table~\ref{tab:sampleflow} gives the sample flow.
-
-\begin{table}[t]
-\centering\small
-\begin{threeparttable}
-\caption{Sample flow across evaluation panels.}
-\label{tab:sampleflow}
-\footnotesize\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lllrrl}
-\toprule
-Panel & Source & Era & Names & Test obs & Role \\
-\midrule
-Design equity panel & CRSP/WRDS & 2014--2024 & 200 & 221{,}600 & frontier map, estimator development \\
-Untouched-era holdout & CRSP/WRDS & 2000--2013 & 200 & 280{,}608 & frozen-spec replication \\
-Exception restatement & CRSP/WRDS & 2014--2024 & 140 & $\approx$155{,}000 & per-asset backtesting \\
-Cross-asset sweep & Bloomberg & through 2026 & 43 & \tnote{a} & frontier breadth \\
-Country indices & Bloomberg & through 2026 & 26 & \tnote{a} & frontier breadth \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\footnotesize
-\item[a] Frozen exhibits. Per-instrument windows vary and are
-documented instrument-by-instrument in the repository.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+licensed subscriber. The five evaluation panels are a 2014--2024 design equity panel (200 CRSP
+names, $221{,}600$ test observations) for the frontier and estimator, a
+frozen-spec 2000--2013 holdout (200 names, $280{,}608$ observations), a
+140-name exception-restatement panel, and Bloomberg cross-asset (43) and
+country-index (26) sweeps. The Online Appendix tabulates them.
 
 Splits are chronological within each name. The first 60\% of a name's
 history is the estimation window and the last 40\% is test. The final
