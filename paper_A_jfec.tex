@@ -88,10 +88,14 @@ loss that does. Deciding when a more flexible model is worth its added
 complexity is therefore a practical question. It is not only a question
 for the bank trading desks that Basel regulates. Asset managers, hedge
 funds, and any function that forecasts a conditional tail face the same
-choice. Value-at-Risk (VaR) and Expected Shortfall
+choice.
+
+Value-at-Risk (VaR) and Expected Shortfall
 (ES), the forecasts at issue, summarize the downside risk of a trading
 book: VaR is the lower-tail quantile of the conditional return distribution, and
-ES the average loss beyond it. Three
+ES the average loss beyond it.
+
+Three
 model classes produce these forecasts, and they differ in how much of
 the conditional return distribution they fix by assumption
 \citep{kuester2006, nietoruiz2016}. Fully parametric filters, GARCH and
@@ -122,7 +126,9 @@ they transfer to names outside the training set
 the quantile learners studied here, whether it reaches the regulatory
 tail, and on which days it appears.
 
-Industry practice sits between these classes. Under the Basel Fundamental Review of the Trading Book (FRTB), the workhorse internal models are historical simulation (HS), by far the most common method in bank disclosures \citep{perignonsmith2010}, and its GARCH-filtered variant (FHS) \citep{baroneadesi1999fhs}. The regulatory choice is not between a fixed model and a proprietary one but between a prescribed standardized formula and a bank's own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain. The buy side runs the same classical toolkit: asset managers and hedge funds, though outside Basel, forecast VaR and ES with historical simulation, parametric filters, and Monte Carlo, largely through vendor risk systems. The comparison in this paper is therefore against the methods in standard use across the industry, not a regulatory strawman. Forecasts are judged by VaR exception counts at 99\% and 97.5\%, and the reported measure is Expected Shortfall at the 97.5\% level. That measure is more than a diagnostic. The reported ES sets the market-risk capital a bank holds against its book \citep{bcbs2019frtb}, so errors are costly in both directions. A forecast that runs high ties up capital that could fund positions, while one that runs low raises the multiplier on the charge as exceptions accumulate. A method
+Industry practice sits between these classes. Under the Basel Fundamental Review of the Trading Book (FRTB), the workhorse internal models are historical simulation (HS), by far the most common method in bank disclosures \citep{perignonsmith2010}, and its GARCH-filtered variant (FHS) \citep{baroneadesi1999fhs}. The regulatory choice is not between a fixed model and a proprietary one but between a prescribed standardized formula and a bank's own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain. The buy side runs the same classical toolkit: asset managers and hedge funds, though outside Basel, forecast VaR and ES with historical simulation, parametric filters, and Monte Carlo, largely through vendor risk systems. The comparison in this paper is therefore against the methods in standard use across the industry, not a regulatory strawman.
+
+Forecasts are judged by VaR exception counts at 99\% and 97.5\%, and the reported measure is Expected Shortfall at the 97.5\% level. That measure is more than a diagnostic. The reported ES sets the market-risk capital a bank holds against its book \citep{bcbs2019frtb}, so errors are costly in both directions. A forecast that runs high ties up capital that could fund positions, while one that runs low raises the multiplier on the charge as exceptions accumulate. A method
 that claims to beat the industry standard must therefore beat HS and FHS
 on a jointly consistent $(\VaR,\ES)$ score at the 97.5\% level
 \citep{fissler2016}, since ES alone cannot be scored \citep{gneiting2011},
@@ -222,7 +228,9 @@ asset-days it does not improve on the parametric benchmark, which cautions
 against extrapolating average machine-learning superiority to the tails.
 Our amortization is pushed to the cold-start limit (day-one forecasts from characteristics alone) and stress-tested against own-history benchmarks at each listing age. On tabular state, gradient-boosted trees outperform the implicit quantile network, the reverse of the intraday ranking in \citet{zhang2024commonality}, where neural networks dominate tree-based models. At their daily horizon that dominance already disappears, and our target is a residual quantile curve rather than realized variance, with a different feature set.
 
-The nonparametric family estimates $Q_\theta(\tau \mid x_t)$ directly by pinball-loss empirical risk minimization (ERM) \citep{koenker1978, steinwart2011}. Its two members here are gradient-boosted quantile trees (GBM) \citep{friedman2001, meinshausen2006} and the implicit quantile network of \citet{dabney2018iqn}, the architecture at the core of GBC \citep{polson2023gbc, nareklishvili2025gqbp}. In the IQN the quantile level $\tau$ is itself fed into the network, so one set of weights outputs the whole quantile curve rather than one grid point at a time. Read as ERM on observed pairs, GBC's quantile generator coincides
+The nonparametric family estimates $Q_\theta(\tau \mid x_t)$ directly by pinball-loss empirical risk minimization (ERM) \citep{koenker1978, steinwart2011}. Its two members here are gradient-boosted quantile trees (GBM) \citep{friedman2001, meinshausen2006} and the implicit quantile network of \citet{dabney2018iqn}, the architecture at the core of GBC \citep{polson2023gbc, nareklishvili2025gqbp}. In the IQN the quantile level $\tau$ is itself fed into the network, so one set of weights outputs the whole quantile curve rather than one grid point at a time.
+
+Read as ERM on observed pairs, GBC's quantile generator coincides
 with a conditional quantile network trained on data
 \citep{dabney2018iqn, koenker1978}: the forward simulator is not needed,
 and the same object applies to observational time series
@@ -461,10 +469,14 @@ is therefore not a new problem: its first ticks and characteristics place
 it at a point of the state space already densely populated by other
 names' histories, and the estimated mapping applies there directly. As
 the name's own history accrues, its trailing realized volatility enters
-$s_t$ and the forecast tracks its own dynamics automatically. For the same reason the explicit own-history blends add nothing: the state vector already carries the name's own recent information. Feature ablation at full scale (1.32M rows, 720 names, 288 held out) shows the transfer edge is carried overwhelmingly by each name's own recent dynamics, realized vol above all. Removing it costs $+1.0\%$, while removing all cross-sectional characteristics costs only $+0.5\%$. Characteristics matter at cold-start. Two explicit hierarchical corrections, a naive quantile blend toward
+$s_t$ and the forecast tracks its own dynamics automatically. For the same reason the explicit own-history blends add nothing: the state vector already carries the name's own recent information.
+
+Feature ablation at full scale (1.32M rows, 720 names, 288 held out) shows the transfer edge is carried overwhelmingly by each name's own recent dynamics, realized vol above all. Removing it costs $+1.0\%$, while removing all cross-sectional characteristics costs only $+0.5\%$. Characteristics matter at cold-start. Two explicit hierarchical corrections, a naive quantile blend toward
 own-history and an amortized-as-prior affine Gibbs update \citep{jiang2008gibbs, bissiri2016general}, both
 hurt at each listing age (ratios 1.003--1.043): rich
-conditioning performs the partial pooling implicitly. Two external checks: on held-out names the
+conditioning performs the partial pooling implicitly.
+
+Two external checks: on held-out names the
 transfer win rate over own-history benchmarks is 59--79\%, and the same
 pipeline scores a leakage-safe weighted scaled pinball of 0.269
 (benchmark tier) on the M5 competition data, outside finance
@@ -682,15 +694,20 @@ model. A ``$+2.7\%$ edge'' means the model's average loss is 2.7\%
 lower than the benchmark's. Ratios are model-over-benchmark
 loss ratios, so below 1 favors the model and $1-\text{ratio}$ is
 the edge (0.973 $=$ a 2.7\% win, 1.043 $=$ a 4.3\% loss).
+
 DM is the Diebold--Mariano $t$-statistic on the loss
-difference. The forecasts are frozen objects, so the comparison is of forecasts rather than of estimated models, the use \citet{diebold2015} endorses. For the per-date DM, losses are first averaged across names within each date, $d_t = N_t^{-1}\sum_i (\ell^{A}_{it} - \ell^{B}_{it})$. The orientation is stated at each use (benchmark minus the residual-hybrid in its main comparisons, so that positive favors the residual-hybrid). The test is then run on the resulting $\sim$1{,}100-date series with a Newey--West (lag-10) variance \citep{neweywest1987}, so the effective sample is the number of dates, not the number of asset-days. The lag replaces the $h-1=0$ truncation of \citet{dieboldmariano1995} because misspecified one-step forecasts leave serially correlated loss differentials. Reported $p$-values are one-sided in
+difference. The forecasts are frozen objects, so the comparison is of forecasts rather than of estimated models, the use \citet{diebold2015} endorses. For the per-date DM, losses are first averaged across names within each date, $d_t = N_t^{-1}\sum_i (\ell^{A}_{it} - \ell^{B}_{it})$. The orientation is stated at each use (benchmark minus the residual-hybrid in its main comparisons, so that positive favors the residual-hybrid). The test is then run on the resulting $\sim$1{,}100-date series with a Newey--West (lag-10) variance \citep{neweywest1987}, so the effective sample is the number of dates, not the number of asset-days. The lag replaces the $h-1=0$ truncation of \citet{dieboldmariano1995} because misspecified one-step forecasts leave serially correlated loss differentials.
+
+Reported $p$-values are one-sided in
 the direction of the named model ($t>1.645$ at 5\%, $t>2.33$ at 1\%), a direction fixed before the run for the residual-hybrid's main comparisons, and where a winner is instead chosen by the data the one-sided level reads as a two-sided level of twice its size.
 A $t$-statistic above $2.6$ is significant under either convention, and
 marginal cases are flagged where they occur. A tie means the
 per-date DM cannot reject zero at the two-sided 10\% level. The point
 estimate is reported with the statistic so the reader can judge the
 width, and failure to reject is not treated as proof of equivalence.
-Where a genuine equivalence statement is possible we make it as one. For the CAViaR comparison the 90\% confidence interval for the loss difference, $[-0.05\%,+0.11\%]$ of the benchmark loss, lies wholly inside a $\pm0.25\%$ margin, which is a two-one-sided-tests conclusion rather than a failure to reject. The Model Confidence Set is
+Where a genuine equivalence statement is possible we make it as one. For the CAViaR comparison the 90\% confidence interval for the loss difference, $[-0.05\%,+0.11\%]$ of the benchmark loss, lies wholly inside a $\pm0.25\%$ margin, which is a two-one-sided-tests conclusion rather than a failure to reject.
+
+The Model Confidence Set is
 computed on the same per-date loss matrix with the range statistic of \citet{hansen2011mcs} and a
 stationary bootstrap over dates \citep{politisromano1994} (mean block length 10 days, $B=1{,}000$ replications
 in the main comparison, $B=800$ in the CAViaR extension).
@@ -768,8 +785,9 @@ mk$_{63}$ into a percentile of the simulated null of 63-window kurtosis
 under the name's fitted $t_{\nu_i}$ leaves the frontier essentially
 unchanged (top decile $+3.0\%$, DM 8.5, against $+2.98\%$, DM 10.5 raw).
 The normalization is nearly rank-preserving, however (Spearman $0.97$, $82\%$
-top-decile overlap), so it cannot by itself separate the two. A
-discriminating test instead favors the raw-tail-activity reading.
+top-decile overlap), so it cannot by itself separate the two.
+
+A discriminating test instead favors the raw-tail-activity reading.
 In a within-date cross-sectional (Fama--MacBeth) regression of the
 per-observation edge on the raw score and the $\nu$-relative percentile,
 the raw score carries the predictive content ($t=7.8$), while the $\nu$-relative percentile has significantly negative incremental content ($t=-5.2$). Double-sorting agrees. The top-raw-kurtosis-quintile edge falls from $+1.9\%$ for the most fat-tailed (low-$\nu$) names to $+1.5\%$ for the thinnest-tailed, and observations high in the $\nu$-relative score but not in raw kurtosis carry no edge ($+0.3\%$, DM $0.5$). The signal is thus the absolute level of recent tail activity rather than
@@ -1109,17 +1127,25 @@ ES-CAViaR of \citet{taylor2019} (DM $3.6$ at $1\%$, a tie at $2.5\%$). SAV-CAVia
 \label{fig:fz0}
 \end{figure}
 
-On the full 200-name panel ($221.6$k test asset-days), VaR and ES are read from the coherent min-envelope curve $Q^{*}$ and per-date DM inference is used throughout. The residual-hybrid's \emph{accuracy layer}, the EVT-tailed variant with no conformal shift, attains the lowest FZ0 at both regulatory levels. At 1\% it beats GARCH-$t$ (DM 4.8) and FHS (DM 4.9), the two standard benchmarks the accuracy claim rests on. At 2.5\% it again wins over GARCH-$t$ (DM 5.1). The two FZ-estimated dynamic $(\VaR,\ES)$ models a referee would turn to next are the one-factor score-driven GAS of \citet{patton2019} and the ES-CAViaR of \citet{taylor2019}. Each is estimated per name on the same panel by minimizing the same FZ0 loss, and under a three-start optimizer both converge for all $200$ names, so the single-start instability of an earlier attempt does not arise. The accuracy layer beats the GAS at both levels (DM 9.5 at 1\%, 8.6 at 2.5\%), and it beats the Taylor model at 1\% (DM 3.6) while tying it at 2.5\% (DM 0.1), the near-tie the fat-tailed benchmarks all show at 2.5\% where the shape edge is thin. This ranking survives the annual walk-forward refit of Section~\ref{sec:calendarleak}: re-estimating every stage at each January-1 cutoff and re-scoring the 2020--2024 panel, the accuracy layer keeps the lowest FZ0 at both levels, beating GARCH-$t$ and FHS by DM 3.6 and 2.7 at 1\% and 3.1 and 2.6 at 2.5\% (one-sided $p<0.005$). Refitting narrows these margins without closing them, unlike the average pinball edge, which closes under the same refit. The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels and passes the aggregate date-clustered exception test at 99\% and marginally at 97.5\%. Per-name diagnostics show residual cross-sectional calibration heterogeneity (84\% and 86\% pass rates at 99\%, Online Appendix Figure~OA.2). The one failed test is the pooled 155k-observation Kupiec at 97.5\%, which at this sample size rejects very small deviations. The frontier concentrates the joint-score
+On the full 200-name panel ($221.6$k test asset-days), VaR and ES are read from the coherent min-envelope curve $Q^{*}$ and per-date DM inference is used throughout. The residual-hybrid's \emph{accuracy layer}, the EVT-tailed variant with no conformal shift, attains the lowest FZ0 at both regulatory levels. At 1\% it beats GARCH-$t$ (DM 4.8) and FHS (DM 4.9), the two standard benchmarks the accuracy claim rests on. At 2.5\% it again wins over GARCH-$t$ (DM 5.1). The two FZ-estimated dynamic $(\VaR,\ES)$ models a referee would turn to next are the one-factor score-driven GAS of \citet{patton2019} and the ES-CAViaR of \citet{taylor2019}. Each is estimated per name on the same panel by minimizing the same FZ0 loss, and under a three-start optimizer both converge for all $200$ names, so the single-start instability of an earlier attempt does not arise. The accuracy layer beats the GAS at both levels (DM 9.5 at 1\%, 8.6 at 2.5\%), and it beats the Taylor model at 1\% (DM 3.6) while tying it at 2.5\% (DM 0.1), the near-tie the fat-tailed benchmarks all show at 2.5\% where the shape edge is thin.
+
+This ranking survives the annual walk-forward refit of Section~\ref{sec:calendarleak}: re-estimating every stage at each January-1 cutoff and re-scoring the 2020--2024 panel, the accuracy layer keeps the lowest FZ0 at both levels, beating GARCH-$t$ and FHS by DM 3.6 and 2.7 at 1\% and 3.1 and 2.6 at 2.5\% (one-sided $p<0.005$). Refitting narrows these margins without closing them, unlike the average pinball edge, which closes under the same refit.
+
+The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels and passes the aggregate date-clustered exception test at 99\% and marginally at 97.5\%. Per-name diagnostics show residual cross-sectional calibration heterogeneity (84\% and 86\% pass rates at 99\%, Online Appendix Figure~OA.2). The one failed test is the pooled 155k-observation Kupiec at 97.5\%, which at this sample size rejects very small deviations. The frontier concentrates the joint-score
 edge as it does the pinball edge: the top misspecification decile
 carries DM 2.4 at the 1\% level against DM 0.2 in the panel bulk.
 Adding the conformal shift at 97.5\%, whose calibration split includes
-the 2020 crash, widens the band out of era (breach $1.66\%$ against the $2.5\%$ target) and gives back the FZ0 advantage there. The static-overlay variant loses to GARCH-$t$ on the 2.5\% joint score (DM $-2.0$), and the concession is largest in the top misspecification decile, where the static shift's joint-score deficit reaches DM $-7.1$. The coverage
+the 2020 crash, widens the band out of era (breach $1.66\%$ against the $2.5\%$ target) and gives back the FZ0 advantage there. The static-overlay variant loses to GARCH-$t$ on the 2.5\% joint score (DM $-2.0$), and the concession is largest in the top misspecification decile, where the static shift's joint-score deficit reaches DM $-7.1$.
+
+The coverage
 property costs sharpness under
 a strictly consistent score, and its error direction is conservative
 (wider bands, fewer breaches than nominal). Where the conservative
 coverage margin is valued, the shift is kept; where FZ0 efficiency is
 the criterion, the EVT tail is run alone, and it passes the exception
-tests on its own (Online Appendix Figure~OA.2). Most of the concession reflects a frozen margin. The adaptive form of the shift \citep{gibbs2021aci}, updated daily from the panel breach frequency, shrinks the margin out of era (from $-0.35$ to $-0.10$, breach $1.83\%\to2.06\%$) and erases the overall concession. The adaptive variant ties GARCH-$t$ on 2.5\% FZ0 (DM $-0.3$). The top-decile cost survives the adaptive shift too, at $-4.8$ and $-6.0$ for the two update rates against the static shift's $-7.1$, the price of a margin where the bands are widest. The static shift also worsens per-name coverage (Kupiec$_{97.5}$ pass rate 47\%, against 72\% unshifted and 69\% adaptive), because over-coverage fails the test from the other side. Each ``lowest FZ0'' statement refers to the accuracy layer.
+tests on its own (Online Appendix Figure~OA.2).
+
+Most of the concession reflects a frozen margin. The adaptive form of the shift \citep{gibbs2021aci}, updated daily from the panel breach frequency, shrinks the margin out of era (from $-0.35$ to $-0.10$, breach $1.83\%\to2.06\%$) and erases the overall concession. The adaptive variant ties GARCH-$t$ on 2.5\% FZ0 (DM $-0.3$). The top-decile cost survives the adaptive shift too, at $-4.8$ and $-6.0$ for the two update rates against the static shift's $-7.1$, the price of a margin where the bands are widest. The static shift also worsens per-name coverage (Kupiec$_{97.5}$ pass rate 47\%, against 72\% unshifted and 69\% adaptive), because over-coverage fails the test from the other side. Each ``lowest FZ0'' statement refers to the accuracy layer.
 
 \paragraph{Direct ES calibration backtests.} Because exception counts test VaR and not ES,
 two direct ES calibration backtests, the McNeil--Frey exceedance-residual test \citep{mcneilfrey2000} and the Acerbi--Sz\'ekely $Z_2$ statistic \citep{acerbi2014backtesting}, complement the jointly consistent FZ0 loss above. \citet{noldeziegel2017elicitability} and \citet{bayer2022esr} draw the
