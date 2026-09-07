@@ -555,7 +555,7 @@ wedge interval.
 \begin{proof} In the Online Appendix. \end{proof}
 
 \begin{remark}[the crossover level]\label{rem:crossover}
-Unit-variance fat-tailed laws put more mass near the center as well as in the far tail, so the quantile ordering of Proposition~\ref{prop:wedge} reverses at moderate levels. Numerically, the unit-variance $t_3$ has a less extreme 5\% quantile than the normal ($-1.36$ vs $-1.64$) but a more extreme 1\% quantile ($-2.62$ vs $-2.33$). The sign flip occurs at a single crossover level $\tau_c \approx 0.0179$ (solving $Q_{t_3}(\tau)=\Phi^{-1}(\tau)$ numerically for the lower-tail root). The deepest regulatory level, $\tau = 0.01$, therefore sits below the crossover, where the fat tail is strictly more extreme. The level $\tau = 0.025$ sits just above it: at $2.5\%$ the unit-variance $t_3$ quantile is $-1.837$, still less extreme than the normal's $-1.960$. Two of the paper's design choices are direct consequences. First, CRPS-style whole-distribution scoring can rank a fat-tail-aware model below a thin-tailed one even when the tail is the decision-relevant region (Section~\ref{sec:notation}), because body and far tail disagree in sign, the weighting problem that \citet{gneitingranjan2011} address and an instance of the score dependence of rankings under misspecification in \citet{patton2020}. Second, the deepest regulatory level straddles the crossover rather than sitting cleanly beyond it, and the score of Section~\ref{sec:score} is used as a rank rather than a moment estimate.
+Unit-variance fat-tailed laws put more mass near the center as well as in the far tail, so the ordering of Proposition~\ref{prop:wedge} reverses at moderate levels: the unit-variance $t_3$ has a less extreme 5\% quantile than the normal but a more extreme 1\% quantile, with the sign flip at $\tau_c \approx 0.0179$. The deepest regulatory level $\tau=0.01$ sits below the crossover, where the fat tail is strictly more extreme, while $\tau=0.025$ sits just above it. Two design choices follow: whole-distribution scoring can rank a fat-tail-aware model below a thin-tailed one even when the tail is the decision-relevant region (Section~\ref{sec:notation}), the score dependence of \citet{gneitingranjan2011} and \citet{patton2020}; and the score of Section~\ref{sec:score} is used as a rank rather than a moment estimate.
 \end{remark}
 
 \medskip\noindent The ordering in Proposition~\ref{prop:wedge} is textbook regular variation \citep{embrechts1997}, and its content is the pairing with Lemma~\ref{lem:regret}. The tail-wedge result
@@ -899,18 +899,17 @@ predictions in advance: a positive and significant top-decile edge with
 a bottom decile near zero, a small positive overall edge, and a
 threshold-shaped decile profile matching Table~\ref{tab:frontier}. We then pulled CRSP daily returns for 2000--2013, an
 era not used at any earlier stage of the analysis. The pre-specified kurtosis-component frontier, a simpler returns-space variant frozen in advance, replicates: the top-decile edge is $+0.89\%$ with per-date DM $2.16$ ($p=0.016$, 1{,}465 dates), deciles one through nine sit between $-0.18\%$ and $+0.28\%$, and the overall edge is $+0.02\%$. The residual-hybrid composite replicates as well (Figure~\ref{fig:holdout}): its top decile carries $+1.12\%$ at per-date DM $2.51$. This is the same threshold nonlinearity, attenuated in a larger-cap, pre-2014 universe.
-The decile boundaries above are within-sample ranks of the holdout
-test era, the standard conditional-sort convention. The partition
-rule never touches a forecast or a loss, but it could not have been
-applied in real time on day one.
-A day-one-applicable restatement freezes the design era's
-numeric decile boundaries (the pooled design test sample's mk$_{63}$
-edges, top threshold $13.67$) and applies them to the holdout as
-constants. Membership at $(i,t)$ then depends only on name $i$'s own
-past 63 days and a number fixed before any holdout day was scored.
-The threshold shape survives the frozen rule: bins eight through
-ten carry $+0.82\%$, $+0.92\%$, and $+1.02\%$ against $-0.3$--$0.0\%$
-below, and the top-bin point edge slightly exceeds the within-sample sort's $+0.89\%$. The cell thins to $3.3\%$ occupancy in this lower-kurtosis era, however, and the per-date test loses power (DM 1.11, insensitive to Newey--West lags 5--44). A second real-time rule needs no design-era constant at all. An expanding pooled 90th-percentile threshold over strictly earlier dates (250-date burn-in) restores natural occupancy ($9.5\%$) and recovers the sort's result with significance ($+0.99\%$, DM 2.15, insensitive to Newey--West lags 5--44). The bottom bucket is $-0.18\%$ ($t=-1.4$). The conditional sort, the frozen constant, and the recursive rule agree on the size of the top-cell edge, and the recursive rule is the version that could have been run in real time from day one. The frozen thresholds are also tested on the point-in-time universe of Section~\ref{sec:fwer}, where they carry $+2.94\%$ at DM 6.6.
+The decile boundaries above are within-sample ranks of the holdout era,
+a partition that never touches a forecast but could not have been applied
+on day one. Two day-one-applicable rules recover the result: freezing the
+design-era thresholds as constants keeps the threshold shape (bins eight
+to ten at $+0.82$ to $+1.02\%$, though the cell thins and the test loses
+power), and an expanding pooled 90th-percentile threshold over strictly
+earlier dates recovers the sort's edge with significance ($+0.99\%$, DM
+2.15). The conditional sort, the frozen constant, and the recursive rule
+agree on the size of the top-cell edge, and the frozen thresholds carry
+$+2.94\%$ at DM 6.6 on the point-in-time universe of
+Section~\ref{sec:fwer}.
 
 \begin{figure}[t]
 \centering
@@ -1012,24 +1011,23 @@ frequency the picture inverts.
 \subsection{Regime dependence and model selection}
 \label{sec:gate}
 
-In the amortized panel the absolute edge grows with turbulence. The
-GARCH-minus-GBM pinball gap grows monotonically from 0.0059 in the
-calmest realized-vol quintile to 0.0247 in the most turbulent, roughly
-fourfold. Because pinball loss is scale-equivariant, part of that growth reflects the higher loss level in turbulent states rather than a larger relative edge, and both nonparametric estimators beat GARCH in
-each quintile (overall: GARCH 0.6543, GBM 0.6447, IQN 0.6478).
-
-Gating, running GARCH on calm days and switching to the nonparametric
-model when the score is high, does not improve on continuous use of
-the flexible model. A classifier
-gate trained on the residual-shape
-signals routes 90.5\% of days to the nonparametric model and matches always-nonparametric exactly (pinball 0.3987, against 0.4000 for GARCH). Its routing also runs backwards across score deciles: nonparametric wins on high-misspecification days are rare but large, while a classifier targets the frequency of wins rather than the conditional mean of the loss differential. A regression gate on the edge magnitude, the forecast-selection rule of \citet{giacominiwhite2006} (regress the loss differential on the state and switch on the sign of the fitted value), fixes the direction
-(routing flat $\approx 1.0$, predicted-edge correlation $+0.16$) and
-still converges to always-nonparametric. That outcome is the corollary of Table~\ref{tab:frontier}: the conditional mean of the differential is positive where the score is high and indistinguishable from zero elsewhere, so no state offers a detectable payoff to selecting, or to placing combination weight on, the parametric quantile. The per-day oracle gap
-($4.4\%$) is unreachable because per-day model advantage is dominated by
-which day the tail event lands, and that is unpredictable from
-prior-day state. In practice the amortized setting uses the nonparametric model throughout, since it does not underperform on calm days. The residual-hybrid is the choice where a guaranteed $\ge$GARCH floor is wanted, and the frontier score serves as a monitor (Section~\ref{sec:applications}). Detection latency is small (median zero) and the edge is back-loaded
-within episodes, so the lag costs little even in the per-name
-setting.
+In the amortized panel the absolute edge grows about fourfold with
+turbulence, from 0.0059 in the calmest realized-vol quintile to 0.0247 in
+the most turbulent, and both nonparametric estimators beat GARCH in every
+quintile. Gating, running GARCH on calm days and the nonparametric model
+when the score is high, does not improve on continuous use of the
+flexible model: a classifier gate routes $90.5\%$ of days to the
+nonparametric model and matches always-nonparametric exactly, and a
+regression gate on the edge magnitude \citep{giacominiwhite2006} still
+converges to it. This is the corollary of Table~\ref{tab:frontier}: the
+conditional mean of the loss differential is positive where the score is
+high and indistinguishable from zero elsewhere, so no state pays to
+select the parametric quantile, and the per-day oracle gap ($4.4\%$) is
+unreachable because which day the tail event lands is unpredictable from
+prior-day state. The amortized setting therefore uses the nonparametric
+model throughout; the residual-hybrid is the choice where a guaranteed
+$\ge$GARCH floor is wanted, with the score as a monitor
+(Section~\ref{sec:applications}).
 
 %% ===== FRTB EVALUATION =====
 \section{VaR and Expected Shortfall forecast evaluation}\label{sec:frtb}
@@ -1185,22 +1183,21 @@ forecasts through a joint score. Both are computed on the residual-hybrid's own 
 
 \subsection{The ten-day horizon: a direct multi-day extension}
 
-The multi-day results in this subsection come from a direct amortized model, a pooled quantile learner trained on $h$-day cumulative returns with GARCH-derived features; the residual-hybrid estimator of Algorithm~1 is a one-day architecture, and no ten-day claim in this paper attaches to it. Training
-labels whose $h$-day window crosses the split are excluded, so no
-label contains test-era returns. At the FRTB ten-day
-liquidity horizon (CRSP 2014--2024) the direct model's pinball edge
-over $\sqrt{h}$-scaled GARCH grows
-from $\sim$0.4\% at $h=1$ to $\sim$1.4\% at $h=10$, holds in the
-2020--2022 stress window (direct model 1.248 $<$ FHS 1.2605 $<$ GARCH 1.262),
-and, on the design panel's $h$-curve (Online Appendix Figure~OA.3), rises from
-$0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$ under the same purge.
-
-Tail severity is more consequential. Ten-day ES is the same exact tail integral as in Section~\ref{sec:frtb}, with the same model-dependent own-tail caveat. Each ten-day tail over-states its own-tail comparator, GARCH $\sqrt{h}$ most (predicted $-21.1$ vs realized $-15.4$) and the direct model least ($-20.1$ vs $-17.3$), and the direct model has the better ten-day breach$_{97.5}$ (2.79\% vs GARCH 3.30\% against the 2.5\% target). The temporal split, however, places the whole test window in 2020--2024, and the pre-committed rerun on 2000--2013 shows that the ten-day result is era-dependent. Out of era the two methods tie on accuracy (direct edge $+0.49\%$, date-level DM 0.07, NW lag 10), and the calibration verdict reverses. The $\sqrt{h}$-scaled GARCH-$t$ ES is almost exactly calibrated through the crisis window (predicted $-16.6$ vs realized $-16.6$, numerical integral, purged), while the direct model's tail under-states it ($-15.9$ vs $-17.8$). The pooled ten-day tail, trained on the pre-crisis segment, did not extrapolate to 2008-scale ten-day losses. The ten-day tail-severity advantage
-is therefore a 2014--2024 statement,
-and in a 2008-type era the direct ten-day model should be run with the
+The multi-day results come from a direct amortized model trained on
+$h$-day cumulative returns; the residual-hybrid of Algorithm~1 is a
+one-day architecture, and no ten-day claim attaches to it. At the FRTB
+ten-day liquidity horizon (CRSP 2014--2024) its pinball edge over
+$\sqrt{h}$-scaled GARCH grows from $\sim$0.4\% at $h=1$ to $\sim$1.4\% at
+$h=10$ and holds in the 2020--2022 stress window (Online Appendix
+Figure~OA.3). The ten-day tail advantage is real in that era but does not
+survive the pre-committed 2000--2013 rerun: out of era the two methods
+tie on accuracy (direct edge $+0.49\%$, DM 0.07) and the calibration
+verdict reverses, with $\sqrt{h}$-scaled GARCH-$t$ almost exactly
+calibrated through the crisis while the direct tail under-states it. In a
+2008-type era the direct ten-day model should therefore be run with the
 $\sqrt{h}$-scaled parametric number alongside it as a conservative
-model-risk envelope. The frontier itself is confirmed on 2000--2013
-(Section~\ref{sec:frontier}). The pre-specified horizon comparison thus ends with a mixed verdict.
+envelope. The horizon comparison ends with a mixed verdict; the full
+tables are in the Online Appendix.
 
 \subsection{Cross-asset evidence}
 
