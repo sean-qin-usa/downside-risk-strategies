@@ -288,10 +288,10 @@ Point-in-time universe (Q1-2000 top 200, delistings kept) & top bucket $+2.9\%$;
 Strict calendar splits; annual-refit walk-forward & top-decile edge holds under all three & DM 6.2 (2020 cut); 3.1 (overall, pre-GFC cut); 4.43 (annual-refit residual-hybrid walk-forward, $+2.09\%$) \\
 Familywise error over the $3\times10$ signal-decile grid & 9 cells survive 5\% FWER & Romano--Wolf step-down, incl.\ all three top deciles \\
 Exception battery through the 2008 crisis & Kupiec 94\% / Christof.\ 95\% at 99\% & date-clustered $t$ 0.17 at 99\%; at 97.5\%, 0.35 (EVT tail) and $-1.09$ (static overlay, conservative); HS, EWMA fail \\
-Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.8--4.9 vs GARCH-$t$, FHS at 1\%, 5.1 at 2.5\%; 8.6--9.5 vs PZC GAS, 3.6-to-tie vs Taylor ES-CAViaR (multi-start); static shift concedes 2.5\% (DM $-1.6$), adaptive shift erases it (tie; top-decile cost remains) \\
+Joint $(\VaR,\ES)$ FZ0 score, full panel & accuracy layer lowest at both levels & DM 4.8--4.9 vs GARCH-$t$, FHS at 1\%, 5.1 at 2.5\%; 8.6--9.5 vs PZC GAS, 3.6-to-tie vs Taylor ES-CAViaR (multi-start); static shift concedes 2.5\% (DM $-2.0$), adaptive shift erases it (tie; top-decile cost remains) \\
 Cold start / young listings & $+6$--$10\%$ & full-scale panel; no per-asset model applies \\
 Calm-quintile edge & $\approx 0$ (point estimates $+0.0$--$+0.2\%$) & bottom-decile 90\% CIs lie above $-0.25\%$; no detectable loss \\
-CAViaR (strongest academic rival) & tie (co-best in MCS) & DM 0.4 \\
+CAViaR (strongest academic rival) & tie (both in 90\% MCS) & DM 0.4 \\
 \midrule
 \multicolumn{3}{l}{\emph{Extension (a separate direct multi-day model, not the engine)}} \\
 \midrule
@@ -470,7 +470,7 @@ treating the $221{,}600$ asset-days as independent, since the $200$ names share
 within-day market shocks. Kupiec is the pooled analytic unconditional-coverage
 test, hypersensitive at this sample size (every model is rejected at $2.5\%$).
 The deployed engine adds a $97.5\%$ conformal shift and is conservative out of
-era (breach $1.7\%$, $Z_2=+0.29$ at $2.5\%$), overstating the tail in the
+era (breach $1.66\%$, $Z_2=+0.29$ at $2.5\%$), overstating the tail in the
 regulator-preferred direction. Source: \texttt{engine\_esbt\_results.json}.
 \end{tablenotes}
 \end{threeparttable}
