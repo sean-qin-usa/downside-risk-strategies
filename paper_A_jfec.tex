@@ -58,24 +58,19 @@ with a Real-Time Misspecification Score}
 \let\footnote\endnote
 
 \begin{abstract}
-Parametric Value-at-Risk and Expected Shortfall forecasts fail in states
-that can be flagged in real time. A per-asset, per-day score of
+Parametric Value-at-Risk and Expected Shortfall forecasts underperform in states that can be flagged in real time. A per-asset, per-day score of
 residual-shape stress predicts when a distribution-free tail beats a
 GARCH-$t$ benchmark, an edge large in its top decile and negligible
 elsewhere. A jump-robust refit traces most of that edge to variance
 overstatement after a shock, and a smaller but significant part to residual
-conditional shape. The forecasts come from an amortized semiparametric
-estimator whose single pooled fit also covers newly listed assets with no
-history, and it attains the lowest joint (VaR, ES) loss against standard
-benchmarks.
+conditional shape. The forecasts come from an amortized semiparametric estimator; its pooled quantile component transfers to newly listed assets in characteristics-only form, and it attains the lowest joint (VaR, ES) loss against standard benchmarks.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall;
-misspecification; quantile regression; extreme value theory; amortized
-estimation.
+misspecification; quantile regression; amortized estimation.
 
 \medskip
-\noindent\textbf{JEL classification:} C14; C22; C52; C58; G17; G28.
+\noindent\textbf{JEL classification:} C14; C52; C58.
 
 %% ===== INTRODUCTION =====
 \section*{Introduction}\label{sec:intro}
@@ -85,10 +80,7 @@ a fixed parametric tail is most likely to be wrong. The error is costly in
 both directions. A forecast that runs high ties up capital against risk
 that never arrives, and one that runs low leaves too little against the
 loss that does. Deciding when a more flexible model is worth its added
-complexity is therefore a practical question. It is not only a question
-for the bank trading desks that Basel regulates. Asset managers, hedge
-funds, and any function that forecasts a conditional tail face the same
-choice.
+complexity is therefore a practical question. The question also applies outside Basel-regulated bank trading desks, including to asset managers and hedge funds that forecast conditional tail risk.
 
 Value-at-Risk (VaR) and Expected Shortfall
 (ES), the forecasts at issue, summarize the downside risk of a trading
@@ -128,21 +120,17 @@ tail, and on which days it appears.
 
 Industry practice sits between these classes. Under the Basel Fundamental Review of the Trading Book (FRTB), the workhorse internal models are historical simulation (HS), by far the most common method in bank disclosures \citep{perignonsmith2010}, and its GARCH-filtered variant (FHS) \citep{baroneadesi1999fhs}. The regulatory choice is not between a fixed model and a proprietary one but between a prescribed standardized formula and a bank's own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain. The buy side runs the same classical toolkit: asset managers and hedge funds, though outside Basel, forecast VaR and ES with historical simulation, parametric filters, and Monte Carlo, largely through vendor risk systems. The comparison in this paper is therefore against the methods in standard use across the industry, not a regulatory strawman.
 
-Forecasts are judged by VaR exception counts at 99\% and 97.5\%, and the reported measure is Expected Shortfall at the 97.5\% level. That measure is more than a diagnostic. The reported ES sets the market-risk capital a bank holds against its book \citep{bcbs2019frtb}, so errors are costly in both directions. A forecast that runs high ties up capital that could fund positions, while one that runs low raises the multiplier on the charge as exceptions accumulate. A method
+Forecasts are judged by VaR exception counts at 99\% and 97.5\%, and the reported measure is Expected Shortfall at the 97.5\% level. Reported ES enters the market-risk capital a bank holds against its book \citep{bcbs2019frtb}, so errors are costly in both directions. A forecast that runs high ties up capital that could fund positions, while one that runs low raises the multiplier on the charge as exceptions accumulate. A method
 that claims to beat the industry standard must therefore beat HS and FHS
 on a jointly consistent $(\VaR,\ES)$ score at the 97.5\% level
 \citep{fissler2016}, since ES alone cannot be scored \citep{gneiting2011},
 and it must do so under exception-test discipline
-\citep{noldeziegel2017elicitability}. Beating a vanilla GARCH on average
-loss is accordingly not enough. Neither is it trivial, because bank
+\citep{noldeziegel2017elicitability}. Beating a vanilla GARCH on average loss is therefore neither sufficient nor trivial, because bank
 internal models have historically failed to beat a simple GARCH fitted
-to their own profit and loss \citep{berkowitzobrien2002}. The GARCH
-filter is the floor of this paper's comparisons rather than its target.
+to their own profit and loss \citep{berkowitzobrien2002}.
 
-The advantage of a flexible model over this parametric benchmark is not
-spread evenly across days, and that unevenness is the paper's subject. On the roughly ninety percent of asset-days (one name on one trading date) when residual-shape stress is low, the estimator we use and the parametric benchmark are statistically indistinguishable on forecast accuracy, so holding the flexible model carries no detectable penalty (Section~\ref{sec:frontier} reports the intervals). The gains are concentrated in the minority of days
-when residual-shape stress is high. Locating that minority in advance,
-from an observable signal, is the paper's central task. It is a
+The advantage of the flexible model over the parametric benchmark is concentrated in particular states. On the roughly ninety percent of asset-days (one name on one trading date) when residual-shape stress is low, the estimator we use and the parametric benchmark are statistically indistinguishable on forecast accuracy, so holding the flexible model carries no detectable penalty (Section~\ref{sec:frontier} reports the intervals). The gains are concentrated in the minority of days
+when residual-shape stress is high. We ask whether an observable signal available at the forecast date can identify those asset-days in advance. It is a
 conditional predictive-ability question in the sense of
 \citet{giacominiwhite2006}: does a signal known at the forecast date
 predict which of two forecasts will be more accurate on that date? We
@@ -160,20 +148,15 @@ The score is built from the oldest specification diagnostics for a
 GARCH filter, the excess kurtosis and asymmetry of its standardized
 residuals \citep{bollerslev1987, hansen1994ARCD}. It is computed on a
 trailing window so that it is available in real time, in the spirit of
-the density-forecast diagnostics of \citet{berkowitz2001}. What is new is
-the use to which these diagnostics are put: computed on recent
-residuals, they predict when distribution-free quantile methods improve
-on parametric VaR and ES. Where residual-shape stress is high the flexible estimator has a large and significant advantage, and where it is low the advantage is statistically indistinguishable from zero in the design panel and a small positive in the point-in-time universe, with no detectable loss in either. The
-score's content is an ordering of magnitudes. The edge concentrates in
-the top decile, and there is no sharp threshold below which it vanishes.
+the density-forecast diagnostics of \citet{berkowitz2001}. We use these recent-residual diagnostics to predict when distribution-free quantile methods improve on parametric VaR and ES. Where residual-shape stress is high the flexible estimator has a large and significant advantage, and where it is low the advantage is statistically indistinguishable from zero in the design panel and a small positive in the point-in-time universe, with no detectable loss in either. The score orders the magnitude of the advantage rather than defining a sharp threshold: the edge is concentrated in the top decile but does not vanish below it.
 
-\medskip\noindent This paper makes four contributions. First, to the evaluation of VaR and ES forecasts and the comparison of competing conditional models, it introduces the misspecification frontier: a real-time, per-asset, per-day score that predicts when distribution-free quantiles beat a GARCH-$t$ benchmark, with significance from Diebold--Mariano tests on date-averaged loss differentials (the per-date DM of Section~\ref{sec:protocol}). The same kurtosis--edge gradient is traced across four universes: CRSP US equities (top-decile edge $+2.98\%$, DM 10.5), foreign exchange, where the decisive standalone wins are confined to the hyperinflation tier (pooled DM 4.12), twenty-six country indices (a developed-to-frontier gradient), and forty-three cross-asset instruments.
+\medskip\noindent The paper's main contribution is the misspecification frontier: a real-time, per-asset, per-day score that predicts when distribution-free quantiles beat a GARCH-$t$ benchmark, with significance from Diebold--Mariano tests on date-averaged loss differentials (the per-date DM of Section~\ref{sec:protocol}). The same kurtosis--edge gradient is traced across four universes: CRSP US equities (top-decile edge $+2.98\%$, DM 10.5), foreign exchange, where the decisive standalone wins are confined to the hyperinflation tier (pooled DM 4.12), twenty-six country indices (a developed-to-frontier gradient), and forty-three cross-asset instruments.
 
-Second, and the paper's central finding, it identifies what that advantage is made of. Measured against a jump-robust GARCH whose variance response to a large shock is bounded, we show that most of it is the standard filter's post-outlier scale error, with a smaller but significant component surviving a robust scale (the top-decile $+2.98\%$ becomes $+0.3$--$0.5\%$, DM $2.5$--$4.7$). This attribution, drawn on a 200-name panel and tied to a live score, is, to our knowledge, new to the flexible-versus-parametric tail-risk literature. The Korea-2026 crash, which unfolded under circuit breakers and left residual kurtosis in its ordinary range, provides a falsification case that sharpens the claim: a price crash is not residual misspecification, and GARCH-$t$ wins there, as the frontier predicts.
+A jump-robust decomposition then identifies what drives that advantage. Measured against a jump-robust GARCH whose variance response to a large shock is bounded, we show that most of it is the standard filter's post-outlier scale error, with a smaller but significant component surviving a robust scale (the top-decile $+2.98\%$ becomes $+0.3$--$0.5\%$, DM $2.5$--$4.7$). An independently estimated realized-volatility scale reproduces the same split. This attribution, drawn on a 200-name panel and tied to a live score, is, to our knowledge, new to the flexible-versus-parametric tail-risk literature. The Korea-2026 crash, which unfolded under circuit breakers and left residual kurtosis in its ordinary range, provides a falsification case that sharpens the claim: a price crash is not residual misspecification, and GARCH-$t$ wins there, as the frontier predicts.
 
-Third, to global pooled forecasting and cross-asset transfer, it shows that a single shape model pooled across hundreds of names (amortized, in the machine-learning sense that one fit serves every asset) carries transferable information about conditional tail shape: it replaces per-asset estimation of the innovation shape and transfers to names never seen in training. In its characteristics-only form it forecasts VaR and ES for assets with no return history at all, the day-one regime in which no per-asset model exists.
+The pooled shape model also transfers across assets: a single fit across hundreds of names (amortized, in the machine-learning sense that one fit serves every asset) carries transferable information about conditional tail shape: it replaces per-asset estimation of the innovation shape and transfers to names never seen in training. In its characteristics-only form it forecasts VaR and ES for assets with no return history at all, the day-one regime in which no per-asset model exists.
 
-Fourth, to semiparametric conditional tail-risk forecasting, it contributes the estimator that captures the frontier. The design follows the two-step logic of filtered historical simulation and GARCH-EVT \citep{baroneadesi1999fhs, mcneilfrey2000}. It keeps the parametric filter's conditional scale, the component the ARCH family already estimates well once a leverage term is allowed \citep{hansenlunde2005}, and replaces the innovation law where it fails. The forecast is therefore a GARCH conditional scale times a state-conditioned nonparametric residual quantile, with an extreme-value left tail and an optional split-conformal overlay. The resulting estimator and CAViaR \citep{engle2004caviar} both remain in the $90\%$ Model Confidence Set \citep{hansen2011mcs}, and it improves significantly on GARCH-$t$, FHS, EWMA, HS, and GJR-skew-$t$. Its EVT-tailed accuracy layer attains the lowest joint $(\VaR,\ES)$ score, the zero-homogeneous FZ0 loss of \citet{fissler2016} and \citet{patton2019}, against the daily benchmarks in standard use, GARCH-$t$ and FHS, at both FRTB levels. That ranking survives annual refitting, with exception counts near nominal through a 2008-crisis window. It also keeps the lowest FZ0 against the FZ-estimated dynamic ES models of \citet{patton2019} and \citet{taylor2019}, each estimated per name by FZ0 minimization, winning at 1\% and tying Taylor at 2.5\%. Two results motivate the score without supplying its mechanism. The first is the standard identity that excess pinball loss is locally quadratic in the quantile wedge, scaled by the local density \citep{gneiting2011, ehm2016, steinwart2011}, so that a wedge at a level generates regret there. The second, a tail-wedge proposition, shows how a misspecified innovation shape opens such a wedge in the tail even when the scale is right \citep{mcneilfrey2000, francqzakoian2015}. The mechanism itself is what the decomposition identifies: the score flags mostly scale error, and the shape wedge is the smaller part that survives.
+The frontier is implemented with a semiparametric estimator that follows the two-step logic of filtered historical simulation and GARCH-EVT \citep{baroneadesi1999fhs, mcneilfrey2000}. It keeps the parametric filter's conditional scale, the component the ARCH family already estimates well once a leverage term is allowed \citep{hansenlunde2005}, and replaces the innovation law where it fails. The forecast is therefore a GARCH conditional scale times a state-conditioned nonparametric residual quantile, with an extreme-value left tail and an optional split-conformal overlay. The resulting estimator and CAViaR \citep{engle2004caviar} both remain in the $90\%$ Model Confidence Set \citep{hansen2011mcs}, and it improves significantly on GARCH-$t$, FHS, EWMA, HS, and GJR-skew-$t$. Its EVT-tailed accuracy layer attains the lowest joint $(\VaR,\ES)$ score, the zero-homogeneous FZ0 loss of \citet{fissler2016} and \citet{patton2019}, against the daily benchmarks in standard use, GARCH-$t$ and FHS, at both FRTB levels. That ranking survives annual refitting, with exception counts near nominal through a 2008-crisis window. It also keeps the lowest FZ0 against the FZ-estimated dynamic ES models of \citet{patton2019} and \citet{taylor2019}, each estimated per name by FZ0 minimization, winning at 1\% and tying Taylor at 2.5\%. Two results motivate the score without supplying its mechanism. The first is the standard identity that excess pinball loss is locally quadratic in the quantile wedge, scaled by the local density \citep{gneiting2011, ehm2016, steinwart2011}, so that a wedge at a level generates regret there. The second, a tail-wedge proposition, shows how a misspecified innovation shape opens such a wedge in the tail even when the scale is right \citep{mcneilfrey2000, francqzakoian2015}. The decomposition indicates that the score primarily captures scale error, while the surviving shape component is smaller.
 
 The loss profile is asymmetric in the score. When the frontier is quiet the estimator ties or edges the parametric benchmark (calm-quintile edge $\approx 0$). In the top decile the improvement is $+2.98\%$, and on the hyperinflation and capital-control currencies, where the parametric assumption breaks entirely, it is $12$--$14\%$. These are reductions in a
 consistent scoring function for the quantile \citep{gneiting2011}, not
@@ -218,7 +201,7 @@ analogue within the comparison set.
 
 For the pooled, cross-sectional design the closest antecedent is
 \citet{zhang2024commonality}, who forecast realized volatility with
-machine-learning models pooled across stocks and document transfer to previously unseen names. That transfer is evidence of a shared volatility mechanism, which our amortized design also exploits. For the VaR comparison the antecedent is \citet{kuester2006}, and for machine-learning volatility forecasting \citet{bucci2020} and \citet{christensen2023ml}. Deep neural-network quantile regression applied directly to VaR is the recent comparison closest to our nonparametric stage \citep{chronopoulos2024}. The differences delimit this
+machine-learning models pooled across stocks and document transfer to previously unseen names. That transfer is evidence of a shared volatility mechanism, which our amortized design also exploits. For the VaR comparison the antecedent is \citet{kuester2006}, and for machine-learning volatility forecasting \citet{bucci2020} and \citet{christensen2023ml}. Deep neural-network quantile regression applied directly to VaR is the recent comparison closest to our nonparametric stage \citep{chronopoulos2024}. Two further semiparametric VaR and ES papers in this journal are direct precedents: \citet{jiang2022singleindex} estimate a single-index expectile model, and \citet{luo2025midas} select low-frequency predictors for joint tail forecasts through a GARCH-MIDAS design with adaptive-Lasso selection. Our object differs from both: rather than proposing a new model or selecting predictors, we ask when an observable signal identifies the states in which flexible tail forecasts beat parametric ones, and we decompose the source of that conditional advantage. The differences delimit this
 paper's contribution: their object is average realized-variance forecast
 performance, whereas ours is state dependence in conditional tail-risk forecast
 performance, with the full return distribution and its regulatory tail held to
@@ -313,7 +296,7 @@ r_t = \mu + \sigma_t z_t,\qquad
 \end{equation}
 by quasi-maximum likelihood on a trailing window, and keep
 $\widehat{\mu}$, $\widehat{\sigma}_t$, and the residuals
-$\widehat{z}_t = (r_t-\widehat{\mu})/\widehat{\sigma}_t$. The $t_\nu$ likelihood serves as the estimating function for the scale rather than as a belief about the shape, which Stages 2 and 3 re-estimate from the residuals. This two-step design, a parametric filter followed by a residual quantile, is the one whose asymptotics \citet{francqzakoian2015} derive, and \citet{mcneilfrey2000} fit the same filter by Gaussian pseudo-likelihood while explicitly declining to believe the innovation law it assumes.
+$\widehat{z}_t = (r_t-\widehat{\mu})/\widehat{\sigma}_t$. The $t_\nu$ likelihood is used to estimate conditional scale; Stages 2 and 3 re-estimate the residual shape. This two-step design, a parametric filter followed by a residual quantile, is the one whose asymptotics \citet{francqzakoian2015} derive, and \citet{mcneilfrey2000} fit the same filter by Gaussian pseudo-likelihood while explicitly declining to believe the innovation law it assumes.
 
 \emph{Stage 2 (nonparametric shape).} Replace the fixed $t_\nu$
 innovation quantile with a state-conditioned quantile model of the
@@ -443,7 +426,7 @@ H_\phi(s,\tau) \;=\; g\big(\psi(s)\circ\varphi(\tau)\big),
 \label{eq:iqn}
 \end{equation}
 where $\circ$ is elementwise multiplication and $g,\psi$ are
-feed-forward nets. Three modifications make it competitive on financial data. The first is tail-aware $\tau$-sampling, $\lambda = \tfrac12\,U(0,1) + \tfrac12\,\mathrm{Beta}(0.3,0.3)$, which oversamples the extremes that uniform sampling starves (the raw net's 99\% breach rate was 3.2\%). The second is monotone rearrangement of the $\tau$-curve, and the third is the conformal layer of Section~\ref{sec:hybrid}. The network's role is generation rather than
+feed-forward nets. It uses tail-aware $\tau$-sampling, monotone rearrangement of the $\tau$-curve, and the conformal layer of Section~\ref{sec:hybrid}. The tail-aware sampling, $\lambda = \tfrac12\,U(0,1) + \tfrac12\,\mathrm{Beta}(0.3,0.3)$, oversamples the extremes that uniform sampling starves (the raw net's 99\% breach rate was 3.2\%). The network's role is generation rather than
 point accuracy: with $\tau\sim U(0,1)$,
 $z^{*} = H_\phi(s,\tau)$ draws from the fitted conditional law by
 inverse transform. The trade-off between the two estimators is set out under \emph{Estimator choice} below.
@@ -464,10 +447,7 @@ refitting. It works, at cold-start in particular, because the mapping is estimat
 GARCH learns \emph{name-specific parameters} from that name's own
 history, so with no history it has nothing. The amortized model instead
 learns a single mapping from observable state to residual shape,
-estimated from millions of asset-days across names. A newly listed asset
-is therefore not a new problem: its first ticks and characteristics place
-it at a point of the state space already densely populated by other
-names' histories, and the estimated mapping applies there directly. As
+estimated from millions of asset-days across names. For a newly listed asset, the estimated mapping can be evaluated from the available state variables without per-asset refitting. As
 the name's own history accrues, its trailing realized volatility enters
 $s_t$ and the forecast tracks its own dynamics automatically. For the same reason the explicit own-history blends add nothing: the state vector already carries the name's own recent information.
 
@@ -482,7 +462,7 @@ pipeline scores a leakage-safe weighted scaled pinball of 0.269
 (benchmark tier) on the M5 competition data, outside finance
 altogether.
 
-\noindent\emph{Estimator choice by forecasting objective.} The two estimators minimize the same loss over different index sets. The trees solve $\min \sum_{k}\sum_{i}\rho_{\tau_k}(\widehat{z}_i - q_k(s_i))$ on a fixed grid $\{\tau_k\}$, one model per level, while the network solves $\min_\phi \sum_i \mathbb{E}_{\tau\sim\lambda}\, \rho_\tau(\widehat{z}_i - H_\phi(s_i,\tau))$, one model for the continuum. The choice follows from what the application consumes.
+\noindent\emph{Estimator choice by forecasting objective.} The two estimators minimize the same loss over different index sets. The trees solve $\min \sum_{k}\sum_{i}\rho_{\tau_k}(\widehat{z}_i - q_k(s_i))$ on a fixed grid $\{\tau_k\}$, one model per level, while the network solves $\min_\phi \sum_i \mathbb{E}_{\tau\sim\lambda}\, \rho_\tau(\widehat{z}_i - H_\phi(s_i,\tau))$, one model for the continuum. The appropriate estimator depends on whether the application requires fixed quantile levels or the full conditional quantile curve.
 At fixed regulatory levels (VaR/ES
 reporting, limits, capital) the trees are preferable: best point accuracy, no
 GPU, no sampling. Where the application consumes draws (scenario generation, portfolio aggregation by simulation), the network is preferable. It learns one continuous conditional quantile map, so draws come by inverse transform with no grid interpolation, at a measured cost of $\sim$0.75\% in point accuracy. A GARCH-$t$ or FHS model also simulates, from its fixed innovation law, whereas a tree grid requires monotone interpolation first. If both are needed,
@@ -529,7 +509,7 @@ wedge interval.
 \end{proposition}
 \begin{proof} In the Online Appendix. \end{proof}
 
-\medskip\noindent The tail-wedge motivates, but does not on its own establish, the empirical regularity that organizes the paper. We claim no monotonicity theorem at the regulatory levels: because the innovations are unit-variance, a heavier tail can carry the \emph{less} extreme $2.5\%$ quantile, with the crossover near $\tau_c \approx 0.018$, so $1\%$ sits below it and $2.5\%$ just above \citep{patton2020}. The bound is a fixed-level statement rather than a tail-limit one: because $m=m(\tau)$ shrinks as $\tau\downarrow0$, the certified regret $\tfrac{m}{2}(Q_{\nu_1}(\tau) - Q_{\nu_2}(\tau))^2$ stays positive at each level but does not grow into the tail, and in fact vanishes there. We therefore treat the score-ordering as an empirical regularity, motivated by the tail-wedge mechanism rather than implied by it and documented across the design panel, the frozen holdout, the FRTB comparison, and the cross-market universes.
+\medskip\noindent The tail-wedge motivates but does not establish the empirical score-ordering result. We claim no monotonicity theorem at the regulatory levels: because the innovations are unit-variance, a heavier tail can carry the \emph{less} extreme $2.5\%$ quantile, with the crossover near $\tau_c \approx 0.018$, so $1\%$ sits below it and $2.5\%$ just above \citep{patton2020}. The bound is a fixed-level statement rather than a tail-limit one: because $m=m(\tau)$ shrinks as $\tau\downarrow0$, the certified regret $\tfrac{m}{2}(Q_{\nu_1}(\tau) - Q_{\nu_2}(\tau))^2$ stays positive at each level but does not grow into the tail, and in fact vanishes there. We therefore treat the score-ordering as an empirical regularity, motivated by the tail-wedge mechanism rather than implied by it and documented across the design panel, the frozen holdout, the FRTB comparison, and the cross-market universes.
 
 \begin{lemma}[validity of the generative sampler (standard)]\label{lem:sampler}
 If $\tau \mapsto \widetilde{q}(\tau \mid s)$ is nondecreasing and
@@ -817,8 +797,7 @@ tells the same story. It is the reason the score is read as a monitor of
 parametric-model stress, part scale and part shape, and not as a
 diagnostic of shape alone.
 
-\paragraph{Robustness of the frontier.} Four checks, in the Online
-Appendix, rule out the obvious artifacts. The one-day score lag is not a
+\paragraph{Robustness of the frontier.} Four checks in the Online Appendix address the main potential artifacts. The one-day score lag is not a
 look-ahead window: it gives the largest top-decile edge, and a
 five-day-old score keeps most of it (Online Appendix Figure~OA.1).
 Re-forming the decile cutoff from strictly earlier dates, the rule the
@@ -963,7 +942,7 @@ when the score is high, does not improve on continuous use of the
 flexible model: a classifier gate routes $90.5\%$ of days to the
 nonparametric model and matches always-nonparametric exactly, and a
 regression gate on the edge magnitude \citep{giacominiwhite2006} still
-converges to it. This is the corollary of Table~\ref{tab:frontier}: the
+converges to it. This is consistent with Table~\ref{tab:frontier}: the
 conditional mean of the loss differential is positive where the score is
 high and indistinguishable from zero elsewhere, so no state pays to
 select the parametric quantile, and the per-day oracle gap ($4.4\%$) is
@@ -1167,7 +1146,7 @@ verdict reverses, with $\sqrt{h}$-scaled GARCH-$t$ almost exactly
 calibrated through the crisis while the direct tail under-states it. In a
 2008-type era the direct ten-day model should therefore be run with the
 $\sqrt{h}$-scaled parametric number alongside it as a conservative
-envelope. The horizon comparison ends with a mixed verdict; the full
+envelope. The ten-day evidence is therefore mixed; the full
 tables are in the Online Appendix.
 
 \subsection{Cross-asset evidence}
@@ -1219,7 +1198,7 @@ volatility as its history lengthens.
 
 \section{Conclusion}\label{sec:limitations}
 
-A fixed-shape parametric filter is hard to beat where its shape assumption holds, and for most assets on most days it holds well. The useful questions are therefore where the exceptions lie and what the flexible model's advantage there consists of. This paper answers the first with an observable signal: a real-time score of residual-shape stress that identifies a state in which a distribution-free family beats the parametric benchmark. It answers the second with a decomposition, which is its central finding. Most of the advantage is the parametric filter's overstatement of variance in the days after an outlier, and a jump-robust GARCH removes that part on its own. A smaller but significant part is conditional-shape information that a robust scale leaves intact. An estimator that exploits both components, while giving up nothing to the benchmark elsewhere, improves on the accuracy of the market-risk models in standard use when judged by one-day diagnostics at the FRTB backtesting levels, at calibration parity with the best of them and short of the desk-level approval a full internal model must pass. Because the estimator pools its residual model across names, it also prices assets with no history of their own, forecasting new listings from their first day as no per-asset model can.
+A fixed-shape parametric filter is hard to beat where its shape assumption holds, and for most assets on most days it holds well. The flexible model's advantage is concentrated in a small set of high-stress states identified by the real-time misspecification score. The decomposition attributes most of this advantage to post-outlier variance overstatement by the standard GARCH filter; a smaller but significant component remains after replacing it with a jump-robust scale, and is conditional-shape information a robust scale leaves intact. An estimator that exploits both components, while showing no detectable accuracy loss relative to the benchmark elsewhere, improves on the accuracy of the market-risk models in standard use when judged by one-day diagnostics at the FRTB backtesting levels, at calibration parity with the best of them and short of the desk-level approval a full internal model must pass. Because the estimator pools its residual model across names, it also forecasts tail risk for assets with no history of their own, forecasting new listings from their first day as no per-asset model can.
 
 These conclusions carry qualifications. The score is predictive, not a necessary or sufficient condition: high residual kurtosis coincides with ties in some markets, and in credit and freight the accuracy edges sit alongside open calibration. The shape component is the smaller part of the edge, since the decomposition attributes most of it to daily-scale misspecification that a jump-robust or realized-variance scale removes (Section~\ref{sec:frtb}), and what survives is real but modest. Where intraday data are too sparse to build a realized measure, the daily model and its score remain the available tool. And the score is a monitor, not a day-to-day switching rule, since the day-ahead oracle gap is largely unforecastable (Section~\ref{sec:gate}).
 Distributional uncertainty around these VaR and ES forecasts and the multivariate portfolio tail are left to future work.
