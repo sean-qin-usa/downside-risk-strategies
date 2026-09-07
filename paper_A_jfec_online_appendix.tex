@@ -41,10 +41,10 @@ $z^{(m)} = H_\phi(s_t,\tau^{(m)})$.
 
 \medskip\noindent\fbox{\parbox{0.96\textwidth}{
 \textbf{Algorithm OA.2 (the misspecification meter, as deployed).}
-(i)~Fit equation~(1) of the paper on a trailing window; store
+(i)~Fit equation~(2) of the paper on a trailing window; store
 $\widehat{z}_{t-62},\dots,\widehat{z}_t$.
 (ii)~Compute $\mathrm{mk}_{63}$, $|\mathrm{sk}_{63}|$, $J_5$ by
-equation~(12) of the paper.
+equation~(9) of the paper.
 (iii)~Convert each to its percentile against the trailing pooled panel
 (same asset class); the score is the maximum of the three percentiles,
 re-ranked into deciles.
@@ -54,7 +54,7 @@ score region (a conditional average, not a per-name point estimate), flag the as
 residual-hybrid engine and for model-risk review; elsewhere
 $\Rightarrow$ no action (in the amortized setting the engine is run
 regardless; the meter serves surveillance, and day-level switching is
-unsupported, Section~5.4 of the paper).
+unsupported, Section~4.3 of the paper).
 (v)~Latency: detection lags episode onset by median 0 / mean 2--4 days;
 the edge is back-loaded within episodes, so the lag forfeits little.
 }}
@@ -69,7 +69,7 @@ $\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
 at the desk's levels, with VaR and ES$_{97.5}$ both read from the coherent
 min-envelope curve $Q^{*}=\min\{$body$,$EVT$\}$ (VaR at the $\alpha$
 node, ES its numerical tail integral); (v)~read
-the misspecification score equation~(12) of the paper as the model-risk monitor: top decile means the parametric fallback's conditional average loss
+the misspecification score equation~(9) of the paper as the model-risk monitor: top decile means the parametric fallback's conditional average loss
 in that score region runs $\sim$2--3\% higher. \emph{Annually:} refit filters, retrain the shape model,
 re-estimate tail and shifts, all on trailing data. \emph{New listing:}
 run the separate characteristics-only amortized forecaster until an
@@ -142,8 +142,7 @@ labels whose $h$-day window crosses the split are purged): fat tails
 compound while $\sqrt{h}$ scaling compounds the shape error, from $0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$. The forecaster is the
 direct multi-day model of the main text's ten-day subsection,
 \emph{not} the residual-hybrid engine, whose architecture is
-one-day. An earlier version of this figure showed larger ratios from
-an unpurged run; the purged rerun supersedes it.}
+one-day.}
 \label{fig:horizon}
 \end{figure}
 \clearpage
@@ -267,7 +266,7 @@ kurtosis decile).}
 \begin{threeparttable}
 \caption{Summary of the paper's results and scope conditions. Edges are
 percentage pinball reductions unless noted; DM statistics are per-date
-(conventions note of Section~5 of the paper), one-sided. Panel A: the deployed amortized
+(conventions note of Section~3 of the paper), one-sided. Panel A: the deployed amortized
 residual-hybrid engine (worst case on the accuracy yardstick: no
 detectable loss; calm-cell 90\% lower confidence bounds sit above
 $-0.25\%$). A separate block reports the direct multi-day
@@ -352,11 +351,11 @@ Each row is established in the section cited.}
 \toprule
 Task / regime & Winner & Where \\
 \midrule
-Point quantile accuracy, tabular state & GBM (trees) & Section~3.2 of the paper \\
-Single asset, calm ($\sim$90\% of asset-days) & GARCH-$t$ & Section~5 of the paper \\
-Single asset, top misspecification decile & Nonparametric ($+2.98\%$, DM 10.5) & Section~5 of the paper \\
-Amortized cross-name panel, any regime & Nonparametric always; no gate & Section~5.4 of the paper \\
-Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & Section~6 of the paper \\
+Point quantile accuracy, tabular state & GBM (trees) & Section~2.3 of the paper \\
+Single asset, calm ($\sim$90\% of asset-days) & GARCH-$t$ & Section~4 of the paper \\
+Single asset, top misspecification decile & Nonparametric ($+2.98\%$, DM 10.5) & Section~4 of the paper \\
+Amortized cross-name panel, any regime & Nonparametric always; no gate & Section~4.3 of the paper \\
+Regulatory ES with a $\ge$GARCH floor & Residual-hybrid $+$ EVT $+$ conformal & Section~5 of the paper \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -538,7 +537,7 @@ Returns are CRSP daily; the intersection is common across models. Source:
 
 \clearpage
 \section{Frontier robustness: calendar overlap, family-wise error, and the universe rule}
-This section collects the constructions summarized in Section~4 of the paper.
+This section collects the constructions summarized in Section~3 of the paper.
 
 \paragraph{Calendar overlap and the pooled learner.} The design panels are split per name, $60/40$ in each name's own time index. In an unbalanced panel such a rule can place one name's training window on another name's test dates, so a pooled learner could meet a systemic event in training that a per-name model would meet only out of sample, the panel form of overlap leakage that purging and embargo address. Near-complete histories put the split points on almost the same date, so the channel is nearly degenerate here, and a strict calendar-time split closes it: each stage (each GARCH fit, the pooled learner, the GPD tail) is re-estimated strictly before 2020-01-01 and tested from that date for every name simultaneously. The frontier survives, with the top decile at $+2.47\%$ (per-date DM 6.22 over 1{,}258 dates; per-name split $+2.7\%$, DM 6.5) and the overall edge $+0.71\%$ (DM 1.87). The bottom decile is elevated at $+1.3\%$ because a 2020--22 test era leaves few calm cells, but the top decile roughly doubles each other cell. Inside the 2000--2013 holdout, re-estimating strictly before 2007-01-01 and testing on 2007--2013 removes the 2008 crisis from every training window; the pooled learner still wins overall ($+0.29\%$, per-date DM 3.08 over 1{,}762 dates) and the decile profile keeps its shape (top three deciles $+0.45$--$+1.04\%$ against $+0.06$--$+0.09\%$). The annual walk-forward refits the per-name GARCH on expanding data at each January-1 cutoff from 2020 to 2024, rebuilds the residuals and score, and retrains the learner; the top decile carries $+2.09\%$ at DM 4.43 while the overall edge is no longer detectable ($-0.18\%$, DM $-0.52$).
 
@@ -575,14 +574,14 @@ This section collects the constructions summarized in Section~4 of the paper.
 \draw[arr, dashed] ([xshift=5mm]garch.south) |-
   node[lab, left, pos=0.22] {$\widehat\sigma_t$} (out.west);
 \end{tikzpicture}
-\caption{The residual-hybrid estimator as a pipeline (Section~3 of the paper). Solid arrows carry data; the dashed top arrow carries the conditional scale $\widehat\sigma_t$ that rescales the finished residual quantile curve. Dashed boxes are inputs shared across assets (the pooled panel that trains the amortized shape model) or held out from training (the calibration split behind the conformal overlay).}
+\caption{The residual-hybrid estimator as a pipeline (Section~2 of the paper). Solid arrows carry data; the dashed top arrow carries the conditional scale $\widehat\sigma_t$ that rescales the finished residual quantile curve. Dashed boxes are inputs shared across assets (the pooled panel that trains the amortized shape model) or held out from training (the calibration split behind the conformal overlay).}
 \label{fig:pipeline}
 \end{figure}
 
 \begin{table}[h]
 \centering\small
 \begin{threeparttable}
-\caption{Sample flow across evaluation panels (Section~4 of the paper).}
+\caption{Sample flow across evaluation panels (Section~3 of the paper).}
 \label{tab:sampleflow}
 \footnotesize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lllrrl}
@@ -634,7 +633,7 @@ not exist for $\nu\le4$, so sixty-three observations cannot reliably
 rank regimes that differ only in a static $\nu$. The jump and
 asymmetry signals, whose top deciles independently survive familywise
 control, corroborate the ordering, and a tail-index (Hill-type)
-variant of the score is an obvious robustness extension. For the empirical sections this means the real-data top-decile edge of Section~5 of the paper
+variant of the score is an obvious robustness extension. For the empirical sections this means the real-data top-decile edge of Section~4 of the paper
 cannot be an artifact of stationary fat tails being averaged over
 (that configuration is the one the simulation shows a fixed shape
 handles) and is consistent with \emph{local} shape breaks a single
@@ -670,7 +669,7 @@ stress design is a natural extension; it is not developed here.
 \clearpage
 \section{Proofs}\label{app:proofs}
 
-The four formal results of Section~3.3 of the paper are stated with
+The four formal results of Section~2.4 of the paper are stated with
 proof sketches in the body; the complete arguments, with all regularity
 hypotheses made explicit, are collected here. Throughout, $\rho_\tau(u)
 = u(\tau - \mathbb{I}\{u<0\})$ and $q_F = F^{-1}(\tau) = \inf\{x:F(x)\ge
