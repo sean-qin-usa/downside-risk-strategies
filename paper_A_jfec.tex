@@ -481,8 +481,7 @@ other changes a single component of the pipeline.
 \subsection{Formal results: why shape misspecification must show up in
 the loss}\label{sec:theory}
 
-This paper's organizing claim, that the nonparametric edge is concentrated where
-the trailing residual-shape diagnostics are extreme, is an empirical finding with a structural motivation in the pinball loss. The results below are modest: a shape violation creates a quantile wedge, and regret is locally quadratic in that wedge. They motivate looking where trailing shape diagnostics are extreme, but they do not prove that $\mathrm{mk}_{63}$ (Section~\ref{sec:score}) estimates the wedge. That link is established empirically. The identity in Lemma~\ref{lem:regret} is the quantile-score divergence of \citet{gneiting2011}, in the mixture form of \citet{ehm2016}, and the lower bound in \eqref{eq:quadratic} is the self-calibration inequality of \citet{steinwart2011}. We restate both because Proposition~\ref{prop:wedge} uses the constants.
+The nonparametric edge concentrates where the trailing residual-shape diagnostics are extreme, an empirical finding with a structural motivation in the pinball loss. Two elementary results, with proofs in the Online Appendix, supply it; they motivate looking where the shape diagnostics are extreme but do not prove that $\mathrm{mk}_{63}$ estimates the wedge, a link established empirically.
 
 \begin{lemma}[pinball regret identity (standard)]\label{lem:regret}
 Let $Z \sim F$ with $\mathbb{E}|Z| < \infty$ and $q_F = F^{-1}(\tau)$, and let $S(q) = \mathbb{E}_F\,\rho_\tau(Z - q)$ be the expected pinball loss of forecasting the constant $q$, finite by the moment condition. Then for any $q$,
@@ -500,8 +499,7 @@ If $F$ has density bounded as $0 < m \le f \le M$ on that closed interval,
 \end{lemma}
 \begin{proof} In the Online Appendix. \end{proof}
 
-Lemma~\ref{lem:regret} says the extra loss a misspecified forecaster
-pays is \emph{locally quadratic in its quantile error}. The frontier claim then reduces to whether shape misspecification creates a quantile wedge at the risk levels that matter. For the paper's canonical case, a fixed Student-$t$ shape when the true local shape is fatter, the premise of GARCH-EVT \citep{mcneilfrey2000, francqzakoian2015} and the pattern in the horse race of \citet{kuester2006}, it must:
+The extra loss a misspecified forecaster pays is thus locally quadratic in its quantile error, and the frontier claim reduces to whether shape misspecification opens a quantile wedge at the levels that matter. For a fixed Student-$t$ shape that is too thin \citep{mcneilfrey2000, kuester2006}, it does:
 
 \begin{proposition}[tail wedge under tail-shape misspecification (elementary)]
 \label{prop:wedge}
@@ -517,22 +515,7 @@ wedge interval.
 \end{proposition}
 \begin{proof} In the Online Appendix. \end{proof}
 
-\begin{remark}[the crossover level]\label{rem:crossover}
-Unit-variance fat-tailed laws put more mass near the center as well as in the far tail, so the ordering of Proposition~\ref{prop:wedge} reverses at moderate levels: the unit-variance $t_3$ has a less extreme 5\% quantile than the normal but a more extreme 1\% quantile, with the sign flip at $\tau_c \approx 0.0179$. The deepest regulatory level $\tau=0.01$ sits below the crossover, where the fat tail is strictly more extreme, while $\tau=0.025$ sits just above it. Two design choices follow: whole-distribution scoring can rank a fat-tail-aware model below a thin-tailed one even when the tail is the decision-relevant region (Section~\ref{sec:notation}), the score dependence of \citet{gneitingranjan2011} and \citet{patton2020}; and the score of Section~\ref{sec:score} is used as a rank rather than a moment estimate.
-\end{remark}
-
-\medskip\noindent The ordering in Proposition~\ref{prop:wedge} is textbook regular variation \citep{embrechts1997}, and its content is the pairing with Lemma~\ref{lem:regret}. The tail-wedge result
-motivates, but does not on its own establish, the empirical regularity
-that organizes the paper: that the nonparametric edge is ordered by the
-misspecification score. We do not claim a monotonicity theorem at the
-regulatory levels, because two features of the standardized problem
-block one. First, Proposition~\ref{prop:wedge} orders a given pair of
-tail indices only below a pair-specific level $\tau^*(\nu_1,\nu_2)$. It
-does not deliver monotonicity of the wedge in the tail index at a fixed
-operational $\tau$. Second, the innovations are unit-variance by construction, and for unit-variance laws the level-$\tau$ quantile is not monotone in tail heaviness. As the tail fattens, the variance normalization pulls the fixed-$\tau$ quantile back toward the center (the crossover of Remark~\ref{rem:crossover}), so that at $\tau=0.025$ a heavier-tailed $t$ can carry the \emph{less} extreme quantile. We therefore treat the score-ordering as an \emph{empirical}
-regularity, documented below across the design panel, the frozen
-holdout, the FRTB comparison, and the cross-market universes, and motivated
-by the tail-wedge mechanism rather than implied by it. The one exact statement we lean on is the regret identity (Lemma~\ref{lem:regret}), the elementary basis for the consistency of the pinball loss \citep{gneiting2011,ehm2016,steinwart2011}. Wherever the benchmark's reported quantile differs from the oracle's at a level, it pays a pinball regret that is positive and, to second order, quadratic in that gap. The score is our observable proxy for where that gap is largest.
+\medskip\noindent The tail-wedge motivates, but does not on its own establish, the empirical regularity that organizes the paper. We claim no monotonicity theorem at the regulatory levels: because the innovations are unit-variance, a heavier tail can carry the \emph{less} extreme $2.5\%$ quantile, with the crossover near $\tau_c \approx 0.018$, so $1\%$ sits below it and $2.5\%$ just above \citep{patton2020}. We therefore treat the score-ordering as an empirical regularity, motivated by the tail-wedge mechanism rather than implied by it and documented across the design panel, the frozen holdout, the FRTB comparison, and the cross-market universes.
 
 \begin{lemma}[validity of the generative sampler (standard)]\label{lem:sampler}
 If $\tau \mapsto \widetilde{q}(\tau \mid s)$ is nondecreasing and
@@ -542,9 +525,7 @@ quantile function exactly $\widetilde{q}(\cdot \mid s)$.
 \end{lemma}
 \begin{proof} In the Online Appendix. \end{proof}
 
-\begin{remark}[nesting and ERM dominance]\label{rem:nesting}
-The hypothesis class of Stage 2 contains the constant-in-$s$ map $q(\tau)$, i.e., FHS \citep{baroneadesi1999fhs}. Empirical risk minimization over the larger class therefore attains in-sample pinball risk no worse than FHS by construction, and the out-of-sample comparisons of Section~\ref{sec:frtb} test whether that dominance survives estimation noise. It does. The same argument does not apply to CAViaR \citep{engle2004caviar}, so CAViaR is the one rival the estimator only ties.
-\end{remark}
+\medskip\noindent Because the flexible class contains FHS as the constant-in-state special case \citep{baroneadesi1999fhs}, empirical risk minimization attains in-sample pinball risk no worse than FHS, and the out-of-sample comparisons of Section~\ref{sec:frtb} test whether that dominance survives estimation noise; CAViaR \citep{engle2004caviar}, outside this nesting, is the one rival the estimator only ties.
 
 % moved to online appendix (OA Section 1): the two-regime toy example
 \subsection{Comparison with generative Bayesian computation}\label{sec:polsondelta}
@@ -1193,7 +1174,7 @@ volatility as its history lengthens.
 
 A fixed-shape parametric filter is hard to beat where its shape assumption holds, and for most assets on most days it holds well. The useful questions are therefore where the exceptions lie and what the flexible model's advantage there consists of. This paper answers the first with an observable signal: a real-time score of residual-shape stress that identifies a state in which a distribution-free family beats the parametric benchmark. It answers the second with a decomposition, which is its central finding. Most of the advantage is the parametric filter's overstatement of variance in the days after an outlier, and a jump-robust GARCH removes that part on its own. A smaller but significant part is conditional-shape information that a robust scale leaves intact. An estimator that exploits both components, while giving up nothing to the benchmark elsewhere, improves on the accuracy of the market-risk models in standard use when judged by one-day diagnostics at the FRTB backtesting levels, at calibration parity with the best of them and short of the desk-level approval a full internal model must pass. Because the estimator pools its residual model across names, it also prices assets with no history of their own, forecasting new listings from their first day as no per-asset model can.
 
-These conclusions come with qualifications. The first is that the score is predictive rather than a necessary or sufficient condition for the flexible model to win. High residual kurtosis coincides with ties in some markets, the nonparametric model wins at only moderate kurtosis in others, and in credit and freight its accuracy edges sit alongside calibration failures that the current tail stages leave open. The second qualification concerns the size of the shape component. The score orders the edge as an empirical regularity, but the decomposition identifies the larger part of that edge as daily-scale misspecification. A GARCH whose news term is capped, so that one shock cannot inflate the variance, removes most of the top-decile edge, and on large capitalizations a five-minute realized-variance scale does the same (Section~\ref{sec:frtb}). What survives a robust scale is a conditional-shape component that is real but modest. The evaluation is daily-frequency by design, and the realized-measure comparison qualifies it further. Where intraday data are unavailable or too sparse to build a realized measure, however, the daily flexible model and its score remain the available tool. Finally, the score is a monitor, not a rule for switching models from one day to the next. The day-ahead gap between the oracle and the achievable forecast is largely unforecastable noise (Section~\ref{sec:gate}), so the score's value lies in stratifying where the flexible model helps.
+These conclusions carry qualifications. The score is predictive, not a necessary or sufficient condition: high residual kurtosis coincides with ties in some markets, and in credit and freight the accuracy edges sit alongside open calibration. The shape component is the smaller part of the edge, since the decomposition attributes most of it to daily-scale misspecification that a jump-robust or realized-variance scale removes (Section~\ref{sec:frtb}), and what survives is real but modest. Where intraday data are too sparse to build a realized measure, the daily model and its score remain the available tool. And the score is a monitor, not a day-to-day switching rule, since the day-ahead oracle gap is largely unforecastable (Section~\ref{sec:gate}).
 Distributional uncertainty around these VaR and ES forecasts and the multivariate portfolio tail are left to future work.
 
 \section*{Funding}
