@@ -58,16 +58,16 @@ with a Real-Time Misspecification Score}
 \let\footnote\endnote
 
 \begin{abstract}
-We forecast Value-at-Risk and Expected Shortfall with an amortized
-semiparametric estimator that keeps the GARCH volatility scale and learns
-the tail shape nonparametrically. The same fit forecasts newly listed
-assets with no history, evidence of a tail-shape mechanism shared across
-stocks. A real-time score of residual-shape stress flags when the flexible
-tail wins, an edge large and significant in its top decile and negligible
-elsewhere. A jump-robust refit traces most of it to variance overstatement
-after a shock, and a smaller but significant part to residual conditional
-shape. The estimator attains the lowest joint (VaR, ES) loss against
-standard benchmarks.
+Parametric Value-at-Risk and Expected Shortfall forecasts fail in states
+that can be flagged in real time. A per-asset, per-day score of
+residual-shape stress predicts when a distribution-free tail beats a
+GARCH-$t$ benchmark, an edge large in its top decile and negligible
+elsewhere. A jump-robust refit traces most of that edge to variance
+overstatement after a shock, and a smaller but significant part to residual
+conditional shape. The forecasts come from an amortized semiparametric
+estimator whose single pooled fit also covers newly listed assets with no
+history, and it attains the lowest joint (VaR, ES) loss against standard
+benchmarks.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Value-at-Risk; Expected Shortfall;
