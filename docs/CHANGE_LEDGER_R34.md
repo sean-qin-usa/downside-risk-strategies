@@ -1819,3 +1819,90 @@ Engine over pooled body & $-0.51$ (-9.04) & $-0.04$ (-2.28) & $-0.62$ (-9.64) & 
 \begin{table}[h
 ```
 
+
+# R38: evaluation extras (CPA regression, Murphy diagrams, DQ test, dispersion)
+
+## 4.1-cpa (M)
+
+**Why.** Giacomini-White CPA as the regression form of the frontier; per-date win rates
+
+**Before.**
+
+```
+The edge is concentrated in the top decile: the top $\mathrm{mk}_{63}$ decile
+carries $+2.98\%$ at per-date DM $10.5$, the overall edge is $+0.35\%$ at
+DM $5.35$, and the lower deciles are statistically indistinguishable
+from zero.
+```
+
+**After.**
+
+```
+The edge is concentrated in the top decile: the top $\mathrm{mk}_{63}$ decile
+carries $+2.98\%$ at per-date DM $10.5$, the overall edge is $+0.35\%$ at
+DM $5.35$, and the lower deciles are statistically indistinguishable
+from zero. The sort has a regression form. Taking the asset-day loss differential (GARCH-$t$ pinball minus engine pinball) and the lagged score as the conditioning variable, the conditional-predictive-ability test of \citet{giacominiwhite2006} with instruments (1, score) rejects equal conditional accuracy (Wald $\chi^2_2=73.6$ on the composite percentile, 90.0 on the kurtosis percentile), and the slope of the differential on the score is positive with a date-clustered $t$ of 8.6 (composite) and 9.8 (kurtosis). On a date-by-date reading the engine has the lower loss on 74\% of dates in the top decile and 55\% in deciles one through nine.
+```
+
+## 5.1-dq-murphy (M)
+
+**Why.** DQ test and Murphy-diagram summary
+
+**Before.**
+
+```
+so the gain over the conventional EVT construction is not confined to the pinball frontier. The two closest dynamic
+```
+
+**After.**
+
+```
+so the gain over the conventional EVT construction is not confined to the pinball frontier. The dynamic quantile test of \citet{engle2004caviar} (four hit lags and the VaR) passes at the 5\% level for 86\% of names at 1\% and 70\% at 2.5\% for the accuracy layer, against 84\% and 68\% for GARCH-$t$ and 83\% and 62\% for the pooled GARCH-EVT; the overlay lifts the 2.5\% rate to 84\%. Because a ranking under one consistent score need not hold under another \citep{patton2020}, the Online Appendix reports Murphy diagrams \citep{ehm2016} for the VaR forecasts: the accuracy layer has the lower elementary score against GARCH-$t$ on 70\% of the threshold grid at 1\% and 65\% at 2.5\%, and against the pooled GARCH-EVT on 85\% at both levels, losing in a band of thresholds near the typical VaR level. The two closest dynamic
+```
+
+## OA-extras (OA)
+
+**Why.** OA subsection with CPA/DQ/dispersion table and Murphy figure
+
+**Before.**
+
+```
+\section{Frontier robustness: calendar overlap, family-wise error, and the universe rule}
+```
+
+**After.**
+
+```
+
+\subsection*{Additional evaluation statistics on the same rows}
+The same run adds four statistics that go beyond mean loss. (i)~The conditional-predictive-ability test of \citet{giacominiwhite2006}, with the asset-day loss differential $d_{it}=L^{\mathrm{GARCH}\text{-}t}_{it}-L^{\mathrm{engine}}_{it}$ (eleven-level pinball) and instruments $(1,\mathrm{score}_{i,t-1})$; the Wald statistic uses a Newey--West(10) covariance of the per-date sums. (ii)~Murphy diagrams \citep{ehm2016}: the mean elementary quantile score $S_\theta(q,y)=(\mathbb{I}\{y<q\}-\alpha)(\mathbb{I}\{\theta<q\}-\mathbb{I}\{\theta<y\})$ of the accuracy layer minus that of a competitor, on a grid of forty return-space thresholds $\theta$ (the 0.1\% to 15\% quantiles of test returns); a negative value means the accuracy layer is better at that $\theta$, and a curve that is negative everywhere would mean dominance under every consistent scoring function for the $\alpha$-quantile. (iii)~The dynamic quantile test of \citet{engle2004caviar} per name with four hit lags and the VaR. (iv)~The dispersion of the per-date loss differential.
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Conditional predictive ability, dynamic quantile test, and loss-differential dispersion on the frontier rows.}
+\label{tab:extras}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\multicolumn{5}{l}{\emph{Giacomini--White CPA of $d_{it}$ on $(1,\mathrm{score}_{i,t-1})$}} \\
+Comparison & Score & Wald $\chi^2_2$ & Slope of $d$ on score & Slope $t$ \\
+\midrule
+GARCH-$t$ minus engine & composite pct. & 73.6 & 0.0081 & 8.6 \\
+GARCH-$t$ minus engine & $\mathrm{mk}_{63}$ pct. & 90.0 & 0.0068 & 9.8 \\
+Pooled GARCH-EVT minus engine & composite pct. & 64.5 & 0.0072 & 7.5 \\
+GARCH-$t$ minus pooled body & composite pct. & 91.4 & 0.0105 & 9.8 \\
+\midrule
+\multicolumn{5}{l}{\emph{Dynamic quantile test, per-name pass rate at 5\% (200 names)}} \\
+Model & \multicolumn{2}{c}{$\alpha=1\%$} & \multicolumn{2}{c}{$\alpha=2.5\%$} \\
+\midrule
+Engine (accuracy layer) & \multicolumn{2}{c}{86\%} & \multicolumn{2}{c}{70\%} \\
+Engine $+$ conformal overlay & \multicolumn{2}{c}{86\%} & \multicolumn{2}{c}{84\%} \\
+GARCH(1,1)-$t$ & \multicolumn{2}{c}{84\%} & \multicolumn{2}{c}{68\%} \\
+GARCH-EVT, pooled tail & \multicolumn{2}{c}{83\%} & \multicolumn{2}{c}{62\%} \\
+GARCH-EVT, per name & \multicolumn{2}{c}{82\%} & \multicolumn{2}{c}{60\%} \\
+GARCH $+$ pooled body (no EVT) & \multicolumn{2}{c}{69\%} & \multicolumn{2}{c}{54\%} \\
+\midrule
+\multicolu
+```
+

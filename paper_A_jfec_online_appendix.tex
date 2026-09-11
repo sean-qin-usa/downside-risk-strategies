@@ -627,7 +627,76 @@ GARCH(1,1)-$t$ & 2.1557 & 1.03\% & 5.00 & 1.8542 & 2.71\% & 4.55 \\
 \end{threeparttable}
 \end{table}
 
-\noindent\emph{Threshold diagnostics.} Over a threshold grid $p_0\in\{0.025,0.05,0.10,0.15\}$ the pooled lower-tail fit gives $\hat\xi=0.298, 0.269, 0.204, 0.164$ on 6,075, 12,150, 24,300, 36,450 exceedances; per name at $p_0=0.10$ the interquartile range of $\hat\xi$ is 0.058 to 0.281 (median 0.174) with a median of 125 exceedances, and no name has $\hat\xi\ge1$. The EVT branch is the tighter of the two inside the engine's minimum on 60.1\% of test rows at the 1\% node and 59.5\% at the 2.5\% node. On the 2000--2013 holdout rows (\texttt{job\_holdout\_garch\_evt.py}) the frozen learner beats the pooled GARCH-EVT by $+1.16\%$ (DM 2.52) in the top holdout decile and by $+1.30\%$ (DM 1.38) in the frozen design-era bucket, and by $-0.01\%$ (DM -0.31) in deciles one through nine.
+\noindent\emph{Threshold diagnostics.} Over a threshold grid $p_0\in\{0.025,0.05,0.10,0.15\}$ the pooled lower-tail fit gives $\hat\xi=0.298, 0.269, 0.204, 0.164$ on 6,075, 12,150, 24,300, 36,450 exceedances; per name at $p_0=0.10$ the interquartile range of $\hat\xi$ is 0.058 to 0.281 (median 0.174) with a median of 125 exceedances, and no name has $\hat\xi\ge1$. The EVT branch is the tighter of the two inside the engine's minimum on 60.1\% of test rows at the 1\% node and 59.5\% at the 2.5\% node. On the 2000--2013 holdout rows (\texttt{job\_holdout\_garch\_evt.py}) the frozen learner beats the pooled GARCH-EVT by $+1.16\%$ (DM 2.52) in the top holdout decile and by $+1.30\%$ (DM 1.38) in the frozen design-era bucket, and by $-0.01\%$ (DM $-0.31$) in deciles one through nine.
+
+
+\subsection*{Additional evaluation statistics on the same rows}
+The same run adds four statistics that go beyond mean loss. (i)~The conditional-predictive-ability test of \citet{giacominiwhite2006}, with the asset-day loss differential $d_{it}=L^{\mathrm{GARCH}\text{-}t}_{it}-L^{\mathrm{engine}}_{it}$ (eleven-level pinball) and instruments $(1,\mathrm{score}_{i,t-1})$; the Wald statistic uses a Newey--West(10) covariance of the per-date sums. (ii)~Murphy diagrams \citep{ehm2016}: the mean elementary quantile score $S_\theta(q,y)=(\mathbb{I}\{y<q\}-\alpha)(\mathbb{I}\{\theta<q\}-\mathbb{I}\{\theta<y\})$ of the accuracy layer minus that of a competitor, on a grid of forty return-space thresholds $\theta$ (the 0.1\% to 15\% quantiles of test returns); a negative value means the accuracy layer is better at that $\theta$, and a curve that is negative everywhere would mean dominance under every consistent scoring function for the $\alpha$-quantile. (iii)~The dynamic quantile test of \citet{engle2004caviar} per name with four hit lags and the VaR. (iv)~The dispersion of the per-date loss differential.
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Conditional predictive ability, dynamic quantile test, and loss-differential dispersion on the frontier rows.}
+\label{tab:extras}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\multicolumn{5}{l}{\emph{Giacomini--White CPA of $d_{it}$ on $(1,\mathrm{score}_{i,t-1})$}} \\
+Comparison & Score & Wald $\chi^2_2$ & Slope of $d$ on score & Slope $t$ \\
+\midrule
+GARCH-$t$ minus engine & composite pct. & 73.6 & 0.0081 & 8.6 \\
+GARCH-$t$ minus engine & $\mathrm{mk}_{63}$ pct. & 90.0 & 0.0068 & 9.8 \\
+Pooled GARCH-EVT minus engine & composite pct. & 64.5 & 0.0072 & 7.5 \\
+GARCH-$t$ minus pooled body & composite pct. & 91.4 & 0.0105 & 9.8 \\
+\midrule
+\multicolumn{5}{l}{\emph{Dynamic quantile test, per-name pass rate at 5\% (200 names)}} \\
+Model & \multicolumn{2}{c}{$\alpha=1\%$} & \multicolumn{2}{c}{$\alpha=2.5\%$} \\
+\midrule
+Engine (accuracy layer) & \multicolumn{2}{c}{86\%} & \multicolumn{2}{c}{70\%} \\
+Engine $+$ conformal overlay & \multicolumn{2}{c}{86\%} & \multicolumn{2}{c}{84\%} \\
+GARCH(1,1)-$t$ & \multicolumn{2}{c}{84\%} & \multicolumn{2}{c}{68\%} \\
+GARCH-EVT, pooled tail & \multicolumn{2}{c}{83\%} & \multicolumn{2}{c}{62\%} \\
+GARCH-EVT, per name & \multicolumn{2}{c}{82\%} & \multicolumn{2}{c}{60\%} \\
+GARCH $+$ pooled body (no EVT) & \multicolumn{2}{c}{69\%} & \multicolumn{2}{c}{54\%} \\
+\midrule
+\multicolumn{5}{l}{\emph{Per-date loss differential, GARCH-$t$ minus engine (pinball units)}} \\
+Region & Win rate & Median & 5th--95th pct. & SD \\
+\midrule
+Top $\mathrm{mk}_{63}$ decile & 74\% & 0.0102 & -0.0258 to 0.0493 & 0.0265 \\
+Deciles 1--9 & 55\% & 0.0007 & -0.0114 to 0.0096 & 0.0072 \\
+Overall & 62\% & 0.0016 & -0.0102 to 0.0114 & 0.0076 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Same 200 names and 221,600 rows as Table~\ref{tab:garchevt-frontier}. Win rate is the share of the 1,108 test dates on which the date-averaged engine loss is below the reference. The pooled dynamic quantile test rejects for every model at both levels, as pooled asset-day tests do at this sample size (Section~5.1 of the paper).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.48\linewidth,height=5cm, xlabel={threshold $\theta$ (daily return, \%)}, ylabel={elementary score difference ($\times10^{-4}$)},
+  title={$\alpha=1\%$}, xmin=-9, xmax=-1.5, ymajorgrids, legend style={font=\scriptsize,draw=none,at={(0.03,0.03)},anchor=south west},
+  tick label style={font=\scriptsize}, label style={font=\scriptsize}, title style={font=\footnotesize}]
+\addplot[npblue,thick] coordinates {(-15.879,-0.205) (-8.997,-0.418) (-7.431,-0.082) (-6.543,-0.203) (-5.911,0.413) (-5.462,-0.458) (-5.117,-0.149) (-4.830,0.203) (-4.584,-0.135) (-4.374,0.396) (-4.178,0.127) (-4.016,0.002) (-3.859,0.552) (-3.722,-0.026) (-3.594,-0.168) (-3.474,0.177) (-3.371,0.009) (-3.263,-0.151) (-3.166,0.067) (-3.073,0.000) (-2.993,0.324) (-2.913,-0.448) (-2.838,-1.619) (-2.765,-2.153) (-2.698,-1.874) (-2.632,-1.562) (-2.574,-1.432) (-2.516,-1.343) (-2.458,-0.839) (-2.402,-0.615) (-2.347,-0.607) (-2.292,-0.588) (-2.241,-0.211) (-2.192,-0.209) (-2.144,0.042) (-2.100,-0.057) (-2.055,-0.242) (-2.010,-0.284) (-1.969,-0.211) (-1.931,-0.140)};
+\addplot[npmid,thick,dashed] coordinates {(-15.879,-0.193) (-8.997,-0.385) (-7.431,-0.342) (-6.543,-0.557) (-5.911,0.102) (-5.462,-0.199) (-5.117,-0.176) (-4.830,0.235) (-4.584,-0.236) (-4.374,0.293) (-4.178,-0.022) (-4.016,-0.203) (-3.859,0.383) (-3.722,-0.298) (-3.594,-0.360) (-3.474,-0.180) (-3.371,-0.343) (-3.263,-0.295) (-3.166,-0.039) (-3.073,-0.526) (-2.993,0.212) (-2.913,-0.496) (-2.838,-1.926) (-2.765,-2.079) (-2.698,-2.182) (-2.632,-1.837) (-2.574,-1.366) (-2.516,-1.347) (-2.458,-1.183) (-2.402,-0.718) (-2.347,-0.713) (-2.292,-0.569) (-2.241,-0.306) (-2.192,-0.174) (-2.144,0.023) (-2.100,-0.218) (-2.055,-0.227) (-2.010,-0.314) (-1.969,-0.254) (-1.931,-0.090)};
+\addplot[black,thin] coordinates {(-9,0)(-1.5,0)};
+\legend{engine minus GARCH-$t$, engine minus pooled GARCH-EVT}
+\end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[width=0.48\linewidth,height=5cm, xlabel={threshold $\theta$ (daily return, \%)},
+  title={$\alpha=2.5\%$}, xmin=-9, xmax=-1.5, ymajorgrids,
+  tick label style={font=\scriptsize}, label style={font=\scriptsize}, title style={font=\footnotesize}]
+\addplot[npblue,thick] coordinates {(-15.879,-0.080) (-8.997,-0.151) (-7.431,-0.288) (-6.543,-0.575) (-5.911,-0.532) (-5.462,-0.606) (-5.117,-0.491) (-4.830,-1.423) (-4.584,-0.519) (-4.374,0.079) (-4.178,0.369) (-4.016,-0.412) (-3.859,1.062) (-3.722,0.836) (-3.594,-0.126) (-3.474,-0.440) (-3.371,0.017) (-3.263,0.266) (-3.166,0.620) (-3.073,0.775) (-2.993,0.293) (-2.913,0.007) (-2.838,0.435) (-2.765,0.539) (-2.698,-0.360) (-2.632,-0.930) (-2.574,-0.494) (-2.516,-0.305) (-2.458,-0.719) (-2.402,-0.350) (-2.347,-0.176) (-2.292,0.692) (-2.241,0.243) (-2.192,-0.729) (-2.144,-1.323) (-2.100,-1.754) (-2.055,-2.459) (-2.010,-3.227) (-1.969,-2.711) (-1.931,-1.910)};
+\addplot[npmid,thick,dashed] coordinates {(-15.879,-0.036) (-8.997,-0.029) (-7.431,-0.340) (-6.543,-0.404) (-5.911,0.037) (-5.462,-0.252) (-5.117,-0.209) (-4.830,-0.388) (-4.584,0.087) (-4.374,0.152) (-4.178,0.141) (-4.016,-0.138) (-3.859,-0.097) (-3.722,-0.349) (-3.594,0.141) (-3.474,-0.426) (-3.371,-0.731) (-3.263,-0.426) (-3.166,0.464) (-3.073,-0.978) (-2.993,-1.892) (-2.913,-1.805) (-2.838,-1.451) (-2.765,-1.356) (-2.698,-3.018) (-2.632,-4.352) (-2.574,-3.815) (-2.516,-3.030) (-2.458,-3.818) (-2.402,-3.603) (-2.347,-3.527) (-2.292,-3.151) (-2.241,-2.900) (-2.192,-2.913) (-2.144,-2.935) (-2.100,-3.409) (-2.055,-4.461) (-2.010,-5.476) (-1.969,-6.361) (-1.931,-6.146)};
+\addplot[black,thin] coordinates {(-9,0)(-1.5,0)};
+\end{axis}
+\end{tikzpicture}
+\caption{Murphy diagrams for the VaR forecasts on the frontier rows: mean elementary quantile score of the accuracy layer minus that of GARCH-$t$ (solid) and of the pooled GARCH-EVT (dashed), against the threshold $\theta$. Negative values favor the accuracy layer. It is better on 70\% (GARCH-$t$) and 85\% (GARCH-EVT) of the grid at $\alpha=1\%$ and on 65\% and 85\% at $\alpha=2.5\%$; the competitors win in a band of thresholds near the typical VaR level, so the ranking is not uniform over all consistent quantile scores.}
+\label{fig:murphy}
+\end{figure}
 
 \section{Frontier robustness: calendar overlap, family-wise error, and the universe rule}
 This section collects the constructions summarized in Section~3 of the paper.
