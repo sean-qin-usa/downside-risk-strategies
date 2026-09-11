@@ -1538,3 +1538,284 @@ whose tail nodes take the minimum of body and EVT branches before rearrangement,
 whose tail nodes take the minimum of body and EVT branches before rearrangement, so the proposition covers the shifted body while the reported curve is the shifted envelope.
 ```
 
+
+# R36: GARCH-EVT same-rows results, residual-hybrid refit provenance, per-asset rerun
+
+## 1.2-garchevt (M)
+
+**Why.** the pending comparison has run
+
+**Before.**
+
+```
+A same-rows comparison against per-name and pooled GARCH-EVT tails, on the frontier sorts and on the FZ0 score, is reported in the Online Appendix once run.
+```
+
+**After.**
+
+```
+A same-rows comparison against standalone McNeil--Frey GARCH-EVT, per name and with a pooled tail, is reported in Sections~\ref{sec:frontier} and~\ref{sec:frtb} and in the Online Appendix: the conventional EVT tail carries no frontier of its own, and the estimator beats it by 2.64\% (DM 8.9) in the top kurtosis decile and on the joint score at both levels.
+```
+
+## 4.1-garchevt (M)
+
+**Why.** TODO C.2: the missing benchmark on the frontier rows
+
+**Before.**
+
+```
+\paragraph{The composite score.} Table~\ref{tab:frontier} sorts on each
+```
+
+**After.**
+
+```
+\paragraph{GARCH-EVT on the same rows.} The frontier is a statement about a state-conditioned residual shape, so the natural question is whether a conventional unconditional tail captures it. On the rows of Table~\ref{tab:frontier}, a McNeil--Frey GARCH-EVT forecast (the same GARCH-$t$ filter, GPD tails fitted by maximum likelihood to the 10\% most extreme training residuals per tail, empirical residual quantiles in between) shows no frontier: against GARCH-$t$ its top-decile edge is $+0.31\%$ (DM 3.6) per name and $-0.16\%$ (DM -2.7) with a pooled tail, and its overall edge is negative in both forms. The estimator beats the pooled GARCH-EVT by $+2.64\%$ (DM 8.9) in the top kurtosis decile and by $+0.10\%$ (DM 2.5) in deciles one through nine, and the per-name GARCH-EVT by $+2.18\%$ (DM 9.6) and $+0.21\%$ (DM 4.6). The same-rows table and the GPD threshold diagnostics are in the Online Appendix.
+
+\paragraph{The composite score.} Table~\ref{tab:frontier} sorts on each
+```
+
+## 4.1-holdout-garchevt (M)
+
+**Why.** TODO C.4
+
+**Before.**
+
+```
+This is the same threshold nonlinearity, attenuated in a larger-cap, pre-2014 universe.
+```
+
+**After.**
+
+```
+This is the same threshold nonlinearity, attenuated in a larger-cap, pre-2014 universe. On the same holdout rows the pooled GARCH-EVT again shows no frontier ($-0.15\%$ against GARCH-$t$ in the top decile, DM -2.8), and the frozen learner beats it there by $+1.16\%$ (DM 2.5), within noise elsewhere.
+```
+
+## 3-refit (M)
+
+**Why.** walkforward_hybrid_results.json (residual-hybrid learner) replaces the file-less +2.09/4.43
+
+**Before.**
+
+```
+which the top decile still carries $+2.47\%$ at DM 6.05 while the average
+edge compresses to $+0.32\%$ (DM 0.8), within noise; this check uses the returns-space learner of the frozen holdout specification.
+```
+
+**After.**
+
+```
+which the top decile still carries $+2.12\%$ at DM 4.41 while the average
+edge washes out ($-0.22\%$, DM $-0.59$); the returns-space learner of the frozen holdout specification gives $+2.47\%$ (DM 6.05) and $+0.32\%$ (DM 0.8) under the same schedule.
+```
+
+## OA-refit-row (OA)
+
+**Why.** same file
+
+**Before.**
+
+```
+4.43 (annual-refit residual-hybrid walk-forward, $+2.09\%$)
+```
+
+**After.**
+
+```
+4.41 (annual-refit residual-hybrid walk-forward, $+2.12\%$)
+```
+
+## 5.1-garchevt (M)
+
+**Why.** TODO C.2: FZ0 head-to-head
+
+**Before.**
+
+```
+At 2.5\% it again wins over GARCH-$t$ (DM 5.1). The two closest dynamic
+```
+
+**After.**
+
+```
+At 2.5\% it again wins over GARCH-$t$ (DM 5.1). On the same rows it also beats standalone GARCH-EVT, whose ES is the McNeil--Frey closed form: with a pooled tail by DM 4.8 at 1\% and 6.8 at 2.5\%, and per name by DM 5.2 and 5.4, so the gain over the conventional EVT construction is not confined to the pinball frontier. The two closest dynamic
+```
+
+## fig2-bars (M)
+
+**Why.** GARCH-EVT enters Figure 2
+
+**Before.**
+
+```
+symbolic x coords={GARCH-$t$,Taylor,FHS,GAS}, xtick=data,
+```
+
+**After.**
+
+```
+symbolic x coords={GARCH-$t$,GARCH-EVT,Taylor,FHS,GAS}, xtick=data,
+```
+
+## fig2-bar1 (M)
+
+**Why.** same-rows job, pooled tail
+
+**Before.**
+
+```
+\addplot[fill=npblue,draw=npblue] coordinates {(GARCH-$t$,0.00848)(Taylor,0.01748)(FHS,0.02517)(GAS,0.08514)};
+```
+
+**After.**
+
+```
+\addplot[fill=npblue,draw=npblue] coordinates {(GARCH-$t$,0.00848)(GARCH-EVT,0.00784)(Taylor,0.01748)(FHS,0.02517)(GAS,0.08514)};
+```
+
+## fig2-bar2 (M)
+
+**Why.** same
+
+**Before.**
+
+```
+\addplot[fill=npmid,draw=npmid] coordinates {(GARCH-$t$,0.00545)(Taylor,0.00024)(FHS,0.01370)(GAS,0.05030)};
+```
+
+**After.**
+
+```
+\addplot[fill=npmid,draw=npmid] coordinates {(GARCH-$t$,0.00545)(GARCH-EVT,0.00888)(Taylor,0.00024)(FHS,0.01370)(GAS,0.05030)};
+```
+
+## fig2-caption (M)
+
+**Why.** caption
+
+**Before.**
+
+```
+$1\%$, $5.1$ at $2.5\%$) and FHS (DM $4.9$), together with the two
+```
+
+**After.**
+
+```
+$1\%$, $5.1$ at $2.5\%$), pooled-tail GARCH-EVT (DM $4.8$ and $6.8$, same-rows run) and FHS (DM $4.9$), together with the two
+```
+
+## fig2-enlarge (M)
+
+**Why.** five bars
+
+**Before.**
+
+```
+enlarge x limits=0.28, ymajorgrids,
+```
+
+**After.**
+
+```
+enlarge x limits=0.22, ymajorgrids,
+```
+
+## 5.1-passrates (M)
+
+**Why.** B.6/E.8: conditional coverage at both levels; numbers from the committed rerun of job_perasset_v2.py
+
+**Before.**
+
+```
+EVT-tailed residual-hybrid passes Kupiec at 99\% for $84\%$ of names and
+Christoffersen conditional coverage for $86\%$, and the date-clustered test passes at 99\% ($t=1.01$) and marginally at 97.5\% ($t=1.86$)
+```
+
+**After.**
+
+```
+EVT-tailed residual-hybrid passes Kupiec at 99\% for $82\%$ of names and
+Christoffersen conditional coverage for $89\%$ (at 97.5\%, $71\%$ and $79\%$), and the date-clustered test passes at 99\% ($t=0.93$) and marginally at 97.5\% ($t=1.85$)
+```
+
+## 5.1-passrates2 (M)
+
+**Why.** same file
+
+**Before.**
+
+```
+Per-name diagnostics show residual cross-sectional calibration heterogeneity (84\% and 86\% pass rates at 99\%, Online Appendix Figure~OA.2).
+```
+
+**After.**
+
+```
+Per-name diagnostics show residual cross-sectional calibration heterogeneity (82\% and 89\% pass rates at 99\%, Online Appendix Figure~OA.2).
+```
+
+## 5.1-passrates3 (M)
+
+**Why.** same file
+
+**Before.**
+
+```
+(Kupiec$_{97.5}$ pass rate 47\%, against 72\% unshifted and 69\% adaptive)
+```
+
+**After.**
+
+```
+(Kupiec$_{97.5}$ pass rate 48\%, against 71\% unshifted and 69\% adaptive)
+```
+
+## OA-garchevt-section (OA)
+
+**Why.** new OA section
+
+**Before.**
+
+```
+\section{Frontier robustness: calendar overlap, family-wise error, and the universe rule}
+```
+
+**After.**
+
+```
+\section{Standalone GARCH-EVT on the canonical rows}\label{sec:garchevt-oa}
+The manuscript's comparison set omits standalone GARCH-EVT \citep{mcneilfrey2000}, which \citet{kuester2006} rank first among classical methods. This section reports it on exactly the rows, filter and splits of the frontier sorts (Table~1 of the paper) and of the full-panel FZ0 run (Figure~2 of the paper), from \texttt{job\_garch\_evt.py} (result file \texttt{garch\_evt\_results.json}). Two forms are run: per name, with the GPD tails fitted to each name's own training residuals, and pooled, with one threshold and one $(\xi,\beta)$ per tail across names. The pooled body row is the frontier engine of Table~1 (no EVT branch); the engine row adds the body/EVT minimum and rearrangement of equation~(5). Table~\ref{tab:garchevt-frontier} gives the eleven-level pinball comparison and Table~\ref{tab:garchevt-fz0} the joint score.
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{GARCH-EVT on the frontier rows: pinball edge by score region and head-to-head comparisons.}
+\label{tab:garchevt-frontier}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Model & Top $\mathrm{mk}_{63}$ decile & Deciles 1--9 & Top composite decile & Overall \\
+\midrule
+\multicolumn{5}{l}{\emph{Edge over GARCH-$t$, \% (per-date DM)}} \\
+GARCH-EVT, per name & $+0.31$ (3.62) & $-0.22$ (-6.61) & $+0.37$ (5.35) & $-0.16$ (-5.00) \\
+GARCH-EVT, pooled tail & $-0.16$ (-2.69) & $-0.12$ (-4.55) & $-0.06$ (-1.40) & $-0.12$ (-4.89) \\
+GARCH $+$ pooled body (no EVT) & $+2.98$ (10.48) & $+0.02$ (0.43) & $+2.79$ (8.91) & $+0.35$ (5.35) \\
+Engine (body/EVT minimum) & $+2.48$ (10.08) & $-0.01$ (-0.25) & $+2.19$ (8.00) & $+0.27$ (4.62) \\
+\midrule
+\multicolumn{5}{l}{\emph{Head-to-head, \% (per-date DM)}} \\
+Engine over GARCH-EVT pooled & $+2.64$ (8.91) & $+0.10$ (2.47) & $+2.24$ (7.51) & $+0.39$ (7.66) \\
+Engine over GARCH-EVT per name & $+2.18$ (9.63) & $+0.21$ (4.63) & $+1.82$ (7.39) & $+0.43$ (8.22) \\
+Pooled body over GARCH-EVT pooled & $+3.14$ (9.39) & $+0.14$ (2.84) & $+2.84$ (8.37) & $+0.47$ (7.96) \\
+Engine over pooled body & $-0.51$ (-9.04) & $-0.04$ (-2.28) & $-0.62$ (-9.64) & $-0.09$ (-5.25) \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item 200 names, 221,600 test rows, same rows and splits as Table~1 of the paper and Figure~2 of the paper. Edge $=$ (reference pinball $-$ model pinball)/reference pinball over the eleven-level grid; DM is the per-date Newey--West(10) Diebold--Mariano statistic. GARCH-EVT is McNeil--Frey: GARCH(1,1)-$t$ filter, GPD tails fitted by maximum likelihood to the 10\% most extreme training residuals per tail (per name, or pooled across names), empirical residual quantiles between the thresholds. The engine's pooled GPD at $p_0=0.025$ has $\hat\xi=0.298$, $\hat\beta=0.639$ on 6075 exceedances; the EVT branch is the tighter of the two at the 1\% node on 60.1\% of test rows and at the 2.5\% node on 59.5\%.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[h
+```
+

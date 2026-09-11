@@ -194,7 +194,7 @@ The comparison set of Table~\ref{tab:frtb} does not include standalone GARCH-EVT
 \citet{kuester2006} rank first among classical methods. Its
 filter-then-tail logic is absorbed into the estimator's own EVT
 stage (Section~\ref{sec:methods}), so the EVT-tailed layer is its
-analogue within the comparison set. A same-rows comparison against per-name and pooled GARCH-EVT tails, on the frontier sorts and on the FZ0 score, is reported in the Online Appendix once run.
+analogue within the comparison set. A same-rows comparison against standalone McNeil--Frey GARCH-EVT, per name and with a pooled tail, is reported in Sections~\ref{sec:frontier} and~\ref{sec:frtb} and in the Online Appendix: the conventional EVT tail carries no frontier of its own, and the estimator beats it by 2.64\% (DM 8.9) in the top kurtosis decile and on the joint score at both levels.
 
 \subsection{Distribution-free conditional quantiles and GBC}
 
@@ -625,8 +625,8 @@ and the top-decile edge survives ($+2.47\%$, DM 6.22). It also survives a
 pre-2007 cut that removes the 2008 crisis from every training window
 ($+0.29\%$ overall, DM 3.08), and an annual walk-forward that refits the
 GARCH, residuals, score, and learner at each January-1 cutoff, under
-which the top decile still carries $+2.47\%$ at DM 6.05 while the average
-edge compresses to $+0.32\%$ (DM 0.8), within noise; this check uses the returns-space learner of the frozen holdout specification. Stale benchmark parameters therefore do not
+which the top decile still carries $+2.12\%$ at DM 4.41 while the average
+edge washes out ($-0.22\%$, DM $-0.59$); the returns-space learner of the frozen holdout specification gives $+2.47\%$ (DM 6.05) and $+0.32\%$ (DM 0.8) under the same schedule. Stale benchmark parameters therefore do not
 produce the conditional result. The overlap mechanism and the full
 calendar-split, pre-2007, and walk-forward tables are in the Online
 Appendix.
@@ -737,6 +737,8 @@ carries $+2.98\%$ at per-date DM $10.5$, the overall edge is $+0.35\%$ at
 DM $5.35$, and the lower deciles are statistically indistinguishable
 from zero.
 
+\paragraph{GARCH-EVT on the same rows.} The frontier is a statement about a state-conditioned residual shape, so the natural question is whether a conventional unconditional tail captures it. On the rows of Table~\ref{tab:frontier}, a McNeil--Frey GARCH-EVT forecast (the same GARCH-$t$ filter, GPD tails fitted by maximum likelihood to the 10\% most extreme training residuals per tail, empirical residual quantiles in between) shows no frontier. Against GARCH-$t$ its top-decile edge is $+0.31\%$ (DM 3.6) per name and $-0.16\%$ (DM $-2.7$) with a pooled tail, and its overall edge is negative in both forms. The estimator beats the pooled GARCH-EVT by $+2.64\%$ (DM 8.9) in the top kurtosis decile and by $+0.10\%$ (DM 2.5) in deciles one through nine, and the per-name GARCH-EVT by $+2.18\%$ (DM 9.6) and $+0.21\%$ (DM 4.6). The same-rows table and the GPD threshold diagnostics are in the Online Appendix.
+
 \paragraph{The composite score.} Table~\ref{tab:frontier} sorts on each
 signal separately. The monitor the paper uses is the composite
 score, the maximum across the three signals' trailing-panel
@@ -808,7 +810,7 @@ hyperparameters, split rule, and test statistics) and wrote down three
 predictions in advance: a positive and significant top-decile edge with
 a bottom decile near zero, a small positive overall edge, and a
 threshold-shaped decile profile matching Table~\ref{tab:frontier}. We then pulled CRSP daily returns for 2000--2013, an
-era not used at any earlier stage of the analysis. The pre-specified kurtosis-component frontier, the variant frozen in advance, replicates: the top-decile edge is $+0.89\%$ with per-date DM $2.16$ ($p=0.016$, 1{,}465 dates), deciles one through nine sit between $-0.18\%$ and $+0.28\%$, and the overall edge is $+0.02\%$. The residual-hybrid composite replicates as well (Figure~\ref{fig:holdout}): its top decile carries $+1.12\%$ at per-date DM $2.51$. This is the same threshold nonlinearity, attenuated in a larger-cap, pre-2014 universe.
+era not used at any earlier stage of the analysis. The pre-specified kurtosis-component frontier, the variant frozen in advance, replicates: the top-decile edge is $+0.89\%$ with per-date DM $2.16$ ($p=0.016$, 1{,}465 dates), deciles one through nine sit between $-0.18\%$ and $+0.28\%$, and the overall edge is $+0.02\%$. The residual-hybrid composite replicates as well (Figure~\ref{fig:holdout}): its top decile carries $+1.12\%$ at per-date DM $2.51$. This is the same threshold nonlinearity, attenuated in a larger-cap, pre-2014 universe. On the same holdout rows the pooled GARCH-EVT again shows no frontier ($-0.15\%$ against GARCH-$t$ in the top decile, DM $-2.8$), and the frozen learner beats it there by $+1.16\%$ (DM 2.5), within noise elsewhere.
 The decile boundaries above are within-sample ranks of the holdout era,
 a partition that never touches a forecast but could not have been applied
 on day one. Two day-one-applicable rules recover the result: freezing the
@@ -1004,8 +1006,8 @@ either direction (the EVT variant's 0.91\% sits on the conservative
 side, pooled FHS happens to land at 0.99\%), so pooled $p$-values are
 reported, not leaned on. The regulatory reading is the per-asset and
 date-clustered restatement (Online Appendix Figure~OA.2): per asset the
-EVT-tailed residual-hybrid passes Kupiec at 99\% for $84\%$ of names and
-Christoffersen conditional coverage for $86\%$, and the date-clustered test passes at 99\% ($t=1.01$) and marginally at 97.5\% ($t=1.86$) while the raw residual-hybrid is rejected ($t=4.5$): the tail stages carry the regulatory
+EVT-tailed residual-hybrid passes Kupiec at 99\% for $82\%$ of names and
+Christoffersen conditional coverage for $89\%$ (at 97.5\%, $71\%$ and $79\%$), and the date-clustered test passes at 99\% ($t=0.93$) and marginally at 97.5\% ($t=1.85$) while the raw residual-hybrid is rejected ($t=4.2$): the tail stages carry the regulatory
 calibration, and the 2008-era re-run confirms it out of era.
 At 97.5\% the split-conformal recalibration is the stage that repairs
 pooled Kupiec (GBM-recal $p=0.24$).
@@ -1067,14 +1069,14 @@ shape edge is flat on well-behaved names. On a high-kurtosis subset the ordering
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
-\begin{axis}[width=0.7\linewidth,height=5cm, ybar, bar width=7pt,
+\begin{axis}[width=0.82\linewidth,height=5cm, ybar, bar width=7pt,
   ymin=0, ymax=0.095, ylabel={Excess FZ0 vs.\ the accuracy layer},
-  symbolic x coords={GARCH-$t$,Taylor,FHS,GAS}, xtick=data,
-  enlarge x limits=0.28, ymajorgrids,
+  symbolic x coords={GARCH-$t$,GARCH-EVT,Taylor,FHS,GAS}, xtick=data,
+  enlarge x limits=0.22, ymajorgrids,
   legend style={font=\footnotesize,at={(0.03,0.97)},anchor=north west,draw=none},
   tick label style={font=\footnotesize}, label style={font=\footnotesize}]
-\addplot[fill=npblue,draw=npblue] coordinates {(GARCH-$t$,0.00848)(Taylor,0.01748)(FHS,0.02517)(GAS,0.08514)};
-\addplot[fill=npmid,draw=npmid] coordinates {(GARCH-$t$,0.00545)(Taylor,0.00024)(FHS,0.01370)(GAS,0.05030)};
+\addplot[fill=npblue,draw=npblue] coordinates {(GARCH-$t$,0.00848)(GARCH-EVT,0.00784)(Taylor,0.01748)(FHS,0.02517)(GAS,0.08514)};
+\addplot[fill=npmid,draw=npmid] coordinates {(GARCH-$t$,0.00545)(GARCH-EVT,0.00888)(Taylor,0.00024)(FHS,0.01370)(GAS,0.05030)};
 \legend{$\alpha=1\%$,$\alpha=2.5\%$}
 \end{axis}
 \end{tikzpicture}
@@ -1083,18 +1085,18 @@ residual-hybrid's accuracy layer (the EVT-tailed variant without the
 conformal shift), on the full 200-name panel. A positive bar
 means worse than the accuracy layer. The accuracy layer (the zero baseline) attains the
 lowest FZ0 at both regulatory levels, beating GARCH-$t$ (DM $4.8$ at
-$1\%$, $5.1$ at $2.5\%$) and FHS (DM $4.9$), together with the two
+$1\%$, $5.1$ at $2.5\%$), pooled-tail GARCH-EVT (DM $4.8$ and $6.8$, same-rows run) and FHS (DM $4.9$), together with the two
 FZ-estimated dynamic-ES benchmarks fitted per name by multi-start FZ0
 minimization, the generalized autoregressive score (GAS) model of \citet{patton2019} (DM $9.5$ and $8.6$) and the
 ES-CAViaR of \citet{taylor2019} (DM $3.6$ at $1\%$, a tie at $2.5\%$). SAV-CAViaR, scored on its own common sample (Table~\ref{tab:noncore}), ties the accuracy layer and is omitted here; the conformal-overlay variant, which concedes FZ0 at $2.5\%$, is discussed in the text.}
 \label{fig:fz0}
 \end{figure}
 
-On the full 200-name panel ($221.6$k test asset-days), VaR and ES are read from the coherent min-envelope curve $Q^{z}_t$ of \eqref{eq:hybrid} and per-date DM inference is used throughout. The residual-hybrid's \emph{accuracy layer}, the EVT-tailed variant with no conformal shift, attains the lowest FZ0 at both regulatory levels. At 1\% it beats GARCH-$t$ (DM 4.8) and FHS (DM 4.9), the two standard benchmarks the accuracy claim rests on. At 2.5\% it again wins over GARCH-$t$ (DM 5.1). The two closest dynamic $(\VaR,\ES)$ benchmarks are the one-factor score-driven GAS of \citet{patton2019} and the ES-CAViaR of \citet{taylor2019}. Each is estimated per name on the same panel by minimizing the same FZ0 loss, and under a three-start optimizer both converge for all $200$ names, so the single-start instability of an earlier attempt does not arise. The accuracy layer beats the GAS at both levels (DM 9.5 at 1\%, 8.6 at 2.5\%), and it beats the Taylor model at 1\% (DM 3.6) while tying it at 2.5\% (DM 0.1), the near-tie the fat-tailed benchmarks all show at 2.5\% where the shape edge is thin.
+On the full 200-name panel ($221.6$k test asset-days), VaR and ES are read from the coherent min-envelope curve $Q^{z}_t$ of \eqref{eq:hybrid} and per-date DM inference is used throughout. The residual-hybrid's \emph{accuracy layer}, the EVT-tailed variant with no conformal shift, attains the lowest FZ0 at both regulatory levels. At 1\% it beats GARCH-$t$ (DM 4.8) and FHS (DM 4.9), the two standard benchmarks the accuracy claim rests on. At 2.5\% it again wins over GARCH-$t$ (DM 5.1). On the same rows it also beats standalone GARCH-EVT, whose ES is the McNeil--Frey closed form, with a pooled tail by DM 4.8 at 1\% and 6.8 at 2.5\%, and per name by DM 5.2 and 5.4, so the gain over the conventional EVT construction is not confined to the pinball frontier. The two closest dynamic $(\VaR,\ES)$ benchmarks are the one-factor score-driven GAS of \citet{patton2019} and the ES-CAViaR of \citet{taylor2019}. Each is estimated per name on the same panel by minimizing the same FZ0 loss, and under a three-start optimizer both converge for all $200$ names, so the single-start instability of an earlier attempt does not arise. The accuracy layer beats the GAS at both levels (DM 9.5 at 1\%, 8.6 at 2.5\%), and it beats the Taylor model at 1\% (DM 3.6) while tying it at 2.5\% (DM 0.1), the near-tie the fat-tailed benchmarks all show at 2.5\% where the shape edge is thin.
 
 This ranking survives the annual walk-forward refit of Section~\ref{sec:calendarleak}: re-estimating every stage at each January-1 cutoff and re-scoring the 2020--2024 panel, the accuracy layer keeps the lowest FZ0 at both levels, beating GARCH-$t$ and FHS by DM 3.6 and 2.7 at 1\% and 3.1 and 2.6 at 2.5\% (one-sided $p<0.005$). Refitting narrows these margins without closing them, unlike the average pinball edge, which closes under the same refit.
 
-The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels and passes the aggregate date-clustered exception test at 99\% and marginally at 97.5\%. Per-name diagnostics show residual cross-sectional calibration heterogeneity (84\% and 86\% pass rates at 99\%, Online Appendix Figure~OA.2). The one failed test is the pooled 155k-observation Kupiec at 97.5\%, which at this sample size rejects very small deviations. The frontier concentrates the joint-score
+The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels and passes the aggregate date-clustered exception test at 99\% and marginally at 97.5\%. Per-name diagnostics show residual cross-sectional calibration heterogeneity (82\% and 89\% pass rates at 99\%, Online Appendix Figure~OA.2). The one failed test is the pooled 155k-observation Kupiec at 97.5\%, which at this sample size rejects very small deviations. The frontier concentrates the joint-score
 edge as it does the pinball edge: the top misspecification decile
 carries DM 2.4 at the 1\% level against DM 0.2 in the panel bulk.
 Adding the conformal shift at 97.5\%, whose calibration split includes
@@ -1108,7 +1110,7 @@ coverage margin is valued, the shift is kept; where FZ0 efficiency is
 the criterion, the EVT tail is run alone, and it passes the exception
 tests on its own (Online Appendix Figure~OA.2).
 
-Most of the concession reflects a frozen margin. The adaptive form of the shift \citep{gibbs2021aci}, updated daily from the panel breach frequency, shrinks the margin out of era (from $-0.35$ to $-0.10$, breach $1.83\%\to2.06\%$) and erases the overall concession. The adaptive variant ties GARCH-$t$ on 2.5\% FZ0 (DM $-0.3$). The top-decile cost survives the adaptive shift too, at $-4.8$ and $-6.0$ for the two update rates against the static shift's $-7.1$, the price of a margin where the bands are widest. The static shift also worsens per-name coverage (Kupiec$_{97.5}$ pass rate 47\%, against 72\% unshifted and 69\% adaptive), because over-coverage fails the test from the other side. Each ``lowest FZ0'' statement refers to the accuracy layer.
+Most of the concession reflects a frozen margin. The adaptive form of the shift \citep{gibbs2021aci}, updated daily from the panel breach frequency, shrinks the margin out of era (from $-0.35$ to $-0.10$, breach $1.83\%\to2.06\%$) and erases the overall concession. The adaptive variant ties GARCH-$t$ on 2.5\% FZ0 (DM $-0.3$). The top-decile cost survives the adaptive shift too, at $-4.8$ and $-6.0$ for the two update rates against the static shift's $-7.1$, the price of a margin where the bands are widest. The static shift also worsens per-name coverage (Kupiec$_{97.5}$ pass rate 48\%, against 71\% unshifted and 69\% adaptive), because over-coverage fails the test from the other side. Each ``lowest FZ0'' statement refers to the accuracy layer.
 
 \paragraph{Direct ES calibration backtests.} Because exception counts test VaR and not ES,
 two direct ES calibration backtests, the McNeil--Frey exceedance-residual test \citep{mcneilfrey2000} and the Acerbi--Sz\'ekely $Z_2$ statistic \citep{acerbi2014backtesting}, complement the jointly consistent FZ0 loss above. \citet{noldeziegel2017elicitability} and \citet{bayer2022esr} draw the
