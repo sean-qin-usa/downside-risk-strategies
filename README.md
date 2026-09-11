@@ -1,12 +1,12 @@
-# Downside-risk research: working repository
+# Downside-risk research working repository
 
 Working repository for "Semiparametric Value-at-Risk and Expected Shortfall with a Real-Time Misspecification Score" (Sean Qin, submitted to the *Journal of Financial Econometrics*, September 2026) and for the wider research program it grew out of. The replication package that the manuscript cites is the separate repository [downside-risk-paper](https://github.com/sean-qin-usa/downside-risk-paper); this one holds the job scripts, result files, drafts and notes behind it.
 
 ## The paper
 
-The current manuscript is `paper/jfec/paper_A_jfec.pdf` (journal review format: double spaced, endnotes, tables and figures collected at the end with "[Table N about here]" markers). The online appendix is `paper/jfec/paper_A_jfec_online_appendix.pdf`. LaTeX sources and `refs_v3.bib` sit beside them; the figures are drawn in pgfplots inside the source, so the two `.tex` files and the bibliography are all a build needs.
+The current manuscript is `paper/jfec/paper_A_jfec.pdf`, in the journal's review format, double spaced with endnotes and with the tables and figures collected at the end under "[Table N about here]" markers. The online appendix is `paper/jfec/paper_A_jfec_online_appendix.pdf`. LaTeX sources and `refs_v3.bib` sit beside them; the figures are drawn in pgfplots inside the source, so the two `.tex` files and the bibliography are all a build needs.
 
-The version under review is tagged `r32-submitted`. The text in the repository is ahead of it. Every change since then is recorded sentence by sentence in `docs/CHANGE_LEDGER_R34.md`, and they are of five kinds: a same-rows comparison against standalone McNeil-Frey GARCH-EVT, per name and with a pooled tail (Sections 1.2, 4.1 and 5.1, Figure 2, and a new online appendix section, from `code/job_garch_evt.py`); every model in the comparison set re-scored on the same 221,600 test rows with the Giacomini-White conditional predictive ability regression, Murphy diagrams, the Engle-Manganelli dynamic quantile test and a 90% model confidence set (`code/job_bench_all.py`, online appendix); equation (5) and Stages 3 to 4 restated in the order the code runs them, with the GPD estimator named and two symbol collisions removed; Christoffersen conditional coverage reported at 97.5% as well as 99%; and a committed result file for the residual-hybrid annual-refit walk-forward. No number in the submitted tables moved by more than rounding.
+The version under review is tagged `r32-submitted`. The text in the repository is ahead of it, and every change since then is recorded sentence by sentence in `docs/CHANGE_LEDGER_R34.md`. The revisions add a same-rows comparison against standalone McNeil-Frey GARCH-EVT, per name and with a pooled tail (Sections 1.2, 4.1 and 5.1, Figure 2 and a new online appendix section, from `code/job_garch_evt.py`); re-score every model in the comparison set on the same 221,600 test rows with the Giacomini-White conditional predictive ability regression, Murphy diagrams, the Engle-Manganelli dynamic quantile test and a 90% model confidence set (`code/job_bench_all.py`, online appendix); restate equation (5) and Stages 3 to 4 in the order the code runs them, with the GPD estimator named and two symbol collisions removed; report Christoffersen conditional coverage at 97.5% as well as 99%; and commit a result file for the residual-hybrid annual-refit walk-forward. No number in the submitted tables moved by more than rounding.
 
 ## What the paper finds
 
@@ -52,7 +52,7 @@ Job scripts take the project root from the `GBC_PROJ` (or `GBC_PROJECT_DIR`) env
 | `code/job_bench_all.py` | `results/bench_all_results.json` | Every benchmark on the same rows: pinball frontier, FZ0, CPA, DQ, Murphy, model confidence sets (online appendix Tables OA.10 to OA.12) |
 | `code/job_walkforward_hybrid.py` | `results/walkforward_hybrid_results.json` | Residual-hybrid annual refit |
 
-Superseded implementations stay in the history rather than the working tree. `code/frtb_bench.py` records its own correction history in the header. `code/toy_example.py` runs the whole pipeline on synthetic data and needs no licensed input.
+Superseded implementations are kept in the history and removed from the working tree. `code/frtb_bench.py` records its own correction history in the header. `code/toy_example.py` runs the whole pipeline on synthetic data and needs no licensed input.
 
 ## Data
 
