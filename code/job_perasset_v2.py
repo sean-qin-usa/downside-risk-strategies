@@ -104,13 +104,12 @@ for vname,Q in variants.items():
             msk=perm==pn
             v=kupiec(int(b[msk].sum()),int(msk.sum()),p0)
             if v is not None: kp.append(v)
-            if lvl=="99":
-                c=christoffersen(b[msk],p0)
-                if c is not None: cp2.append(c)
+            c=christoffersen(b[msk],p0)          # joint conditional-coverage LR at BOTH levels (was 99% only)
+            if c is not None: cp2.append(c)
         fdf=pd.DataFrame({"b":b,"date":dates}).groupby("date")["b"].mean()
         rec[f"breach{lvl}"]=round(float(b.mean()),4)
         rec[f"kupiec{lvl}_passrate"]=round(float(np.mean([x>0.05 for x in kp])),3)
-        if lvl=="99" and cp2: rec["christoffersen99_passrate"]=round(float(np.mean([x>0.05 for x in cp2])),3)
+        if cp2: rec[f"christoffersen{lvl}_passrate"]=round(float(np.mean([x>0.05 for x in cp2])),3)
         rec[f"dateclustered{lvl}_NW_t"]=nw_t(fdf.values-p0)
     OUT['per_variant'][vname]=rec
     lg(f"{vname}: {json.dumps(rec)}")
