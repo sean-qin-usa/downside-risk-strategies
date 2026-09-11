@@ -1,0 +1,35 @@
+{
+  "note": "RESIDUAL-HYBRID annual walk-forward (frontier learner of job_composite.py: pooled boosted residual quantiles, forecast mu+sig*q_z, no EVT/conformal): at each Jan-1 cutoff 2020-2024, per-name GARCH refit on expanding pre-cutoff data, features and mk63 rebuilt under the refit parameters, pooled GBM retrained on pre-cutoff rows, next calendar year predicted. Kills the stale-parameterization alternative: no stage carries stale estimates into test.",
+  "test_years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "n_test": 251600,
+  "n_dates": 1258,
+  "overall_edge_pct": -0.22,
+  "overall_DM": -0.59,
+  "decile_profile_edge_pct": [
+    -0.13,
+    -0.17,
+    -0.42,
+    -0.41,
+    -0.44,
+    -0.67,
+    -0.95,
+    -0.77,
+    -0.45,
+    2.12
+  ],
+  "top_decile_edge_pct": 2.12,
+  "top_decile_DM": 4.41,
+  "top_decile_n_dates": 1258,
+  "top_decile_NWlag_sensitivity": {
+    "lag5": 5.06,
+    "lag10": 4.41,
+    "lag20": 3.9,
+    "lag44": 3.57
+  }
+}

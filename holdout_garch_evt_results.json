@@ -1,0 +1,380 @@
+{
+  "note": "GARCH-EVT (McNeil-Frey per name and pooled, p0=0.10, training residuals only) on the 2000-2013 holdout, same rows as job_wrds_holdout.py / job_holdout_frozen.py. engine = frozen misspec_frontier.py raw-return GBM. edge=(ref-model)/ref 11-tau pinball, per-date NW(10) DM. Frozen buckets use design_edges_mk63 from holdout_frozen_results.json.",
+  "synthetic": false,
+  "garch_backend": "arch",
+  "n_names": 200,
+  "n_test": 280608,
+  "design_edges_mk63": [
+    -0.0314,
+    0.38,
+    0.7497,
+    1.1761,
+    1.73,
+    2.547,
+    3.9132,
+    6.6833,
+    13.6735
+  ],
+  "pooled_tail": {
+    "u_z": -1.164,
+    "xi": 0.157,
+    "beta": 0.5126,
+    "n_exc": 42062
+  },
+  "vs_garch_t": {
+    "engine": {
+      "overall": {
+        "edge_pct": 0.073,
+        "DM": 0.39,
+        "n": 280608,
+        "n_dates": 1495
+      },
+      "top_decile_qcut": {
+        "edge_pct": 1.017,
+        "DM": 2.11,
+        "n": 28061,
+        "n_dates": 1465
+      },
+      "bulk_qcut_1to9": {
+        "edge_pct": -0.025,
+        "DM": -0.42,
+        "n": 252547,
+        "n_dates": 1495
+      },
+      "top_bucket_frozen": {
+        "edge_pct": 1.033,
+        "DM": 1.12,
+        "n": 9397,
+        "n_dates": 1389
+      },
+      "bulk_frozen_1to9": {
+        "edge_pct": 0.042,
+        "DM": 0.18,
+        "n": 271211,
+        "n_dates": 1495
+      }
+    },
+    "evt_name": {
+      "overall": {
+        "edge_pct": 0.012,
+        "DM": 0.44,
+        "n": 280608,
+        "n_dates": 1495
+      },
+      "top_decile_qcut": {
+        "edge_pct": -0.105,
+        "DM": -1.86,
+        "n": 28061,
+        "n_dates": 1465
+      },
+      "bulk_qcut_1to9": {
+        "edge_pct": 0.024,
+        "DM": 0.9,
+        "n": 252547,
+        "n_dates": 1495
+      },
+      "top_bucket_frozen": {
+        "edge_pct": -0.209,
+        "DM": -2.23,
+        "n": 9397,
+        "n_dates": 1389
+      },
+      "bulk_frozen_1to9": {
+        "edge_pct": 0.019,
+        "DM": 0.7,
+        "n": 271211,
+        "n_dates": 1495
+      }
+    },
+    "evt_pool": {
+      "overall": {
+        "edge_pct": -0.027,
+        "DM": -1.19,
+        "n": 280608,
+        "n_dates": 1495
+      },
+      "top_decile_qcut": {
+        "edge_pct": -0.146,
+        "DM": -2.83,
+        "n": 28061,
+        "n_dates": 1465
+      },
+      "bulk_qcut_1to9": {
+        "edge_pct": -0.015,
+        "DM": -0.45,
+        "n": 252547,
+        "n_dates": 1495
+      },
+      "top_bucket_frozen": {
+        "edge_pct": -0.273,
+        "DM": -2.19,
+        "n": 9397,
+        "n_dates": 1389
+      },
+      "bulk_frozen_1to9": {
+        "edge_pct": -0.019,
+        "DM": -0.56,
+        "n": 271211,
+        "n_dates": 1495
+      }
+    }
+  },
+  "engine_vs_evt_pool": {
+    "overall": {
+      "edge_pct": 0.1,
+      "DM": 0.64,
+      "n": 280608,
+      "n_dates": 1495
+    },
+    "top_decile_qcut": {
+      "edge_pct": 1.161,
+      "DM": 2.52,
+      "n": 28061,
+      "n_dates": 1465
+    },
+    "bulk_qcut_1to9": {
+      "edge_pct": -0.01,
+      "DM": -0.31,
+      "n": 252547,
+      "n_dates": 1495
+    },
+    "top_bucket_frozen": {
+      "edge_pct": 1.303,
+      "DM": 1.38,
+      "n": 9397,
+      "n_dates": 1389
+    },
+    "bulk_frozen_1to9": {
+      "edge_pct": 0.061,
+      "DM": 0.28,
+      "n": 271211,
+      "n_dates": 1495
+    }
+  },
+  "engine_vs_evt_name": {
+    "overall": {
+      "edge_pct": 0.061,
+      "DM": 0.29,
+      "n": 280608,
+      "n_dates": 1495
+    },
+    "top_decile_qcut": {
+      "edge_pct": 1.121,
+      "DM": 2.35,
+      "n": 28061,
+      "n_dates": 1465
+    },
+    "bulk_qcut_1to9": {
+      "edge_pct": -0.049,
+      "DM": -0.58,
+      "n": 252547,
+      "n_dates": 1495
+    },
+    "top_bucket_frozen": {
+      "edge_pct": 1.24,
+      "DM": 1.26,
+      "n": 9397,
+      "n_dates": 1389
+    },
+    "bulk_frozen_1to9": {
+      "edge_pct": 0.023,
+      "DM": 0.03,
+      "n": 271211,
+      "n_dates": 1495
+    }
+  },
+  "decile_profile_qcut": {
+    "engine": {
+      "1": {
+        "edge_pct": -0.093,
+        "DM": -0.72,
+        "n": 28061,
+        "n_dates": 1444
+      },
+      "2": {
+        "edge_pct": -0.052,
+        "DM": -0.11,
+        "n": 28061,
+        "n_dates": 1409
+      },
+      "3": {
+        "edge_pct": -0.103,
+        "DM": -0.08,
+        "n": 28061,
+        "n_dates": 1414
+      },
+      "4": {
+        "edge_pct": 0.102,
+        "DM": 0.42,
+        "n": 28060,
+        "n_dates": 1409
+      },
+      "5": {
+        "edge_pct": -0.145,
+        "DM": -0.73,
+        "n": 28061,
+        "n_dates": 1409
+      },
+      "6": {
+        "edge_pct": 0.001,
+        "DM": -0.23,
+        "n": 28061,
+        "n_dates": 1413
+      },
+      "7": {
+        "edge_pct": -0.106,
+        "DM": -0.83,
+        "n": 28060,
+        "n_dates": 1428
+      },
+      "8": {
+        "edge_pct": -0.124,
+        "DM": -1.12,
+        "n": 28061,
+        "n_dates": 1418
+      },
+      "9": {
+        "edge_pct": 0.294,
+        "DM": 0.86,
+        "n": 28061,
+        "n_dates": 1456
+      },
+      "10": {
+        "edge_pct": 1.017,
+        "DM": 2.11,
+        "n": 28061,
+        "n_dates": 1465
+      }
+    },
+    "evt_name": {
+      "1": {
+        "edge_pct": 0.061,
+        "DM": 0.84,
+        "n": 28061,
+        "n_dates": 1444
+      },
+      "2": {
+        "edge_pct": 0.021,
+        "DM": 0.65,
+        "n": 28061,
+        "n_dates": 1409
+      },
+      "3": {
+        "edge_pct": -0.004,
+        "DM": 0.18,
+        "n": 28061,
+        "n_dates": 1414
+      },
+      "4": {
+        "edge_pct": 0.019,
+        "DM": 0.64,
+        "n": 28060,
+        "n_dates": 1409
+      },
+      "5": {
+        "edge_pct": -0.048,
+        "DM": -0.76,
+        "n": 28061,
+        "n_dates": 1409
+      },
+      "6": {
+        "edge_pct": 0.03,
+        "DM": 0.8,
+        "n": 28061,
+        "n_dates": 1413
+      },
+      "7": {
+        "edge_pct": 0.03,
+        "DM": 0.4,
+        "n": 28060,
+        "n_dates": 1428
+      },
+      "8": {
+        "edge_pct": 0.071,
+        "DM": 1.73,
+        "n": 28061,
+        "n_dates": 1418
+      },
+      "9": {
+        "edge_pct": 0.031,
+        "DM": 0.56,
+        "n": 28061,
+        "n_dates": 1456
+      },
+      "10": {
+        "edge_pct": -0.105,
+        "DM": -1.86,
+        "n": 28061,
+        "n_dates": 1465
+      }
+    },
+    "evt_pool": {
+      "1": {
+        "edge_pct": -0.021,
+        "DM": -2.1,
+        "n": 28061,
+        "n_dates": 1444
+      },
+      "2": {
+        "edge_pct": -0.017,
+        "DM": -0.6,
+        "n": 28061,
+        "n_dates": 1409
+      },
+      "3": {
+        "edge_pct": -0.047,
+        "DM": -1.34,
+        "n": 28061,
+        "n_dates": 1414
+      },
+      "4": {
+        "edge_pct": -0.035,
+        "DM": -1.4,
+        "n": 28060,
+        "n_dates": 1409
+      },
+      "5": {
+        "edge_pct": -0.075,
+        "DM": -3.27,
+        "n": 28061,
+        "n_dates": 1409
+      },
+      "6": {
+        "edge_pct": -0.007,
+        "DM": -0.43,
+        "n": 28061,
+        "n_dates": 1413
+      },
+      "7": {
+        "edge_pct": -0.013,
+        "DM": -0.71,
+        "n": 28060,
+        "n_dates": 1428
+      },
+      "8": {
+        "edge_pct": 0.065,
+        "DM": 1.33,
+        "n": 28061,
+        "n_dates": 1418
+      },
+      "9": {
+        "edge_pct": 0.008,
+        "DM": 0.3,
+        "n": 28061,
+        "n_dates": 1456
+      },
+      "10": {
+        "edge_pct": -0.146,
+        "DM": -2.83,
+        "n": 28061,
+        "n_dates": 1465
+      }
+    }
+  },
+  "mean_pinball": {
+    "garch_t": 0.32854,
+    "engine": 0.3283,
+    "evt_name": 0.3285,
+    "evt_pool": 0.32863
+  }
+}

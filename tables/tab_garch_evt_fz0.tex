@@ -1,0 +1,17 @@
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{$\alpha=1\%$} & \multicolumn{3}{c}{$\alpha=2.5\%$} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Model & FZ0 & Breach & DM vs engine & FZ0 & Breach & DM vs engine \\
+\midrule
+Engine (body/EVT minimum) & 2.1473 & 1.04\% & --- & 1.8494 & 2.78\% & --- \\
+Engine $+$ conformal overlay (97.5\%) & 2.1473 & 1.04\% & 0.00 & 1.8656 & 1.66\% & 2.29 \\
+GARCH $+$ pooled body (no EVT) & 2.1411 & 1.32\% & -1.33 & 1.8433 & 3.25\% & -1.87 \\
+GARCH-EVT, pooled tail & 2.1551 & 1.06\% & 4.83 & 1.8583 & 2.89\% & 6.85 \\
+GARCH-EVT, per name & 2.1693 & 1.13\% & 5.23 & 1.8596 & 2.93\% & 5.39 \\
+GARCH(1,1)-$t$ & 2.1557 & 1.03\% & 5.00 & 1.8542 & 2.71\% & 4.55 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item FZ0 is the zero-homogeneous Fissler--Ziegel joint (VaR, ES) loss, lower is better; DM $>0$ means the row model scores worse than the engine (per-date Newey--West(10)). The engine row is the accuracy layer (no conformal shift) at both levels and is the reference of every DM; the overlay row adds the split-conformal shift at 97.5\% and coincides with the engine at 1\%. GARCH-EVT ES is the McNeil--Frey closed form; the engine and body ES are the 20-node integral of the monotonized quantile curve. Top-$\mathrm{mk}_{63}$-decile DM of pooled GARCH-EVT versus the engine: 2.63 at 1\% and 4.26 at 2.5\%.
+\end{tablenotes}

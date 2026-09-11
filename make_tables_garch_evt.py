@@ -9,7 +9,7 @@ src=sys.argv[1] if len(sys.argv)>1 else os.path.join(P,"garch_evt_results.json")
 outdir=sys.argv[2] if len(sys.argv)>2 else "tables"; os.makedirs(outdir,exist_ok=True)
 R=json.load(open(src))
 NAMES={'garch_t':'GARCH(1,1)-$t$','evt_name':'GARCH-EVT, per name','evt_pool':'GARCH-EVT, pooled tail',
-       'body':'GARCH $+$ pooled body (no EVT)','engine':'Engine (body/EVT minimum)'}
+       'body':'GARCH $+$ pooled body (no EVT)','engine':'Engine (body/EVT minimum)','engine_overlay':'Engine $+$ conformal overlay (97.5\\%)'}
 def f(x,d=2,sign=True):
     if x is None: return '---'
     return ('%+.'+str(d)+'f')%x if sign else ('%.'+str(d)+'f')%x
@@ -47,7 +47,7 @@ L.append('\\begin{tabular}{lcccccc}'); L.append('\\toprule')
 L.append('& \\multicolumn{3}{c}{$\\alpha=1\\%$} & \\multicolumn{3}{c}{$\\alpha=2.5\\%$} \\\\')
 L.append('\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}')
 L.append('Model & FZ0 & Breach & DM vs engine & FZ0 & Breach & DM vs engine \\\\'); L.append('\\midrule')
-for m in ['engine','body','evt_pool','evt_name','garch_t']:
+for m in ['engine','engine_overlay','body','evt_pool','evt_name','garch_t']:
     row=[NAMES[m]]
     for a in ['0.01','0.025']:
         r=F[a][m]; row+= [f(r['meanFZ0'],4,False),f(100*r['breach'],2,False)+'\\%',
@@ -56,7 +56,7 @@ for m in ['engine','body','evt_pool','evt_name','garch_t']:
 L.append('\\bottomrule'); L.append('\\end{tabular}')
 L.append('\\begin{tablenotes}\\footnotesize')
 L.append('\\item FZ0 is the zero-homogeneous Fissler--Ziegel joint (VaR, ES) loss, lower is better; DM $>0$ means the row model scores worse than the engine '
-         '(per-date Newey--West(10)). Engine and pooled-body rows carry the split-conformal shift at 97.5\\%% and none at 99\\%%, as in Figure~\\ref{fig:fz}. '
+         '(per-date Newey--West(10)). The engine row is the accuracy layer (no conformal shift) at both levels and is the reference of every DM; the overlay row adds the split-conformal shift at 97.5\\%% and coincides with the engine at 1\\%%. '
          'GARCH-EVT ES is the McNeil--Frey closed form; the engine and body ES are the 20-node integral of the monotonized quantile curve. '
          'Top-$\\mathrm{mk}_{63}$-decile DM of pooled GARCH-EVT versus the engine: %s at 1\\%% and %s at 2.5\\%%.'
          %(f(F['0.01']['engine_vs_evt_pool_top_mk63']['DM_t'],2,False),f(F['0.025']['engine_vs_evt_pool_top_mk63']['DM_t'],2,False)))

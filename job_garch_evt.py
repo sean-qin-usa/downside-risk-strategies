@@ -13,8 +13,9 @@
 #   body           GARCH + pooled gradient-boosted residual body, no EVT, no rearrangement
 #                  (this is the object scored in job_composite.py, i.e. the frontier headline)
 #   engine         body/EVT minimum envelope + monotone rearrangement on the tau grid
-#                  (Stage 3 of the paper; conformal shift at 97.5% only in the FZ0 block, as in
-#                  job_fz_fullpanel.py; the pinball block carries no shift, matching job_composite.py)
+#                  (Stage 3 of the paper; the FZ0 block scores this unshifted accuracy layer as the reference
+#                  at both levels and reports the 97.5% conformal overlay as its own row; the pinball block
+#                  carries no shift, matching job_composite.py)
 # Thresholds, GPD parameters and body fits use training rows only (idx < cp = 0.45 n); the
 # conformal shift uses the calibration split [cp, sp); everything is scored on idx >= sp.
 # Reports: 11-tau pinball edge vs garch_t for every method, overall and by mk63 decile and by
@@ -260,9 +261,10 @@ for a in ALPHAS:
     st=star(a,True); zq=np.maximum(np.minimum(ZQ[a],ENG_TAIL.q(a)),st[:,-1]); es=np.minimum(st.mean(axis=1),zq-1e-6)
     stb=star(a,False); zqb=np.maximum(ZQ[a],stb[:,-1]); esb=np.minimum(stb.mean(axis=1),zqb-1e-6)
     sh=CONF975 if a==0.025 else 0.0
-    VE[a]={'engine':(MU+SIG*(zq+sh),MU+SIG*(es+sh)),
-           'engine_noconf':(MU+SIG*zq,MU+SIG*es),
-           'body':(MU+SIG*(zqb+sh),MU+SIG*(esb+sh)),
+    # accuracy layer (no shift) is the reference at BOTH levels, as in the paper; the overlay is its own row
+    VE[a]={'engine':(MU+SIG*zq,MU+SIG*es),
+           'engine_overlay':(MU+SIG*(zq+sh),MU+SIG*(es+sh)),
+           'body':(MU+SIG*zqb,MU+SIG*esb),
            'garch_t':(MU+SIG*stats.t.ppf(a,NU)/TSC,MU+SIG*t_es(a,NU)/TSC),
            'evt_pool':(MU+SIG*mf_quantile(POOL_LO,POOL_HI,ztr_all,a),MU+SIG*mf_es(POOL_LO,ztr_all,a)),
            'evt_name':(MU+SIG*per_name_map(lambda pn: mf_quantile(*NAME_TAILS[pn],a)),
@@ -306,7 +308,7 @@ OUT={'note':('Standalone GARCH-EVT (McNeil-Frey) benchmark on the SAME rows as j
   'evt_name = per-name two-sided GPD at p0=0.10 on training residuals; evt_pool = one pooled threshold and (xi,beta) per tail. '
   'body = GARCH + pooled boosted residual quantile, no EVT (the job_composite.py engine); engine = body/EVT minimum + rearrangement '
   '(pooled p0=0.025 tail, as job_fz_fullpanel.py). Pinball block: 11-tau mean pinball, edge=(ref-method)/ref, per-date NW(10) DM, no conformal shift. '
-  'FZ0 block: (VaR,ES) at 1% and 2.5%, conformal shift at 97.5% on engine and body, DM_t>0 means the row model is WORSE than the engine. '
+  'FZ0 block: (VaR,ES) at 1% and 2.5%; the reference engine is the unshifted accuracy layer at both levels (as in the paper), engine_overlay adds the 97.5% conformal shift; DM_t>0 means the row model is WORSE than the accuracy layer. '
   'Write-up rule pre-set in the script header.'),
  'synthetic':SYN,'garch_backend':GARCH_BACKEND,'n_names':int(TE.permno.nunique()),'n_test':int(len(Y)),'conf975':round(CONF975,4),
  'pinball':pinball,'fz0':FZ,'gpd_diagnostics':diag}

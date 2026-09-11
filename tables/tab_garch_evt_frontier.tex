@@ -1,0 +1,20 @@
+\begin{tabular}{lcccc}
+\toprule
+Model & Top $\mathrm{mk}_{63}$ decile & Deciles 1--9 & Top composite decile & Overall \\
+\midrule
+\multicolumn{5}{l}{\emph{Edge over GARCH-$t$, \% (per-date DM)}} \\
+GARCH-EVT, per name & $+0.31$ (3.62) & $-0.22$ (-6.61) & $+0.37$ (5.35) & $-0.16$ (-5.00) \\
+GARCH-EVT, pooled tail & $-0.16$ (-2.69) & $-0.12$ (-4.55) & $-0.06$ (-1.40) & $-0.12$ (-4.89) \\
+GARCH $+$ pooled body (no EVT) & $+2.98$ (10.48) & $+0.02$ (0.43) & $+2.79$ (8.91) & $+0.35$ (5.35) \\
+Engine (body/EVT minimum) & $+2.48$ (10.08) & $-0.01$ (-0.25) & $+2.19$ (8.00) & $+0.27$ (4.62) \\
+\midrule
+\multicolumn{5}{l}{\emph{Head-to-head, \% (per-date DM)}} \\
+Engine over GARCH-EVT pooled & $+2.64$ (8.91) & $+0.10$ (2.47) & $+2.24$ (7.51) & $+0.39$ (7.66) \\
+Engine over GARCH-EVT per name & $+2.18$ (9.63) & $+0.21$ (4.63) & $+1.82$ (7.39) & $+0.43$ (8.22) \\
+Pooled body over GARCH-EVT pooled & $+3.14$ (9.39) & $+0.14$ (2.84) & $+2.84$ (8.37) & $+0.47$ (7.96) \\
+Engine over pooled body & $-0.51$ (-9.04) & $-0.04$ (-2.28) & $-0.62$ (-9.64) & $-0.09$ (-5.25) \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item 200 names, 221,600 test rows, same rows and splits as Table~\ref{tab:frontier} and Figure~\ref{fig:fz}. Edge $=$ (reference pinball $-$ model pinball)/reference pinball over the eleven-level grid; DM is the per-date Newey--West(10) Diebold--Mariano statistic. GARCH-EVT is McNeil--Frey: GARCH(1,1)-$t$ filter, GPD tails fitted by maximum likelihood to the 10\% most extreme training residuals per tail (per name, or pooled across names), empirical residual quantiles between the thresholds. The engine's pooled GPD at $p_0=0.025$ has $\hat\xi=0.298$, $\hat\beta=0.639$ on 6075 exceedances; the EVT branch is the tighter of the two at the 1\% node on 60.1\% of test rows and at the 2.5\% node on 59.5\%.
+\end{tablenotes}
