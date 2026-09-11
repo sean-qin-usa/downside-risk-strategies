@@ -2,7 +2,7 @@
 # tables/tab_bench_pinball.tex : eleven-level pinball edge over GARCH-t by region, engine head-to-head, MCS membership
 # tables/tab_bench_fz0.tex     : FZ0 at 1% and 2.5%, breach, DM vs the accuracy layer, MCS membership
 # tables/tab_bench_tests.tex   : CPA Wald and slope t, DQ pass rates, Murphy fraction, per-date win rate
-# Usage: python make_tables_bench_all.py [results.json] [outdir]
+# Usage: python code/paper/make_tables_bench_all.py [results.json] [outdir]
 import os, sys, json
 P=os.environ.get("GBC_PROJ",r"C:\Users\OWNER\Claude\Projects\GBC Project")
 src=sys.argv[1] if len(sys.argv)>1 else os.path.join(P,"bench_all_results.json")

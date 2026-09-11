@@ -17,7 +17,7 @@ import numpy as np, pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
 from scipy import stats
 from arch import arch_model
-P=os.environ.get('GBC_PROJECT_DIR', os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # project root (this file lives in code/); t0=time.time(); lg=lambda s:print(s,flush=True)
+P=os.environ.get('GBC_PROJECT_DIR', os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # project root (this file lives in code/paper/); t0=time.time(); lg=lambda s:print(s,flush=True)
 CACHE=os.path.join(P,"pit_panel_2000_2013.csv")
 TAUS=[0.01,0.025,0.05,0.10,0.25,0.50,0.75,0.90,0.95,0.975,0.99]
 def pin(y,q,t): d=y-q; return np.where(d>=0,t*d,(t-1)*d)

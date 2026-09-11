@@ -22,7 +22,7 @@ import numpy as np, pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
 from scipy import stats
 from arch import arch_model
-P=os.environ.get('GBC_PROJECT_DIR', os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # project root (this file lives in code/); t0=time.time(); lg=lambda s:print(s,flush=True)
+P=os.environ.get('GBC_PROJECT_DIR', os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # project root (this file lives in code/paper/); t0=time.time(); lg=lambda s:print(s,flush=True)
 OUTJ=os.path.join(P,"holdout_frontier_results.json")
 CACHE=os.path.join(P,"holdout_panel_2000_2013.csv")
 

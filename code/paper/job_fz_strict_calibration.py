@@ -208,7 +208,7 @@ OUT['per_alpha']['0.025']['garch_minus_strict_aci']=dmrow(Lg,LA)
 lg('strict ACI: %s'%json.dumps(OUT['per_alpha']['0.025']['strict_aci_gamma_0.05']))
 json.dump(OUT,open(os.path.join(P,"fz_strict_calibration_results.json"),"w"),indent=2)
 # patch the old audit JSON's stale 'registered' note wording in place
-fp=os.path.join(P,"results","fz_fullpanel_results.json")
+fp=os.path.join(P,"results","paper","fz_fullpanel_results.json")
 try:
     j=json.load(open(fp)); j['note']=j['note'].replace('re-scoring, registered','re-scoring, pre-committed')
     json.dump(j,open(fp,"w"),indent=2); lg("patched results/fz_fullpanel_results.json note")

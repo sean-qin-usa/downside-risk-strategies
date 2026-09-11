@@ -6,7 +6,7 @@ Working repository for "Semiparametric Value-at-Risk and Expected Shortfall with
 
 The current manuscript is `paper/jfec/paper_A_jfec.pdf`, in the journal's review format, double spaced with endnotes and with the tables and figures collected at the end under "[Table N about here]" markers. The online appendix is `paper/jfec/paper_A_jfec_online_appendix.pdf`. LaTeX sources and `refs_v3.bib` sit beside them; the figures are drawn in pgfplots inside the source, so the two `.tex` files and the bibliography are all a build needs.
 
-The version under review is tagged `r32-submitted`. The text in the repository is ahead of it, and every change since then is recorded sentence by sentence in `docs/CHANGE_LEDGER_R34.md`. The revisions add a same-rows comparison against standalone McNeil-Frey GARCH-EVT, per name and with a pooled tail (Sections 1.2, 4.1 and 5.1, Figure 2 and a new online appendix section, from `code/job_garch_evt.py`); re-score every model in the comparison set on the same 221,600 test rows with the Giacomini-White conditional predictive ability regression, Murphy diagrams, the Engle-Manganelli dynamic quantile test and a 90% model confidence set (`code/job_bench_all.py`, online appendix); restate equation (5) and Stages 3 to 4 in the order the code runs them, with the GPD estimator named and two symbol collisions removed; report Christoffersen conditional coverage at 97.5% as well as 99%; and commit a result file for the residual-hybrid annual-refit walk-forward. No number in the submitted tables moved by more than rounding.
+The version under review is tagged `r32-submitted`. The text in the repository is ahead of it, and every change since then is recorded sentence by sentence in `docs/paper/CHANGE_LEDGER_R34.md`. The revisions add a same-rows comparison against standalone McNeil-Frey GARCH-EVT, per name and with a pooled tail (Sections 1.2, 4.1 and 5.1, Figure 2 and a new online appendix section, from `code/paper/job_garch_evt.py`); re-score every model in the comparison set on the same 221,600 test rows with the Giacomini-White conditional predictive ability regression, Murphy diagrams, the Engle-Manganelli dynamic quantile test and a 90% model confidence set (`code/paper/job_bench_all.py`, online appendix); restate equation (5) and Stages 3 to 4 in the order the code runs them, with the GPD estimator named and two symbol collisions removed; report Christoffersen conditional coverage at 97.5% as well as 99%; and commit a result file for the residual-hybrid annual-refit walk-forward. No number in the submitted tables moved by more than rounding.
 
 ## What the paper finds
 
@@ -21,38 +21,44 @@ Measured against a jump-robust GARCH that caps how far one shock propagates into
 | `paper/jfec/` | Manuscript, online appendix, bibliography, cover letter, SSRN abstract, generated table bodies (`tables/`) |
 | `paper/archive_pdfs/`, `paper/drive_upload/` | Dated builds, including the pair uploaded to Drive on September 5 |
 | `paper/` (other files) | Earlier drafts of this paper and the two companion papers (`gbc_downside_main.tex`, `graftq_main_v2.tex`, `paper_B_likelihoodfree.tex`) |
-| `code/` | Every analysis script. Job scripts (`job_*.py`) read the licensed panel from the project root and write one result file each |
-| `results/` | Result files as JSON, one per script run. The numbers in the paper come from these |
-| `docs/` | Change ledger, adversarial review rounds, journal requirements, research notes, memos |
-| `figures/` | Exported charts from the trading-strategy side of the program |
-| `tools/` | Edit scripts for the ledgered text revisions (`r34_*`, `r36_*`, `r38_*`, `r40_*`), `strip_claude_trailers.pl`, and the earlier sync scripts under `tools/sync/` |
+| `code/paper/` | The scripts behind this paper: frontier, FRTB battery, holdouts, benchmarks, table generators, `toy_example.py` |
+| `code/amortization/` | The amortization and IQN study (one pooled fit across names, transfer to unseen names, age curve) |
+| `code/gbc/` | Gibbs and generative posterior work, simulation-based calibration (paper B) |
+| `code/strategies/` | Option-selling backtests, execution studies, signal generation, the crash section of the GRAFT-Q draft |
+| `code/data/` | WRDS and TAQ pulls, realized-measure builds, delisting merges, inspection and diagnostic scripts |
+| `results/<group>/` | Result files as JSON, one per script run, grouped the same way as `code/`. The numbers in the paper come from `results/paper/` |
+| `docs/paper/` | Change ledger, adversarial review rounds, journal requirements, submission notes, cover letter |
+| `docs/strategies/`, `docs/program/` | Strategy catalogue and specs; memos and research directions for the program as a whole |
+| `figures/` | Exported charts from the strategy side |
+| `tools/edits/` | The edit scripts for the ledgered text revisions (`r34_*`, `r36_*`, `r38_*`, `r40_*`) |
+| `tools/bats/`, `tools/sync/` | Runner helpers and the earlier PowerShell sync scripts; `tools/strip_claude_trailers.pl` is the commit-message filter |
 | `autojobs/`, `ai2jobs/`, `auto_runner.bat`, `START_RUNNER_CLICK_ME.bat` | The batch runner. `auto_runner.bat` executes each `.bat` dropped in `autojobs/` and moves it to `autojobs/done/`; `ai2jobs/` holds the jobs that ran on the ai2 GPU host |
-| `live_paper/`, `forward_signals/`, `next_jobs/`, `competitions/`, `logs/` | Live-trading paper trade, forward signal records, queued jobs, forecasting competition entries, run logs |
+| `live_paper/`, `forward_signals/`, `next_jobs/`, `competitions/`, `logs/` | Live-trading paper trade, forward signal records, queued jobs, forecasting competition entries (M5, GEFCom), run logs |
 
-Job scripts take the project root from the `GBC_PROJ` (or `GBC_PROJECT_DIR`) environment variable and default to the Windows working folder; they write their result JSON there, and the file is moved into `results/` when it is committed. Table bodies are regenerated with `python code/make_tables_garch_evt.py` and `python code/make_tables_bench_all.py`.
+Job scripts take the project root from the `GBC_PROJ` (or `GBC_PROJECT_DIR`) environment variable and default to the Windows working folder; they write their result JSON there, and the file is moved into `results/<group>/` when it is committed. Table bodies are regenerated with `python code/paper/make_tables_garch_evt.py` and `python code/paper/make_tables_bench_all.py`.
 
 ## Scripts behind the tables
 
 | Script | Result file | Used for |
 |---|---|---|
-| `code/frtb_table_canonical.py` | `results/frtb_table_results.json` | The twelve-level FRTB battery with exact tail-integral ES (Table 3) |
-| `code/job_composite.py` | `results/composite_holdout_results.json` | The score frontier on the 200-name panel (Table 1) |
-| `code/job_fz_fullpanel.py` | `results/fz_fullpanel_results.json` | Full-panel FZ0 joint loss (Figure 2) |
-| `code/job_fz_strict_calibration.py` | `results/fz_strict_calibration_results.json` | Strict-split conformal and FZ audit with the matched-information GARCH control |
-| `code/frtb_stress_exact.py`, `code/job_stress_dm.py` | `results/stress_es_results.json` | Ten-day sections in both eras with the boundary purge |
-| `code/job_wrds_holdout.py` | `results/holdout_frontier_results.json` | The 2000 to 2013 holdout under the frozen specification (Figure 1) |
-| `code/job_pit_universe.py` | `results/pit_universe_results.json` | Point-in-time universe with delisting returns |
-| `code/job_calendar_split.py`, `code/job_walkforward.py` | `results/calendar_split_results.json`, `results/walkforward_results.json` | Calendar splits and the annual-refit walk-forward |
-| `code/job_nurel.py`, `code/job_mechanism.py` | `results/nurel_results.json`, `results/mechanism_results.json` | The nu-relative score and the Fama-MacBeth mechanism test |
-| `code/job_coherent.py` | `results/coherent_results.json` | Monotonized curve audit and ES as the integral of the same curve |
-| `code/job_scaleshape_canonical.py` | `results/scaleshape_canonical_results.json` | Realized-variance scale decomposition on large caps |
-| `code/job_pzc_taylor.py` | `results/pzc_taylor_results.json` | GAS-FZ and ES-CAViaR benchmarks |
-| `code/job_perasset_v2.py` | `results/perasset_v2_results.json` | Per-asset exception tests at 99% and 97.5% |
-| `code/job_garch_evt.py`, `code/job_holdout_garch_evt.py` | `results/garch_evt_results.json`, `results/holdout_garch_evt_results.json` | McNeil-Frey GARCH-EVT on the same rows, design era and holdout |
-| `code/job_bench_all.py` | `results/bench_all_results.json` | Every benchmark on the same rows: pinball frontier, FZ0, CPA, DQ, Murphy, model confidence sets (online appendix Tables OA.10 to OA.12) |
-| `code/job_walkforward_hybrid.py` | `results/walkforward_hybrid_results.json` | Residual-hybrid annual refit |
+| `code/paper/frtb_table_canonical.py` | `results/paper/frtb_table_results.json` | The twelve-level FRTB battery with exact tail-integral ES (Table 3) |
+| `code/paper/job_composite.py` | `results/paper/composite_holdout_results.json` | The score frontier on the 200-name panel (Table 1) |
+| `code/paper/job_fz_fullpanel.py` | `results/paper/fz_fullpanel_results.json` | Full-panel FZ0 joint loss (Figure 2) |
+| `code/paper/job_fz_strict_calibration.py` | `results/paper/fz_strict_calibration_results.json` | Strict-split conformal and FZ audit with the matched-information GARCH control |
+| `code/paper/frtb_stress_exact.py`, `code/paper/job_stress_dm.py` | `results/paper/stress_es_results.json` | Ten-day sections in both eras with the boundary purge |
+| `code/paper/job_wrds_holdout.py` | `results/paper/holdout_frontier_results.json` | The 2000 to 2013 holdout under the frozen specification (Figure 1) |
+| `code/paper/job_pit_universe.py` | `results/paper/pit_universe_results.json` | Point-in-time universe with delisting returns |
+| `code/paper/job_calendar_split.py`, `code/paper/job_walkforward.py` | `results/paper/calendar_split_results.json`, `results/paper/walkforward_results.json` | Calendar splits and the annual-refit walk-forward |
+| `code/paper/job_nurel.py`, `code/paper/job_mechanism.py` | `results/paper/nurel_results.json`, `results/paper/mechanism_results.json` | The nu-relative score and the Fama-MacBeth mechanism test |
+| `code/paper/job_coherent.py` | `results/paper/coherent_results.json` | Monotonized curve audit and ES as the integral of the same curve |
+| `code/paper/job_scaleshape_canonical.py` | `results/paper/scaleshape_canonical_results.json` | Realized-variance scale decomposition on large caps |
+| `code/paper/job_pzc_taylor.py` | `results/paper/pzc_taylor_results.json` | GAS-FZ and ES-CAViaR benchmarks |
+| `code/paper/job_perasset_v2.py` | `results/paper/perasset_v2_results.json` | Per-asset exception tests at 99% and 97.5% |
+| `code/paper/job_garch_evt.py`, `code/paper/job_holdout_garch_evt.py` | `results/paper/garch_evt_results.json`, `results/paper/holdout_garch_evt_results.json` | McNeil-Frey GARCH-EVT on the same rows, design era and holdout |
+| `code/paper/job_bench_all.py` | `results/paper/bench_all_results.json` | Every benchmark on the same rows: pinball frontier, FZ0, CPA, DQ, Murphy, model confidence sets (online appendix Tables OA.10 to OA.12) |
+| `code/paper/job_walkforward_hybrid.py` | `results/paper/walkforward_hybrid_results.json` | Residual-hybrid annual refit |
 
-Superseded implementations are kept in the history and removed from the working tree. `code/frtb_bench.py` records its own correction history in the header. `code/toy_example.py` runs the whole pipeline on synthetic data and needs no licensed input.
+Superseded implementations are kept in the history and removed from the working tree. `code/paper/frtb_bench.py` records its own correction history in the header. `code/paper/toy_example.py` runs the whole pipeline on synthetic data and needs no licensed input.
 
 ## Data
 
