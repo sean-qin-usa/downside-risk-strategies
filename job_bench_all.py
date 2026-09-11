@@ -3,7 +3,7 @@
 # with the full comparison set of the paper on the same test rows:
 #   garch_t, gjr_skewt, ewma (RiskMetrics 0.94, Gaussian), hs500 (rolling 500-day empirical return quantile),
 #   fhs_pool, fhs_name, fhs_roll500 (GARCH-t scale times pooled / per-name / rolling-500 empirical residual quantiles),
-#   sav_caviar (Engle-Manganelli SAV, one regression quantile per level per name, pinball-estimated on the training window),
+#   sav_caviar (Engle-Manganelli SAV, one regression quantile per level per name, pinball-estimated on the estimation window [:sp]),
 #   evt_name, evt_pool (McNeil-Frey GARCH-EVT), body (pooled boosted residual quantile), engine (body/EVT minimum),
 #   and, at the two regulatory levels only, gas_pzc (Patton-Ziegel-Chen one-factor GAS) and taylor (Taylor ES-CAViaR),
 #   both FZ0-estimated per name with three starts as in code/job_pzc_taylor.py.
@@ -187,7 +187,7 @@ for pn in names:
         fr_e=zs.rolling(500,min_periods=250).apply(lambda w: w[w<=np.quantile(w,a)].mean(),raw=True).shift(1).values
         df['hse_%g'%a]=hs_e; df['fhsre_%g'%a]=fr_e; df['fhsne_%g'%a]=float(np.mean(ztr[ztr<=np.quantile(ztr,a)]))
     # SAV-CAViaR per level, pinball-estimated on the training window (idx < cp), full-path quantiles
-    for t in TAUS: df['cav_%g'%t]=caviar_sav(y[:cp],y,t)
+    for t in TAUS: df['cav_%g'%t]=caviar_sav(y[:sp],y,t)     # estimation window [:sp], as for GARCH-t, GJR, GAS and Taylor (frtb_caviar_run.py convention)
     GASROWS.append((pn,y,cp))
     dd=df.dropna(subset=ZX+['mk63','skew63','jump5'])
     trn=dd[dd['idx']<cp]; cal=dd[(dd['idx']>=cp)&(dd['idx']<sp)]; tst=dd[dd['idx']>=sp]
