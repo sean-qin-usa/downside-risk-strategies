@@ -24,6 +24,40 @@
 \date{\today}
 \begin{document}
 \maketitle
+\section{Glossary of acronyms}
+\begin{tabular}{ll}
+\toprule
+ARCD & autoregressive conditional density model \citep{hansen1994ARCD} \\
+CAViaR & conditional autoregressive value-at-risk \citep{engle2004caviar}; SAV, its symmetric absolute value form \\
+CC, UC & conditional coverage \citep{christoffersen1998} and unconditional coverage \citep{kupiec1995} exception tests \\
+CRPS & continuous ranked probability score \\
+CRSP, WRDS & Center for Research in Security Prices; Wharton Research Data Services \\
+DM & Diebold--Mariano test \citep{dieboldmariano1995} \\
+EM, IG, OAS & emerging markets; investment grade; option-adjusted spread \\
+ERM & empirical risk minimization \\
+ES, VaR & Expected Shortfall; Value-at-Risk \\
+EVT, GPD & extreme-value theory; generalized Pareto distribution \\
+EWMA & exponentially weighted moving average variance \citep{riskmetrics1996} \\
+FHS, HS & filtered historical simulation \citep{baroneadesi1999fhs}; historical simulation \\
+FRTB & Fundamental Review of the Trading Book \citep{bcbs2019frtb} \\
+FWER & family-wise error rate \\
+FZ0 & the zero-homogeneous Fissler--Ziegel joint (VaR, ES) scoring function \citep{fissler2016, patton2019} \\
+GARCH, GJR & generalized autoregressive conditional heteroskedasticity \citep{bollerslev1986}; the Glosten--Jagannathan--Runkle leverage form \citep{glosten1993} \\
+GAS & generalized autoregressive score model \citep{patton2019} \\
+GBC & generative Bayesian computation \citep{polson2023gbc} \\
+GBM & gradient boosting machine (gradient-boosted regression trees) \\
+GFC & the 2008 global financial crisis \\
+IQN & implicit quantile network \citep{dabney2018iqn} \\
+MCS & Model Confidence Set \citep{hansen2011mcs} \\
+PIT & probability integral transform \\
+PZC & Patton, Ziegel and Chen \citep{patton2019} \\
+QML & quasi-maximum likelihood \\
+RV & realized variance \\
+SPA & superior predictive ability test \citep{hansen2005spa} \\
+TAQ & NYSE Trade and Quote database \\
+\bottomrule
+\end{tabular}
+
 \section{Algorithms}
 \medskip\noindent\fbox{\parbox{0.96\textwidth}{
 \textbf{Algorithm OA.1 (amortized shape model).}
@@ -65,9 +99,9 @@ $\widehat\sigma_{t+1}$ (recursion only; parameters refit annually);
 per-name estimation; (iii)~apply the frozen GPD tail below $p_0$
 and, where the desk elects the coverage overlay, the conformal shift
 $c_\tau$ (static or adaptive); (iv)~report
-$\widehat Q_{t+1}(\tau) = \widehat\sigma_{t+1}\,\widetilde q(\tau\mid s_t)$
+$\widehat Q_{t+1}(\tau) = \widehat\mu+\widehat\sigma_{t+1}\,\big(Q^{z}_{t+1}(\tau)+c_\tau\big)$
 at the desk's levels, with VaR and ES$_{97.5}$ both read from the coherent
-min-envelope curve $Q^{*}=\min\{$body$,$EVT$\}$ (VaR at the $\alpha$
+min-envelope curve $Q^{z}$ of equation~(5) of the paper (VaR at the $\alpha$
 node, ES its numerical tail integral); (v)~read
 the misspecification score equation~(9) of the paper as the model-risk monitor: top decile means the parametric fallback's conditional average loss
 in that score region runs $\sim$2--3\% higher. \emph{Annually:} refit filters, retrain the shape model,
@@ -318,8 +352,7 @@ smaller $4\%$ figure in the paper's cross-universe table is from the separate le
 \begin{table}[htbp]
 \centering
 \begin{threeparttable}
-\caption{Double sort: the edge needs both a shape break and an active
-regime. Cells are the nonparametric-over-GARCH-$t$ pinball edge (\%)
+\caption{Double sort on the misspecification score and trailing volatility. Cells are the nonparametric-over-GARCH-$t$ pinball edge (\%)
 in independent quintiles of the misspecification score (rows) and
 trailing volatility (columns), design-era test panel.}
 \label{tab:doublesort}
@@ -419,7 +452,7 @@ an ES forecast and comparing forecasts through a jointly consistent score.
 Table~\ref{tab:esbt} reports the two calibration tests on the same $200$-name
 panel and $221{,}600$ held-out asset-days ($1{,}108$ test dates) as the
 full-panel FZ0 re-scoring, with the engine's VaR and ES read from its own
-coherent min-envelope curve $Q^{*}$ --- the exact forecasts the joint loss
+coherent min-envelope curve $Q^{z}$ of equation~(5) of the paper --- the exact forecasts the joint loss
 scores, not a simpler proxy --- and inference by a stationary block bootstrap
 over calendar dates. Gaussian innovations are decisively inadequate in this
 daily-data battery: the Gaussian filter is worst on every ES metric, its mean
@@ -484,8 +517,8 @@ TAQ for thirty large-capitalization U.S.\ equities over 2014--2024 (realized
 variance is the sum of squared five-minute log-returns, cleaned by regular sale
 conditions, a daily price band, and a $20\%$ return clip) and fit a Realized GARCH
 \citep{hansen2012realized}: the log-linear conditional variance
-$\log h_t=\omega+\beta\log h_{t-1}+\gamma\log \mathrm{RV}_{t-1}$ with a measurement
-equation $\log\mathrm{RV}_t=\xi+\phi\log h_t+\tau(z_t)+u_t$ linking the realized
+$\log h_t=\omega_R+\beta_R\log h_{t-1}+\gamma_R\log \mathrm{RV}_{t-1}$ with a measurement
+equation $\log\mathrm{RV}_t=\xi_R+\phi_R\log h_t+\tau_R(z_t)+u_{R,t}$ linking the realized
 measure to the latent variance, estimated jointly by Gaussian quasi-maximum
 likelihood. Table~\ref{tab:rgarch} reports the result on 1{,}108 common test dates.
 Two facts follow. The realized scale lowers FZ0 well below the daily-data accuracy
@@ -564,9 +597,9 @@ This section collects the constructions summarized in Section~3 of the paper.
 \node[box, dashed, fill=white] (cal)  at (11.2,-4.4) {held-out\\calibration split};
 \draw[arr] (ret) -- (garch);
 \draw[arr] (garch) -- node[lab, above] {$\widehat z_t$, $s_t$} (shape);
-\draw[arr] (shape) -- node[lab, above] {splice at $p_0$} (evt);
+\draw[arr] (shape) -- node[lab, above] {minimum at $\tau\le p_0$, rearrange} (evt);
 \draw[arr] (evt) -- (conf);
-\draw[arr] (conf) -- node[lab, above] {calibrated curve $\widetilde q$} (out);
+\draw[arr] (conf) -- node[lab, above] {shifted curve $Q^{z}+c_\tau$ (overlay)} (out);
 \draw[arr] ([xshift=-5mm]garch.south) |- node[lab, left, pos=0.25]
   {$\widehat z$} (pool.west);
 \draw[arr] (pool.north) -- node[lab, right] {train} (shape.south);
@@ -785,7 +818,7 @@ $q_F=Q_{\nu_1}(\tau)$ bounds the regret below by
 $\tfrac{m}{2}(Q_{\nu_1}(\tau)-Q_{\nu_2}(\tau))^2$, with $m$ the minimum
 of the $t_{\nu_1}$ density on the wedge interval. \hfill$\square$
 
-\subsection*{On the score-ordering: why it is an empirical regularity, not a theorem}
+\subsection*{Remark on the score ordering}
 We state the score-ordering as an empirical regularity rather than a
 theorem, and record here why no clean monotonicity theorem holds at the
 deployable levels. The tail-wedge result (Proposition~2 of the paper)
