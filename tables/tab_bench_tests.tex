@@ -1,0 +1,27 @@
+\begin{tabular}{lcccccccc}
+\toprule
+& \multicolumn{2}{c}{CPA vs engine} & \multicolumn{2}{c}{DQ pass rate} & \multicolumn{2}{c}{Murphy: engine better} & \multicolumn{2}{c}{Engine win rate} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Model & Wald $\chi^2_2$ & slope $t$ & 1\% & 2.5\% & 1\% & 2.5\% & top decile & overall \\
+\midrule
+Engine $+$ conformal overlay & --- & --- & 86\% & 84\% & 0\% & 45\% & --- & --- \\
+GARCH $+$ pooled body (no EVT) & 97.2 & -10.1 & 69\% & 54\% & 82\% & 72\% & 12\% & 26\% \\
+GARCH(1,1)-$t$ & 73.6 & 8.6 & 84\% & 68\% & 70\% & 65\% & 74\% & 62\% \\
+GJR-GARCH-skew-$t$ & 87.7 & 9.5 & 90\% & 77\% & 48\% & 40\% & 72\% & 62\% \\
+GARCH-FHS (pooled) & 63.4 & 7.2 & 78\% & 60\% & 88\% & 85\% & 73\% & 62\% \\
+GARCH-FHS (per name) & 80.3 & 4.6 & 73\% & 55\% & 92\% & 90\% & 72\% & 62\% \\
+GARCH-FHS (rolling 500d) & 138.2 & 12.0 & 84\% & 82\% & 85\% & 50\% & 74\% & 64\% \\
+GARCH-EVT (pooled tail) & 64.5 & 7.5 & 83\% & 62\% & 85\% & 85\% & 74\% & 62\% \\
+GARCH-EVT (per name) & 68.2 & 5.2 & 82\% & 60\% & 78\% & 72\% & 72\% & 62\% \\
+SAV-CAViaR & 2.6 & -0.2 & 78\% & 66\% & 80\% & 60\% & 52\% & 56\% \\
+GAS-FZ (PZC) & --- & --- & 92\% & 82\% & 50\% & 78\% & --- & --- \\
+ES-CAViaR (Taylor) & --- & --- & 78\% & 72\% & 70\% & 42\% & --- & --- \\
+EWMA (RiskMetrics) & 172.6 & 13.8 & 29\% & 56\% & 95\% & 78\% & 83\% & 71\% \\
+Historical simulation (500d) & 89.3 & -0.4 & 48\% & 51\% & 48\% & 60\% & 58\% & 72\% \\
+\midrule
+Engine (accuracy layer) & --- & --- & 86\% & 70\% & --- & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item CPA: Giacomini--White Wald test of equal conditional accuracy of the model and the engine with instruments (1, lagged composite score percentile), Newey--West(10) over per-date sums, and the date-clustered $t$ of the slope of the loss differential (model minus engine) on the score; a positive slope means the engine's advantage grows with the score. DQ: Engle--Manganelli dynamic quantile test with four hit lags and the VaR, share of names passing at 5\%. Murphy: share of a forty-point return-space threshold grid on which the engine has the lower elementary quantile score. Win rate: share of test dates on which the date-averaged engine pinball is below the model's. Models with an entry only at the regulatory levels (GAS, Taylor) have no pinball-based columns.
+\end{tablenotes}

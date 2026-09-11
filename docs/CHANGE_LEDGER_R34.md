@@ -1906,3 +1906,93 @@ GARCH $+$ pooled body (no EVT) & \multicolumn{2}{c}{69\%} & \multicolumn{2}{c}{5
 \multicolu
 ```
 
+
+# R40: every standard benchmark on the canonical rows
+
+## abstract-fz0 (M)
+
+**Why.** on the full comparison set GJR-GARCH-skew-t (both levels) and the Taylor model (2.5%) are within noise of the accuracy layer; the unscoped claim no longer holds
+
+**Before.**
+
+```
+and it attains the lowest joint (VaR, ES) loss against standard benchmarks.
+```
+
+**After.**
+
+```
+and it attains the lowest joint (VaR, ES) loss against GARCH-$t$ and FHS.
+```
+
+## 5.1-fullset (M)
+
+**Why.** full-set FZ0 and MCS on the same rows
+
+**Before.**
+
+```
+losing in a band of thresholds near the typical VaR level. The two closest dynamic
+```
+
+**After.**
+
+```
+losing in a band of thresholds near the typical VaR level. Extending the joint score to the whole comparison set on the same rows (Online Appendix Table~OA.11), the accuracy layer has the lowest mean FZ0 at 1\% and is within noise of GJR-GARCH-skew-$t$ at both levels (DM 1.1 and -0.3) and of the Taylor model at 2.5\% (DM -0.1); the 90\% Model Confidence Set on the per-date FZ0 series contains the accuracy layer, the conformal overlay, the pooled body and GJR-GARCH-skew-$t$ at 1\% and the accuracy layer, the pooled body, GJR-GARCH-skew-$t$ and the Taylor model at 2.5\%, and excludes GARCH-$t$, every FHS variant, both GARCH-EVT forms, the GAS model, EWMA and historical simulation at both levels. On the eleven-level pinball the set contains only the pooled body and SAV-CAViaR: the EVT branch costs pinball, as Table~\ref{tab:frtb} reports for the twelve-level battery, and is kept for the exception tests it passes. The two closest dynamic
+```
+
+## 4.1-fullset (M)
+
+**Why.** every benchmark on the frontier rows; CPA against every model; CAViaR shares the frontier
+
+**Before.**
+
+```
+The same-rows table and the GPD threshold diagnostics are in the Online Appendix.
+```
+
+**After.**
+
+```
+The same-rows table and the GPD threshold diagnostics are in the Online Appendix, together with the rest of the comparison set on the same rows (Table~OA.10). Of the standard benchmarks, only SAV-CAViaR shows a top-decile edge over GARCH-$t$ above one percent ($+2.81\%$, DM 8.2): it models the quantile directly and reacts to $|r_{t-1}|$, so it carries the same frontier the engine does, and the two tie in every region (top decile $-0.33\%$, DM $-1.8$; overall $-0.12\%$, DM $-1.6$, engine over CAViaR), the tie Section~\ref{sec:frtb} reports on the FRTB battery. The conditional-predictive-ability slope of each benchmark's loss differential against the engine on the lagged score is positive with $t>2$ for GARCH-$t$, per-name GARCH-EVT, pooled-tail GARCH-EVT, pooled FHS, per-name FHS, rolling FHS, EWMA and GJR-GARCH-skew-$t$, so the engine's advantage over each of them grows with the score; it is flat for historical simulation and SAV-CAViaR.
+```
+
+## OA-bench (OA)
+
+**Why.** OA subsection with the three all-benchmark tables
+
+**Before.**
+
+```
+\section{Frontier robustness: calendar overlap, family-wise error, and the universe rule}
+```
+
+**After.**
+
+```
+\subsection*{All benchmarks on the canonical rows}
+The GARCH-EVT comparison above is one row of a larger exercise (\texttt{job\_bench\_all.py}, result file \texttt{bench\_all\_results.json}): every model in the paper's comparison set is scored on the identical 221,600 test rows of the 200-name panel, through every statistic. GARCH-$t$, GJR-GARCH-skew-$t$, the two GARCH-EVT forms, the GAS and Taylor models and SAV-CAViaR are estimated per name on the estimation window; the FHS variants take the empirical quantiles of the GARCH-$t$ residuals (pooled across names, per name on the training window, or over a rolling 500-day window); EWMA is the RiskMetrics recursion with Gaussian quantiles; historical simulation is the rolling 500-day empirical return quantile. GAS and Taylor exist only at the two regulatory levels and enter the joint-score, dynamic-quantile and Murphy statistics. Table~\ref{tab:bench-pinball} gives the eleven-level pinball frontier, Table~\ref{tab:bench-fz0} the joint score, and Table~\ref{tab:bench-tests} the conditional-predictive-ability, dynamic-quantile, Murphy and win-rate statistics.
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Every benchmark on the frontier rows: eleven-level pinball edge over GARCH-$t$ by score region, engine head-to-head, and Model Confidence Set membership.}
+\label{tab:bench-pinball}
+\footnotesize
+\begin{tabular}{lccccc}
+\toprule
+Model & Top $\mathrm{mk}_{63}$ decile & Deciles 1--9 & Overall & Engine vs model (top) & MCS \\
+\midrule
+Engine (accuracy layer) & $+2.48$ (10.08) & $-0.01$ (-0.25) & $+0.27$ (4.62) & --- &  \\
+GARCH $+$ pooled body (no EVT) & $+2.98$ (10.48) & $+0.02$ (0.43) & $+0.35$ (5.35) & $-0.51$ (-9.04) & $\checkmark$ \\
+GARCH(1,1)-$t$ & (reference) & (reference) & (reference) & $+2.48$ (10.08) &  \\
+GJR-GARCH-skew-$t$ & $+0.16$ (0.60) & $-0.01$ (-0.13) & $+0.01$ (0.35) & $+2.32$ (9.70) &  \\
+GARCH-FHS (pooled) & $-0.14$ (-2.45) & $-0.12$ (-4.39) & $-0.13$ (-4.62) & $+2.62$ (8.86) &  \\
+GARCH-FHS (per name) & $+0.34$ (3.87) & $-0.27$ (-6.86) & $-0.20$ (-5.33) & $+2.15$ (9.67) &  \\
+GARCH-FHS (rolling 500d) & $-0.75$ (-6.68) & $-0.03$ (-0.55) & $-0.11$ (-2.19) & $+3.21$ (10.22) &  \\
+GARCH-EVT (pooled tail) & $-0.16$ (-2.69) & $-0.12$ (-4.55) & $-0.12$ (-4.89) & $+2.64$ (8.91) &  \\
+GARCH-EVT (per name) & $+0.31$ (3.62) & $-0.22$ (-6.61) & $-0.16$ (-5.00) & $+2.18$ (9.63) &  \\
+SAV-CAViaR & $+2.81$ (8.16) & $+0.08$ (1.60) & $+0.39$ (6.29) & $-0.33$ (-1.82) & $\checkmark$ \\
+EWMA (R
+```
+
