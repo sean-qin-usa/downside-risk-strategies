@@ -6,7 +6,7 @@
 import os, sys, json
 P=os.environ.get("GBC_PROJ",r"C:\Users\OWNER\Claude\Projects\GBC Project")
 src=sys.argv[1] if len(sys.argv)>1 else os.path.join(P,"bench_all_results.json")
-outdir=sys.argv[2] if len(sys.argv)>2 else "tables"; os.makedirs(outdir,exist_ok=True)
+outdir=sys.argv[2] if len(sys.argv)>2 else os.path.join(P,"paper","jfec","tables"); os.makedirs(outdir,exist_ok=True)
 R=json.load(open(src))
 NAMES={'engine':'Engine (accuracy layer)','engine_overlay':'Engine $+$ conformal overlay','body':'GARCH $+$ pooled body (no EVT)',
  'garch_t':'GARCH(1,1)-$t$','gjr_skewt':'GJR-GARCH-skew-$t$','ewma':'EWMA (RiskMetrics)','hs500':'Historical simulation (500d)',

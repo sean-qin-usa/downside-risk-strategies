@@ -22,3 +22,6 @@ tpx_inspect_out.txt
 *.tgz
 _r20tmp*
 _HELD_*
+# scratch folders on the working box
+_to_delete/
+Claude outputs/

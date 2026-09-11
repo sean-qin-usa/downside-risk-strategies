@@ -6,7 +6,7 @@
 import os, sys, json
 P=os.environ.get("GBC_PROJ",r"C:\Users\OWNER\Claude\Projects\GBC Project")
 src=sys.argv[1] if len(sys.argv)>1 else os.path.join(P,"garch_evt_results.json")
-outdir=sys.argv[2] if len(sys.argv)>2 else "tables"; os.makedirs(outdir,exist_ok=True)
+outdir=sys.argv[2] if len(sys.argv)>2 else os.path.join(P,"paper","jfec","tables"); os.makedirs(outdir,exist_ok=True)
 R=json.load(open(src))
 NAMES={'garch_t':'GARCH(1,1)-$t$','evt_name':'GARCH-EVT, per name','evt_pool':'GARCH-EVT, pooled tail',
        'body':'GARCH $+$ pooled body (no EVT)','engine':'Engine (body/EVT minimum)','engine_overlay':'Engine $+$ conformal overlay (97.5\\%)'}
