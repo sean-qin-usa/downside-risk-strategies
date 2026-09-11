@@ -315,3 +315,74 @@ OUT={'note':('Standalone GARCH-EVT (McNeil-Frey) benchmark on the SAME rows as j
 fn="garch_evt_results_synthetic.json" if SYN else "garch_evt_results.json"
 json.dump(OUT,open(os.path.join(P,fn),"w"),indent=2)
 lg("GARCHEVTDONE %.0fs"%(time.time()-t0))
+
+# ---------------------------------------------------------------- extras: CPA regression, Murphy diagrams, DQ test, loss-differential dispersion
+# (a) Giacomini-White conditional predictive ability. Asset-day loss differential d_it = L_ref - L_engine (11-tau pinball),
+#     instruments h_it = (1, lagged composite percentile). Per-date sums of h_it d_it give a T x 2 series; Wald statistic
+#     with a Newey-West(10) covariance is the GW test of E[d | score] = 0. Also reported: the slope of d on the score.
+def cpa(Lref,Lm,score):
+    ok=np.isfinite(score); d=(Lref-Lm)[ok]; h=np.stack([np.ones(ok.sum()),score[ok]],axis=1); dd=di[ok]
+    hd=pd.DataFrame(h*d[:,None]).groupby(dd).sum().values           # per-date sums of h*d
+    T=len(hd); m=hd.mean(axis=0); X=hd-m; V=X.T@X/T
+    for k in range(1,11): V+=(1-k/11)*((X[k:].T@X[:-k])+(X[:-k].T@X[k:]))/T
+    W=float(T*m@np.linalg.solve(V,m))
+    # slope of d on the score, date-clustered t
+    cnt=pd.Series(np.ones(ok.sum())).groupby(dd).sum().values; xbar=score[ok].mean(); dbar=d.mean()
+    sc=score[ok]; num=pd.Series((sc-xbar)*(d-dbar)).groupby(dd).sum().values; den=float(((sc-xbar)**2).sum())
+    b=float(num.sum()/den); u=pd.Series((sc-xbar)*(d-b*(sc-xbar)-dbar)).groupby(dd).sum().values
+    se=len(u)*math.sqrt(max(nw_var(u),1e-30))/den            # Var(sum_t u_t) = T^2 * nw_var(u)
+    return {'GW_wald_chi2_2':round(W,2),'p':round(float(1-stats.chi2.cdf(W,2)),4),'slope_d_on_score':round(b,6),'slope_t':round(b/se,2),'n_dates':int(T)}
+def nw_var(x,l=10):
+    x=np.asarray(x,float); dm=x-x.mean(); v=np.mean(dm*dm)
+    for k in range(1,l+1): v+=2*(1-k/(l+1))*np.mean(dm[k:]*dm[:-k])
+    return v/len(x)
+CPA={'garch_t_vs_engine':cpa(PL['garch_t'],PL['engine'],comp_pct),'evt_pool_vs_engine':cpa(PL['evt_pool'],PL['engine'],comp_pct),
+     'garch_t_vs_body':cpa(PL['garch_t'],PL['body'],comp_pct),'garch_t_vs_engine_mk63pct':cpa(PL['garch_t'],PL['engine'],pct(mk))}
+lg("CPA: "+json.dumps(CPA))
+# (b) Murphy diagrams (Ehm, Gneiting, Jordan, Kruger 2016): elementary quantile score S_theta(q,y)=(1{y<q}-a)(1{theta<q}-1{theta<y}),
+#     averaged over the panel on a theta grid of return-space quantiles; engine minus competitor, negative = engine better.
+def murphy(qA,qB,a,thetas):
+    out=[]
+    for th in thetas:
+        sA=np.mean((( (Y<qA).astype(float)-a)*((th<qA).astype(float)-(th<Y).astype(float))))
+        sB=np.mean((( (Y<qB).astype(float)-a)*((th<qB).astype(float)-(th<Y).astype(float))))
+        out.append(float(sA-sB))
+    return out
+THETAS=[float(v) for v in np.quantile(Y,np.linspace(0.001,0.15,40))]
+MUR={'theta_grid_return_space':[round(t,4) for t in THETAS]}
+for a in ALPHAS:
+    qe=VE[a]['engine'][0]; rec={}
+    for m in ['garch_t','evt_pool','evt_name','body']:
+        dv=murphy(qe,VE[a][m][0],a,THETAS); rec[m]={'engine_minus_%s'%m:[round(v,7) for v in dv],
+            'frac_theta_engine_better':round(float(np.mean(np.array(dv)<0)),3),'max_engine_worse':round(float(max(dv)),7)}
+    MUR[str(a)]=rec
+    lg("Murphy a=%s: "%a+json.dumps({m:(rec[m]['frac_theta_engine_better'],rec[m]['max_engine_worse']) for m in rec}))
+# (c) Engle-Manganelli dynamic quantile test per name (4 hit lags plus the VaR), pass rate at 5% across names; pooled version too.
+def dq(hit,v,a,L=4):
+    n=len(hit); 
+    if n<L+30: return None
+    H=hit[L:]-a; X=np.column_stack([np.ones(n-L)]+[hit[L-k:n-k]-a for k in range(1,L+1)]+[v[L:]])
+    try:
+        b=np.linalg.lstsq(X,H,rcond=None)[0]; st=float(b@X.T@X@b/(a*(1-a)))
+        return float(1-stats.chi2.cdf(st,X.shape[1]))
+    except Exception: return None
+DQ={}
+for a in ALPHAS:
+    rec={}
+    for m in ['engine','engine_overlay','garch_t','evt_pool','evt_name','body']:
+        v=VE[a][m][0]; hit=(Y<=v).astype(float); ps=[]
+        for pn_ in np.unique(PN):
+            msk=PN==pn_; p_=dq(hit[msk],v[msk],a)
+            if p_ is not None: ps.append(p_)
+        rec[m]={'dq_passrate_5pct':round(float(np.mean([x>0.05 for x in ps])),3),'n_names':len(ps),'pooled_dq_p':dq(hit,v,a)}
+    DQ[str(a)]=rec; lg("DQ a=%s: "%a+json.dumps({m:rec[m]['dq_passrate_5pct'] for m in rec}))
+# (d) dispersion of the per-date loss differential (engine over reference), 11-tau pinball
+def disp(Lref,Lm,mask):
+    g=pd.DataFrame({'d':(Lref-Lm)[mask],'dt':di[mask]}).groupby('dt')['d'].mean().values
+    q=np.percentile(g,[5,25,50,75,95])
+    return {'win_rate_dates':round(float(np.mean(g>0)),3),'q05_q25_q50_q75_q95':[round(float(x),6) for x in q],'sd':round(float(g.std()),6),'n_dates':int(len(g))}
+DISP={r:{'garch_t':disp(PL['garch_t'],PL['engine'],msk),'evt_pool':disp(PL['evt_pool'],PL['engine'],msk)} for r,msk in regions.items()}
+OUT['extras']={'cpa':CPA,'murphy':MUR,'dq':DQ,'loss_diff_dispersion':DISP,
+  'note':'cpa: Giacomini-White Wald test of E[d|1,score]=0 with d=L_ref-L_engine per asset-day, NW(10) over per-date sums; murphy: mean elementary quantile score engine minus competitor over a return-space theta grid (negative = engine better at that theta); dq: Engle-Manganelli test with 4 hit lags and the VaR, per-name pass rate at 5% and pooled p; dispersion: per-date loss differential engine over reference.'}
+json.dump(OUT,open(os.path.join(P,fn),"w"),indent=2)
+lg("EXTRASDONE %.0fs"%(time.time()-t0))
