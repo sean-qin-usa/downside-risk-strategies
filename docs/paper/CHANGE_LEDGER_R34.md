@@ -1996,3 +1996,157 @@ SAV-CAViaR & $+2.81$ (8.16) & $+0.08$ (1.60) & $+0.39$ (6.29) & $-0.33$ (-1.82) 
 EWMA (R
 ```
 
+
+# R41: the unconditional average stated on page 2
+
+## intro-average (M)
+
+**Why.** The annual-refit average (within noise) first appeared in Section 3; a referee should meet it in the introduction, where the conditional framing is set.
+
+**Before.**
+
+```
+so holding the flexible model carries no detectable penalty (Section~\ref{sec:frontier} reports the intervals). The gains are concentrated in the minority of days
+when residual-shape stress is high.
+```
+
+**After.**
+
+```
+so holding the flexible model carries no detectable penalty (Section~\ref{sec:frontier} reports the intervals). The gains are concentrated in the minority of days
+when residual-shape stress is high; averaged over all asset-days they are small, and under an annual refit schedule the average is within noise while the top-decile edge is not (Section~\ref{sec:frontier}).
+```
+
+
+# R42: post-submission audit fixes
+
+Every change since r32-submitted was re-read against the result files and the prose rules. Numbers in the R34 to R40 text all trace to the committed result files (garch_evt, bench_all, holdout_garch_evt, walkforward, walkforward_hybrid, perasset_v2, frontier_robust, the IQN scripts). The corrections below are the items the audit found.
+
+## 5.1-fullset-body (M)
+
+**Why.** R40 sentence said 'lowest mean FZ0 at 1%'; on the same rows the pooled body (an engine component, not a benchmark) is lower at both levels (2.1411 vs 2.1473; 1.8433 vs 1.8494), within noise, and over-breaches. Tables OA.7 and OA.11 already show it.
+
+**Before.**
+
+```
+the accuracy layer has the lowest mean FZ0 at 1\% and is within noise of GJR-GARCH-skew-$t$ at both levels (DM 1.1 and $-0.3$) and of the Taylor model at 2.5\% (DM $-0.1$);
+```
+
+**After.**
+
+```
+the accuracy layer has the lowest mean FZ0 of the benchmark models at 1\% and is within noise of GJR-GARCH-skew-$t$ at both levels (DM 1.1 and $-0.3$) and of the Taylor model at 2.5\% (DM $-0.1$); its own pooled body, without the EVT branch, scores lower still by a margin within noise (DM $-1.3$ and $-1.9$) while breaching at 1.3\% and 3.3\%, the coverage cost the EVT branch removes;
+```
+
+## 5.1-scope (M)
+
+**Why.** on the full comparison set GJR-skew-t and Taylor have marginally lower point estimates at 2.5% (within noise, reported two sentences later); the unscoped 'lowest at both levels' would contradict that. Same scope the abstract and introduction already use.
+
+**Before.**
+
+```
+The residual-hybrid's \emph{accuracy layer}, the EVT-tailed variant with no conformal shift, attains the lowest FZ0 at both regulatory levels. At 1\% it beats
+```
+
+**After.**
+
+```
+The residual-hybrid's \emph{accuracy layer}, the EVT-tailed variant with no conformal shift, attains the lowest FZ0 at both regulatory levels against the daily benchmarks in standard use. At 1\% it beats
+```
+
+## 5.1-scope2 (M)
+
+**Why.** same scoping
+
+**Before.**
+
+```
+The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels and passes
+```
+
+**After.**
+
+```
+The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels against GARCH-$t$ and FHS and passes
+```
+
+## concl-duplicate (M)
+
+**Why.** the added last sentence repeats the second sentence of the same paragraph (credit and freight, failed breach-independence tests); the R34 pass introduced the repetition
+
+**Before.**
+
+```
+ And the score serves as a monitor rather than a day-to-day switching rule, since the day-ahead oracle gap is largely unforecastable (Section~\ref{sec:gate}). Credit and freight retain accuracy gains but fail breach-independence tests, which makes dependence-aware calibration a priority for those applications.
+```
+
+**After.**
+
+```
+ And the score serves as a monitor rather than a day-to-day switching rule, since the day-ahead oracle gap is largely unforecastable (Section~\ref{sec:gate}).
+```
+
+## intro-rv-wording (M)
+
+**Why.** the edge, not the score, is what is within noise (scaleshape_canonical: DM -0.26 and +0.31)
+
+**Before.**
+
+```
+On large caps with intraday data, re-estimation on realized-volatility residuals leaves the score within noise.
+```
+
+**After.**
+
+```
+On large caps with intraday data, re-estimation on realized-volatility residuals leaves the score's edge within noise.
+```
+
+## 5.3-rv-wording (M)
+
+**Why.** same
+
+**Before.**
+
+```
+Re-fitting the shape learner, EVT tail, and score on the realized residuals, however, leaves the score within noise.
+```
+
+**After.**
+
+```
+Re-fitting the shape learner, EVT tail, and score on the realized residuals, however, leaves the score's edge within noise.
+```
+
+## fig2-caption-run (M)
+
+**Why.** the GARCH-EVT bars (0.00784, 0.00888) are excess over the same-rows engine fit (mean FZ0 2.1473, 1.8494), the other bars over the original full-panel fit (2.1474, 1.8488); the caption now says so
+
+**Before.**
+
+```
+pooled-tail GARCH-EVT (DM $4.8$ and $6.8$, same-rows run) and FHS (DM $4.9$),
+```
+
+**After.**
+
+```
+pooled-tail GARCH-EVT (DM $4.8$ and $6.8$; its bars come from the same-rows run of the Online Appendix, whose accuracy-layer baseline is within $0.0006$ of the one plotted) and FHS (DM $4.9$),
+```
+
+## 4.1-natural-question (M)
+
+**Why.** rhetorical setup phrase
+
+**Before.**
+
+```
+The frontier is a statement about a state-conditioned residual shape, so the natural question is whether a conventional unconditional tail captures it.
+```
+
+**After.**
+
+```
+The frontier is a statement about a state-conditioned residual shape, so we ask whether a conventional unconditional tail captures it.
+```
+
