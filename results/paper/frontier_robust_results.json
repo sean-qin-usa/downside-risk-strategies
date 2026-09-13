@@ -1,0 +1,273 @@
+{
+ "note": "Decisive jump-robust GARCH frontier test. ROB_engine_vs_garch top_decile is the key number: if edge_pct and DM stay large, the top-decile edge is NOT standard-GARCH post-outlier overshoot (shape story defended); if they collapse toward 0, the score was a daily-scale overshoot artifact (reframe). MECH shows how much of the raw frontier the robust filter alone explains. Robust=BIP bounded-news GARCH, news=min(e^2, K*sig^2).",
+ "n_names_target": 200,
+ "taus": [
+  0.01,
+  0.025,
+  0.05,
+  0.1,
+  0.25,
+  0.5,
+  0.75,
+  0.9,
+  0.95,
+  0.975,
+  0.99
+ ],
+ "K9_3sigma": {
+  "STD_engine_vs_garch": {
+   "tag": "engine_std - garch_std by std mk63",
+   "overall": {
+    "edge_pct": 0.353,
+    "DM": 5.35,
+    "n": 221600
+   },
+   "top_decile": {
+    "edge_pct": 2.982,
+    "DM": 10.48,
+    "n": 22160
+   },
+   "bottom_decile": {
+    "edge_pct": -0.157,
+    "DM": -1.05,
+    "n": 22160
+   },
+   "decile_profile": {
+    "1": -0.157,
+    "2": -0.009,
+    "3": -0.103,
+    "4": 0.067,
+    "5": 0.033,
+    "6": 0.109,
+    "7": -0.197,
+    "8": -0.003,
+    "9": 0.461,
+    "10": 2.982
+   }
+  },
+  "ROB_engine_vs_garch": {
+   "tag": "engine_rob - garch_rob by rob mk63",
+   "overall": {
+    "edge_pct": 0.101,
+    "DM": 2.49,
+    "n": 221600
+   },
+   "top_decile": {
+    "edge_pct": 0.454,
+    "DM": 4.66,
+    "n": 22160
+   },
+   "bottom_decile": {
+    "edge_pct": -0.01,
+    "DM": 0.32,
+    "n": 22160
+   },
+   "decile_profile": {
+    "1": -0.01,
+    "2": 0.101,
+    "3": 0.039,
+    "4": 0.13,
+    "5": 0.085,
+    "6": 0.078,
+    "7": -0.052,
+    "8": -0.024,
+    "9": 0.183,
+    "10": 0.454
+   }
+  },
+  "MECH_robgarch_vs_stdgarch": {
+   "tag": "garch_rob - garch_std by std mk63",
+   "overall": {
+    "edge_pct": 0.423,
+    "DM": 8.47,
+    "n": 221600
+   },
+   "top_decile": {
+    "edge_pct": 3.168,
+    "DM": 8.2,
+    "n": 22160
+   },
+   "bottom_decile": {
+    "edge_pct": -0.021,
+    "DM": -1.06,
+    "n": 22160
+   },
+   "decile_profile": {
+    "1": -0.021,
+    "2": -0.021,
+    "3": -0.01,
+    "4": -0.001,
+    "5": -0.002,
+    "6": 0.065,
+    "7": 0.078,
+    "8": 0.094,
+    "9": 0.505,
+    "10": 3.168
+   }
+  },
+  "ROBENGINE_vs_stdgarch": {
+   "tag": "engine_rob - garch_std by rob mk63",
+   "overall": {
+    "edge_pct": 0.524,
+    "DM": 7.45,
+    "n": 221600
+   },
+   "top_decile": {
+    "edge_pct": 3.508,
+    "DM": 8.44,
+    "n": 22160
+   },
+   "bottom_decile": {
+    "edge_pct": -0.032,
+    "DM": 0.07,
+    "n": 22160
+   },
+   "decile_profile": {
+    "1": -0.032,
+    "2": 0.097,
+    "3": 0.008,
+    "4": 0.127,
+    "5": 0.08,
+    "6": 0.117,
+    "7": 0.016,
+    "8": 0.138,
+    "9": 0.784,
+    "10": 3.508
+   }
+  },
+  "levels": {
+   "plE_std": 0.39567,
+   "plG_std": 0.39708,
+   "plE_rob": 0.39499,
+   "plG_rob": 0.39539
+  }
+ },
+ "K16_4sigma": {
+  "STD_engine_vs_garch": {
+   "tag": "engine_std - garch_std by std mk63",
+   "overall": {
+    "edge_pct": 0.353,
+    "DM": 5.35,
+    "n": 221600
+   },
+   "top_decile": {
+    "edge_pct": 2.982,
+    "DM": 10.48,
+    "n": 22160
+   },
+   "bottom_decile": {
+    "edge_pct": -0.157,
+    "DM": -1.05,
+    "n": 22160
+   },
+   "decile_profile": {
+    "1": -0.157,
+    "2": -0.009,
+    "3": -0.103,
+    "4": 0.067,
+    "5": 0.033,
+    "6": 0.109,
+    "7": -0.197,
+    "8": -0.003,
+    "9": 0.461,
+    "10": 2.982
+   }
+  },
+  "ROB_engine_vs_garch": {
+   "tag": "engine_rob - garch_rob by rob mk63",
+   "overall": {
+    "edge_pct": 0.034,
+    "DM": 0.68,
+    "n": 221600
+   },
+   "top_decile": {
+    "edge_pct": 0.266,
+    "DM": 2.47,
+    "n": 22160
+   },
+   "bottom_decile": {
+    "edge_pct": -0.115,
+    "DM": -0.79,
+    "n": 22160
+   },
+   "decile_profile": {
+    "1": -0.115,
+    "2": 0.012,
+    "3": -0.094,
+    "4": 0.136,
+    "5": 0.101,
+    "6": 0.123,
+    "7": -0.146,
+    "8": -0.056,
+    "9": 0.1,
+    "10": 0.266
+   }
+  },
+  "MECH_robgarch_vs_stdgarch": {
+   "tag": "garch_rob - garch_std by std mk63",
+   "overall": {
+    "edge_pct": 0.445,
+    "DM": 10.3,
+    "n": 221600
+   },
+   "top_decile": {
+    "edge_pct": 3.342,
+    "DM": 8.92,
+    "n": 22160
+   },
+   "bottom_decile": {
+    "edge_pct": -0.011,
+    "DM": -0.69,
+    "n": 22160
+   },
+   "decile_profile": {
+    "1": -0.011,
+    "2": -0.012,
+    "3": -0.005,
+    "4": -0.008,
+    "5": -0.015,
+    "6": 0.037,
+    "7": 0.091,
+    "8": 0.133,
+    "9": 0.491,
+    "10": 3.342
+   }
+  },
+  "ROBENGINE_vs_stdgarch": {
+   "tag": "engine_rob - garch_std by rob mk63",
+   "overall": {
+    "edge_pct": 0.478,
+    "DM": 6.71,
+    "n": 221600
+   },
+   "top_decile": {
+    "edge_pct": 3.548,
+    "DM": 8.63,
+    "n": 22160
+   },
+   "bottom_decile": {
+    "edge_pct": -0.129,
+    "DM": -0.91,
+    "n": 22160
+   },
+   "decile_profile": {
+    "1": -0.129,
+    "2": 0.006,
+    "3": -0.101,
+    "4": 0.123,
+    "5": 0.085,
+    "6": 0.162,
+    "7": -0.059,
+    "8": 0.087,
+    "9": 0.657,
+    "10": 3.548
+   }
+  },
+  "levels": {
+   "plE_std": 0.39567,
+   "plG_std": 0.39708,
+   "plE_rob": 0.39518,
+   "plG_rob": 0.39531
+  }
+ }
+}

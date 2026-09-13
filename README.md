@@ -51,6 +51,7 @@ Job scripts take the project root from the `GBC_PROJ` (or `GBC_PROJECT_DIR`) env
 | `code/paper/job_calendar_split.py`, `code/paper/job_walkforward.py` | `results/paper/calendar_split_results.json`, `results/paper/walkforward_results.json` | Calendar splits and the annual-refit walk-forward |
 | `code/paper/job_nurel.py`, `code/paper/job_mechanism.py` | `results/paper/nurel_results.json`, `results/paper/mechanism_results.json` | The nu-relative score and the Fama-MacBeth mechanism test |
 | `code/paper/job_coherent.py` | `results/paper/coherent_results.json` | Monotonized curve audit and ES as the integral of the same curve |
+| `code/paper/job_frontier_robust.py` | `results/paper/frontier_robust_results.json` | The jump-robust GARCH decomposition of the top-decile edge (Section 4): the frontier rebuilt on a bounded-news filter at three- and four-sigma caps |
 | `code/paper/job_scaleshape_canonical.py` | `results/paper/scaleshape_canonical_results.json` | Realized-variance scale decomposition on large caps |
 | `code/paper/job_pzc_taylor.py` | `results/paper/pzc_taylor_results.json` | GAS-FZ and ES-CAViaR benchmarks |
 | `code/paper/job_perasset_v2.py` | `results/paper/perasset_v2_results.json` | Per-asset exception tests at 99% and 97.5% |
