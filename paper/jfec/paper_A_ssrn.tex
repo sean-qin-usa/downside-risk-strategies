@@ -12,8 +12,6 @@
 \usepackage[round]{natbib}
 \usepackage[hidelinks]{hyperref}
 \usepackage{caption}
-\usepackage{endnotes}
-\usepackage[nolists]{endfloat}
 \usepackage{enumitem}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -26,7 +24,7 @@
 \definecolor{gred}{RGB}{176,74,74}
 \definecolor{gold}{RGB}{200,162,74}
 \captionsetup{font=small,labelfont=bf}
-\setstretch{2}
+\setstretch{1.15}
 \emergencystretch=1.5em
 % float discipline: let tall tables place instead of queueing to the end
 \renewcommand{\topfraction}{0.92}
@@ -54,7 +52,6 @@ with a Real-Time Misspecification Score}
 
 \begin{document}
 \maketitle
-\let\footnote\endnote
 
 \begin{abstract}
 Parametric Value-at-Risk and Expected Shortfall forecasts underperform in states that can be flagged in real time. A per-asset, per-day score of
@@ -1230,11 +1227,6 @@ recorded in the package alongside the design-era pipeline so that the
 two can be compared line by line. A citable archival snapshot (Zenodo
 DOI) will be minted for the accepted version.
 
-\begingroup
-\parindent 0pt\parskip 1ex
-\renewcommand{\enotesize}{\normalsize}
-\theendnotes
-\endgroup
 
 %% ===== BIBLIOGRAPHY =====
 \bibliographystyle{apalike}
