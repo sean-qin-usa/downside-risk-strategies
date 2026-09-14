@@ -2201,3 +2201,170 @@ The accuracy layer is thus one configuration that attains the lowest FZ0 at both
 The accuracy layer is thus one configuration that is never significantly beaten on FZ0 at either level, scores lowest at 1\%, and passes
 ```
 
+
+# R44: prose pass from the September 14 read (not-X-but-Y in Section 1, name-pair dashes in the ES-backtest paragraph, seven rather-than constructions rewritten)
+
+## intro-frtb-choice (M)
+
+**Why.** not-X-but-Y construction; content kept
+
+**Before.**
+
+```
+The regulatory choice is not between a fixed model and a proprietary one but between a prescribed standardized formula and a bank's own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain.
+```
+
+**After.**
+
+```
+Under FRTB a bank chooses between a prescribed standardized formula and its own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain.
+```
+
+## es-backtest-dashes (M)
+
+**Why.** second name-pair dash in the paragraph; the test is named in full two sentences earlier
+
+**Before.**
+
+```
+On the McNeil--Frey residual, FHS, which targets the empirical tail directly, is closest to zero.
+```
+
+**After.**
+
+```
+On the exceedance residual, FHS, which targets the empirical tail directly, is closest to zero.
+```
+
+## es-backtest-dashes-2 (M)
+
+**Why.** two name-pair dashes replaced by textual citations
+
+**Before.**
+
+```
+the McNeil--Frey exceedance-residual test \citep{mcneilfrey2000} and the Acerbi--Sz\'ekely $Z_2$ statistic \citep{acerbi2014backtesting}
+```
+
+**After.**
+
+```
+the exceedance-residual test of \citet{mcneilfrey2000} and the $Z_2$ statistic of \citet{acerbi2014backtesting}
+```
+
+## rt-150 (M)
+
+**Why.** rather-than density
+
+**Before.**
+
+```
+The score orders the magnitude of the advantage rather than defining a sharp threshold:
+```
+
+**After.**
+
+```
+The score orders the magnitude of the advantage and defines no sharp threshold:
+```
+
+## rt-203 (M)
+
+**Why.** rather-than density; colon setup removed
+
+**Before.**
+
+```
+Our object differs from both: rather than proposing a new model or selecting predictors, we ask when an observable signal
+```
+
+**After.**
+
+```
+Our object differs from both. We propose no new volatility model and select no predictors; we ask when an observable signal
+```
+
+## rt-355 (M)
+
+**Why.** rather-than density
+
+**Before.**
+
+```
+so the gap reflects a quarter less estimation data rather than leakage.
+```
+
+**After.**
+
+```
+so the gap is the cost of a quarter less estimation data and shows no leakage.
+```
+
+## rt-433 (M)
+
+**Why.** rather-than density
+
+**Before.**
+
+```
+because the mapping is estimated across names rather than within one.
+```
+
+**After.**
+
+```
+because the mapping is estimated across names instead of within one.
+```
+
+## rt-639 (M)
+
+**Why.** rather-than density
+
+**Before.**
+
+```
+the bootstraps resample dates rather than
+asset-days,
+```
+
+**After.**
+
+```
+the bootstraps resample whole dates instead of
+asset-days,
+```
+
+## rt-910 (M)
+
+**Why.** rather-than density
+
+**Before.**
+
+```
+tracks residual
+kurtosis rather than the development label,
+```
+
+**After.**
+
+```
+tracks residual
+kurtosis more closely than the development label,
+```
+
+## rt-1140 (M)
+
+**Why.** rather-than density
+
+**Before.**
+
+```
+so all are reported as accuracy edges rather than calibrated wins.
+```
+
+**After.**
+
+```
+so all are reported as accuracy edges and none as a calibrated win.
+```
+

@@ -117,7 +117,7 @@ they transfer to names outside the training set
 the quantile learners studied here, whether it reaches the regulatory
 tail, and on which days it appears.
 
-Industry practice sits between these classes. Under the Basel Fundamental Review of the Trading Book (FRTB), the workhorse internal models are historical simulation (HS), by far the most common method in bank disclosures \citep{perignonsmith2010}, and its GARCH-filtered variant, filtered historical simulation (FHS) \citep{baroneadesi1999fhs}. The regulatory choice is not between a fixed model and a proprietary one but between a prescribed standardized formula and a bank's own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain. The buy side runs the same classical toolkit: asset managers and hedge funds, though outside Basel, forecast VaR and ES with historical simulation, parametric filters, and Monte Carlo, largely through vendor risk systems. The comparison in this paper is therefore against the methods in standard use across the industry.
+Industry practice sits between these classes. Under the Basel Fundamental Review of the Trading Book (FRTB), the workhorse internal models are historical simulation (HS), by far the most common method in bank disclosures \citep{perignonsmith2010}, and its GARCH-filtered variant, filtered historical simulation (FHS) \citep{baroneadesi1999fhs}. Under FRTB a bank chooses between a prescribed standardized formula and its own internal model, and many banks have moved back toward the standardized approach as internal models became costly to maintain. The buy side runs the same classical toolkit: asset managers and hedge funds, though outside Basel, forecast VaR and ES with historical simulation, parametric filters, and Monte Carlo, largely through vendor risk systems. The comparison in this paper is therefore against the methods in standard use across the industry.
 
 Forecasts are judged by VaR exception counts at 99\% and 97.5\%, and the reported measure is Expected Shortfall at the 97.5\% level. Reported ES enters the market-risk capital a bank holds against its book \citep{bcbs2019frtb}, so errors are costly in both directions. A forecast that runs high ties up capital that could fund positions, while one that runs low raises the multiplier on the charge as exceptions accumulate. A method
 that claims to beat the industry standard must therefore beat HS and FHS
@@ -147,7 +147,7 @@ The score is built from the oldest specification diagnostics for a
 GARCH filter, the excess kurtosis and asymmetry of its standardized
 residuals \citep{bollerslev1987, hansen1994ARCD}. It is computed on a
 trailing window so that it is available in real time, in the spirit of
-the density-forecast diagnostics of \citet{berkowitz2001}. We use these recent-residual diagnostics to predict when distribution-free quantile methods improve on parametric VaR and ES. Where residual-shape stress is high the flexible estimator has a large and significant advantage, and where it is low the advantage is statistically indistinguishable from zero in the design panel and a small positive in the point-in-time universe, with no detectable loss in either. The score orders the magnitude of the advantage rather than defining a sharp threshold: the edge is concentrated in the top decile but does not vanish below it.
+the density-forecast diagnostics of \citet{berkowitz2001}. We use these recent-residual diagnostics to predict when distribution-free quantile methods improve on parametric VaR and ES. Where residual-shape stress is high the flexible estimator has a large and significant advantage, and where it is low the advantage is statistically indistinguishable from zero in the design panel and a small positive in the point-in-time universe, with no detectable loss in either. The score orders the magnitude of the advantage and defines no sharp threshold: the edge is concentrated in the top decile but does not vanish below it.
 
 \medskip\noindent The paper's main contribution is the misspecification frontier: a real-time, per-asset, per-day score that predicts when distribution-free quantiles beat a GARCH-$t$ benchmark, with significance from Diebold--Mariano tests on date-averaged loss differentials (the per-date DM of Section~\ref{sec:protocol}). The same kurtosis--edge gradient is traced across four universes: CRSP US equities (top-decile edge $+2.98\%$, DM 10.5), foreign exchange, where the decisive standalone wins are confined to the hyperinflation tier (pooled DM 4.12), twenty-six country indices (a developed-to-frontier gradient), and forty-three cross-asset instruments.
 
@@ -200,7 +200,7 @@ analogue within the comparison set. A same-rows comparison against standalone Mc
 
 For the pooled, cross-sectional design the closest antecedent is
 \citet{zhang2024commonality}, who forecast realized volatility with
-machine-learning models pooled across stocks and document transfer to previously unseen names. That transfer is evidence of a shared volatility mechanism, which our amortized design also exploits. For the VaR comparison the antecedent is \citet{kuester2006}, and for machine-learning volatility forecasting \citet{bucci2020} and \citet{christensen2023ml}. Deep neural-network quantile regression applied directly to VaR is the recent comparison closest to our nonparametric stage \citep{chronopoulos2024}. Two further semiparametric VaR and ES papers in this journal are direct precedents: \citet{jiang2022singleindex} estimate a single-index expectile model, and \citet{luo2025midas} select low-frequency predictors for joint tail forecasts through a GARCH-MIDAS design with adaptive-Lasso selection. Our object differs from both: rather than proposing a new model or selecting predictors, we ask when an observable signal identifies the states in which flexible tail forecasts beat parametric ones, and we decompose the source of that conditional advantage. Relative to the pooled-volatility literature, our object is state dependence in conditional tail-risk forecast performance rather than average realized-variance forecast performance, with the regulatory tail held to calibration, exception-test, and capital discipline. The question here
+machine-learning models pooled across stocks and document transfer to previously unseen names. That transfer is evidence of a shared volatility mechanism, which our amortized design also exploits. For the VaR comparison the antecedent is \citet{kuester2006}, and for machine-learning volatility forecasting \citet{bucci2020} and \citet{christensen2023ml}. Deep neural-network quantile regression applied directly to VaR is the recent comparison closest to our nonparametric stage \citep{chronopoulos2024}. Two further semiparametric VaR and ES papers in this journal are direct precedents: \citet{jiang2022singleindex} estimate a single-index expectile model, and \citet{luo2025midas} select low-frequency predictors for joint tail forecasts through a GARCH-MIDAS design with adaptive-Lasso selection. Our object differs from both. We propose no new volatility model and select no predictors; we ask when an observable signal identifies the states in which flexible tail forecasts beat parametric ones, and we decompose the source of that conditional advantage. Relative to the pooled-volatility literature, our object is state dependence in conditional tail-risk forecast performance rather than average realized-variance forecast performance, with the regulatory tail held to calibration, exception-test, and capital discipline. The question here
 is where a flexible model helps at all: on roughly ninety percent of
 asset-days it does not improve on the parametric benchmark, which cautions
 against extrapolating average machine-learning superiority to the tails.
@@ -352,7 +352,7 @@ GARCH is fit on the full pre-test history, so the calibration errors
 are held out from the shape learner and the EVT tail but not from the
 filter. The accuracy-layer comparisons never read the calibration split
 and share their filter with the benchmark, so their information sets
-match. Only the overlay's shift uses the split. Re-estimating with the filter stopped at the calibration boundary leaves the accuracy advantage intact (DM 5.1 and 5.4). The strict estimator's gap to the full-window benchmark ($-0.6$, $-2.5$) matches that benchmark's own margin over its short-window twin (2.8, 3.8), so the gap reflects a quarter less estimation data rather than leakage. The static shift widens (per-name pass 34\% against
+match. Only the overlay's shift uses the split. Re-estimating with the filter stopped at the calibration boundary leaves the accuracy advantage intact (DM 5.1 and 5.4). The strict estimator's gap to the full-window benchmark ($-0.6$, $-2.5$) matches that benchmark's own margin over its short-window twin (2.8, 3.8), so the gap is the cost of a quarter less estimation data and shows no leakage. The static shift widens (per-name pass 34\% against
 48\%), consistent with its disclosed conservatism. Under the same strict
 split the adaptive conformal update of \citet{gibbs2021aci} walks the shift from
 $-0.51$ to $-0.20$, lifts the per-name pass rate to 57\%, and shrinks the
@@ -430,7 +430,7 @@ learning rates, and seeds are reported in the replication package.
 \emph{Amortization.} One model is trained over the pooled (state, loss)
 pairs of hundreds of names. In generative-Bayes terms, $H$ is an
 amortized map evaluated at any new $(s,\tau)$ without per-asset
-refitting. It works, at cold-start in particular, because the mapping is estimated across names rather than within one. A per-asset
+refitting. It works, at cold-start in particular, because the mapping is estimated across names instead of within one. A per-asset
 GARCH learns \emph{name-specific parameters} from that name's own
 history, so with no history it has nothing. The amortized model instead
 learns a single mapping from observable state to residual shape,
@@ -636,7 +636,7 @@ universe rule}
 \label{sec:fwer}
 
 Each main test collapses the cross-section to one number per date before
-any variance is estimated, and the bootstraps resample dates rather than
+any variance is estimated, and the bootstraps resample whole dates instead of
 asset-days, following the pooled-average panel test of
 \citet{qutimmermannzhu2024}. Over the full $3\times10$ signal-decile
 grid, Romano--Wolf step-down family-wise control
@@ -907,7 +907,7 @@ currencies, the Argentine peso and the Egyptian pound, 12--14\% better
 and individually significant, whose residual kurtosis ($\sim$2000--3300)
 sits two orders of magnitude above anything GARCH-$t$ was built to
 absorb. Twenty-six country indices trace a gradient that tracks residual
-kurtosis rather than the development label, and forty-three cross-asset
+kurtosis more closely than the development label, and forty-three cross-asset
 instruments extend the pattern into rates, commodities, and credit. The
 Korea-2026 crash is the negative control: a price crash under circuit
 breakers censors the return but leaves residual kurtosis ordinary, and
@@ -1113,9 +1113,9 @@ tests on its own (Online Appendix Figure~OA.2).
 Most of the concession reflects a frozen margin. The adaptive form of the shift \citep{gibbs2021aci}, updated daily from the panel breach frequency, shrinks the margin out of era (from $-0.35$ to $-0.10$, breach $1.83\%\to2.06\%$) and erases the overall concession. The adaptive variant ties GARCH-$t$ on 2.5\% FZ0 (DM $-0.3$). The top-decile cost survives the adaptive shift too, at $-4.8$ and $-6.0$ for the two update rates against the static shift's $-7.1$, the price of a margin where the bands are widest. The static shift also worsens per-name coverage (Kupiec$_{97.5}$ pass rate 48\%, against 71\% unshifted and 69\% adaptive), because over-coverage fails the test from the other side. Each ``lowest FZ0'' statement refers to the accuracy layer.
 
 \paragraph{Direct ES calibration backtests.} Because exception counts test VaR and not ES,
-two direct ES calibration backtests, the McNeil--Frey exceedance-residual test \citep{mcneilfrey2000} and the Acerbi--Sz\'ekely $Z_2$ statistic \citep{acerbi2014backtesting}, complement the jointly consistent FZ0 loss above. \citet{noldeziegel2017elicitability} and \citet{bayer2022esr} draw the
+two direct ES calibration backtests, the exceedance-residual test of \citet{mcneilfrey2000} and the $Z_2$ statistic of \citet{acerbi2014backtesting}, complement the jointly consistent FZ0 loss above. \citet{noldeziegel2017elicitability} and \citet{bayer2022esr} draw the
 distinction between backtesting the calibration of an ES forecast and comparing
-forecasts through a joint score. Both are computed on the residual-hybrid's own min-envelope forecasts over the same $200$-name panel, with a stationary block bootstrap over the $1{,}108$ test dates (Online Appendix). The Gaussian filter is worst on each ES metric, and among the fat-tailed entrants no single model dominates each diagnostic. The residual-hybrid has the $Z_2$ closest to zero at $1\%$ and ties GARCH-$t$ at $2.5\%$, and the residual-hybrid and GARCH-$t$ are the two models that pass the $1\%$ Kupiec test. On the McNeil--Frey residual, FHS, which targets the empirical tail directly, is closest to zero. The calibration tests show that the residual-hybrid's tail is well calibrated. The comparative result is the FZ0 loss, where the edge over GARCH-$t$ and FHS is significant at both levels.
+forecasts through a joint score. Both are computed on the residual-hybrid's own min-envelope forecasts over the same $200$-name panel, with a stationary block bootstrap over the $1{,}108$ test dates (Online Appendix). The Gaussian filter is worst on each ES metric, and among the fat-tailed entrants no single model dominates each diagnostic. The residual-hybrid has the $Z_2$ closest to zero at $1\%$ and ties GARCH-$t$ at $2.5\%$, and the residual-hybrid and GARCH-$t$ are the two models that pass the $1\%$ Kupiec test. On the exceedance residual, FHS, which targets the empirical tail directly, is closest to zero. The calibration tests show that the residual-hybrid's tail is well calibrated. The comparative result is the FZ0 loss, where the edge over GARCH-$t$ and FHS is significant at both levels.
 
 \subsection{The ten-day horizon: a direct multi-day extension}
 
@@ -1137,7 +1137,7 @@ tables are in the Online Appendix.
 
 \subsection{Cross-asset evidence}
 
-Across the 43-instrument sweep the relationship is heterogeneous. The volatility indices (VIX, V2X, VVIX) and Baltic freight post the largest accuracy gains and survive the multiplicity adjustment (Online Appendix Table~OA.4), but their calibration is open. VIX's breach-independence is marginal (one-sided $p=0.041$), and credit and Baltic freight fail it, so all are reported as accuracy edges rather than calibrated wins. An apparent electricity win reversed once the return transformation was corrected for near-zero prices. Instrument-level results and diagnostics are
+Across the 43-instrument sweep the relationship is heterogeneous. The volatility indices (VIX, V2X, VVIX) and Baltic freight post the largest accuracy gains and survive the multiplicity adjustment (Online Appendix Table~OA.4), but their calibration is open. VIX's breach-independence is marginal (one-sided $p=0.041$), and credit and Baltic freight fail it, so all are reported as accuracy edges and none as a calibrated win. An apparent electricity win reversed once the return transformation was corrected for near-zero prices. Instrument-level results and diagnostics are
 collected in the Online Appendix.
 
 \paragraph{The scale--shape decomposition.} Against a Realized GARCH \citep{hansen2012realized} fitted on intraday data, the daily-data core concedes FZ0 at both levels (DM $6.2$ and $4.5$). Re-fitting the shape learner, EVT tail, and score on the realized residuals, however, leaves the score's edge within noise. On large caps the frontier is therefore largely daily-scale misspecification. Where intraday data are unavailable or too sparse to build a realized measure (new listings, illiquid names, many cross-asset instruments), the daily score is the version of the diagnostic that can be computed (Online Appendix).
