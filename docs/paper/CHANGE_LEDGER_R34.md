@@ -2368,3 +2368,26 @@ so all are reported as accuracy edges rather than calibrated wins.
 so all are reported as accuracy edges and none as a calibrated win.
 ```
 
+
+# R45: abstract score wording
+
+## abstract-score-name (M)
+
+**Why.** 'score of residual-shape stress' names the input statistics but reads as the mechanism; the decomposition attributes most of the edge to scale error. 'residual-diagnostic score' describes the construction (residual kurtosis and asymmetry) without prejudging what it predicts. 99 words.
+
+**Before.**
+
+```
+A per-asset, per-day score of
+residual-shape stress predicts when a distribution-free tail beats a
+GARCH-$t$ benchmark,
+```
+
+**After.**
+
+```
+A per-asset, per-day residual-diagnostic
+score predicts when a distribution-free tail beats a
+GARCH-$t$ benchmark,
+```
+
