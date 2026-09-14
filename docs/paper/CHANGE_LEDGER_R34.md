@@ -2150,3 +2150,54 @@ The frontier is a statement about a state-conditioned residual shape, so the nat
 The frontier is a statement about a state-conditioned residual shape, so we ask whether a conventional unconditional tail captures it.
 ```
 
+
+# R43: the joint-loss claim restated as lowest at 1%, never significantly beaten at 2.5%
+
+## abstract-ending (M)
+
+**Why.** Sean's request: 'lowest' restored where it holds (1%, every benchmark) and the 2.5% tie counted as a tie (GJR DM -0.28, Taylor -0.12, all others eliminated from the 90% MCS). 100 words.
+
+**Before.**
+
+```
+The forecasts come from an amortized semiparametric estimator; its pooled quantile component transfers to newly listed assets in characteristics-only form, and it attains the lowest joint (VaR, ES) loss against GARCH-$t$ and FHS.
+```
+
+**After.**
+
+```
+The forecasts come from an amortized semiparametric estimator that transfers to newly listed assets; on the joint (VaR, ES) loss it is lowest among standard benchmarks at 1\% and never significantly beaten at 2.5\%.
+```
+
+## 5.1-scope-a (M)
+
+**Why.** same statement as the abstract
+
+**Before.**
+
+```
+attains the lowest FZ0 at both regulatory levels against the daily benchmarks in standard use. At 1\% it beats
+```
+
+**After.**
+
+```
+attains the lowest FZ0 of every benchmark at 1\% and is never significantly beaten at 2.5\%. At 1\% it beats
+```
+
+## 5.1-scope-b (M)
+
+**Why.** same statement
+
+**Before.**
+
+```
+The accuracy layer is thus one configuration that attains the lowest FZ0 at both levels against GARCH-$t$ and FHS and passes
+```
+
+**After.**
+
+```
+The accuracy layer is thus one configuration that is never significantly beaten on FZ0 at either level, scores lowest at 1\%, and passes
+```
+
