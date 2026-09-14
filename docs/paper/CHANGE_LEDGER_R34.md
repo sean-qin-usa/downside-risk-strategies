@@ -2391,3 +2391,42 @@ score predicts when a distribution-free tail beats a
 GARCH-$t$ benchmark,
 ```
 
+
+# R46: the frontier's anchor stated as GARCH-type benchmarks
+
+## abstract-anchor (M)
+
+**Why.** the same frontier holds against GJR-GARCH-skew-t (+2.32%, DM 9.7, bulk a tie); against FHS, EWMA and HS the bulk is a win, so 'parametric benchmarks' would overreach
+
+**Before.**
+
+```
+score predicts when a distribution-free tail beats a
+GARCH-$t$ benchmark, an edge large in its top decile and negligible
+elsewhere.
+```
+
+**After.**
+
+```
+score predicts when a distribution-free tail beats
+GARCH-type benchmarks, an edge large in its top decile and negligible
+elsewhere.
+```
+
+## intro-gjr-anchor (M)
+
+**Why.** backs the abstract's GARCH-type scope on page 2; Table OA.10
+
+**Before.**
+
+```
+CRSP US equities (top-decile edge $+2.98\%$, DM 10.5),
+```
+
+**After.**
+
+```
+CRSP US equities (top-decile edge $+2.98\%$, DM 10.5, and $+2.32\%$, DM 9.7, against GJR-GARCH-skew-$t$ on the same rows),
+```
+

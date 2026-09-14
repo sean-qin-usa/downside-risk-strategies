@@ -58,8 +58,8 @@ with a Real-Time Misspecification Score}
 
 \begin{abstract}
 Parametric Value-at-Risk and Expected Shortfall forecasts underperform in states that can be flagged in real time. A per-asset, per-day residual-diagnostic
-score predicts when a distribution-free tail beats a
-GARCH-$t$ benchmark, an edge large in its top decile and negligible
+score predicts when a distribution-free tail beats
+GARCH-type benchmarks, an edge large in its top decile and negligible
 elsewhere. A jump-robust refit traces most of that edge to variance
 overstatement after a shock, and a smaller but significant part to residual
 conditional shape. The forecasts come from an amortized semiparametric estimator that transfers to newly listed assets; on the joint (VaR, ES) loss it is lowest among standard benchmarks at 1\% and never significantly beaten at 2.5\%.
@@ -149,7 +149,7 @@ residuals \citep{bollerslev1987, hansen1994ARCD}. It is computed on a
 trailing window so that it is available in real time, in the spirit of
 the density-forecast diagnostics of \citet{berkowitz2001}. We use these recent-residual diagnostics to predict when distribution-free quantile methods improve on parametric VaR and ES. Where residual-shape stress is high the flexible estimator has a large and significant advantage, and where it is low the advantage is statistically indistinguishable from zero in the design panel and a small positive in the point-in-time universe, with no detectable loss in either. The score orders the magnitude of the advantage and defines no sharp threshold: the edge is concentrated in the top decile but does not vanish below it.
 
-\medskip\noindent The paper's main contribution is the misspecification frontier: a real-time, per-asset, per-day score that predicts when distribution-free quantiles beat a GARCH-$t$ benchmark, with significance from Diebold--Mariano tests on date-averaged loss differentials (the per-date DM of Section~\ref{sec:protocol}). The same kurtosis--edge gradient is traced across four universes: CRSP US equities (top-decile edge $+2.98\%$, DM 10.5), foreign exchange, where the decisive standalone wins are confined to the hyperinflation tier (pooled DM 4.12), twenty-six country indices (a developed-to-frontier gradient), and forty-three cross-asset instruments.
+\medskip\noindent The paper's main contribution is the misspecification frontier: a real-time, per-asset, per-day score that predicts when distribution-free quantiles beat a GARCH-$t$ benchmark, with significance from Diebold--Mariano tests on date-averaged loss differentials (the per-date DM of Section~\ref{sec:protocol}). The same kurtosis--edge gradient is traced across four universes: CRSP US equities (top-decile edge $+2.98\%$, DM 10.5, and $+2.32\%$, DM 9.7, against GJR-GARCH-skew-$t$ on the same rows), foreign exchange, where the decisive standalone wins are confined to the hyperinflation tier (pooled DM 4.12), twenty-six country indices (a developed-to-frontier gradient), and forty-three cross-asset instruments.
 
 A jump-robust decomposition then identifies what drives that advantage. Measured against a jump-robust GARCH whose variance response to a large shock is bounded, we show that most of it is the standard filter's post-outlier scale error, with a smaller but significant component surviving a robust scale (the top-decile $+2.98\%$ becomes $+0.3$--$0.5\%$, DM $2.5$--$4.7$). On large caps with intraday data, re-estimation on realized-volatility residuals leaves the score's edge within noise. This attribution, drawn on a 200-name panel and tied to a live score, is, to our knowledge, new to the flexible-versus-parametric tail-risk literature. The Korea-2026 crash, which unfolded under circuit breakers and left residual kurtosis in its ordinary range, is the negative control that sharpens the claim: a price crash is not residual misspecification, and GARCH-$t$ wins there, as the frontier predicts.
 
