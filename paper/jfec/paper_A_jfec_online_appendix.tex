@@ -172,8 +172,9 @@ FZ0 score
 \end{tikzpicture}
 \caption{The edge grows with horizon. Direct-model/GARCH pinball
 ratio at $h = 1, 5, 10, 20$ days (150-name design panel; training
-labels whose $h$-day window crosses the split are purged): fat tails
-compound while $\sqrt{h}$ scaling compounds the shape error, from $0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$. The forecaster is the
+labels whose $h$-day window crosses the split are purged): the aggregate
+tail thins as days are summed while $\sqrt{h}$ scaling carries the one-day
+shape forward unchanged, so the scaling error grows with the horizon, from $0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$. The forecaster is the
 direct multi-day model of the main text's ten-day subsection,
 \emph{not} the residual-hybrid engine, whose architecture is
 one-day.}

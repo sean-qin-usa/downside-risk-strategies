@@ -2430,3 +2430,23 @@ CRSP US equities (top-decile edge $+2.98\%$, DM 10.5),
 CRSP US equities (top-decile edge $+2.98\%$, DM 10.5, and $+2.32\%$, DM 9.7, against GJR-GARCH-skew-$t$ on the same rows),
 ```
 
+
+## R47 (2026-09-22): stale cross-references after the Sep 22 section-map check
+
+Three items from a read of every "Section N" reference and caption against the current headings. No number changes; the abstract is untouched.
+
+1. Introduction, roadmap paragraph.
+   Before: "Section~\ref{sec:frontier} presents the misspecification frontier, and Section~\ref{sec:frtb} reports the joint VaR and ES evaluation. Section~\ref{sec:applications} covers cross-sectional transfer, longer horizons, and cross-asset evidence, and Section~\ref{sec:limitations} concludes."
+   After: "Section~\ref{sec:frontier} presents the misspecification frontier, and Section~\ref{sec:frtb} reports the joint VaR and ES evaluation, with the ten-day extension and the cross-asset evidence in its closing subsections. Section~\ref{sec:applications} covers the use of the score and cross-sectional transfer to new listings, and Section~\ref{sec:limitations} concludes."
+   Reason: the ten-day and cross-asset subsections are 5.2 and 5.3; Section 6 holds the score-use and cold-start paragraphs.
+
+2. Conclusion, qualifications paragraph, one sentence added after "...the daily model and its score remain the available tool."
+   Added: "The ten-day extension is a separate direct model: it beats $\sqrt{h}$-scaled GARCH on the 2014--2024 panel and only ties it on the pre-committed 2000--2013 rerun, where the scaled parametric tail is the better calibrated of the two (Section~\ref{sec:frtb})."
+   Reason: the mixed 5.2 result was reported in the body and absent from the conclusion.
+
+3. Online Appendix, Figure OA.3 caption.
+   Before: "fat tails compound while $\sqrt{h}$ scaling compounds the shape error, from 0.45% at h=1 to 2.1% at h=20."
+   After: "the aggregate tail thins as days are summed while $\sqrt{h}$ scaling carries the one-day shape forward unchanged, so the scaling error grows with the horizon, from 0.45% at h=1 to 2.1% at h=20."
+   Reason: summed fat-tailed innovations move toward normal; the earlier wording stated the mechanism backwards.
+
+On record without an edit: the abstract's "lowest among standard benchmarks" is read against the daily-data comparison set of Section 5.1; the Realized GARCH concession in 5.3 (DM 6.2, 4.5) and the accuracy-layer versus conformal-layer distinction on page 27 are body results a referee may raise. Decision (Sean, Sep 22): no abstract edit unless a compact wording is found. Ten-day diagnostics (term-structure ratio by era, iterated GARCH-t and FHS versus sqrt(h), per-year 1% coverage) queued.
