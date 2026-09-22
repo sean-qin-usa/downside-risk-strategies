@@ -172,9 +172,12 @@ FZ0 score
 \end{tikzpicture}
 \caption{The edge grows with horizon. Direct-model/GARCH pinball
 ratio at $h = 1, 5, 10, 20$ days (150-name design panel; training
-labels whose $h$-day window crosses the split are purged): the aggregate
-tail thins as days are summed while $\sqrt{h}$ scaling carries the one-day
-shape forward unchanged, so the scaling error grows with the horizon, from $0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$. The forecaster is the
+labels whose $h$-day window crosses the split are purged): the
+$\sqrt{h}$ rule holds the one-day variance flat across the window while
+the fitted GARCH variance mean-reverts, and the gap grows with the
+horizon, from $0.45\%$ at $h{=}1$ to $2.1\%$ at $h{=}20$; at $h{=}10$ an
+iterated-variance GARCH-$t$ benchmark removes about half of it (main text,
+ten-day subsection). The forecaster is the
 direct multi-day model of the main text's ten-day subsection,
 \emph{not} the residual-hybrid engine, whose architecture is
 one-day.}

@@ -1122,9 +1122,20 @@ one-day architecture, and no ten-day claim attaches to it. At the FRTB
 ten-day liquidity horizon (CRSP 2014--2024) its pinball edge over
 $\sqrt{h}$-scaled GARCH grows from $\sim$0.4\% at $h=1$ to $\sim$1.4\% at
 $h=10$ and holds in the 2020--2022 stress window (Online Appendix
-Figure~OA.3). The ten-day tail advantage is real in that era but does not
-survive the pre-committed 2000--2013 rerun: out of era the two methods
-tie on accuracy (direct edge $+0.49\%$, DM 0.07) and the calibration
+Figure~OA.3). About half of that edge is the scaling rule itself. The
+$\sqrt{h}$ rule holds the one-day variance flat across the window, while
+the fitted GARCH variance mean-reverts toward an unconditional level that
+sits $6$--$11\%$ above $h$ times the one-day variance in every year of
+the 2020--2024 test window; against a GARCH-$t$ whose variance is
+iterated through the window the direct model's edge is $0.8\%$ (DM 4.0),
+against simulated GARCH-$t$ paths $0.7\%$ (DM 3.5), and against
+bootstrapped filtered paths $0.5\%$ (DM 2.5), on the same rows. The
+ten-day tail advantage is real in that era but does not survive the
+pre-committed 2000--2013 rerun, where the fitted term structure is flat
+(iterated ten-day variance within $2\%$ of $h$ times the one-day
+variance in 2008--2009): out of era the two methods tie on accuracy
+(direct edge $+0.49\%$, DM 0.07), as do the iterated benchmarks (DM at
+most 0.3), and the calibration
 verdict reverses, with $\sqrt{h}$-scaled GARCH-$t$ almost exactly
 calibrated through the crisis while the direct tail under-states it. In a
 2008-type era the direct ten-day model should therefore be run with the
@@ -1181,7 +1192,7 @@ volatility as its history lengthens.
 
 A fixed-shape parametric filter is hard to beat where its shape assumption holds, and for most assets on most days the flexible model cannot improve on it. The flexible model's advantage is concentrated in a small set of high-stress states identified by the real-time misspecification score. The decomposition attributes most of this advantage to post-outlier variance overstatement by the standard GARCH filter; a smaller but significant conditional-shape component remains under a jump-robust scale. An estimator that exploits both components, while showing no detectable accuracy loss relative to the benchmark elsewhere, improves on the accuracy of the market-risk models in standard use when judged by one-day diagnostics at the FRTB backtesting levels, at calibration parity with the best of them and short of the desk-level approval a full internal model must pass. Because the estimator pools its residual model across names, it also forecasts tail risk for assets with no history of their own, forecasting new listings from their first day as no per-asset model can.
 
-These conclusions carry qualifications. The score is predictive rather than a necessary or sufficient condition: high residual kurtosis coincides with ties in some markets, and in credit and freight the accuracy edges sit alongside failed breach-independence tests. The shape component is the smaller part of the edge, since the decomposition attributes most of it to daily-scale misspecification that a jump-robust or realized-variance scale removes (Section~\ref{sec:frtb}), and what survives is real but modest. Where intraday data are too sparse to build a realized measure, the daily model and its score remain the available tool. The ten-day extension is a separate direct model: it beats $\sqrt{h}$-scaled GARCH on the 2014--2024 panel and only ties it on the pre-committed 2000--2013 rerun, where the scaled parametric tail is the better calibrated of the two (Section~\ref{sec:frtb}). And the score serves as a monitor rather than a day-to-day switching rule, since the day-ahead oracle gap is largely unforecastable (Section~\ref{sec:gate}).
+These conclusions carry qualifications. The score is predictive rather than a necessary or sufficient condition: high residual kurtosis coincides with ties in some markets, and in credit and freight the accuracy edges sit alongside failed breach-independence tests. The shape component is the smaller part of the edge, since the decomposition attributes most of it to daily-scale misspecification that a jump-robust or realized-variance scale removes (Section~\ref{sec:frtb}), and what survives is real but modest. Where intraday data are too sparse to build a realized measure, the daily model and its score remain the available tool. The ten-day extension is a separate direct model: it beats $\sqrt{h}$-scaled GARCH on the 2014--2024 panel, with about half of that edge surviving an iterated GARCH benchmark, and only ties both on the pre-committed 2000--2013 rerun, where the scaled parametric tail is the better calibrated of the two (Section~\ref{sec:frtb}). And the score serves as a monitor rather than a day-to-day switching rule, since the day-ahead oracle gap is largely unforecastable (Section~\ref{sec:gate}).
 Distributional uncertainty around these VaR and ES forecasts and the multivariate portfolio tail are left to future work.
 
 \section*{Funding}

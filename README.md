@@ -58,6 +58,7 @@ Job scripts take the project root from the `GBC_PROJ` (or `GBC_PROJECT_DIR`) env
 | `code/paper/job_garch_evt.py`, `code/paper/job_holdout_garch_evt.py` | `results/paper/garch_evt_results.json`, `results/paper/holdout_garch_evt_results.json` | McNeil-Frey GARCH-EVT on the same rows, design era and holdout |
 | `code/paper/job_bench_all.py` | `results/paper/bench_all_results.json` | Every benchmark on the same rows: pinball frontier, FZ0, CPA, DQ, Murphy, model confidence sets (online appendix Tables OA.10 to OA.12) |
 | `code/paper/job_walkforward_hybrid.py` | `results/paper/walkforward_hybrid_results.json` | Residual-hybrid annual refit |
+| `code/paper/job_tenday_diag.py` | `results/paper/tenday_diag_results.json` | Ten-day extension against iterated GARCH-t, simulated GARCH-t paths and bootstrapped filtered paths, both eras, with the variance term-structure ratio and coverage by year |
 
 Superseded implementations are kept in the history and removed from the working tree. `code/paper/frtb_bench.py` records its own correction history in the header. `code/paper/toy_example.py` runs the whole pipeline on synthetic data and needs no licensed input.
 
