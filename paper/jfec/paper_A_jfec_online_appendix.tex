@@ -25,7 +25,7 @@
 \begin{document}
 \maketitle
 \section{Glossary of acronyms}
-\begin{tabular}{ll}
+\begin{tabular}{@{}lp{0.8\textwidth}@{}}
 \toprule
 ARCD & autoregressive conditional density model \citep{hansen1994ARCD} \\
 CAViaR & conditional autoregressive value-at-risk \citep{engle2004caviar}; SAV, its symmetric absolute value form \\
@@ -152,7 +152,7 @@ share of names whose individual Kupiec test is consistent with nominal.
 HS over-covers (conservative); EWMA fails; the EVT-tailed engine matches
 the parametric benchmarks while beating them on loss and the joint
 FZ0 score
-(Table~6 of the paper). Date-clustered tests in the table notes.}
+(Table~3 of the paper). Date-clustered tests in the table notes.}
 \label{fig:passrates}
 \end{figure}
 \clearpage
@@ -276,7 +276,7 @@ in the lower-left regime.}
   xtick={1,2,3,4,5,6,7,8,9,10}, ymin=-0.3, ymax=3.2,
   title={\small Residual excess kurtosis}, tick label style={font=\scriptsize}]
 \addplot[fill=npblue, draw=npblue] coordinates
-  {(1,0)(2,0)(3,0)(4,0)(5,0)(6,0)(7,0)(8,0)(9,0.46)(10,2.98)};
+  {(1,-0.16)(2,-0.01)(3,-0.10)(4,0.07)(5,0.03)(6,0.11)(7,-0.20)(8,0.00)(9,0.46)(10,2.98)};
 \end{axis}
 \end{tikzpicture}\hfill
 \begin{tikzpicture}
@@ -285,14 +285,14 @@ in the lower-left regime.}
   xtick={1,2,3,4,5,6,7,8,9,10}, ymin=-0.3, ymax=3.2,
   title={\small Residual asymmetry}, tick label style={font=\scriptsize}]
 \addplot[fill=npmid, draw=npmid] coordinates
-  {(1,0)(2,0)(3,0)(4,0)(5,0)(6,0)(7,0)(8,0)(9,0.59)(10,2.78)};
+  {(1,0.01)(2,-0.03)(3,-0.07)(4,-0.08)(5,0.04)(6,-0.03)(7,0.14)(8,-0.16)(9,0.59)(10,2.78)};
 \end{axis}
 \end{tikzpicture}
 \caption{The misspecification frontier. Nonparametric pinball edge over
 GARCH-$t$ by decile of the trailing 63-day residual excess kurtosis
 (left) and residual asymmetry (right), 200 CRSP names, 221.6k test
-asset-days. Deciles 1--8 are $\approx 0$ (drawn at zero; exact bulk
-values in the result file); the edge jumps in the top decile
+asset-days. Deciles 1--8 lie within $\pm0.2\%$ (values from
+\texttt{composite\_profiles\_results.json}); the edge jumps in the top decile
 ($+2.98\%$ kurtosis, $+2.78\%$ asymmetry; per-date DM 10.5 in the top
 kurtosis decile).}
 \label{fig:frontier}
@@ -805,10 +805,36 @@ Engine (accuracy layer) & --- & --- & 86\% & 70\% & --- & --- & --- & --- \\
 \end{threeparttable}
 \end{table}
 
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{The ten-day extension against iterated benchmarks (main text, ten-day subsection). Direct multi-day model's pinball edge over each benchmark, $h=10$, both eras, on the purged rows of the ten-day sections.}
+\label{tab:tenday}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{Design era, 2020--2024 test window} & \multicolumn{2}{c}{Holdout, mid-2008 to 2013} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Benchmark & Edge \% (DM; non-overlap DM) & Coverage 1\% / 2.5\% & Edge \% (DM; non-overlap DM) & Coverage 1\% / 2.5\% \\
+\midrule
+$\sqrt{h}$-scaled GARCH-$t$ (paper) & $+1.41$ (6.8; 4.3) & 1.24 / 3.30 & $+0.52$ (0.09; -0.02) & 1.26 / 2.80 \\
+Iterated-variance GARCH-$t$ & $+0.79$ (4.0; 2.7) & 1.03 / 2.85 & $+0.54$ (0.14; 0.15) & 1.23 / 2.74 \\
+Simulated GARCH-$t$ paths & $+0.70$ (3.5; 2.5) & 1.20 / 2.93 & $+0.76$ (0.25; 0.20) & 1.44 / 2.79 \\
+Bootstrapped filtered paths & $+0.51$ (2.5; 1.1) & 1.01 / 2.58 & $+0.81$ (0.25; 0.31) & 1.29 / 2.62 \\
+Direct model & --- & 1.13 / 2.80 & --- & 1.24 / 2.82 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Design era: 150 names, 164,850 test rows, 1,099 dates; holdout: 200 names, 278,808 rows, 1,486 dates. Edge $=$ (benchmark pinball $-$ direct pinball)/benchmark pinball over the eleven levels of the paper. Labels overlap (each row's target is the next ten days), so the DM statistic is computed on per-date mean loss differences with a Newey--West lag of 10; the non-overlap DM repeats it on every tenth test date (110 and 149 dates). Coverage is the share of rows whose realized ten-day return falls below the forecast quantile. Iterated-variance GARCH-$t$ uses the closed-form sum of the fitted GARCH variance forecasts over the ten days with the one-day $t$ shape; the path benchmarks simulate 4,000 ten-day paths per row from the fitted GARCH-$t$ with $t$ innovations or with residuals bootstrapped from the training window. The ratio of the iterated ten-day variance to $h$ times the one-day variance averages 1.07 in 2020, 1.11 in 2021, 1.06 in 2022, 1.12 in 2023, 1.11 in 2024 in the design era and 0.99 in 2008, 1.00 in 2009, 1.02 in 2010, 1.02 in 2011, 1.04 in 2012, 1.04 in 2013, which is why the $\sqrt{h}$ rule under-scales in the later era only. Holdout standard errors are roughly 3--6\% of loss, so the out-of-era accuracy comparison is uninformative; see \texttt{tenday\_diag\_results.json}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \section{Frontier robustness: calendar overlap, family-wise error, and the universe rule}
 This section collects the constructions summarized in Section~3 of the paper.
 
-\paragraph{Calendar overlap and the pooled learner.} The design panels are split per name, $60/40$ in each name's own time index. In an unbalanced panel such a rule can place one name's training window on another name's test dates, so a pooled learner could meet a systemic event in training that a per-name model would meet only out of sample, the panel form of overlap leakage that purging and embargo address. Near-complete histories put the split points on almost the same date, so the channel is nearly degenerate here, and a strict calendar-time split closes it: each stage (each GARCH fit, the pooled learner, the GPD tail) is re-estimated strictly before 2020-01-01 and tested from that date for every name simultaneously. The frontier survives, with the top decile at $+2.47\%$ (per-date DM 6.22 over 1{,}258 dates; per-name split $+2.7\%$, DM 6.5) and the overall edge $+0.71\%$ (DM 1.87). The bottom decile is elevated at $+1.3\%$ because a 2020--22 test era leaves few calm cells, but the top decile roughly doubles each other cell. Inside the 2000--2013 holdout, re-estimating strictly before 2007-01-01 and testing on 2007--2013 removes the 2008 crisis from every training window; the pooled learner still wins overall ($+0.29\%$, per-date DM 3.08 over 1{,}762 dates) and the decile profile keeps its shape (top three deciles $+0.45$--$+1.04\%$ against $+0.06$--$+0.09\%$). The annual walk-forward refits the per-name GARCH on expanding data at each January-1 cutoff from 2020 to 2024, rebuilds the residuals and score, and retrains the learner; the top decile carries $+2.09\%$ at DM 4.43 while the overall edge is no longer detectable ($-0.18\%$, DM $-0.52$).
+\paragraph{Calendar overlap and the pooled learner.} The design panels are split per name, $60/40$ in each name's own time index. In an unbalanced panel such a rule can place one name's training window on another name's test dates, so a pooled learner could meet a systemic event in training that a per-name model would meet only out of sample, the panel form of overlap leakage that purging and embargo address. Near-complete histories put the split points on almost the same date, so the channel is nearly degenerate here, and a strict calendar-time split closes it: each stage (each GARCH fit, the pooled learner, the GPD tail) is re-estimated strictly before 2020-01-01 and tested from that date for every name simultaneously. The frontier survives, with the top decile at $+2.47\%$ (per-date DM 6.22 over 1{,}258 dates; per-name split $+2.7\%$, DM 6.5) and the overall edge $+0.71\%$ (DM 1.87). The bottom decile is elevated at $+1.3\%$ because a 2020--22 test era leaves few calm cells, but the top decile roughly doubles each other cell. Inside the 2000--2013 holdout, re-estimating strictly before 2007-01-01 and testing on 2007--2013 removes the 2008 crisis from every training window; the pooled learner still wins overall ($+0.29\%$, per-date DM 3.08 over 1{,}762 dates) and the decile profile keeps its shape (top three deciles $+0.45$--$+1.04\%$ against $+0.06$--$+0.09\%$). The annual walk-forward refits the per-name GARCH on expanding data at each January-1 cutoff from 2020 to 2024, rebuilds the residuals and score, and retrains the learner; the top decile carries $+2.12\%$ at DM 4.41 while the overall edge is no longer detectable ($-0.22\%$, DM $-0.59$).
 
 \paragraph{Family-wise error over the signal-decile grid.} The frontier grid spans three signals and ten deciles. Romano--Wolf step-down family-wise control over the full $3\times10$ grid takes studentized per-date mean edges per cell, a stationary bootstrap over dates that draws the same dates for every cell (mean block 10 days, $B=2{,}000$, block 20 as sensitivity), and one-sided step-down adjusted $p$-values. Nine of the thirty cells survive under both block lengths, all frontier cells: the top deciles of the three signals (mk$_{63}$ $t=9.4$, skew$_{63}$ $t=9.2$, jump$_5$ $t=5.1$, adjusted $p<0.001$), the ninth deciles of mk$_{63}$ (adjusted $p=0.022$) and skew$_{63}$, skew$_{63}$'s seventh, and jump$_5$'s U-shaped far cells. Mid-grid cells with an unadjusted $t$ near two lose significance under the adjustment.
 
@@ -825,17 +851,17 @@ This section collects the constructions summarized in Section~3 of the paper.
   arr/.style={->, thick}]
 \node[box, fill=gray!8]    (ret)   at (0,0)      {returns $r_t$\\(one asset)};
 \node[box, fill=blue!12]   (garch) at (3.2,0)    {\textbf{Stage 1}\\GARCH-$t$ filter};
-\node[box, fill=blue!12]   (shape) at (7.2,0)    {\textbf{Stage 2}\\shape model $q_\phi(\tau\,|\,s_t)$};
-\node[box, fill=red!12]    (evt)   at (11.2,0)   {\textbf{Stage 3}\\GPD tail, $\tau\le p_0$};
-\node[box, fill=orange!22] (conf)  at (11.2,-2.6){\textbf{Stage 4}\\conformal shift $c_\tau$};
+\node[box, fill=blue!12]   (shape) at (7.6,0)    {\textbf{Stage 2}\\shape model $q_\phi(\tau\,|\,s_t)$};
+\node[box, fill=red!12]    (evt)   at (12.4,0)   {\textbf{Stage 3}\\GPD tail, $\tau\le p_0$};
+\node[box, fill=orange!22] (conf)  at (12.4,-2.6){\textbf{Stage 4}\\conformal shift $c_\tau$};
 \node[box, fill=gray!8]    (out)   at (4.6,-2.6) {forecast $\widehat{Q}_t(\tau)$};
-\node[box, dashed, fill=white] (pool) at (7.2,-4.4) {pooled residual panel\\$\{(s_{j,t},\widehat z_{j,t})\}$, all names $j$};
-\node[box, dashed, fill=white] (cal)  at (11.2,-4.4) {held-out\\calibration split};
+\node[box, dashed, fill=white] (pool) at (7.6,-4.4) {pooled residual panel\\$\{(s_{j,t},\widehat z_{j,t})\}$, all names $j$};
+\node[box, dashed, fill=white] (cal)  at (12.4,-4.4) {held-out\\calibration split};
 \draw[arr] (ret) -- (garch);
 \draw[arr] (garch) -- node[lab, above] {$\widehat z_t$, $s_t$} (shape);
-\draw[arr] (shape) -- node[lab, above] {minimum at $\tau\le p_0$, rearrange} (evt);
+\draw[arr] (shape) -- node[lab, below=4.5mm] {minimum at $\tau\le p_0$, rearrange} (evt);
 \draw[arr] (evt) -- (conf);
-\draw[arr] (conf) -- node[lab, above] {shifted curve $Q^{z}+c_\tau$ (overlay)} (out);
+\draw[arr] (conf) -- node[lab, below, pos=0.45] {shifted curve $Q^{z}+c_\tau$ (overlay)} (out);
 \draw[arr] ([xshift=-5mm]garch.south) |- node[lab, left, pos=0.25]
   {$\widehat z$} (pool.west);
 \draw[arr] (pool.north) -- node[lab, right] {train} (shape.south);
@@ -891,11 +917,11 @@ forecaster does
 \emph{not} beat the fixed shape here: a single $t_{\widehat\nu}$
 fitted on the mixture ($\widehat\nu = 6.8$) is nearly unbeatable at
 these levels, with total regret under $0.5\%$ and no decile gradient.
-Two mechanisms explain it, and both teach. (i)~By
+Two mechanisms explain it. (i)~By
 Lemma~1 of the paper regret is \emph{quadratic} in the quantile
 wedge, and at $\tau \ge 0.01$ the wedge between the fitted compromise
-and either regime is small; static kurtosis \emph{blending} is a
-second-order sin. (ii)~The sample kurtosis of a $t_\nu$ law is a noisy statistic when
+and either regime is small, so the regret from one fitted shape across
+both regimes is second order. (ii)~The sample kurtosis of a $t_\nu$ law is a noisy statistic when
 tails are fat: its usual moment-based asymptotic variance requires a
 finite eighth moment ($\nu>8$), and the population kurtosis itself does
 not exist for $\nu\le4$, so sixty-three observations cannot reliably
@@ -903,9 +929,8 @@ rank regimes that differ only in a static $\nu$. The jump and
 asymmetry signals, whose top deciles independently survive familywise
 control, corroborate the ordering, and a tail-index (Hill-type)
 variant of the score is an obvious robustness extension. For the empirical sections this means the real-data top-decile edge of Section~4 of the paper
-cannot be an artifact of stationary fat tails being averaged over
-(that configuration is the one the simulation shows a fixed shape
-handles) and is consistent with \emph{local} shape breaks a single
+is not what averaging stationary fat tails produces in this
+simulation (a fixed shape handles that configuration) and is consistent with \emph{local} shape breaks a single
 fitted $\nu$ cannot straddle: asymmetry, jump clustering, and residual misfit
 that co-move with the score. This is the same conclusion the Korea 2026
 falsification case reaches from the opposite direction (price crashes
@@ -1082,11 +1107,6 @@ paper), and the frontier itself is documented empirically in the paper.
 
 
 
-\begin{spacing}{1.0}
-\bibliographystyle{plainnat}
-\bibliography{refs_v3}
-\end{spacing}
-
 \subsection*{Proof of Lemma~2 of the paper (generative sampler)}
 Let $\widetilde{q}(\cdot \mid s)$ be nondecreasing and left-continuous
 on $(0,1)$ and $\tau \sim U(0,1)$, and set
@@ -1104,5 +1124,10 @@ generalized inverse of $G$, the quantile function of $Z^*$ is exactly
 $\widetilde q(\cdot\mid s)$. When $\widetilde q$ is an estimated curve,
 the argument applies verbatim to the estimate: the sampler is exact for
 the \emph{fitted} conditional law, which is the claim. $\square$
+
+\begin{spacing}{1.0}
+\bibliographystyle{plainnat}
+\bibliography{refs_v3}
+\end{spacing}
 
 \end{document}
