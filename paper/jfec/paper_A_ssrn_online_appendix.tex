@@ -811,12 +811,12 @@ Engine (accuracy layer) & --- & --- & 86\% & 70\% & --- & --- & --- & --- \\
 \begin{threeparttable}
 \caption{The ten-day extension against iterated benchmarks (main text, ten-day subsection). Direct multi-day model's pinball edge over each benchmark, $h=10$, both eras, on the purged rows of the ten-day sections.}
 \label{tab:tenday}
-\footnotesize\setlength{\tabcolsep}{4pt}
+\scriptsize\setlength{\tabcolsep}{3pt}
 \begin{tabular}{lcccc}
 \toprule
 & \multicolumn{2}{c}{Design era, 2020--2024 test window} & \multicolumn{2}{c}{Holdout, mid-2008 to 2013} \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}
-Benchmark & Edge \% (DM; non-overlap DM) & Coverage 1\% / 2.5\% & Edge \% (DM; non-overlap DM) & Coverage 1\% / 2.5\% \\
+Benchmark & Edge \% (DM; NO) & Cov.\ 1\% / 2.5\% & Edge \% (DM; NO) & Cov.\ 1\% / 2.5\% \\
 \midrule
 $\sqrt{h}$-scaled GARCH-$t$ (paper) & $+1.41$ (6.8; 4.3) & 1.24 / 3.30 & $+0.52$ (0.09; -0.02) & 1.26 / 2.80 \\
 Iterated-variance GARCH-$t$ & $+0.79$ (4.0; 2.7) & 1.03 / 2.85 & $+0.54$ (0.14; 0.15) & 1.23 / 2.74 \\
@@ -826,7 +826,7 @@ Direct model & --- & 1.13 / 2.80 & --- & 1.24 / 2.82 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item Design era: 150 names, 164,850 test rows, 1,099 dates; holdout: 200 names, 278,808 rows, 1,486 dates. Edge $=$ (benchmark pinball $-$ direct pinball)/benchmark pinball over the eleven levels of the paper. Labels overlap (each row's target is the next ten days), so the DM statistic is computed on per-date mean loss differences with a Newey--West lag of 10; the non-overlap DM repeats it on every tenth test date (110 and 149 dates). Coverage is the share of rows whose realized ten-day return falls below the forecast quantile. Iterated-variance GARCH-$t$ uses the closed-form sum of the fitted GARCH variance forecasts over the ten days with the one-day $t$ shape; the path benchmarks simulate 4,000 ten-day paths per row from the fitted GARCH-$t$ with $t$ innovations or with residuals bootstrapped from the training window. The ratio of the iterated ten-day variance to $h$ times the one-day variance averages 1.07 in 2020, 1.11 in 2021, 1.06 in 2022, 1.12 in 2023, 1.11 in 2024 in the design era and 0.99 in 2008, 1.00 in 2009, 1.02 in 2010, 1.02 in 2011, 1.04 in 2012, 1.04 in 2013, which is why the $\sqrt{h}$ rule under-scales in the later era only. Holdout standard errors are roughly 3--6\% of loss, so the out-of-era accuracy comparison is uninformative; see \texttt{tenday\_diag\_results.json}.
+\item Design era: 150 names, 164,850 test rows, 1,099 dates; holdout: 200 names, 278,808 rows, 1,486 dates. Edge $=$ (benchmark pinball $-$ direct pinball)/benchmark pinball over the eleven levels of the paper. Labels overlap (each row's target is the next ten days), so the DM statistic is computed on per-date mean loss differences with a Newey--West lag of 10; NO repeats it on every tenth test date (110 and 149 dates). The main text's holdout figure ($+0.49\%$, DM 0.07) is an earlier run of the same purged pipeline with a different learner seed. Coverage is the share of rows whose realized ten-day return falls below the forecast quantile. Iterated-variance GARCH-$t$ uses the closed-form sum of the fitted GARCH variance forecasts over the ten days with the one-day $t$ shape; the path benchmarks simulate 4,000 ten-day paths per row from the fitted GARCH-$t$ with $t$ innovations or with residuals bootstrapped from the training window. The ratio of the iterated ten-day variance to $h$ times the one-day variance averages 1.07 in 2020, 1.11 in 2021, 1.06 in 2022, 1.12 in 2023, 1.11 in 2024 in the design era and 0.99 in 2008, 1.00 in 2009, 1.02 in 2010, 1.02 in 2011, 1.04 in 2012, 1.04 in 2013, which is why the $\sqrt{h}$ rule under-scales in the later era only. Holdout standard errors are roughly 3--6\% of loss, so the out-of-era accuracy comparison is uninformative; see \texttt{tenday\_diag\_results.json}.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -946,9 +946,10 @@ sizing and hedging matter most. The \emph{direction} of the trade matters
 as much as its location: a correct physical-measure tail forecast
 does not by itself make bought crash insurance profitable, because the
 crash risk premium can survive conditioning on a correct forecast.
-The application the evidence supports is the opposite side, selling tail
-protection, where the model supplies tail control rather than alpha on
-the mean. The gating experiment provides no evidence that the score times
+A possible application is the opposite side, selling tail protection
+with the model supplying tail control rather than alpha on the mean; the
+paper evaluates no prices, premia, costs or trading outcomes, so this is a
+direction and not a result. The gating experiment provides no evidence that the score times
 individual crash days, so its role there is continuous tail-risk
 measurement, not a market-timing signal.
 
