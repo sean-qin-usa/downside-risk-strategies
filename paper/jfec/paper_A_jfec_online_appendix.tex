@@ -831,6 +831,49 @@ Direct model & --- & 1.13 / 2.80 & --- & 1.24 / 2.82 \\
 \end{threeparttable}
 \end{table}
 
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Learner feature ablation (Section~4 of the paper). The Table~1 learner retrained with reduced state vectors; the score is computed as in the paper and is never a learner input.}
+\label{tab:ablation}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+Learner & Top mk$_{63}$ & Top $|$sk$_{63}|$ & Top composite & Deciles 1--8 & Overall \\
+\midrule
+Full (logsig, $z_{t-1}$, $|z|_5$, sd$_{21}$, dn$_5$) & $+2.98$ (10.5) & $+2.78$ (9.8) & $+2.79$ (8.9) & $-0.20$ to $+0.11$ & $+0.35$ (5.3) \\
+No dispersion (logsig, $z_{t-1}$, dn$_5$) & $+1.93$ (10.4) & $+1.78$ (9.9) & $+2.02$ (10.2) & $-0.40$ to $+0.08$ & $+0.14$ (2.3) \\
+Scale only (logsig) & $+1.63$ (11.0) & $+1.56$ (10.6) & $+1.81$ (10.0) & $-0.43$ to $+0.12$ & $+0.12$ (2.4) \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item 200 CRSP names, 221,600 test asset-days, the rows of Table~1. Edge $=$ (GARCH-$t$ pinball $-$ learner pinball)/GARCH-$t$ pinball over the eleven levels, per-date DM with Newey--West lag 10 in parentheses. Against the full learner in the top mk$_{63}$ decile the no-dispersion learner loses $1.08\%$ (DM $-7.3$) and the scale-only learner $1.39\%$ (DM $-8.2$). Features: logsig is the log GARCH scale, $z_{t-1}$ the lagged standardized residual, $|z|_5$ its five-day mean absolute value, sd$_{21}$ its 21-day standard deviation, dn$_5$ the five-day share of down days. Result file \texttt{feature\_ablation\_results.json}; predictions in the script header.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\begin{threeparttable}
+\caption{A state-adaptive parametric benchmark (Section~4 of the paper): GARCH-$t$ with a time-varying degrees-of-freedom law, on the rows of Table~1.}
+\label{tab:arcd}
+\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}
+\toprule
+Comparison & Top mk$_{63}$ decile & Top composite decile & Deciles 1--9 & Overall \\
+\midrule
+Adaptive-$\nu$ GARCH-$t$ over GARCH-$t$ & $+0.27$ (1.9) & $+0.03$ (0.8) & $+0.07$ (3.8) & $+0.10$ (3.8) \\
+Learner over GARCH-$t$ (Table~1) & $+2.98$ (10.5) & $+2.79$ (8.9) & $+0.02$ (0.4) & $+0.35$ (5.3) \\
+Learner over adaptive-$\nu$ GARCH-$t$ & $+2.72$ (9.7) & $+2.76$ (8.1) & $-0.05$ (-0.7) & $+0.26$ (3.4) \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item The benchmark keeps the paper's GARCH(1,1)-$t$ scale and replaces the constant $\nu$ by $\nu_t = 2.1 + \exp(h_t)$, $h_t = c + a|z_{t-1}| + b\,h_{t-1}$, an autoregressive conditional density in the spirit of \citet{hansen1994ARCD}, fitted by maximum likelihood on each name's training residuals with the scale held fixed; forecast quantile $\widehat\mu + \widehat\sigma_t\, t_\tau(\nu_t)/\sqrt{\nu_t/(\nu_t-2)}$. Median fitted $a = 0.11$, $b = 0.64$; median training log-likelihood gain over constant $\nu$ is 2.9 (48\% of names gain more than 3); the typical name's $\nu_t$ runs from 3.7 to 5.2 between its 10th and 90th percentiles. Edge $=$ (first model pinball $-$ second model pinball)/first, eleven levels, per-date DM with Newey--West lag 10. Result file \texttt{arcd\_bench\_results.json}; predictions in the script header.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \section{Frontier robustness: calendar overlap, family-wise error, and the universe rule}
 This section collects the constructions summarized in Section~3 of the paper.
 

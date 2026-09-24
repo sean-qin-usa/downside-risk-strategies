@@ -787,6 +787,21 @@ tells the same story. It is the reason the score is read as a monitor of
 parametric-model stress, part scale and part shape, and not as a
 diagnostic of shape alone.
 
+\paragraph{Two checks on the decomposition.} Neither the learner's inputs
+nor a richer parametric family accounts for the frontier. Retraining the
+Table~\ref{tab:frontier} learner without its trailing residual-dispersion
+features leaves a top-decile edge of $+1.93\%$ (DM 10.4), and with the
+GARCH scale as its only input $+1.63\%$ (DM 11.0), with the decile
+ordering unchanged in both; the score is never a learner input, so about
+half of the top-decile edge is available from the scale state alone and
+the dispersion features add roughly a third (Online Appendix
+Table~OA.14). A GARCH-$t$ whose degrees of freedom move with the lagged
+absolute residual, fitted per name by maximum likelihood, gains $+0.27\%$
+(DM 1.9) over constant-$\nu$ GARCH-$t$ in the top decile, and the
+learner keeps $+2.72\%$ (DM 9.7) over it there (Online Appendix
+Table~OA.15), so a state-adaptive shape within the parametric family does
+not reach the frontier.
+
 \paragraph{Robustness of the frontier.} Four checks in the Online Appendix address the main potential artifacts. The one-day score lag is not a
 look-ahead window: it gives the largest top-decile edge, and a
 five-day-old score keeps most of it (Online Appendix Figure~OA.1).
