@@ -1,0 +1,183 @@
+{
+  "note": "CANONICAL battery: one run, every row of Table 6, TRUE predicted ES97.5 per model (closed forms; 200-node Hansen integration; 20-node midpoint integration for empirical/rolling quantile functions; coherent min-envelope curve Q* integrated numerically for the EVT engine; 20-node sub-alpha GBM grid for the raw hybrid). ES975_realized_ownVaR conditions on each model OWN breach set and is a labeled diagnostic, not the ranking criterion (FZ0 is). overstatement_pct=(|pred|-|real|)/|real|.",
+  "sub_alpha_grid_nodes": 20,
+  "gpd": {
+    "u": -1.9673,
+    "xi": 0.2798,
+    "beta": 0.6817
+  },
+  "n_names": 200,
+  "n_test_rows": 221600,
+  "n_dates": 1108,
+  "per_model": {
+    "hist_sim": {
+      "avg_pinball": 0.3752,
+      "ES975_pred_true": -7.407,
+      "ES975_realized_ownVaR": -7.081,
+      "overstatement_pct": 4.6,
+      "breach99": 0.0087,
+      "breach975": 0.0206,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "ewma_rm": {
+      "avg_pinball": 0.3735,
+      "ES975_pred_true": -5.722,
+      "ES975_realized_ownVaR": -5.841,
+      "overstatement_pct": -2.0,
+      "breach99": 0.0161,
+      "breach975": 0.0273,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "garch_t": {
+      "avg_pinball": 0.3688,
+      "ES975_pred_true": -6.982,
+      "ES975_realized_ownVaR": -5.916,
+      "overstatement_pct": 18.0,
+      "breach99": 0.0103,
+      "breach975": 0.0271,
+      "kupiec99_p": 0.1672,
+      "christoffersen99_p": 0.367,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "gjr_skewt": {
+      "avg_pinball": 0.3688,
+      "ES975_pred_true": -6.851,
+      "ES975_realized_ownVaR": -6.086,
+      "overstatement_pct": 12.6,
+      "breach99": 0.0102,
+      "breach975": 0.0264,
+      "kupiec99_p": 0.4308,
+      "christoffersen99_p": 0.3126,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "fhs": {
+      "avg_pinball": 0.3691,
+      "ES975_pred_true": -7.168,
+      "ES975_realized_ownVaR": -5.886,
+      "overstatement_pct": 21.8,
+      "breach99": 0.0097,
+      "breach975": 0.0263,
+      "kupiec99_p": 0.2058,
+      "christoffersen99_p": 0.2322,
+      "kupiec975_p": 0.0002,
+      "christoffersen975_p": 0.0007
+    },
+    "fhs_pername": {
+      "avg_pinball": 0.3689,
+      "ES975_pred_true": -6.9,
+      "ES975_realized_ownVaR": -6.061,
+      "overstatement_pct": 13.8,
+      "breach99": 0.0108,
+      "breach975": 0.0279,
+      "kupiec99_p": 0.0003,
+      "christoffersen99_p": 0.0013,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "fhs_roll500": {
+      "avg_pinball": 0.3694,
+      "ES975_pred_true": -6.714,
+      "ES975_realized_ownVaR": -6.209,
+      "overstatement_pct": 8.1,
+      "breach99": 0.011,
+      "breach975": 0.025,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0,
+      "kupiec975_p": 0.9133,
+      "christoffersen975_p": 0.9019
+    },
+    "resid_hybrid_ML": {
+      "avg_pinball": 0.3676,
+      "ES975_pred_true": -6.635,
+      "ES975_realized_ownVaR": -6.122,
+      "overstatement_pct": 8.4,
+      "breach99": 0.0106,
+      "breach975": 0.027,
+      "kupiec99_p": 0.0025,
+      "christoffersen99_p": 0.0001,
+      "kupiec975_p": 0.0,
+      "christoffersen975_p": 0.0
+    },
+    "hybrid_EVT": {
+      "avg_pinball": 0.368,
+      "ES975_pred_true": -7.213,
+      "ES975_realized_ownVaR": -6.146,
+      "overstatement_pct": 17.3,
+      "breach99": 0.0088,
+      "breach975": 0.024,
+      "kupiec99_p": 0.0,
+      "christoffersen99_p": 0.0,
+      "kupiec975_p": 0.0016,
+      "christoffersen975_p": 0.0002
+    }
+  },
+  "best_model": "resid_hybrid_ML",
+  "DM_vs_best": {
+    "hist_sim": {
+      "DM_stat": 8.5,
+      "p_one_sided": 0.0
+    },
+    "ewma_rm": {
+      "DM_stat": 9.67,
+      "p_one_sided": 0.0
+    },
+    "garch_t": {
+      "DM_stat": 6.3,
+      "p_one_sided": 0.0
+    },
+    "gjr_skewt": {
+      "DM_stat": 5.6,
+      "p_one_sided": 0.0
+    },
+    "fhs": {
+      "DM_stat": 7.03,
+      "p_one_sided": 0.0
+    },
+    "fhs_pername": {
+      "DM_stat": 6.41,
+      "p_one_sided": 0.0
+    },
+    "fhs_roll500": {
+      "DM_stat": 6.04,
+      "p_one_sided": 0.0
+    },
+    "hybrid_EVT": {
+      "DM_stat": 6.93,
+      "p_one_sided": 0.0
+    }
+  },
+  "MCS": {
+    "in_MCS_90": [
+      "resid_hybrid_ML"
+    ],
+    "elimination_pvals": {
+      "ewma_rm": 0.0,
+      "hist_sim": 0.0,
+      "hybrid_EVT": 0.0,
+      "fhs": 0.0,
+      "fhs_pername": 0.0,
+      "garch_t": 0.0,
+      "fhs_roll500": 0.0,
+      "gjr_skewt": 0.0
+    }
+  },
+  "passrate99_perasset": {
+    "hist_sim": 0.925,
+    "ewma_rm": 0.55,
+    "garch_t": 0.82,
+    "gjr_skewt": 0.88,
+    "fhs": 0.84,
+    "fhs_pername": 0.815,
+    "fhs_roll500": 0.98,
+    "resid_hybrid_ML": 0.855,
+    "hybrid_EVT": 0.855
+  }
+}

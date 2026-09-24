@@ -1,0 +1,236 @@
+{
+  "note": "State-adaptive parametric benchmark (time-varying-nu GARCH-t, see header) on the Table 1 rows. edge blocks: (first model pinball - second model pinball)/first, 11 levels, per-date NW(10) DM; positive = second model better.",
+  "n_rows": 221600,
+  "n_names": 200,
+  "fit_summary": {
+    "median_train_loglik_gain_vs_constant_nu": 2.85,
+    "share_names_gain_gt_3": 0.475,
+    "median_a": 0.109,
+    "median_b": 0.636,
+    "nu_t_median_of_name_means": 4.63,
+    "nu_t_median_p10": 3.72,
+    "nu_t_median_p90": 5.22
+  },
+  "adaptive_nu_over_garch_t": {
+    "top_mk63": {
+      "edge_pct": 0.27,
+      "DM": 1.86,
+      "n": 22160
+    },
+    "top_composite": {
+      "edge_pct": 0.027,
+      "DM": 0.78,
+      "n": 22160
+    },
+    "deciles_1to9_mk63": {
+      "edge_pct": 0.074,
+      "DM": 3.78,
+      "n": 199440
+    },
+    "mk63_decile_profile": {
+      "1": {
+        "edge_pct": 0.16,
+        "DM": 3.24,
+        "n": 22160
+      },
+      "2": {
+        "edge_pct": 0.134,
+        "DM": 3.17,
+        "n": 22160
+      },
+      "3": {
+        "edge_pct": 0.106,
+        "DM": 2.8,
+        "n": 22160
+      },
+      "4": {
+        "edge_pct": 0.116,
+        "DM": 3.4,
+        "n": 22160
+      },
+      "5": {
+        "edge_pct": 0.057,
+        "DM": 1.36,
+        "n": 22160
+      },
+      "6": {
+        "edge_pct": 0.012,
+        "DM": 0.45,
+        "n": 22160
+      },
+      "7": {
+        "edge_pct": 0.122,
+        "DM": 3.14,
+        "n": 22160
+      },
+      "8": {
+        "edge_pct": 0.001,
+        "DM": 0.58,
+        "n": 22160
+      },
+      "9": {
+        "edge_pct": -0.036,
+        "DM": -0.92,
+        "n": 22160
+      },
+      "10": {
+        "edge_pct": 0.27,
+        "DM": 1.86,
+        "n": 22160
+      }
+    },
+    "overall": {
+      "edge_pct": 0.096,
+      "DM": 3.75,
+      "n": 221600
+    }
+  },
+  "learner_over_garch_t": {
+    "top_mk63": {
+      "edge_pct": 2.982,
+      "DM": 10.48,
+      "n": 22160
+    },
+    "top_composite": {
+      "edge_pct": 2.787,
+      "DM": 8.91,
+      "n": 22160
+    },
+    "deciles_1to9_mk63": {
+      "edge_pct": 0.022,
+      "DM": 0.43,
+      "n": 199440
+    },
+    "mk63_decile_profile": {
+      "1": {
+        "edge_pct": -0.157,
+        "DM": -1.05,
+        "n": 22160
+      },
+      "2": {
+        "edge_pct": -0.009,
+        "DM": 0.42,
+        "n": 22160
+      },
+      "3": {
+        "edge_pct": -0.103,
+        "DM": -1.11,
+        "n": 22160
+      },
+      "4": {
+        "edge_pct": 0.067,
+        "DM": 0.43,
+        "n": 22160
+      },
+      "5": {
+        "edge_pct": 0.033,
+        "DM": 0.35,
+        "n": 22160
+      },
+      "6": {
+        "edge_pct": 0.109,
+        "DM": 1.14,
+        "n": 22160
+      },
+      "7": {
+        "edge_pct": -0.197,
+        "DM": -1.8,
+        "n": 22160
+      },
+      "8": {
+        "edge_pct": -0.003,
+        "DM": -0.34,
+        "n": 22160
+      },
+      "9": {
+        "edge_pct": 0.461,
+        "DM": 2.93,
+        "n": 22160
+      },
+      "10": {
+        "edge_pct": 2.982,
+        "DM": 10.48,
+        "n": 22160
+      }
+    },
+    "overall": {
+      "edge_pct": 0.353,
+      "DM": 5.35,
+      "n": 221600
+    }
+  },
+  "learner_over_adaptive_nu": {
+    "top_mk63": {
+      "edge_pct": 2.719,
+      "DM": 9.68,
+      "n": 22160
+    },
+    "top_composite": {
+      "edge_pct": 2.76,
+      "DM": 8.08,
+      "n": 22160
+    },
+    "deciles_1to9_mk63": {
+      "edge_pct": -0.053,
+      "DM": -0.68,
+      "n": 199440
+    },
+    "mk63_decile_profile": {
+      "1": {
+        "edge_pct": -0.318,
+        "DM": -2.13,
+        "n": 22160
+      },
+      "2": {
+        "edge_pct": -0.143,
+        "DM": -1.03,
+        "n": 22160
+      },
+      "3": {
+        "edge_pct": -0.21,
+        "DM": -2.25,
+        "n": 22160
+      },
+      "4": {
+        "edge_pct": -0.049,
+        "DM": -1.07,
+        "n": 22160
+      },
+      "5": {
+        "edge_pct": -0.024,
+        "DM": -0.08,
+        "n": 22160
+      },
+      "6": {
+        "edge_pct": 0.097,
+        "DM": 0.82,
+        "n": 22160
+      },
+      "7": {
+        "edge_pct": -0.319,
+        "DM": -2.43,
+        "n": 22160
+      },
+      "8": {
+        "edge_pct": -0.004,
+        "DM": -0.47,
+        "n": 22160
+      },
+      "9": {
+        "edge_pct": 0.497,
+        "DM": 2.95,
+        "n": 22160
+      },
+      "10": {
+        "edge_pct": 2.719,
+        "DM": 9.68,
+        "n": 22160
+      }
+    },
+    "overall": {
+      "edge_pct": 0.257,
+      "DM": 3.36,
+      "n": 221600
+    }
+  }
+}
